@@ -7,7 +7,7 @@
 #include <err.h>
 #include <errno.h>
 #include <time.h>
-
+//* ciao
 void msgSend(int msgqID, char text[MEXBSIZE], long type, void (*errorHandler)()) {
     mex m;
     m.mtype = type;
