@@ -7,15 +7,15 @@
 #include <err.h>
 #include <errno.h>
 #include <time.h>
-//* ciao
-void msgSend(int msgqID, char text[MEXBSIZE], long type, void (*errorHandler)()) {
+
+void msgSend(int msgqID, char text[MEXBSIZE], long type, void (*errorHandler)(int err)) {
     mex m;
     m.mtype = type;
     strcpy(m.mtext, text);
 
     if (msgsnd(msgqID, &m, MEXBSIZE, 0) == -1) {
         if (errorHandler != NULL) {
-            errorHandler();
+            errorHandler(MERRSND);
             exit(EXIT_FAILURE);
         }
         else {
@@ -26,12 +26,12 @@ void msgSend(int msgqID, char text[MEXBSIZE], long type, void (*errorHandler)())
 
 }
 
-mex* msgRecv(int msgqID, long type, void (*errorHandler)(), void (*callback)(long type, char text[MEXBSIZE]), int mod) {
+mex* msgRecv(int msgqID, long type, void (*errorHandler)(int err), void (*callback)(long type, char text[MEXBSIZE]), int mod) {
     mex* m = (mex*)malloc(sizeof(mex));
 
     if (msgrcv(msgqID, m, MEXBSIZE, type, 0) == -1) {
         if (errorHandler != NULL) {
-            errorHandler();
+            errorHandler(MERRRCV);
             exit(EXIT_FAILURE);
         }
         else {
@@ -47,8 +47,15 @@ mex* msgRecv(int msgqID, long type, void (*errorHandler)(), void (*callback)(lon
         int pid = fork();
 
         if (pid == -1) {
-            perror("msgRecv -> fork");
-            exit(EXIT_FAILURE);
+            if (errorHandler == NULL) {
+                perror("msgRecv -> fork");
+                exit(EXIT_FAILURE);
+            }
+            else {
+                errorHandler(errno);
+                exit(EXIT_FAILURE);
+            }
+
         }
         if (pid == 0) {
             callback(m->mtype, m->mtext);
@@ -64,14 +71,14 @@ mex* msgRecv(int msgqID, long type, void (*errorHandler)(), void (*callback)(lon
 
 }
 
-int createQueue(int key, void (*errorHandler)()) {
+int createQueue(int key, void (*errorHandler)(int err)) {
     int qid = msgget(key, IPC_CREAT | IPC_EXCL | 0666);
     if (errno == EEXIST) {
         return EEXIST;
     }
     if (qid == -1) {
         if (errorHandler != NULL) {
-            errorHandler();
+            errorHandler(MERRGET);
         }
         else {
             perror("createQueue -> msgget");
@@ -81,11 +88,11 @@ int createQueue(int key, void (*errorHandler)()) {
     return qid;
 }
 
-int useQueue(int key, void (*errorHandler)()) {
+int useQueue(int key, void (*errorHandler)(int err)) {
     int qid = msgget(key, 0);
     if (qid == -1) {
         if (errorHandler != NULL) {
-            errorHandler();
+            errorHandler(MERRGET);
         }
         else {
             perror("useQueue -> msgget");

@@ -2,9 +2,9 @@
 
 #define SEM_UTILITY_H
 
-#define ERRGET 0
-#define ERRCTL 1
-#define ERROP  2
+#define SERRGET 4
+#define SERRCTL 5
+#define SERROP  6
 
 #define LOCK -1
 #define UNLOCK 1

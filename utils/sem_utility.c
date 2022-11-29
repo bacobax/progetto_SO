@@ -1,4 +1,3 @@
-#include "./sem_utility.h"
 #include <string.h>
 #include <sys/sem.h>
 #include <stdlib.h>
@@ -8,8 +7,10 @@
 #include <errno.h>
 #include <time.h>
 #include <sys/types.h> 
+#include "./sem_utility.h"
 
-int useSem(int key, void (*errorHandler)()) {
+
+int useSem(int key, void (*errorHandler)(int err)) {
     int semid = semget(key, 1, 0);
     if (semid == -1) {
         if (errorHandler == NULL) {
@@ -17,7 +18,7 @@ int useSem(int key, void (*errorHandler)()) {
             exit(EXIT_FAILURE);
         }
         else {
-            errorHandler();
+            errorHandler(SERRGET);
             exit(EXIT_FAILURE);
         }
 
@@ -36,7 +37,7 @@ int createSem(int key, int initValue, void (*errorHandler)(int err)) {
             exit(EXIT_FAILURE);
         }
         else {
-            errorHandler(ERRGET);
+            errorHandler(SERRGET);
             exit(EXIT_FAILURE);
         }
 
@@ -49,7 +50,7 @@ int createSem(int key, int initValue, void (*errorHandler)(int err)) {
             exit(EXIT_FAILURE);
         }
         else {
-            errorHandler(ERRCTL);
+            errorHandler(SERRCTL);
             exit(EXIT_FAILURE);
         }
     }
@@ -71,7 +72,7 @@ void mutex(int semid, int op, void (*errorHandler)(int err)) {
 
         }
         else {
-            errorHandler(ERROP);
+            errorHandler(SERROP);
             exit(EXIT_FAILURE);
         }
     }
