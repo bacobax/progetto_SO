@@ -49,10 +49,10 @@ int createQueue(int key, void (*errorHandler)(int err));
 int useQueue(int key, void (*errorHandler)(int err));
 
 //ritorna il numero di messaggi
-int getMexCount(int id);
+int getMexCount(int id, void (*errorHandler)(int err));
 
-void printQueueState(int id);
+void printQueueState(int id, void (*errorHandler)(int err));
 
-void removeQueue(int id);
+void removeQueue(int id, void (*errorHandler)(int err));
 
 #endif

@@ -10,12 +10,14 @@
 #include <sys/types.h>
 
 
-int createShm(int key, size_t shmSize, void*(errorHandler)(int err));
+int createShm(int key, size_t shmSize, void (*errorHandler)(int err));
 
-void* getShmAddress(int shmid, int flag, void*(errorHandler)(int err));
+int useShm(int key, size_t shmSize, void (*errorHandler)(int err));
 
-void shmDetach(void* addrToRemove,void*(errorHandler)(int err));
+void* getShmAddress(int shmid, int flag, void (*errorHandler)(int err));
 
-int removeShm(int shmid, void*(errorHandler)(int err));
+void shmDetach(void* addrToRemove, void (*errorHandler)(int err));
+
+int removeShm(int shmid, void (*errorHandler)(int err));
 
 #endif

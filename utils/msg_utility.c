@@ -102,30 +102,45 @@ int useQueue(int key, void (*errorHandler)(int err)) {
     return qid;
 }
 
-int getMexCount(int id) {
+int getMexCount(int id, void (*errorHandler)(int err)) {
     struct msqid_ds buf;
 
     if (msgctl(id, IPC_STAT, &buf) == -1) {
-        perror("getMexCount -> msgctl");
-        exit(1);
+        if(errorHandler == NULL){
+            perror("getMexCount -> msgctl");
+            exit(EXIT_FAILURE);
+        } else {
+            errorHandler(MERRCTL);
+            exit(EXIT_FAILURE);
+        }
     }
     return buf.msg_qnum;
 }
 
-void printQueueState(int id) {
+void printQueueState(int id, void (*errorHandler)(int err)) {
     struct msqid_ds buf;
 
     if (msgctl(id, IPC_STAT, &buf) == -1) {
-        perror("printQueueState -> msgctl");
-        exit(1);
+        if(errorHandler == NULL){
+            perror("printQueueState -> msgctl");
+            exit(EXIT_FAILURE);
+        } else {
+            errorHandler(MERRCTL);
+            exit(EXIT_FAILURE);
+        }
     }
     printf("CODA %d: {\n\tDIM: %lu bytes\n\tN_MEX: %lu\n\tTIMESTAMP msgsnd: %s\n}\n", id, buf.msg_qbytes, buf.msg_qnum, ctime(&buf.msg_stime));
 
 }
 
-void removeQueue(int id) {
+void removeQueue(int id, void (*errorHandler)(int err)) {
     if (msgctl(id, IPC_RMID, NULL) == -1) {
-        perror("removeQueue -> msgctl");
-        exit(1);
+        if(errorHandler == NULL){
+            perror("removeQueue -> msgctl");
+            exit(EXIT_FAILURE);
+        } else {
+            errorHandler(MERRCTL);
+            exit(EXIT_FAILURE);
+        }
     }
 }
