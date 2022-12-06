@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <errno.h>
 #include "config1.h"
 #include "./utils/sem_utility.h"
 #include "./utils/support.h"
@@ -28,9 +29,13 @@ void genera_porti(int risorse, int n_porti) {
     for (int i = 0; i < n_porti; i++) {
         int pid = fork();
         if (pid == 0) {
-            int quantity = intElementAt(quanties, i);
+
+            int* quantity = (int*)malloc(sizeof(int));
+            quantity = intElementAt(quanties, i);
+
             char strQuantity[50];
-            sprintf(strQuantity, "%d", quantity);
+            sprintf(strQuantity, "%d", *quantity);
+            free(quantity);
 
             char* temp[] = { "porto",strQuantity,NULL };
 
@@ -46,19 +51,30 @@ void genera_porti(int risorse, int n_porti) {
     }
 }
 
+void wait_all(int n_px) {
+    for (int i = 0; i < n_px; i++) {
+        int pid = wait(NULL);
+    }
+}
+
 int main(int argc, char const* argv[]) {
 
     int semid = createSem(MASTKEY, 1, NULL);
 
-    genera_navi();
+    if (semid == EEXIST) {
+        semid = useSem(MASTKEY, NULL);
+    }
+    //genera_navi();
 
     genera_porti(SO_FILL, SO_PORTI);
 
 
 
     mutex(semid, LOCK, errorHandler);
-    //TODO: Aggiungere removeSem alle funzioni dei semfaori
 
+    wait_all(SO_PORTI);
+    //TODO: Aggiungere removeSem alle funzioni dei semfaori
+    removeSem(semid, errorHandler);
     printf("Ciao");
     return 0;
 }

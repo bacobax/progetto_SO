@@ -7,12 +7,15 @@
 #define SHMERRDT  9
 #define SHMERRCTL 10
 
+#include <sys/types.h>
 
-int createShm(int key, /* incompleto: tipo di dato con cui creare la shm , */int shmSize);
 
-/* tipo dato */ getShmAddress(int shmid, int flag);
+int createShm(int key, size_t shmSize, void*(errorHandler)(int err));
 
-void shmDetach(/*tipo dato*/);
-int removeShm(int shmid);
+void* getShmAddress(int shmid, int flag, void*(errorHandler)(int err));
+
+void shmDetach(void* addrToRemove,void*(errorHandler)(int err));
+
+int removeShm(int shmid, void*(errorHandler)(int err));
 
 #endif
