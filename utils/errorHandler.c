@@ -1,5 +1,6 @@
 #include "msg_utility.h"
 #include "sem_utility.h"
+#include "shm_utility.h"
 #include "../config1.h"
 #include <stdio.h>
 
@@ -26,6 +27,15 @@ void errorHandler(int err) {
     case MERRGET:
         perror("msg get error handler");
         break;
+    case SHMERRGET:
+        perror("shm get error handler");
+        break;
+    case SHMERRAT:
+        perror("shm at error handler");
+        break;
+    case SHMERRDT:
+        perror("shm dt error handler");
+        break;           
     default:
         perror("Not Handlerd error");
     }
