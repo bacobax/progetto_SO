@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <config1.h>
+#include "config1.h"
 #include "./utils/sem_utility.h"
 
 void genera_navi() {
@@ -33,8 +33,7 @@ void genera_porti() {
     }
 }
 
-int main(int argc, char const* argv[])
-{
+int main(int argc, char const* argv[]) {
 
     int semid = createSem(MASTKEY, 1, NULL);
 
@@ -42,7 +41,9 @@ int main(int argc, char const* argv[])
 
     genera_porti();
 
+    mutex(semid, LOCK, errorHandler);
     //TODO: Aggiungere removeSem alle funzioni dei semfaori
 
+    printf("Ciao");
     return 0;
 }

@@ -10,4 +10,8 @@
 #define SO_MAX_VITA  10 //tonn
 #define SO_DAYS      30
 #define MASTKEY      132
-#endif  
+
+//funzione generale che gestisce l'errore
+void errorHandler(int err);
+
+#endif
