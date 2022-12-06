@@ -22,4 +22,5 @@ int createSem(int key, int initValue, void (*errorHandler)(int err));
 // UNLOCK incrementa
 // WAITZERO aspetta lo 0
 void mutex(int semid, int op, void (*errorHandler)(int err));
+
 #endif
