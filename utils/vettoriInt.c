@@ -182,3 +182,29 @@ int max(intList* l) {
     intNode* aux = l->first;
     return rMax(aux);
 }
+
+int sumR(intNode* n) {
+    if (n == NULL) {
+        return 0;
+    }
+    else {
+        return n->numero + sumR(n->next);
+    }
+}
+int sum(intList* l) {
+    return sumR(l->first);
+}
+
+
+int* toArray(intList* l, int* length) {
+    *length = l->length;
+
+    int* retArray = (int*)calloc(l->length, sizeof(int));
+    int i = 0;
+    for (intNode* aux = l->first; aux != NULL; aux = aux->next) {
+        retArray[i] = aux->numero;
+        i++;
+    }
+    intFreeList(l);
+    return retArray;
+}

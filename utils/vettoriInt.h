@@ -51,4 +51,8 @@ intList* map(intList* l, int(*f)(int el, int idx));
 int min(intList* l);
 int max(intList* l);
 
+int sum(intList* l);
+
+int* toArray(intList* l, int* length);
+
 #endif

@@ -58,8 +58,8 @@ int createSem(int key, int initValue, void (*errorHandler)(int err)) {
     return semid;
 }
 
-void removeSem(int key, void (*errorHandler)(int err)){
-    if(semctl(key, IPC_RMID, NULL) == -1) {
+void removeSem(int key, void (*errorHandler)(int err)) {
+    if (semctl(key, 0, IPC_RMID, NULL) == -1) {
         if (errorHandler == NULL) {
             perror("removeSem->semctl");
             exit(EXIT_FAILURE);

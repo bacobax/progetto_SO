@@ -1,5 +1,6 @@
 #include "./msg_utility.h"
 #include "./vettoriInt.h"
+#include "./support.h"  
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
@@ -119,12 +120,16 @@ int mapCriterio(int el, int idx) {
 }
 
 void test1() {
-    int array[] = { 9,11,13, 5 };
 
-    intList* l = intInitFromArray(array, 4);
 
-    printf("%d\n", max(l));
+    intList* l = distribute(30, 3);
 
+    int length;
+    int* a = toArray(l, &length);
+
+    for (int i = 0; i < length; i++) {
+        printf("%d,\n ", a[i]);
+    }
     // l = map(l, mapCriterio);
 
     // intStampaLista(l);
