@@ -10,7 +10,7 @@
 #include "./shm_utility.h"
 
 
-int createShm(int key, size_t shmSize, void* (errorHandler)(int err)) {
+int createShm(int key, size_t shmSize, void (*errorHandler)(int err)) {
     int shmid = shmget(key, shmSize, IPC_CREAT | IPC_EXCL | 0666);
     if (errno == EEXIST) return errno;
     if (shmid == -1) {
@@ -26,7 +26,7 @@ int createShm(int key, size_t shmSize, void* (errorHandler)(int err)) {
     return shmid;
 }
 
-void* getShmAddress(int shmid, int flag, void* (errorHandler)(int err)) {
+void* getShmAddress(int shmid, int flag, void (*errorHandler)(int err)) {
     void* addr;
     addr = shmat(shmid, NULL, flag);
     if (addr == (void*)-1) {
@@ -42,7 +42,7 @@ void* getShmAddress(int shmid, int flag, void* (errorHandler)(int err)) {
     return addr;
 }
 
-void shmDetach(void* addrToRemove, void* (errorHandler)(int err)) {
+void shmDetach(void* addrToRemove, void (*errorHandler)(int err)) {
     if (shmdt(addrToRemove) == -1) {
         if (errorHandler == NULL) {
             perror("shmDetach -> shmdt");
@@ -55,7 +55,7 @@ void shmDetach(void* addrToRemove, void* (errorHandler)(int err)) {
     }
 }
 
-int removeShm(int shmid, void* (errorHandler)(int err)) {
+void removeShm(int shmid, void (*errorHandler)(int err)) {
     if (shmctl(shmid, IPC_RMID, NULL) == -1) {
         if (errorHandler == NULL) {
             perror("removeShm -> shmctl");

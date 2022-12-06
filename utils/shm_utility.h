@@ -18,6 +18,6 @@ void* getShmAddress(int shmid, int flag, void (*errorHandler)(int err));
 
 void shmDetach(void* addrToRemove, void (*errorHandler)(int err));
 
-int removeShm(int shmid, void (*errorHandler)(int err));
+void removeShm(int shmid, void (*errorHandler)(int err));
 
 #endif
