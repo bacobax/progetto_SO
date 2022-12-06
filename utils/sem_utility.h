@@ -17,6 +17,9 @@ int useSem(int key, void (*errorHandler)(int));
 // crea ed inizializza un solo semaforo
 int createSem(int key, int initValue, void (*errorHandler)(int err));
 
+// rimuove la struttura ipc, quindi rimuove il set di semafori 
+void removeSem(int key, void (*errorHandler)(int err));
+
 //esegue operazioni sul singolo semaforo con flag a 0 
 // LOCK decrementa
 // UNLOCK incrementa
