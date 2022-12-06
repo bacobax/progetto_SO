@@ -9,6 +9,15 @@
 #include <sys/types.h> 
 #include "./sem_utility.h"
 
+union semun{
+    int val; 
+    struct semid_ds* buf; 
+    unsigned short* array; 
+#if defined(__linux__)
+    struct seminfo* __buf; 
+#endif        
+};
+
 
 int useSem(int key, void (*errorHandler)(int err)) {
     int semid = semget(key, 1, 0);
@@ -59,7 +68,7 @@ int createSem(int key, int initValue, void (*errorHandler)(int err)) {
 }
 
 void removeSem(int key, void (*errorHandler)(int err)){
-    if(semctl(key, IPC_RMID, NULL) == -1) {
+    if(semctl(key, 0, IPC_RMID, NULL) == -1) {
         if (errorHandler == NULL) {
             perror("removeSem->semctl");
             exit(EXIT_FAILURE);
