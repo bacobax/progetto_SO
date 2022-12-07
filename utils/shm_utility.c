@@ -26,6 +26,24 @@ int createShm(int key, size_t shmSize, void (*errorHandler)(int err)) {
     return shmid;
 }
 
+int useShm(int key, size_t shmSize, void (*errorHandler)(int err)) {
+    int semid = shmget(key, shmSize, 0);
+    if (semid == -1) {
+        if (errorHandler == NULL) {
+            perror("useShm -> shmget");
+            exit(EXIT_FAILURE);
+        }
+        else {
+            errorHandler(SHMERRGET);
+            exit(EXIT_FAILURE);
+        }
+
+    }
+    return semid;
+
+
+}
+
 void* getShmAddress(int shmid, int flag, void (*errorHandler)(int err)) {
     void* addr;
     addr = shmat(shmid, NULL, flag);

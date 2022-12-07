@@ -11,6 +11,10 @@ void genera_navi() {
     for (int i = 0; i < SO_NAVI; i++) {
         int pid = fork();
         if (pid == 0) {
+            /*
+                da passare le coordinate
+            */
+
             execve("./bin/nave", NULL, NULL);
             exit(EXIT_FAILURE);
         }
@@ -20,7 +24,6 @@ void genera_navi() {
         }
     }
 }
-
 
 void genera_porti(int risorse, int n_porti) {
 
@@ -69,8 +72,11 @@ int main(int argc, char const* argv[]) {
     genera_porti(SO_FILL, SO_PORTI);
 
 
-
     mutex(semid, LOCK, errorHandler);
+
+
+
+
 
     wait_all(SO_PORTI);
     //TODO: Aggiungere removeSem alle funzioni dei semfaori
