@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <errno.h>
-#include "config1.h"
-#include "./utils/sem_utility.h"
-#include "./utils/support.h"
-#include "./utils/vettoriInt.h"
+#include "../config1.h"
+#include "../utils/sem_utility.h"
+#include "../utils/support.h"
+#include "../utils/vettoriInt.h"
 
 void genera_navi() {
     for (int i = 0; i < SO_NAVI; i++) {
