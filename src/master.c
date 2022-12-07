@@ -69,7 +69,7 @@ int main(int argc, char const* argv[]) {
     }
     //genera_navi();
 
-    genera_porti(SO_FILL, SO_PORTI);
+    genera_porti(SO_FILL, SO_PORTI); //da tradurre in inglese
 
 
     mutex(semid, LOCK, errorHandler);
