@@ -1,9 +1,11 @@
 #include "./msg_utility.h"
 #include "./vettoriInt.h"
-#include "./support.h"  
+#include "./support.h"
+#include "./shm_utility.h"  
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <sys/shm.h>
 #define SO_MERCI 3
 
 #define TIPO0 0
@@ -139,6 +141,15 @@ void test1() {
 
 }
 
+void testShm(){
+    int shmid = createShm(IPC_PRIVATE, sizeof(int), NULL);
+    int* shmAddr = (int*) getShmAddress(shmid, 0, NULL);
+    *shmAddr = 5;
+    printf("%d\n", *shmAddr);
+    shmDetach(shmAddr, NULL);
+    removeShm(shmid, NULL);
+}
+
 int main(int argc, char const* argv[])
 {
 
@@ -153,6 +164,9 @@ int main(int argc, char const* argv[])
     case 1:
         test1();
         break;
+    case 2:
+        testShm();
+        break;    
     default:
         break;
     }
