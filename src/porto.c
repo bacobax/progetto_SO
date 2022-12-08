@@ -12,14 +12,11 @@
 
 #include "./porto.h"
 
-
-//TODO: creare funzione initRequest() e initSupplies() che le genera randomicamente e che ritornano un tipo intList*
-//TODO: poi modificare i parametri di initPort() da int* a intList*
-
+//TODO: rifare initporto
 Port initPort(int disponibility) {
     Port p = (Port)malloc(sizeof(struct port));
     srand(time(NULL));
-    
+
     p->requests = distribute(disponibility, SO_MERCI);
     p->supplies = distribute(disponibility, SO_MERCI);
 
@@ -43,6 +40,7 @@ void waitForStart() {
 int main(int argc, char const* argv[]) {
 
     int disponibility = atoi(argv[1]);
+    int idx = atoi(argv[2]);
 
     Port p = initPort(disponibility);
 

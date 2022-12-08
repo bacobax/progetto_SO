@@ -2,10 +2,16 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <errno.h>
+
 #include "../config1.h"
 #include "../utils/sem_utility.h"
+#include "../utils/shm_utility.h"
 #include "../utils/support.h"
 #include "../utils/vettoriInt.h"
+
+#include "./master.h"
+#include "./proto.h"
+
 
 void genera_navi() {
     for (int i = 0; i < SO_NAVI; i++) {
@@ -40,7 +46,11 @@ void genera_porti(int risorse, int n_porti) {
             sprintf(strQuantity, "%d", *quantity);
             free(quantity);
 
-            char* temp[] = { "porto",strQuantity,NULL };
+            char strIdx[50];
+            sprintf(strIdx, "%d", i);
+
+
+            char* temp[] = { "porto",strQuantity, strIdx, NULL };
 
             execve("./bin/porto", temp, NULL);
 
@@ -67,7 +77,14 @@ int main(int argc, char const* argv[]) {
     if (semid == EEXIST) {
         semid = useSem(MASTKEY, NULL);
     }
+
+    int portShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port));
+    int shipShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship));
+
     //genera_navi();
+
+
+
 
     genera_porti(SO_FILL, SO_PORTI); //da tradurre in inglese
 
