@@ -3,13 +3,10 @@
 #include <stdlib.h>
 #include <time.h>
 
-void init() {
-    srand(time(NULL));
-}
+
 
 intList* distribute(int quantity, int parts) {
 
-    init();
 
     //per ciascuna parte, tranne l'ultima vale:
 

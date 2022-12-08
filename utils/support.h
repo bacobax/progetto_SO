@@ -5,6 +5,5 @@
 //distribuisce casualmente un quantità "quantity" in "parts" parti
 intList* distribute(int quantity, int parts);
 
-void init();
 
 #endif

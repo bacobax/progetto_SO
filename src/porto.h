@@ -15,7 +15,7 @@ struct port {
 typedef struct port* Port;
 
 
-Port initPort(int requests[], int supplies[]);
+Port initPort(int disponibility);
 
 void freePort(Port p);
 
