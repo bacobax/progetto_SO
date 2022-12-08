@@ -1,17 +1,23 @@
 #ifndef NAVE_H
 #define NAVE_H
 
-#include "../config1.h"
-#include "../utils/vettoriInt.h"
 
-struct ship{
+#include "../utils/loadShip.h"
+
+
+typedef struct ship{
     double cords[2];
-    intList* capacity;
-};
+    int capacity;
+    loadShip* load;
+} Ship;
 
-typedef struct ship* Ship;
+Ship* initShip();
 
-Ship initShip(double cords[], int );
+int checkCapacity(loadShip* load); // ritorna il numero di ton presenti sulla nave
+
+int availableCapacity(int currentCapacity); // ritorna il numero di ton disponibili sulla nave 
+
+
 
 
 #endif
