@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <time.h>
 
 #include <sys/types.h>
 #include "../config1.h"
@@ -15,12 +16,12 @@
 //TODO: creare funzione initRequest() e initSupplies() che le genera randomicamente e che ritornano un tipo intList*
 //TODO: poi modificare i parametri di initPort() da int* a intList*
 
-Port initPort(int* requests, int* supplies) {
+Port initPort(int disponibility) {
     Port p = (Port)malloc(sizeof(struct port));
-
-
-    p->requests = intInitFromArray(requests, SO_MERCI);
-    p->supplies = intInitFromArray(supplies, SO_MERCI);
+    srand(time(NULL));
+    
+    p->requests = distribute(disponibility, SO_MERCI);
+    p->supplies = distribute(disponibility, SO_MERCI);
 
     return p;
 }
@@ -32,20 +33,30 @@ void freePort(Port p) {
 }
 
 
-void crateSharedStruct() {
 
+
+void waitForStart() {
+    int semid = useSem(MASTKEY, NULL);
+    mutex(semid, WAITZERO, NULL);
 }
 
 int main(int argc, char const* argv[]) {
 
+    int disponibility = atoi(argv[1]);
+
+    Port p = initPort(disponibility);
 
 
+    waitForStart();
+    //*START
 
-    int semid = useSem(MASTKEY, NULL);
-
-    mutex(semid, WAITZERO, NULL);
-
+    printf("Porto:\n");
     printf("Ciao, sono il porto con quantità %d\n", atoi(argv[1]));
+
+    intStampaLista(p->requests);
+    intStampaLista(p->supplies);
+    printf("______________________________________________\n");
+
     return 0;
 
 }

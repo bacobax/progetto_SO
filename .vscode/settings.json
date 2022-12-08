@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "shm.h": "c"
+        "shm.h": "c",
+        "vettoriint.h": "c",
+        "string.h": "c",
+        "support.h": "c"
     }
 }
