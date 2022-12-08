@@ -53,6 +53,7 @@ int max(intList* l);
 
 int sum(intList* l);
 
+//trasforma in un normale array di interi la lista dinamica
 int* toArray(intList* l, int* length);
 
 #endif
