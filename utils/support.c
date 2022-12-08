@@ -1,11 +1,18 @@
 #include "./vettoriInt.h"
+#include "./sem_utility.h"
+#include "../config1.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
+void ErrorHandler(int err) {
+    perror("reservePrint->useSem");
+}
 
 
 intList* distribute(int quantity, int parts) {
+
 
 
     //per ciascuna parte, tranne l'ultima vale:
@@ -30,3 +37,12 @@ intList* distribute(int quantity, int parts) {
 }
 
 
+void reservePrint(void (*printer)(void* obj, int idx), void* object, int idx) {
+    int semid = useSem(RESPRINTKEY, ErrorHandler);
+
+    mutex(semid, LOCK, NULL);
+
+    printer(object, idx);
+
+    mutex(semid, UNLOCK, NULL);
+}

@@ -10,7 +10,7 @@
 #include "../utils/vettoriInt.h"
 
 #include "./master.h"
-#include "./proto.h"
+#include "./porto.h"
 
 
 void genera_navi() {
@@ -54,7 +54,6 @@ void genera_porti(int risorse, int n_porti) {
 
             execve("./bin/porto", temp, NULL);
 
-            intFreeList(quanties);
             exit(EXIT_FAILURE);
         }
         else if (pid == -1) {
@@ -62,6 +61,8 @@ void genera_porti(int risorse, int n_porti) {
             exit(EXIT_FAILURE);
         }
     }
+    intFreeList(quanties);
+
 }
 
 void wait_all(int n_px) {
@@ -73,13 +74,15 @@ void wait_all(int n_px) {
 int main(int argc, char const* argv[]) {
 
     int semid = createSem(MASTKEY, 1, NULL);
+    int reservePrintSem = createSem(RESPRINTKEY, 1, NULL);
+
 
     if (semid == EEXIST) {
         semid = useSem(MASTKEY, NULL);
     }
 
-    int portShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port));
-    int shipShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship));
+    int portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
+    int shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);
 
     //genera_navi();
 
@@ -98,6 +101,10 @@ int main(int argc, char const* argv[]) {
     wait_all(SO_PORTI);
     //TODO: Aggiungere removeSem alle funzioni dei semfaori
     removeSem(semid, errorHandler);
+    removeSem(reservePrintSem, errorHandler);
+
+    removeShm(shipsShmid, errorHandler);
+    removeShm(portsShmid, errorHandler);
     printf("Ciao");
     return 0;
 }
