@@ -6,7 +6,7 @@
 #include "../utils/sem_utility.h"
 #include "../utils/support.h"
 #include "../utils/vettoriInt.h"
-
+#include "./nave.h"
 
 int main(int argc, char* argv[]){
 
