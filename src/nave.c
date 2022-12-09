@@ -18,6 +18,7 @@ Ship* initShip() {
             Ship* p = ((Ship*)getShmAddress(portShmId, 0, errorHandler)) + sIndex; //* per prendere la sIndex-esima nave dell'array in shm
 
     */
+
     return NULL;
 }
 int main(int argc, char* argv[]) {
