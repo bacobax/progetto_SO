@@ -5,13 +5,16 @@
 #include "../utils/loadShip.h"
 
 
-typedef struct ship{
+typedef struct ship {
     double cords[2];
     int capacity;
     loadShip* load;
 } Ship;
 
 Ship* initShip();
+
+
+//a queste funzioni ti consiglio di passare una struttura Ship* come argomento
 
 int checkCapacity(loadShip* load); // ritorna il numero di ton presenti sulla nave
 

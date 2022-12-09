@@ -66,7 +66,7 @@ Port initPort(int disponibility, int pIndex) {
 
 
 
-
+#define NULL (void*)0
 
 
 void waitForStart() {
