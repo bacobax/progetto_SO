@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <time.h>
+#include <signal.h>
 
 #include <sys/types.h>
 #include "../config1.h"
@@ -12,8 +13,6 @@
 #include "../utils/vettoriInt.h"
 
 #include "./porto.h"
-
-//TODO: rifare initporto
 
 
 //copia il contenuto di un array in un altro array
@@ -66,7 +65,6 @@ Port initPort(int disponibility, int pIndex) {
 
 
 
-#define NULL (void*)0
 
 
 void waitForStart() {
@@ -96,7 +94,17 @@ void printPorto(void* p, int idx) {
 
 }
 
+
+
 int main(int argc, char const* argv[]) {
+
+    void (*oldHandler)(int);
+    oldHandler = signal(SIGUSR1, quitSignalHandler);
+    if (oldHandler == SIG_ERR) {
+        perror("signal");
+        exit(1);
+    }
+
 
     int disponibility = atoi(argv[1]);
     int idx = atoi(argv[2]);
@@ -111,11 +119,17 @@ int main(int argc, char const* argv[]) {
 
     //*START
 
+    struct timespec tim, tim2;
+    tim.tv_sec = 1;
+    tim.tv_nsec = 0;
+
+    while (1) {
+        printf("Porto %d: dormo\n", idx);
+        nanosleep(&tim, NULL);
+    }
 
 
-
-    // shmDetach(p, NULL);
-    return 0;
+    return 1;
 
 }
 

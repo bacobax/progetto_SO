@@ -6,8 +6,21 @@
 #include <time.h>
 #include <string.h>
 
+#include <unistd.h>
+#include <errno.h>
+#include <signal.h>
+#include "./shm_utility.h"
+
+#include "../src/master.h"
+#include "../src/porto.h"
+
 void ErrorHandler(int err) {
     perror("reservePrint->useSem");
+}
+
+void quitSignalHandler(int sig) {
+    printf("Porto: ricevuto segnale di terminazione\n");
+    exit(EXIT_SUCCESS);
 }
 
 
@@ -45,4 +58,49 @@ void reservePrint(void (*printer)(void* obj, int idx), void* object, int idx) {
     printer(object, idx);
 
     mutex(semid, UNLOCK, NULL);
+}
+
+
+void sigusr1sigHandler(int s) {
+    printf("Non faccio nulla\n");
+    return;
+}
+
+
+void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid, int reservePrintSem)) {
+    if (signal(SIGUSR1, sigusr1sigHandler) == SIG_ERR) {
+        perror("signal\n");
+        exit(EXIT_FAILURE);
+    }
+
+
+    int semid = createSem(MASTKEY, 1, NULL);
+    int reservePrintSem = createSem(RESPRINTKEY, 1, NULL);
+
+
+    if (semid == EEXIST) {
+        semid = useSem(MASTKEY, NULL);
+    }
+
+    int portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
+    int shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);
+
+    if (portsShmid == EEXIST || shipsShmid == EEXIST) {
+        perror("Le shm esistono già\n");
+        exit(EXIT_FAILURE);
+    }
+
+
+    codiceMaster(semid, portsShmid, shipsShmid, reservePrintSem);
+
+
+    kill(0, SIGUSR1); //uccide tutti i figli
+
+    removeSem(semid, errorHandler);
+    removeSem(reservePrintSem, errorHandler);
+
+    removeShm(shipsShmid, errorHandler);
+    removeShm(portsShmid, errorHandler);
+    printf("Ciao");
+
 }

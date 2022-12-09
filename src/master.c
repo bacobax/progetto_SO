@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <errno.h>
-
+#include <time.h>
+#include <signal.h>
 #include "../config1.h"
 #include "../utils/sem_utility.h"
 #include "../utils/shm_utility.h"
@@ -54,13 +55,16 @@ void genera_porti(int risorse, int n_porti) {
 
             execve("./bin/porto", temp, NULL);
 
+            perror("execve");
             exit(EXIT_FAILURE);
         }
         else if (pid == -1) {
             perror("fork");
             exit(EXIT_FAILURE);
         }
+        printf("Generato porto %d\n", i);
     }
+    printf("M: libero la lista"); //! da fixare, come mai non la stampa???
     intFreeList(quanties);
 
 }
@@ -71,40 +75,29 @@ void wait_all(int n_px) {
     }
 }
 
-int main(int argc, char const* argv[]) {
 
-    int semid = createSem(MASTKEY, 1, NULL);
-    int reservePrintSem = createSem(RESPRINTKEY, 1, NULL);
+void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem) {
 
-
-    if (semid == EEXIST) {
-        semid = useSem(MASTKEY, NULL);
-    }
-
-    int portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
-    int shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);
-
-    //genera_navi();
-
-
-
-
+    //* per ora ho usato solo semid
     genera_porti(SO_FILL, SO_PORTI); //da tradurre in inglese
 
 
     mutex(semid, LOCK, errorHandler);
 
+    printf("Master: ciao\n");
 
+    struct timespec tim, tim2;
+    tim.tv_sec = 1;
+    tim.tv_nsec = 0;
+    for (int i = 0; i < SO_DAYS; i++) {
+        printf("Master: dormo\n");
 
+        //TODO: funzione dump
+        nanosleep(&tim, &tim2);
+    }
+}
 
-
-    wait_all(SO_PORTI);
-    //TODO: Aggiungere removeSem alle funzioni dei semfaori
-    removeSem(semid, errorHandler);
-    removeSem(reservePrintSem, errorHandler);
-
-    removeShm(shipsShmid, errorHandler);
-    removeShm(portsShmid, errorHandler);
-    printf("Ciao");
+int main(int argc, char const* argv[]) {
+    mySettedMain(codiceMaster);
     return 0;
 }
