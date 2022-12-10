@@ -84,6 +84,12 @@ void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem
 
     mutex(semid, LOCK, errorHandler);
 
+
+    /*
+    genera_navi()
+    mutex(semid, LOCK, errorHandler);
+    */
+
     printf("Master: ciao\n");
 
     struct timespec tim, tim2;

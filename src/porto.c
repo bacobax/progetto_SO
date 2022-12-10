@@ -67,22 +67,18 @@ Port initPort(int disponibility, int pIndex) {
 
 
 
-void waitForStart() {
-    int semid = useSem(MASTKEY, NULL);
-    mutex(semid, WAITZERO, NULL);
-}
 
 void printPorto(void* p, int idx) {
 
-
+    int i;
     printf("Porto %d:\n", idx);
     printf("DOMANDE:\n");
-    for (int i = 0; i < SO_MERCI; i++) {
+    for (i = 0; i < SO_MERCI; i++) {
         printf("%d, \n", ((Port)p)->requests[i]);
     }
 
     printf("OFFERTE:\n");
-    for (int i = 0; i < SO_MERCI; i++) {
+    for (i = 0; i < SO_MERCI; i++) {
         printf("%d, \n", ((Port)p)->supplies[i]);
     }
 

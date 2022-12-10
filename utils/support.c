@@ -104,3 +104,9 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
     printf("Ciao");
 
 }
+
+
+void waitForStart() {
+    int semid = useSem(MASTKEY, NULL);
+    mutex(semid, WAITZERO, NULL);
+}

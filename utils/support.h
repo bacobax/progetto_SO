@@ -21,4 +21,8 @@ void quitSignalHandler(int sig);
 void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid, int reservePrintSem));
 
 
+//aspetta che il master metta a zero il semaforo con la key MASTKEY
+void waitForStart();
+
+
 #endif
