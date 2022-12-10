@@ -15,7 +15,9 @@ int availableCapacity(Ship* ship){
 }
 
 double generateCord(){
-    // TO-DO implementare metodo che genere le coordinate
+    double range = (SO_LATO - 0); // max-min 
+    double div = RAND_MAX / range;
+    return min + (rand() / div);
 }
 
 Products* generateArrayOfProducts(loadShip* load_as_list){
@@ -39,7 +41,7 @@ Products* generateArrayOfProducts(loadShip* load_as_list){
                 p->expirationTime = l_aux->expirationTime;
 
                 offset += 1;
-                p = p + offset;
+                p = p + offset; 
 
                 l_aux = l_aux->next;
                 return p_aux;
@@ -48,7 +50,7 @@ Products* generateArrayOfProducts(loadShip* load_as_list){
     
 }
 
-void copyArray(Products* load_as_array, Products* array_of_products){
+void copyArray(Products* load_as_array, Products* shared_load){
     
 }
 

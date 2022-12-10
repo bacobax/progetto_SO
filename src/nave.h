@@ -24,6 +24,6 @@ double generateCord(); // genere una coordinata double
 
 Products* generateArrayOfProducts(loadShip* list); // genera un array di products tramite una lista loadShip
 
-void copyArray(Products* load_as_array, Products* array_of_products); // copia il contenuto di load_as_array in array_of_products
+void copyArray(); // copia il contenuto di load_as_array in array_of_products IN DUBBIO!
 
 #endif

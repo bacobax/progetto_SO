@@ -26,9 +26,9 @@ Ship* initShip(int sIndex) {
     // adesso colleghiamo la nave alla shm per avere un riferimento
     // alla zona di dump
 
-    int shipShmId = useShm(SHIPSHMKEY, SO_NAVI * sizeof(struct products), errorHandler);
+    int shipShmId = useShm(SHIPSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);
     
-    Products* array_of_products = ((Products*) getShmAddress(shipShmId, 0, errorHandler)) + sIndex; //puntatore all'array of products dell'sIndex-esima nave
+    Ship* ship_dump = ((Ship*) getShmAddress(shipShmId, 0, errorHandler)) + sIndex; //puntatore all'array of products dell'sIndex-esima nave
 
     /*
         Anche qui non ha senso fare copyArray perchè al momento dell'initShip
@@ -46,9 +46,9 @@ Ship* initShip(int sIndex) {
         Ovviamente questa cosa si può cambiare e trovare una convenzione
         per mostrare che la nave è vuota/appena stata creata
     */
-    array_of_products->id = -1;
-    array_of_products->weight = -1;
-    array_of_products->expirationTime = -1;
+    ship_dump->load_as_array->id = -1;
+    ship_dump->load_as_array->weight = -1;
+    ship_dump->load_as_array->expirationTime = -1;
 
     return ship;
 }
