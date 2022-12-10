@@ -4,20 +4,23 @@
 
 #include "../utils/loadShip.h"
 
+#define SHIPSHMKEY 8080
 
 typedef struct ship{
     double cords[2];
     int capacity;
-    loadShip* load;
+    loadShip* load_as_list;
+    Products* load_as_array;
 } Ship;
 
-Ship* initShip();
+
 
 int checkCapacity(loadShip* load); // ritorna il numero di ton presenti sulla nave
 
 int availableCapacity(int currentCapacity); // ritorna il numero di ton disponibili sulla nave 
 
+double generateCord();
 
-
+Products* generateArrayOfProducts(loadShip* list);
 
 #endif

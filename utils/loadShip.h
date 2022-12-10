@@ -5,6 +5,12 @@ typedef struct productNode_ {
     struct productNode_* next;
 } Product;
 
+typedef struct product{
+    int id;
+    int weight;
+    int expirationTime;
+} Products;
+
 typedef struct load{
     Product* first;
     Product* last;
@@ -23,4 +29,6 @@ void removeProduct(loadShip* list, int idProduct);
 void printLoadShip(loadShip* list);
 
 void freeLoadShip(loadShip* list);
+
+
 

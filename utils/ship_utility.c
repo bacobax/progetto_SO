@@ -2,13 +2,6 @@
 #include "../utils/loadShip.h"
 #include "../config1.h"
 
-Ship* initShip(){
-    Ship* ship = (Ship*) malloc(sizeof(Ship));
-    ship->cords[0] = generateCord(); //coordinata x
-    ship->cords[1] = generateCord(); //coordinata y
-    ship->capacity = 0;
-    ship->load = initLoadShip();
-}
 
 int checkCapacity(loadShip* load){
     if(load->weightLoad == 0) return 0;
@@ -24,3 +17,16 @@ int availableCapacity(loadShip* load){
 double generateCord(){
     // TO-DO implementare metodo che genere le coordinate
 }
+
+Products* generateArrayOfProducts(loadShip* list){
+
+}
+
+/*
+ 2 shm: 1 per il dump contenente il numero di navi e ogni posizione nell'array dump contiene
+        le informazioni relative al dump di quella nave
+
+        2 seconda shm per accedere alle merci dei porti BISOGNA SAPERE L'INDICI DEL PORTO CON CUI
+        SCAMBIARE LE MERCI
+
+*/

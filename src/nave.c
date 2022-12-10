@@ -4,22 +4,30 @@
 #include <string.h>
 #include "../config1.h"
 #include "../utils/sem_utility.h"
+#include "../utils/shm_utility.h"
 #include "../utils/support.h"
 #include "../utils/vettoriInt.h"
 #include "./nave.h"
-Ship* initShip() {
-    /*
-        La initShip falla come ho fatto la initPorto:
 
-        Port initPort(int sIndex , ...) {
 
-            int shipShmId = useShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);
+Ship* initShip(int sIndex) {
+  
+    int shipShmId = useShm(SHIPSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);
 
-            Ship* p = ((Ship*)getShmAddress(portShmId, 0, errorHandler)) + sIndex; //* per prendere la sIndex-esima nave dell'array in shm
+    Ship* ship = ((Ship*) getShmAddress(shipShmId, 0, errorHandler)) + sIndex;
+    
+    ship->cords[0] = generateCord(); //coordinata x
+    ship->cords[1] = generateCord(); //coordinata y
+    
+    ship->capacity = 0;
+    
+    ship->load_as_list= initLoadShip();
+    ship->load_as_array = generateArrayOfProducts(ship->load);
 
-    */
-    return NULL;
+    return ship;
+    
 }
+
 int main(int argc, char* argv[]) {
 
 
