@@ -3,13 +3,13 @@
 #include "../config1.h"
 
 
-int checkCapacity(loadShip* load){
-    if(load->weightLoad == 0) return 0;
-    return load->weightLoad;
+int checkCapacity(Ship* ship){
+    if(ship->load_as_list->weightLoad == 0) return 0;
+    return ship->load_as_list->weightLoad;
 }
 
-int availableCapacity(loadShip* load){
-    int currentCapacity = checkCapacity(loadShip* load)
+int availableCapacity(Ship* ship){
+    int currentCapacity = checkCapacity(ship);
     if(currentCapacity < 0) return -1;
     return (SO_CAPACITY - currentCapacity);
 }
@@ -18,9 +18,40 @@ double generateCord(){
     // TO-DO implementare metodo che genere le coordinate
 }
 
-Products* generateArrayOfProducts(loadShip* list){
+Products* generateArrayOfProducts(loadShip* load_as_list){
 
+    if(load_as_list->first == NULL){ // se la nave è ancora vuota ritorno un array
+                                     // vuoto
+        return NULL;
+    } else {
+            Product* l_aux = load_as_list->first;
+            int listSize = load_as_list->length;
+
+            Products* p = (Products*) malloc(listSize * sizeof(struct products));
+            Products* p_aux = p;
+
+            int offset = 0;
+
+            while(l_aux != NULL){
+
+                p->id = l_aux->id;
+                p->weight = l_aux->weight;
+                p->expirationTime = l_aux->expirationTime;
+
+                offset += 1;
+                p = p + offset;
+
+                l_aux = l_aux->next;
+                return p_aux;
+            }
+    }
+    
 }
+
+void copyArray(Products* load_as_array, Products* array_of_products){
+    
+}
+
 
 /*
  2 shm: 1 per il dump contenente il numero di navi e ogni posizione nell'array dump contiene
