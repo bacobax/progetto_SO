@@ -8,27 +8,23 @@
 #include "../utils/support.h"
 #include "../utils/vettoriInt.h"
 #include "./nave.h"
+Ship* initShip() {
+    /*
+        La initShip falla come ho fatto la initPorto:
 
+        Port initPort(int sIndex , ...) {
 
-Ship* initShip(int sIndex) {
-  
-    int shipShmId = useShm(SHIPSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);
+            int shipShmId = useShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);
 
-    Ship* ship = ((Ship*) getShmAddress(shipShmId, 0, errorHandler)) + sIndex;
-    
-    ship->cords[0] = generateCord(); //coordinata x
-    ship->cords[1] = generateCord(); //coordinata y
-    
-    ship->capacity = 0;
-    
-    ship->load_as_list= initLoadShip();
-    ship->load_as_array = generateArrayOfProducts(ship->load);
+            Ship* p = ((Ship*)getShmAddress(portShmId, 0, errorHandler)) + sIndex; //* per prendere la sIndex-esima nave dell'array in shm
 
-    return ship;
-    
+    */
+    return NULL;
 }
 
 int main(int argc, char* argv[]) {
+    //TODO: devi aggiungere l'handler del segnale USR1 che il master manda per killare tutti i figli tranne se stesso
+    //* vedi dentro support.c l'handler
 
 
 }
