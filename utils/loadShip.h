@@ -1,9 +1,3 @@
-typedef struct products{ //array di prodotti (per il dump)
-    int id;
-    int weight;
-    int expirationTime;
-} Products;
-
 typedef struct productNode_ { // nodo utilizzato nella lista
     int id;
     int weight;

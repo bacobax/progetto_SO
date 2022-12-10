@@ -85,11 +85,5 @@ void freeLoadShip(loadShip* list){
     free(list);
 }
 
-// IN DUBBIO!!
-int getSizeArrayOfProducts(Products* array_of_products){
-    int ret = 0;
-    if(array_of_products == NULL) return ret;
-
-}
 
 
