@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "loadShip.h"
+#include "./loadShip.h"
 
-loadShip* initLoadShip(){
-    loadShip* ret = malloc(sizeof(loadShip));
+loadShip initLoadShip(){
+    loadShip ret = (struct load*) malloc(sizeof(struct load));
     ret->first = NULL;
     ret->last = NULL;
     ret->weightLoad = 0;
@@ -11,8 +11,8 @@ loadShip* initLoadShip(){
     return ret; 
 }
 
-void addProduct(loadShip* list, Product* p){
-    Product* newNode = (Product*)malloc(sizeof(Product));
+void addProduct(loadShip list, Product p){
+    Product newNode = (struct productNode_*)malloc(sizeof(struct productNode_));
     newNode->id = p->id;
     newNode->weight = p->weight;
     newNode->expirationTime = p->expirationTime;
@@ -30,11 +30,11 @@ void addProduct(loadShip* list, Product* p){
     list->weightLoad += newNode->weight;
 }
 
-Product* findProduct(loadShip* list, int idProduct){
+Product findProduct(loadShip list, int idProduct){
     
     if (idProduct >= list->length || idProduct < 0) return NULL;
 
-    Product* aux = list->first;
+    Product aux = list->first;
 
     while (aux != NULL) {
         if (aux->id == idProduct) {
@@ -45,9 +45,9 @@ Product* findProduct(loadShip* list, int idProduct){
     return NULL;
 }
 
-void removeProduct(loadShip* list, int idProduct){
-    Product* aux = lista->first;
-    Product* innerAux;
+void removeProduct(loadShip list, int idProduct){
+    Product aux = list->first;
+    Product innerAux;
 
     while (aux != NULL) {
         if (idProduct == aux->id) {
@@ -65,18 +65,18 @@ void removeProduct(loadShip* list, int idProduct){
     printf("Prodotto non trovato, impossibile rimuoverlo dalla lista\n");
 }
 
-void printLoadShip(loadShip* list){
+void printLoadShip(loadShip list){
     printf("[ ");
-    Product* aux = list->first;
+    Product aux = list->first;
     while (aux != NULL) {
-        printf("id:%d weight:%d expiration_time:%d , ", aux->id, aux->weight, aux->exprationTime);
+        printf("id:%d weight:%d expiration_time:%d , ", aux->id, aux->weight, aux->expirationTime);
         aux = aux->next;
     }
     printf(" ]\n");
 }
 
-void freeLoadShip(loadShip* list){
-    Product* aux;
+void freeLoadShip(loadShip list){
+    Product aux;
     while (list->first != NULL) {
         aux = list->first;
         list->first = list->first->next;

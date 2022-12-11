@@ -19,7 +19,7 @@ struct port {
 
 typedef struct port* Port;
 
-//TODO: fare struttura porto senza puntatori
+/* TODO: fare struttura porto senza puntatori */
 Port initPort(int disponibility, int pIndex);
 
 void freePort(Port p);

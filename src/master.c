@@ -64,7 +64,7 @@ void genera_porti(int risorse, int n_porti) {
         }
         printf("Generato porto %d\n", i);
     }
-    printf("M: libero la lista"); //! da fixare, come mai non la stampa???
+    printf("M: libero la lista"); /*! da fixare, come mai non la stampa??? */
     intFreeList(quanties);
 
 }
@@ -78,8 +78,8 @@ void wait_all(int n_px) {
 
 void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem) {
 
-    //* per ora ho usato solo semid
-    genera_porti(SO_FILL, SO_PORTI); //da tradurre in inglese
+    /*  per ora ho usato solo semid */
+    genera_porti(SO_FILL, SO_PORTI); /* da tradurre in inglese */
 
 
     mutex(semid, LOCK, errorHandler);
@@ -98,7 +98,7 @@ void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem
     for (int i = 0; i < SO_DAYS; i++) {
         printf("Master: dormo\n");
 
-        //TODO: funzione dump
+        /* TODO: funzione dump */
         nanosleep(&tim, &tim2);
     }
 }
