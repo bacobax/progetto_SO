@@ -2,7 +2,7 @@
 
 #define VETTORI_INT_H
 #define length(array) (sizeof(array)/sizeof(array[0]))
-//Addizione
+/* Addizione */
 typedef struct intNode_ {
     int numero;
     struct intNode_* next;
@@ -20,12 +20,12 @@ void intStampaLista(intList* lista);
 
 intList* intInit();
 intList* intInitFromArray(int* a, int length);
-//ritorna il puntatore all'elemento trovato, se l'idx è out of bound ritorna NULL
+/* ritorna il puntatore all'elemento trovato, se l'idx è out of bound ritorna NULL */
 int* intElementAt(intList* l, int idx);
 
 int* intFindFirst(intList* l, int(*f)(int el, int idx));
 
-//ritorna la lista filtrata
+/* ritorna la lista filtrata */
 intList* intFindAll(intList* l, int(*f)(int el, int idx));
 
 void intFreeList(intList* lista);
@@ -33,8 +33,8 @@ void intFreeList(intList* lista);
 void intRemove(intList* lista, int idx);
 
 
-//ritorna una nuova lista la cui costruzione dipende dalla prima
-/*
+/*ritorna una nuova lista la cui costruzione dipende dalla prima
+
     es:
         - Per ritornare una lista i cui numeri sono il doppio della prima:
 
@@ -53,7 +53,7 @@ int max(intList* l);
 
 int sum(intList* l);
 
-//trasforma in un normale array di interi la lista dinamica
+/* trasforma in un normale array di interi la lista dinamica */
 int* toArray(intList* l, int* length);
 
 #endif

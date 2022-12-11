@@ -12,8 +12,8 @@ stringList* stringInit(){
 
 stringList* stringInitFromArray(char** a, int length){
     stringList* ret = stringInit();
-
-    for(int i=0; i<length; i++){
+    int i;
+    for(i=0; i<length; i++){
         stringPush(ret, a[i]);
     }
 

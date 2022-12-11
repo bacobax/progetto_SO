@@ -15,8 +15,8 @@
 #include "./porto.h"
 
 
-//copia il contenuto di un array in un altro array
-//assumendo ovviamente che a.length >= a1.length
+/*copia il contenuto di un array in un altro array
+  assumendo ovviamente che a.length >= a1.length */
 void copyArray(int a[], int* a1, int length) {
     for (int i = 0; i < length; i++) {
         a[i] = a1[i];
@@ -113,7 +113,7 @@ int main(int argc, char const* argv[]) {
     waitForStart();
 
 
-    //*START
+    /* START */
 
     struct timespec tim, tim2;
     tim.tv_sec = 1;

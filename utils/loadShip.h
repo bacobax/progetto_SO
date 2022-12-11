@@ -1,28 +1,35 @@
-typedef struct productNode_ { // nodo utilizzato nella lista
+#ifndef LOAD_SHIP_H
+#define LOAD_SHIP_H
+
+struct productNode_ { /* nodo utilizzato nella lista */
     int id;
     int weight;
     int expirationTime;
     struct productNode_* next;
-} Product;
+};
+typedef struct productNode_* Product;
 
-typedef struct load{ // lista implementata per il carico della nave
-    Product* first;
-    Product* last;
+struct load{ /* lista implementata per il carico della nave */
+    Product first;
+    Product last;
     int length;
     int weightLoad;
-} loadShip;
+};
+typedef struct load* loadShip;
 
-loadShip* initLoadShip();
+loadShip initLoadShip();
 
-void addProduct(loadShip* list, Product* p);
+void addProduct(loadShip list, Product p);
 
-Product* findProduct(loadShip* list, int idProduct);
+Product findProduct(loadShip list, int idProduct);
 
-void removeProduct(loadShip* list, int idProduct);
+void removeProduct(loadShip list, int idProduct);
 
-void printLoadShip(loadShip* list);
+void printLoadShip(loadShip list);
 
-void freeLoadShip(loadShip* list);
+void freeLoadShip(loadShip list);
+
+#endif
 
 
 

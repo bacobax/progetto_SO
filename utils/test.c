@@ -1,7 +1,8 @@
 #include "./msg_utility.h"
 #include "./vettoriInt.h"
 #include "./support.h"
-#include "./shm_utility.h"  
+#include "./shm_utility.h"
+#include "./loadShip.h"  
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
@@ -14,9 +15,9 @@
 
 #define SO_PORTI 3
 
-// void msgRecvHandler(long type, char text[MEXBSIZE]) {
+/* void msgRecvHandler(long type, char text[MEXBSIZE]) {
 //     printf("Messaggio di tipo %ld ricevuto: %s\n", type, text);
-// }
+// } */
 
 typedef struct trade_ {
     int tipo;
@@ -37,8 +38,8 @@ int scegliPortoPerOffrire(int tipo, int quantita, Porto* porti) {
 
 
     intList* l = intInit();
-
-    for (int i = 0; i < SO_PORTI; i++) {
+    int i;
+    for (i = 0; i < SO_PORTI; i++) {
         if (porti[i].domanda->tipo == tipo && porti[i].domanda->quantita <= quantita) {
             intPush(l, porti[i].domanda->quantita);
         }
@@ -51,10 +52,10 @@ int scegliPortoPerOffrire(int tipo, int quantita, Porto* porti) {
 
 
     int idx;
-    for (int i = 0; i < SO_PORTI; i++) {
+    for (i = 0; i < SO_PORTI; i++) {
         if (porti[i].domanda->tipo == tipo && porti[i].domanda->quantita == maxDomanda) {
             idx = i;
-            break; //* facoltativo
+            break; /* facoltativo */
         }
     }
     return idx;
@@ -63,7 +64,7 @@ int scegliPortoPerOffrire(int tipo, int quantita, Porto* porti) {
 
 void test0() {
 
-    //* Porto 0
+    /* Porto 0 */
     Porto p0;
     int mercip0[] = { 4, 3, 3 };
 
@@ -76,7 +77,7 @@ void test0() {
     p0.domanda = &domandap0;
     p0.offerta = &offertap0;
 
-    //* Porto 1
+    /* Porto 1 */
 
     Porto p1;
     int mercip1[] = { 5, 2, 9 };
@@ -90,7 +91,7 @@ void test0() {
     p1.domanda = &domandap1;
     p1.offerta = &offertap1;
 
-    //* Porto 2
+    /* Porto 2 */
 
     Porto p2;
     int mercip2[] = { 7, 1,19 };
@@ -106,12 +107,12 @@ void test0() {
 
     Porto porti[SO_PORTI] = { p0,p1,p2 };
 
-    // Porto porti[SO_PORTI] = {
+    /* Porto porti[SO_PORTI] = {
     //     {1,2, mercip0, {TIPO0,3}, {TIPO1,  2}},
     //     {2,1, mercip1, {TIPO0,4}, {TIPO2,  4}},
     //     {3,4, mercip2, {TIPO0,7}, {TIPO2, 12}},
     //     {5,2, mercip3, {TIPO0,9}, {TIPO0,  5}},
-    // };
+    // }; */
     int idx = scegliPortoPerOffrire(TIPO0, 8, porti);
     printf("Il miglior porto è il porto %d\n", idx);
 
@@ -129,14 +130,15 @@ void test1() {
     int length;
     int* a = toArray(l, &length);
 
-    for (int i = 0; i < length; i++) {
+    int i;
+    for (i = 0; i < length; i++) {
         printf("%d,\n ", a[i]);
     }
-    // l = map(l, mapCriterio);
+    /* l = map(l, mapCriterio); */
 
-    // intStampaLista(l);
+    /* intStampaLista(l); */
 
-    // intFreeList(l);
+    /* intFreeList(l); */
 
 
 }
@@ -148,6 +150,36 @@ void testShm(){
     printf("%d\n", *shmAddr);
     shmDetach(shmAddr, NULL);
     removeShm(shmid, NULL);
+}
+
+void testLoadShip(){
+    loadShip ls = initLoadShip();
+    printf("initLoadShip() eseguita con successo\n");
+
+    Product p1 = (struct productNode_*) malloc(sizeof(struct productNode_));
+    p1->id = 0;
+    p1->weight = 500;
+    p1->expirationTime = 30;
+
+    Product p2 = (struct productNode_*) malloc(sizeof(struct productNode_));
+    p2->id = 1;
+    p2->weight = 350;
+    p2->expirationTime = 15;
+
+    addProduct(ls, p1);
+    printf("p1 aggiunto alla lista\n");
+    
+    addProduct(ls, p2);
+    printf("p2 aggiunto alla lista\n");
+    
+    printf("length list:%d weightLoad:%d\n", ls->length, ls->weightLoad);
+    printLoadShip(ls);
+    
+    removeProduct(ls, 0);
+    printLoadShip(ls);
+    
+    freeLoadShip(ls);
+    printf("freeLoadShip eseguita con successo\n");
 }
 
 int main(int argc, char const* argv[])
@@ -166,15 +198,13 @@ int main(int argc, char const* argv[])
         break;
     case 2:
         testShm();
-        break;    
+        break;
+    case 3:
+        testLoadShip();
+        break;        
     default:
         break;
     }
-
-
-
-
-
 
     return 0;
 }

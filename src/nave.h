@@ -6,17 +6,18 @@
 
 #define SHIPSHMKEY 8080
 
-typedef struct ship {
+struct ship {
     double cords[2];
     int capacity;
-    loadShip* load;
-} Ship;
+    loadShip load;
+};
+typedef struct ship* Ship;
 
 
-int checkCapacity(Ship* ship); // ritorna il numero di ton presenti sulla nave
+int checkCapacity(Ship ship); /* ritorna il numero di ton presenti sulla nave */
 
-int availableCapacity(Ship* ship); // ritorna il numero di ton disponibili sulla nave 
+int availableCapacity(Ship ship); /* ritorna il numero di ton disponibili sulla nave */ 
 
-double generateCord(); // genere una coordinata double
+double generateCord(); /* genere una coordinata double */
 
 #endif

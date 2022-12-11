@@ -12,8 +12,8 @@ intList* intInit() {
 
 intList* intInitFromArray(int* a, int length) {
     intList* ret = intInit();
-
-    for (int i = 0; i < length; i++) {
+    int i;
+    for (i = 0; i < length; i++) {
         intPush(ret, a[i]);
     }
 
@@ -201,7 +201,8 @@ int* toArray(intList* l, int* length) {
 
     int* retArray = (int*)calloc(l->length, sizeof(int));
     int i = 0;
-    for (intNode* aux = l->first; aux != NULL; aux = aux->next) {
+    intNode* aux;
+    for (aux = l->first; aux != NULL; aux = aux->next) {
         retArray[i] = aux->numero;
         i++;
     }

@@ -12,10 +12,6 @@
 #include "../utils/vettoriInt.h"
 #include "./nave.h"
 
-/*
-    APPENA IL PROFESSORE CHIARISCE IL MIO DUBBIO SUL DUMP DELLA NAVE
-    INIZIO A COSTRUIRE LA STRUTTURA SHM
-*/
 
 void shipSignalHandler(int signal){
     if(signal == SIGUSR1){
@@ -24,10 +20,10 @@ void shipSignalHandler(int signal){
     }  
 }
 
-Ship* initShip() {
+Ship initShip() {
   
-    // inizializziamo la nave
-    Ship* ship = (Ship*) malloc(sizeof(struct ship));
+    /* inizializziamo la nave */
+    Ship ship = (struct ship*) malloc(sizeof(struct ship));
     ship->cords[0] = generateCord();
     ship->cords[1] = generateCord();
     ship->capacity = 0;
