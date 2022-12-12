@@ -9,7 +9,7 @@ struct productNode_ { /* nodo utilizzato nella lista */
 };
 typedef struct productNode_* Product;
 
-struct load{ /* lista implementata per il carico della nave */
+struct load { /* lista implementata per il carico della nave */
     Product first;
     Product last;
     int length;
@@ -30,7 +30,3 @@ void printLoadShip(loadShip list);
 void freeLoadShip(loadShip list);
 
 #endif
-
-
-
-

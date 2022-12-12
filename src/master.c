@@ -15,8 +15,10 @@
 
 
 void genera_navi() {
-    for (int i = 0; i < SO_NAVI; i++) {
-        int pid = fork();
+    int i;
+    int pid;
+    for (i = 0; i < SO_NAVI; i++) {
+        pid = fork();
         if (pid == 0) {
             /*
                 da passare le coordinate
@@ -35,19 +37,22 @@ void genera_navi() {
 void genera_porti(int risorse, int n_porti) {
 
     intList* quanties = distribute(risorse, n_porti);
-
-    for (int i = 0; i < n_porti; i++) {
-        int pid = fork();
+    int i;
+    int pid;
+    int* quantity;/*Solo perchè elementAt ritorna un puntatore a intero (perchè almeno in caso di errore ritorna NULL)*/
+    char strQuantity[50];
+    char strIdx[50];
+    for (i = 0; i < n_porti; i++) {
+        pid = fork();
         if (pid == 0) {
 
-            int* quantity = (int*)malloc(sizeof(int));
+            quantity = (int*)malloc(sizeof(int));
             quantity = intElementAt(quanties, i);
 
-            char strQuantity[50];
             sprintf(strQuantity, "%d", *quantity);
             free(quantity);
 
-            char strIdx[50];
+
             sprintf(strIdx, "%d", i);
 
 
@@ -70,13 +75,17 @@ void genera_porti(int risorse, int n_porti) {
 }
 
 void wait_all(int n_px) {
-    for (int i = 0; i < n_px; i++) {
-        int pid = wait(NULL);
+    int pid;
+    int i;
+    for (i = 0; i < n_px; i++) {
+        pid = wait(NULL);
     }
 }
 
 
 void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem) {
+    struct timespec tim, tim2;
+    int i;
 
     /*  per ora ho usato solo semid */
     genera_porti(SO_FILL, SO_PORTI); /* da tradurre in inglese */
@@ -92,10 +101,9 @@ void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem
 
     printf("Master: ciao\n");
 
-    struct timespec tim, tim2;
     tim.tv_sec = 1;
     tim.tv_nsec = 0;
-    for (int i = 0; i < SO_DAYS; i++) {
+    for (i = 0; i < SO_DAYS; i++) {
         printf("Master: dormo\n");
 
         /* TODO: funzione dump */

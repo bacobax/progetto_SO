@@ -32,27 +32,35 @@ intList* distribute(int quantity, int parts) {
 
     //massimo: la quantità che gli verrebbe assegnata se le quantità fossero distribuite in parti uguali
     //questo perchè nel peggiore dei casi (in cui a tutte le quantita venga assegnato il massimo) la quantità totale <= quantity */
-    int max_q = quantity / parts;
+    int max_q;
+    int min_q;
+    intList* l;
+    int random_q;
+    int last_q;
+    int i;
+
+
+    max_q = quantity / parts;
 
     /* minimo: la metà della quantità che gli verrebbe distribuita se le quantità fossero distribuite in parti uguali */
-    int min_q = quantity / parts / 2;
-    intList* l = intInit();
-    int i;
+    min_q = quantity / parts / 2;
+    l = intInit();
     for (i = 0; i < parts - 1; i++) {
-        int random_q = rand() % max_q + min_q;
+        random_q = rand() % max_q + min_q;
         intPush(l, random_q);
     }
 
     /* per l'ultima quantità viene assegnata la quantità restate non ancora assegnata
     //questo per essere sicuro che la somma delle quantità sia = quantity */
-    int last_q = quantity - sum(l);
+    last_q = quantity - sum(l);
     intPush(l, last_q);
     return l;
 }
 
 
 void reservePrint(void (*printer)(void* obj, int idx), void* object, int idx) {
-    int semid = useSem(RESPRINTKEY, ErrorHandler);
+    int semid;
+    semid = useSem(RESPRINTKEY, ErrorHandler);
 
     mutex(semid, LOCK, NULL);
 
@@ -69,22 +77,26 @@ void sigusr1sigHandler(int s) {
 
 
 void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid, int reservePrintSem)) {
+    int semid;
+    int reservePrintSem;
+    int portsShmid;
+    int shipsShmid;
+
     if (signal(SIGUSR1, sigusr1sigHandler) == SIG_ERR) {
         perror("signal\n");
         exit(EXIT_FAILURE);
     }
 
-
-    int semid = createSem(MASTKEY, 1, NULL);
-    int reservePrintSem = createSem(RESPRINTKEY, 1, NULL);
+    semid = createSem(MASTKEY, 1, NULL);
+    reservePrintSem = createSem(RESPRINTKEY, 1, NULL);
 
 
     if (semid == EEXIST) {
         semid = useSem(MASTKEY, NULL);
     }
 
-    int portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
-    int shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);
+    portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
+    shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);
 
     if (portsShmid == EEXIST || shipsShmid == EEXIST) {
         perror("Le shm esistono già\n");
@@ -106,8 +118,8 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
 
 }
 
-
 void waitForStart() {
-    int semid = useSem(MASTKEY, NULL);
+    int semid;
+    semid = useSem(MASTKEY, NULL);
     mutex(semid, WAITZERO, NULL);
 }

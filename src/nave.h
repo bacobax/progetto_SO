@@ -16,7 +16,7 @@ typedef struct ship* Ship;
 
 int checkCapacity(Ship ship); /* ritorna il numero di ton presenti sulla nave */
 
-int availableCapacity(Ship ship); /* ritorna il numero di ton disponibili sulla nave */ 
+int availableCapacity(Ship ship); /* ritorna il numero di ton disponibili sulla nave */
 
 double generateCord(); /* genere una coordinata double */
 

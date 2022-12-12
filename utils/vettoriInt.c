@@ -3,7 +3,8 @@
 #include <stdio.h>
 
 intList* intInit() {
-    intList* ret = malloc(sizeof(intList));
+    intList* ret;
+    ret = malloc(sizeof(intList));
     ret->first = NULL;
     ret->last = NULL;
     ret->length = 0;
@@ -11,8 +12,10 @@ intList* intInit() {
 }
 
 intList* intInitFromArray(int* a, int length) {
-    intList* ret = intInit();
+    intList* ret;
     int i;
+
+    ret = intInit();
     for (i = 0; i < length; i++) {
         intPush(ret, a[i]);
     }
@@ -22,7 +25,8 @@ intList* intInitFromArray(int* a, int length) {
 }
 
 void intPush(intList* list, int i) {
-    intNode* newNode = (intNode*)malloc(sizeof(intNode));
+    intNode* newNode;
+    newNode = (intNode*)malloc(sizeof(intNode));
     newNode->numero = i;
     newNode->next = NULL;
 
@@ -38,8 +42,10 @@ void intPush(intList* list, int i) {
 }
 
 void intStampaLista(intList* lista) {
+    intNode* aux;
+    aux = lista->first;
+
     printf("[ ");
-    intNode* aux = lista->first;
     while (aux != NULL) {
         printf("%d , ", aux->numero);
         aux = aux->next;
@@ -51,12 +57,13 @@ void intStampaLista(intList* lista) {
 
 int* intElementAt(intList* l, int idx) {
     int el;
-
+    intNode* aux;
+    int count;
     if (idx >= l->length || idx < 0) return NULL;
 
-    intNode* aux = l->first;
+    aux = l->first;
 
-    int count = 0;
+    count = 0;
     while (aux != NULL) {
         if (count == idx) {
             return &(aux->numero);
@@ -69,8 +76,11 @@ int* intElementAt(intList* l, int idx) {
 
 
 int* intFindFirst(intList* l, int(*f)(int el, int idx)) {
-    intNode* aux = l->first;
-    int idx = 0;
+    intNode* aux;
+    int idx;
+
+    aux = l->first;
+    idx = 0;
     while (aux != NULL) {
         if (f(aux->numero, idx)) {
             return &(aux->numero);
@@ -124,14 +134,14 @@ void intFreeList(intList* lista) {
 void intRemove(intList* lista, int idx) {
     intNode* aux = lista->first;
     intNode* innerAux;
-
+    int count;
     if (idx == 0) {
         innerAux = lista->first;
         lista->first = lista->first->next;
         free(innerAux);
         return;
     }
-    int count = 0;
+    count = 0;
     while (aux != NULL) {
         if (count == idx - 1) {
             innerAux = aux->next->next;
@@ -197,11 +207,14 @@ int sum(intList* l) {
 
 
 int* toArray(intList* l, int* length) {
+    int* retArray;
+    int i;
+    intNode* aux;
+
     *length = l->length;
 
-    int* retArray = (int*)calloc(l->length, sizeof(int));
-    int i = 0;
-    intNode* aux;
+    retArray = (int*)calloc(l->length, sizeof(int));
+    i = 0;
     for (aux = l->first; aux != NULL; aux = aux->next) {
         retArray[i] = aux->numero;
         i++;

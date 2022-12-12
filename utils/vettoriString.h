@@ -3,12 +3,12 @@
 #define VETTORI_STRING_H
 #define length(array) (sizeof(array)/sizeof(array[0]))
 /* Addizione */
-typedef struct stringNode_{
+typedef struct stringNode_ {
     char* el;
     struct stringNode_* next;
 } stringNode;
 
-typedef struct stringList_{
+typedef struct stringList_ {
     stringNode* first;
     stringNode* last;
     int length;
@@ -21,12 +21,12 @@ void stringStampaLista(stringList* lista);
 stringList* stringInit();
 stringList* stringInitFromArray(char** a, int length);
 /* ritorna la stringa trovata, se l'idx è out of bound ritorna NULL */
-char* stringElementAt(stringList* l ,int idx);
+char* stringElementAt(stringList* l, int idx);
 
-char* stringFindFirst(stringList* l , int(*f)(char*));
+char* stringFindFirst(stringList* l, int(*f)(char*));
 
 /* ritorna la lista filtrata */
-stringList* stringFindAll(stringList* l , int(*f)(char*));
+stringList* stringFindAll(stringList* l, int(*f)(char*));
 
 void stringFreeList(stringList* lista);
 

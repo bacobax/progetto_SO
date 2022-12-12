@@ -21,7 +21,8 @@ union semun {
 #endif 
 
 int useSem(int key, void (*errorHandler)(int err)) {
-    int semid = semget(key, 1, 0);
+    int semid;
+    semid = semget(key, 1, 0);
     if (semid == -1) {
         if (errorHandler == NULL) {
             perror("useSem -> semget");
@@ -39,7 +40,10 @@ int useSem(int key, void (*errorHandler)(int err)) {
 }
 
 int createSem(int key, int initValue, void (*errorHandler)(int err)) {
-    int semid = semget(key, 1, IPC_CREAT | IPC_EXCL | 0666);
+    int semid;
+    union semun arg;
+
+    semid = semget(key, 1, IPC_CREAT | IPC_EXCL | 0666);
     if (errno == EEXIST) return errno;
     if (semid == -1) {
         if (errorHandler == NULL) {
@@ -52,7 +56,6 @@ int createSem(int key, int initValue, void (*errorHandler)(int err)) {
         }
 
     }
-    union semun arg;
     arg.val = initValue;
     if (semctl(semid, 0, SETVAL, arg) == -1) {
         if (errorHandler == NULL) {
@@ -85,7 +88,8 @@ void removeSem(int key, void (*errorHandler)(int err)) {
 }
 
 void mutex(int semid, int op, void (*errorHandler)(int err)) {
-    struct sembuf* buf = (struct sembuf*)malloc(sizeof(struct sembuf));
+    struct sembuf* buf;
+    buf = (struct sembuf*)malloc(sizeof(struct sembuf));
     buf->sem_num = 0;
     buf->sem_flg = 0;
     buf->sem_op = op;
