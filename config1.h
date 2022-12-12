@@ -11,16 +11,20 @@
 #define SO_MAX_VITA  10 /* tonn */
 #define SO_DAYS      5
 
+/*chiavi dei semafori*/
 /* chiave del semaforo del master */
-#define MASTKEY      132
-
-#define PSHMKEY      342
-#define DUMPSHMKEY   3215
-
-
-
+#define MASTKEY       132
+#define BANCHINESEMKY 165
 /* chiave del semaforo che permette la reserve print */
 #define RESPRINTKEY  124
+
+/*chiavi delle shm*/
+#define PSHMKEY       342
+#define DUMPSHMKEY    3215
+
+
+
+
 
 #define SO_FILL      30
 

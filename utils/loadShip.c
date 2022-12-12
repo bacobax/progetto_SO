@@ -77,18 +77,15 @@ void printLoadShip(loadShip list) {
     printf(" ]\n");
 }
 
-void freeLoadShip(loadShip* list) {
-    Product* aux;
-    ====== =
-        void freeLoadShip(loadShip list) {
-        Product aux;
-        while (list->first != NULL) {
-            aux = list->first;
-            list->first = list->first->next;
-            free(aux);
-        }
-        free(list);
+void freeLoadShip(loadShip list) {
+    Product aux;
+    while (list->first != NULL) {
+        aux = list->first;
+        list->first = list->first->next;
+        free(aux);
     }
+    free(list);
+}
 
 
 

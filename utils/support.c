@@ -81,7 +81,7 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
     int reservePrintSem;
     int portsShmid;
     int shipsShmid;
-
+    int semBanchineID;
     if (signal(SIGUSR1, sigusr1sigHandler) == SIG_ERR) {
         perror("signal\n");
         exit(EXIT_FAILURE);
@@ -96,7 +96,12 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
     }
 
     portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
-    shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);
+    /*shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);*/
+
+
+    /*creazione banchine*/
+    semBanchineID = createMultipleSem(BANCHINESEMKY, SO_PORTI, SO_BANCHINE, errorHandler);
+
 
     if (portsShmid == EEXIST || shipsShmid == EEXIST) {
         perror("Le shm esistono già\n");
@@ -111,6 +116,7 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
 
     removeSem(semid, errorHandler);
     removeSem(reservePrintSem, errorHandler);
+    removeSem(semBanchineID, errorHandler);
 
     removeShm(shipsShmid, errorHandler);
     removeShm(portsShmid, errorHandler);

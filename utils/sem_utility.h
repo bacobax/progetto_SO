@@ -26,4 +26,9 @@ void removeSem(int key, void (*errorHandler)(int err));
 // WAITZERO aspetta lo 0 */
 void mutex(int semid, int op, void (*errorHandler)(int err));
 
+int createMultipleSem(int key, int nSem, int initValue, void (*errorHandler)(int err));
+
+void mutexPro(int semid, int semIdx, int op, void (*errorHandler)(int err));
+
+
 #endif

@@ -2,6 +2,7 @@
 #include "./vettoriInt.h"
 #include "./support.h"
 #include "./shm_utility.h"
+#include "./sem_utility.h"
 #include "./loadShip.h"  
 #include <stdio.h>
 #include <stdlib.h>
@@ -143,43 +144,52 @@ void test1() {
 
 }
 
-void testShm(){
+void testShm() {
     int shmid = createShm(IPC_PRIVATE, sizeof(int), NULL);
-    int* shmAddr = (int*) getShmAddress(shmid, 0, NULL);
+    int* shmAddr = (int*)getShmAddress(shmid, 0, NULL);
     *shmAddr = 5;
     printf("%d\n", *shmAddr);
     shmDetach(shmAddr, NULL);
     removeShm(shmid, NULL);
 }
 
-void testLoadShip(){
+void testLoadShip() {
     loadShip ls = initLoadShip();
     printf("initLoadShip() eseguita con successo\n");
 
-    Product p1 = (struct productNode_*) malloc(sizeof(struct productNode_));
+    Product p1 = (struct productNode_*)malloc(sizeof(struct productNode_));
     p1->id = 0;
     p1->weight = 500;
     p1->expirationTime = 30;
 
-    Product p2 = (struct productNode_*) malloc(sizeof(struct productNode_));
+    Product p2 = (struct productNode_*)malloc(sizeof(struct productNode_));
     p2->id = 1;
     p2->weight = 350;
     p2->expirationTime = 15;
 
     addProduct(ls, p1);
     printf("p1 aggiunto alla lista\n");
-    
+
     addProduct(ls, p2);
     printf("p2 aggiunto alla lista\n");
-    
+
     printf("length list:%d weightLoad:%d\n", ls->length, ls->weightLoad);
     printLoadShip(ls);
-    
+
     removeProduct(ls, 0);
     printLoadShip(ls);
-    
+
     freeLoadShip(ls);
     printf("freeLoadShip eseguita con successo\n");
+}
+
+void testSemFunc() {
+    int semid;
+    semid = createMultipleSem(IPC_PRIVATE, 10, 0, NULL);
+    printf("Creato il semaforo\n");
+
+    mutexPro(semid, 8, LOCK, NULL);
+
 }
 
 int main(int argc, char const* argv[])
@@ -201,7 +211,9 @@ int main(int argc, char const* argv[])
         break;
     case 3:
         testLoadShip();
-        break;        
+        break;
+    case 4:
+        testSemFunc();
     default:
         break;
     }
