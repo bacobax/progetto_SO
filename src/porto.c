@@ -18,24 +18,46 @@
 /*copia il contenuto di un array in un altro array
   assumendo ovviamente che a.length >= a1.length */
 void copyArray(int a[], int* a1, int length) {
-    for (int i = 0; i < length; i++) {
+    int i;
+    for (i = 0; i < length; i++) {
         a[i] = a1[i];
     }
 }
 
 Port initPort(int disponibility, int pIndex) {
 
-    int portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
-
-    Port p = ((Port)getShmAddress(portShmId, 0, errorHandler)) + pIndex;
-
+    int portShmId;
     int length;
+    Port p;
+    int* requests;
+    int* supplies;
+    int i;
+    srand(time(NULL));
+    portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
 
-    int* requests = toArray(distribute(disponibility, SO_MERCI), &length);
-    int* supplies = toArray(distribute(disponibility, SO_MERCI), &length);
+    p = ((Port)getShmAddress(portShmId, 0, errorHandler)) + pIndex;
+
+
+    requests = toArray(distribute(disponibility, SO_MERCI), &length);
+    supplies = toArray(distribute(disponibility, SO_MERCI), &length);
 
     copyArray(p->requests, requests, length);
     copyArray(p->supplies, supplies, length);
+
+    for (i = 0; i < SO_MERCI; i++) {
+        int c = rand() % 2;
+        if (c == 1) {
+            p->requests[i] = 0;
+        }
+        else if (c == 0) {
+            p->supplies[i] = 0;
+        }
+        else {
+            printf("Errore nella rand");
+            exit(EXIT_FAILURE);
+        }
+    }
+
 
     if (pIndex == 0) {
         p->x = 0;
@@ -65,9 +87,6 @@ Port initPort(int disponibility, int pIndex) {
 
 
 
-
-
-
 void printPorto(void* p, int idx) {
 
     int i;
@@ -93,8 +112,12 @@ void printPorto(void* p, int idx) {
 
 
 int main(int argc, char const* argv[]) {
-
+    int disponibility;
     void (*oldHandler)(int);
+    int idx;
+    Port p;
+    struct timespec tim, tim2;
+
     oldHandler = signal(SIGUSR1, quitSignalHandler);
     if (oldHandler == SIG_ERR) {
         perror("signal");
@@ -102,10 +125,10 @@ int main(int argc, char const* argv[]) {
     }
 
 
-    int disponibility = atoi(argv[1]);
-    int idx = atoi(argv[2]);
+    disponibility = atoi(argv[1]);
+    idx = atoi(argv[2]);
 
-    Port p = initPort(disponibility, idx);
+    p = initPort(disponibility, idx);
 
     reservePrint(printPorto, p, idx);
 
@@ -115,7 +138,6 @@ int main(int argc, char const* argv[]) {
 
     /* START */
 
-    struct timespec tim, tim2;
     tim.tv_sec = 1;
     tim.tv_nsec = 0;
 

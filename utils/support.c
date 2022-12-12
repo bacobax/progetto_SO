@@ -82,6 +82,9 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
     int portsShmid;
     int shipsShmid;
     int semBanchineID;
+
+    srand(time(NULL));
+
     if (signal(SIGUSR1, sigusr1sigHandler) == SIG_ERR) {
         perror("signal\n");
         exit(EXIT_FAILURE);
@@ -118,7 +121,7 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
     removeSem(reservePrintSem, errorHandler);
     removeSem(semBanchineID, errorHandler);
 
-    removeShm(shipsShmid, errorHandler);
+    /*removeShm(shipsShmid, errorHandler);*/
     removeShm(portsShmid, errorHandler);
     printf("Ciao");
 

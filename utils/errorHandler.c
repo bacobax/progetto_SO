@@ -35,7 +35,10 @@ void errorHandler(int err) {
         break;
     case SHMERRDT:
         perror("shm dt error handler");
-        break;           
+        break;
+    case SHMERRCTL:
+        perror("shm ctl error handler");
+
     default:
         perror("Not Handlerd error");
     }

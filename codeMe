@@ -1,0 +1,9 @@
+#!/bin/bash
+
+SCRIPT_PATH="${BASH_SOURCE:-$0}"
+echo "Value of SCRIPT_PATH: ${SCRIPT_PATH}"
+
+ABS_SCRIPT_PATH="$(dirname "${SCRIPT_PATH}")"
+echo "Value of ABS_SCRIPT_PATH: ${ABS_SCRIPT_PATH}"
+
+code $ABS_SCRIPT_PATH
