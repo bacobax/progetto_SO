@@ -15,7 +15,7 @@
 #define MASTKEY      132
 
 #define PSHMKEY      342
-#define SSHMKEY      3215
+#define DUMPSHMKEY   3215
 
 
 
