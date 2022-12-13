@@ -3,7 +3,8 @@
 #include "./loadShip.h"
 
 loadShip initLoadShip() {
-    loadShip ret = (struct load*)malloc(sizeof(struct load));
+    loadShip ret;
+    ret = (struct load*)malloc(sizeof(struct load));
     ret->first = NULL;
     ret->last = NULL;
     ret->weightLoad = 0;
@@ -12,7 +13,8 @@ loadShip initLoadShip() {
 }
 
 void addProduct(loadShip list, Product p) {
-    Product newNode = (struct productNode_*)malloc(sizeof(struct productNode_));
+    Product newNode;
+    newNode = (struct productNode_*)malloc(sizeof(struct productNode_));
     newNode->id = p->id;
     newNode->weight = p->weight;
     newNode->expirationTime = p->expirationTime;
@@ -33,9 +35,11 @@ void addProduct(loadShip list, Product p) {
 
 Product findProduct(loadShip list, int idProduct) {
 
+    Product aux;
+    
     if (idProduct >= list->length || idProduct < 0) return NULL;
 
-    Product aux = list->first;
+    aux = list->first;
 
     while (aux != NULL) {
         if (aux->id == idProduct) {
@@ -48,8 +52,10 @@ Product findProduct(loadShip list, int idProduct) {
 
 
 void removeProduct(loadShip list, int idProduct) {
-    Product aux = list->first;
     Product innerAux;
+    Product aux;
+    
+    aux = list->first;
 
     while (aux != NULL) {
         if (idProduct == aux->id) {
@@ -68,8 +74,11 @@ void removeProduct(loadShip list, int idProduct) {
 }
 
 void printLoadShip(loadShip list) {
+    
+    Product aux;
+
     printf("[ ");
-    Product aux = list->first;
+    aux = list->first;
     while (aux != NULL) {
         printf("id:%d weight:%d expiration_time:%d , ", aux->id, aux->weight, aux->expirationTime);
         aux = aux->next;

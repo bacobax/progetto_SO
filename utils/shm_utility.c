@@ -11,7 +11,10 @@
 
 
 int createShm(int key, size_t shmSize, void (*errorHandler)(int err)) {
-    int shmid = shmget(key, shmSize, IPC_CREAT | IPC_EXCL | 0666);
+
+    int shmid;
+
+    shmid = shmget(key, shmSize, IPC_CREAT | IPC_EXCL | 0666);
     if (errno == EEXIST) return errno;
     if (shmid == -1) {
         if (errorHandler == NULL) {
@@ -27,8 +30,11 @@ int createShm(int key, size_t shmSize, void (*errorHandler)(int err)) {
 }
 
 int useShm(int key, size_t shmSize, void (*errorHandler)(int err)) {
-    int semid = shmget(key, shmSize, 0);
-    if (semid == -1) {
+    
+    int shmid;
+
+    shmid = shmget(key, shmSize, 0);
+    if (shmid == -1) {
         if (errorHandler == NULL) {
             perror("useShm -> shmget");
             exit(EXIT_FAILURE);
@@ -39,8 +45,7 @@ int useShm(int key, size_t shmSize, void (*errorHandler)(int err)) {
         }
 
     }
-    return semid;
-
+    return shmid;
 
 }
 

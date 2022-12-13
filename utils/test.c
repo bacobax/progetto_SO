@@ -34,12 +34,14 @@ typedef struct porto_ {
 } Porto;
 
 int scegliPortoPerOffrire(int tipo, int quantita, Porto* porti) {
-    int idxPorto;
+    
+    int idxPorto, maxDomanda, idx;
     Porto* portiConDomandaMinoreOUguale;
-
-
-    intList* l = intInit();
+    intList* l;
     int i;
+
+    l = intInit();
+
     for (i = 0; i < SO_PORTI; i++) {
         if (porti[i].domanda->tipo == tipo && porti[i].domanda->quantita <= quantita) {
             intPush(l, porti[i].domanda->quantita);
@@ -49,10 +51,9 @@ int scegliPortoPerOffrire(int tipo, int quantita, Porto* porti) {
         return -1;
     }
 
-    int maxDomanda = max(l);
+    maxDomanda = max(l);
 
 
-    int idx;
     for (i = 0; i < SO_PORTI; i++) {
         if (porti[i].domanda->tipo == tipo && porti[i].domanda->quantita == maxDomanda) {
             idx = i;
@@ -79,8 +80,9 @@ void test0() {
     p0.offerta = &offertap0;
 
     /* Porto 1 */
-
+    
     Porto p1;
+
     int mercip1[] = { 5, 2, 9 };
 
     Trade domandap1 = { TIPO0, 10 };
@@ -155,14 +157,15 @@ void testShm() {
 
 void testLoadShip() {
     loadShip ls = initLoadShip();
+    Product p1, p2;
     printf("initLoadShip() eseguita con successo\n");
 
-    Product p1 = (struct productNode_*)malloc(sizeof(struct productNode_));
+    p1 = (struct productNode_*)malloc(sizeof(struct productNode_));
     p1->id = 0;
     p1->weight = 500;
     p1->expirationTime = 30;
 
-    Product p2 = (struct productNode_*)malloc(sizeof(struct productNode_));
+    p2 = (struct productNode_*)malloc(sizeof(struct productNode_));
     p2->id = 1;
     p2->weight = 350;
     p2->expirationTime = 15;

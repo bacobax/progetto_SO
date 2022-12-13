@@ -2,6 +2,7 @@
 #include "../config1.h"
 #include "./dump.h"
 
-createDumpArea(){
-    int shmid = createShm(DUMPSHMKEY, SO_MERCI * sizeof(struct good), errorHandler);
+void createDumpArea(){
+    int shmid;
+    shmid = createShm(DUMPSHMKEY, SO_MERCI * sizeof(struct good), errorHandler);
 }

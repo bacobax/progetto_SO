@@ -20,4 +20,8 @@ int availableCapacity(Ship ship); /* ritorna il numero di ton disponibili sulla 
 
 double generateCord(); /* genere una coordinata double */
 
+Ship initShip();
+
+void printShip();
+
 #endif
