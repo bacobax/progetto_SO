@@ -26,9 +26,9 @@ double generateCord() {
 
     double range, div;
 
-    range = (SO_LATO - 0); /* max-min */
+    range = (SO_LATO); /* max-min */
     div = RAND_MAX / range;
-    return 0 + (rand() / div);
+    return (rand() / div);
 }
 
 Ship initShip() {
@@ -42,8 +42,8 @@ Ship initShip() {
 
     /* inizializziamo la nave */
     ship = (struct ship*)malloc(sizeof(struct ship));
-    ship->cords[0] = generateCord();
-    ship->cords[1] = generateCord();
+    ship->x = generateCord();
+    ship->y = generateCord();
     ship->capacity = 0;
     /*
         load sarà NULL all'inizio

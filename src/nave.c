@@ -12,19 +12,33 @@
 #include "../utils/vettoriInt.h"
 #include "./dump.h"
 #include "./nave.h"
+#include "./porto.h"
 
 
-void shipSignalHandler(int signal) {
-    if (signal == SIGUSR1) {
-        printf("Nave: ricevuto segnale di terminazione\n");
-        exit(EXIT_SUCCESS);
-    }
+void accessPort(int portID) {
+    int portSHMID;
+    Port port;
+    int banchineSem;
+    portSHMID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler);
+
+    port = (Port)getShmAddress(portSHMID, 0, errorHandler) + portID;
+
+    banchineSem = useSem(BANCHINESEMKY, errorHandler);
+
+    mutexPro(banchineSem, portID, LOCK, errorHandler);
+
+    /*
+    !SEZIONE CRITICA
+    */
+    
+    mutexPro(banchineSem, portID, UNLOCK, errorHandler);
+
 }
 
 int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identificativo della nave (es: nave 0, nave 1, nave 2, ecc..)*/
 
     Ship ship;
-    int ship_index, port_id;
+    int ship_index, portID;
     
     ship = initShip(); /* inizializzo struttura dati della nave ed eventuali handler per segnali*/
     ship_index = atoi(argv[1]);
@@ -32,22 +46,22 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     waitForStart();
 
     while (1) { /* ciclo di operazione che esegue la nave fino a quando non viene killata dal master*/
-
-        port_id = choosePort(/* PARAMETRI IN VIA DI DEFINIZIONE*/); /* la nave sceglie il porto dove andare a scambiare*/
+        
+        portID = choosePort(/* PARAMETRI IN VIA DI DEFINIZIONE*/); /* la nave sceglie il porto dove andare a scambiare*/
 
         /*
             la funzione choosePort sarà da implementare costruendo un algoritmo che scelga un porto per
             andare a caricare e/o scaricare merci
         */
 
-        travel(port_id); /*  TO-DO */ 
+        travel(portID); /*  TO-DO */ 
 
         /*
              la funzione travel() utilizza la nanosleep() per spostare la nave alle coordinate del porto
              una volta terminato l'algoritmo choosePort
         */
 
-        accessPort(); /* TO-DO */
+        accessPort(portID); /* TO-DO */
 
         /*
              la funzione accessPort() tenta l'accesso alla banchina del porto per far si che la
@@ -58,3 +72,6 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
 
     exit(EXIT_FAILURE); /* non deve mai raggiungere questa parte di codice*/
 }
+
+//TODO: devo dividere per SO_FILL dal master quando distribuisco le risorse
+//TODO: fare la recv per refillare

@@ -88,8 +88,8 @@ Port initPort(int disponibility, int pIndex) {
         p->y = SO_LATO;
     }
     else {
-        p->x = (double)rand() / (double)(RAND_MAX / (SO_LATO - 1));
-        p->y = (double)rand() / (double)(RAND_MAX / (SO_LATO - 1));
+        p->x = (double)rand() / (double)(RAND_MAX / (SO_LATO));
+        p->y = (double)rand() / (double)(RAND_MAX / (SO_LATO));
     }
 
 

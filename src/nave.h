@@ -7,7 +7,8 @@
 #define SHIPSHMKEY 8080
 
 struct ship {
-    double cords[2];
+    double x;
+    double y;
     int capacity;
     loadShip load;
 };

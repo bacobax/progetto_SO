@@ -5,4 +5,5 @@
 void createDumpArea(){
     int shmid;
     shmid = createShm(DUMPSHMKEY, SO_MERCI * sizeof(struct good), errorHandler);
+    
 }
