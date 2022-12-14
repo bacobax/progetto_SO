@@ -3,6 +3,7 @@
 #include "../src/nave.h"
 #include "../utils/loadShip.h"
 #include "../config1.h"
+#include "./support.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -34,7 +35,7 @@ Ship initShip() {
 
     Ship ship;
 
-    if (signal(SIGUSR1, shipSignalHandler) == SIG_ERR) {              /* imposto l'handler per la signal SIGUSR1 */
+    if (signal(SIGUSR1, quitSignalHandler) == SIG_ERR) {              /* imposto l'handler per la signal SIGUSR1 */
         perror("Error trying to set a signal handler for SIGUSR1");
         exit(EXIT_FAILURE);
     }
@@ -55,12 +56,12 @@ Ship initShip() {
 void printShip(void* ship, int id_ship){
     printf("[%d]: Nave\n", id_ship);
     
-    printf("coords: [x:%f, y:%f]\n", ((Ship)ship->cords[0]), ((Ship)ship->cords[1]));
+    printf("coords: [x:%f, y:%f]\n", (((Ship)ship)->cords[0]), (((Ship)ship)->cords[1]));
     
     printf("ton trasporati:%d\n", availableCapacity((Ship) ship));
 
     printf("carico trasportato:\n");
-    printLoadShip((Ship)ship->load);
+    printLoadShip(((Ship)ship)->load);
     
     printf("______________________________________________\n");
 

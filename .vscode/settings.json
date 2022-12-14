@@ -1,10 +1,5 @@
 {
-<<<<<<< HEAD
-    "C_Cpp.errorSquiggles": "enabledIfIncludesResolve"
-=======
-    "C_Cpp.errorSquiggles": "disabled",
-    "files.associations": {
-        "loadship.h": "c"
-    }
->>>>>>> cc8ba5a8e07904a87c55ea99444c9ecb01531bcf
+  "files.associations": {
+    "config1.h": "c"
+  }
 }

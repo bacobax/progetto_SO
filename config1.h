@@ -7,7 +7,7 @@
 #define SO_NAVI      10
 #define SO_MERCI     3
 #define SO_SIZE      20 /* tonn */
-#define SO_MIN_VITA  10 /* tonn */
+#define SO_MIN_VITA  6 /* tonn */
 #define SO_MAX_VITA  10 /* tonn */
 #define SO_DAYS      5
 
@@ -26,7 +26,7 @@
 
 
 
-#define SO_FILL      30
+#define SO_FILL      100
 
 
 

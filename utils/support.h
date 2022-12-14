@@ -24,5 +24,7 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
 /* aspetta che il master metta a zero il semaforo con la key MASTKEY */
 void waitForStart();
 
+int random_int(int min, int max);
+
 
 #endif

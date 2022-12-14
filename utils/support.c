@@ -23,6 +23,9 @@ void quitSignalHandler(int sig) {
     exit(EXIT_SUCCESS);
 }
 
+int random_int(int min, int max) {
+    return min + rand() % (max+1 - min);
+}
 
 intList* distribute(int quantity, int parts) {
 
@@ -46,7 +49,7 @@ intList* distribute(int quantity, int parts) {
     min_q = quantity / parts / 2;
     l = intInit();
     for (i = 0; i < parts - 1; i++) {
-        random_q = rand() % max_q + min_q;
+        random_q = random_int(min_q, max_q);
         intPush(l, random_q);
     }
 
@@ -132,3 +135,4 @@ void waitForStart() {
     semid = useSem(MASTKEY, NULL);
     mutex(semid, WAITZERO, NULL);
 }
+

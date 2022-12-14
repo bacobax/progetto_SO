@@ -13,6 +13,8 @@
 #include "../utils/vettoriInt.h"
 
 #include "./porto.h"
+#include "../utils/supplies.h"
+
 
 
 /*copia il contenuto di un array in un altro array
@@ -32,6 +34,7 @@ Port initPort(int disponibility, int pIndex) {
     int* requests;
     int* supplies;
     int i;
+    int j;
     srand(time(NULL));
     portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
 
@@ -39,10 +42,12 @@ Port initPort(int disponibility, int pIndex) {
 
 
     requests = toArray(distribute(disponibility, SO_MERCI), &length);
-    supplies = toArray(distribute(disponibility, SO_MERCI), &length);
+    supplies = toArray(distribute(disponibility/SO_DAYS, SO_MERCI), &length);
 
     copyArray(p->requests, requests, length);
-    copyArray(p->supplies, supplies, length);
+    fillMagazine(&p->supplies, 0, supplies);
+    fillExpirationTime(&p->supplies);
+    //copyArray(p->supplies, supplies, length);
 
     for (i = 0; i < SO_MERCI; i++) {
         int c = rand() % 2;
@@ -50,11 +55,18 @@ Port initPort(int disponibility, int pIndex) {
             p->requests[i] = 0;
         }
         else if (c == 0) {
-            p->supplies[i] = 0;
+            p->supplies.magazine[0][i] = 0;
         }
         else {
             printf("Errore nella rand");
             exit(EXIT_FAILURE);
+        }
+    }
+
+    //*Azzero tutti tipi delle risorse degli altri giorni
+    for (i = 1; i < SO_DAYS; i++) {
+        for (j = 0; j < SO_MERCI; j++) {
+            p->supplies.magazine[i][j] = 0;
         }
     }
 
@@ -96,10 +108,7 @@ void printPorto(void* p, int idx) {
         printf("%d, \n", ((Port)p)->requests[i]);
     }
 
-    printf("OFFERTE:\n");
-    for (i = 0; i < SO_MERCI; i++) {
-        printf("%d, \n", ((Port)p)->supplies[i]);
-    }
+    printSupplies(((Port)p)->supplies);
 
     printf("coords:\n");
     printf("x: %f\n", ((Port)p)->x);
@@ -109,7 +118,7 @@ void printPorto(void* p, int idx) {
 
 }
 
-
+//TODO: Bisogna fare la fork() e creare un processo "filler" che fa una costante recv e che non appena riceve il messaggio dal master che deve refillare, lo fa
 
 int main(int argc, char const* argv[]) {
     int disponibility;
