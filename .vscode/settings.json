@@ -1,6 +1,8 @@
 {
   "files.associations": {
     "config1.h": "c",
-    "nave.h": "c"
+    "nave.h": "c",
+    "loadship.h": "c",
+    "time.h": "c"
   }
 }
