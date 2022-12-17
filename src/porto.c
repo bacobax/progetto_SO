@@ -28,7 +28,6 @@ int main(int argc, char const* argv[]) {
     void (*oldHandler)(int);
     int idx;
     Port p;
-    struct timespec tim, tim2;
 
     srand(time(NULL));
     
@@ -53,12 +52,11 @@ int main(int argc, char const* argv[]) {
 
     /* START */
 
-    tim.tv_sec = 1;
-    tim.tv_nsec = 0;
+   
 
     while (1) {
         printf("Porto %d: dormo\n", idx);
-        nanosleep(&tim, NULL);
+        nanosecsleep(NANOS_MULT);
     }
 
 

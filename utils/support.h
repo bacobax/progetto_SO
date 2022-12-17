@@ -1,6 +1,6 @@
 #ifndef SUPPORT_H
 #define SUPPORT_H
-#define MILLIS_MULT 1000000
+#define NANOS_MULT 1000000000
 #include "./vettoriInt.h"
 
 /* distribuisce casualmente un quantità "quantity" in "parts" parti */
@@ -27,5 +27,9 @@ void waitForStart();
 int random_int(int min, int max);
 
 void copyArray(int a[], int* a1, int length);
+
+
+int nanosecsleep(long nanosec);
+
 
 #endif

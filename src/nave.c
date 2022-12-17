@@ -73,5 +73,4 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     exit(EXIT_FAILURE); /* non deve mai raggiungere questa parte di codice*/
 }
 
-//TODO: devo dividere per SO_FILL dal master quando distribuisco le risorse
-//TODO: fare la recv per refillare
+

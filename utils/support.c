@@ -54,7 +54,7 @@ intList* distribute(int quantity, int parts) {
     }
 
     /* per l'ultima quantità viene assegnata la quantità restate non ancora assegnata
-    //questo per essere sicuro che la somma delle quantità sia = quantity */
+    questo per essere sicuro che la somma delle quantità sia = quantity */
     last_q = quantity - sum(l);
     intPush(l, last_q);
     return l;
@@ -144,3 +144,20 @@ void copyArray(int a[], int* a1, int length) {
         a[i] = a1[i];
     }
 }
+
+int nanosecsleep(long nanosec)
+{
+   struct timespec rem;
+   struct timespec req;
+   req.tv_sec = (long)(nanosec / 1000000000);
+
+   /*
+    %1000000000 perchè se per esempio miliseconds fosse = 1000000001 allora il numero di nanosecondi è = 1
+   */
+
+   req.tv_nsec = nanosec % 1000000000;
+   
+
+   return nanosleep(&req , &rem);
+}
+

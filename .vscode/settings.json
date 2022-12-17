@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "types.h": "c",
+    "supplies.h": "c",
+    "config1.h": "c",
+    "complex": "c"
+  }
+}

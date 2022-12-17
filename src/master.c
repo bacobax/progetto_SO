@@ -14,6 +14,12 @@ void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem
     int quantitaAlGiorno;
     int resto;
     int quantitaPrimoGiorno;
+    /*
+    quantitaAlGiorno rappresenta la divisione di SO_FILL per SO_DAYS, solo che può darsi che SO_FILL non sia divisbile per SO_DAYS,
+    la soluzione che ho pensato è che per tutti i giorni diversi dal primo si tiene in considerazione soltanto la parte intera della divisione
+    mentre alle risorse del primo giorno vengono recuperate tutte le risorse perse prendendo solo la parte intera della divisione
+    in altre parole alle risorse del primo giorno vengono aggiunti tutti i resti della divisione intera di "SO_FILL/SO_DAYS" per ogni giorno
+    */
     quantitaAlGiorno = SO_FILL / SO_DAYS;
     resto = SO_FILL % SO_DAYS;
     quantitaPrimoGiorno = quantitaAlGiorno + (resto * SO_DAYS);

@@ -74,8 +74,7 @@ void printShip(void* ship, int id_ship){
 void travel(Ship ship, int portID){
 
     Port p;
-    double dt_x, dt_y, result, nanosleep_arg;
-    struct timespec arg;
+    double dt_x, dt_y, spazio, nanosleep_arg;
 
     int portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler); /* prendo l'id della shm del porto */
 
@@ -86,12 +85,12 @@ void travel(Ship ship, int portID){
     dt_x = p->x - ship->x;
     dt_y = p->y - ship->y;
 
-    result = pow(dt_x, 2) + pow(dt_y, 2);
+    spazio = sqrt(pow(dt_x, 2) + pow(dt_y, 2));
+    /*
+        spazio/SO_SPEED è misurato in giorni (secondi), quindi spazio/SO_SPEED*1000000000 sono il numero di nanosecondi per cui fare la sleep
+    */
+    nanosecsleep((long)((spazio / SO_SPEED) * NANOS_MULT));
 
-    arg.tv_sec = (time_t) (sqrt(result)) / SO_SPEED;
-    arg.tv_nsec = 0;
-
-    nanosleep(&arg, NULL);
 
     /* Dopo aver fatto la nanosleep la nave si trova esattamente sulle coordinate del porto
        quindi aggiorniamo le sue coordinate
