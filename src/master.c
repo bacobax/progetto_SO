@@ -8,8 +8,6 @@
 #include "./master.h"
 
 
-
-
 void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem) {
     struct timespec tim, tim2;
     int i;
@@ -36,7 +34,7 @@ void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem
 
     printf("Master: ciao\n");
 
-    tim.tv_sec = 1;
+    tim.tv_sec  = 1;
     tim.tv_nsec = 0;
     for (i = 0; i < SO_DAYS; i++) {
         printf("Master: dormo\n");

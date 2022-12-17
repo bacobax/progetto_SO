@@ -11,7 +11,7 @@ void genera_navi();
 void genera_porti(int risorse, int n_porti);
 
 
-/* codice che verrà eseguito dal processo master */
+/* codice che verrà eseguito dal processo master (configurazione esclusa)*/
 void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem);
 
 
