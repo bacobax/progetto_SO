@@ -4,6 +4,8 @@
 
 #define PORTO_H
 
+
+//* Queste funzioni sono implementate in /utils/port_utility.c
 #include "../config1.h"
 #include "../utils/vettoriInt.h"
 #include "../utils/supplies.h"
@@ -20,8 +22,9 @@ typedef struct port* Port;
 /* TODO: fare struttura porto senza puntatori */
 Port initPort(int disponibility, int pIndex);
 
+void printPorto(void* p, int idx);
 
 
-void freePort(Port p);
+// void freePort(Port p);
 
 #endif

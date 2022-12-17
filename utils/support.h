@@ -26,5 +26,6 @@ void waitForStart();
 
 int random_int(int min, int max);
 
+void copyArray(int a[], int* a1, int length);
 
 #endif

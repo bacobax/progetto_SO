@@ -136,3 +136,11 @@ void waitForStart() {
     mutex(semid, WAITZERO, NULL);
 }
 
+/*copia il contenuto di un array in un altro array
+  assumendo ovviamente che a.length >= a1.length */
+void copyArray(int a[], int* a1, int length) {
+    int i;
+    for (i = 0; i < length; i++) {
+        a[i] = a1[i];
+    }
+}
