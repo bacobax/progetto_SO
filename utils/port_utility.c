@@ -36,8 +36,11 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
 
     copyArray(p->requests, requests, length);
     fillMagazine(&p->supplies, 0, supplies);
+
+    free(requests);
+    free(supplies);
+
     fillExpirationTime(&p->supplies);
-    //copyArray(p->supplies, supplies, length);
 
     for (i = 0; i < SO_MERCI; i++) {
         int c = rand() % 2;
@@ -53,7 +56,9 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
         }
     }
 
-    //*Azzero tutti tipi delle risorse degli altri giorni
+    /*
+    Azzero tutti tipi delle risorse degli altri giorni
+    */
     for (i = 1; i < SO_DAYS; i++) {
         for (j = 0; j < SO_MERCI; j++) {
             p->supplies.magazine[i][j] = 0;
@@ -117,6 +122,8 @@ void mexParse(const char* mex, int* intDay, int* intQuantity) {
     int i;
     int c;
     int j;
+    char* day;
+    char* quantity;
     for (i = 0; *(mex + i); i++) {
         if(mex[i]=='|'){
             sizeDay = i;
@@ -133,9 +140,9 @@ void mexParse(const char* mex, int* intDay, int* intQuantity) {
     sizeQuantity = c;
     
     printf("Lunghezza stringa quantità: %d\n", sizeQuantity);
-    
-    char day[sizeDay]; //"23"
-    char quantity[sizeQuantity];//"12"
+
+    day = malloc(sizeof(char) * sizeDay);
+    quantity = malloc(sizeof(char) * sizeQuantity);
 
     for(i=0; i<sizeDay; i++){
         day[i] = mex[i];
@@ -148,7 +155,8 @@ void mexParse(const char* mex, int* intDay, int* intQuantity) {
     
     *intDay = atoi(day);
     *intQuantity = atoi(quantity);
-
+    free(day);
+    free(quantity);
 }
 
 
@@ -186,13 +194,13 @@ void refill(long type, char* text) {
 }
 
 void refillerCode(int idx) {
-
+    int refillerID;
     if (signal(SIGUSR1, refillerQuitHandler) == SIG_ERR) {
         perror("Refiller: non riesco a settare il signal handler\n");
         exit(EXIT_FAILURE);
     }
 
-    int refillerID = useQueue(REFILLERQUEUE, errorHandler);
+    refillerID = useQueue(REFILLERQUEUE, errorHandler);
 
     while (1) {
         msgRecv(refillerID, (long)idx, errorHandler, refill, ASYNC);

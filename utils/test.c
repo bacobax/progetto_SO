@@ -196,6 +196,48 @@ void testSemFunc() {
 
 }
 
+void mexParse(const char* mex, int* intDay, int* intQuantity) {
+    int sizeDay;
+    int sizeQuantity;
+    int i;
+    int c;
+    int j;
+    char* day;
+    char* quantity;
+    for (i = 0; *(mex + i); i++) {
+        if(mex[i]=='|'){
+            sizeDay = i;
+            break;
+        }
+    }
+    printf("Lunghezza stringa giorno: %d\n", sizeDay);
+    
+    c = 0;
+    
+    for (i = i + 1; i < strlen(mex); i++) {
+        c++;
+    }
+    sizeQuantity = c;
+    
+    printf("Lunghezza stringa quantità: %d\n", sizeQuantity);
+
+    day = malloc(sizeof(char) * sizeDay);
+    quantity = malloc(sizeof(char) * sizeQuantity);
+
+    for(i=0; i<sizeDay; i++){
+        day[i] = mex[i];
+    }
+    i++;
+    for (j = 0; j < sizeQuantity; j++) {
+        quantity[j] = mex[i];
+        i++;
+    }
+    
+    *intDay = atoi(day);
+    *intQuantity = atoi(quantity);
+    free(day);
+    free(quantity);
+}
 
 void testMexParse() {
     int day;
