@@ -8,6 +8,7 @@
     "unistd.h": "c",
     "sem_utility.h": "c",
     "loadship.h": "c",
-    "time.h": "c"
+    "time.h": "c",
+    "porto.h": "c"
   }
 }

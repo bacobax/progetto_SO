@@ -8,7 +8,7 @@
 #include "./support.h"
 #include "./vettoriInt.h"
 
-Port initPort(int disponibility, int pIndex) {
+Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
 
     int portShmId;
     int length;
@@ -17,14 +17,14 @@ Port initPort(int disponibility, int pIndex) {
     int* supplies;
     int i;
     int j;
-    srand(time(NULL));
+    
     portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
 
     p = ((Port)getShmAddress(portShmId, 0, errorHandler)) + pIndex;
 
 
-    requests = toArray(distribute(disponibility, SO_MERCI), &length);
-    supplies = toArray(distribute(disponibility/SO_DAYS, SO_MERCI), &length);
+    requests = toArray(distribute(requestDisponibility, SO_MERCI), &length);
+    supplies = toArray(distribute(supplyDisponibility, SO_MERCI), &length);
 
     copyArray(p->requests, requests, length);
     fillMagazine(&p->supplies, 0, supplies);

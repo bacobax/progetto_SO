@@ -12,7 +12,7 @@ void fillExpirationTime(Supplies* S);
 void fillMagazine(Supplies* S, int day, int* supplies);
 
 
-int getExpirationTime(Supplies S, int tipoMerce, int giornoDistribuzione); //TODO: da testare
+int getExpirationTime(Supplies S, int tipoMerce, int giornoDistribuzione); /*//TODO: da testare*/
 
 void printSupplies(Supplies S);
 #endif

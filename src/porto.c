@@ -23,12 +23,15 @@
 //TODO: Bisogna fare la fork() e creare un processo "filler" che fa una costante recv e che non appena riceve il messaggio dal master che deve refillare, lo fa
 
 int main(int argc, char const* argv[]) {
-    int disponibility;
+    int supplyDisponibility;
+    int requestDisponibility;
     void (*oldHandler)(int);
     int idx;
     Port p;
     struct timespec tim, tim2;
 
+    srand(time(NULL));
+    
     oldHandler = signal(SIGUSR1, quitSignalHandler);
     if (oldHandler == SIG_ERR) {
         perror("signal");
@@ -36,10 +39,11 @@ int main(int argc, char const* argv[]) {
     }
 
 
-    disponibility = atoi(argv[1]);
-    idx = atoi(argv[2]);
+    supplyDisponibility = atoi(argv[1]);
+    requestDisponibility = atoi(argv[2]);
+    idx = atoi(argv[3]);
 
-    p = initPort(disponibility, idx);
+    p = initPort(supplyDisponibility,requestDisponibility, idx);
 
     reservePrint(printPorto, p, idx);
 
