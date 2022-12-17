@@ -1,12 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
 #include <time.h>
 #include "../src/porto.h"
 #include "./sem_utility.h"
 #include "./shm_utility.h"
+#include "./msg_utility.h"
 #include "./support.h"
 #include "./vettoriInt.h"
+
+void refillerQuitHandler(int sig) {
+    printf("refiller: ricevuto segnale di terminazione\n");
+    exit(EXIT_SUCCESS);
+}
+
 
 Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
 
@@ -98,4 +106,108 @@ void printPorto(void* p, int idx) {
 
     printf("______________________________________________\n");
 
+}
+
+/*
+    si assume che i messaggi siano sempre scritti con questo 'pattern': giorno|quantita
+*/
+void mexParse(const char* mex, int* intDay, int* intQuantity) {
+    int sizeDay;
+    int sizeQuantity;
+    int i;
+    int c;
+    int j;
+    for (i = 0; *(mex + i); i++) {
+        if(mex[i]=='|'){
+            sizeDay = i;
+            break;
+        }
+    }
+    printf("Lunghezza stringa giorno: %d\n", sizeDay);
+    
+    c = 0;
+    
+    for (i = i + 1; i < strlen(mex); i++) {
+        c++;
+    }
+    sizeQuantity = c;
+    
+    printf("Lunghezza stringa quantità: %d\n", sizeQuantity);
+    
+    char day[sizeDay]; //"23"
+    char quantity[sizeQuantity];//"12"
+
+    for(i=0; i<sizeDay; i++){
+        day[i] = mex[i];
+    }
+    i++;
+    for (j = 0; j < sizeQuantity; j++) {
+        quantity[j] = mex[i];
+        i++;
+    }
+    
+    *intDay = atoi(day);
+    *intQuantity = atoi(quantity);
+
+}
+
+
+/*
+    23|32
+*/
+
+void refill(long type, char* text) {
+    int portBufferSem;
+    int day;
+    int quantity;
+    int portShmID;
+    Port p;
+    int* quanties;
+    int length;
+    portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler);
+    p = (Port)getShmAddress(portShmID, 0, errorHandler) + type;
+
+    quanties = toArray(distribute(quantity , SO_MERCI), &length);
+
+    
+
+    mexParse(text, &day, &quantity);
+    portBufferSem = useSem(RESPORTSBUFFERS, errorHandler);
+
+
+    
+    mutexPro(portBufferSem, (int)type, LOCK, errorHandler);
+
+    fillMagazine(&p->supplies, day, quanties);
+    
+    mutexPro(portBufferSem, (int)type, UNLOCK, errorHandler);
+
+    shmDetach(p, errorHandler);
+}
+
+void refillerCode(int idx) {
+
+    if (signal(SIGUSR1, refillerQuitHandler) == SIG_ERR) {
+        perror("Refiller: non riesco a settare il signal handler\n");
+        exit(EXIT_FAILURE);
+    }
+
+    int refillerID = useQueue(REFILLERQUEUE, errorHandler);
+
+    while (1) {
+        msgRecv(refillerID, (long)idx, errorHandler, refill, ASYNC);
+    }
+}
+
+void launchRefiller(int idx) {
+    int pid = fork();
+
+    if (pid == -1) {
+        perror("Error launching the refiller");
+        exit(EXIT_FAILURE);
+    }
+    if (pid == 0) {
+        refillerCode(idx);
+        exit(EXIT_FAILURE);
+    }
 }

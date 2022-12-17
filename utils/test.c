@@ -5,6 +5,7 @@
 #include "./sem_utility.h"
 #include "./loadShip.h"  
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <errno.h>
 #include <sys/shm.h>
@@ -195,6 +196,15 @@ void testSemFunc() {
 
 }
 
+
+void testMexParse() {
+    int day;
+    int quantity;
+
+    mexParse("23|12", &day, &quantity);
+    printf("DAY: %d\nQUANITY: %d\n", day, quantity);
+}
+
 int main(int argc, char const* argv[])
 {
 
@@ -217,6 +227,8 @@ int main(int argc, char const* argv[])
         break;
     case 4:
         testSemFunc();
+    case 5:
+        testMexParse();
     default:
         break;
     }

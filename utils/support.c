@@ -1,5 +1,4 @@
-#include "./vettoriInt.h"
-#include "./sem_utility.h"
+
 #include "../config1.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,7 +8,12 @@
 #include <unistd.h>
 #include <errno.h>
 #include <signal.h>
+
 #include "./shm_utility.h"
+#include "./support.h"
+#include "./sem_utility.h"
+#include "./msg_utility.h"
+#include "./vettoriInt.h"
 
 #include "../src/master.h"
 #include "../src/porto.h"
@@ -82,10 +86,13 @@ void sigusr1sigHandler(int s) {
 void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid, int reservePrintSem)) {
     int semid;
     int reservePrintSem;
+    int reservePortsResourceSem;
     int portsShmid;
     int shipsShmid;
     int semBanchineID;
+    int msgRefillerID;
 
+    
     srand(time(NULL));
 
     if (signal(SIGUSR1, sigusr1sigHandler) == SIG_ERR) {
@@ -113,7 +120,10 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
         perror("Le shm esistono già\n");
         exit(EXIT_FAILURE);
     }
+    /*il codice del master manco la usa*/
+    msgRefillerID = createQueue(REFILLERQUEUE, errorHandler);
 
+    reservePortsResourceSem = createMultipleSem(RESPORTSBUFFERS, SO_PORTI, 1, errorHandler);
 
     codiceMaster(semid, portsShmid, shipsShmid, reservePrintSem);
 
@@ -123,9 +133,12 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
     removeSem(semid, errorHandler);
     removeSem(reservePrintSem, errorHandler);
     removeSem(semBanchineID, errorHandler);
-
+    removeSem(reservePortsResourceSem, errorHandler);
+    
     /*removeShm(shipsShmid, errorHandler);*/
     removeShm(portsShmid, errorHandler);
+
+    removeQueue(msgRefillerID, errorHandler);
     printf("Ciao");
 
 }

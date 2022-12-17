@@ -46,13 +46,16 @@ int main(int argc, char const* argv[]) {
 
     reservePrint(printPorto, p, idx);
 
+    
+    launchRefiller(idx);
 
+    
     waitForStart();
 
 
     /* START */
 
-   
+    
 
     while (1) {
         printf("Porto %d: dormo\n", idx);

@@ -3,6 +3,17 @@
     "types.h": "c",
     "supplies.h": "c",
     "config1.h": "c",
-    "complex": "c"
+    "complex": "c",
+    "locale": "cpp",
+    "cmath": "cpp",
+    "shm_utility.h": "c",
+    "master.h": "c",
+    "msg_utility.h": "c",
+    "vettoriint.h": "c",
+    "porto.h": "c",
+    "stdio.h": "c",
+    "unistd.h": "c",
+    "time.h": "c",
+    "sem_utility.h": "c"
   }
 }

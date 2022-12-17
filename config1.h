@@ -3,7 +3,7 @@
 #define CONFIG_1
 
 
-#define SO_PORTI     2
+#define SO_PORTI     1
 #define SO_NAVI      10
 #define SO_MERCI     3
 #define SO_SIZE      20 /* tonn */
@@ -17,11 +17,14 @@
 #define BANCHINESEMKY 165
 /* chiave del semaforo che permette la reserve print */
 #define RESPRINTKEY  124
+#define RESPORTSBUFFERS 213
 
 /*chiavi delle shm*/
 #define PSHMKEY       342
 #define DUMPSHMKEY    3215
 
+/*chiavi delle queue*/
+#define REFILLERQUEUE 231
 
 
 
