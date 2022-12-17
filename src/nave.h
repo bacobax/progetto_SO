@@ -23,6 +23,8 @@ double generateCord(); /* genere una coordinata double */
 
 Ship initShip();
 
-void printShip();
+void printShip(void* ship, int id_ship);
+
+void travel(Ship ship, int portID); /* PROBLMEA con struct timespec, RICORDARSI DA FIXARE */
 
 #endif

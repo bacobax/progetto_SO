@@ -6,6 +6,8 @@
     "shm_utility.h": "c",
     "stdlib.h": "c",
     "unistd.h": "c",
-    "sem_utility.h": "c"
+    "sem_utility.h": "c",
+    "loadship.h": "c",
+    "time.h": "c"
   }
 }

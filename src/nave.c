@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
             andare a caricare e/o scaricare merci
         */
 
-        travel(portID); /*  TO-DO */ 
+        travel(ship, portID); /*  TO-DO */ 
 
         /*
              la funzione travel() utilizza la nanosleep() per spostare la nave alle coordinate del porto
