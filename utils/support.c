@@ -3,20 +3,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <string.h>
 
 #include <unistd.h>
-#include <errno.h>
-#include <signal.h>
 
-#include "./shm_utility.h"
 #include "./support.h"
 #include "./sem_utility.h"
-#include "./msg_utility.h"
 #include "./vettoriInt.h"
 
-#include "../src/master.h"
-#include "../src/porto.h"
 
 void ErrorHandler(int err) {
     perror("reservePrint->useSem");
@@ -77,71 +70,6 @@ void reservePrint(void (*printer)(void* obj, int idx), void* object, int idx) {
 }
 
 
-void sigusr1sigHandler(int s) {
-    printf("Non faccio nulla\n");
-    return;
-}
-
-
-void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid, int reservePrintSem)) {
-    int semid;
-    int reservePrintSem;
-    int reservePortsResourceSem;
-    int portsShmid;
-    int shipsShmid;
-    int semBanchineID;
-    int msgRefillerID;
-
-    
-    srand(time(NULL));
-
-    if (signal(SIGUSR1, sigusr1sigHandler) == SIG_ERR) {
-        perror("signal\n");
-        exit(EXIT_FAILURE);
-    }
-
-    semid = createSem(MASTKEY, 1, NULL);
-    reservePrintSem = createSem(RESPRINTKEY, 1, NULL);
-
-
-    if (semid == EEXIST) {
-        semid = useSem(MASTKEY, NULL);
-    }
-
-    portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
-    /*shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);*/
-
-
-    /*creazione banchine*/
-    semBanchineID = createMultipleSem(BANCHINESEMKY, SO_PORTI, SO_BANCHINE, errorHandler);
-
-
-    if (portsShmid == EEXIST || shipsShmid == EEXIST) {
-        perror("Le shm esistono già\n");
-        exit(EXIT_FAILURE);
-    }
-    /*il codice del master manco la usa*/
-    msgRefillerID = createQueue(REFILLERQUEUE, errorHandler);
-
-    reservePortsResourceSem = createMultipleSem(RESPORTSBUFFERS, SO_PORTI, 1, errorHandler);
-
-    codiceMaster(semid, portsShmid, shipsShmid, reservePrintSem);
-
-
-    kill(0, SIGUSR1); /* uccide tutti i figli */
-
-    removeSem(semid, errorHandler);
-    removeSem(reservePrintSem, errorHandler);
-    removeSem(semBanchineID, errorHandler);
-    removeSem(reservePortsResourceSem, errorHandler);
-    
-    /*removeShm(shipsShmid, errorHandler);*/
-    removeShm(portsShmid, errorHandler);
-
-    removeQueue(msgRefillerID, errorHandler);
-    printf("Ciao");
-
-}
 
 void waitForStart() {
     int semid;
@@ -174,3 +102,7 @@ int nanosecsleep(long nanosec)
    return nanosleep(&req , &rem);
 }
 
+void checkInConfig() {
+    int waitConfigSemID = useSem(WAITCONFIGKEY, errorHandler);
+    mutex(waitConfigSemID, LOCK, errorHandler);
+}

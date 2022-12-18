@@ -14,6 +14,7 @@
 /*chiavi dei semafori*/
 /* chiave del semaforo del master */
 #define MASTKEY       132
+#define WAITCONFIGKEY       245
 #define BANCHINESEMKY 165
 /* chiave del semaforo che permette la reserve print */
 #define RESPRINTKEY  124

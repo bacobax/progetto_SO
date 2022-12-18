@@ -52,7 +52,8 @@ int main(int argc, char const* argv[]) {
     
     waitForStart();
 
-
+    printf("P: finito configurazione\n");
+    checkInConfig();
     /* START */
 
     

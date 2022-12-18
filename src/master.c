@@ -8,7 +8,7 @@
 #include "./master.h"
 
 
-void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem) {
+void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID) {
     int i;
     int quantitaAlGiorno;
     int resto;
@@ -28,9 +28,9 @@ void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem
     /*  per ora ho usato solo semid */
     genera_porti(quantitaPrimoGiorno, SO_PORTI); /* da tradurre in inglese */
 
-
+    printf("M: Finito generazione\n");
     mutex(semid, LOCK, errorHandler);
-
+    aspettaConfigs(waitconfigSemID);
 
     /*
     genera_navi()

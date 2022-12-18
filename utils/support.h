@@ -13,12 +13,6 @@ void reservePrint(void (*printer)(void* obj, int idx), void* obj, int idx);
 void quitSignalHandler(int sig);
 
 
-/* Separa logicamente ciò che deve fare il master e tutti le creazioni e le cancellazioni delle varie risorse IPC
-//Infatti in questa funzione vengono allocate le risorse IPC, viene eseguito il codice del master
-//e infine vengono deallocate
-//Ovviamente il master ha accesso a tutti gli id perchè gli sono passati come parametro
-//Questa scelta è dovuta per facilitare la lettura del codice e per rimuovere dalla logica del master tutto ciò che usato solo per il setting */
-void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid, int reservePrintSem));
 
 
 /* aspetta che il master metta a zero il semaforo con la key MASTKEY */
@@ -31,5 +25,9 @@ void copyArray(int a[], int* a1, int length);
 
 int nanosecsleep(long nanosec);
 
+/*
+    decrementa il semaforo per cui il master fa la waitzero (vedi spiegazione in master.h=>waitConfigs()), servirà sia alle navi sia ai porti
+*/
+void checkInConfig();
 
 #endif
