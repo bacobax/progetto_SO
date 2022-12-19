@@ -21,10 +21,18 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     int portShmId;
     int length;
     Port p;
+    /*
+        array nel quale verrà spartita casualmente la domanda in SO_MERCI parti
+    */
     int* requests;
+    /*
+        array nel quale verrà spartita casualmente l'offerta in SO_MERCI parti
+    */
     int* supplies;
     int i;
     int j;
+
+
     
     portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
 
@@ -262,8 +270,10 @@ void refill(long type, char* text) {
     mutexPro(portBufferSem, (int)correctType, UNLOCK, errorHandler);
 
     reservePrint(printPorto, p, correctType);
-    
-    shmDetach(p, errorHandler);
+    /*
+        shmDetach(p, errorHandler);
+        !non funziona => invalid argument
+    */
 }
 
 void refillerCode(int idx) {

@@ -30,7 +30,12 @@ int main(int argc, char const* argv[]) {
     int i;
     Port p;
 
-    srand(time(NULL));
+    /*
+        questo perchè per qualche motivo srand(time(NULL)) non generava unici seed tra un processo unico e l'altro
+        fonte della soluzione: https://stackoverflow.com/questions/35641747/why-does-each-child-process-generate-the-same-random-number-when-using-rand
+    */
+    srand((int)time(NULL) % getpid());
+
     
     oldHandler = signal(SIGUSR1, quitSignalHandler);
     if (oldHandler == SIG_ERR) {
@@ -46,7 +51,7 @@ int main(int argc, char const* argv[]) {
     p = initPort(supplyDisponibility,requestDisponibility, idx);
 
 
-    shmDetach(p, errorHandler);
+    // shmDetach(p, errorHandler);
 
     launchRefiller(idx);
 

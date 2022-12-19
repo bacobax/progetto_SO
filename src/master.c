@@ -43,7 +43,7 @@ void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem
     for (i = 0; i < SO_DAYS; i++) {
         printf("Master: dormo\n");
         if (i > 0) {
-            refillPorts(ASYNC, msgRefillerID, quantitaAlGiorno, i);
+            refillPorts(SYNC, msgRefillerID, quantitaAlGiorno, i);
         }
         nanosecsleep(NANOS_MULT);
         /* TODO: funzione dump */

@@ -77,7 +77,7 @@ void genera_porti(int risorse, int n_porti) {
         }
         printf("Generato porto %d\n", i);
     }
-    printf("M: libero la lista"); /*! da fixare, come mai non la stampa??? */
+    printf("M: libero la lista\n"); /*! da fixare, come mai non la stampa??? */
     intFreeList(quantiesSupplies);
 
 }
