@@ -33,6 +33,7 @@ int main(int argc, char const* argv[]) {
     /*
         questo perchè per qualche motivo srand(time(NULL)) non generava unici seed tra un processo unico e l'altro
         fonte della soluzione: https://stackoverflow.com/questions/35641747/why-does-each-child-process-generate-the-same-random-number-when-using-rand
+        da quel che ho capito il bug era dovuto al fatto che le fork dei vari figli sono avvenute nello stesso secondo
     */
     srand((int)time(NULL) % getpid());
 
