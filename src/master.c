@@ -8,7 +8,7 @@
 #include "./master.h"
 
 
-void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID) {
+void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID) {
     int i;
     int quantitaAlGiorno;
     int resto;
@@ -21,9 +21,9 @@ void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem
     */
     quantitaAlGiorno = SO_FILL / SO_DAYS;
     resto = SO_FILL % SO_DAYS;
-    quantitaPrimoGiorno = quantitaAlGiorno + (resto * SO_DAYS);
+    quantitaPrimoGiorno = quantitaAlGiorno + (resto * (SO_DAYS-1));
 
-
+    printf("Quantità primo giorno: %d\n" , quantitaPrimoGiorno);
     
     /*  per ora ho usato solo semid */
     genera_porti(quantitaPrimoGiorno, SO_PORTI); /* da tradurre in inglese */
@@ -42,6 +42,9 @@ void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem
     
     for (i = 0; i < SO_DAYS; i++) {
         printf("Master: dormo\n");
+        if (i > 0) {
+            refillPorts(ASYNC, msgRefillerID, quantitaAlGiorno, i);
+        }
         nanosecsleep(NANOS_MULT);
         /* TODO: funzione dump */
     }

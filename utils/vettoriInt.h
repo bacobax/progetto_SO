@@ -56,4 +56,9 @@ int sum(intList* l);
 /* trasforma in un normale array di interi la lista dinamica */
 int* toArray(intList* l, int* length);
 
+
+/*ritorna una lista di indici tali che per cisacuno di essi l'elemento in posizione di quell'indice rispetta la condizione 'booleana' imposta da filter()*/
+intList* findIdxs(int* vect, int length, int(*filter)(int));
+
+
 #endif

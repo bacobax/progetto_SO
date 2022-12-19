@@ -101,7 +101,7 @@ void aspettaConfigs(int waitConfigSemID) {
 }
 
 
-void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID)) {
+void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID)) {
     int semid;
     int reservePrintSem;
     int reservePortsResourceSem;
@@ -143,7 +143,7 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
 
     reservePortsResourceSem = createMultipleSem(RESPORTSBUFFERS, SO_PORTI, 1, errorHandler);
 
-    codiceMaster(semid, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID);
+    codiceMaster(semid, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID);
 
 
     kill(0, SIGUSR1); /* uccide tutti i figli */
@@ -159,5 +159,54 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
 
     removeQueue(msgRefillerID, errorHandler);
     printf("Ciao");
+
+}
+
+void refillCode(intList* l, int msgRefillerID, int giorno) {
+    int i;
+    long type;
+    char supportText[MEXBSIZE];
+    for (i = 0; i < l->length; i++) {
+        sprintf(supportText, "%d|%d", giorno, *(intElementAt(l, i)));
+        type = i+1;
+        printf("Invio messaggio alla coda %d con il seguente testo: %s con tipo %ld\n", msgRefillerID, supportText, type);
+        //Invio messaggio alla coda 458752 con il seguente testo: 0|20 con tipo 0
+        msgSend(msgRefillerID, supportText, type, NULL);
+    }
+
+}
+
+void refillPorts(int opt, int msgRefillerID, int quantitaAlGiorno, int giorno) {
+    intList* l;
+    
+    int pid;
+    l = distribute(quantitaAlGiorno, SO_PORTI);
+    if (opt == SYNC) {
+        refillCode(l, msgRefillerID, giorno);
+        intFreeList(l);
+    }
+    else if (opt == ASYNC) {
+        pid = fork();
+        if (pid == -1) {
+            perror("Errore nella fork in refillPorts\n");
+            exit(EXIT_FAILURE);
+        }
+        if (pid == 0) {
+            refillCode(l, msgRefillerID, giorno);
+            intFreeList(l);
+            exit(EXIT_SUCCESS);
+        }
+        else {
+            /*
+                Al padre non servono
+            */
+            intFreeList(l);
+        }
+    }
+    else {
+        perror("refillPorts: Inserire SYNC o ASYNC (0 o 1) come opt\n");
+        exit(EXIT_FAILURE);
+
+    }
 
 }

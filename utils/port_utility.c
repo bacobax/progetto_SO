@@ -36,6 +36,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
 
     copyArray(p->requests, requests, length);
     fillMagazine(&p->supplies, 0, supplies);
+    reservePrint(printPorto, p, pIndex);
 
     free(requests);
     free(supplies);
@@ -116,7 +117,7 @@ void printPorto(void* p, int idx) {
 /*
     si assume che i messaggi siano sempre scritti con questo 'pattern': giorno|quantita
 */
-void mexParse(const char* mex, int* intDay, int* intQuantity) {
+void mexParse(char* mex, int* intDay, int* intQuantity) {
     int sizeDay;
     int sizeQuantity;
     int i;
@@ -130,7 +131,6 @@ void mexParse(const char* mex, int* intDay, int* intQuantity) {
             break;
         }
     }
-    printf("Lunghezza stringa giorno: %d\n", sizeDay);
     
     c = 0;
     
@@ -139,7 +139,6 @@ void mexParse(const char* mex, int* intDay, int* intQuantity) {
     }
     sizeQuantity = c;
     
-    printf("Lunghezza stringa quantità: %d\n", sizeQuantity);
 
     day = malloc(sizeof(char) * sizeDay);
     quantity = malloc(sizeof(char) * sizeQuantity);
@@ -164,36 +163,115 @@ void mexParse(const char* mex, int* intDay, int* intQuantity) {
     23|32
 */
 
-void refill(long type, char* text) {
-    int portBufferSem;
-    int day;
-    int quantity;
-    int portShmID;
-    Port p;
-    int* quanties;
-    int length;
-    portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler);
-    p = (Port)getShmAddress(portShmID, 0, errorHandler) + type;
+int filterIdxs(int supply) {
+    return supply == 0;
+}
 
-    quanties = toArray(distribute(quantity , SO_MERCI), &length);
+
+//TODO: risolvere bug che non fa il parse del day del messaggio
+void refill(long type, char* text) {
 
     
+    /*
+        correctType varrà l'indice del  porto al quale il type del messaggio riferito farà riferimento,
+        correcType = type - 1 perchè quando il master invia una certa quantità ad un certo porto, e vuole usare il type per riferirsi all'indice del porto,
+        non può usare type = 0 perchè quel valore è riservato
+    */
+    long correctType;
+    /*
+        id della lista di semafori per cui semaforo[i] serve per bloccare scritture contemporanee nelle offerte del porto i
+        (quindi se per esempio una nave deve prelevare deve assicurarsi che in quell'istante non ci sia un'operazione di riempimento delle risorse)
+    */
+    int portBufferSem;
+
+    /*
+        il refiller è solo un listener, non può sapere in che giorno ha appena ricevuto le risorse da distribuire,
+        quindi il master, ogni giorno invia le risorse al refiller di tutti i porti specificando nel messaggio anche il giorno
+        nel quale le sta inviando
+    */
+    int day;
+
+    /*
+        quantity è la quantità giornaliera che il master invia ogni giorno al refiller,
+        ricavata dal messaggio
+    */
+    int quantity;
+
+    /*
+        ID della shm dei porti
+    */
+    int portShmID;
+    Port p;
+
+    /*
+        array lungo SO_MERCI nel quale la quantità giornaliera sarà casualmente spartita tra le merci
+    */
+    int* quanties;
+    /*
+        length è stato dichiarato più per formalismo, perchè la funzione toArray restituisce anche la lunghezza dell'array
+        anche se sappiamo che length = SO_MERCI
+    */
+    int length;
+    /*
+        lista dinamica che conterrà gli indici delle posizioni dell'array delle offerte nelle quali l'offerta per quel tipo di merce è a 0
+        e ovviamente se è a 0 è perchè c'è già la domanda per quel tipo di merce
+    */
+    intList* listOfIdxs;
+
+    
+    int i;
+
+    correctType = type - 1;
+    
+    portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler);
+    p = (Port)getShmAddress(portShmID, 0, errorHandler) + correctType;
+
+    listOfIdxs = findIdxs(p->supplies.magazine[0], SO_MERCI, filterIdxs);
+    /*
+        printf("Ricevuto il messaggio %s\n", text);
+    */
 
     mexParse(text, &day, &quantity);
+
+    /*
+        printf("giorno: %d, quantità: %d\n", day, quantity);
+    */
+    
+    
+    quanties = toArray(distribute(quantity, SO_MERCI), &length);
+
+    
     portBufferSem = useSem(RESPORTSBUFFERS, errorHandler);
 
 
-    
-    mutexPro(portBufferSem, (int)type, LOCK, errorHandler);
+    mutexPro(portBufferSem, (int)correctType, LOCK, errorHandler);
+    // fillMagazine(&p->supplies, 0, supplies);
 
     fillMagazine(&p->supplies, day, quanties);
-    
-    mutexPro(portBufferSem, (int)type, UNLOCK, errorHandler);
 
+
+    /*
+        Azzero le offerte del tipo di merce per cui c'è già la domanda
+    */
+
+    for (i = 0; i < listOfIdxs->length; i++) {
+        p->supplies.magazine[day][*(intElementAt(listOfIdxs, i))] = 0;
+    }
+
+    
+    mutexPro(portBufferSem, (int)correctType, UNLOCK, errorHandler);
+
+    reservePrint(printPorto, p, correctType);
+    
     shmDetach(p, errorHandler);
 }
 
 void refillerCode(int idx) {
+    /*
+        questo è una sorta di listener, che ascolta sempre in attesa di un messaggio per l'idx passatogli come argomento
+        (indice del porto proprietario del refiller)
+
+    */
     int refillerID;
     if (signal(SIGUSR1, refillerQuitHandler) == SIG_ERR) {
         perror("Refiller: non riesco a settare il signal handler\n");
@@ -203,7 +281,11 @@ void refillerCode(int idx) {
     refillerID = useQueue(REFILLERQUEUE, errorHandler);
 
     while (1) {
-        msgRecv(refillerID, (long)idx, errorHandler, refill, ASYNC);
+        /*
+            idx+1 perchè nella coda di messaggi ci si riferisce all'indice di ogni porto incrementato di 1
+            questo perchè type = 0 è riservato
+        */
+        msgRecv(refillerID, (long)(idx + 1), errorHandler, refill, ASYNC);
     }
 }
 

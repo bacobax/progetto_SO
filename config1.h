@@ -9,7 +9,7 @@
 #define SO_SIZE      20 /* tonn */
 #define SO_MIN_VITA  6 /* tonn */
 #define SO_MAX_VITA  10 /* tonn */
-#define SO_DAYS      5
+#define SO_DAYS      3
 
 /*chiavi dei semafori*/
 /* chiave del semaforo del master */
@@ -25,7 +25,7 @@
 #define DUMPSHMKEY    3215
 
 /*chiavi delle queue*/
-#define REFILLERQUEUE 231
+#define REFILLERQUEUE 412
 
 
 

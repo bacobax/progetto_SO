@@ -27,6 +27,7 @@ int main(int argc, char const* argv[]) {
     int requestDisponibility;
     void (*oldHandler)(int);
     int idx;
+    int i;
     Port p;
 
     srand(time(NULL));
@@ -44,9 +45,9 @@ int main(int argc, char const* argv[]) {
 
     p = initPort(supplyDisponibility,requestDisponibility, idx);
 
-    reservePrint(printPorto, p, idx);
 
-    
+    shmDetach(p, errorHandler);
+
     launchRefiller(idx);
 
     
@@ -57,10 +58,12 @@ int main(int argc, char const* argv[]) {
     /* START */
 
     
-
-    while (1) {
+    i = 0;
+    while (i<SO_DAYS) {
         printf("Porto %d: dormo\n", idx);
+
         nanosecsleep(NANOS_MULT);
+        i++;
     }
 
 

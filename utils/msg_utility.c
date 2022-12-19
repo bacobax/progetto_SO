@@ -58,9 +58,13 @@ mex* msgRecv(int msgqID, long type, void (*errorHandler)(int err), void (*callba
 
         }
         if (pid == 0) {
+            
             callback(m->mtype, m->mtext);
             free(m);
             exit(EXIT_SUCCESS);
+        }
+        else {
+            free(m);
         }
         return NULL;
     }

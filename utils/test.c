@@ -196,6 +196,10 @@ void testSemFunc() {
 
 }
 
+
+/*
+    si assume che i messaggi siano sempre scritti con questo 'pattern': giorno|quantita
+*/
 void mexParse(const char* mex, int* intDay, int* intQuantity) {
     int sizeDay;
     int sizeQuantity;
@@ -210,7 +214,6 @@ void mexParse(const char* mex, int* intDay, int* intQuantity) {
             break;
         }
     }
-    printf("Lunghezza stringa giorno: %d\n", sizeDay);
     
     c = 0;
     
@@ -219,7 +222,6 @@ void mexParse(const char* mex, int* intDay, int* intQuantity) {
     }
     sizeQuantity = c;
     
-    printf("Lunghezza stringa quantità: %d\n", sizeQuantity);
 
     day = malloc(sizeof(char) * sizeDay);
     quantity = malloc(sizeof(char) * sizeQuantity);
@@ -238,12 +240,11 @@ void mexParse(const char* mex, int* intDay, int* intQuantity) {
     free(day);
     free(quantity);
 }
-
 void testMexParse() {
     int day;
     int quantity;
 
-    mexParse("23|12", &day, &quantity);
+    mexParse("2|12", &day, &quantity);
     printf("DAY: %d\nQUANITY: %d\n", day, quantity);
 }
 

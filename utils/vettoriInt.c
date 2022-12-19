@@ -205,6 +205,19 @@ int sum(intList* l) {
     return sumR(l->first);
 }
 
+intList* findIdxs(int* vect, int length, int(*filter)(int)) {
+    intList* l;
+    int i;
+    l = intInit();
+    
+    for (i = 0; i < length; i++) {
+        if (filter(vect[i])) {
+            intPush(l, i);
+        }
+    }
+    return l;
+    
+}
 
 int* toArray(intList* l, int* length) {
     int* retArray;
