@@ -239,7 +239,12 @@ void refill(long type, char* text) {
         printf("Ricevuto il messaggio %s\n", text);
     */
 
-    mexParse(text, &day, &quantity);
+
+    sscanf(text, "%d|%d", &day, &quantity);
+    /*
+        !questa era stra deprecated
+        mexParse(text, &day, &quantity);
+    */
 
     /*
         printf("giorno: %d, quantità: %d\n", day, quantity);
