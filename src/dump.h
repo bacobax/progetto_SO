@@ -25,5 +25,7 @@ void createDumpArea();
     - altri utilità se ci vengono in mente  
 */
 
+void printDump();
+
 
 #endif

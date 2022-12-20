@@ -16,31 +16,40 @@
 #include "./porto.h"
 
 
-void accessPort(int portID) {
-    int portSHMID;
-    Port port;
-    int banchineSem;
-    portSHMID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler);
+void charge(int quantityToCharge){
 
-    port = (Port)getShmAddress(portSHMID, 0, errorHandler) + portID;
+    int quantityToCharge;
+    int availablePorts;
+    int portID;
+    port_offer[SO_PORTI];
 
-    banchineSem = useSem(BANCHINESEMKY, errorHandler);
+    if(quantityToCharge == 0){
 
-    mutexPro(banchineSem, portID, LOCK, errorHandler);
+        discharge();
 
-    /*
-    !SEZIONE CRITICA
-    */
-    
-    mutexPro(banchineSem, portID, UNLOCK, errorHandler);
+    } else {
 
-}
+        callPorts(quantityToCharge); /* funzione che manda un msg a tutti i porti per iniziare una fase di carico PUNTO 2 DELL'ALGORITMO*/
 
-void charge(Ship ship){
+        availablePorts = portResponses(&port_offer); /* PUNTO 3 DELL'ALGORITMO*/
 
-    int quantityToCharge = chooseQuantityToCharge(); /* funzione che ritorna la quantità che la nave vuole caricare */
+        if(availablePorts == 0){
 
-    
+            charge(quantityToCharge - /* UNITA' DECREMENTATE DA DECIDERE*/);
+
+        } else {
+
+            /* Ci sono porti che hanno merce da caricare*/
+
+            portID = choosePort(&port_offer); /* PUNTO 4 DELL'ALGORITMO*/
+
+            replyToPorts(portID); /* PUNTO 5 DELL'ALGORITMO*/
+
+            /*PUNTO 6 DELL'ALGORITMO*/
+            travel(portID); 
+            accessPort(portID);
+        }
+    }
 
 }
 
@@ -50,20 +59,21 @@ void discharge(){
 
 int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identificativo della nave (es: nave 0, nave 1, nave 2, ecc..)*/
 
-    Ship ship;
-    int ship_index, portID;
+    int quantityToCharge;
     int charge = 1;
 
-    ship = initShip(); /* inizializzo struttura dati della nave ed eventuali handler per segnali*/
-    ship_index = atoi(argv[1]);
+    ship = initShip(atoi(argv[1])); /* inizializzo struttura dati della nave ed eventuali handler per segnali*/
 
     waitForStart();
 
     while (1) { 
 
         if(charge == 1){
-            charge(ship);
+
+            quantityToCharge = chooseQuantityToCharge(); /* funzione che ritorna la quantità che la nave vuole caricare PUNTO 1 DELL'ALGORITMO*/
+            charge(quantityToCharge);
             charge = 0;
+
         } else {
             discharge();
             charge = 1;

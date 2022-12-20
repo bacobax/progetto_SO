@@ -7,6 +7,7 @@
 #define SHIPSHMKEY 8080
 
 struct ship {
+    int shipID;
     double x;
     double y;
     int capacity;
@@ -14,17 +15,25 @@ struct ship {
 };
 typedef struct ship* Ship;
 
+Ship ship; /* puntatore come variabile globale alla struttura della nave */
 
-int checkCapacity(Ship ship); /* ritorna il numero di ton presenti sulla nave */
+struct port_offer{
+    int product_type;
+    int expirationTime;
+};
 
-int availableCapacity(Ship ship); /* ritorna il numero di ton disponibili sulla nave */
+
+
+int checkCapacity(); /* ritorna il numero di ton presenti sulla nave */
+
+int availableCapacity(); /* ritorna il numero di ton disponibili sulla nave */
 
 double generateCord(); /* genere una coordinata double */
 
-Ship initShip();
+Ship initShip(int shipID);
 
-void printShip(void* ship, int id_ship);
+void printShip(int id_ship);
 
-void travel(Ship ship, int portID); /* PROBLMEA con struct timespec, RICORDARSI DA FIXARE */
+void travel(int portID); 
 
 #endif
