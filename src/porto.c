@@ -27,9 +27,16 @@ int main(int argc, char const* argv[]) {
     int requestDisponibility;
     void (*oldHandler)(int);
     int idx;
+    int i;
     Port p;
 
-    srand(time(NULL));
+    /*
+        questo perchè per qualche motivo srand(time(NULL)) non generava unici seed tra un processo unico e l'altro
+        fonte della soluzione: https://stackoverflow.com/questions/35641747/why-does-each-child-process-generate-the-same-random-number-when-using-rand
+        da quel che ho capito il bug era dovuto al fatto che le fork dei vari figli sono avvenute nello stesso secondo
+    */
+    srand((int)time(NULL) % getpid());
+
     
     oldHandler = signal(SIGUSR1, quitSignalHandler);
     if (oldHandler == SIG_ERR) {
@@ -44,19 +51,25 @@ int main(int argc, char const* argv[]) {
 
     p = initPort(supplyDisponibility,requestDisponibility, idx);
 
-    reservePrint(printPorto, p, idx);
 
+    // shmDetach(p, errorHandler);
 
+    launchRefiller(idx);
+
+    
     waitForStart();
 
-
+    printf("P: finito configurazione\n");
+    checkInConfig();
     /* START */
 
-   
-
-    while (1) {
+    
+    i = 0;
+    while (i<SO_DAYS) {
         printf("Porto %d: dormo\n", idx);
+
         nanosecsleep(NANOS_MULT);
+        i++;
     }
 
 

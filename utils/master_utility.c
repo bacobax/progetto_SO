@@ -1,11 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <errno.h>
+#include <time.h>
+#include <signal.h>
 #include "../src/porto.h"
 #include "../config1.h"
 #include "./vettoriInt.h"
 #include "./support.h"
-
+#include "./shm_utility.h"
+#include "./sem_utility.h"
+#include "./msg_utility.h"
 void genera_navi() {
     int i;
     int pid;
@@ -72,7 +77,7 @@ void genera_porti(int risorse, int n_porti) {
         }
         printf("Generato porto %d\n", i);
     }
-    printf("M: libero la lista"); /*! da fixare, come mai non la stampa??? */
+    printf("M: libero la lista\n"); /*! da fixare, come mai non la stampa??? */
     intFreeList(quantiesSupplies);
 
 }
@@ -83,4 +88,125 @@ void wait_all(int n_px) {
     for (i = 0; i < n_px; i++) {
         pid = wait(NULL);
     }
+}
+
+
+void sigusr1sigHandler(int s) {
+    printf("Non faccio nulla\n");
+    return;
+}
+
+void aspettaConfigs(int waitConfigSemID) {
+    mutex(waitConfigSemID, WAITZERO, errorHandler);
+}
+
+
+void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID)) {
+    int semid;
+    int reservePrintSem;
+    int reservePortsResourceSem;
+    int portsShmid;
+    int shipsShmid;
+    int semBanchineID;
+    int msgRefillerID;
+    int waitconfigSemID;
+    
+    srand(time(NULL));
+
+    if (signal(SIGUSR1, sigusr1sigHandler) == SIG_ERR) {
+        perror("signal\n");
+        exit(EXIT_FAILURE);
+    }
+
+    semid = createSem(MASTKEY, 1, NULL);
+    reservePrintSem = createSem(RESPRINTKEY, 1, NULL);
+
+    /*
+    !dovrà essere SO_PORTI + SO_NAVI
+    */
+    waitconfigSemID = createSem(WAITCONFIGKEY, SO_PORTI, errorHandler);
+    
+    portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
+    /*shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);*/
+
+
+    /*creazione banchine*/
+    semBanchineID = createMultipleSem(BANCHINESEMKY, SO_PORTI, SO_BANCHINE, errorHandler);
+
+
+    if (portsShmid == EEXIST || shipsShmid == EEXIST) {
+        perror("Le shm esistono già\n");
+        exit(EXIT_FAILURE);
+    }
+    /*il codice del master manco la usa*/
+    msgRefillerID = createQueue(REFILLERQUEUE, errorHandler);
+
+    reservePortsResourceSem = createMultipleSem(RESPORTSBUFFERS, SO_PORTI, 1, errorHandler);
+
+    codiceMaster(semid, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID);
+
+
+    kill(0, SIGUSR1); /* uccide tutti i figli */
+
+    removeSem(semid, errorHandler);
+    removeSem(reservePrintSem, errorHandler);
+    removeSem(semBanchineID, errorHandler);
+    removeSem(reservePortsResourceSem, errorHandler);
+    removeSem(waitconfigSemID, errorHandler);
+    
+    /*removeShm(shipsShmid, errorHandler);*/
+    removeShm(portsShmid, errorHandler);
+
+    removeQueue(msgRefillerID, errorHandler);
+    printf("Ciao");
+
+}
+
+void refillCode(intList* l, int msgRefillerID, int giorno) {
+    int i;
+    long type;
+    char supportText[MEXBSIZE];
+    for (i = 0; i < l->length; i++) {
+        sprintf(supportText, "%d|%d", giorno, *(intElementAt(l, i)));
+        type = i+1;
+        printf("Invio messaggio alla coda %d con il seguente testo: %s con tipo %ld\n", msgRefillerID, supportText, type);
+        //Invio messaggio alla coda 458752 con il seguente testo: 0|20 con tipo 0
+        msgSend(msgRefillerID, supportText, type, NULL);
+    }
+
+}
+
+void refillPorts(int opt, int msgRefillerID, int quantitaAlGiorno, int giorno) {
+    intList* l;
+    
+    int pid;
+    l = distribute(quantitaAlGiorno, SO_PORTI);
+    if (opt == SYNC) {
+        refillCode(l, msgRefillerID, giorno);
+        intFreeList(l);
+    }
+    else if (opt == ASYNC) {
+        pid = fork();
+        if (pid == -1) {
+            perror("Errore nella fork in refillPorts\n");
+            exit(EXIT_FAILURE);
+        }
+        if (pid == 0) {
+            refillCode(l, msgRefillerID, giorno);
+            intFreeList(l);
+            exit(EXIT_SUCCESS);
+        }
+        else {
+            /*
+                Al padre non servono
+            */
+            intFreeList(l);
+        }
+    }
+    else {
+        perror("refillPorts: Inserire SYNC o ASYNC (0 o 1) come opt\n");
+        exit(EXIT_FAILURE);
+
+    }
+
 }

@@ -8,8 +8,7 @@
 #include "./master.h"
 
 
-void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem) {
-    struct timespec tim, tim2;
+void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID) {
     int i;
     int quantitaAlGiorno;
     int resto;
@@ -22,16 +21,16 @@ void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem
     */
     quantitaAlGiorno = SO_FILL / SO_DAYS;
     resto = SO_FILL % SO_DAYS;
-    quantitaPrimoGiorno = quantitaAlGiorno + (resto * SO_DAYS);
+    quantitaPrimoGiorno = quantitaAlGiorno + (resto * (SO_DAYS-1));
 
-
+    printf("Quantità primo giorno: %d\n" , quantitaPrimoGiorno);
     
     /*  per ora ho usato solo semid */
     genera_porti(quantitaPrimoGiorno, SO_PORTI); /* da tradurre in inglese */
 
-
+    printf("M: Finito generazione\n");
     mutex(semid, LOCK, errorHandler);
-
+    aspettaConfigs(waitconfigSemID);
 
     /*
     genera_navi()
@@ -40,13 +39,14 @@ void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem
 
     printf("Master: ciao\n");
 
-    tim.tv_sec  = 1;
-    tim.tv_nsec = 0;
+    
     for (i = 0; i < SO_DAYS; i++) {
         printf("Master: dormo\n");
-
+        if (i > 0) {
+            refillPorts(SYNC, msgRefillerID, quantitaAlGiorno, i);
+        }
+        nanosecsleep(NANOS_MULT);
         /* TODO: funzione dump */
-        nanosleep(&tim, &tim2);
     }
 }
 

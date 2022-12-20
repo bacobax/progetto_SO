@@ -9,24 +9,28 @@
 #define SO_SIZE      20 /* tonn */
 #define SO_MIN_VITA  6 /* tonn */
 #define SO_MAX_VITA  10 /* tonn */
-#define SO_DAYS      5
+#define SO_DAYS      3
 
 /*chiavi dei semafori*/
 /* chiave del semaforo del master */
 #define MASTKEY       132
+#define WAITCONFIGKEY       245
 #define BANCHINESEMKY 165
 /* chiave del semaforo che permette la reserve print */
 #define RESPRINTKEY  124
+#define RESPORTSBUFFERS 213
 
 /*chiavi delle shm*/
 #define PSHMKEY       342
 #define DUMPSHMKEY    3215
 
+/*chiavi delle queue*/
+#define REFILLERQUEUE 412
 
 
 
 
-#define SO_FILL      100
+#define SO_FILL      200
 
 
 

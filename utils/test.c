@@ -5,6 +5,7 @@
 #include "./sem_utility.h"
 #include "./loadShip.h"  
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <errno.h>
 #include <sys/shm.h>
@@ -195,6 +196,58 @@ void testSemFunc() {
 
 }
 
+
+/*
+    si assume che i messaggi siano sempre scritti con questo 'pattern': giorno|quantita
+*/
+void mexParse(const char* mex, int* intDay, int* intQuantity) {
+    int sizeDay;
+    int sizeQuantity;
+    int i;
+    int c;
+    int j;
+    char* day;
+    char* quantity;
+    for (i = 0; *(mex + i); i++) {
+        if(mex[i]=='|'){
+            sizeDay = i;
+            break;
+        }
+    }
+    
+    c = 0;
+    
+    for (i = i + 1; i < strlen(mex); i++) {
+        c++;
+    }
+    sizeQuantity = c;
+    
+
+    day = malloc(sizeof(char) * sizeDay);
+    quantity = malloc(sizeof(char) * sizeQuantity);
+
+    for(i=0; i<sizeDay; i++){
+        day[i] = mex[i];
+    }
+    i++;
+    for (j = 0; j < sizeQuantity; j++) {
+        quantity[j] = mex[i];
+        i++;
+    }
+    
+    *intDay = atoi(day);
+    *intQuantity = atoi(quantity);
+    free(day);
+    free(quantity);
+}
+void testMexParse() {
+    int day;
+    int quantity;
+
+    mexParse("2|12", &day, &quantity);
+    printf("DAY: %d\nQUANITY: %d\n", day, quantity);
+}
+
 int main(int argc, char const* argv[])
 {
 
@@ -217,6 +270,8 @@ int main(int argc, char const* argv[])
         break;
     case 4:
         testSemFunc();
+    case 5:
+        testMexParse();
     default:
         break;
     }
