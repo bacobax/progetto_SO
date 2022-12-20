@@ -268,13 +268,15 @@ int main(int argc, char const* argv[])
 {
 
     int s;
+
+    /*test v. globale*/
     int i;
     arr = (int*)malloc(sizeof(int) * 4);
 
     for ( i = 0; i < 4; i++) {
         arr[i] = 0;
     }
-    
+    /*test v. globale*/
     printf("Scegli il test da fare: ");
     scanf("%d", &s);
     switch (s)
