@@ -248,10 +248,33 @@ void testMexParse() {
     printf("DAY: %d\nQUANITY: %d\n", day, quantity);
 }
 
+int* arr;
+
+void testVariabileGlobale() {
+    int i;
+    
+    for ( i = 0; i < 4; i++) {
+        arr[i] = 2;
+    }
+    for ( i = 0; i < 4; i++) {
+        printf("%d, ", arr[i]);
+    }
+
+    printf("\n");
+
+}
+
 int main(int argc, char const* argv[])
 {
 
     int s;
+    int i;
+    arr = (int*)malloc(sizeof(int) * 4);
+
+    for ( i = 0; i < 4; i++) {
+        arr[i] = 0;
+    }
+    
     printf("Scegli il test da fare: ");
     scanf("%d", &s);
     switch (s)
@@ -272,6 +295,8 @@ int main(int argc, char const* argv[])
         testSemFunc();
     case 5:
         testMexParse();
+    case 6:
+        testVariabileGlobale();
     default:
         break;
     }
