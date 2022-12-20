@@ -149,13 +149,13 @@ int nanosecsleep(long nanosec)
 {
    struct timespec rem;
    struct timespec req;
-   req.tv_sec = (long)(nanosec / 1000000000);
+   req.tv_sec = (long)(nanosec / NANOS_MULT);
 
    /*
     %1000000000 perchè se per esempio miliseconds fosse = 1000000001 allora il numero di nanosecondi è = 1
    */
 
-   req.tv_nsec = nanosec % 1000000000;
+   req.tv_nsec = nanosec % NANOS_MULT;
    
 
    return nanosleep(&req , &rem);
