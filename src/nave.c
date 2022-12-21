@@ -38,7 +38,7 @@ void chargeProducts(int quantityToCharge){
 
         if(availablePorts == 0){
 
-            charge(quantityToCharge - 100); /* 100 è un valore d'esempio, bisogna decidere poi effettivamente quanto decrementare*/
+            chargeProducts(quantityToCharge - 100); /* 100 è un valore d'esempio, bisogna decidere poi effettivamente quanto decrementare*/
 
         } else {
 

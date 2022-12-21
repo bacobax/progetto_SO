@@ -18,6 +18,8 @@
     "signal.h": "c",
     "errno.h": "c",
     "stdlib.h": "c",
-    "dump.h": "c"
+    "dump.h": "c",
+    "algorithm": "c",
+    "new": "c"
   }
 }

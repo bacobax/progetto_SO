@@ -246,6 +246,7 @@ void replyToPorts(int portID)
         {
             sprintf(text, "ok");
             msgSend(queueID, text, ship->shipID, errorHandler);
+            
         }
         else
         {
