@@ -15,7 +15,14 @@ loadShip initLoadShip() {
 void addProduct(loadShip list, Product p) {
     Product newNode;
     newNode = (struct productNode_*)malloc(sizeof(struct productNode_));
-    newNode->id = p->id;
+    
+    if(list->last == NULL){
+        newNode->id_product = 0;
+    } else {
+        newNode->id_product = (list->last->id_product) + 1;
+    }
+    
+    newNode->product_type = p->product_type;
     newNode->weight = p->weight;
     newNode->expirationTime = p->expirationTime;
     newNode->next = NULL;
@@ -33,21 +40,33 @@ void addProduct(loadShip list, Product p) {
 }
 
 
-Product findProduct(loadShip list, int idProduct) {
+Product findProduct(loadShip list, int product_type) { /* cerca un prodotto per product_type e restutuisce il nodo*/
 
-    Product aux;
-    
-    if (idProduct >= list->length || idProduct < 0) return NULL;
+    Product aux = list->first;
 
-    aux = list->first;
+    while(aux != NULL){
 
-    while (aux != NULL) {
-        if (aux->id == idProduct) {
+        if(aux->product_type == product_type){
             return aux;
         }
         aux = aux->next;
     }
+    
     return NULL;
+}
+
+int getProductId(loadShip list, int product_type){ /* cerca un prodotto per product_type e restituire l'id del primo prodotto che trova nella lista*/
+    Product aux = list->first;
+
+    while(aux != NULL){
+
+        if(aux->product_type == product_type){
+            return aux->id_product;
+        }
+        aux = aux->next;
+    }
+    
+    return -1;
 }
 
 
@@ -58,7 +77,7 @@ void removeProduct(loadShip list, int idProduct) {
     aux = list->first;
 
     while (aux != NULL) {
-        if (idProduct == aux->id) {
+        if (idProduct == aux->id_product) {
             innerAux = aux->next->next;
             list->length += -1;
             list->weightLoad = list->weightLoad - aux->weight;
@@ -80,7 +99,7 @@ void printLoadShip(loadShip list) {
     printf("[ ");
     aux = list->first;
     while (aux != NULL) {
-        printf("id:%d weight:%d expiration_time:%d , ", aux->id, aux->weight, aux->expirationTime);
+        printf("id_product:%d product_type:%d weight:%d expiration_time:%d , ", aux->id_product, aux->product_type, aux->weight, aux->expirationTime);
         aux = aux->next;
     }
     printf(" ]\n");

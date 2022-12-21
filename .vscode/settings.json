@@ -18,6 +18,6 @@
     "signal.h": "c",
     "errno.h": "c",
     "stdlib.h": "c",
-    "loadship.h": "c"
+    "dump.h": "c"
   }
 }

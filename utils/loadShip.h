@@ -2,7 +2,8 @@
 #define LOAD_SHIP_H
 
 struct productNode_ { /* nodo utilizzato nella lista */
-    int id;
+    int id_product;   /* identificativo del nodo nella lista */
+    int product_type; /* tipo di merce nella lista */
     int weight;
     int expirationTime;
     struct productNode_* next;
@@ -21,7 +22,9 @@ loadShip initLoadShip();
 
 void addProduct(loadShip list, Product p);
 
-Product findProduct(loadShip list, int idProduct);
+Product findProduct(loadShip list, int product_type);
+
+int getProductId(loadShip list, int product_type);
 
 void removeProduct(loadShip list, int idProduct);
 
