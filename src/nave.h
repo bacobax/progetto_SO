@@ -41,7 +41,11 @@ Ship initShip(int shipID);
 
 void printShip(int id_ship);
 
+void newDayListenerShip(); /* chiamarlo ogni volta nel while(1) o lasciare che il processo in async non termini?*/
+
 int chooseQuantityToCarghe();
+
+void initArray(struct port_offer* offers);
 
 int callPorts(int quantityToCharge);
 
@@ -53,6 +57,6 @@ void replyToPorts(int portID);
 
 void travel(int portID);
 
-void accessPort(int portID);
+void accessPort(int portID, struct port_offer product);
 
 #endif

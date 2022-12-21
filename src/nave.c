@@ -24,6 +24,7 @@ void chargeProducts(int quantityToCharge){
     int availablePorts;
     int portID;
     struct port_offer port_offers[SO_PORTI];
+    initArray(port_offers);
 
     if(quantityToCharge == 0){
 
@@ -49,7 +50,7 @@ void chargeProducts(int quantityToCharge){
 
             /*PUNTO 6 DELL'ALGORITMO*/
             travel(portID); 
-            accessPort(portID);
+            accessPort(portID, port_offers[portID]);
         }
     }
 

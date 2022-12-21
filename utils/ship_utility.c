@@ -37,7 +37,9 @@ void checkProducts(long mtype, char mtext[])
     }
 }
 
-
+void createQueueForNewDay(){
+    createQueue(SHIPQUEUEKEY, errorHandler);
+}
 
 void newDayListenerShip()
 {
@@ -83,6 +85,8 @@ Ship initShip(int shipID)
         exit(EXIT_FAILURE);
     }
 
+    createQueueForNewDay();
+
     /* inizializziamo la nave */
     ship = (struct ship *)malloc(sizeof(struct ship));
     ship->shipID = shipID;
@@ -113,6 +117,16 @@ void printShip(int id_ship)
 
 int chooseQuantityToCharge()
 {
+    return availableCapacity();
+
+}
+
+void initArray(struct port_offer* offers){
+    int i;
+    for(i=0; i<SO_PORTI; i++){
+        offers[i].product_type = -1;
+        offers[i].expirationTime = -1;
+    }
 }
 
 int callPorts(int quantityToCharge)
@@ -188,7 +202,26 @@ int choosePort(struct port_offer *offers)
     /*
         adesso scorro l'array delle offerte ricevute dai porti per scegliere il tipo
         di merce migliore da andare a caricare e ritorno l'indice del porto dove andare
+
+        RICORDO CHE IL CRITERIO DI SCELTA È DARE PRIORITÀ ALLE MERCI CHE HANNO UN TEMPO DI SCADENZA
+        BASSO IN MODO DA POTER ESSERE CONSEGNATE PRIMA CHE SCADANO.
     */
+
+    int i;
+    int bestProduct;
+    int portID;
+    for(i=0; i<SO_PORTI-1; i++){
+
+        if(offers[i].product_type != -1 && offers[i+1].product_type != -1){     /* controllo che il valore sia valido perchè non tutti i porti*/
+            /* potrebbero aver risposto alla chiamata della nave indicando una merce disponibile per il carico*/
+
+            if(offers[i].expirationTime <= offers[i+1].expirationTime){
+                bestProduct = offers[i].product_type;
+                portID = i;
+            }
+        }  
+    }
+    return portID;
 }
 
 void replyToPorts(int portID)
@@ -251,7 +284,7 @@ void travel(int portID)
     ship->y = p->y;
 }
 
-void accessPort(int portID)
+void accessPort(int portID, struct port_offer product)
 {
     int portSHMID;
     Port port;
@@ -266,7 +299,22 @@ void accessPort(int portID)
 
     /*
      !SEZIONE CRITICA
+
+     il porto ha già decrementato la quantità dal suo magazzino prelevata
+     adesso tocca alla nave aggiungere il nodo alla sua lista
     */
+
+    Product p = (Product) malloc(sizeof(struct productNode_));
+
+    p->product_type = product.product_type;
+    p->expirationTime = product.expirationTime;
+    
+    /*
+        completare ancora il campo weight
+    */
+
+    addProduct(ship->load, p);
+
 
     mutexPro(banchineSem, portID, UNLOCK, errorHandler);
 }
