@@ -15,6 +15,10 @@
 #include <math.h>
 #include <time.h>
 
+/*
+FARE SIGNAL CON ALARM CON HANDLER
+*/
+
 void checkProducts(long mtype, char mtext[])
 {
 
@@ -150,7 +154,7 @@ int callPorts(int quantityToCharge)
     for (i = 0; i < SO_PORTI; i++)
     {
         queueID = useQueue(PQUEUEKEY + i, errorHandler);
-        msgSend(queueID, text, ship->shipID, errorHandler);
+        msgSend(queueID, text, ship->shipID, errorHandler); // shipid + 1 perchè il type non può essere 0
     }
 }
 
@@ -173,7 +177,7 @@ int portResponses(struct port_offer *offers)
 
     for (i = 0; i < SO_PORTI; i++)
     {
-        queueID = useQueue(PQUEUEKEY + i, errorHandler);
+        queueID = useQueue(PQUEUEKEY + i, errorHandler);             // UN UNICA CODA CON TYPE ID DELLA BARCA
         response = msgRecv(queueID, i, errorHandler, NULL, SYNC);
 
         if (response->mtype != -1)
@@ -188,8 +192,8 @@ int portResponses(struct port_offer *offers)
                                         mtext c'è scritto in formato stringa la scadenza in giorni del prodotto
             */
 
-            offers[i].product_type = response->mtype;
-            offers[i].expirationTime = atoi(response->mtext);
+            offers[i].product_type = response->mtype;           // da cambiare 
+            offers[i].expirationTime = atoi(response->mtext);   
         }
     }
 
@@ -215,8 +219,8 @@ int choosePort(struct port_offer *offers)
         if(offers[i].product_type != -1 && offers[i+1].product_type != -1){     /* controllo che il valore sia valido perchè non tutti i porti*/
             /* potrebbero aver risposto alla chiamata della nave indicando una merce disponibile per il carico*/
 
-            if(offers[i].expirationTime <= offers[i+1].expirationTime){
-                bestProduct = offers[i].product_type;
+            if(offers[i].expirationTime <= offers[i+1].expirationTime){    /* DA CAMBIARE ALGORITMO -> CONTROLLO DEL MINIMO*/
+                //bestProduct = offers[i].product_type;
                 portID = i;
             }
         }  
@@ -250,7 +254,7 @@ void replyToPorts(int portID)
         else
         {
             sprintf(text, "negative");
-            msgSend(queueID, text, -1, errorHandler);
+            msgSend(queueID, text, ship->shipID, errorHandler);
         }
     }
 }
