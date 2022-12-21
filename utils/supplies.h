@@ -15,4 +15,9 @@ void fillMagazine(Supplies* S, int day, int* supplies);
 int getExpirationTime(Supplies S, int tipoMerce, int giornoDistribuzione); /*//TODO: da testare*/
 
 void printSupplies(Supplies S);
+
+void decrementExpTimes(Supplies* S);
+
+void removeExpiredGoods(Supplies* S);
+
 #endif

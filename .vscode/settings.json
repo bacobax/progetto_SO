@@ -17,6 +17,7 @@
     "sem_utility.h": "c",
     "signal.h": "c",
     "errno.h": "c",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "loadship.h": "c"
   }
 }

@@ -49,3 +49,23 @@ void printSupplies(Supplies s) {
     printf("--------------------------------------\n");
 
 }
+
+
+void decrementExpTimes(Supplies* S) {
+    int i;
+    for (i = 0; i < SO_MERCI * SO_DAYS; i++) {
+        if (S->expirationTimes[i] > 0) {
+            S->expirationTimes[i] --;
+        }
+    }
+}
+
+
+void removeExpiredGoods(Supplies* S) {
+    int i;
+    for (i = 0; i < SO_MERCI * SO_DAYS; i++) {
+        if (S->expirationTimes[i] == 0) {
+            S->magazine[i / SO_DAYS][i % SO_MERCI] = 0;
+        }
+    }
+}

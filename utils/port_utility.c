@@ -228,6 +228,7 @@ void refill(long type, char* text) {
 
     
     int i;
+    srand((int)time(NULL) % getpid());
 
     correctType = type - 1;
     
@@ -316,3 +317,47 @@ void launchRefiller(int idx) {
         exit(EXIT_FAILURE);
     }
 }
+/*
+void updaterCode(int idx) {
+    int portShmid;
+    int rwExpTimesPortSemID;
+    
+    Port p;
+    portShmid = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler);
+
+    p = (Port)getShmAddress(portShmid, 0, errorHandler) + idx;
+
+    rwExpTimesPortSemID = useSem(WREXPTIMESSEM, errorHandler);
+
+
+    mutexPro(rwExpTimesPortSemID, idx, LOCK, errorHandler);
+
+    decrementExpTimes(&p->supplies);
+    
+    removeExpiredGoods(&p->supplies);
+    
+    mutexPro(rwExpTimesPortSemID, idx, UNLOCK, errorHandler);
+
+    
+
+}
+*/
+
+/*
+
+void updateExpTimes(int idx) {
+    int pid;
+
+    pid = fork();
+
+    if (pid == -1) {
+        perror("errore nella fork per il decrementatore");
+        exit(EXIT_FAILURE);
+    }
+    if (pid == 0) {
+        updaterCode(idx);
+        exit(EXIT_SUCCESS);
+    }
+    
+}
+*/

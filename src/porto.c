@@ -16,9 +16,18 @@
 #include "../utils/supplies.h"
 
 
+/*
+void updateExpTimeHandler(int sig) {
+    if (idx == -1) {
+        perror("unexpected error\n");
+        exit(EXIT_FAILURE);
+    }
+        printf("Porto: ricevuto sigalarm\n");
 
+    updateExpTimes(idx);
 
-
+}
+*/
 
 //TODO: Bisogna fare la fork() e creare un processo "filler" che fa una costante recv e che non appena riceve il messaggio dal master che deve refillare, lo fa
 
@@ -26,9 +35,9 @@ int main(int argc, char const* argv[]) {
     int supplyDisponibility;
     int requestDisponibility;
     void (*oldHandler)(int);
-    int idx;
     int i;
     Port p;
+    int idx;
 
     /*
         questo perchè per qualche motivo srand(time(NULL)) non generava unici seed tra un processo unico e l'altro
@@ -43,6 +52,16 @@ int main(int argc, char const* argv[]) {
         perror("signal");
         exit(1);
     }
+    /*
+        oldHandler = signal(SIGALRM, updateExpTimeHandler);
+            if (oldHandler == SIG_ERR) {
+                perror("signal");
+                exit(1);
+            }
+
+    */
+    
+    
 
 
     supplyDisponibility = atoi(argv[1]);

@@ -4,6 +4,7 @@
 #include "./shm_utility.h"
 #include "./sem_utility.h"
 #include "./loadShip.h"  
+#include "../config1.h"  
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -264,6 +265,28 @@ void testVariabileGlobale() {
 
 }
 
+
+
+void testFormuleMatrice() {
+    int m[SO_DAYS][SO_PORTI];
+    int i;
+    int j;
+    int idx;
+    for (i = 0; i < SO_DAYS; i++) {
+        for (j = 0; j < SO_MERCI; j++) {
+            m[i][j] = 2;
+        }
+    }
+    printf("indice del vettore: ");
+    scanf("%d" , &idx);
+    i = idx / SO_DAYS;
+    j = idx % SO_MERCI;
+    
+    printf("vettore in posizione %d = matrice in posizione[%d][%d]\n", idx, i, j);
+
+
+}
+
 int main(int argc, char const* argv[])
 {
 
@@ -299,6 +322,8 @@ int main(int argc, char const* argv[])
         testMexParse();
     case 6:
         testVariabileGlobale();
+    case 7:
+        testFormuleMatrice();
     default:
         break;
     }

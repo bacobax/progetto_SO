@@ -91,7 +91,7 @@ void wait_all(int n_px) {
 }
 
 
-void sigusr1sigHandler(int s) {
+void mastersighandler(int s) {
     printf("Non faccio nulla\n");
     return;
 }
@@ -110,13 +110,20 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
     int semBanchineID;
     int msgRefillerID;
     int waitconfigSemID;
-    
+    int rwExpTimesPortSemID;
+
     srand(time(NULL));
 
-    if (signal(SIGUSR1, sigusr1sigHandler) == SIG_ERR) {
+    if (signal(SIGUSR1, mastersighandler) == SIG_ERR) {
         perror("signal\n");
         exit(EXIT_FAILURE);
     }
+
+    if (signal(SIGALRM, mastersighandler) == SIG_ERR) {
+        perror("signal\n");
+        exit(EXIT_FAILURE);
+    }
+
 
     semid = createSem(MASTKEY, 1, NULL);
     reservePrintSem = createSem(RESPRINTKEY, 1, NULL);
@@ -143,6 +150,8 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
 
     reservePortsResourceSem = createMultipleSem(RESPORTSBUFFERS, SO_PORTI, 1, errorHandler);
 
+    rwExpTimesPortSemID = createMultipleSem(WREXPTIMESSEM, SO_PORTI, 1, errorHandler);
+    
     codiceMaster(semid, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID);
 
 
@@ -153,6 +162,7 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
     removeSem(semBanchineID, errorHandler);
     removeSem(reservePortsResourceSem, errorHandler);
     removeSem(waitconfigSemID, errorHandler);
+    removeSem(rwExpTimesPortSemID, errorHandler);
     
     /*removeShm(shipsShmid, errorHandler);*/
     removeShm(portsShmid, errorHandler);

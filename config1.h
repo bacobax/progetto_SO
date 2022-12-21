@@ -3,13 +3,13 @@
 #define CONFIG_1
 
 
-#define SO_PORTI     2
+#define SO_PORTI     1
 #define SO_NAVI      10
 #define SO_MERCI     3
 #define SO_SIZE      20 /* tonn */
-#define SO_MIN_VITA  6 /* tonn */
-#define SO_MAX_VITA  10 /* tonn */
-#define SO_DAYS      3
+#define SO_MIN_VITA  2 /* tonn */
+#define SO_MAX_VITA  4 /* tonn */
+#define SO_DAYS      5
 
 /*chiavi dei semafori*/
 /* chiave del semaforo del master */
@@ -19,6 +19,7 @@
 /* chiave del semaforo che permette la reserve print */
 #define RESPRINTKEY  124
 #define RESPORTSBUFFERS 213
+#define WREXPTIMESSEM 246
 
 /*chiavi delle shm*/
 #define PSHMKEY       342

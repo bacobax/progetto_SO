@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <signal.h>
 #include <time.h>
 #include "../config1.h"
 #include "../utils/sem_utility.h"
@@ -37,7 +38,6 @@ void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem
     mutex(semid, LOCK, errorHandler);
     */
 
-    printf("Master: ciao\n");
 
     
     for (i = 0; i < SO_DAYS; i++) {
@@ -46,6 +46,9 @@ void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem
             refillPorts(SYNC, msgRefillerID, quantitaAlGiorno, i);
         }
         nanosecsleep(NANOS_MULT);
+        printf("Master: invio sigalarm\n");
+        
+        kill(0, SIGALRM);
         /* TODO: funzione dump */
     }
 }

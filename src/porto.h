@@ -29,4 +29,11 @@ void printPorto(void* p, int idx);
 void launchRefiller(int idx);
 /*void freePort(Port p)*/ 
 
+/*
+    funzione che dato l'indice del porto in questione, crea un figlio che usa quell'indice per ottenere la relativa struttura dai in shm
+    per decrementare la durata di vita dei materiali e per rimuovere quelli scaduti
+*/
+void updateExpTimes(int idx);
+
+
 #endif
