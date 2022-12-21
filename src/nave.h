@@ -5,6 +5,13 @@
 #include "../utils/loadShip.h"
 
 #define SHIPSHMKEY 8080
+/*
+ KEY della coda di messaggi alla quale tutte le navi
+ si interfacceranno per leggere se è arrivato un msg dal master
+ perchè è scattato un nuovo giorno
+*/
+#define SHIPQUEUEKEY 9090  
+#define NEWDAY_TYPE_MSG 1
 
 struct ship {
     int shipID;
@@ -34,6 +41,18 @@ Ship initShip(int shipID);
 
 void printShip(int id_ship);
 
-void travel(int portID); 
+int chooseQuantityToCarghe();
+
+int callPorts(int quantityToCharge);
+
+int portResponses(struct port_offer* offers);
+
+int choosePort(struct port_offer* offers);
+
+void replyToPorts(int portID);
+
+void travel(int portID);
+
+void accessPort(int portID);
 
 #endif

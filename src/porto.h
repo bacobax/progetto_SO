@@ -10,6 +10,9 @@
 #include "../config1.h"
 #include "../utils/vettoriInt.h"
 #include "../utils/supplies.h"
+
+#define PQUEUEKEY 4000
+
 struct port {
 
     int requests[SO_MERCI];

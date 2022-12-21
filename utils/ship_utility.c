@@ -2,36 +2,34 @@
 #include <stdlib.h>
 #include "../src/nave.h"
 #include "../src/porto.h"
-#include "../utils/loadShip.h"
+#include "./loadShip.h"
 #include "../config1.h"
 #include "./support.h"
 #include "../src/dump.h"
-#include "../utils/msg_utility.h"
-#include "../utils/sem_utility.h"
+#include "./msg_utility.h"
+#include "./sem_utility.h"
+#include "./shm_utility.h"
 #include <stdio.h>
 #include <signal.h>
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
 
-void newDayHandlerShip(int sig){
-    printf("Giorno finito, aggiornare la data di scadenza delle merci"); /* il dump lo farà il master*/
+void checkProducts(long mtype, char mtext[])
+{
 
-    checkProducts(ship->load);
-}
+    Product p = ship->load->first;
 
-void checkProducts(loadShip load){
-
-    Product p = load->first;
-
-    while(p != NULL){ /* per ogni prodotto nella lista faccio le seguenti operazioni:*/
+    while (p != NULL)
+    { /* per ogni prodotto nella lista faccio le seguenti operazioni:*/
 
         p->expirationTime = p->expirationTime - 1; /* decremento di 1 giorno la data di scadenza*/
 
-        if(p->expirationTime == 0){ /* la merce è scaduta*/
+        if (p->expirationTime == 0)
+        { /* la merce è scaduta*/
 
-            removeProduct(load, p->id_product); /* rimuovo la merce dal carico della nave*/
-            
+            removeProduct(ship->load, p->id_product); /* rimuovo la merce dal carico della nave*/
+
             /* RICORDARSI DI AGGIORNARE STATO MERCE SCADUTA PER IL DUMP DENTRO LA REMOVE PRODUCT*/
         }
 
@@ -40,21 +38,34 @@ void checkProducts(loadShip load){
 }
 
 
-int checkCapacity() {
-    if (ship->load->weightLoad == 0) return 0;
+
+void newDayListenerShip()
+{
+    int queueID = useQueue(SHIPQUEUEKEY, errorHandler); /* prelevo l'id dellla coda sulla quale*/
+    msgRecv(queueID, NEWDAY_TYPE_MSG, errorHandler, checkProducts, ASYNC);        
+
+}
+
+int checkCapacity()
+{
+    if (ship->load->weightLoad == 0)
+        return 0;
     return ship->load->weightLoad;
 }
 
-int availableCapacity() {
+int availableCapacity()
+{
 
     int currentCapacity;
 
     currentCapacity = checkCapacity(ship);
-    if (currentCapacity < 0) return -1;
+    if (currentCapacity < 0)
+        return -1;
     return (SO_CAPACITY - currentCapacity);
 }
 
-double generateCord() {
+double generateCord()
+{
 
     double range, div;
 
@@ -63,20 +74,17 @@ double generateCord() {
     return (rand() / div);
 }
 
-Ship initShip(int shipID) {
+Ship initShip(int shipID)
+{
 
-    if (signal(SIGUSR1, quitSignalHandler) == SIG_ERR) {              /* imposto l'handler per la signal SIGUSR1 */
-        perror("Error trying to set a signal handler for SIGUSR1");
-        exit(EXIT_FAILURE);
-    }
-
-    if (signal(SIGALRM, newDayHandlerShip) == SIG_ERR) {              /* imposto l'handler per la signal SIGALARM */
+    if (signal(SIGUSR1, quitSignalHandler) == SIG_ERR)
+    { /* imposto l'handler per la signal SIGUSR1 */
         perror("Error trying to set a signal handler for SIGUSR1");
         exit(EXIT_FAILURE);
     }
 
     /* inizializziamo la nave */
-    ship = (struct ship*)malloc(sizeof(struct ship));
+    ship = (struct ship *)malloc(sizeof(struct ship));
     ship->shipID = shipID;
     ship->x = generateCord();
     ship->y = generateCord();
@@ -89,27 +97,26 @@ Ship initShip(int shipID) {
     return ship;
 }
 
-void printShip(int id_ship){
+void printShip(int id_ship)
+{
     printf("[%d]: Nave\n", id_ship);
-    
+
     printf("coords: [x:%f, y:%f]\n", (ship->x), (ship->y));
-    
+
     printf("ton trasporati:%d\n", availableCapacity(ship));
 
     printf("carico trasportato:\n");
     printLoadShip(ship->load);
-    
+
     printf("______________________________________________\n");
-
 }
 
-
-
-int chooseQuantityToCharge(){
-    
+int chooseQuantityToCharge()
+{
 }
 
-int callPorts(int quantityToCharge, int* portIDs){
+int callPorts(int quantityToCharge)
+{
 
     /*
         La nave manda un messaggio di richiesta a tutti i porti perchè è intenzionata di fare un'operazione di caricamento merci.
@@ -119,43 +126,44 @@ int callPorts(int quantityToCharge, int* portIDs){
 
     */
 
-   /* preperazione costruzione messaggio da inviare per i port*/
+    /* preperazione costruzione messaggio da inviare per i port*/
 
     int i = 0;
     int queueID;
-    char text[sizeof(quantityToCharge)];
+    char text[MEXBSIZE];
     sprintf(text, "%d", quantityToCharge);
 
-    for(i=0; i<SO_PORTI; i++){
-        queueID = useQueue(/* CHIAVI DA DEFINIRE CON BASSI*/, errorHandler);
+    for (i = 0; i < SO_PORTI; i++)
+    {
+        queueID = useQueue(PQUEUEKEY + i, errorHandler);
         msgSend(queueID, text, ship->shipID, errorHandler);
     }
-
 }
 
-int portResponses(struct port_offer* offers){
-     
-     /*
-        Questa funzione ritorna un array con gli id dei porti che hanno
-        riposto alla domanda della nave alla richiesta di carico merci
-     */
+int portResponses(struct port_offer *offers)
+{
+
+    /*
+       Questa funzione ritorna un array con gli id dei porti che hanno
+       riposto alla domanda della nave alla richiesta di carico merci
+    */
 
     int i;
     int queueID;
     int ports = 0;
-    mex* response;
-
-
+    mex *response;
 
     /* aspetto che ogni porto mi risponda con una stringa contenente
-       l'id della merce che posso caricare e la sua data di scadenza 
+       l'id della merce che posso caricare e la sua data di scadenza
     */
 
-    for(i=0; i<SO_PORTI; i++){ 
-        queueID = useQueue(/*CHIAVI DA DEFINIRE CON BASSI*/, errorHandler);
+    for (i = 0; i < SO_PORTI; i++)
+    {
+        queueID = useQueue(PQUEUEKEY + i, errorHandler);
         response = msgRecv(queueID, i, errorHandler, NULL, SYNC);
 
-        if(response->mtype != -1){ /* messaggio non negativo dal porto*/
+        if (response->mtype != -1)
+        { /* messaggio non negativo dal porto*/
             ports++;
 
             /*
@@ -167,14 +175,15 @@ int portResponses(struct port_offer* offers){
             */
 
             offers[i].product_type = response->mtype;
-            offers[i].expirationTime = atoi(response->mtext);         
+            offers[i].expirationTime = atoi(response->mtext);
         }
     }
 
     return ports;
 }
 
-int choosePort(struct port_offer* offers){
+int choosePort(struct port_offer *offers)
+{
 
     /*
         adesso scorro l'array delle offerte ricevute dai porti per scegliere il tipo
@@ -182,7 +191,8 @@ int choosePort(struct port_offer* offers){
     */
 }
 
-void replyToPorts(int portID){
+void replyToPorts(int portID)
+{
 
     /*
         la nave risponde a tutti i porti con un messaggio negativo
@@ -192,30 +202,38 @@ void replyToPorts(int portID){
 
     int i;
     int queueID;
+    char text[MEXBSIZE];
 
-    for(i=0; i<SO_PORTI; i++){
+    for (i = 0; i < SO_PORTI; i++)
+    {
 
-        queueID = useQueue(/*CHIAVI DA DEFINIRE CON BASSI*/, errorHandler);
+        queueID = useQueue(PQUEUEKEY + i, errorHandler);
 
-        if(i == portID){
-            msgSend(queueID, "ok", ship->shipID, errorHandler);
-        } else {
-            msgSend(queueID, "negative", -1, errorHandler);
+        if (i == portID)
+        {
+            sprintf(text, "ok");
+            msgSend(queueID, text, ship->shipID, errorHandler);
+        }
+        else
+        {
+            sprintf(text, "negative");
+            msgSend(queueID, text, -1, errorHandler);
         }
     }
 }
 
-void travel(int portID){
+void travel(int portID)
+{
 
     Port p;
     double dt_x, dt_y, spazio, nanosleep_arg;
 
     int portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler); /* prendo l'id della shm del porto */
 
-    p = ((Port) getShmAddress(portShmId, 0, errorHandler)) + portID; /* prelevo la struttura del porto alla portID-esima posizione nella shm */
+    p = ((Port)getShmAddress(portShmId, 0, errorHandler)) + portID; /* prelevo la struttura del porto alla portID-esima posizione nella shm */
 
     /* imposto la formula per il calcolo della distanza*/
-    
+
     dt_x = p->x - ship->x;
     dt_y = p->y - ship->y;
 
@@ -225,7 +243,6 @@ void travel(int portID){
     */
     nanosecsleep((long)((spazio / SO_SPEED) * NANOS_MULT));
 
-
     /* Dopo aver fatto la nanosleep la nave si trova esattamente sulle coordinate del porto
        quindi aggiorniamo le sue coordinate
     */
@@ -234,7 +251,8 @@ void travel(int portID){
     ship->y = p->y;
 }
 
-void accessPort(int portID) {
+void accessPort(int portID)
+{
     int portSHMID;
     Port port;
     int banchineSem;
@@ -249,8 +267,6 @@ void accessPort(int portID) {
     /*
      !SEZIONE CRITICA
     */
-    
+
     mutexPro(banchineSem, portID, UNLOCK, errorHandler);
-
-} 
-
+}

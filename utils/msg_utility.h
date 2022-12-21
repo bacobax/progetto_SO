@@ -4,7 +4,7 @@
 
 #define MSG_UTILITY
 
-#define MEXBSIZE 16
+#define MEXBSIZE 1024
 
 typedef struct _mex {
     long mtype;

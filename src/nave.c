@@ -15,13 +15,15 @@
 #include "./nave.h"
 #include "./porto.h"
 
+void discharge(){
+ return;
+}
 
-void charge(int quantityToCharge){
+void chargeProducts(int quantityToCharge){
 
-    int quantityToCharge;
     int availablePorts;
     int portID;
-    port_offer[SO_PORTI];
+    struct port_offer port_offers[SO_PORTI];
 
     if(quantityToCharge == 0){
 
@@ -31,17 +33,17 @@ void charge(int quantityToCharge){
 
         callPorts(quantityToCharge); /* funzione che manda un msg a tutti i porti per iniziare una fase di carico PUNTO 2 DELL'ALGORITMO*/
 
-        availablePorts = portResponses(&port_offer); /* PUNTO 3 DELL'ALGORITMO*/
+        availablePorts = portResponses(port_offers); /* PUNTO 3 DELL'ALGORITMO*/
 
         if(availablePorts == 0){
 
-            charge(quantityToCharge - /* UNITA' DECREMENTATE DA DECIDERE*/);
+            charge(quantityToCharge - 100); /* 100 è un valore d'esempio, bisogna decidere poi effettivamente quanto decrementare*/
 
         } else {
 
             /* Ci sono porti che hanno merce da caricare*/
 
-            portID = choosePort(&port_offer); /* PUNTO 4 DELL'ALGORITMO*/
+            portID = choosePort(port_offers); /* PUNTO 4 DELL'ALGORITMO*/
 
             replyToPorts(portID); /* PUNTO 5 DELL'ALGORITMO*/
 
@@ -53,9 +55,7 @@ void charge(int quantityToCharge){
 
 }
 
-void discharge(){
 
-}
 
 int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identificativo della nave (es: nave 0, nave 1, nave 2, ecc..)*/
 
@@ -71,7 +71,7 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
         if(charge == 1){
 
             quantityToCharge = chooseQuantityToCharge(); /* funzione che ritorna la quantità che la nave vuole caricare PUNTO 1 DELL'ALGORITMO*/
-            charge(quantityToCharge);
+            chargeProducts(quantityToCharge);
             charge = 0;
 
         } else {
