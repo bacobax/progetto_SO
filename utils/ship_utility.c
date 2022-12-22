@@ -14,6 +14,17 @@
 #include <math.h>
 #include <time.h>
 
+void createShmShips(){
+    int shmid = createShm(SHIPSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler);
+    printf("shm delle navi creata\n");
+}
+
+void removeShmShips(){
+    int shmid = useShm(SHIPSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler);
+    removeShm(shmid, errorHandler);
+    printf("shm delle navi deallocata\n");
+}
+
 
 int checkCapacity(Ship ship)
 {
@@ -60,13 +71,15 @@ Ship initShip(int shipID)
     ship->weight = 0;
     /* l'array products viene automaticamente inizializzato a 0*/
     
+    printf("nave con id:%d inizializzata\n", ship->shipID);
+
     return ship;
 }
 
 void printLoadShip(Product* products){
     int i;
     for(i=0; i<SO_CAPACITY; i++){
-        if(products[i].weight == 0) break;
+        if(products[i].product_type == 0) break;
         printf("\nProduct type:%d, Expiration time: %d, Weight: %d", products[i].product_type, products[i].expirationTime, products[i].weight);
     }
     printf("\n");

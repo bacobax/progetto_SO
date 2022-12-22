@@ -14,14 +14,16 @@
 void genera_navi() {
     int i;
     int pid;
-    for (i = 0; i < SO_NAVI; i++) {
+    for (i = 0; i < 2; i++) {  /* provo a creare due navi*/
         pid = fork();
         if (pid == 0) {
-            /*
-                da passare le coordinate
-            */
 
-            execve("./bin/nave", NULL, NULL);
+            char s[50];
+            sprintf(s, "%d", i);
+
+            char* argv[] = {s, NULL};
+            execve("./bin/nave", argv, NULL);
+
             exit(EXIT_FAILURE);
         }
         else if (pid == -1) {

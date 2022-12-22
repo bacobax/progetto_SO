@@ -33,8 +33,9 @@ void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem
     mutex(semid, LOCK, errorHandler);
     aspettaConfigs(waitconfigSemID);
 
+    
+    genera_navi();
     /*
-    genera_navi()
     mutex(semid, LOCK, errorHandler);
     */
 

@@ -30,6 +30,11 @@ struct ship {
 typedef struct ship* Ship;
 
 
+void createShmShips();
+void removeShmShips();
+
+/* TUTTE LE FUNZIONI SOTTOSTANTI SONO RELATIVE ALLA NAVE*/
+
 int checkCapacity(); /* ritorna il numero di ton presenti sulla nave */
 
 int availableCapacity(); /* ritorna il numero di ton disponibili sulla nave */

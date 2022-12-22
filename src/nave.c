@@ -15,18 +15,50 @@
 #include "./nave.h"
 #include "./porto.h"
 
+void test0(int shipID){
+    Ship ship;
+    Product p1, p2;
+    int res;
+
+    createShmShips();
+    
+    ship = initShip(shipID); /* inizializzo struttura dati della nave ed eventuali handler per segnali*/
+    
+    printShip(ship);
+
+    p1.product_type = 1;
+    p1.expirationTime = 1;
+    p1.weight = 1;
+
+    p2.product_type = 2;
+    p2.expirationTime = 2;
+    p2.weight = 2;
+
+    res = addProduct(ship, p1);
+    res = addProduct(ship, p2);
+
+    printShip(ship);
+
+    res = findProduct(ship->products, p2);
+    res = removeProduct(ship, res);
+
+    printShip(ship);
+
+    removeShmShips();
+
+    exit(EXIT_SUCCESS);
+}
 
 int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identificativo della nave (es: nave 0, nave 1, nave 2, ecc..)*/
 
-    Ship ship;
-    ship = initShip(atoi(argv[1])); /* inizializzo struttura dati della nave ed eventuali handler per segnali*/
+    test0(argv[1]);    
 
-    waitForStart();
+    /*waitForStart();
 
     while (1) { 
 
-        /* operazioni da definire*/
-    }
+         operazioni da definire
+    } */
 
     exit(EXIT_FAILURE); /* non deve mai raggiungere questa parte di codice*/
 }
