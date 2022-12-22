@@ -7,6 +7,7 @@
 #include "../utils/support.h"
 
 #include "./master.h"
+#include "./dump.h"
 
 
 void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID) {
@@ -28,6 +29,9 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     
     /*  per ora ho usato solo startSimulationSemID */
     genera_porti(quantitaPrimoGiorno, SO_PORTI); /* da tradurre in inglese */
+
+
+    
     genera_navi();
 
     printf("M: Finito generazione\n");
@@ -42,6 +46,8 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
 
     
     for (i = 0; i < SO_DAYS; i++) {
+        printDump(i);
+        
         printf("Master: dormo\n");
         if (i > 0) {
             refillPorts(SYNC, msgRefillerID, quantitaAlGiorno, i);
@@ -50,7 +56,6 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
         printf("Master: aggiorno merce scaduta sigalarm\n");
 
         expirePortsGoods(i);
-        
         /*
             kill(0, SIGALRM);
         */

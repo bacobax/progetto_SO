@@ -4,6 +4,7 @@
 #include <string.h>
 #include <time.h>
 #include "../src/porto.h"
+#include "../src/dump.h"
 #include "./sem_utility.h"
 #include "./shm_utility.h"
 #include "./msg_utility.h"
@@ -41,6 +42,15 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     requests = toArray(distribute(requestDisponibility, SO_MERCI), &length);
     supplies = toArray(distribute(supplyDisponibility, SO_MERCI), &length);
 
+    /*
+        informo l'area di dump delle risorse nel porto,
+        lo faccio prima di azzerare delle offerte, perchè almeno vengono contate anche le merci che il porto non
+        può offrire perchè c'è già la domanda
+
+    */
+    for (i = 0; i < SO_MERCI; i++) {
+        addNotExpiredGood(supplies[i], i, PORT);
+    }
     copyArray(p->requests, requests, length);
     fillMagazine(&p->supplies, 0, supplies);
 

@@ -1,6 +1,7 @@
 #ifndef DUMP_H
 #define DUMP_H
 #define DUMPSEMKEY 392
+#define LOGFILESEMKEY 393
 
 typedef struct goodTypeInfo {                       /* struttura che contiene le 4 informazioni relative per ogni tipo di merce nella simulazione*/
   int goods_on_ship;             /* numero di beni TOTALI di quel tipo presenti sulla nave PRONTI PER ESSERE CONSEGNATI */
@@ -31,7 +32,7 @@ void addNotExpiredGood(int quantity, int type, ctx where);
     - altri utilità se ci vengono in mente  
 */
 
-void printDump();
+void printDump(int day);
 void removeDumpArea();
 
 #endif
