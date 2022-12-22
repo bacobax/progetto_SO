@@ -1,16 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "./loadShip.h"
+#include "../src/nave.h"
 
-loadShip initLoadShip() {
-    loadShip ret;
-    ret = (struct load*)malloc(sizeof(struct load));
-    ret->first = NULL;
-    ret->last = NULL;
-    ret->weightLoad = 0;
-    ret->length = 0;
-    return ret;
-}
 
 void addProduct(loadShip list, Product p) {
     Product newNode;

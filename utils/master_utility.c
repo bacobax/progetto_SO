@@ -5,6 +5,7 @@
 #include <time.h>
 #include <signal.h>
 #include "../src/porto.h"
+#include "../src/nave.h"
 #include "../config1.h"
 #include "./vettoriInt.h"
 #include "./support.h"
@@ -13,17 +14,20 @@
 #include "./msg_utility.h"
 #include "./supplies.h"
 
+
 void genera_navi() {
     int i;
     int pid;
-    for (i = 0; i < SO_NAVI; i++) {
+    for (i = 0; i < 2; i++) {  /* provo a creare due navi*/
         pid = fork();
         if (pid == 0) {
-            /*
-                da passare le coordinate
-            */
 
-            execve("./bin/nave", NULL, NULL);
+            char s[50];
+            sprintf(s, "%d", i);
+
+            char* argv[] = {s, NULL};
+            execve("./bin/nave", argv, NULL);
+
             exit(EXIT_FAILURE);
         }
         else if (pid == -1) {
@@ -136,7 +140,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     waitconfigSemID = createSem(WAITCONFIGKEY, SO_PORTI, errorHandler);
     
     portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
-    /*shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);*/
+    shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);
 
 
     /*creazione banchine*/
@@ -153,8 +157,11 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     reservePortsResourceSem = createMultipleSem(RESPORTSBUFFERS, SO_PORTI, 1, errorHandler);
 
     rwExpTimesPortSemID = createMultipleSem(WREXPTIMESSEM, SO_PORTI, 1, errorHandler);
+
+
     
     codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID);
+
 
 
     kill(0, SIGUSR1); /* uccide tutti i figli */
@@ -166,7 +173,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeSem(waitconfigSemID, errorHandler);
     removeSem(rwExpTimesPortSemID, errorHandler);
     
-    /*removeShm(shipsShmid, errorHandler);*/
+    removeShm(shipsShmid, errorHandler);
     removeShm(portsShmid, errorHandler);
 
     removeQueue(msgRefillerID, errorHandler);

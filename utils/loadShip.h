@@ -1,24 +1,10 @@
 #ifndef LOAD_SHIP_H
 #define LOAD_SHIP_H
 
-struct productNode_ { /* nodo utilizzato nella lista */
-    int id_product;   /* identificativo del nodo nella lista */
-    int product_type; /* tipo di merce nella lista */
-    int weight;
-    int expirationTime;
-    struct productNode_* next;
-};
-typedef struct productNode_* Product;
+/*
 
-struct load { /* lista implementata per il carico della nave */
-    Product first;
-    Product last;
-    int length;
-    int weightLoad;
-};
-typedef struct load* loadShip;
-
-loadShip initLoadShip();
+TO-DO da implementare tutte queste funzioni
+nella versione in cui la nave è in shm
 
 void addProduct(loadShip list, Product p);
 
@@ -28,8 +14,8 @@ int getProductId(loadShip list, int product_type);
 
 void removeProduct(loadShip list, int idProduct);
 
-void printLoadShip(loadShip list);
+*/
 
-void freeLoadShip(loadShip list);
+/*void freeLoadShip(loadShip list);  da implementare la free ship a termine programma*/
 
 #endif

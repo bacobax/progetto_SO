@@ -21,6 +21,7 @@
     "dump.h": "c",
     "algorithm": "c",
     "new": "c",
+    "nave.h": "c",
     "support.h": "c"
   }
 }

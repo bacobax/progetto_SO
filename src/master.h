@@ -26,7 +26,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     esegue una waitzero di un semaforo inizializzato a SO_PORTI + SO_NAVI e aspetta quando tutti quanti i processi hanno eseguito una LOCK so quel semaforo,
     un porto o una nave esegue una lock su quel semaforo quando hanno finito la configurazione
     il motivo di questa funzione è che non è detto che nel momento in cui il master darà il via ai processi per essere eseguiti, questi ultimi
-    avranno finito di configurarsi, magari alcunis avranno finito e partiranno subito il loro ciclo di vita, gli altri no
+    avranno finito di configurarsi, magari alcuni avranno finito e partiranno subito il loro ciclo di vita, gli altri no
 */
 void aspettaConfigs(int waitConfigSemID);
 

@@ -28,14 +28,15 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     
     /*  per ora ho usato solo startSimulationSemID */
     genera_porti(quantitaPrimoGiorno, SO_PORTI); /* da tradurre in inglese */
+    genera_navi();
 
     printf("M: Finito generazione\n");
     mutex(startSimulationSemID, LOCK, errorHandler);
     aspettaConfigs(waitconfigSemID);
 
+    
     /*
-    genera_navi()
-    mutex(startSimulationSemID, LOCK, errorHandler);
+    mutex(semid, LOCK, errorHandler);
     */
 
 
