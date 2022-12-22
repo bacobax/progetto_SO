@@ -51,10 +51,10 @@ void printSupplies(Supplies s) {
 }
 
 
-void decrementExpTimes(Supplies* S) {
+void decrementExpTimes(Supplies* S, int day) {
     int i;
     for (i = 0; i < SO_MERCI * SO_DAYS; i++) {
-        if (S->expirationTimes[i] > 0) {
+        if (i < SO_MERCI * day && S->expirationTimes[i] > 0 ) {
             S->expirationTimes[i] --;
         }
     }
@@ -65,7 +65,7 @@ void removeExpiredGoods(Supplies* S) {
     int i;
     for (i = 0; i < SO_MERCI * SO_DAYS; i++) {
         if (S->expirationTimes[i] == 0) {
-            S->magazine[i / SO_DAYS][i % SO_MERCI] = 0;
+            S->magazine[i / SO_MERCI][i % SO_MERCI] = 0;
         }
     }
 }

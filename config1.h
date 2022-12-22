@@ -9,7 +9,7 @@
 #define SO_SIZE      20 /* tonn */
 #define SO_MIN_VITA  2 /* tonn */
 #define SO_MAX_VITA  4 /* tonn */
-#define SO_DAYS      5
+#define SO_DAYS      8
 
 /*chiavi dei semafori*/
 /* chiave del semaforo del master */

@@ -11,6 +11,8 @@
 #include "./shm_utility.h"
 #include "./sem_utility.h"
 #include "./msg_utility.h"
+#include "./supplies.h"
+
 void genera_navi() {
     int i;
     int pid;
@@ -101,8 +103,8 @@ void aspettaConfigs(int waitConfigSemID) {
 }
 
 
-void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID)) {
-    int semid;
+void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID)) {
+    int startSimulationSemID;
     int reservePrintSem;
     int reservePortsResourceSem;
     int portsShmid;
@@ -125,7 +127,7 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
     }
 
 
-    semid = createSem(MASTKEY, 1, NULL);
+    startSimulationSemID = createSem(MASTKEY, 1, NULL);
     reservePrintSem = createSem(RESPRINTKEY, 1, NULL);
 
     /*
@@ -152,12 +154,12 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
 
     rwExpTimesPortSemID = createMultipleSem(WREXPTIMESSEM, SO_PORTI, 1, errorHandler);
     
-    codiceMaster(semid, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID);
+    codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID);
 
 
     kill(0, SIGUSR1); /* uccide tutti i figli */
 
-    removeSem(semid, errorHandler);
+    removeSem(startSimulationSemID, errorHandler);
     removeSem(reservePrintSem, errorHandler);
     removeSem(semBanchineID, errorHandler);
     removeSem(reservePortsResourceSem, errorHandler);
@@ -219,5 +221,46 @@ void refillPorts(int opt, int msgRefillerID, int quantitaAlGiorno, int giorno) {
 
     }
 
+}
+
+void childExpireCode(Port p, int day, int idx) {
+    int rwExpTimesPortSemID;
+    int portBufferSemID;
+    rwExpTimesPortSemID = useSem(WREXPTIMESSEM, errorHandler);
+    portBufferSemID = useSem(RESPORTSBUFFERS, errorHandler);
+    
+    mutexPro(rwExpTimesPortSemID, idx, LOCK, errorHandler);
+    
+    decrementExpTimes(&p->supplies, day);
+    
+    mutexPro(rwExpTimesPortSemID, idx, UNLOCK, errorHandler);
+
+    mutexPro(portBufferSemID, idx, LOCK, errorHandler);
+    
+    removeExpiredGoods(&p->supplies);
+    mutexPro(portBufferSemID, idx, UNLOCK, errorHandler);
+    
+
+}
+
+void expirePortsGoods(int day) {
+    int portShmID;
+    int i;
+    Port ports;
+    int pid;
+    portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler);
+    ports = getShmAddress(portShmID, 0, errorHandler);
+    for (i = 0; i < SO_PORTI; i++) {
+        pid = fork();
+        if (pid == -1) {
+            perror("fork nel gestore delle risorse");
+            exit(EXIT_FAILURE);
+        }
+        if (pid == 0) {
+            childExpireCode(ports + i, day, i);
+            exit(EXIT_SUCCESS);
+        }
+    }
+    shmDetach(ports,NULL);
 }
 

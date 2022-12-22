@@ -1,5 +1,5 @@
-master : src/master.c utils/vettoriInt.c utils/vettoriString.c utils/sem_utility.c utils/msg_utility.c utils/errorHandler.c utils/shm_utility.c utils/support.c src/dump.c utils/master_utility.c
-	gcc -std=c89 -pedantic src/master.c utils/vettoriInt.c utils/vettoriString.c utils/sem_utility.c utils/msg_utility.c utils/errorHandler.c utils/shm_utility.c utils/support.c src/dump.c utils/master_utility.c -o bin/master
+master : src/master.c utils/vettoriInt.c utils/vettoriString.c utils/sem_utility.c utils/msg_utility.c utils/errorHandler.c utils/shm_utility.c utils/support.c src/dump.c utils/master_utility.c utils/supplies.c
+	gcc -std=c89 -pedantic src/master.c utils/vettoriInt.c utils/vettoriString.c utils/sem_utility.c utils/msg_utility.c utils/errorHandler.c utils/shm_utility.c utils/support.c src/dump.c utils/master_utility.c utils/supplies.c -o bin/master
 test : utils/test.c utils/vettoriInt.c utils/vettoriString.c utils/sem_utility.c utils/msg_utility.c utils/shm_utility.c utils/errorHandler.c utils/support.c utils/loadShip.c src/dump.c
 	gcc -std=c89 -pedantic utils/test.c utils/vettoriInt.c utils/vettoriString.c utils/sem_utility.c utils/msg_utility.c utils/errorHandler.c utils/shm_utility.c utils/support.c utils/loadShip.c src/dump.c -o utils/bin/test
 porto : src/porto.c utils/vettoriInt.c utils/vettoriString.c utils/sem_utility.c utils/msg_utility.c utils/errorHandler.c utils/shm_utility.c utils/support.c src/dump.c utils/supplies.c utils/port_utility.c

@@ -9,7 +9,7 @@
 #include "./master.h"
 
 
-void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID) {
+void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID) {
     int i;
     int quantitaAlGiorno;
     int resto;
@@ -26,16 +26,16 @@ void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem
 
     printf("Quantità primo giorno: %d\n" , quantitaPrimoGiorno);
     
-    /*  per ora ho usato solo semid */
+    /*  per ora ho usato solo startSimulationSemID */
     genera_porti(quantitaPrimoGiorno, SO_PORTI); /* da tradurre in inglese */
 
     printf("M: Finito generazione\n");
-    mutex(semid, LOCK, errorHandler);
+    mutex(startSimulationSemID, LOCK, errorHandler);
     aspettaConfigs(waitconfigSemID);
 
     /*
     genera_navi()
-    mutex(semid, LOCK, errorHandler);
+    mutex(startSimulationSemID, LOCK, errorHandler);
     */
 
 
@@ -46,9 +46,13 @@ void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem
             refillPorts(SYNC, msgRefillerID, quantitaAlGiorno, i);
         }
         nanosecsleep(NANOS_MULT);
-        printf("Master: invio sigalarm\n");
+        printf("Master: aggiorno merce scaduta sigalarm\n");
+
+        expirePortsGoods(i);
         
-        kill(0, SIGALRM);
+        /*
+            kill(0, SIGALRM);
+        */
         /* TODO: funzione dump */
     }
 }

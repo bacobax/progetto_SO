@@ -44,12 +44,12 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
 
     copyArray(p->requests, requests, length);
     fillMagazine(&p->supplies, 0, supplies);
-    reservePrint(printPorto, p, pIndex);
 
     free(requests);
     free(supplies);
 
     fillExpirationTime(&p->supplies);
+    reservePrint(printPorto, p, pIndex);
 
     for (i = 0; i < SO_MERCI; i++) {
         int c = rand() % 2;
@@ -70,7 +70,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     */
     for (i = 1; i < SO_DAYS; i++) {
         for (j = 0; j < SO_MERCI; j++) {
-            p->supplies.magazine[i][j] = 0;
+            p->supplies.magazine[i][j] = -1;
         }
     }
 
@@ -171,8 +171,8 @@ void mexParse(char* mex, int* intDay, int* intQuantity) {
     23|32
 */
 
-int filterIdxs(int supply) {
-    return supply == 0;
+int filterIdxs(int request) {
+    return request != 0;
 }
 
 
@@ -185,7 +185,7 @@ void refill(long type, char* text) {
         correcType = type - 1 perchè quando il master invia una certa quantità ad un certo porto, e vuole usare il type per riferirsi all'indice del porto,
         non può usare type = 0 perchè quel valore è riservato
     */
-    long correctType;
+    int correctType;
     /*
         id della lista di semafori per cui semaforo[i] serve per bloccare scritture contemporanee nelle offerte del porto i
         (quindi se per esempio una nave deve prelevare deve assicurarsi che in quell'istante non ci sia un'operazione di riempimento delle risorse)
@@ -230,18 +230,24 @@ void refill(long type, char* text) {
     int i;
     srand((int)time(NULL) % getpid());
 
-    correctType = type - 1;
+    correctType = (int)(type - 1);
     
     portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler);
     p = (Port)getShmAddress(portShmID, 0, errorHandler) + correctType;
 
-    listOfIdxs = findIdxs(p->supplies.magazine[0], SO_MERCI, filterIdxs);
+
+    /*
+        contiene gli indici delle domande = 0
+    */
+    listOfIdxs = findIdxs(p->requests, SO_MERCI, filterIdxs);
     /*
         printf("Ricevuto il messaggio %s\n", text);
     */
 
 
     sscanf(text, "%d|%d", &day, &quantity);
+
+    printf("P %d , devo distribuire %d merci del giorno %d\n", correctType, quantity, day);
     /*
         !questa era stra deprecated
         mexParse(text, &day, &quantity);
@@ -286,7 +292,6 @@ void refillerCode(int idx) {
     /*
         questo è una sorta di listener, che ascolta sempre in attesa di un messaggio per l'idx passatogli come argomento
         (indice del porto proprietario del refiller)
-
     */
     int refillerID;
     if (signal(SIGUSR1, refillerQuitHandler) == SIG_ERR) {

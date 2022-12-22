@@ -16,7 +16,7 @@ int getExpirationTime(Supplies S, int tipoMerce, int giornoDistribuzione); /*//T
 
 void printSupplies(Supplies S);
 
-void decrementExpTimes(Supplies* S);
+void decrementExpTimes(Supplies* S, int day);
 
 void removeExpiredGoods(Supplies* S);
 
