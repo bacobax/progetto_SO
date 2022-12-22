@@ -51,7 +51,7 @@ void test0(int shipID){
 
 int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identificativo della nave (es: nave 0, nave 1, nave 2, ecc..)*/
 
-    test0(argv[1]);    
+    /*test0(argv[1]);*/    
 
     /*waitForStart();
 

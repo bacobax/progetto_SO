@@ -23,6 +23,7 @@
 
 /*chiavi delle shm*/
 #define PSHMKEY       342
+#define SSHMKEY    8080
 #define DUMPSHMKEY    3215
 
 /*chiavi delle queue*/

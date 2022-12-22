@@ -15,12 +15,12 @@
 #include <time.h>
 
 void createShmShips(){
-    int shmid = createShm(SHIPSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler);
+    int shmid = createShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler);
     printf("shm delle navi creata\n");
 }
 
 void removeShmShips(){
-    int shmid = useShm(SHIPSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler);
+    int shmid = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler);
     removeShm(shmid, errorHandler);
     printf("shm delle navi deallocata\n");
 }
@@ -62,7 +62,7 @@ Ship initShip(int shipID)
 
     /* inizializziamo la nave in shm*/
 
-    shipShmId = useShm(SHIPSHMKEY, (SO_NAVI * sizeof(struct ship)), errorHandler);
+    shipShmId = useShm(SSHMKEY, (SO_NAVI * sizeof(struct ship)), errorHandler);
 
     ship = ((struct ship*) getShmAddress(shipShmId, 0, errorHandler)) + shipID;
     ship->shipID = shipID;

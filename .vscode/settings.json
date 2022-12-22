@@ -20,6 +20,7 @@
     "stdlib.h": "c",
     "dump.h": "c",
     "algorithm": "c",
-    "new": "c"
+    "new": "c",
+    "nave.h": "c"
   }
 }

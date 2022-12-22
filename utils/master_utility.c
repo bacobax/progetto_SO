@@ -5,12 +5,14 @@
 #include <time.h>
 #include <signal.h>
 #include "../src/porto.h"
+#include "../src/nave.h"
 #include "../config1.h"
 #include "./vettoriInt.h"
 #include "./support.h"
 #include "./shm_utility.h"
 #include "./sem_utility.h"
 #include "./msg_utility.h"
+
 void genera_navi() {
     int i;
     int pid;
@@ -136,7 +138,7 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
     waitconfigSemID = createSem(WAITCONFIGKEY, SO_PORTI, errorHandler);
     
     portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
-    /*shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);*/
+    shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);
 
 
     /*creazione banchine*/
@@ -153,8 +155,11 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
     reservePortsResourceSem = createMultipleSem(RESPORTSBUFFERS, SO_PORTI, 1, errorHandler);
 
     rwExpTimesPortSemID = createMultipleSem(WREXPTIMESSEM, SO_PORTI, 1, errorHandler);
+
+
     
     codiceMaster(semid, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID);
+
 
 
     kill(0, SIGUSR1); /* uccide tutti i figli */
@@ -166,7 +171,7 @@ void mySettedMain(void (*codiceMaster)(int semid, int portsShmid, int shipsShmid
     removeSem(waitconfigSemID, errorHandler);
     removeSem(rwExpTimesPortSemID, errorHandler);
     
-    /*removeShm(shipsShmid, errorHandler);*/
+    removeShm(shipsShmid, errorHandler);
     removeShm(portsShmid, errorHandler);
 
     removeQueue(msgRefillerID, errorHandler);

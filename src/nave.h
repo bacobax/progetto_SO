@@ -4,15 +4,6 @@
 
 #include "../config1.h"
 
-#define SHIPSHMKEY 8080
-/*
- KEY della coda di messaggi alla quale tutte le navi
- si interfacceranno per leggere se è arrivato un msg dal master
- perchè è scattato un nuovo giorno
-*/
-#define SHIPQUEUEKEY 9090  
-#define NEWDAY_TYPE_MSG 1
-
 struct product {
     int product_type;    
     int expirationTime;
