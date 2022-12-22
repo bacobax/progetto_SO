@@ -6,6 +6,7 @@
 #include <signal.h>
 #include "../src/porto.h"
 #include "../src/nave.h"
+#include "../src/dump.h"
 #include "../config1.h"
 #include "./vettoriInt.h"
 #include "./support.h"
@@ -118,6 +119,8 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int waitconfigSemID;
     int rwExpTimesPortSemID;
 
+    createDumpArea();
+    
     srand(time(NULL));
 
     if (signal(SIGUSR1, mastersighandler) == SIG_ERR) {
@@ -177,7 +180,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeShm(portsShmid, errorHandler);
 
     removeQueue(msgRefillerID, errorHandler);
-    printf("Ciao");
+    removeDumpArea();
 
 }
 
