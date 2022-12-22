@@ -2,7 +2,7 @@
 #define NAVE_H
 
 
-#include "../utils/loadShip.h"
+#include "../config1.h"
 
 #define SHIPSHMKEY 8080
 /*
@@ -13,22 +13,21 @@
 #define SHIPQUEUEKEY 9090  
 #define NEWDAY_TYPE_MSG 1
 
+struct product {
+    int product_type;    
+    int expirationTime;
+    int weight;
+};
+typedef struct product Product;
+
 struct ship {
     int shipID;
     double x;
     double y;
-    int capacity;
-    loadShip load;
+    int weight;
+    Product products[SO_CAPACITY];
 };
 typedef struct ship* Ship;
-
-Ship ship; /* puntatore come variabile globale alla struttura della nave */
-
-struct port_offer{
-    int product_type;
-    int expirationTime;
-};
-
 
 
 int checkCapacity(); /* ritorna il numero di ton presenti sulla nave */
@@ -39,24 +38,28 @@ double generateCord(); /* genere una coordinata double */
 
 Ship initShip(int shipID);
 
-void printShip(int id_ship);
+void printLoadShip(Product* products);
 
-void newDayListenerShip(); /* chiamarlo ogni volta nel while(1) o lasciare che il processo in async non termini?*/
+void printShip(Ship ship);
 
-int chooseQuantityToCarghe();
+int addProduct(Ship ship, Product p);
 
-void initArray(struct port_offer* offers);
+int findProduct(Product* products, Product p); /* ritorna l'indice del vettore in cui il prodotto è contenuto */
 
-int callPorts(int quantityToCharge);
+int removeProduct(Ship ship, int product_index);
 
-int portResponses(struct port_offer* offers);
 
-int choosePort(struct port_offer* offers);
+/*
 
-void replyToPorts(int portID);
+CODICE DELLA VECCHIA VERSIONE, DA TENERE PERCHÈ POTREBBE
+SERVIRCI
+
+void newDayListenerShip();  chiamarlo ogni volta nel while(1) o lasciare che il processo in async non termini?
 
 void travel(int portID);
 
 void accessPort(int portID, struct port_offer product);
+
+*/
 
 #endif

@@ -33,7 +33,6 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     int j;
 
 
-    
     portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
 
     p = ((Port)getShmAddress(portShmId, 0, errorHandler)) + pIndex;

@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include "../src/nave.h"
 #include "../src/porto.h"
-#include "./loadShip.h"
 #include "../config1.h"
 #include "./support.h"
 #include "../src/dump.h"
@@ -15,64 +14,23 @@
 #include <math.h>
 #include <time.h>
 
-/*
-FARE SIGNAL CON ALARM CON HANDLER
-*/
 
-void checkProducts(long mtype, char mtext[])
+int checkCapacity(Ship ship)
 {
-
-    Product p = ship->load->first;
-
-    while (p != NULL)
-    { /* per ogni prodotto nella lista faccio le seguenti operazioni:*/
-
-        p->expirationTime = p->expirationTime - 1; /* decremento di 1 giorno la data di scadenza*/
-
-        if (p->expirationTime == 0)
-        { /* la merce è scaduta*/
-
-            removeProduct(ship->load, p->id_product); /* rimuovo la merce dal carico della nave*/
-
-            /* RICORDARSI DI AGGIORNARE STATO MERCE SCADUTA PER IL DUMP DENTRO LA REMOVE PRODUCT*/
-        }
-
-        p = p->next;
-    }
-}
-
-void createQueueForNewDay(){
-    createQueue(SHIPQUEUEKEY, errorHandler);
-}
-
-void newDayListenerShip()
-{
-    int queueID = useQueue(SHIPQUEUEKEY, errorHandler); /* prelevo l'id dellla coda sulla quale*/
-    msgRecv(queueID, NEWDAY_TYPE_MSG, errorHandler, checkProducts, ASYNC);        
-
-}
-
-int checkCapacity()
-{
-    if (ship->load->weightLoad == 0)
+    if (ship->weight == 0)
         return 0;
-    return ship->load->weightLoad;
+    return ship->weight;
 }
 
-int availableCapacity()
+int availableCapacity(Ship ship)
 {
-
     int currentCapacity;
-
     currentCapacity = checkCapacity(ship);
-    if (currentCapacity < 0)
-        return -1;
     return (SO_CAPACITY - currentCapacity);
 }
 
 double generateCord()
 {
-
     double range, div;
 
     range = (SO_LATO); /* max-min */
@@ -82,6 +40,8 @@ double generateCord()
 
 Ship initShip(int shipID)
 {
+    Ship ship;
+    int shipShmId;
 
     if (signal(SIGUSR1, quitSignalHandler) == SIG_ERR)
     { /* imposto l'handler per la signal SIGUSR1 */
@@ -89,237 +49,97 @@ Ship initShip(int shipID)
         exit(EXIT_FAILURE);
     }
 
-    createQueueForNewDay();
+    /* inizializziamo la nave in shm*/
 
-    /* inizializziamo la nave */
-    ship = (struct ship *)malloc(sizeof(struct ship));
+    shipShmId = useShm(SHIPSHMKEY, (SO_NAVI * sizeof(struct ship)), errorHandler);
+
+    ship = ((struct ship*) getShmAddress(shipShmId, 0, errorHandler)) + shipID;
     ship->shipID = shipID;
     ship->x = generateCord();
     ship->y = generateCord();
-    ship->capacity = 0;
-    /*
-        load sarà NULL all'inizio
-    */
-    ship->load = initLoadShip();
-
+    ship->weight = 0;
+    /* l'array products viene automaticamente inizializzato a 0*/
+    
     return ship;
 }
 
-void printShip(int id_ship)
+void printLoadShip(Product* products){
+    int i;
+    for(i=0; i<SO_CAPACITY; i++){
+        if(products[i].weight == 0) break;
+        printf("\nProduct type:%d, Expiration time: %d, Weight: %d", products[i].product_type, products[i].expirationTime, products[i].weight);
+    }
+    printf("\n");
+}
+
+void printShip(Ship ship)
 {
-    printf("[%d]: Nave\n", id_ship);
+    printf("[%d]: Nave\n", ship->shipID);
 
     printf("coords: [x:%f, y:%f]\n", (ship->x), (ship->y));
 
-    printf("ton trasporati:%d\n", availableCapacity(ship));
+    printf("ton trasporati:%d\n", ship->weight);
 
     printf("carico trasportato:\n");
-    printLoadShip(ship->load);
+    printLoadShip(ship->products);
 
     printf("______________________________________________\n");
 }
 
-int chooseQuantityToCharge()
-{
-    return availableCapacity();
-
-}
-
-void initArray(struct port_offer* offers){
+int addProduct(Ship ship, Product p){
     int i;
-    for(i=0; i<SO_PORTI; i++){
-        offers[i].product_type = -1;
-        offers[i].expirationTime = -1;
-    }
-}
+    Product* products = ship->products;
 
-int callPorts(int quantityToCharge)
-{
-
-    /*
-        La nave manda un messaggio di richiesta a tutti i porti perchè è intenzionata di fare un'operazione di caricamento merci.
-
-        Ogni porto controlla il proprio magazzino e risponde con il tipo di merce e la data di scadenza che si può caricare da esso, ovviamente
-        in base alla quantità disponibile per la nave. Se il porto non trova niente manda un messaggio negativo (DA STABILIRE LA SINSTASSI DEL MESSAGGIO).
-
-    */
-
-    /* preperazione costruzione messaggio da inviare per i port*/
-
-    int i = 0;
-    int queueID;
-    char text[MEXBSIZE];
-    sprintf(text, "%d", quantityToCharge);
-
-    for (i = 0; i < SO_PORTI; i++)
-    {
-        queueID = useQueue(PQUEUEKEY + i, errorHandler);
-        msgSend(queueID, text, ship->shipID, errorHandler); // shipid + 1 perchè il type non può essere 0
-    }
-}
-
-int portResponses(struct port_offer *offers)
-{
-
-    /*
-       Questa funzione ritorna un array con gli id dei porti che hanno
-       riposto alla domanda della nave alla richiesta di carico merci
-    */
-
-    int i;
-    int queueID;
-    int ports = 0;
-    mex *response;
-
-    /* aspetto che ogni porto mi risponda con una stringa contenente
-       l'id della merce che posso caricare e la sua data di scadenza
-    */
-
-    for (i = 0; i < SO_PORTI; i++)
-    {
-        queueID = useQueue(PQUEUEKEY + i, errorHandler);             // UN UNICA CODA CON TYPE ID DELLA BARCA
-        response = msgRecv(queueID, i, errorHandler, NULL, SYNC);
-
-        if (response->mtype != -1)
-        { /* messaggio non negativo dal porto*/
-            ports++;
-
-            /*
-                spacchetto il messaggio e lo inserisco nell'array offers
-
-                FORMAT DEL MESSAGGIO:
-                                        il type identifica il product_type
-                                        mtext c'è scritto in formato stringa la scadenza in giorni del prodotto
-            */
-
-            offers[i].product_type = response->mtype;           // da cambiare 
-            offers[i].expirationTime = atoi(response->mtext);   
-        }
-    }
-
-    return ports;
-}
-
-int choosePort(struct port_offer *offers)
-{
-
-    /*
-        adesso scorro l'array delle offerte ricevute dai porti per scegliere il tipo
-        di merce migliore da andare a caricare e ritorno l'indice del porto dove andare
-
-        RICORDO CHE IL CRITERIO DI SCELTA È DARE PRIORITÀ ALLE MERCI CHE HANNO UN TEMPO DI SCADENZA
-        BASSO IN MODO DA POTER ESSERE CONSEGNATE PRIMA CHE SCADANO.
-    */
-
-    int i;
-    int bestProduct;
-    int portID;
-    for(i=0; i<SO_PORTI-1; i++){
-
-        if(offers[i].product_type != -1 && offers[i+1].product_type != -1){     /* controllo che il valore sia valido perchè non tutti i porti*/
-            /* potrebbero aver risposto alla chiamata della nave indicando una merce disponibile per il carico*/
-
-            if(offers[i].expirationTime <= offers[i+1].expirationTime){    /* DA CAMBIARE ALGORITMO -> CONTROLLO DEL MINIMO*/
-                //bestProduct = offers[i].product_type;
-                portID = i;
+    if(availableCapacity(ship) >= p.weight){
+        for(i=0; i<SO_CAPACITY; i++){
+        /*
+            inserisco il prodotto nella prima posizione dell'array che trovo in cui
+            product_type = 0
+            per non inizializzare tutto l'array a -1 suggerisco di far partire tutti i prodotti
+            con un product_type da 1.
+        */
+        if(products[i].product_type == 0){
+                products[i].product_type = p.product_type;
+                products[i].expirationTime = p.expirationTime;
+                products[i].weight = p.weight;
+                ship->weight = ship->weight + p.weight;
+                break;
             }
-        }  
+        }
+    } else {
+        return -1;
     }
-    return portID;
 }
 
-void replyToPorts(int portID)
-{
+int compareProducts(Product p1, Product p2){
+    if((p1.product_type == p2.product_type) && (p1.expirationTime == p2.expirationTime) && (p1.weight == p2.weight))
+        return 0;
+    else
+        return -1;    
+}
 
-    /*
-        la nave risponde a tutti i porti con un messaggio negativo
-        tranne per il porto con portID che è quello scelto per andare
-        a caricare la merce
-    */
-
+int findProduct(Product* products, Product p){
     int i;
-    int queueID;
-    char text[MEXBSIZE];
-
-    for (i = 0; i < SO_PORTI; i++)
-    {
-
-        queueID = useQueue(PQUEUEKEY + i, errorHandler);
-
-        if (i == portID)
-        {
-            sprintf(text, "ok");
-            msgSend(queueID, text, ship->shipID, errorHandler);
-            
-        }
-        else
-        {
-            sprintf(text, "negative");
-            msgSend(queueID, text, ship->shipID, errorHandler);
+    for(i=0; i<SO_CAPACITY; i++){
+        if(compareProducts(products[i], p) == 0){
+            return i;
         }
     }
+    return -1;
 }
 
-void travel(int portID)
-{
-
-    Port p;
-    double dt_x, dt_y, spazio, nanosleep_arg;
-
-    int portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler); /* prendo l'id della shm del porto */
-
-    p = ((Port)getShmAddress(portShmId, 0, errorHandler)) + portID; /* prelevo la struttura del porto alla portID-esima posizione nella shm */
-
-    /* imposto la formula per il calcolo della distanza*/
-
-    dt_x = p->x - ship->x;
-    dt_y = p->y - ship->y;
-
-    spazio = sqrt(pow(dt_x, 2) + pow(dt_y, 2));
-    /*
-        spazio/SO_SPEED è misurato in giorni (secondi), quindi spazio/SO_SPEED*1000000000 sono il numero di nanosecondi per cui fare la sleep
-    */
-    nanosecsleep((long)((spazio / SO_SPEED) * NANOS_MULT));
-
-    /* Dopo aver fatto la nanosleep la nave si trova esattamente sulle coordinate del porto
-       quindi aggiorniamo le sue coordinate
-    */
-
-    ship->x = p->x;
-    ship->y = p->y;
-}
-
-void accessPort(int portID, struct port_offer product)
-{
-    int portSHMID;
-    Port port;
-    int banchineSem;
-    portSHMID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler);
-
-    port = (Port)getShmAddress(portSHMID, 0, errorHandler) + portID;
-
-    banchineSem = useSem(BANCHINESEMKY, errorHandler);
-
-    mutexPro(banchineSem, portID, LOCK, errorHandler);
-
-    /*
-     !SEZIONE CRITICA
-
-     il porto ha già decrementato la quantità dal suo magazzino prelevata
-     adesso tocca alla nave aggiungere il nodo alla sua lista
-    */
-
-    Product p = (Product) malloc(sizeof(struct productNode_));
-
-    p->product_type = product.product_type;
-    p->expirationTime = product.expirationTime;
+int removeProduct(Ship ship, int product_index){
+    int i;
+    Product* products = ship->products;
     
-    /*
-        completare ancora il campo weight
-    */
+    if(product_index<0 || product_index>SO_CAPACITY) return -1;
 
-    addProduct(ship->load, p);
-
-
-    mutexPro(banchineSem, portID, UNLOCK, errorHandler);
+    for(i=0; i<SO_CAPACITY; i++){
+        if(i == product_index){
+            products[i].product_type = 0;
+            products[i].expirationTime = 0;
+            products[i].weight = 0;
+            return 0;
+        }
+    }
 }
