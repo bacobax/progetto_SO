@@ -87,6 +87,11 @@ void printLoadShip(Product* products){
 
 void printShip(Ship ship)
 {
+
+    int resSemID = useSem(RESPRINTSHIPKEY, errorHandler);
+
+    mutex(resSemID, LOCK, errorHandler);
+
     printf("[%d]: Nave\n", ship->shipID);
 
     printf("coords: [x:%f, y:%f]\n", (ship->x), (ship->y));
@@ -97,6 +102,8 @@ void printShip(Ship ship)
     printLoadShip(ship->products);
 
     printf("______________________________________________\n");
+
+    mutex(resSemID, UNLOCK, errorHandler);
 }
 
 int addProduct(Ship ship, Product p){
@@ -156,3 +163,20 @@ int removeProduct(Ship ship, int product_index){
         }
     }
 }
+
+void updateExpTimeShip(Ship ship){
+    int i;
+    Product* products = ship->products;
+
+    for(i=0; i<SO_CAPACITY; i++){
+        if(products[i].product_type == 0) break;
+
+        products[i].expirationTime += -1;
+
+        if(products[i].expirationTime == 0){
+            addExpiredGood(products[i].weight, products[i].product_type, SHIP);
+            removeProduct(ship, i);
+        }
+    }
+}
+

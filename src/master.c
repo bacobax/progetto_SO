@@ -56,6 +56,7 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
         printf("Master: aggiorno merce scaduta sigalarm\n");
 
         expirePortsGoods(i);
+        expireShipGoods();
         /*
             kill(0, SIGALRM);
         */

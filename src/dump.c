@@ -26,7 +26,7 @@ void addExpiredGood(int quantity, int type, ctx where) {
     shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler);
     semid = useSem(DUMPSEMKEY, errorHandler);
     
-    info = getShmAddress(shmid, 0, errorHandler) + type;
+    info = ((GoodTypeInfo*)getShmAddress(shmid, 0, errorHandler)) + type;
 
     mutexPro(semid, type, LOCK, errorHandler);
 
@@ -56,7 +56,7 @@ void addNotExpiredGood(int quantity, int type, ctx where) {
     shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler);
     semid = useSem(DUMPSEMKEY, errorHandler);
     
-    info = getShmAddress(shmid, 0, errorHandler) + type;
+    info = ((GoodTypeInfo*) getShmAddress(shmid, 0, errorHandler)) + type;
 
     mutexPro(semid, type, LOCK, errorHandler);
 
