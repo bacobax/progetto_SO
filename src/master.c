@@ -28,13 +28,13 @@ void codiceMaster(int semid, int portsShmid, int shipsShmid, int reservePrintSem
     
     /*  per ora ho usato solo semid */
     genera_porti(quantitaPrimoGiorno, SO_PORTI); /* da tradurre in inglese */
+    genera_navi();
 
     printf("M: Finito generazione\n");
     mutex(semid, LOCK, errorHandler);
     aspettaConfigs(waitconfigSemID);
 
     
-    genera_navi();
     /*
     mutex(semid, LOCK, errorHandler);
     */
