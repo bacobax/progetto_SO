@@ -77,7 +77,7 @@ void printLoadShip(Product* products){
 void printShip(Ship ship)
 {
 
-    int resSemID = useSem(RESPRINTSHIPKEY, errorHandler);
+    int resSemID = useSem(RESPRINTKEY, errorHandler);
 
     mutex(resSemID, LOCK, errorHandler);
 
