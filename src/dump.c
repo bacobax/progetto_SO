@@ -27,6 +27,9 @@ void createDumpArea(){
         arrGoods[i].expired_goods_on_ship= 0;
     }
 
+    /*per cancellare il contenuto del logfile*/
+    fclose(fopen("./logfile.log", "w"));
+
 }
 
 void addExpiredGood(int quantity, int type, ctx where) {
