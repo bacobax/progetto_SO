@@ -1,6 +1,7 @@
 #include "supplies.h"
 #include "../config1.h"
-#include "../utils/support.h"
+#include "./support.h"
+#include "../src/dump.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -16,6 +17,7 @@ void fillMagazine(Supplies* S, int day, int* supplies) {
 
     for (i = 0; i < SO_MERCI; i++) {
         S->magazine[day][i] = supplies[i];
+        addNotExpiredGood(supplies[i], i, PORT);
     }
 
 }
@@ -64,7 +66,8 @@ void decrementExpTimes(Supplies* S, int day) {
 void removeExpiredGoods(Supplies* S) {
     int i;
     for (i = 0; i < SO_MERCI * SO_DAYS; i++) {
-        if (S->expirationTimes[i] == 0) {
+        if (S->expirationTimes[i] == 0 && S->magazine[i / SO_MERCI][i % SO_MERCI] > 0) {
+            addExpiredGood(S->magazine[i / SO_MERCI][i % SO_MERCI], i % SO_MERCI, PORT);
             S->magazine[i / SO_MERCI][i % SO_MERCI] = 0;
         }
     }
