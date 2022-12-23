@@ -108,7 +108,7 @@ void aspettaConfigs(int waitConfigSemID) {
 }
 
 
-void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID)) {
+void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID)) {
     int startSimulationSemID;
     int reservePrintSem;
     // int reservePrintSemShip;
@@ -120,7 +120,8 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int msgRefillerID;
     int waitconfigSemID;
     int rwExpTimesPortSemID;
-
+    int waitEndDaySemID;
+    
     createDumpArea();
     
     srand(time(NULL));
@@ -166,9 +167,13 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     semShipsID = createMultipleSem(SEMSHIPKEY, SO_NAVI, 1, errorHandler);
 
-
+    /*
+        semaforo che serve al master per eseguirne la waitzero alla fine di ogni giorno
+        in sintesi il master aspetta a passare il giorno finchè tutti i porti non hanno ricevuto la loro merce
+    */
+    waitEndDaySemID = createSem(WAITENDDAYKEY, SO_PORTI, errorHandler);
     
-    codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID);
+    codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID);
 
 
 
@@ -181,6 +186,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeSem(waitconfigSemID, errorHandler);
     removeSem(rwExpTimesPortSemID, errorHandler);
     removeSem(semShipsID, errorHandler);
+    removeSem(waitEndDaySemID, errorHandler);
     
     removeShm(shipsShmid, errorHandler);
     removeShm(portsShmid, errorHandler);

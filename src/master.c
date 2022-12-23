@@ -10,7 +10,7 @@
 #include "./dump.h"
 
 
-void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID) {
+void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID) {
     int i;
     int quantitaAlGiorno;
     int resto;
@@ -23,7 +23,7 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     */
     quantitaAlGiorno = SO_FILL / SO_DAYS;
     resto = SO_FILL % SO_DAYS;
-    quantitaPrimoGiorno = quantitaAlGiorno + (resto * (SO_DAYS-1));
+    quantitaPrimoGiorno = quantitaAlGiorno + (resto);
 
     printf("Quantità primo giorno: %d\n" , quantitaPrimoGiorno);
     
@@ -50,19 +50,21 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
         
         printf("Master: dormo\n");
         if (i > 0) {
+            expirePortsGoods(i);
             refillPorts(SYNC, msgRefillerID, quantitaAlGiorno, i);
+            mutex(waitEndDaySemID, WAITZERO, errorHandler);
+            
         }
-        nanosecsleep(NANOS_MULT);
-        printf("Master: aggiorno merce scaduta sigalarm\n");
 
-        expirePortsGoods(i);
+        nanosecsleep(NANOS_MULT);
+
         // expireShipGoods();
         /*
             kill(0, SIGALRM);
         */
         /* TODO: funzione dump */
     }
-
+    printDump(i);
     nanosecsleep(NANOS_MULT);
 }
 

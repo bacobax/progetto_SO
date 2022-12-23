@@ -38,7 +38,10 @@ void addExpiredGood(int quantity, int type, ctx where) {
 
     if (where == PORT) {
         info->expired_goods_on_port += quantity;
+        printf("Prima: %d\n" , info->goods_on_port);
         info->goods_on_port -= quantity;
+        printf("Prima: %d\n" , info->goods_on_port);
+        
     }
     else if (where == SHIP) {
         info->expired_goods_on_ship += quantity;
@@ -119,8 +122,14 @@ void printerCode(int day) {
         perror("Errore nell'apertura del file log");
         exit(EXIT_FAILURE);
     }
-
+    if (day < SO_DAYS) {
     fprintf(fp, "------------------Day %d -----------------\n", day);
+        
+    }
+    else {
+            fprintf(fp, "------------------STATO FINALE -----------------\n", day);
+
+    }
     for (i = 0; i < SO_MERCI; i++) {
         fprintf(fp, "Tipo merce %d:\n", i);
         fprintf(fp, "\t- Non scaduta:\n");

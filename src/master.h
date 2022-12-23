@@ -13,14 +13,14 @@ void genera_porti(int risorse, int n_porti);
 
 
 /* codice che verrà eseguito dal processo master (configurazione esclusa)*/
-void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem,  int waitconfigSemID, int msgRefillerID);
+void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem,  int waitconfigSemID, int msgRefillerID, int waitEndDaySemID);
 
 /* Separa logicamente ciò che deve fare il master e tutti le creazioni e le cancellazioni delle varie risorse IPC
 Infatti in questa funzione vengono allocate le risorse IPC, viene eseguito il codice del master
 e infine vengono deallocate
 Ovviamente il master ha accesso a tutti gli id perchè gli sono passati come parametro
 Questa scelta è dovuta per facilitare la lettura del codice e per rimuovere dalla logica del master tutto ciò che usato solo per il setting */
-void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID));
+void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID));
 
 /*
     esegue una waitzero di un semaforo inizializzato a SO_PORTI + SO_NAVI e aspetta quando tutti quanti i processi hanno eseguito una LOCK so quel semaforo,

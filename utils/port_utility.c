@@ -51,16 +51,15 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
 
     for (i = 0; i < SO_MERCI; i++) {
         printf("aggiungo %d merce di tipo %d in porto\n" , supplies[i] , i);
-        addNotExpiredGood(supplies[i], i, PORT);
     }
     copyArray(p->requests, requests, length);
+    
     fillMagazine(&p->supplies, 0, supplies);
 
     free(requests);
     free(supplies);
 
     fillExpirationTime(&p->supplies);
-    reservePrint(printPorto, p, pIndex);
 
     for (i = 0; i < SO_MERCI; i++) {
         int c = rand() % 2;
@@ -68,6 +67,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
             p->requests[i] = 0;
         }
         else if (c == 0) {
+            addExpiredGood(p->supplies.magazine[0][i], i, PORT);
             p->supplies.magazine[0][i] = 0;
         }
         else {
@@ -107,6 +107,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
         p->y = (double)rand() / (double)(RAND_MAX / (SO_LATO));
     }
 
+    reservePrint(printPorto, p, pIndex);
 
 
     return p;
@@ -240,6 +241,14 @@ void refill(long type, char* text) {
     int tipoMerceDaAzzerare;
     
     int i;
+    /*
+        semaforo che verrà decrementato così che il master passi la waitzero del semaforo waitEndDay
+    */
+    int waitEndDaySemID;
+
+    waitEndDaySemID = useSem(WAITENDDAYKEY, errorHandler);
+    
+
     srand((int)time(NULL) % getpid());
 
     correctType = (int)(type - 1);
@@ -302,6 +311,7 @@ void refill(long type, char* text) {
         shmDetach(p, errorHandler);
         !non funziona => invalid argument
     */
+    mutex(waitEndDaySemID, -1, errorHandler);
 }
 
 void refillerCode(int idx) {
