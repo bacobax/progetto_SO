@@ -56,12 +56,14 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
         printf("Master: aggiorno merce scaduta sigalarm\n");
 
         expirePortsGoods(i);
-        expireShipGoods();
+        // expireShipGoods();
         /*
             kill(0, SIGALRM);
         */
         /* TODO: funzione dump */
     }
+
+    nanosecsleep(NANOS_MULT);
 }
 
 int main(int argc, char const* argv[]) {

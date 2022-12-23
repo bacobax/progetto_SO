@@ -111,7 +111,7 @@ void aspettaConfigs(int waitConfigSemID) {
 void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID)) {
     int startSimulationSemID;
     int reservePrintSem;
-    int reservePrintSemShip;
+    // int reservePrintSemShip;
     int reservePortsResourceSem;
     int portsShmid;
     int shipsShmid;
@@ -138,7 +138,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     startSimulationSemID = createSem(MASTKEY, 1, NULL);
     reservePrintSem = createSem(RESPRINTKEY, 1, NULL);
-    reservePrintSemShip = createSem(RESPRINTSHIPKEY, 1, NULL);
+    // reservePrintSemShip = createSem(RESPRINTSHIPKEY, 1, NULL);
 
     /*
     !dovrà essere SO_PORTI + SO_NAVI
@@ -165,6 +165,8 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     rwExpTimesPortSemID = createMultipleSem(WREXPTIMESSEM, SO_PORTI, 1, errorHandler);
 
     semShipsID = createMultipleSem(SEMSHIPKEY, SO_NAVI, 1, errorHandler);
+
+
     
     codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID);
 
@@ -184,6 +186,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     removeQueue(msgRefillerID, errorHandler);
     removeDumpArea();
+    printf("Master, ho rimosso tutto");
 
 }
 
@@ -283,7 +286,7 @@ void expirePortsGoods(int day) {
             exit(EXIT_FAILURE);
         }
         if (pid == 0) {
-            childExpireCode(ports + i, day, i);
+            childExpirePortCode(ports + i, day, i);
             exit(EXIT_SUCCESS);
         }
     }

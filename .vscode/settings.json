@@ -23,5 +23,6 @@
     "new": "c",
     "nave.h": "c",
     "support.h": "c"
-  }
+  },
+  "C_Cpp.errorSquiggles": "enabled"
 }

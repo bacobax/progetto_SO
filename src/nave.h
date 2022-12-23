@@ -57,5 +57,6 @@ void travel(int portID);
 void accessPort(int portID, struct port_offer product);
 
 */
+void updateExpTimeShip(Ship ship);
 
 #endif
