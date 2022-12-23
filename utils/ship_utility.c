@@ -15,18 +15,10 @@
 #include <time.h>
 
 
-int checkCapacity(Ship ship)
-{
-    if (ship->weight == 0)
-        return 0;
-    return ship->weight;
-}
 
 int availableCapacity(Ship ship)
 {
-    int currentCapacity;
-    currentCapacity = checkCapacity(ship);
-    return (SO_CAPACITY - currentCapacity);
+    return (SO_CAPACITY - ship->weight);
 }
 
 double generateCord()
@@ -51,7 +43,7 @@ Ship initShip(int shipID)
 {
     Ship ship;
     int shipShmId;
-
+    printf("Nave: sono dentro alla initShip\n");
     if (signal(SIGUSR1, quitSignalHandler) == SIG_ERR)
     { /* imposto l'handler per la signal SIGUSR1 */
         perror("Error trying to set a signal handler for SIGUSR1");
@@ -60,7 +52,9 @@ Ship initShip(int shipID)
 
     /* inizializziamo la nave in shm*/
 
-    shipShmId = useShm(SSHMKEY, (SO_NAVI * sizeof(struct ship)), errorHandler);
+    printf("Nave: sto per fare useShm in initShip\n");
+    shipShmId = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler);
+    printf("Nave: ship useShm fatta\n");
 
     ship = ((struct ship*) getShmAddress(shipShmId, 0, errorHandler)) + shipID;
     ship->shipID = shipID;
@@ -69,7 +63,7 @@ Ship initShip(int shipID)
     ship->weight = 0;
     initArray(ship->products); /* inizializzo l'array con tutti i valori a -1*/
 
-    printf("nave con id:%d inizializzata\n", ship->shipID);
+    printf("Nave: nave con id:%d inizializzata\n", ship->shipID);
 
     return ship;
 }
@@ -77,7 +71,10 @@ Ship initShip(int shipID)
 void printLoadShip(Product* products){
     int i;
     for(i=0; i<SO_CAPACITY; i++){
+        /*
         if(products[i].product_type == -1) break;
+        
+        */
         printf("\nProduct type:%d, Expiration time: %d, Weight: %d", products[i].product_type, products[i].expirationTime, products[i].weight);
     }
     printf("\n");
@@ -106,17 +103,22 @@ void printShip(Ship ship)
 
 int addProduct(Ship ship, Product p){
     int i;
-    Product* products = ship->products;
-
-    if(availableCapacity(ship) >= p.weight){
-        for(i=0; i<SO_CAPACITY; i++){
-        /*
-            inserisco il prodotto nella prima posizione dell'array che trovo in cui
-            product_type = 0
-            per non inizializzare tutto l'array a -1 suggerisco di far partire tutti i prodotti
-            con un product_type da 1.
-        */
-        if(products[i].product_type == -1){
+    int aviableCap;
+    Product *products = ship->products;
+    aviableCap = availableCapacity(ship);
+    if (aviableCap >= p.weight)
+    {
+        printf("Nave: c'è abbastanza capienza per un prodotto che pesa %d, capienza: %d\n" , p.weight, aviableCap);
+        for (i = 0; i < SO_CAPACITY; i++)
+        {
+            /*
+                inserisco il prodotto nella prima posizione dell'array che trovo in cui
+                product_type = 0
+                per non inizializzare tutto l'array a -1 suggerisco di far partire tutti i prodotti
+                con un product_type da 1.
+            */
+            if (products[i].product_type == -1)
+            {
                 products[i].product_type = p.product_type;
                 products[i].expirationTime = p.expirationTime;
                 products[i].weight = p.weight;
@@ -124,7 +126,11 @@ int addProduct(Ship ship, Product p){
                 break;
             }
         }
-    } else {
+    }
+    else
+    {
+        printf("Nave: non c'è abbastanza capienza per un prodotto che pesa %d, capienza: %d\n" , p.weight, aviableCap);
+
         return -1;
     }
 }

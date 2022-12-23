@@ -35,8 +35,8 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     genera_navi();
 
     printf("M: Finito generazione\n");
-    mutex(startSimulationSemID, LOCK, errorHandler);
     aspettaConfigs(waitconfigSemID);
+    mutex(startSimulationSemID, LOCK, errorHandler);
 
     
     /*

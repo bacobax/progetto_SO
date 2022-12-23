@@ -75,11 +75,11 @@ int main(int argc, char const* argv[]) {
 
     launchRefiller(idx);
 
+    checkInConfig();
+    printf("P: finito configurazione\n");
     
     waitForStart();
 
-    printf("P: finito configurazione\n");
-    checkInConfig();
     /* START */
 
     

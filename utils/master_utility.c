@@ -19,18 +19,15 @@
 void genera_navi() {
     int i;
     int pid;
-    for (i = 0; i < 2; i++) {  /* provo a creare due navi*/
+    for (i = 0; i < SO_NAVI; i++) {  /* provo a creare due navi*/
         pid = fork();
         if (pid == 0) {
 
             char s[50];
             sprintf(s, "%d", i);
-            
-            printf("sto per lanciare i processi nave\n");
-
-            char* argv[] = {s, NULL};
-            printf("%s\n", argv[0]);
-            execve("./binLinux/nave", argv, NULL);
+            char* argv[] = {"nave", s, NULL};
+        
+            execve("./bin/nave", argv, NULL);
 
             exit(EXIT_FAILURE);
         }
@@ -144,7 +141,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     /*
     !dovrà essere SO_PORTI + SO_NAVI
     */
-    waitconfigSemID = createSem(WAITCONFIGKEY, SO_PORTI, errorHandler);
+    waitconfigSemID = createSem(WAITCONFIGKEY, SO_PORTI + SO_NAVI, errorHandler);
     
     portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
     shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);
@@ -152,7 +149,6 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     /*creazione banchine*/
     semBanchineID = createMultipleSem(BANCHINESEMKY, SO_PORTI, SO_BANCHINE, errorHandler);
-
 
     if (portsShmid == EEXIST || shipsShmid == EEXIST) {
         perror("Le shm esistono già\n");
@@ -167,7 +163,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     semShipsID = createMultipleSem(SEMSHIPKEY, SO_NAVI, 1, errorHandler);
 
-
+    printf("Master, tutte le strutte ipcs sono allocate\n");
     
     codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID);
 
@@ -188,7 +184,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     removeQueue(msgRefillerID, errorHandler);
     removeDumpArea();
-    printf("Master, ho rimosso tutto");
+    printf("Master, ho rimosso tutto\n");
 
 }
 
@@ -300,7 +296,7 @@ void expireShipGoods(){
     int i;
     Ship ships;
     int pid;
-    shipShmID = useShm(SSHMKEY, sizeof(struct port) * SO_NAVI, errorHandler);
+    shipShmID = useShm(SSHMKEY, sizeof(struct port) * SO_NAVI, NULL);
     for(i=0; i<SO_NAVI; i++) {
         pid = fork();
         if(pid == -1){
