@@ -85,7 +85,8 @@ void copyArray(int a[], int* a1, int length) {
     }
 }
 
-/*
+
+#ifndef __linux__
 int nanosecsleep(long nanosec)
 {
    struct timespec rem;
@@ -93,15 +94,17 @@ int nanosecsleep(long nanosec)
    req.tv_sec = (long)(nanosec / NANOS_MULT);
 
    
-     %1000000000 perchè se per esempio miliseconds fosse = 1000000001 allora il numero di nanosecondi è = 1 
-   
+   /*
+% 1000000000 perchè se per esempio miliseconds fosse = 1000000001 allora il numero di nanosecondi è = 1
+   */ 
+
 
    req.tv_nsec = nanosec % NANOS_MULT;
    
 
    return nanosleep(&req , &rem);
 }
-*/
+#endif
 
 void checkInConfig() {
     int waitConfigSemID = useSem(WAITCONFIGKEY, errorHandler);

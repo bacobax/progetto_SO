@@ -1,2 +1,4 @@
 ./bin
+./utils/bin
+./logfile.log
 ./.vscode
