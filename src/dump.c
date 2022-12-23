@@ -6,7 +6,7 @@
 #include "../utils/sem_utility.h"
 #include "../config1.h"
 #include "./dump.h"
-
+//TODO: la shmDetach() è buggata, da risolvere
 void createDumpArea(){
     int shmid;
     int semid;
@@ -52,7 +52,7 @@ void addExpiredGood(int quantity, int type, ctx where) {
 
     mutexPro(semid, type, UNLOCK, errorHandler);
 
-
+    shmDetach(info - type,errorHandler);
 
 }
 
@@ -80,6 +80,7 @@ void addNotExpiredGood(int quantity, int type, ctx where) {
     }
 
     mutexPro(semid, type, UNLOCK, errorHandler);
+    shmDetach(info - type,errorHandler);
 
 }
 
@@ -132,6 +133,7 @@ void printerCode(int day) {
 
     fclose(fp);
     mutex(logFileSemID, UNLOCK, errorHandler);
+    shmDetach(arr, errorHandler);
 }
 
 void printDump(int day) {

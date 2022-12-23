@@ -237,6 +237,7 @@ void refill(long type, char* text) {
     */
     intList* listOfIdxs;
 
+    int tipoMerceDaAzzerare;
     
     int i;
     srand((int)time(NULL) % getpid());
@@ -286,7 +287,11 @@ void refill(long type, char* text) {
     */
 
     for (i = 0; i < listOfIdxs->length; i++) {
-        p->supplies.magazine[day][*(intElementAt(listOfIdxs, i))] = 0;
+        tipoMerceDaAzzerare = *(intElementAt(listOfIdxs, i));
+        
+        addExpiredGood(p->supplies.magazine[day][tipoMerceDaAzzerare], tipoMerceDaAzzerare, PORT);
+        
+        p->supplies.magazine[day][tipoMerceDaAzzerare] = 0;
     }
 
     
@@ -333,47 +338,3 @@ void launchRefiller(int idx) {
         exit(EXIT_FAILURE);
     }
 }
-/*
-void updaterCode(int idx) {
-    int portShmid;
-    int rwExpTimesPortSemID;
-    
-    Port p;
-    portShmid = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler);
-
-    p = (Port)getShmAddress(portShmid, 0, errorHandler) + idx;
-
-    rwExpTimesPortSemID = useSem(WREXPTIMESSEM, errorHandler);
-
-
-    mutexPro(rwExpTimesPortSemID, idx, LOCK, errorHandler);
-
-    decrementExpTimes(&p->supplies);
-    
-    removeExpiredGoods(&p->supplies);
-    
-    mutexPro(rwExpTimesPortSemID, idx, UNLOCK, errorHandler);
-
-    
-
-}
-*/
-
-/*
-
-void updateExpTimes(int idx) {
-    int pid;
-
-    pid = fork();
-
-    if (pid == -1) {
-        perror("errore nella fork per il decrementatore");
-        exit(EXIT_FAILURE);
-    }
-    if (pid == 0) {
-        updaterCode(idx);
-        exit(EXIT_SUCCESS);
-    }
-    
-}
-*/
