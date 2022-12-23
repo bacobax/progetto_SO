@@ -11,11 +11,22 @@ void createDumpArea(){
     int shmid;
     int semid;
     int logFileSemID;
-    
+    int i;
+    GoodTypeInfo* arrGoods;
     shmid = createShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler);
     semid = createMultipleSem(DUMPSEMKEY, SO_MERCI, 1, errorHandler);
     logFileSemID = createSem(LOGFILESEMKEY, 1, errorHandler);
-    
+
+    arrGoods = (GoodTypeInfo* )getShmAddress(shmid, 0, errorHandler);
+
+    for (i = 0; i < SO_MERCI; i++) {
+        arrGoods[i].delivered_goods = 0;
+        arrGoods[i].goods_on_port = 0;
+        arrGoods[i].goods_on_ship= 0;
+        arrGoods[i].expired_goods_on_port= 0;
+        arrGoods[i].expired_goods_on_ship= 0;
+    }
+
 }
 
 void addExpiredGood(int quantity, int type, ctx where) {
@@ -26,7 +37,7 @@ void addExpiredGood(int quantity, int type, ctx where) {
     shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler);
     semid = useSem(DUMPSEMKEY, errorHandler);
     
-    info = getShmAddress(shmid, 0, errorHandler) + type;
+    info = ((GoodTypeInfo*) getShmAddress(shmid, 0, errorHandler)) + type;
 
     mutexPro(semid, type, LOCK, errorHandler);
 
@@ -56,7 +67,9 @@ void addNotExpiredGood(int quantity, int type, ctx where) {
     shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler);
     semid = useSem(DUMPSEMKEY, errorHandler);
     
-    info = getShmAddress(shmid, 0, errorHandler) + type;
+    info = ((GoodTypeInfo*) getShmAddress(shmid, 0, errorHandler)) + type;
+
+    printf("Merce di tipo %d: on port: %d, aggiungo %d\n", type, info->goods_on_port, quantity);
 
     mutexPro(semid, type, LOCK, errorHandler);
 
@@ -102,9 +115,9 @@ void printerCode(int day) {
 
     logFileSemID = useSem(LOGFILESEMKEY, errorHandler);
     shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler);
-    arr = getShmAddress(shmid, 0, errorHandler);
+    arr = (GoodTypeInfo*)getShmAddress(shmid, 0, errorHandler);
 
-    
+    printf("Merce di tipo %d nel porto: %d\n", 0, arr[0].goods_on_port);
 
     mutex(logFileSemID, LOCK, errorHandler);
     printf("Scrivo nel logifle\n");

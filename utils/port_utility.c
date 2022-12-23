@@ -48,7 +48,9 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
         può offrire perchè c'è già la domanda
 
     */
+
     for (i = 0; i < SO_MERCI; i++) {
+        printf("aggiungo %d merce di tipo %d in porto\n" , supplies[i] , i);
         addNotExpiredGood(supplies[i], i, PORT);
     }
     copyArray(p->requests, requests, length);
