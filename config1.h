@@ -18,7 +18,7 @@
 #define BANCHINESEMKY 165
 /* chiave del semaforo che permette la reserve print */
 #define RESPRINTKEY  124
-#define RESPRINTSHIPKEY 125
+
 
 #define RESPORTSBUFFERS 213
 #define WREXPTIMESSEM 246

@@ -44,6 +44,16 @@ int findProduct(Product* products, Product p); /* ritorna l'indice del vettore i
 
 int removeProduct(Ship ship, int product_index);
 
+void updateExpTimeShip(Ship ship);
+
+
+/*
+    TO-DO 
+
+    1) Compilare e testare il codice
+
+
+*/
 
 /*
 
