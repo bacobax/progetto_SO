@@ -52,18 +52,20 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
         if (i > 0) {
             refillPorts(SYNC, msgRefillerID, quantitaAlGiorno, i);
         }
-        nanosecsleep(NANOS_MULT);
+        /*nanosecsleep(NANOS_MULT); */
+        sleep(1);
         printf("Master: aggiorno merce scaduta sigalarm\n");
 
         expirePortsGoods(i);
-        // expireShipGoods();
+        expireShipGoods();
         /*
             kill(0, SIGALRM);
         */
         /* TODO: funzione dump */
     }
 
-    nanosecsleep(NANOS_MULT);
+   /* nanosecsleep(NANOS_MULT); */
+   sleep(1);
 }
 
 int main(int argc, char const* argv[]) {

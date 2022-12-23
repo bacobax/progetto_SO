@@ -25,9 +25,12 @@ void genera_navi() {
 
             char s[50];
             sprintf(s, "%d", i);
+            
+            printf("sto per lanciare i processi nave\n");
 
             char* argv[] = {s, NULL};
-            execve("./bin/nave", argv, NULL);
+            printf("%s\n", argv[0]);
+            execve("./binLinux/nave", argv, NULL);
 
             exit(EXIT_FAILURE);
         }
@@ -111,7 +114,6 @@ void aspettaConfigs(int waitConfigSemID) {
 void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID)) {
     int startSimulationSemID;
     int reservePrintSem;
-    // int reservePrintSemShip;
     int reservePortsResourceSem;
     int portsShmid;
     int shipsShmid;
@@ -138,7 +140,6 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     startSimulationSemID = createSem(MASTKEY, 1, NULL);
     reservePrintSem = createSem(RESPRINTKEY, 1, NULL);
-    // reservePrintSemShip = createSem(RESPRINTSHIPKEY, 1, NULL);
 
     /*
     !dovrà essere SO_PORTI + SO_NAVI
@@ -199,7 +200,7 @@ void refillCode(intList* l, int msgRefillerID, int giorno) {
         sprintf(supportText, "%d|%d", giorno, *(intElementAt(l, i)));
         type = i+1;
         printf("Invio messaggio alla coda %d con il seguente testo: %s con tipo %ld\n", msgRefillerID, supportText, type);
-        //Invio messaggio alla coda 458752 con il seguente testo: 0|20 con tipo 0
+        /* Invio messaggio alla coda 458752 con il seguente testo: 0|20 con tipo 0 */
         msgSend(msgRefillerID, supportText, type, NULL);
     }
 

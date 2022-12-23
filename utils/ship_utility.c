@@ -38,6 +38,15 @@ double generateCord()
     return (rand() / div);
 }
 
+void initArray(Product* products){
+    int i;
+    for(i=0; i<SO_CAPACITY; i++){
+        products[i].product_type = -1;
+        products[i].expirationTime = -1;
+        products[i].weight = -1;
+    }
+}
+
 Ship initShip(int shipID)
 {
     Ship ship;
@@ -58,8 +67,8 @@ Ship initShip(int shipID)
     ship->x = generateCord();
     ship->y = generateCord();
     ship->weight = 0;
-    /* l'array products viene automaticamente inizializzato a 0*/
-    
+    initArray(ship->products); /* inizializzo l'array con tutti i valori a -1*/
+
     printf("nave con id:%d inizializzata\n", ship->shipID);
 
     return ship;
@@ -68,7 +77,7 @@ Ship initShip(int shipID)
 void printLoadShip(Product* products){
     int i;
     for(i=0; i<SO_CAPACITY; i++){
-        if(products[i].product_type == 0) break;
+        if(products[i].product_type == -1) break;
         printf("\nProduct type:%d, Expiration time: %d, Weight: %d", products[i].product_type, products[i].expirationTime, products[i].weight);
     }
     printf("\n");
@@ -107,7 +116,7 @@ int addProduct(Ship ship, Product p){
             per non inizializzare tutto l'array a -1 suggerisco di far partire tutti i prodotti
             con un product_type da 1.
         */
-        if(products[i].product_type == 0){
+        if(products[i].product_type == -1){
                 products[i].product_type = p.product_type;
                 products[i].expirationTime = p.expirationTime;
                 products[i].weight = p.weight;
@@ -158,7 +167,7 @@ void updateExpTimeShip(Ship ship){
     Product* products = ship->products;
 
     for(i=0; i<SO_CAPACITY; i++){
-        if(products[i].product_type == 0) break;
+        if(products[i].product_type == -1) break;
 
         products[i].expirationTime += -1;
 
@@ -169,31 +178,33 @@ void updateExpTimeShip(Ship ship){
     }
 }
 
+/*
 void travel(Ship ship, int portID)
 {
 
     Port p;
     double dt_x, dt_y, spazio, nanosleep_arg;
 
-    int portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler); /* prendo l'id della shm del porto */
+    int portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);  prendo l'id della shm del porto 
 
-    p = ((Port)getShmAddress(portShmId, 0, errorHandler)) + portID; /* prelevo la struttura del porto alla portID-esima posizione nella shm */
+    p = ((Port)getShmAddress(portShmId, 0, errorHandler)) + portID;  prelevo la struttura del porto alla portID-esima posizione nella shm 
 
-    /* imposto la formula per il calcolo della distanza*/
+     imposto la formula per il calcolo della distanza
 
     dt_x = p->x - ship->x;
     dt_y = p->y - ship->y;
 
     spazio = sqrt(pow(dt_x, 2) + pow(dt_y, 2));
-    /*
+    
         spazio/SO_SPEED è misurato in giorni (secondi), quindi spazio/SO_SPEED*1000000000 sono il numero di nanosecondi per cui fare la sleep
-    */
+    
     nanosecsleep((long)((spazio / SO_SPEED) * NANOS_MULT));
 
-    /* Dopo aver fatto la nanosleep la nave si trova esattamente sulle coordinate del porto
+     Dopo aver fatto la nanosleep la nave si trova esattamente sulle coordinate del porto
        quindi aggiorniamo le sue coordinate
-    */
+    
    
     ship->x = p->x;
     ship->y = p->y;
 }
+*/
