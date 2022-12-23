@@ -180,6 +180,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeSem(reservePortsResourceSem, errorHandler);
     removeSem(waitconfigSemID, errorHandler);
     removeSem(rwExpTimesPortSemID, errorHandler);
+    removeSem(semShipsID, errorHandler);
     
     removeShm(shipsShmid, errorHandler);
     removeShm(portsShmid, errorHandler);

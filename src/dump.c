@@ -17,15 +17,7 @@ void createDumpArea(){
     semid = createMultipleSem(DUMPSEMKEY, SO_MERCI, 1, errorHandler);
     logFileSemID = createSem(LOGFILESEMKEY, 1, errorHandler);
 
-    arrGoods = (GoodTypeInfo* )getShmAddress(shmid, 0, errorHandler);
-
-    for (i = 0; i < SO_MERCI; i++) {
-        arrGoods[i].delivered_goods = 0;
-        arrGoods[i].goods_on_port = 0;
-        arrGoods[i].goods_on_ship= 0;
-        arrGoods[i].expired_goods_on_port= 0;
-        arrGoods[i].expired_goods_on_ship= 0;
-    }
+   
 
     /*per cancellare il contenuto del logfile*/
     fclose(fopen("./logfile.log", "w"));
@@ -41,15 +33,17 @@ void addExpiredGood(int quantity, int type, ctx where) {
     semid = useSem(DUMPSEMKEY, errorHandler);
     
     info = ((GoodTypeInfo*) getShmAddress(shmid, 0, errorHandler)) + type;
-    info = ((GoodTypeInfo*)getShmAddress(shmid, 0, errorHandler)) + type;
 
     mutexPro(semid, type, LOCK, errorHandler);
 
     if (where == PORT) {
         info->expired_goods_on_port += quantity;
+        info->goods_on_port -= quantity;
     }
     else if (where == SHIP) {
         info->expired_goods_on_ship += quantity;
+        info->goods_on_ship -= quantity;
+        
     }
     else {
         perror("Il contesto può solo essere PORT o SHIP\n");
@@ -57,7 +51,6 @@ void addExpiredGood(int quantity, int type, ctx where) {
     }
 
     mutexPro(semid, type, UNLOCK, errorHandler);
-
 
 
 
@@ -87,9 +80,6 @@ void addNotExpiredGood(int quantity, int type, ctx where) {
     }
 
     mutexPro(semid, type, UNLOCK, errorHandler);
-
-
-
 
 }
 
@@ -147,7 +137,6 @@ void printerCode(int day) {
 void printDump(int day) {
     int pid;
 
-
     pid = fork();
     if (pid == -1) {
         perror("Errore nel forkare il dump printer\n");
@@ -156,11 +145,5 @@ void printDump(int day) {
     if (pid == 0) {
         printerCode(day);
         exit(EXIT_SUCCESS);
-    }
-
-    
-
-    
-
-    
+    }    
 }
