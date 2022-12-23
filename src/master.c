@@ -35,8 +35,8 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     genera_navi();
 
     printf("M: Finito generazione\n");
-    mutex(startSimulationSemID, LOCK, errorHandler);
     aspettaConfigs(waitconfigSemID);
+    mutex(startSimulationSemID, LOCK, errorHandler);
 
     
     /*
@@ -51,15 +51,18 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
         printf("Master: dormo\n");
         if (i > 0) {
             expirePortsGoods(i);
+            expireShipGoods();
             refillPorts(SYNC, msgRefillerID, quantitaAlGiorno, i);
             mutex(waitEndDaySemID, WAITZERO, errorHandler);
             
         }
 
         nanosecsleep(NANOS_MULT);
-
-        // expireShipGoods();
         /*
+            sleep(1)
+        */
+        /*expireShipGoods();
+        
             kill(0, SIGALRM);
         */
         /* TODO: funzione dump */

@@ -29,7 +29,7 @@ void updateExpTimeHandler(int sig) {
 }
 */
 
-//TODO: Bisogna fare la fork() e creare un processo "filler" che fa una costante recv e che non appena riceve il messaggio dal master che deve refillare, lo fa
+/* TODO: Bisogna fare la fork() e creare un processo "filler" che fa una costante recv e che non appena riceve il messaggio dal master che deve refillare, lo fa */
 
 int main(int argc, char const* argv[]) {
     int supplyDisponibility;
@@ -71,15 +71,15 @@ int main(int argc, char const* argv[]) {
     p = initPort(supplyDisponibility,requestDisponibility, idx);
 
 
-    // shmDetach(p, errorHandler);
+    /* shmDetach(p, errorHandler); */
 
     launchRefiller(idx);
 
+    checkInConfig();
+    printf("P: finito configurazione\n");
     
     waitForStart();
 
-    printf("P: finito configurazione\n");
-    checkInConfig();
     /* START */
 
     
@@ -87,7 +87,8 @@ int main(int argc, char const* argv[]) {
     while (i<SO_DAYS) {
         printf("Porto %d: dormo\n", idx);
 
-        nanosecsleep(NANOS_MULT);
+        /*nanosecsleep(NANOS_MULT);*/
+        sleep(1);
         i++;
     }
 

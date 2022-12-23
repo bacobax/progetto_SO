@@ -19,14 +19,14 @@
 void genera_navi() {
     int i;
     int pid;
-    for (i = 0; i < 2; i++) {  /* provo a creare due navi*/
+    for (i = 0; i < SO_NAVI; i++) {  /* provo a creare due navi*/
         pid = fork();
         if (pid == 0) {
 
             char s[50];
             sprintf(s, "%d", i);
-
-            char* argv[] = {s, NULL};
+            char* argv[] = {"nave", s, NULL};
+        
             execve("./bin/nave", argv, NULL);
 
             exit(EXIT_FAILURE);
@@ -111,7 +111,6 @@ void aspettaConfigs(int waitConfigSemID) {
 void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID)) {
     int startSimulationSemID;
     int reservePrintSem;
-    // int reservePrintSemShip;
     int reservePortsResourceSem;
     int portsShmid;
     int shipsShmid;
@@ -139,12 +138,11 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     startSimulationSemID = createSem(MASTKEY, 1, NULL);
     reservePrintSem = createSem(RESPRINTKEY, 1, NULL);
-    // reservePrintSemShip = createSem(RESPRINTSHIPKEY, 1, NULL);
 
     /*
     !dovrà essere SO_PORTI + SO_NAVI
     */
-    waitconfigSemID = createSem(WAITCONFIGKEY, SO_PORTI, errorHandler);
+    waitconfigSemID = createSem(WAITCONFIGKEY, SO_PORTI + SO_NAVI, errorHandler);
     
     portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
     shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);
@@ -152,7 +150,6 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     /*creazione banchine*/
     semBanchineID = createMultipleSem(BANCHINESEMKY, SO_PORTI, SO_BANCHINE, errorHandler);
-
 
     if (portsShmid == EEXIST || shipsShmid == EEXIST) {
         perror("Le shm esistono già\n");
@@ -193,7 +190,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     removeQueue(msgRefillerID, errorHandler);
     removeDumpArea();
-    printf("Master, ho rimosso tutto");
+    printf("Master, ho rimosso tutto\n");
 
 }
 
@@ -205,7 +202,7 @@ void refillCode(intList* l, int msgRefillerID, int giorno) {
         sprintf(supportText, "%d|%d", giorno, *(intElementAt(l, i)));
         type = i+1;
         printf("Invio messaggio alla coda %d con il seguente testo: %s con tipo %ld\n", msgRefillerID, supportText, type);
-        //Invio messaggio alla coda 458752 con il seguente testo: 0|20 con tipo 0
+        /* Invio messaggio alla coda 458752 con il seguente testo: 0|20 con tipo 0 */
         msgSend(msgRefillerID, supportText, type, NULL);
     }
 
@@ -305,7 +302,7 @@ void expireShipGoods(){
     int i;
     Ship ships;
     int pid;
-    shipShmID = useShm(SSHMKEY, sizeof(struct port) * SO_NAVI, errorHandler);
+    shipShmID = useShm(SSHMKEY, sizeof(struct port) * SO_NAVI, NULL);
     for(i=0; i<SO_NAVI; i++) {
         pid = fork();
         if(pid == -1){

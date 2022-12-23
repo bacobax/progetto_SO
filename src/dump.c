@@ -6,7 +6,7 @@
 #include "../utils/sem_utility.h"
 #include "../config1.h"
 #include "./dump.h"
-//TODO: la shmDetach() è buggata, da risolvere
+/* TODO: la shmDetach() è buggata, da risolvere */
 void createDumpArea(){
     int shmid;
     int semid;

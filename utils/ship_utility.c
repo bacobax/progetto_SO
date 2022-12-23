@@ -15,18 +15,10 @@
 #include <time.h>
 
 
-int checkCapacity(Ship ship)
-{
-    if (ship->weight == 0)
-        return 0;
-    return ship->weight;
-}
 
 int availableCapacity(Ship ship)
 {
-    int currentCapacity;
-    currentCapacity = checkCapacity(ship);
-    return (SO_CAPACITY - currentCapacity);
+    return (SO_CAPACITY - ship->weight);
 }
 
 double generateCord()
@@ -38,11 +30,20 @@ double generateCord()
     return (rand() / div);
 }
 
+void initArray(Product* products){
+    int i;
+    for(i=0; i<SO_CAPACITY; i++){
+        products[i].product_type = -1;
+        products[i].expirationTime = -1;
+        products[i].weight = -1;
+    }
+}
+
 Ship initShip(int shipID)
 {
     Ship ship;
     int shipShmId;
-
+    printf("Nave: sono dentro alla initShip\n");
     if (signal(SIGUSR1, quitSignalHandler) == SIG_ERR)
     { /* imposto l'handler per la signal SIGUSR1 */
         perror("Error trying to set a signal handler for SIGUSR1");
@@ -51,16 +52,18 @@ Ship initShip(int shipID)
 
     /* inizializziamo la nave in shm*/
 
-    shipShmId = useShm(SSHMKEY, (SO_NAVI * sizeof(struct ship)), errorHandler);
+    printf("Nave: sto per fare useShm in initShip\n");
+    shipShmId = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler);
+    printf("Nave: ship useShm fatta\n");
 
     ship = ((struct ship*) getShmAddress(shipShmId, 0, errorHandler)) + shipID;
     ship->shipID = shipID;
     ship->x = generateCord();
     ship->y = generateCord();
     ship->weight = 0;
-    /* l'array products viene automaticamente inizializzato a 0*/
-    
-    printf("nave con id:%d inizializzata\n", ship->shipID);
+    initArray(ship->products); /* inizializzo l'array con tutti i valori a -1*/
+
+    printf("Nave: nave con id:%d inizializzata\n", ship->shipID);
 
     return ship;
 }
@@ -68,7 +71,10 @@ Ship initShip(int shipID)
 void printLoadShip(Product* products){
     int i;
     for(i=0; i<SO_CAPACITY; i++){
-        if(products[i].product_type == 0) break;
+        /*
+        if(products[i].product_type == -1) break;
+        
+        */
         printf("\nProduct type:%d, Expiration time: %d, Weight: %d", products[i].product_type, products[i].expirationTime, products[i].weight);
     }
     printf("\n");
@@ -97,17 +103,22 @@ void printShip(Ship ship)
 
 int addProduct(Ship ship, Product p){
     int i;
-    Product* products = ship->products;
-
-    if(availableCapacity(ship) >= p.weight){
-        for(i=0; i<SO_CAPACITY; i++){
-        /*
-            inserisco il prodotto nella prima posizione dell'array che trovo in cui
-            product_type = 0
-            per non inizializzare tutto l'array a -1 suggerisco di far partire tutti i prodotti
-            con un product_type da 1.
-        */
-        if(products[i].product_type == 0){
+    int aviableCap;
+    Product *products = ship->products;
+    aviableCap = availableCapacity(ship);
+    if (aviableCap >= p.weight)
+    {
+        printf("Nave: c'è abbastanza capienza per un prodotto che pesa %d, capienza: %d\n" , p.weight, aviableCap);
+        for (i = 0; i < SO_CAPACITY; i++)
+        {
+            /*
+                inserisco il prodotto nella prima posizione dell'array che trovo in cui
+                product_type = 0
+                per non inizializzare tutto l'array a -1 suggerisco di far partire tutti i prodotti
+                con un product_type da 1.
+            */
+            if (products[i].product_type == -1)
+            {
                 products[i].product_type = p.product_type;
                 products[i].expirationTime = p.expirationTime;
                 products[i].weight = p.weight;
@@ -115,7 +126,11 @@ int addProduct(Ship ship, Product p){
                 break;
             }
         }
-    } else {
+    }
+    else
+    {
+        printf("Nave: non c'è abbastanza capienza per un prodotto che pesa %d, capienza: %d\n" , p.weight, aviableCap);
+
         return -1;
     }
 }
@@ -158,7 +173,7 @@ void updateExpTimeShip(Ship ship){
     Product* products = ship->products;
 
     for(i=0; i<SO_CAPACITY; i++){
-        if(products[i].product_type == 0) break;
+        if(products[i].product_type == -1) break;
 
         products[i].expirationTime += -1;
 
@@ -169,31 +184,33 @@ void updateExpTimeShip(Ship ship){
     }
 }
 
+/*
 void travel(Ship ship, int portID)
 {
 
     Port p;
     double dt_x, dt_y, spazio, nanosleep_arg;
 
-    int portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler); /* prendo l'id della shm del porto */
+    int portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);  prendo l'id della shm del porto 
 
-    p = ((Port)getShmAddress(portShmId, 0, errorHandler)) + portID; /* prelevo la struttura del porto alla portID-esima posizione nella shm */
+    p = ((Port)getShmAddress(portShmId, 0, errorHandler)) + portID;  prelevo la struttura del porto alla portID-esima posizione nella shm 
 
-    /* imposto la formula per il calcolo della distanza*/
+     imposto la formula per il calcolo della distanza
 
     dt_x = p->x - ship->x;
     dt_y = p->y - ship->y;
 
     spazio = sqrt(pow(dt_x, 2) + pow(dt_y, 2));
-    /*
+    
         spazio/SO_SPEED è misurato in giorni (secondi), quindi spazio/SO_SPEED*1000000000 sono il numero di nanosecondi per cui fare la sleep
-    */
+    
     nanosecsleep((long)((spazio / SO_SPEED) * NANOS_MULT));
 
-    /* Dopo aver fatto la nanosleep la nave si trova esattamente sulle coordinate del porto
+     Dopo aver fatto la nanosleep la nave si trova esattamente sulle coordinate del porto
        quindi aggiorniamo le sue coordinate
-    */
+    
    
     ship->x = p->x;
     ship->y = p->y;
 }
+*/

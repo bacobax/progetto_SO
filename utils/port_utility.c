@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <signal.h>
 #include <time.h>
 #include "../src/porto.h"
 #include "../src/dump.h"
@@ -188,7 +189,7 @@ int filterIdxs(int request) {
 }
 
 
-//TODO: risolvere bug che non fa il parse del day del messaggio
+/* TODO: risolvere bug che non fa il parse del day del messaggio */
 void refill(long type, char* text) {
 
     
@@ -286,7 +287,7 @@ void refill(long type, char* text) {
 
 
     mutexPro(portBufferSem, (int)correctType, LOCK, errorHandler);
-    // fillMagazine(&p->supplies, 0, supplies);
+    /* fillMagazine(&p->supplies, 0, supplies); */
 
     fillMagazine(&p->supplies, day, quanties);
 
