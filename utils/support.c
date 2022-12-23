@@ -2,8 +2,7 @@
 #include "../config1.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-
+#include <sys/time.h>
 #include <unistd.h>
 
 #include "./support.h"
@@ -93,7 +92,7 @@ int nanosecsleep(long nanosec)
    req.tv_sec = (long)(nanosec / NANOS_MULT);
 
    
-    //%1000000000 perchè se per esempio miliseconds fosse = 1000000001 allora il numero di nanosecondi è = 1
+    /* %1000000000 perchè se per esempio miliseconds fosse = 1000000001 allora il numero di nanosecondi è = 1 */
    
 
    req.tv_nsec = nanosec % NANOS_MULT;

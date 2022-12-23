@@ -38,6 +38,7 @@ void addExpiredGood(int quantity, int type, ctx where) {
     semid = useSem(DUMPSEMKEY, errorHandler);
     
     info = ((GoodTypeInfo*) getShmAddress(shmid, 0, errorHandler)) + type;
+    info = ((GoodTypeInfo*)getShmAddress(shmid, 0, errorHandler)) + type;
 
     mutexPro(semid, type, LOCK, errorHandler);
 
@@ -68,8 +69,6 @@ void addNotExpiredGood(int quantity, int type, ctx where) {
     semid = useSem(DUMPSEMKEY, errorHandler);
     
     info = ((GoodTypeInfo*) getShmAddress(shmid, 0, errorHandler)) + type;
-
-    printf("Merce di tipo %d: on port: %d, aggiungo %d\n", type, info->goods_on_port, quantity);
 
     mutexPro(semid, type, LOCK, errorHandler);
 

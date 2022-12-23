@@ -111,10 +111,12 @@ void aspettaConfigs(int waitConfigSemID) {
 void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID)) {
     int startSimulationSemID;
     int reservePrintSem;
+    int reservePrintSemShip;
     int reservePortsResourceSem;
     int portsShmid;
     int shipsShmid;
     int semBanchineID;
+    int semShipsID;
     int msgRefillerID;
     int waitconfigSemID;
     int rwExpTimesPortSemID;
@@ -136,6 +138,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     startSimulationSemID = createSem(MASTKEY, 1, NULL);
     reservePrintSem = createSem(RESPRINTKEY, 1, NULL);
+    reservePrintSemShip = createSem(RESPRINTSHIPKEY, 1, NULL);
 
     /*
     !dovrà essere SO_PORTI + SO_NAVI
@@ -161,7 +164,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     rwExpTimesPortSemID = createMultipleSem(WREXPTIMESSEM, SO_PORTI, 1, errorHandler);
 
-
+    semShipsID = createMultipleSem(SEMSHIPKEY, SO_NAVI, 1, errorHandler);
     
     codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID);
 
@@ -233,7 +236,7 @@ void refillPorts(int opt, int msgRefillerID, int quantitaAlGiorno, int giorno) {
 
 }
 
-void childExpireCode(Port p, int day, int idx) {
+void childExpirePortCode(Port p, int day, int idx) {
     int rwExpTimesPortSemID;
     int portBufferSemID;
     rwExpTimesPortSemID = useSem(WREXPTIMESSEM, errorHandler);
@@ -250,6 +253,19 @@ void childExpireCode(Port p, int day, int idx) {
     removeExpiredGoods(&p->supplies);
     mutexPro(portBufferSemID, idx, UNLOCK, errorHandler);
     
+
+}
+
+void childExpireShipCode(Ship ship){
+    int semShipID;
+
+    semShipID = useSem(SEMSHIPKEY, errorHandler);
+
+    mutexPro(semShipID, ship->shipID, LOCK, errorHandler);
+
+    updateExpTimeShip(ship);
+
+    mutexPro(semShipID, ship->shipID, UNLOCK, errorHandler);    
 
 }
 
@@ -272,5 +288,23 @@ void expirePortsGoods(int day) {
         }
     }
     shmDetach(ports,NULL);
+}
+
+void expireShipGoods(){
+    int shipShmID;
+    int i;
+    Ship ships;
+    int pid;
+    shipShmID = useShm(SSHMKEY, sizeof(struct port) * SO_NAVI, errorHandler);
+    for(i=0; i<SO_NAVI; i++) {
+        pid = fork();
+        if(pid == -1){
+            perror("fork nel gestore risorse");
+            exit(EXIT_FAILURE);
+        } else if (pid == 0){
+            childExpireShipCode(ships + i);
+            exit(EXIT_SUCCESS);
+        }
+    }
 }
 
