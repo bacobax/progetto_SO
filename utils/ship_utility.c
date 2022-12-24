@@ -198,17 +198,14 @@ int portResponses(Ship ship, PortOffer* port_offers){
     int i;
     int queueID;
     int ports = 0;
-    char pType[MEXBSIZE], expDay[MEXBSIZE];
     mex* response;
 
     for(i=0; i<SO_PORTI; i++){
         queueID = useQueue(SQUEUEKEY, errorHandler);
-        response = msgRecv(queueID, (ship->shipID -1), errorHandler, NULL, SYNC);
+        response = msgRecv(queueID, (ship->shipID + 1), errorHandler, NULL, SYNC);
 
-        if(response->mtype != -1){
-            sscanf(response->mtext, "%s %s", pType, expDay);
-            port_offers[i].product_type = atoi(pType);
-            port_offers[i].expirationTime = atoi(expDay);
+        if(strlen(response->mtext) > 1){
+            sscanf(response->mtext, "%d %d", port_offers[i].product_type, port_offers[i].expirationTime);
             ports++;
         }
     }
