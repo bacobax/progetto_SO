@@ -13,12 +13,13 @@
 
 
 
-void codicePorto(Port porto, int myQueueID) {
+void codicePorto(Port porto, int myQueueID, int shipsQueueID) {
     int quantity;
     mex* messaggioRicevuto;
     int res;
     int tipoTrovato;
     int dataScadenzaTrovata;
+    char text[MEXBSIZE];
     waitForStart();
 
     /* START */
@@ -35,8 +36,19 @@ void codicePorto(Port porto, int myQueueID) {
         
         messaggioRicevuto = msgRecv(myQueueID, 0, errorHandler, NULL, SYNC);
         sscanf(messaggioRicevuto->mtext, "%d", &quantity);
-        res = trovaTipoEScadenza(&(porto->supplies), &tipoTrovato, &dataScadenzaTrovata, quantity);
         
+        printf("Ricevuto messaggio da nave %d con quantità %d\n", messaggioRicevuto->mtype - 1, quantity);
+        res = trovaTipoEScadenza(&(porto->supplies), &tipoTrovato, &dataScadenzaTrovata, quantity);
+        printf("Ho trovato il tipo %d con data di scadenza %d\n", tipoTrovato, dataScadenzaTrovata);
+        if (res == -1) {
+            msgSend(shipsQueueID, "x", messaggioRicevuto->mtype, errorHandler);
+            
+        }
+        else {
+            sprintf(text, "%d %d", tipoTrovato, dataScadenzaTrovata);
+            msgSend(shipsQueueID, text, messaggioRicevuto->mtype, errorHandler);
+            
+        }
     }
 
 

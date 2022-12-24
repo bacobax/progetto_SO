@@ -74,12 +74,19 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     waitForStart();
     printf("Nave con id:%d partita\n", ship->shipID);
 
-    while(1){
-        res = addProduct(ship, p1);
-        res = addProduct(ship, p2);
+    // while(1){
+        // res = addProduct(ship, p1);
+        // res = addProduct(ship, p2);
+        // printShip(ship);
+        // sleep(2);
+    sleep(1);
+    chargeProducts(ship, 10);
         printShip(ship);
-        sleep(2);
-    }
+        // }
+
+        while (1) {
+            sleep(1);
+        }
 
     exit(EXIT_FAILURE);
 

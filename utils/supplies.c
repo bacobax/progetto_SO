@@ -2,6 +2,7 @@
 #include "../config1.h"
 #include "./support.h"
 #include "../src/dump.h"
+#include "./sem_utility.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -95,21 +96,33 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* scadenza, int quantity) {
     double currentValue;
     int currentScadenza;
     int res;
+    int semid;
+    semid = useSem(RESPRINTKEY, errorHandler);
+
+    
     *tipo = -1;
     *scadenza = -1;
+    mutex(semid, LOCK, NULL);
+    printf("✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼Valori della merce:\n");
     for (i = 0; i < SO_DAYS; i++) {
         for (j = 0; j < SO_MERCI; j++) {
+            
             ton = S->magazine[i][j];
+            printf("Prendo la data di scadenza\n");
+            
             currentScadenza = getExpirationTime(*S, j, i);
             currentValue = getValue(ton, currentScadenza);
-            
+            printf(" calcolo valore %f, \n", currentValue);
             if (ton >= quantity && currentValue > value) {
                 value = currentValue;
                 *tipo = j;
                 *scadenza = currentScadenza;
             }
         }
+        printf("\n");
+        
     }
+    mutex(semid, UNLOCK, NULL);
 
     if (*tipo == -1 && *scadenza == -1) {
         res = -1;

@@ -5,6 +5,7 @@
 #include <signal.h>
 #include <time.h>
 #include "../src/porto.h"
+#include "../src/nave.h"
 #include "../src/dump.h"
 #include "./sem_utility.h"
 #include "./shm_utility.h"
@@ -351,13 +352,13 @@ void launchRefiller(int idx) {
 }
 
 
-void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*codicePorto)(Port porto, int myQueueID)) {
+void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*codicePorto)(Port porto, int myQueueID, int shipsQueueID)) {
      
     void (*oldHandler)(int);
     int i;
     Port p;
     int msgQueueID;
-
+    int shipQueueID;
     /*
         questo perchè per qualche motivo srand(time(NULL)) non generava unici seed tra un processo unico e l'altro
         fonte della soluzione: https://stackoverflow.com/questions/35641747/why-does-each-child-process-generate-the-same-random-number-when-using-rand
@@ -385,7 +386,9 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
 
     msgQueueID = useQueue(PQUEUEKEY + idx, errorHandler);
 
-    codicePorto(p, msgQueueID);
+    shipQueueID = useQueue(SQUEUEKEY, errorHandler);
+    
+    codicePorto(p, msgQueueID,shipQueueID);
 
 
 }
