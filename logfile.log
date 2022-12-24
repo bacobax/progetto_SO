@@ -1,88 +1,88 @@
 ------------------Day 0 -----------------
 Tipo merce 0:
 	- Non scaduta:
-		a) nei porti: 23
+		a) nei porti: 0
 		b) in nave: 3
 	- Scaduta:
-		a) nei porti: 0
+		a) nei porti: 26
 		b) in nave: 0
 Tipo merce 1:
 	- Non scaduta:
 		a) nei porti: 0
 		b) in nave: 2
 	- Scaduta:
-		a) nei porti: 18
+		a) nei porti: 17
 		b) in nave: 0
 Tipo merce 2:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 57
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 59
+		a) nei porti: 0
 		b) in nave: 0
 ------------------Day 1 -----------------
 Tipo merce 0:
 	- Non scaduta:
-		a) nei porti: 23
-		b) in nave: 6
-	- Scaduta:
 		a) nei porti: 0
+		b) in nave: 3
+	- Scaduta:
+		a) nei porti: 26
 		b) in nave: 0
 Tipo merce 1:
 	- Non scaduta:
 		a) nei porti: 0
-		b) in nave: 4
+		b) in nave: 2
 	- Scaduta:
-		a) nei porti: 18
+		a) nei porti: 17
 		b) in nave: 0
 Tipo merce 2:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 57
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 59
+		a) nei porti: 0
 		b) in nave: 0
 ------------------Day 2 -----------------
 Tipo merce 0:
 	- Non scaduta:
-		a) nei porti: 48
-		b) in nave: 6
-	- Scaduta:
 		a) nei porti: 0
-		b) in nave: 0
+		b) in nave: 3
+	- Scaduta:
+		a) nei porti: 59
+		b) in nave: 3
 Tipo merce 1:
 	- Non scaduta:
 		a) nei porti: 0
-		b) in nave: 4
+		b) in nave: 2
 	- Scaduta:
-		a) nei porti: 49
-		b) in nave: 0
+		a) nei porti: 41
+		b) in nave: 2
 Tipo merce 2:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 100
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 103
+		a) nei porti: 0
 		b) in nave: 0
 ------------------STATO FINALE -----------------
 Tipo merce 0:
 	- Non scaduta:
-		a) nei porti: 70
-		b) in nave: 6
-	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 88
+		b) in nave: 6
 Tipo merce 1:
 	- Non scaduta:
 		a) nei porti: 0
-		b) in nave: 4
-	- Scaduta:
-		a) nei porti: 71
 		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 73
+		b) in nave: 4
 Tipo merce 2:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 139
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 159
+		a) nei porti: 0
 		b) in nave: 0

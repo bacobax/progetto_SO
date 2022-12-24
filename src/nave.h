@@ -4,6 +4,8 @@
 
 #include "../config1.h"
 
+#define SQUEUEKEY 4001
+
 struct product {
     int product_type;    
     int expirationTime;
@@ -20,9 +22,11 @@ struct ship {
 };
 typedef struct ship* Ship;
 
-
-void createShmShips();
-void removeShmShips();
+struct port_offer{
+    int product_type;
+    int expirationTime;
+};
+typedef struct port_offer PortOffer;
 
 /* TUTTE LE FUNZIONI SOTTOSTANTI SONO RELATIVE ALLA NAVE*/
 
@@ -44,29 +48,26 @@ int findProduct(Product* products, Product p); /* ritorna l'indice del vettore i
 
 int removeProduct(Ship ship, int product_index);
 
-void updateExpTimeShip(Ship ship);
+int chooseQuantityToCharge(Ship ship);
+
+void initArrayOffers(PortOffer* offers);
+
+void callPorts(Ship ship, int quantityToCharge);
+
+int portResponses(Ship ship, PortOffer* port_offers);
+
+int choosePort(PortOffer* port_offers);
+
+void replyToPorts(Ship ship, int portID);
 
 
-/*
-    TO-DO 
 
-    1) Compilare e testare il codice
+/*void travel(Ship ship, int portID);*/
+
+/*void accessPort(Ship ship, int portID, PortOffer offer);*/
 
 
-*/
 
-/*
-
-CODICE DELLA VECCHIA VERSIONE, DA TENERE PERCHÈ POTREBBE
-SERVIRCI
-
-void newDayListenerShip();  chiamarlo ogni volta nel while(1) o lasciare che il processo in async non termini?
-
-void travel(int portID);
-
-void accessPort(int portID, struct port_offer product);
-
-*/
 void updateExpTimeShip(Ship ship);
 
 #endif
