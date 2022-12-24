@@ -117,6 +117,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int semBanchineID;
     int semShipsID;
     int msgRefillerID;
+    int msgShipQueueID;
     int waitconfigSemID;
     int rwExpTimesPortSemID;
     int waitEndDaySemID;
@@ -158,6 +159,8 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     /*il codice del master manco la usa*/
     msgRefillerID = createQueue(REFILLERQUEUE, errorHandler);
 
+    msgShipQueueID = createQueue(SQUEUEKEY, errorHandler);
+
     reservePortsResourceSem = createMultipleSem(RESPORTSBUFFERS, SO_PORTI, 1, errorHandler);
 
     rwExpTimesPortSemID = createMultipleSem(WREXPTIMESSEM, SO_PORTI, 1, errorHandler);
@@ -189,6 +192,8 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeShm(portsShmid, errorHandler);
 
     removeQueue(msgRefillerID, errorHandler);
+    removeQueue(msgShipQueueID, errorHandler);
+
     removeDumpArea();
     printf("Master, ho rimosso tutto\n");
 
@@ -309,6 +314,7 @@ void expireShipGoods(){
             perror("fork nel gestore risorse");
             exit(EXIT_FAILURE);
         } else if (pid == 0){
+            ships = (Ship)getShmAddress(shipShmID, 0, errorHandler);
             childExpireShipCode(ships + i);
             exit(EXIT_SUCCESS);
         }

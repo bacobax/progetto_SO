@@ -30,7 +30,7 @@ double generateCord()
     return (rand() / div);
 }
 
-void initArray(Product* products){
+void initArrayProducts(Product* products){
     int i;
     for(i=0; i<SO_CAPACITY; i++){
         products[i].product_type = -1;
@@ -39,11 +39,19 @@ void initArray(Product* products){
     }
 }
 
+void initArrayOffers(PortOffer* offers){
+    int i;
+    for(i=0; i<SO_PORTI; i++){
+        offers[i].product_type = -1;
+        offers[i].expirationTime = -1;
+    }
+}
+
 Ship initShip(int shipID)
 {
     Ship ship;
     int shipShmId;
-    printf("Nave: sono dentro alla initShip\n");
+
     if (signal(SIGUSR1, quitSignalHandler) == SIG_ERR)
     { /* imposto l'handler per la signal SIGUSR1 */
         perror("Error trying to set a signal handler for SIGUSR1");
@@ -52,18 +60,14 @@ Ship initShip(int shipID)
 
     /* inizializziamo la nave in shm*/
 
-    printf("Nave: sto per fare useShm in initShip\n");
     shipShmId = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler);
-    printf("Nave: ship useShm fatta\n");
 
     ship = ((struct ship*) getShmAddress(shipShmId, 0, errorHandler)) + shipID;
     ship->shipID = shipID;
     ship->x = generateCord();
     ship->y = generateCord();
     ship->weight = 0;
-    initArray(ship->products); /* inizializzo l'array con tutti i valori a -1*/
-
-    printf("Nave: nave con id:%d inizializzata\n", ship->shipID);
+    initArrayProducts(ship->products); /* inizializzo l'array con tutti i valori a -1*/
 
     return ship;
 }
@@ -71,10 +75,6 @@ Ship initShip(int shipID)
 void printLoadShip(Product* products){
     int i;
     for(i=0; i<SO_CAPACITY; i++){
-        /*
-        if(products[i].product_type == -1) break;
-        
-        */
         printf("\nProduct type:%d, Expiration time: %d, Weight: %d", products[i].product_type, products[i].expirationTime, products[i].weight);
     }
     printf("\n");
@@ -123,6 +123,9 @@ int addProduct(Ship ship, Product p){
                 products[i].expirationTime = p.expirationTime;
                 products[i].weight = p.weight;
                 ship->weight = ship->weight + p.weight;
+
+                addNotExpiredGood(products[i].weight, products[i].product_type, SHIP);
+
                 break;
             }
         }
@@ -168,14 +171,91 @@ int removeProduct(Ship ship, int product_index){
     }
 }
 
+int chooseQuantitiToCharge(Ship ship){
+    return availableCapacity(ship);
+    /* il massimo che posso caricare
+       valutare se conviene caricare di meno per essere più leggeri e viaggiare più
+       velocemente */
+}
+
+void callPorts(Ship ship, int quantityToCharge){
+    int i;
+    int queueID;
+    char text[MEXBSIZE];
+    sprintf(text, "%d", quantityToCharge);
+
+    for(i=0; i<SO_PORTI; i++){
+        queueID = useQueue(PQUEUEKEY + i, errorHandler);
+        msgSend(queueID, text, (ship->shipID + 1), errorHandler);
+        /*
+            poichè non ci possono essere type uguali a 0 aggiungo
+            all'id della nave +1
+        */
+    }
+}
+
+int portResponses(Ship ship, PortOffer* port_offers){
+    int i;
+    int queueID;
+    int ports = 0;
+    char pType[MEXBSIZE], expDay[MEXBSIZE];
+    mex* response;
+
+    for(i=0; i<SO_PORTI; i++){
+        queueID = useQueue(SQUEUEKEY, errorHandler);
+        response = msgRecv(queueID, (ship->shipID -1), errorHandler, NULL, SYNC);
+
+        if(response->mtype != -1){
+            sscanf(response->mtext, "%s %s", pType, expDay);
+            port_offers[i].product_type = atoi(pType);
+            port_offers[i].expirationTime = atoi(expDay);
+            ports++;
+        }
+    }
+
+    return ports;
+}
+
+int choosePort(PortOffer* port_offers){
+    int i;
+    int portID = 0;
+    int expTime = port_offers[0].expirationTime;
+    for(i=1; i<SO_PORTI; i++){
+        if(port_offers[i].expirationTime < expTime){
+            expTime = port_offers[i].expirationTime;
+            portID = i;
+        }
+    }
+    return portID;
+}
+
+void replyToPorts(Ship ship, int portID){
+    int i;
+    int queueID;
+    char text[MEXBSIZE];
+
+    for(i=0; i<SO_PORTI; i++){
+        queueID = useQueue(PQUEUEKEY + i, errorHandler);
+        
+        if(i == portID){
+            sprintf(text, "1"); /*ok*/
+            msgSend(queueID, text, (ship->shipID + 1), errorHandler);
+        } else {
+            sprintf(text, "0"); /*negative*/
+            msgSend(queueID, text, (ship->shipID + 1), errorHandler);
+        }
+    }
+}
+
+
 void updateExpTimeShip(Ship ship){
     int i;
     Product* products = ship->products;
 
     for(i=0; i<SO_CAPACITY; i++){
         if(products[i].product_type == -1) break;
-
-        products[i].expirationTime += -1;
+        
+        products[i].expirationTime = products[i].expirationTime -1;
 
         if(products[i].expirationTime == 0){
             addExpiredGood(products[i].weight, products[i].product_type, SHIP);

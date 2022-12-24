@@ -16,8 +16,38 @@
 #include "./porto.h"
 
 
-void chargeProducts(Ship ship){
-    /* TO-DO */
+void chargeProducts(Ship ship, int quantityToCharge){
+    int availablePorts;
+    int portID;
+    PortOffer port_offers[SO_PORTI];
+    initArrayOffers(port_offers);
+
+    if(quantityToCharge == 0){
+        dischargeProducts(ship);
+    } else {
+        callPorts(ship, quantityToCharge); /* mando msg a tutti i porti perchè voglio caricare*/
+    
+        availablePorts = portResponses(ship, port_offers);
+
+        if(availablePorts == 0){
+            /* non ci sono porti disponibili per la quantità
+               di merce che voglio caricare, riprovo a chiamare i porti decrementando la quantità*/
+            chargeProducts(ship, quantityToCharge - 1); 
+        
+        } else {
+            /* ci sono porti che hanno merce da caricare*/
+            
+            portID = choosePort(port_offers);
+
+            replyToPorts(ship, portID);
+
+            /*
+            travel(ship, portID);
+
+            accessPort(ship, portID, port_offers[portID]);*/
+        }
+    }
+    
 }
 
 void dischargeProducts(Ship ship){
@@ -25,47 +55,33 @@ void dischargeProducts(Ship ship){
 }
 
 int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identificativo della nave (es: nave 0, nave 1, nave 2, ecc..)*/
-    int idx;
     int res;
     Product p1, p2;
-    Ship ship;
     p1.product_type = 0;
-    p1.expirationTime = 3;
+    p1.expirationTime = 1;
     p1.weight = 3;
-
     p2.product_type = 1;
-    p2.expirationTime = 2;
+    p2.expirationTime = 1;
     p2.weight = 2;
-
-    /*
-    res = useShm(SSHMKEY, SO_NAVI * sizeof(struct ship), NULL);
-    printf("Nave shmid:%d\n", res);
-    */
-
-    printf("Nave: mio indice: %s\n" , argv[1]);
-    idx = atoi(argv[1]);
-
-    printf("Nave: sto per fare la initShip\n");
     
-    ship = initShip(idx);
-    printf("Nave: finito initschip\n");
+    Ship ship;
+    
+    ship = initShip(atoi(argv[1]));
     int charge = 1;
 
     checkInConfig();
-    printf("Nave: config finita nave\n");
+    printf("Nave con id:%d: config finita, aspetto ok partenza dal master...\n", ship->shipID);
     waitForStart();
+    printf("Nave con id:%d partita\n", ship->shipID);
 
-    res = addProduct(ship, p1);
+    while(1){
+        res = addProduct(ship, p1);
+        res = addProduct(ship, p2);
+        printShip(ship);
+        sleep(2);
+    }
 
-    printShip(ship);
-
-    res = addProduct(ship, p2);
-
-    printShip(ship);
-
-    sleep(5);
-
-    exit(EXIT_SUCCESS);
+    exit(EXIT_FAILURE);
 
     /*
     while (1) { 
