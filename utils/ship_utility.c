@@ -43,7 +43,7 @@ Ship initShip(int shipID)
 {
     Ship ship;
     int shipShmId;
-    printf("Nave: sono dentro alla initShip\n");
+
     if (signal(SIGUSR1, quitSignalHandler) == SIG_ERR)
     { /* imposto l'handler per la signal SIGUSR1 */
         perror("Error trying to set a signal handler for SIGUSR1");
@@ -52,9 +52,7 @@ Ship initShip(int shipID)
 
     /* inizializziamo la nave in shm*/
 
-    printf("Nave: sto per fare useShm in initShip\n");
     shipShmId = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler);
-    printf("Nave: ship useShm fatta\n");
 
     ship = ((struct ship*) getShmAddress(shipShmId, 0, errorHandler)) + shipID;
     ship->shipID = shipID;
@@ -62,8 +60,6 @@ Ship initShip(int shipID)
     ship->y = generateCord();
     ship->weight = 0;
     initArray(ship->products); /* inizializzo l'array con tutti i valori a -1*/
-
-    printf("Nave: nave con id:%d inizializzata\n", ship->shipID);
 
     return ship;
 }
@@ -123,6 +119,9 @@ int addProduct(Ship ship, Product p){
                 products[i].expirationTime = p.expirationTime;
                 products[i].weight = p.weight;
                 ship->weight = ship->weight + p.weight;
+
+                addNotExpiredGood(products[i].weight, products[i].product_type, SHIP);
+
                 break;
             }
         }

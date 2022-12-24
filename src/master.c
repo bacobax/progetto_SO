@@ -56,11 +56,12 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
             mutex(waitEndDaySemID, WAITZERO, errorHandler);
             
         }
-
+        #ifndef __linux__
         nanosecsleep(NANOS_MULT);
-        /*
-            sleep(1)
-        */
+        #endif
+        
+        sleep(1);
+        
         /*expireShipGoods();
         
             kill(0, SIGALRM);
@@ -68,7 +69,10 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
         /* TODO: funzione dump */
     }
     printDump(i);
+    #ifndef __linux__
     nanosecsleep(NANOS_MULT);
+    #endif
+    sleep(1);
 }
 
 int main(int argc, char const* argv[]) {

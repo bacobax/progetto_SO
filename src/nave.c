@@ -25,47 +25,33 @@ void dischargeProducts(Ship ship){
 }
 
 int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identificativo della nave (es: nave 0, nave 1, nave 2, ecc..)*/
-    int idx;
     int res;
     Product p1, p2;
-    Ship ship;
     p1.product_type = 0;
     p1.expirationTime = 3;
     p1.weight = 3;
-
     p2.product_type = 1;
     p2.expirationTime = 2;
     p2.weight = 2;
-
-    /*
-    res = useShm(SSHMKEY, SO_NAVI * sizeof(struct ship), NULL);
-    printf("Nave shmid:%d\n", res);
-    */
-
-    printf("Nave: mio indice: %s\n" , argv[1]);
-    idx = atoi(argv[1]);
-
-    printf("Nave: sto per fare la initShip\n");
     
-    ship = initShip(idx);
-    printf("Nave: finito initschip\n");
+    Ship ship;
+    
+    ship = initShip(atoi(argv[1]));
     int charge = 1;
 
     checkInConfig();
-    printf("Nave: config finita nave\n");
+    printf("Nave con id:%d: config finita, aspetto ok partenza dal master...\n", ship->shipID);
     waitForStart();
+    printf("Nave con id:%d partita\n", ship->shipID);
 
-    res = addProduct(ship, p1);
+    while(1){
+        res = addProduct(ship, p1);
+        res = addProduct(ship, p2);
+        printShip(ship);
+        sleep(1);
+    }
 
-    printShip(ship);
-
-    res = addProduct(ship, p2);
-
-    printShip(ship);
-
-    sleep(5);
-
-    exit(EXIT_SUCCESS);
+    exit(EXIT_FAILURE);
 
     /*
     while (1) { 
