@@ -1,88 +1,88 @@
 ------------------Day 0 -----------------
 Tipo merce 0:
 	- Non scaduta:
-		a) nei porti: 18
+		a) nei porti: 0
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 0
+		a) nei porti: 28
 		b) in nave: 0
 Tipo merce 1:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 31
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 33
+		a) nei porti: 0
 		b) in nave: 0
 Tipo merce 2:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 41
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 49
+		a) nei porti: 0
 		b) in nave: 0
 ------------------Day 1 -----------------
 Tipo merce 0:
 	- Non scaduta:
-		a) nei porti: 18
+		a) nei porti: 0
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 0
+		a) nei porti: 28
 		b) in nave: 0
 Tipo merce 1:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 31
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 33
+		a) nei porti: 0
 		b) in nave: 0
 Tipo merce 2:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 41
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 49
+		a) nei porti: 0
 		b) in nave: 0
 ------------------Day 2 -----------------
 Tipo merce 0:
 	- Non scaduta:
-		a) nei porti: 43
+		a) nei porti: 0
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 0
+		a) nei porti: 47
 		b) in nave: 0
 Tipo merce 1:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 61
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 64
+		a) nei porti: 0
 		b) in nave: 0
 Tipo merce 2:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 92
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 93
+		a) nei porti: 0
 		b) in nave: 0
 ------------------STATO FINALE -----------------
 Tipo merce 0:
 	- Non scaduta:
-		a) nei porti: 48
+		a) nei porti: 0
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 18
+		a) nei porti: 71
 		b) in nave: 0
 Tipo merce 1:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 56
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 92
+		a) nei porti: 31
 		b) in nave: 0
 Tipo merce 2:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 142
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 142
+		a) nei porti: 0
 		b) in nave: 0
