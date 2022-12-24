@@ -9,6 +9,7 @@
 #include "./sem_utility.h"
 #include "./shm_utility.h"
 #include <stdio.h>
+#include <string.h>
 #include <signal.h>
 #include <stdlib.h>
 #include <math.h>
@@ -198,22 +199,16 @@ int portResponses(Ship ship, PortOffer* port_offers){
     int i;
     int queueID;
     int ports = 0;
-    char pType[MEXBSIZE], expDay[MEXBSIZE];
     mex* response;
     /*
         !devi poi fare la free di response
     */
     for(i=0; i<SO_PORTI; i++){
         queueID = useQueue(SQUEUEKEY, errorHandler);
-        response = msgRecv(queueID, (ship->shipID +1), errorHandler, NULL, SYNC);
+        response = msgRecv(queueID, (ship->shipID + 1), errorHandler, NULL, SYNC);
 
-        if(response->mtype != -1){
-            /*
-                non penso che questa sscanf funzioni
-            */
-            sscanf(response->mtext, "%s %s", pType, expDay);
-            port_offers[i].product_type = atoi(pType);
-            port_offers[i].expirationTime = atoi(expDay);
+        if(strlen(response->mtext) > 1){
+            sscanf(response->mtext, "%d %d", &port_offers[i].product_type, &port_offers[i].expirationTime);
             ports++;
         }
     }
@@ -253,6 +248,36 @@ void replyToPorts(Ship ship, int portID){
 }
 
 
+void travel(Ship ship, int portID)
+{
+
+    Port p;
+    double dt_x, dt_y, spazio, nanosleep_arg;
+
+    int portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);  /* prendo l'id della shm del porto */
+
+    p = ((Port)getShmAddress(portShmId, 0, errorHandler)) + portID;  /* prelevo la struttura del porto alla portID-esima posizione nella shm 
+
+     imposto la formula per il calcolo della distanza */
+
+    dt_x = p->x - ship->x;
+    dt_y = p->y - ship->y;
+
+    spazio = sqrt(pow(dt_x, 2) + pow(dt_y, 2));
+    
+    /* spazio/SO_SPEED è misurato in giorni (secondi), quindi spazio/SO_SPEED*1000000000 sono il numero di nanosecondi per cui fare la sleep */
+    
+    nanosecsleep((long)((spazio / SO_SPEED) * NANOS_MULT));
+
+    /* Dopo aver fatto la nanosleep la nave si trova esattamente sulle coordinate del porto
+       quindi aggiorniamo le sue coordinate */
+    
+   
+    ship->x = p->x;
+    ship->y = p->y;
+}
+
+
 void updateExpTimeShip(Ship ship){
     int i;
     Product* products = ship->products;
@@ -269,33 +294,3 @@ void updateExpTimeShip(Ship ship){
     }
 }
 
-/*
-void travel(Ship ship, int portID)
-{
-
-    Port p;
-    double dt_x, dt_y, spazio, nanosleep_arg;
-
-    int portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);  prendo l'id della shm del porto 
-
-    p = ((Port)getShmAddress(portShmId, 0, errorHandler)) + portID;  prelevo la struttura del porto alla portID-esima posizione nella shm 
-
-     imposto la formula per il calcolo della distanza
-
-    dt_x = p->x - ship->x;
-    dt_y = p->y - ship->y;
-
-    spazio = sqrt(pow(dt_x, 2) + pow(dt_y, 2));
-    
-        spazio/SO_SPEED è misurato in giorni (secondi), quindi spazio/SO_SPEED*1000000000 sono il numero di nanosecondi per cui fare la sleep
-    
-    nanosecsleep((long)((spazio / SO_SPEED) * NANOS_MULT));
-
-     Dopo aver fatto la nanosleep la nave si trova esattamente sulle coordinate del porto
-       quindi aggiorniamo le sue coordinate
-    
-   
-    ship->x = p->x;
-    ship->y = p->y;
-}
-*/
