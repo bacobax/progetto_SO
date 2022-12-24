@@ -349,3 +349,43 @@ void launchRefiller(int idx) {
         exit(EXIT_FAILURE);
     }
 }
+
+
+void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*codicePorto)(Port porto, int myQueueID)) {
+     
+    void (*oldHandler)(int);
+    int i;
+    Port p;
+    int msgQueueID;
+
+    /*
+        questo perchè per qualche motivo srand(time(NULL)) non generava unici seed tra un processo unico e l'altro
+        fonte della soluzione: https://stackoverflow.com/questions/35641747/why-does-each-child-process-generate-the-same-random-number-when-using-rand
+        da quel che ho capito il bug era dovuto al fatto che le fork dei vari figli sono avvenute nello stesso secondo
+    */
+    srand((int)time(NULL) % getpid());
+
+    
+    oldHandler = signal(SIGUSR1, quitSignalHandler);
+    if (oldHandler == SIG_ERR) {
+        perror("signal");
+        exit(1);
+    }
+    
+
+    p = initPort(supplyDisponibility,requestDisponibility, idx);
+
+
+    shmDetach(p-idx, errorHandler); 
+
+    launchRefiller(idx);
+
+    checkInConfig();
+    printf("P: finito configurazione\n");
+
+    msgQueueID = useQueue(PQUEUEKEY + idx, errorHandler);
+
+    codicePorto(p, msgQueueID);
+
+
+}

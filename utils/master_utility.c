@@ -108,6 +108,24 @@ void aspettaConfigs(int waitConfigSemID) {
 }
 
 
+void creaCodePorti() {
+    int i;
+    int msgQueue;
+
+    for (i = 0; i < SO_PORTI; i++) {
+        msgQueue = createQueue(PQUEUEKEY + i, errorHandler);
+    }
+}
+
+void distruggiCodePorti() {
+    int i;
+    int msgQueue;
+    for (i = 0; i < SO_PORTI; i++) {
+        msgQueue = useQueue(PQUEUEKEY + i, errorHandler);
+        removeQueue(msgQueue, errorHandler);
+    }
+}
+
 void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID)) {
     int startSimulationSemID;
     int reservePrintSem;
@@ -121,6 +139,8 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int waitconfigSemID;
     int rwExpTimesPortSemID;
     int waitEndDaySemID;
+    
+
     
     createDumpArea();
     
@@ -143,7 +163,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     /*
     !dovrà essere SO_PORTI + SO_NAVI
     */
-    waitconfigSemID = createSem(WAITCONFIGKEY, SO_PORTI + SO_NAVI, errorHandler);
+    waitconfigSemID = createSem(WAITCONFIGKEY, SO_PORTI+ SO_NAVI, errorHandler);
     
     portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
     shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);
@@ -172,6 +192,8 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
         in sintesi il master aspetta a passare il giorno finchè tutti i porti non hanno ricevuto la loro merce
     */
     waitEndDaySemID = createSem(WAITENDDAYKEY, SO_PORTI, errorHandler);
+
+    creaCodePorti();
     
     codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID);
 
@@ -193,7 +215,8 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     removeQueue(msgRefillerID, errorHandler);
     removeQueue(msgShipQueueID, errorHandler);
-
+    distruggiCodePorti();
+    
     removeDumpArea();
     printf("Master, ho rimosso tutto\n");
 

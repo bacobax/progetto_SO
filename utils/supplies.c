@@ -72,3 +72,52 @@ void removeExpiredGoods(Supplies* S) {
         }
     }
 }
+
+/*
+    in sintesi maggiore è la quantità, maggiore è il valore assegnato
+    maggiore è il tempo di vita rimanente, minore è il valore,
+    l'ho aggiustata con una divisione
+    
+*/
+double getValue(int quantity, int scadenza) {
+    return quantity / scadenza;
+}
+
+int trovaTipoEScadenza(Supplies* S, int* tipo, int* scadenza, int quantity) {
+    int i;
+    int j;
+    /*
+    il valore dev'essere di tipo double perchè sennò le volte che 0 < quantity/scadenza < 1,
+    cioè quando il tempo di vita rimanente è maggiore della quantità, value diventa 0
+    */
+    double value = 0;
+    int ton;
+    double currentValue;
+    int currentScadenza;
+    int res;
+    *tipo = -1;
+    *scadenza = -1;
+    for (i = 0; i < SO_DAYS; i++) {
+        for (j = 0; j < SO_MERCI; j++) {
+            ton = S->magazine[i][j];
+            currentScadenza = getExpirationTime(*S, j, i);
+            currentValue = getValue(ton, currentScadenza);
+            
+            if (ton >= quantity && currentValue > value) {
+                value = currentValue;
+                *tipo = j;
+                *scadenza = currentScadenza;
+            }
+        }
+    }
+
+    if (*tipo == -1 && *scadenza == -1) {
+        res = -1;
+    }
+    else {
+        res = 1;
+    }
+    return res;
+
+}
+

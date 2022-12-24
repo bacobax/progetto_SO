@@ -60,7 +60,7 @@ int choosePort(PortOffer* port_offers);
 
 void replyToPorts(Ship ship, int portID);
 
-
+void dischargeProducts(Ship ship);
 
 /*void travel(Ship ship, int portID);*/
 

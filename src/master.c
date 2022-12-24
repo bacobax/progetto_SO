@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <signal.h>
 #include <time.h>
@@ -31,7 +32,7 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     genera_porti(quantitaPrimoGiorno, SO_PORTI); /* da tradurre in inglese */
 
 
-    
+   
     genera_navi();
 
     printf("M: Finito generazione\n");
@@ -59,9 +60,10 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
         #ifndef __linux__
         nanosecsleep(NANOS_MULT);
         #endif
-        
+        #ifdef __linux__
         sleep(1);
-        
+        #endif
+
         /*expireShipGoods();
         
             kill(0, SIGALRM);

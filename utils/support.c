@@ -110,3 +110,5 @@ void checkInConfig() {
     int waitConfigSemID = useSem(WAITCONFIGKEY, errorHandler);
     mutex(waitConfigSemID, LOCK, errorHandler);
 }
+
+

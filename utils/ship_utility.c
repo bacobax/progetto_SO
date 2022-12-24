@@ -200,12 +200,17 @@ int portResponses(Ship ship, PortOffer* port_offers){
     int ports = 0;
     char pType[MEXBSIZE], expDay[MEXBSIZE];
     mex* response;
-
+    /*
+        !devi poi fare la free di response
+    */
     for(i=0; i<SO_PORTI; i++){
         queueID = useQueue(SQUEUEKEY, errorHandler);
-        response = msgRecv(queueID, (ship->shipID -1), errorHandler, NULL, SYNC);
+        response = msgRecv(queueID, (ship->shipID +1), errorHandler, NULL, SYNC);
 
         if(response->mtype != -1){
+            /*
+                non penso che questa sscanf funzioni
+            */
             sscanf(response->mtext, "%s %s", pType, expDay);
             port_offers[i].product_type = atoi(pType);
             port_offers[i].expirationTime = atoi(expDay);

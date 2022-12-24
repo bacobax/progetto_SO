@@ -20,4 +20,5 @@ void decrementExpTimes(Supplies* S, int day);
 
 void removeExpiredGoods(Supplies* S);
 
+int trovaTipoEScadenza(Supplies* S, int* tipo, int* scadenza, int quantity);
 #endif
