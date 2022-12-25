@@ -352,7 +352,7 @@ void launchRefiller(int idx) {
 }
 
 
-void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*codicePorto)(Port porto, int myQueueID, int shipsQueueID)) {
+void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*codicePorto)(Port porto, int myQueueID, int shipsQueueID, int idx)) {
      
     void (*oldHandler)(int);
     int i;
@@ -387,7 +387,7 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
 
     shipQueueID = useQueue(SQUEUEKEY, errorHandler);
     
-    codicePorto(p, msgQueueID,shipQueueID);
+    codicePorto(p, msgQueueID,shipQueueID, idx);
 
 
 }

@@ -80,7 +80,7 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
         // res = addProduct(ship, p2);
         // printShip(ship);
         // sleep(2);
-    sleep(1);
+    sleep(3);
     chargeProducts(ship, 5);
     printShip(ship);
         // }

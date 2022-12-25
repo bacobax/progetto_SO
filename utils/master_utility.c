@@ -228,8 +228,11 @@ void refillCode(intList* l, int msgRefillerID, int giorno) {
     char supportText[MEXBSIZE];
     for (i = 0; i < l->length; i++) {
         sprintf(supportText, "%d|%d", giorno, *(intElementAt(l, i)));
-        type = i+1;
+        type = i + 1;
+        /*
         printf("Invio messaggio alla coda %d con il seguente testo: %s con tipo %ld\n", msgRefillerID, supportText, type);
+
+        */
         /* Invio messaggio alla coda 458752 con il seguente testo: 0|20 con tipo 0 */
         msgSend(msgRefillerID, supportText, type, NULL);
     }
