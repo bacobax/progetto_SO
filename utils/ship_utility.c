@@ -245,7 +245,6 @@ void replyToPorts(Ship ship, int portID){
     }
 }
 
-
 void travel(Ship ship, int portID)
 {
 
@@ -273,6 +272,41 @@ void travel(Ship ship, int portID)
    
     ship->x = p->x;
     ship->y = p->y;
+}
+
+/* ATTENZIONE SCRITTURA DELLA PROCEDURA NON ANCORA COMPLETA!*/
+void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int weight){
+    int portShmID;
+    int pierSemID;
+    int shipSemID;
+    Port port;
+    Product p;
+    p.product_type = offer_choosen.product_type;
+    p.expirationTime = offer_choosen.expirationTime;
+    p.weight = weight;
+
+    portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler);
+    pierSemID = useSem(BANCHINESEMKY, errorHandler);
+    shipSemID = useSem(SEMSHIPKEY, errorHandler);
+
+    port = ((Port)getShmAddress(portShmID, 0, errorHandler)) + portID;
+
+    mutexPro(pierSemID, portID, LOCK, errorHandler);
+
+    /* in questo momento la nave è attraccata alla banchina del porto*/
+
+    /* il porto ha già decrementato */
+
+    nanosecsleep(p.weight / SO_LOADSPEED); /* da cambiare nanosecsleep perchè il parametro da mandare deve essere di tipo double*/
+
+    mutexPro(shipSemID, ship->shipID, LOCK, errorHandler);
+
+    addProduct(ship, p);
+    addNotExpiredGood(p.weight, p.product_type, SHIP);
+
+    mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler);
+
+    mutexPro(pierSemID, portID, UNLOCK, errorHandler);
 }
 
 

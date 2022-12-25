@@ -41,10 +41,9 @@ void chargeProducts(Ship ship, int quantityToCharge){
 
             replyToPorts(ship, portID);
 
-            /*
             travel(ship, portID);
-
-            accessPort(ship, portID, port_offers[portID]);*/
+            
+            accessPortForCharge(ship, portID, port_offers[portID], quitSignalHandler);
         }
     }
     
