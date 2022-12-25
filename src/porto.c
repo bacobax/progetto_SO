@@ -38,7 +38,7 @@ void codicePorto(Port porto, int myQueueID, int shipsQueueID) {
         sscanf(messaggioRicevuto->mtext, "%d", &quantity);
         
         printf("Ricevuto messaggio da nave %d con quantità %d\n", messaggioRicevuto->mtype - 1, quantity);
-        res = trovaTipoEScadenza(&(porto->supplies), &tipoTrovato, &dataScadenzaTrovata, quantity);
+        res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dataScadenzaTrovata, quantity);
         printf("Ho trovato il tipo %d con data di scadenza %d\n", tipoTrovato, dataScadenzaTrovata);
         if (res == -1) {
             msgSend(shipsQueueID, "x", messaggioRicevuto->mtype, errorHandler);

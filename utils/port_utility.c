@@ -377,7 +377,6 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
     p = initPort(supplyDisponibility,requestDisponibility, idx);
 
 
-    shmDetach(p-idx, errorHandler); 
 
     launchRefiller(idx);
 

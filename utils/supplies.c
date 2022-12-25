@@ -108,11 +108,10 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* scadenza, int quantity) {
         for (j = 0; j < SO_MERCI; j++) {
             
             ton = S->magazine[i][j];
-            printf("Prendo la data di scadenza\n");
             
             currentScadenza = getExpirationTime(*S, j, i);
             currentValue = getValue(ton, currentScadenza);
-            printf(" calcolo valore %f, \n", currentValue);
+            printf("👾%f, ", currentValue);
             if (ton >= quantity && currentValue > value) {
                 value = currentValue;
                 *tipo = j;
