@@ -2,13 +2,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <time.h>
-#include <signal.h>
 
 #include <sys/types.h>
 #include "../config1.h"
-#include "../utils/sem_utility.h"
-#include "../utils/shm_utility.h"
+#include "../utils/msg_utility.h"
 #include "../utils/support.h"
 #include "../utils/vettoriInt.h"
 
@@ -16,84 +13,76 @@
 #include "../utils/supplies.h"
 
 
-/*
-void updateExpTimeHandler(int sig) {
-    if (idx == -1) {
-        perror("unexpected error\n");
-        exit(EXIT_FAILURE);
-    }
-        printf("Porto: ricevuto sigalarm\n");
 
-    updateExpTimes(idx);
-
-}
-*/
-
-/* TODO: Bisogna fare la fork() e creare un processo "filler" che fa una costante recv e che non appena riceve il messaggio dal master che deve refillare, lo fa */
-
-int main(int argc, char const* argv[]) {
-    int supplyDisponibility;
-    int requestDisponibility;
-    void (*oldHandler)(int);
-    int i;
-    Port p;
-    int idx;
-
-    /*
-        questo perchè per qualche motivo srand(time(NULL)) non generava unici seed tra un processo unico e l'altro
-        fonte della soluzione: https://stackoverflow.com/questions/35641747/why-does-each-child-process-generate-the-same-random-number-when-using-rand
-        da quel che ho capito il bug era dovuto al fatto che le fork dei vari figli sono avvenute nello stesso secondo
-    */
-    srand((int)time(NULL) % getpid());
-
-    
-    oldHandler = signal(SIGUSR1, quitSignalHandler);
-    if (oldHandler == SIG_ERR) {
-        perror("signal");
-        exit(1);
-    }
-    /*
-        oldHandler = signal(SIGALRM, updateExpTimeHandler);
-            if (oldHandler == SIG_ERR) {
-                perror("signal");
-                exit(1);
-            }
-
-    */
-    
-    
-
-
-    supplyDisponibility = atoi(argv[1]);
-    requestDisponibility = atoi(argv[2]);
-    idx = atoi(argv[3]);
-
-    p = initPort(supplyDisponibility,requestDisponibility, idx);
-
-
-    /* shmDetach(p, errorHandler); */
-
-    launchRefiller(idx);
-
-    checkInConfig();
-    printf("P: finito configurazione\n");
-    
+void codicePorto(Port porto, int myQueueID, int shipsQueueID, int idx) {
+    int quantity = -2;
+    mex* messaggioRicevuto;
+    int res;
+    int tipoTrovato;
+    int dayTrovato;
+    int dataScadenzaTrovata;
+    char text[MEXBSIZE];
+    int sonostatoScelto;
     waitForStart();
 
     /* START */
 
     
-    i = 0;
-    while (i<SO_DAYS) {
-        printf("Porto %d: dormo\n", idx);
+  
+    while (1) {
+      
+        /*
+            E' importante che sia sincrona la gestione del messaggio ricevuto
+            perchè prima di poterne ricevere un altro il porto deve poter aver aggiornato le sue disponibilità
+        */
 
-        /*nanosecsleep(NANOS_MULT);*/
-        sleep(1);
-        i++;
+        
+        messaggioRicevuto = msgRecv(myQueueID, 0, errorHandler, NULL, SYNC);
+        sscanf(messaggioRicevuto->mtext, "%d", &quantity);
+        
+        printf("Port %d: Ricevuto messaggio da nave %d con quantità %d\n",getpid() ,messaggioRicevuto->mtype - 1, quantity);
+        res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantity);
+        
+        printf("Ho trovato il tipo %d con data di scadenza %d\n", tipoTrovato, dataScadenzaTrovata);
+        
+        if (res == -1) {
+            msgSend(shipsQueueID, "x", idx + 1, errorHandler);
+        }
+        else {
+
+            porto->supplies.magazine[dayTrovato][tipoTrovato] -= quantity;
+            sprintf(text, "%d %d", tipoTrovato, dataScadenzaTrovata);
+            msgSend(shipsQueueID, text, idx + 1, errorHandler);
+        }
+        
+        messaggioRicevuto = msgRecv(myQueueID, messaggioRicevuto->mtype, errorHandler, NULL, SYNC);
+
+        sscanf(messaggioRicevuto->mtext, "%d", &sonostatoScelto);
+        if (!sonostatoScelto && res!=-1) {
+            printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n" , getpid());
+            porto->supplies.magazine[dayTrovato][tipoTrovato] += quantity;
+        }
+
+        if (res == 1) {
+            printf("Porto %d: sono stato scelto\n", getpid());
+        }
+
     }
 
 
-    return 1;
+}
+
+int main(int argc, char const* argv[]) {
+    int supplyDisponibility;
+    int requestDisponibility;
+    int idx;
+
+    supplyDisponibility = atoi(argv[1]);
+    requestDisponibility = atoi(argv[2]);
+    idx = atoi(argv[3]);
+
+    mySettedPort(supplyDisponibility, requestDisponibility, idx, codicePorto);
+    
 
 }
 

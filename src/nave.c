@@ -29,7 +29,8 @@ void chargeProducts(Ship ship, int quantityToCharge){
     
         availablePorts = portResponses(ship, port_offers);
 
-        if(availablePorts == 0){
+        printf("NAVE: Aviable ports = %d\n", availablePorts);
+        if (availablePorts == 0) {
             /* non ci sono porti disponibili per la quantità
                di merce che voglio caricare, riprovo a chiamare i porti decrementando la quantità*/
             chargeProducts(ship, quantityToCharge - 1); 
@@ -73,12 +74,19 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     waitForStart();
     printf("Nave con id:%d partita\n", ship->shipID);
 
-    while(1){
-        res = addProduct(ship, p1);
-        res = addProduct(ship, p2);
-        printShip(ship);
-        sleep(2);
-    }
+    // while(1){
+        // res = addProduct(ship, p1);
+        // res = addProduct(ship, p2);
+        // printShip(ship);
+        // sleep(2);
+    sleep(3);
+    chargeProducts(ship, 5);
+    printShip(ship);
+        // }
+
+        while (1) {
+            sleep(1);
+        }
 
     exit(EXIT_FAILURE);
 

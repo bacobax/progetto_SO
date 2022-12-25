@@ -38,5 +38,5 @@ void launchRefiller(int idx);
 */
 void updateExpTimes(int idx);
 
-
+void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*codicePorto)(Port porto, int myQueueID, int shipsQueueID, int idx));
 #endif
