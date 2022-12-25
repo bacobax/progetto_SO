@@ -81,10 +81,10 @@ void removeExpiredGoods(Supplies* S) {
     
 */
 double getValue(int quantity, int scadenza) {
-    return quantity / scadenza;
+    return quantity / (double)scadenza;
 }
 
-int trovaTipoEScadenza(Supplies* S, int* tipo, int* scadenza, int quantity) {
+int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, int quantity) {
     int i;
     int j;
     /*
@@ -102,6 +102,7 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* scadenza, int quantity) {
     
     *tipo = -1;
     *scadenza = -1;
+    *dayTrovato = -1;
     mutex(semid, LOCK, NULL);
     printf("✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼Valori della merce:\n");
     for (i = 0; i < SO_DAYS; i++) {
@@ -115,6 +116,7 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* scadenza, int quantity) {
             if (ton >= quantity && currentValue > value) {
                 value = currentValue;
                 *tipo = j;
+                *dayTrovato = i;
                 *scadenza = currentScadenza;
             }
         }
@@ -123,7 +125,7 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* scadenza, int quantity) {
     }
     mutex(semid, UNLOCK, NULL);
 
-    if (*tipo == -1 && *scadenza == -1) {
+    if (*tipo == -1 && *scadenza == -1 && *dayTrovato == -1) {
         res = -1;
     }
     else {

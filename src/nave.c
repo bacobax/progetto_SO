@@ -29,7 +29,8 @@ void chargeProducts(Ship ship, int quantityToCharge){
     
         availablePorts = portResponses(ship, port_offers);
 
-        if(availablePorts == 0){
+        printf("NAVE: Aviable ports = %d\n", availablePorts);
+        if (availablePorts == 0) {
             /* non ci sono porti disponibili per la quantità
                di merce che voglio caricare, riprovo a chiamare i porti decrementando la quantità*/
             chargeProducts(ship, quantityToCharge - 1); 
@@ -80,8 +81,8 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
         // printShip(ship);
         // sleep(2);
     sleep(1);
-    chargeProducts(ship, 10);
-        printShip(ship);
+    chargeProducts(ship, 5);
+    printShip(ship);
         // }
 
         while (1) {

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <string.h>
 
 #include <sys/types.h>
@@ -18,8 +19,10 @@ void codicePorto(Port porto, int myQueueID, int shipsQueueID) {
     mex* messaggioRicevuto;
     int res;
     int tipoTrovato;
+    int dayTrovato;
     int dataScadenzaTrovata;
     char text[MEXBSIZE];
+    int sonostatoScelto;
     waitForStart();
 
     /* START */
@@ -38,17 +41,31 @@ void codicePorto(Port porto, int myQueueID, int shipsQueueID) {
         sscanf(messaggioRicevuto->mtext, "%d", &quantity);
         
         printf("Ricevuto messaggio da nave %d con quantità %d\n", messaggioRicevuto->mtype - 1, quantity);
-        res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dataScadenzaTrovata, quantity);
+        res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantity);
+        
         printf("Ho trovato il tipo %d con data di scadenza %d\n", tipoTrovato, dataScadenzaTrovata);
+        
         if (res == -1) {
             msgSend(shipsQueueID, "x", messaggioRicevuto->mtype, errorHandler);
-            
         }
         else {
+
+            porto->supplies.magazine[dayTrovato][tipoTrovato] -= quantity;
             sprintf(text, "%d %d", tipoTrovato, dataScadenzaTrovata);
             msgSend(shipsQueueID, text, messaggioRicevuto->mtype, errorHandler);
-            
         }
+        messaggioRicevuto = msgRecv(myQueueID, messaggioRicevuto->mtype, errorHandler, NULL, SYNC);
+
+        sscanf(messaggioRicevuto->mtext, "%d", &sonostatoScelto);
+        if (!sonostatoScelto && res!=-1) {
+            printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n" , getpid());
+            porto->supplies.magazine[dayTrovato][tipoTrovato] += quantity;
+        }
+
+        if (res == 1) {
+            printf("Porto %d: sono stato scelto\n", getpid());
+        }
+
     }
 
 

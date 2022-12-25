@@ -330,14 +330,14 @@ void expireShipGoods(){
     int i;
     Ship ships;
     int pid;
-    shipShmID = useShm(SSHMKEY, sizeof(struct port) * SO_NAVI, NULL);
+    shipShmID = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler);
     for(i=0; i<SO_NAVI; i++) {
         pid = fork();
         if(pid == -1){
             perror("fork nel gestore risorse");
             exit(EXIT_FAILURE);
         } else if (pid == 0){
-            ships = (Ship)getShmAddress(shipShmID, 0, errorHandler);
+            ships = (Ship)getShmAddress(shipShmID, 0, NULL);
             childExpireShipCode(ships + i);
             exit(EXIT_SUCCESS);
         }

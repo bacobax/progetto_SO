@@ -221,7 +221,7 @@ int choosePort(PortOffer* port_offers){
     int portID = 0;
     int expTime = port_offers[0].expirationTime;
     for(i=1; i<SO_PORTI; i++){
-        if(port_offers[i].expirationTime < expTime){
+        if(port_offers[i].expirationTime != -1 && port_offers[i].expirationTime < expTime){
             expTime = port_offers[i].expirationTime;
             portID = i;
         }
