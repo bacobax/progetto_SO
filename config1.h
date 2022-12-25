@@ -38,7 +38,7 @@
 
 
 
-#define SO_FILL      600
+#define SO_FILL      300
 
 
 

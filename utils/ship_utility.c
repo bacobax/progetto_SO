@@ -269,7 +269,7 @@ void travel(Ship ship, int portID)
     
     /* spazio/SO_SPEED è misurato in giorni (secondi), quindi spazio/SO_SPEED*1000000000 sono il numero di nanosecondi per cui fare la sleep */
     
-    nanosecsleep((long)((spazio / SO_SPEED) * NANOS_MULT));
+    /* nanosecsleep((long)((spazio / SO_SPEED) * NANOS_MULT)); */
 
     /* Dopo aver fatto la nanosleep la nave si trova esattamente sulle coordinate del porto
        quindi aggiorniamo le sue coordinate */
@@ -279,7 +279,6 @@ void travel(Ship ship, int portID)
     ship->y = p->y;
 }
 
-/* ATTENZIONE SCRITTURA DELLA PROCEDURA NON ANCORA COMPLETA!*/
 void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int weight){
     int portShmID;
     int pierSemID;
@@ -302,7 +301,7 @@ void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int wei
 
     /* il porto ha già decrementato */
 
-    nanosecsleep(p.weight / SO_LOADSPEED); /* da cambiare nanosecsleep perchè il parametro da mandare deve essere di tipo double*/
+    /* nanosecsleep(p.weight / SO_LOADSPEED);  da cambiare nanosecsleep perchè il parametro da mandare deve essere di tipo double*/
 
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler);
 

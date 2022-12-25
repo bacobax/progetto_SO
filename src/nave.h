@@ -62,9 +62,9 @@ void replyToPorts(Ship ship, int portID);
 
 void dischargeProducts(Ship ship);
 
-/*void travel(Ship ship, int portID);*/
+void travel(Ship ship, int portID);
 
-/*void accessPort(Ship ship, int portID, PortOffer offer);*/
+void accessPort(Ship ship, int portID, PortOffer offer);
 
 
 

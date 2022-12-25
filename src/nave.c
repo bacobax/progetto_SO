@@ -42,9 +42,11 @@ void chargeProducts(Ship ship, int quantityToCharge){
 
             replyToPorts(ship, portID);
 
+            /*
             travel(ship, portID);
             
             accessPortForCharge(ship, portID, port_offers[portID], quitSignalHandler);
+            */
         }
     }
     
@@ -74,15 +76,17 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     waitForStart();
     printf("Nave con id:%d partita\n", ship->shipID);
 
-    // while(1){
+    /* while(1){
         // res = addProduct(ship, p1);
         // res = addProduct(ship, p2);
         // printShip(ship);
         // sleep(2);
+        }
+    */    
     sleep(3);
     chargeProducts(ship, 5);
     printShip(ship);
-        // }
+        
 
         while (1) {
             sleep(1);
