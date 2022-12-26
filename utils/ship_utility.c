@@ -16,6 +16,10 @@
 #include <time.h>
 
 
+void quitSignalHandlerShip(int sig){
+    printf("PID[%d] Nave termino!\n", getpid());
+    exit(EXIT_SUCCESS);
+}
 
 int availableCapacity(Ship ship)
 {
@@ -53,7 +57,7 @@ Ship initShip(int shipID)
     Ship ship;
     int shipShmId;
 
-    if (signal(SIGUSR1, quitSignalHandler) == SIG_ERR)
+    if (signal(SIGUSR1, quitSignalHandlerShip) == SIG_ERR)
     { /* imposto l'handler per la signal SIGUSR1 */
         perror("Error trying to set a signal handler for SIGUSR1");
         exit(EXIT_FAILURE);
@@ -187,7 +191,7 @@ void callPorts(Ship ship, int quantityToCharge){
 
     for(i=0; i<SO_PORTI; i++){
         queueID = useQueue(PQUEUEKEY + i, errorHandler);
-        printf("NAVE: invio domanda al porto %d\n" , i);
+        printf("[%d]NAVE: invio domanda al porto %d\n",getpid() ,i);
         msgSend(queueID, text, (ship->shipID + 1), errorHandler);
         /*
             poichè non ci possono essere type uguali a 0 aggiungo
@@ -208,7 +212,7 @@ int portResponses(Ship ship, PortOffer* port_offers){
         response = msgRecv(queueID, i + 1, errorHandler, NULL, SYNC);
 
         
-        printf("🤡Nave: Strlen del messaggio ricevuto : %d\n" , strlen(response->mtext) );
+        printf("🤡[%d]Nave: Strlen del messaggio ricevuto : %d\n" ,getpid() ,strlen(response->mtext) );
         if(strlen(response->mtext) > 1){
             
             sscanf(response->mtext, "%d %d", &port_offers[i].product_type, &port_offers[i].expirationTime);
@@ -222,11 +226,20 @@ int portResponses(Ship ship, PortOffer* port_offers){
 int choosePort(PortOffer* port_offers){
     int i;
     int portID = 0;
-    int expTime = port_offers[0].expirationTime;
-    for(i=1; i<SO_PORTI; i++){
-        if(port_offers[i].expirationTime != -1 && port_offers[i].expirationTime < expTime){
+    int expTime = 0;
+    for(i=0; i<SO_PORTI; i++){
+
+        if(expTime == 0 && port_offers[i].expirationTime != -1){
+            
             expTime = port_offers[i].expirationTime;
             portID = i;
+
+        } else {
+            
+            if(port_offers[i].expirationTime != -1 && port_offers[i].expirationTime < expTime){
+                expTime = port_offers[i].expirationTime;
+                portID = i;
+            }
         }
     }
     return portID;
@@ -241,6 +254,7 @@ void replyToPorts(Ship ship, int portID){
         queueID = useQueue(PQUEUEKEY + i, errorHandler);
         
         if(i == portID){
+            printf("[%d]Nave ho scelto il porto:%d\n", getpid(), i);
             sprintf(text, "1"); /*ok*/
             msgSend(queueID, text, (ship->shipID + 1), errorHandler);
         } else {

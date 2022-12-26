@@ -99,7 +99,7 @@ void wait_all(int n_px) {
 
 
 void mastersighandler(int s) {
-    printf("Non faccio nulla\n");
+    printf("Master kill signal però non faccio nulla\n");
     return;
 }
 
@@ -140,10 +140,6 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int rwExpTimesPortSemID;
     int waitEndDaySemID;
     
-
-    
-    createDumpArea();
-    
     srand(time(NULL));
 
     if (signal(SIGUSR1, mastersighandler) == SIG_ERR) {
@@ -165,6 +161,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     */
     waitconfigSemID = createSem(WAITCONFIGKEY, SO_PORTI+ SO_NAVI, errorHandler);
     
+    createDumpArea();
     portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
     shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);
 
@@ -201,6 +198,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     kill(0, SIGUSR1); /* uccide tutti i figli */
 
+    printf("master sono ancora vivo dopo kill\n");
     removeSem(startSimulationSemID, errorHandler);
     removeSem(reservePrintSem, errorHandler);
     removeSem(semBanchineID, errorHandler);
@@ -209,15 +207,24 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeSem(rwExpTimesPortSemID, errorHandler);
     removeSem(semShipsID, errorHandler);
     removeSem(waitEndDaySemID, errorHandler);
-    
+    printf("master tutti i sem sono stati rimoessi\n");
+
     removeShm(shipsShmid, errorHandler);
     removeShm(portsShmid, errorHandler);
+    removeDumpArea();
+    printf("master tutte le shm sono state rimosse\n");
 
     removeQueue(msgRefillerID, errorHandler);
+    printf("coda di refiller rimossa\n");
+
     removeQueue(msgShipQueueID, errorHandler);
+    printf("coda delle navi rimossa\n");
+
     distruggiCodePorti();
+    printf("coda dei porti rimossa\n");
+
+    printf("master tutte le code sono state rimosse\n");
     
-    removeDumpArea();
     printf("Master, ho rimosso tutto\n");
 
 }
