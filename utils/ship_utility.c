@@ -191,7 +191,7 @@ void callPorts(Ship ship, int quantityToCharge){
 
     for(i=0; i<SO_PORTI; i++){
         queueID = useQueue(PQUEUEKEY + i, errorHandler);
-        printf("NAVE: invio domanda al porto %d\n" , i);
+        printf("[%d]NAVE: invio domanda al porto %d\n",getpid() ,i);
         msgSend(queueID, text, (ship->shipID + 1), errorHandler);
         /*
             poichè non ci possono essere type uguali a 0 aggiungo
@@ -212,7 +212,7 @@ int portResponses(Ship ship, PortOffer* port_offers){
         response = msgRecv(queueID, i + 1, errorHandler, NULL, SYNC);
 
         
-        printf("🤡Nave: Strlen del messaggio ricevuto : %d\n" , strlen(response->mtext) );
+        printf("🤡[%d]Nave: Strlen del messaggio ricevuto : %d\n" ,getpid() ,strlen(response->mtext) );
         if(strlen(response->mtext) > 1){
             
             sscanf(response->mtext, "%d %d", &port_offers[i].product_type, &port_offers[i].expirationTime);
@@ -232,7 +232,8 @@ int choosePort(PortOffer* port_offers){
         if(expTime == 0 && port_offers[i].expirationTime != -1){
             
             expTime = port_offers[i].expirationTime;
-            
+            portID = i;
+
         } else {
             
             if(port_offers[i].expirationTime != -1 && port_offers[i].expirationTime < expTime){
@@ -253,6 +254,7 @@ void replyToPorts(Ship ship, int portID){
         queueID = useQueue(PQUEUEKEY + i, errorHandler);
         
         if(i == portID){
+            printf("[%d]Nave ho scelto il porto:%d\n", getpid(), i);
             sprintf(text, "1"); /*ok*/
             msgSend(queueID, text, (ship->shipID + 1), errorHandler);
         } else {
