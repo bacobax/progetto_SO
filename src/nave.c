@@ -77,10 +77,10 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     printf("Nave con id:%d partita\n", ship->shipID);
 
     /* while(1){
-        // res = addProduct(ship, p1);
-        // res = addProduct(ship, p2);
-        // printShip(ship);
-        // sleep(2);
+    res = addProduct(ship, p1);
+    res = addProduct(ship, p2);
+    printShip(ship);
+    sleep(2);
         }
     */    
     sleep(3);
