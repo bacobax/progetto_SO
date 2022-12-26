@@ -43,7 +43,7 @@ void codicePorto(Port porto, int myQueueID, int shipsQueueID, int idx) {
         printf("Port %d: Ricevuto messaggio da nave %d con quantità %d\n",getpid() ,messaggioRicevuto->mtype - 1, quantity);
         res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantity);
         
-        printf("Ho trovato il tipo %d con data di scadenza %d\n", tipoTrovato, dataScadenzaTrovata);
+        printf("Port %d: Ho trovato il tipo %d con data di scadenza %d\n",getpid() ,tipoTrovato, dataScadenzaTrovata);
         
         if (res == -1) {
             msgSend(shipsQueueID, "x", idx + 1, errorHandler);
@@ -58,12 +58,13 @@ void codicePorto(Port porto, int myQueueID, int shipsQueueID, int idx) {
         messaggioRicevuto = msgRecv(myQueueID, messaggioRicevuto->mtype, errorHandler, NULL, SYNC);
 
         sscanf(messaggioRicevuto->mtext, "%d", &sonostatoScelto);
-        if (!sonostatoScelto && res!=-1) {
+        printf("Port %d: valore di sonostatoScelto = %d\n", getpid(), sonostatoScelto);
+        if (sonostatoScelto == 0 && res!=-1) {
             printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n" , getpid());
             porto->supplies.magazine[dayTrovato][tipoTrovato] += quantity;
         }
 
-        if (res == 1) {
+        if (sonostatoScelto == 1 && res == 1) {
             printf("Porto %d: sono stato scelto\n", getpid());
         }
 

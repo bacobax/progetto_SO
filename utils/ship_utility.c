@@ -16,6 +16,10 @@
 #include <time.h>
 
 
+void quitSignalHandlerShip(int sig){
+    printf("PID[%d] Nave termino!\n", getpid());
+    exit(EXIT_SUCCESS);
+}
 
 int availableCapacity(Ship ship)
 {
@@ -53,7 +57,7 @@ Ship initShip(int shipID)
     Ship ship;
     int shipShmId;
 
-    if (signal(SIGUSR1, quitSignalHandler) == SIG_ERR)
+    if (signal(SIGUSR1, quitSignalHandlerShip) == SIG_ERR)
     { /* imposto l'handler per la signal SIGUSR1 */
         perror("Error trying to set a signal handler for SIGUSR1");
         exit(EXIT_FAILURE);
@@ -222,11 +226,19 @@ int portResponses(Ship ship, PortOffer* port_offers){
 int choosePort(PortOffer* port_offers){
     int i;
     int portID = 0;
-    int expTime = port_offers[0].expirationTime;
-    for(i=1; i<SO_PORTI; i++){
-        if(port_offers[i].expirationTime != -1 && port_offers[i].expirationTime < expTime){
+    int expTime = 0;
+    for(i=0; i<SO_PORTI; i++){
+
+        if(expTime == 0 && port_offers[i].expirationTime != -1){
+            
             expTime = port_offers[i].expirationTime;
-            portID = i;
+            
+        } else {
+            
+            if(port_offers[i].expirationTime != -1 && port_offers[i].expirationTime < expTime){
+                expTime = port_offers[i].expirationTime;
+                portID = i;
+            }
         }
     }
     return portID;
