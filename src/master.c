@@ -40,10 +40,6 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     mutex(startSimulationSemID, LOCK, errorHandler);
 
     
-    /*
-    mutex(semid, LOCK, errorHandler);
-    */
-
 
     
     for (i = 0; i < SO_DAYS; i++) {
@@ -63,18 +59,14 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
         #ifdef __linux__
         sleep(1);
         #endif
-
-        /*expireShipGoods();
-        
-            kill(0, SIGALRM);
-        */
-        /* TODO: funzione dump */
     }
     printDump(i);
     #ifndef __linux__
     nanosecsleep(NANOS_MULT);
     #endif
-    sleep(1);
+    #ifdef __linux__
+        sleep(1);
+     #endif
 }
 
 int main(int argc, char const* argv[]) {

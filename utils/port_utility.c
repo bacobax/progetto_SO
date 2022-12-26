@@ -40,7 +40,9 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
 
     p = ((Port)getShmAddress(portShmId, 0, errorHandler)) + pIndex;
 
-
+    /*
+        Distribuisco randomicamente domanda e offerta
+    */
     requests = toArray(distribute(requestDisponibility, SO_MERCI), &length);
     supplies = toArray(distribute(supplyDisponibility, SO_MERCI), &length);
 
@@ -51,17 +53,29 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
 
     */
 
-    for (i = 0; i < SO_MERCI; i++) {
-        printf("aggiungo %d merce di tipo %d in porto\n" , supplies[i] , i);
-    }
-    copyArray(p->requests, requests, length);
     
+    /*
+        assegno la richiesta
+    */
+    copyArray(p->requests, requests, length);
+    /*
+        assegno la domanda usando la funzione d'appoggio
+    */
     fillMagazine(&p->supplies, 0, supplies);
 
     free(requests);
     free(supplies);
 
     fillExpirationTime(&p->supplies);
+
+    /*
+        Questa è una parte importante, viso che avevo un certo grado di libertà su come affrontare il fatto
+        che non ci potesse essere domanda e offerta dello stesso tipo di merce in un porto, ho deciso di azzerare le ton del tipo di
+        merce che non viene offerta, e azzerare le ton del tipo di merce che non viene richiesta, tanto quella merce è solo destinata a scadere.
+        Per decidere quale tipo di merce offrire e richiedere lascio anche questo al caso con questo ciclo for:
+        scorre tutti i tipi di merce e decide di azzerare l'offerta o la domanda, 
+        
+    */
 
     for (i = 0; i < SO_MERCI; i++) {
         int c = rand() % 2;
@@ -120,7 +134,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
 void printPorto(void* p, int idx) {
 
     int i;
-    printf("Porto %d:\n", idx);
+    printf("[%d]Porto %d:\n", getpid(),idx);
     printf("DOMANDE:\n");
     for (i = 0; i < SO_MERCI; i++) {
         printf("%d, \n", ((Port)p)->requests[i]);
@@ -136,54 +150,8 @@ void printPorto(void* p, int idx) {
 
 }
 
-/*
-    si assume che i messaggi siano sempre scritti con questo 'pattern': giorno|quantita
-*/
-void mexParse(char* mex, int* intDay, int* intQuantity) {
-    int sizeDay;
-    int sizeQuantity;
-    int i;
-    int c;
-    int j;
-    char* day;
-    char* quantity;
-    for (i = 0; *(mex + i); i++) {
-        if(mex[i]=='|'){
-            sizeDay = i;
-            break;
-        }
-    }
-    
-    c = 0;
-    
-    for (i = i + 1; i < strlen(mex); i++) {
-        c++;
-    }
-    sizeQuantity = c;
-    
-
-    day = malloc(sizeof(char) * sizeDay);
-    quantity = malloc(sizeof(char) * sizeQuantity);
-
-    for(i=0; i<sizeDay; i++){
-        day[i] = mex[i];
-    }
-    i++;
-    for (j = 0; j < sizeQuantity; j++) {
-        quantity[j] = mex[i];
-        i++;
-    }
-    
-    *intDay = atoi(day);
-    *intQuantity = atoi(quantity);
-    free(day);
-    free(quantity);
-}
 
 
-/*
-    23|32
-*/
 
 int filterIdxs(int request) {
     return request != 0;
@@ -260,7 +228,7 @@ void refill(long type, char* text) {
 
 
     /*
-        contiene gli indici delle domande = 0
+        contiene gli indici delle domande != 0, così da sapere quali indici dell'offerta azzerare
     */
     listOfIdxs = findIdxs(p->requests, SO_MERCI, filterIdxs);
     /*
@@ -271,19 +239,15 @@ void refill(long type, char* text) {
     sscanf(text, "%d|%d", &day, &quantity);
 
     printf("P %d , devo distribuire %d merci del giorno %d\n", correctType, quantity, day);
-    /*
-        !questa era stra deprecated
-        mexParse(text, &day, &quantity);
-    */
-
-    /*
-        printf("giorno: %d, quantità: %d\n", day, quantity);
-    */
     
-    
+    /*
+        distribuisco le quantità da aggiungere
+    */
     quanties = toArray(distribute(quantity, SO_MERCI), &length);
 
-    
+    /*
+        semaforo per modificare il magazzino dei porti
+    */
     portBufferSem = useSem(RESPORTSBUFFERS, errorHandler);
 
 
@@ -299,7 +263,11 @@ void refill(long type, char* text) {
 
     for (i = 0; i < listOfIdxs->length; i++) {
         tipoMerceDaAzzerare = *(intElementAt(listOfIdxs, i));
-        
+        /*
+            scelgo di marcare direttamente come merce scaduta la merce dell'offerta che
+            non potrà mai essere offerta per il fatto che c'è già la domanda per quel tipo di merce,
+
+        */
         addExpiredGood(p->supplies.magazine[day][tipoMerceDaAzzerare], tipoMerceDaAzzerare, PORT);
         
         p->supplies.magazine[day][tipoMerceDaAzzerare] = 0;
@@ -309,9 +277,11 @@ void refill(long type, char* text) {
     mutexPro(portBufferSem, (int)correctType, UNLOCK, errorHandler);
 
     reservePrint(printPorto, p, correctType);
+    
+    shmDetach(p-correctType, errorHandler);
+
     /*
-        shmDetach(p, errorHandler);
-        !non funziona => invalid argument
+        decremento il semaforo per cui il master sta aspettando lo 0 per iniziare il nuovo giorno   
     */
     mutex(waitEndDaySemID, -1, errorHandler);
 }
@@ -366,7 +336,9 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
     */
     srand((int)time(NULL) % getpid());
 
-    
+    /*
+        setto il segnale che gestisce il segnle di terminazione che invia il master
+    */
     oldHandler = signal(SIGUSR1, quitSignalHandler);
     if (oldHandler == SIG_ERR) {
         perror("signal");
@@ -391,3 +363,78 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
 
 
 }
+
+
+void goodsDispatcher(int myQueueID,Port porto, int idx, int shipsQueueID) {
+    int quantity = -2;
+    mex* messaggioRicevuto;
+    int res;
+    int tipoTrovato;
+    int dayTrovato;
+    int dataScadenzaTrovata;
+    char text[MEXBSIZE];
+    int sonostatoScelto;
+    
+  
+    while (1) {
+
+        /*
+            E' importante che sia sincrona la gestione del messaggio ricevuto
+            perchè prima di poterne ricevere un altro il porto deve poter aver aggiornato le sue disponibilità
+        */
+
+        /*
+            prendo il primo messaggio che arriva
+        */
+        messaggioRicevuto = msgRecv(myQueueID, 0, errorHandler, NULL, SYNC);
+        sscanf(messaggioRicevuto->mtext, "%d", &quantity);
+        
+        printf("Port %d: Ricevuto messaggio da nave %d con quantità %d\n", getpid(), messaggioRicevuto->mtype - 1, quantity);
+
+        
+        res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantity);
+        
+        printf("Port %d: Ho trovato il tipo %d con data di scadenza %d\n", getpid(), tipoTrovato, dataScadenzaTrovata);
+
+        
+
+        if (res == -1) {
+            msgSend(shipsQueueID, "x", idx + 1, errorHandler);
+        }
+        else {
+
+            porto->supplies.magazine[dayTrovato][tipoTrovato] -= quantity;
+            sprintf(text, "%d %d", tipoTrovato, dataScadenzaTrovata);
+            msgSend(shipsQueueID, text, idx + 1, errorHandler);
+        }
+
+        messaggioRicevuto = msgRecv(myQueueID, messaggioRicevuto->mtype, errorHandler, NULL, SYNC);
+
+        sscanf(messaggioRicevuto->mtext, "%d", &sonostatoScelto);
+        printf("Port %d: valore di sonostatoScelto = %d\n", getpid(), sonostatoScelto);
+        if (sonostatoScelto == 0 && res != -1) {
+            printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", getpid());
+            porto->supplies.magazine[dayTrovato][tipoTrovato] += quantity;
+        }
+
+        if (sonostatoScelto == 1 && res == 1) {
+            printf("Porto %d: sono stato scelto\n", getpid());
+        }
+    }
+}
+
+void launchGoodsDispatcher(int myQueueID,Port porto, int idx, int shipsQueueID) {
+
+    int pid;
+    pid = fork();
+    if(pid == -1){
+        perror("Errore nel forkare il dispatcher dei beni\n");
+        exit(EXIT_FAILURE);
+    }
+
+    if(pid == 0){
+        goodsDispatcher(myQueueID,porto,idx,shipsQueueID);
+        exit(EXIT_FAILURE);
+    }
+}
+

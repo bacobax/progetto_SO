@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "../src/nave.h"
 #include "../src/porto.h"
 #include "../config1.h"
@@ -8,10 +9,8 @@
 #include "./msg_utility.h"
 #include "./sem_utility.h"
 #include "./shm_utility.h"
-#include <stdio.h>
 #include <string.h>
 #include <signal.h>
-#include <stdlib.h>
 #include <math.h>
 #include <time.h>
 

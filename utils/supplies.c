@@ -81,7 +81,7 @@ void removeExpiredGoods(Supplies* S) {
     
 */
 double getValue(int quantity, int scadenza) {
-    return quantity / (double)scadenza;
+    return (scadenza == 0 ? 0 : quantity / (double)scadenza);
 }
 
 int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, int quantity) {

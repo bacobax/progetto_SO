@@ -23,20 +23,27 @@ struct port {
 
 typedef struct port* Port;
 
-/* TODO: fare struttura porto senza puntatori */
+/*
+    Funzione che inizializza il porto distribuendo la quantità di risorse del primo giorno e la domanda totale di quel porto e assegnandogli le coordinate
+*/
 Port initPort(int supplyDisponibility, int requestDisponibility, int pIndex);
 
 
 void printPorto(void* p, int idx);
 
 void launchRefiller(int idx);
-/*void freePort(Port p)*/ 
+/*
+    void freePort(Port p)
+*/
+
 
 /*
-    funzione che dato l'indice del porto in questione, crea un figlio che usa quell'indice per ottenere la relativa struttura dai in shm
-    per decrementare la durata di vita dei materiali e per rimuovere quelli scaduti
+funzione per separare la logica della configurazione del porto da quella della sua routine
 */
-void updateExpTimes(int idx);
-
 void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*codicePorto)(Port porto, int myQueueID, int shipsQueueID, int idx));
+
+/*
+    forka il figlio che gestisce le navi che vogliono caricare dal porto
+*/
+void launchGoodsDispatcher(int myQueueID, Port porto, int idx, int shipsQueueID);
 #endif

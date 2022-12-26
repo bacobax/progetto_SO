@@ -3,8 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <signal.h>
-#include <stdio.h>
-#include <stdlib.h>
+
 #include "../config1.h"
 #include "../utils/sem_utility.h"
 #include "../utils/shm_utility.h"
