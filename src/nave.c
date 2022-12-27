@@ -56,6 +56,33 @@ void chargeProducts(Ship ship, int quantityToCharge){
 
 void dischargeProducts(Ship ship){
     /* TO-DO */
+
+    /* 1) msg di richiesta a tutti i porti per visualizzare la lista di domande */
+
+    /* 2) guardo tra tutte le merci richieste quale posso consegnare (criterio della data di scadenza)
+           - se tutte le domande dei porti sono 0, allora chargeProducts() 
+
+           - se nessuna delle domande dei porti corrisponde a della merce che ho sulla nave, allora chargeProducts()
+
+    */       
+
+    /* 3) scelta la merce da consegnare e il porto in cui andare mando un msg di conferma.
+          il porto provvederà a decrementare la merce scelta e a controllare che la sua domanda
+          non sia scesa a 0, infine manda un msg alla nave per farla partire.
+          Se il msg è negativo torno al punto 1).
+
+        Scelta del tipo di merce:
+            VETTORE DI VALORI: V[SO_MERCI], V[i] = 1/(media([domanda del tipo i - capienza tipo i]) * scadenza della merce i)
+            Es:
+                Merce tipo 2: [domanda del porto 0 della merce 2 - mia capienza merce 2, domanda del porto 1 della merce 2 - mia capienza merce 2, ...]
+     */
+
+     /* 4) la nave esegue la travel(), cerca di accedere alla banchina e dopodichè rimuove la merce
+            dal suo carico.
+     
+     
+     */
+
 }
 
 int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identificativo della nave (es: nave 0, nave 1, nave 2, ecc..)*/
