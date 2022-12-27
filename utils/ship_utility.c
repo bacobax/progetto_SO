@@ -183,28 +183,47 @@ int chooseQuantitiToCharge(Ship ship){
        velocemente */
 }
 
+int chooseProductToDelivery(Ship ship){
+    int i;
+    int index = 0;                          /* do per scontato che ci sia almeno 1 tipo di merce sulla nave in questo caso nella posizione 0*/
+    Product* products = ship->products;
+    
+    for(i=1; i<SO_CAPACITY; i++){
+        if(products[i].product_type == -1) break;
+
+        if(products[i].expirationTime < products[index].expirationTime){
+            index = i;        
+        }
+    }
+
+    return index;
+}
+
 void callPorts(Ship ship, int quantityToCharge){
     int i;
     int queueID;
     char text[MEXBSIZE];
     int requestPortQueueID;
-
-    requestPortQueueID = useQueue(PQUEREQKEY, errorHandler);
     
-    sprintf(text, "%d %d", quantityToCharge , ship->shipID);
+    requestPortQueueID = useQueue(PQUEREQKEY, errorHandler);
+
+    
+    sprintf(text, "%d %d", quantityToCharge , ship->shipID); 
 
     for (i = 0; i < SO_PORTI; i++) {
         /*
-        queueID = useQueue(PQUEUEKEY + i, errorHandler);
+            queueID = useQueue(PQUEUEKEY + i, errorHandler);
 
         */
-        printf("[%d]NAVE: invio domanda al porto %d\n",getpid() ,i);
-        msgSend(requestPortQueueID, text, i+1, errorHandler);
-        /*
-            poichè non ci possono essere type uguali a 0 aggiungo
-            all'id della nave +1
-        */
+         printf("[%d]NAVE: invio domanda al porto %d\n",getpid() ,i);
+         msgSend(requestPortQueueID, text, i+1, errorHandler);
+         /*
+                poichè non ci possono essere type uguali a 0 aggiungo
+                all'id della nave +1
+         */
     }
+    
+
 }
 
 int portResponses(Ship ship, PortOffer* port_offers){

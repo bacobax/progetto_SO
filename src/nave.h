@@ -28,6 +28,13 @@ struct port_offer{
 };
 typedef struct port_offer PortOffer;
 
+struct product_for_delivery{
+    int product_type;
+    int weight;
+};
+typedef struct product_for_delivery ProductToDelivery;
+
+
 /* TUTTE LE FUNZIONI SOTTOSTANTI SONO RELATIVE ALLA NAVE*/
 
 int checkCapacity(); /* ritorna il numero di ton presenti sulla nave */
@@ -49,6 +56,8 @@ int findProduct(Product* products, Product p); /* ritorna l'indice del vettore i
 int removeProduct(Ship ship, int product_index);
 
 int chooseQuantityToCharge(Ship ship);
+
+int chooseProductToDelivery(Ship ship);
 
 void initArrayOffers(PortOffer* offers);
 
