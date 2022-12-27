@@ -38,6 +38,9 @@ se è = ASYNC, questa funzione crea un processo che getisce indipendentemente la
 se è != ASYNC e != SYNC, da errore */
 mex* msgRecv(int msgqID, long type, void (*errorHandler)(int err), void (*callback)(long type, char text[MEXBSIZE]), int mod);
 
+mex* msgRecvPro(int msgqID, long type, void (*errorHandler)(int err), void (*callback)(long type, char text[MEXBSIZE], int arg), int mod, int arg);
+
+
 /* in caso di successo restituisce l'id della queue
 restituisce EEXIST se esiste già
 se si presentano altri errori viene eseguito l'handler

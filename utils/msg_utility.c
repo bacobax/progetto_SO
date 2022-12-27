@@ -74,6 +74,54 @@ mex* msgRecv(int msgqID, long type, void (*errorHandler)(int err), void (*callba
     }
 
 }
+mex* msgRecvPro(int msgqID, long type, void (*errorHandler)(int err), void (*callback)(long type, char text[MEXBSIZE], int arg), int mod, int arg) {
+    mex* m = (mex*)malloc(sizeof(mex));
+
+    if (msgrcv(msgqID, m, MEXBSIZE, type, 0) == -1) {
+        if (errorHandler != NULL) {
+            errorHandler(MERRRCV);
+            exit(EXIT_FAILURE);
+        }
+        else {
+            perror("msgRecv -> msgrcv");
+            exit(EXIT_FAILURE);
+        }
+    }
+
+    if (mod == SYNC) {
+        return m;
+    }
+    else if (mod == ASYNC) {
+        int pid = fork();
+
+        if (pid == -1) {
+            if (errorHandler == NULL) {
+                perror("msgRecv -> fork");
+                exit(EXIT_FAILURE);
+            }
+            else {
+                errorHandler(errno);
+                exit(EXIT_FAILURE);
+            }
+
+        }
+        if (pid == 0) {
+            
+            callback(m->mtype, m->mtext, arg);
+            free(m);
+            exit(EXIT_SUCCESS);
+        }
+        else {
+            free(m);
+        }
+        return NULL;
+    }
+    else {
+        fprintf(stderr, "mod must be SYNC or ASYNC\n");
+        exit(EXIT_FAILURE);
+    }
+
+}
 
 int createQueue(int key, void (*errorHandler)(int err)) {
     int qid = msgget(key, IPC_CREAT | IPC_EXCL | 0666);

@@ -129,6 +129,12 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
         res = -1;
     }
     else {
+        /*
+                Operazione importante: decremento della quantità richiesta in anticipo, così nel mentre altre navi possono scegliere
+                lo stesso tipo di merce con la quantità aggiornata
+            */
+            S->magazine[*dayTrovato][*tipo] -= quantity;
+            
         res = 1;
     }
     return res;

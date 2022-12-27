@@ -139,6 +139,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int waitconfigSemID;
     int rwExpTimesPortSemID;
     int waitEndDaySemID;
+    int portRequestsQueueID;
     
     srand(time(NULL));
 
@@ -189,8 +190,11 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
         in sintesi il master aspetta a passare il giorno finchè tutti i porti non hanno ricevuto la loro merce
     */
     waitEndDaySemID = createSem(WAITENDDAYKEY, SO_PORTI, errorHandler);
-
+    portRequestsQueueID = createQueue(PQUEREQKEY, errorHandler);
+    
     creaCodePorti();
+
+
     
     codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID);
 
@@ -220,6 +224,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeQueue(msgShipQueueID, errorHandler);
     printf("coda delle navi rimossa\n");
 
+    removeQueue(portRequestsQueueID, errorHandler);
     distruggiCodePorti();
     printf("coda dei porti rimossa\n");
 

@@ -19,6 +19,7 @@ void chargeProducts(Ship ship, int quantityToCharge){
     int availablePorts;
     int portID;
     PortOffer port_offers[SO_PORTI];
+    
     initArrayOffers(port_offers);
 
     if(quantityToCharge == 0){
@@ -41,11 +42,13 @@ void chargeProducts(Ship ship, int quantityToCharge){
 
             replyToPorts(ship, portID);
 
-            /*
+            
             travel(ship, portID);
             
-            accessPortForCharge(ship, portID, port_offers[portID], quitSignalHandler);
-            */
+            accessPortForCharge(ship, portID, port_offers[portID], quantityToCharge);
+
+            
+            
         }
     }
     

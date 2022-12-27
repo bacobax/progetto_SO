@@ -64,8 +64,8 @@ void dischargeProducts(Ship ship);
 
 void travel(Ship ship, int portID);
 
-void accessPort(Ship ship, int portID, PortOffer offer);
 
+void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int weight);
 
 
 void updateExpTimeShip(Ship ship);

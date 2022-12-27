@@ -167,9 +167,9 @@ int removeProduct(Ship ship, int product_index){
 
     for(i=0; i<SO_CAPACITY; i++){
         if(i == product_index){
-            products[i].product_type = 0;
-            products[i].expirationTime = 0;
-            products[i].weight = 0;
+            products[i].product_type = -1;
+            products[i].expirationTime = -1;
+            products[i].weight = -1;
             return 0;
         }
     }
@@ -186,12 +186,19 @@ void callPorts(Ship ship, int quantityToCharge){
     int i;
     int queueID;
     char text[MEXBSIZE];
-    sprintf(text, "%d", quantityToCharge);
+    int requestPortQueueID;
 
-    for(i=0; i<SO_PORTI; i++){
+    requestPortQueueID = useQueue(PQUEREQKEY, errorHandler);
+    
+    sprintf(text, "%d %d", quantityToCharge , ship->shipID);
+
+    for (i = 0; i < SO_PORTI; i++) {
+        /*
         queueID = useQueue(PQUEUEKEY + i, errorHandler);
+
+        */
         printf("[%d]NAVE: invio domanda al porto %d\n",getpid() ,i);
-        msgSend(queueID, text, (ship->shipID + 1), errorHandler);
+        msgSend(requestPortQueueID, text, i+1, errorHandler);
         /*
             poichè non ci possono essere type uguali a 0 aggiungo
             all'id della nave +1
@@ -268,6 +275,7 @@ void travel(Ship ship, int portID)
 
     Port p;
     double dt_x, dt_y, spazio, nanosleep_arg;
+    long tempo;
 
     int portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);  /* prendo l'id della shm del porto */
 
@@ -281,8 +289,11 @@ void travel(Ship ship, int portID)
     spazio = sqrt(pow(dt_x, 2) + pow(dt_y, 2));
     
     /* spazio/SO_SPEED è misurato in giorni (secondi), quindi spazio/SO_SPEED*1000000000 sono il numero di nanosecondi per cui fare la sleep */
+    tempo = (long)((spazio / SO_SPEED) * NANOS_MULT);
+    printf("[%d]Nave: viaggio per %ld secondi...\n", getpid(), tempo);
+    nanosecsleep(tempo);
+    printf("[%d]Nave: viaggio finito...\n");
     
-    /* nanosecsleep((long)((spazio / SO_SPEED) * NANOS_MULT)); */
 
     /* Dopo aver fatto la nanosleep la nave si trova esattamente sulle coordinate del porto
        quindi aggiorniamo le sue coordinate */
@@ -294,8 +305,11 @@ void travel(Ship ship, int portID)
 
 void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int weight){
     int portShmID;
+
+    
     int pierSemID;
     int shipSemID;
+    int portBufferSemID;
     Port port;
     Product p;
     p.product_type = offer_choosen.product_type;
@@ -305,6 +319,7 @@ void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int wei
     portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler);
     pierSemID = useSem(BANCHINESEMKY, errorHandler);
     shipSemID = useSem(SEMSHIPKEY, errorHandler);
+    portBufferSemID = useSem(RESPORTSBUFFERS, errorHandler);
 
     port = ((Port)getShmAddress(portShmID, 0, errorHandler)) + portID;
 
@@ -314,12 +329,11 @@ void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int wei
 
     /* il porto ha già decrementato */
 
-    /* nanosecsleep(p.weight / SO_LOADSPEED);  da cambiare nanosecsleep perchè il parametro da mandare deve essere di tipo double*/
+    nanosecsleep(p.weight / SO_LOADSPEED);  /*da cambiare nanosecsleep perchè il parametro da mandare deve essere di tipo double*/
 
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler);
 
     addProduct(ship, p);
-    addNotExpiredGood(p.weight, p.product_type, SHIP);
 
     mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler);
 
@@ -339,6 +353,8 @@ void updateExpTimeShip(Ship ship){
         if(products[i].expirationTime == 0){
             addExpiredGood(products[i].weight, products[i].product_type, SHIP);
             removeProduct(ship, i);
+            
+            printShip(ship);
         }
     }
 }
