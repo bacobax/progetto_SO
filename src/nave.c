@@ -57,19 +57,52 @@ void chargeProducts(Ship ship, int quantityToCharge){
 void dischargeProducts(Ship ship){
     /* TO-DO */
 
-    /* 1) msg di richiesta a tutti i porti per visualizzare la lista di domande */
+    /* 1 - Nave) Mando un msg a tutti i porti indicano il tipo di merce che voglio scaricare e la quantità che possiedo
+          (scelgo la merce con tempo di scadenza minore di tutte le altre merci che posseggo).
 
-    /* 2) guardo tra tutte le merci richieste quale posso consegnare (criterio della data di scadenza)
-           - se tutte le domande dei porti sono 0, allora chargeProducts() 
+       2 - Porto) il porto riceve il messaggio è valuta guardando il suo magazzino se la merce si può consegnare
+                  oppure no perchè la domanda è arrivata a 0.
 
-           - se nessuna delle domande dei porti corrisponde a della merce che ho sulla nave, allora chargeProducts()
+                    - Se si può consegnare decrementa la domanda e manda una conferma positiva al porto
+                    - Altrimenti manda una conferma negativa
+
+                    OVVIAMENTE POICHÈ LA PRIORITÀ È CONSEGNARE LE MERCI IN "FIN DI VITA", ALLA PRIMA NAVE
+                    CHE MANDA UN MESSAGGIO POSITIVO DI CONFERMA IL PORTO SI DISINTERESSA DELLE RICHIESTE SUCCESSIVE
+                    SE LA SUA DOMANDA È ARRIVATA A 0.
+                    ALTRIMENTI CONTINUA FINO A QUANDO LA DOMANDA PER QUEL TIPO DI MERCE SCENDE A 0
+
+                    POLITICA FIFO   
+    */
+
+    /* 2 - Nave) Per ogni porto che mi risponde posso trovarmi in uno dei seguenti casi:
+            
+            - Conferma positiva dal porto, ho consegnato (DOMANDA merce - quantità che volevo consegnare) quindi
+              nel migliore dei casi ho azzerato la domanda per quel tipo di merce di quel determinato porto.
+
+            - Conferma negativa dal porto, la domanda di quel tipo di merce che volevo consegnare è scesa a 0.
+
+          Se ho trovato almeno un porto con conferma positiva faccio la travel() e mi dirigo da lui, il primo che
+          mi risponde, vado al punto 3).
+
+          Se tutti i porti mi hanno inviato una conferma negativa allora la domanda di quel tipo di merce
+          in tutti i porti è pari a 0, torno al punto 1) scegliendo un tipo di merce diverso.
+          
+          Se tornando ripetutamente al punto 1) e arrivo ad esaurire tutte le merci perchè o sono scadute o 
+          nessun porto ha DOMANDA relativa al mio carico, allora faccio chargeProducts()       
+
+        
+        2 - Porto) Il porto non fa niente
 
     */       
 
-    /* 3) scelta la merce da consegnare e il porto in cui andare mando un msg di conferma.
-          il porto provvederà a decrementare la merce scelta e a controllare che la sua domanda
-          non sia scesa a 0, infine manda un msg alla nave per farla partire.
-          Se il msg è negativo torno al punto 1).
+    /* 3) Una volta arrivato al porto accedo alla prima banchina disponibile e rimuovo la merce che intendo
+          consegnare dal carico della nave
+    */
+
+
+    /*
+
+        LASCIO ANCORA QUESTO PERCHÈ FORSE PUÒ SERVIRE
 
         Scelta del tipo di merce:
             VETTORE DI VALORI: V[SO_MERCI], V[i] = 1/(media([domanda del tipo i - capienza tipo i]) * scadenza della merce i)
@@ -77,11 +110,6 @@ void dischargeProducts(Ship ship){
                 Merce tipo 2: [domanda del porto 0 della merce 2 - mia capienza merce 2, domanda del porto 1 della merce 2 - mia capienza merce 2, ...]
      */
 
-     /* 4) la nave esegue la travel(), cerca di accedere alla banchina e dopodichè rimuove la merce
-            dal suo carico.
-     
-     
-     */
 
 }
 

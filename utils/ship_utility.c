@@ -167,6 +167,7 @@ int removeProduct(Ship ship, int product_index){
 
     for(i=0; i<SO_CAPACITY; i++){
         if(i == product_index){
+            ship->weight = ship->weight - products[i].weight;
             products[i].product_type = -1;
             products[i].expirationTime = -1;
             products[i].weight = -1;
