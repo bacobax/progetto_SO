@@ -18,7 +18,7 @@ int useSem(int key, void (*errorHandler)(int));
 int createSem(int key, int initValue, void (*errorHandler)(int err));
 
 /* rimuove la struttura ipc, quindi rimuove il set di semafori */
-void removeSem(int key, void (*errorHandler)(int err));
+void removeSem(int semid, void (*errorHandler)(int err));
 
 /* esegue operazioni sul singolo semaforo con flag a 0
 // LOCK decrementa
@@ -30,5 +30,6 @@ int createMultipleSem(int key, int nSem, int initValue, void (*errorHandler)(int
 
 void mutexPro(int semid, int semIdx, int op, void (*errorHandler)(int err));
 
+int getWaitingPxCount(int semid, int idx);
 
 #endif

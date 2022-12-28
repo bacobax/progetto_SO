@@ -226,7 +226,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeQueue(msgRefillerID, errorHandler);
     printf("coda di refiller rimossa\n");
 
-    removeQueue(msgShipQueueID, errorHandler);
+    //removeQueue(msgShipQueueID, errorHandler);
     printf("coda delle navi rimossa\n");
 
     removeQueue(portRequestsQueueID, errorHandler);

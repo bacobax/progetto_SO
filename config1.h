@@ -4,12 +4,12 @@
 
 
 #define SO_PORTI     1
-#define SO_NAVI      2
+#define SO_NAVI      1
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 #define SO_MIN_VITA  2 /* tonn */
 #define SO_MAX_VITA  4 /* tonn */
-#define SO_DAYS      6
+#define SO_DAYS      7
 
 /*chiavi dei semafori*/
 /* chiave del semaforo del master */
@@ -48,7 +48,7 @@
 #define SO_SPEED     500
 #define SO_LATO      4
 #define SO_CAPACITY  10
-#define SO_BANCHINE  2
+#define SO_BANCHINE  10
 #define SO_LOADSPEED 200 
 
 /* funzione generale che gestisce l'errore */

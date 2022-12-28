@@ -170,7 +170,7 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     sleep(2);
         }
     */    
-    sleep(3);
+    sleep(1.5);
     chargeProducts(ship, 5);
     printShip(ship);
         

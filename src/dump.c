@@ -38,9 +38,7 @@ void addExpiredGood(int quantity, int type, ctx where) {
 
     if (where == PORT) {
         info->expired_goods_on_port += quantity;
-        printf("Prima: %d\n" , info->goods_on_port);
         info->goods_on_port -= quantity;
-        printf("Prima: %d\n" , info->goods_on_port);
         
     }
     else if (where == SHIP) {
@@ -111,6 +109,7 @@ void printerCode(int day) {
     int logFileSemID;
     int shmid;
     int i;
+    int sum;
     GoodTypeInfo* arr;
 
     logFileSemID = useSem(LOGFILESEMKEY, errorHandler);
@@ -134,6 +133,7 @@ void printerCode(int day) {
             fprintf(fp, "------------------STATO FINALE -----------------\n", day);
 
     }
+    sum = 0;
     for (i = 0; i < SO_MERCI; i++) {
         fprintf(fp, "Tipo merce %d:\n", i);
         fprintf(fp, "\t- Non scaduta:\n");
@@ -142,6 +142,17 @@ void printerCode(int day) {
         fprintf(fp, "\t- Scaduta:\n");
         fprintf(fp, "\t\ta) nei porti: %d\n", (arr + i)->expired_goods_on_port);
         fprintf(fp, "\t\tb) in nave: %d\n", (arr + i)->expired_goods_on_ship);
+        sum += arr[i].delivered_goods + arr[i].goods_on_port + arr[i].goods_on_ship + arr[i].expired_goods_on_ship + arr[i].expired_goods_on_port;
+    }
+    if (day == SO_DAYS) {
+        fprintf(fp, "TOTALE MERCE: %d <==> SO_FILL: %d\n", sum, SO_FILL);
+        if (sum == SO_FILL) {
+            fprintf(fp, "✅");
+        }
+        else {
+            fprintf(fp, "❌");   
+        }
+        
     }
 
     fclose(fp);

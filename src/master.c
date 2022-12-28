@@ -10,6 +10,9 @@
 #include "./master.h"
 #include "./dump.h"
 
+void errHandler(int er) {
+    perror("errore nella WAITZERO GIORNALIERA NEL MASTER");
+}
 
 void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID) {
     int i;
@@ -49,8 +52,8 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
         if (i > 0) {
             expirePortsGoods(i);
             expireShipGoods();
-            refillPorts(SYNC, msgRefillerID, quantitaAlGiorno, i);
-            mutex(waitEndDaySemID, WAITZERO, errorHandler);
+            refillPorts(ASYNC, msgRefillerID, quantitaAlGiorno, i);
+            mutex(waitEndDaySemID, WAITZERO, errHandler);
             
         }
         #ifndef __linux__
