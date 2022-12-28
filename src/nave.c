@@ -23,7 +23,7 @@ void chargeProducts(Ship ship, int quantityToCharge){
     initArrayOffers(port_offers);
 
     if(quantityToCharge == 0){
-        dischargeProducts(ship);
+        //dischargeProducts(ship);
     } else {
         callPorts(ship, quantityToCharge); /* mando msg a tutti i porti perchè voglio caricare*/
     
@@ -53,9 +53,9 @@ void chargeProducts(Ship ship, int quantityToCharge){
     }
     
 }
-
-void dischargeProducts(Ship ship){
-    /* TO-DO */
+/*
+void dischargeProducts(Ship ship) {
+    /* TO-DO 
 
     int portID;
     int product_index;
@@ -66,8 +66,10 @@ void dischargeProducts(Ship ship){
 
     } else {
 
-    /* 1 - Nave) Mando un msg a tutti i porti indicano il tipo di merce che voglio scaricare e la quantità che possiedo
-          (scelgo la merce con tempo di scadenza minore di tutte le altre merci che posseggo).
+    /*
+
+        1 - Nave) Mando un msg a tutti i porti indicano il tipo di merce che voglio scaricare e la quantità che possiedo
+              (scelgo la merce con tempo di scadenza minore di tutte le altre merci che posseggo).
 
        2 - Porto) il porto riceve il messaggio è valuta guardando il suo magazzino se la merce si può consegnare
                   oppure no perchè la domanda è arrivata a 0.
@@ -81,7 +83,7 @@ void dischargeProducts(Ship ship){
                     ALTRIMENTI CONTINUA FINO A QUANDO LA DOMANDA PER QUEL TIPO DI MERCE SCENDE A 0
 
                     POLITICA FIFO   
-    */
+    
 
     
 
@@ -108,20 +110,20 @@ void dischargeProducts(Ship ship){
         
         2 - Porto) Il porto non fa niente
 
-    */
+    
 
         portID = portResponsesDischarge();
 
         if(portID == -1){
-            removeProduct(ship, product_index); /* vecchio prodotto da scaricare rimosso (tanto le domande dei porti sono tutte a 0)*/
+            removeProduct(ship, product_index); /* vecchio prodotto da scaricare rimosso (tanto le domande dei porti sono tutte a 0)
             
-            dischargeProducts(ship);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare*/
+            dischargeProducts(ship);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare
         
         } else {
 
             /* 3) Una volta arrivato al porto accedo alla prima banchina disponibile e rimuovo la merce che intendo
             consegnare dal carico della nave
-            */
+            
             travel(ship, portID);
             accessPortForDischarge(ship, portID, ship->products[product_index]);
         }      
@@ -135,10 +137,12 @@ void dischargeProducts(Ship ship){
             VETTORE DI VALORI: V[SO_MERCI], V[i] = 1/(media([domanda del tipo i - capienza tipo i]) * scadenza della merce i)
             Es:
                 Merce tipo 2: [domanda del porto 0 della merce 2 - mia capienza merce 2, domanda del porto 1 della merce 2 - mia capienza merce 2, ...]
-     */
+     
 
     }
 }
+
+*/
 
 int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identificativo della nave (es: nave 0, nave 1, nave 2, ecc..)*/
     int res;

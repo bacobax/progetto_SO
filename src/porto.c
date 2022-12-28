@@ -7,6 +7,7 @@
 #include "../config1.h"
 #include "../utils/msg_utility.h"
 #include "../utils/shm_utility.h"
+#include "../utils/sem_utility.h"
 #include "../utils/support.h"
 #include "../utils/vettoriInt.h"
 
@@ -30,6 +31,8 @@ void recvHandler(long type, char* text) {
             int portShmId;
             int myQueueID;
             int shipsQueueID;
+            int controlPortsDisponibilitySemID;
+            
             Port porto;
             
             sscanf(text, "%d %d", &quantity, &idNaveMittente);
@@ -43,9 +46,15 @@ void recvHandler(long type, char* text) {
 
             shipsQueueID = useQueue(SQUEUEKEY, errorHandler);
 
-            
+            controlPortsDisponibilitySemID = useSem(PSEMVERIFYKEY, errorHandler);
+
             printf("Port %d: Ricevuto messaggio da nave %d con quantità %d\n", getpid(), idNaveMittente, quantity);
+
+
+            //Operazione controllata da semaforo, per permettere di controllare le disponibilità per una richiesta solo quando non lo si sta già facendo per un altra
+            mutexPro(controlPortsDisponibilitySemID, idx, LOCK, errorHandler);
             res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantity);
+            mutexPro(controlPortsDisponibilitySemID, idx, UNLOCK, errorHandler);
 
             printf("Port %d: Ho trovato il tipo %d con data di scadenza %d\n", getpid(), tipoTrovato, dataScadenzaTrovata);
 

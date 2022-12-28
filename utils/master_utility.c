@@ -140,7 +140,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int rwExpTimesPortSemID;
     int waitEndDaySemID;
     int portRequestsQueueID;
-    
+    int controlPortsDisponibilitySemID;
     srand(time(NULL));
 
     if (signal(SIGUSR1, mastersighandler) == SIG_ERR) {
@@ -156,7 +156,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     startSimulationSemID = createSem(MASTKEY, 1, NULL);
     reservePrintSem = createSem(RESPRINTKEY, 1, NULL);
-
+    controlPortsDisponibilitySemID = createMultipleSem(PSEMVERIFYKEY, SO_PORTI, 1, errorHandler);
     /*
     !dovrà essere SO_PORTI + SO_NAVI
     */
@@ -211,6 +211,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeSem(rwExpTimesPortSemID, errorHandler);
     removeSem(semShipsID, errorHandler);
     removeSem(waitEndDaySemID, errorHandler);
+    removeSem(controlPortsDisponibilitySemID, errorHandler);
     printf("master tutti i sem sono stati rimoessi\n");
 
     removeShm(shipsShmid, errorHandler);

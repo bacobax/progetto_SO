@@ -13,6 +13,7 @@
 
 #define PQUEUEKEY 4000
 #define PQUEREQKEY 3999
+#define PSEMVERIFYKEY 3998
 
 struct port {
 

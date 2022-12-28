@@ -62,9 +62,10 @@ int chooseProductToDelivery(Ship ship);
 void initArrayOffers(PortOffer* offers);
 
 void callPorts(Ship ship, int quantityToCharge);
+void callPortsForDischarge(Ship ship, Product p);  
 
 int portResponses(Ship ship, PortOffer* port_offers);
-
+int portResponsesDischarge();
 int choosePort(PortOffer* port_offers);
 
 void replyToPorts(Ship ship, int portID);
@@ -75,7 +76,7 @@ void travel(Ship ship, int portID);
 
 
 void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int weight);
-
+void accessPortForDischarge(Ship ship, int portID, Product p);
 
 void updateExpTimeShip(Ship ship);
 
