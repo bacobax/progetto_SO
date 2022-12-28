@@ -32,7 +32,11 @@ void recvHandler(long type, char* text) {
             int myQueueID;
             int shipsQueueID;
             int controlPortsDisponibilitySemID;
-            
+            int semid;
+            semid = useSem(RESPRINTKEY, errorHandler);
+            printf("Porto %d, SBATTO SULLA MUTEX\n" , getppid());
+            mutex(semid, LOCK, NULL);
+
             Port porto;
             
             sscanf(text, "%d %d", &quantity, &idNaveMittente);
@@ -48,15 +52,16 @@ void recvHandler(long type, char* text) {
 
             controlPortsDisponibilitySemID = useSem(PSEMVERIFYKEY, errorHandler);
 
-            printf("Port %d: Ricevuto messaggio da nave %d con quantità %d\n", getpid(), idNaveMittente, quantity);
+            printf("Port %d: Ricevuto messaggio da nave %d con quantità %d\n", getppid(), idNaveMittente, quantity);
 
 
             //Operazione controllata da semaforo, per permettere di controllare le disponibilità per una richiesta solo quando non lo si sta già facendo per un altra
-            mutexPro(controlPortsDisponibilitySemID, idx, LOCK, errorHandler);
+            mutexPro(controlPortsDisponibilitySemID, idx, LOCK, NULL);
             res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantity);
-            mutexPro(controlPortsDisponibilitySemID, idx, UNLOCK, errorHandler);
+            mutexPro(controlPortsDisponibilitySemID, idx, UNLOCK, NULL);
 
-            printf("Port %d: Ho trovato il tipo %d con data di scadenza %d\n", getpid(), tipoTrovato, dataScadenzaTrovata);
+            printf("Port %d: Ho trovato il tipo %d con data di scadenza %d\n", getppid(), tipoTrovato, dataScadenzaTrovata);
+            mutex(semid, UNLOCK, NULL);
 
             if (res == -1) {
                 msgSend(shipsQueueID, "x", idx + 1, errorHandler);
@@ -70,16 +75,17 @@ void recvHandler(long type, char* text) {
             messaggioRicevuto = msgRecv(myQueueID, idNaveMittente + 1, errorHandler, NULL, SYNC);
 
             sscanf(messaggioRicevuto->mtext, "%d", &sonostatoScelto);
-            printf("Port %d: valore di sonostatoScelto = %d\n", getpid(), sonostatoScelto);
+            printf("Port %d: valore di sonostatoScelto = %d\n", getppid(), sonostatoScelto);
             if (sonostatoScelto == 0 && res != -1) {
-                printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", getpid());
+                printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", getppid());
                 porto->supplies.magazine[dayTrovato][tipoTrovato] += quantity;
+                addNotExpiredGood(quantity, tipoTrovato, PORT);
             }
 
 
             if (sonostatoScelto == 1 && res == 1) {
-                printf("Porto %d: sono stato scelto\n", getpid());
-                addNotExpiredGood(0 - quantity, tipoTrovato, PORT);
+                printf("Porto %d: sono stato scelto\n", getppid());
+                // addNotExpiredGood(0 - quantity, tipoTrovato, PORT);
             }
          
 }

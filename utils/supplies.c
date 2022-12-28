@@ -96,14 +96,11 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
     double currentValue;
     int currentScadenza;
     int res;
-    int semid;
-    semid = useSem(RESPRINTKEY, errorHandler);
-
+    
     
     *tipo = -1;
     *scadenza = -1;
     *dayTrovato = -1;
-    mutex(semid, LOCK, NULL);
     printf("✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼Valori della merce:\n");
     for (i = 0; i < SO_DAYS; i++) {
         for (j = 0; j < SO_MERCI; j++) {
@@ -123,7 +120,6 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
         printf("\n");
         
     }
-    mutex(semid, UNLOCK, NULL);
 
     if (*tipo == -1 && *scadenza == -1 && *dayTrovato == -1) {
         res = -1;
@@ -134,7 +130,7 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
                 lo stesso tipo di merce con la quantità aggiornata
             */
             S->magazine[*dayTrovato][*tipo] -= quantity;
-            
+            addNotExpiredGood(0 - quantity, *tipo, PORT);
         res = 1;
     }
     return res;

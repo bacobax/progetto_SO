@@ -238,7 +238,6 @@ void refill(long type, char* text) {
 
     sscanf(text, "%d|%d", &day, &quantity);
 
-    printf("P %d , devo distribuire %d merci del giorno %d\n", correctType, quantity, day);
     
     /*
         distribuisco le quantità da aggiungere

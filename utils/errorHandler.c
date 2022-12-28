@@ -3,6 +3,7 @@
 #include "shm_utility.h"
 #include "../config1.h"
 #include <stdio.h>
+#include <unistd.h>
 
 void errorHandler(int err) {
     switch (err) {
@@ -13,6 +14,7 @@ void errorHandler(int err) {
         perror("sem get error handler");
         break;
     case SERROP:
+        printf("PID: %d, PPID: %d\n", getpid(), getppid());
         perror("sem op error handler");
         break;
     case MERRCTL:

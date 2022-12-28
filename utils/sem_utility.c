@@ -111,8 +111,8 @@ int createMultipleSem(int key, int nSem, int initValue, void (*errorHandler)(int
 
 
 
-void removeSem(int key, void (*errorHandler)(int err)) {
-    if (semctl(key, 0, IPC_RMID, NULL) == -1) {
+void removeSem(int semid, void (*errorHandler)(int err)) {
+    if (semctl(semid, 0, IPC_RMID, NULL) == -1) {
 
 
         if (errorHandler == NULL) {
@@ -168,3 +168,9 @@ void mutexPro(int semid, int semIdx, int op, void (*errorHandler)(int err)) {
     free(buf);
 }
 
+int getWaitingPxCount(int semid, int idx) {
+
+    int count;
+
+    return semctl(semid, idx, GETNCNT);
+}

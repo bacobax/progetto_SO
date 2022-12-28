@@ -257,6 +257,24 @@ void testFormuleMatrice() {
 
 }
 
+void testSemafori() {
+    int semID;
+    int key;
+    int idx;
+    printf("Chiave del set e idx semaforo: ");
+    scanf("%d %d", &key , &idx);
+    semID = useSem(key, errorHandler);
+    printf("\nNumero di px in attesa: %d\n", getWaitingPxCount(semID, idx));
+}
+void testCode() {
+    int queueID;
+    int key;
+    printf("Chiave della coda: ");
+    scanf("%d" , &key);
+    queueID = useQueue(key, errorHandler);
+    printQueueState(queueID, errorHandler);
+}
+
 int main(int argc, char const* argv[])
 {
 
@@ -294,6 +312,11 @@ int main(int argc, char const* argv[])
         testVariabileGlobale();
     case 7:
         testFormuleMatrice();
+
+    case 8:
+        testSemafori();
+    case 9:
+        testCode();
     default:
         break;
     }
