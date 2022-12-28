@@ -355,10 +355,14 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
     checkInConfig();
     printf("P: finito configurazione\n");
 
-    msgQueueID = useQueue(PQUEUEKEY + idx, errorHandler);
+    msgQueueID = useQueue(PQUEUECHKEY + idx, errorHandler);
 
-    shipQueueID = useQueue(SQUEUEKEY, errorHandler);
+    shipQueueID = useQueue(SCHQUEUEKEY, errorHandler);
     
+    /*
+        da aggiungere le due useQueue per le code di scaricamento
+    */
+
     codicePorto(p, msgQueueID,shipQueueID, idx);
 
 

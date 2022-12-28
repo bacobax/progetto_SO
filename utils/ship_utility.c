@@ -43,11 +43,11 @@ void initArrayProducts(Product* products){
     }
 }
 
-void initArrayOffers(PortOffer* offers){
+void initArrayOffers(PortOffer* port_offers){
     int i;
     for(i=0; i<SO_PORTI; i++){
-        offers[i].product_type = -1;
-        offers[i].expirationTime = -1;
+        port_offers[i].expirationTime = -1;
+        port_offers[i].product_type = -1;
     }
 }
 
@@ -176,7 +176,7 @@ int removeProduct(Ship ship, int product_index){
     }
 }
 
-int chooseQuantitiToCharge(Ship ship){
+int chooseQuantityToCharge(Ship ship){
     return availableCapacity(ship);
     /* il massimo che posso caricare
        valutare se conviene caricare di meno per essere più leggeri e viaggiare più
@@ -199,13 +199,12 @@ int chooseProductToDelivery(Ship ship){
     return index;
 }
 
-void callPorts(Ship ship, int quantityToCharge){
+void callPortsForCharge(Ship ship, int quantityToCharge){
     int i;
-    int queueID;
     char text[MEXBSIZE];
     int requestPortQueueID;
     
-    requestPortQueueID = useQueue(PQUEREQKEY, errorHandler);
+    requestPortQueueID = useQueue(PQUEREQCHKEY, errorHandler);
 
     
     sprintf(text, "%d %d", quantityToCharge , ship->shipID); 
@@ -226,13 +225,12 @@ void callPorts(Ship ship, int quantityToCharge){
 
 }
 
-int portResponses(Ship ship, PortOffer* port_offers){
+int portResponsesForCharge(Ship ship, PortOffer* port_offers){
     int i;
     int queueID;
-    int indiceRispostaNave;
     int ports = 0;
     mex* response;
-    queueID = useQueue(SQUEUEKEY, errorHandler);
+    queueID = useQueue(SCHQUEUEKEY, errorHandler);
     
     for(i=0; i<SO_PORTI; i++){
         response = msgRecv(queueID, i + 1, errorHandler, NULL, SYNC);
@@ -249,7 +247,7 @@ int portResponses(Ship ship, PortOffer* port_offers){
     return ports;
 }
 
-int choosePort(PortOffer* port_offers){
+int choosePortForCharge(PortOffer* port_offers){
     int i;
     int portID = 0;
     int expTime = 0;
@@ -271,13 +269,13 @@ int choosePort(PortOffer* port_offers){
     return portID;
 }
 
-void replyToPorts(Ship ship, int portID){
+void replyToPortsForCharge(Ship ship, int portID){
     int i;
     int queueID;
     char text[MEXBSIZE];
 
     for(i=0; i<SO_PORTI; i++){
-        queueID = useQueue(PQUEUEKEY + i, errorHandler);
+        queueID = useQueue(PQUEUECHKEY + i, errorHandler);
         
         if(i == portID){
             printf("[%d]Nave ho scelto il porto:%d\n", getpid(), i);
@@ -290,37 +288,39 @@ void replyToPorts(Ship ship, int portID){
     }
 }
 
-void travel(Ship ship, int portID)
-{
+void callPortsForDischarge(Ship ship, Product p){
+    int i;
+    int queueID;
+    char text[MEXBSIZE];
+    int requesetPortQueueID;
 
-    Port p;
-    double dt_x, dt_y, spazio, nanosleep_arg;
-    long tempo;
+    requesetPortQueueID = useQueue(PQUEREDCHKEY, errorHandler);
 
-    int portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);  /* prendo l'id della shm del porto */
+    sprintf(text, "%d %d", p.product_type, p.weight);
 
-    p = ((Port)getShmAddress(portShmId, 0, errorHandler)) + portID;  /* prelevo la struttura del porto alla portID-esima posizione nella shm 
+    for(i=0; i<SO_PORTI; i++){
+        printf("[%d]NAVE: invio domanda al porto %d per scaricare\n", getpid(), i);
 
-     imposto la formula per il calcolo della distanza */
+        msgSend(requesetPortQueueID, text, i+1, errorHandler);
+    }
+}
 
-    dt_x = p->x - ship->x;
-    dt_y = p->y - ship->y;
+int portResponsesForDischarge(){
+    int i;
+    int queueID;
+    int portID = -1;
+    mex* response;
 
-    spazio = sqrt(pow(dt_x, 2) + pow(dt_y, 2));
-    
-    /* spazio/SO_SPEED è misurato in giorni (secondi), quindi spazio/SO_SPEED*1000000000 sono il numero di nanosecondi per cui fare la sleep */
-    tempo = (long)((spazio / SO_SPEED) * NANOS_MULT);
-    printf("[%d]Nave: viaggio per %ld secondi...\n", getpid(), tempo);
-    nanosecsleep(tempo);
-    printf("[%d]Nave: viaggio finito...\n");
-    
+    queueID = useQueue(SDCHQUEUEKEY, errorHandler); /* coda di messaggi delle navi per le risposte di scaricamento*/
 
-    /* Dopo aver fatto la nanosleep la nave si trova esattamente sulle coordinate del porto
-       quindi aggiorniamo le sue coordinate */
-    
-   
-    ship->x = p->x;
-    ship->y = p->y;
+    for(i=0; i<SO_PORTI; i++){
+        response = msgRecv(queueID, i+1, errorHandler, NULL, SYNC);
+
+        printf("🤡[%d]Nave: Strlen del messaggio ricevuto per scaricare: %d\n" ,getpid() ,strlen(response->mtext) );
+        if(strlen(response->mtext) > 1){
+            return i;
+        }
+    }
 }
 
 void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int weight){
@@ -360,6 +360,67 @@ void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int wei
     mutexPro(pierSemID, portID, UNLOCK, errorHandler);
 }
 
+void accessPortForDischarge(Ship ship, int portID, int product_index){
+    int portShmID;
+    int pierSemID;
+    int shipSemID;
+    int portBufferSemID;
+    Port port;
+
+    portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler);
+    pierSemID = useSem(BANCHINESEMKY, errorHandler);
+    shipSemID = useSem(SEMSHIPKEY, errorHandler);
+    portBufferSemID = useSem(RESPORTSBUFFERS, errorHandler);
+
+    port = ((Port) getShmAddress(portShmID, 0, errorHandler)) + portID;
+
+    mutexPro(pierSemID, portID, LOCK, errorHandler);
+
+    nanosecsleep(ship->products[product_index].weight / SO_LOADSPEED);
+
+    mutexPro(shipSemID, ship->shipID, LOCK, errorHandler);
+
+    addDeliveredGood(ship->products[product_index].weight, ship->products[product_index].product_type);
+    removeProduct(ship, product_index);
+
+    mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler);
+
+    mutexPro(pierSemID, portID, UNLOCK, errorHandler);
+
+}
+
+void travel(Ship ship, int portID)
+{
+
+    Port p;
+    double dt_x, dt_y, spazio, nanosleep_arg;
+    long tempo;
+
+    int portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);  /* prendo l'id della shm del porto */
+
+    p = ((Port)getShmAddress(portShmId, 0, errorHandler)) + portID;  /* prelevo la struttura del porto alla portID-esima posizione nella shm 
+
+     imposto la formula per il calcolo della distanza */
+
+    dt_x = p->x - ship->x;
+    dt_y = p->y - ship->y;
+
+    spazio = sqrt(pow(dt_x, 2) + pow(dt_y, 2));
+    
+    /* spazio/SO_SPEED è misurato in giorni (secondi), quindi spazio/SO_SPEED*1000000000 sono il numero di nanosecondi per cui fare la sleep */
+    tempo = (long)((spazio / SO_SPEED) * NANOS_MULT);
+    printf("[%d]Nave: viaggio per %ld secondi...\n", getpid(), tempo);
+    nanosecsleep(tempo);
+    printf("[%d]Nave: viaggio finito...\n");
+    
+
+    /* Dopo aver fatto la nanosleep la nave si trova esattamente sulle coordinate del porto
+       quindi aggiorniamo le sue coordinate */
+    
+   
+    ship->x = p->x;
+    ship->y = p->y;
+}
 
 void updateExpTimeShip(Ship ship){
     int i;

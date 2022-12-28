@@ -42,9 +42,9 @@ void recvHandler(long type, char* text) {
 
             porto = ((Port)getShmAddress(portShmId, 0, errorHandler)) + idx;
 
-            myQueueID = useQueue(PQUEUEKEY + idx, errorHandler);
+            myQueueID = useQueue(PQUEUECHKEY + idx, errorHandler);
 
-            shipsQueueID = useQueue(SQUEUEKEY, errorHandler);
+            shipsQueueID = useQueue(SCHQUEUEKEY, errorHandler);
 
             controlPortsDisponibilitySemID = useSem(PSEMVERIFYKEY, errorHandler);
 
@@ -89,7 +89,7 @@ void codicePorto(Port porto, int myQueueID, int shipsQueueID, int idx) {
     
     int requestPortQueueID;
     
-    requestPortQueueID = useQueue(PQUEREQKEY, errorHandler);
+    requestPortQueueID = useQueue(PQUEREQCHKEY, errorHandler);
     waitForStart();
 
     /* START */

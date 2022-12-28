@@ -177,7 +177,9 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     /*il codice del master manco la usa*/
     msgRefillerID = createQueue(REFILLERQUEUE, errorHandler);
 
-    msgShipQueueID = createQueue(SQUEUEKEY, errorHandler);
+    msgShipQueueID = createQueue(SCHQUEUEKEY, errorHandler);
+
+    /* creare queue navi per fase di scaricamento TO-DO*/
 
     reservePortsResourceSem = createMultipleSem(RESPORTSBUFFERS, SO_PORTI, 1, errorHandler);
 
@@ -190,11 +192,13 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
         in sintesi il master aspetta a passare il giorno finchè tutti i porti non hanno ricevuto la loro merce
     */
     waitEndDaySemID = createSem(WAITENDDAYKEY, SO_PORTI, errorHandler);
-    portRequestsQueueID = createQueue(PQUEREQKEY, errorHandler);
+    portRequestsQueueID = createQueue(PQUEREQCHKEY, errorHandler);
     
+    /* TO-DO creare coda porti richieste per fase di scaricamento*/
+
     creaCodePorti();
 
-
+    /* TO-DO creare code porti per fase di scaricamento*/
     
     codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID);
 

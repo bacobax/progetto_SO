@@ -4,7 +4,8 @@
 
 #include "../config1.h"
 
-#define SQUEUEKEY 9091
+#define SCHQUEUEKEY 9091   /* key coda messaggi per azioni di caricamento*/
+#define SDCHQUEUEKEY 9092  /* key coda messaggi per azioni di scaricamento*/
 
 struct product {
     int product_type;    
@@ -61,22 +62,23 @@ int chooseProductToDelivery(Ship ship);
 
 void initArrayOffers(PortOffer* offers);
 
-void callPorts(Ship ship, int quantityToCharge);
+void callPortsForCharge(Ship ship, int quantityToCharge);
 void callPortsForDischarge(Ship ship, Product p);  
 
-int portResponses(Ship ship, PortOffer* port_offers);
-int portResponsesDischarge();
-int choosePort(PortOffer* port_offers);
+int portResponsesForCharge(Ship ship, PortOffer* port_offers);
+int choosePortForCharge(PortOffer* port_offers);
 
-void replyToPorts(Ship ship, int portID);
+void replyToPortsForCharge(Ship ship, int portID);
 
-void dischargeProducts(Ship ship);
+int portResponsesForDischarge();
+
+
 
 void travel(Ship ship, int portID);
 
 
 void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int weight);
-void accessPortForDischarge(Ship ship, int portID, Product p);
+void accessPortForDischarge(Ship ship, int portID, int product_index);
 
 void updateExpTimeShip(Ship ship);
 

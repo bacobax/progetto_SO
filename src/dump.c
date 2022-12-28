@@ -87,6 +87,10 @@ void addNotExpiredGood(int quantity, int type, ctx where) {
 
 }
 
+void addDeliveredGood(int quantity, int type){
+    /* TO-DO*/
+}
+
 
 void removeDumpArea() {
     int shmid;

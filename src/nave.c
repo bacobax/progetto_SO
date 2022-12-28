@@ -23,11 +23,11 @@ void chargeProducts(Ship ship, int quantityToCharge){
     initArrayOffers(port_offers);
 
     if(quantityToCharge == 0){
-        //dischargeProducts(ship);
+        dischargeProducts(ship);
     } else {
-        callPorts(ship, quantityToCharge); /* mando msg a tutti i porti perchè voglio caricare*/
+        callPortsForCharge(ship, quantityToCharge); /* mando msg a tutti i porti perchè voglio caricare*/
     
-        availablePorts = portResponses(ship, port_offers);
+        availablePorts = portResponsesForCharge(ship, port_offers);
 
         printf("NAVE: Aviable ports = %d\n", availablePorts);
         if (availablePorts == 0) {
@@ -38,9 +38,9 @@ void chargeProducts(Ship ship, int quantityToCharge){
         } else {
             /* ci sono porti che hanno merce da caricare*/
             
-            portID = choosePort(port_offers);
+            portID = choosePortForCharge(port_offers);
 
-            replyToPorts(ship, portID);
+            replyToPortsForCharge(ship, portID);
 
             
             travel(ship, portID);
@@ -53,9 +53,8 @@ void chargeProducts(Ship ship, int quantityToCharge){
     }
     
 }
-/*
+
 void dischargeProducts(Ship ship) {
-    /* TO-DO 
 
     int portID;
     int product_index;
@@ -85,7 +84,7 @@ void dischargeProducts(Ship ship) {
                     POLITICA FIFO   
     
 
-    
+    */
 
         product_index = chooseProductToDelivery(ship);
 
@@ -110,22 +109,22 @@ void dischargeProducts(Ship ship) {
         
         2 - Porto) Il porto non fa niente
 
-    
+    */
 
-        portID = portResponsesDischarge();
+        portID = portResponsesForDischarge();
 
         if(portID == -1){
-            removeProduct(ship, product_index); /* vecchio prodotto da scaricare rimosso (tanto le domande dei porti sono tutte a 0)
+            removeProduct(ship, product_index); /* vecchio prodotto da scaricare rimosso (tanto le domande dei porti sono tutte a 0) */
             
-            dischargeProducts(ship);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare
+            dischargeProducts(ship);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
         
         } else {
 
             /* 3) Una volta arrivato al porto accedo alla prima banchina disponibile e rimuovo la merce che intendo
-            consegnare dal carico della nave
+            consegnare dal carico della nave */
             
             travel(ship, portID);
-            accessPortForDischarge(ship, portID, ship->products[product_index]);
+            accessPortForDischarge(ship, portID, product_index);
         }      
 
 
@@ -138,11 +137,11 @@ void dischargeProducts(Ship ship) {
             Es:
                 Merce tipo 2: [domanda del porto 0 della merce 2 - mia capienza merce 2, domanda del porto 1 della merce 2 - mia capienza merce 2, ...]
      
-
+    */
     }
 }
 
-*/
+
 
 int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identificativo della nave (es: nave 0, nave 1, nave 2, ecc..)*/
     int res;
