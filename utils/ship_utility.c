@@ -351,11 +351,11 @@ void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int wei
 
     /* nanosecsleep(p.weight / SO_LOADSPEED);  da cambiare nanosecsleep perchè il parametro da mandare deve essere di tipo double*/
 
-    sleep(0.5);
+    sleep(p.weight / SO_LOADSPEED);
 
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler);
 
-    printf("[%d]Nave: sono attracata alla banchina del porto per aggiungere la merce\n", ship->shipID);
+    printf("[%d]Nave: sono attracata alla banchina del porto per aggiungere la merce\n", getpid());
 
     addProduct(ship, p);
 
@@ -422,7 +422,7 @@ void travel(Ship ship, int portID)
     /*nanosecsleep(tempo); */
     sleep(0.5);
 
-    printf("[%d]Nave: viaggio finito...\n");
+    printf("[%d]Nave: viaggio finito...\n", getpid());
     
 
 
@@ -432,8 +432,6 @@ void travel(Ship ship, int portID)
    
     ship->x = p->x;
     ship->y = p->y;
-
-    printf("coordinate attuali della nave: x:%f y:%f\n", ship->x, ship->y);
     
 }
 
