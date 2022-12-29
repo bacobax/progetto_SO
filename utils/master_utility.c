@@ -134,7 +134,7 @@ void distruggiCodePorti() {
     int i;
     int msgQueue;
     for (i = 0; i < SO_PORTI; i++) {
-        msgQueue = useQueue(ftok("./src/porto.c" , i), errorHandler);
+        msgQueue = useQueue(ftok("./src/porto.c" , i), NULL);
         removeQueue(msgQueue, errorHandler);
     }
 }
@@ -143,8 +143,10 @@ void distruggiCodePorti() {
 void distruggiCodeNavi() {
     int i;
     int msgQueue;
-    for (i = 0; i < SO_PORTI; i++) {
-        msgQueue = useQueue(ftok("./src/nave.c" , i), errorHandler);
+    
+    for (i = 0; i < SO_NAVI; i++) {
+        msgQueue = useQueue(ftok("./src/nave.c", i), NULL);
+        
         removeQueue(msgQueue, errorHandler);
     }
 }
@@ -158,13 +160,13 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int semBanchineID;
     int semShipsID;
     int msgRefillerID;
-    int msgShipQueueID;
     int waitconfigSemID;
     int rwExpTimesPortSemID;
     int waitEndDaySemID;
     int portRequestsQueueID;
     int controlPortsDisponibilitySemID;
     int waitToTravelsemID;
+    int waitResponsesID;
     srand(time(NULL));
 
     if (signal(SIGUSR1, mastersighandler) == SIG_ERR) {
@@ -226,7 +228,8 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     waitToTravelsemID = createMultipleSem(WAITTOTRAVELKEY, SO_NAVI, SO_PORTI, errorHandler);
     
-
+    waitResponsesID = createMultipleSem(WAITFIRSTRESPONSES, SO_NAVI, SO_PORTI, errorHandler);
+    
     codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID);
 
 
@@ -244,6 +247,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeSem(waitEndDaySemID, errorHandler);
     removeSem(controlPortsDisponibilitySemID, errorHandler);
     removeSem(waitToTravelsemID, errorHandler);
+    removeSem(waitResponsesID, errorHandler);
     printf("master tutti i sem sono stati rimoessi\n");
 
     removeShm(shipsShmid, errorHandler);
@@ -254,12 +258,11 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeQueue(msgRefillerID, errorHandler);
     printf("coda di refiller rimossa\n");
 
-    //removeQueue(msgShipQueueID, errorHandler);
     printf("coda delle navi rimossa\n");
     
-        removeQueue(portRequestsQueueID, errorHandler);
+    removeQueue(portRequestsQueueID, errorHandler);
     distruggiCodePorti();
-    //distruggiCodeNavi();
+    distruggiCodeNavi();
     printf("coda dei porti rimossa\n");
 
     printf("master tutte le code sono state rimosse\n");
