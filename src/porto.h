@@ -17,7 +17,8 @@
 #define PQUEREQCHKEY 3999    
 #define PQUEREDCHKEY 3998
 
-#define PSEMVERIFYKEY 3998
+#define PSEMVERIFYKEY 3997
+
 
 struct port {
 
