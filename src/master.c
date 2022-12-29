@@ -54,6 +54,7 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
             expireShipGoods();
             refillPorts(ASYNC, msgRefillerID, quantitaAlGiorno, i);
             mutex(waitEndDaySemID, WAITZERO, errHandler);
+            mutex(waitEndDaySemID, SO_PORTI, errHandler);
             
         }
         #ifndef __linux__

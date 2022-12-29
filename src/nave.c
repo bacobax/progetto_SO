@@ -43,6 +43,7 @@ void chargeProducts(Ship ship, int quantityToCharge){
             replyToPortsForCharge(ship, portID);
 
             
+
             travel(ship, portID);
             
             accessPortForCharge(ship, portID, port_offers[portID], quantityToCharge);
