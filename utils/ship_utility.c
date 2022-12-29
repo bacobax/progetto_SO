@@ -349,13 +349,19 @@ void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int wei
 
     /* il porto ha già decrementato */
 
-    nanosecsleep(p.weight / SO_LOADSPEED);  /*da cambiare nanosecsleep perchè il parametro da mandare deve essere di tipo double*/
+    /* nanosecsleep(p.weight / SO_LOADSPEED);  da cambiare nanosecsleep perchè il parametro da mandare deve essere di tipo double*/
+
+    sleep(0.5);
 
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler);
+
+    printf("[%d]Nave: sono attracata alla banchina del porto per aggiungere la merce\n", ship->shipID);
 
     addProduct(ship, p);
 
     mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler);
+
+    printShip(ship);
 
     mutexPro(pierSemID, portID, UNLOCK, errorHandler);
 }
@@ -376,7 +382,8 @@ void accessPortForDischarge(Ship ship, int portID, int product_index){
 
     mutexPro(pierSemID, portID, LOCK, errorHandler);
 
-    nanosecsleep(ship->products[product_index].weight / SO_LOADSPEED);
+    /*nanosecsleep(ship->products[product_index].weight / SO_LOADSPEED);*/
+    sleep(1);
 
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler);
 
@@ -410,9 +417,14 @@ void travel(Ship ship, int portID)
     /* spazio/SO_SPEED è misurato in giorni (secondi), quindi spazio/SO_SPEED*1000000000 sono il numero di nanosecondi per cui fare la sleep */
     tempo = (long)((spazio / SO_SPEED) * NANOS_MULT);
     printf("[%d]Nave: viaggio per %ld secondi...\n", getpid(), tempo);
-    nanosecsleep(tempo);
+
+    
+    /*nanosecsleep(tempo); */
+    sleep(0.5);
+
     printf("[%d]Nave: viaggio finito...\n");
     
+
 
     /* Dopo aver fatto la nanosleep la nave si trova esattamente sulle coordinate del porto
        quindi aggiorniamo le sue coordinate */
@@ -420,6 +432,9 @@ void travel(Ship ship, int portID)
    
     ship->x = p->x;
     ship->y = p->y;
+
+    printf("coordinate attuali della nave: x:%f y:%f\n", ship->x, ship->y);
+    
 }
 
 void updateExpTimeShip(Ship ship){

@@ -55,7 +55,7 @@ void recvHandler(long type, char* text) {
             printf("Port %d: Ricevuto messaggio da nave %d con quantità %d\n", getppid(), idNaveMittente, quantity);
 
 
-            //Operazione controllata da semaforo, per permettere di controllare le disponibilità per una richiesta solo quando non lo si sta già facendo per un altra
+            /* Operazione controllata da semaforo, per permettere di controllare le disponibilità per una richiesta solo quando non lo si sta già facendo per un altra*/
             mutexPro(controlPortsDisponibilitySemID, idx, LOCK, NULL);
             res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantity);
             mutexPro(controlPortsDisponibilitySemID, idx, UNLOCK, NULL);
@@ -85,7 +85,7 @@ void recvHandler(long type, char* text) {
 
             if (sonostatoScelto == 1 && res == 1) {
                 printf("Porto %d: sono stato scelto\n", getppid());
-                // addNotExpiredGood(0 - quantity, tipoTrovato, PORT);
+                /* addNotExpiredGood(0 - quantity, tipoTrovato, PORT);*/
             }
          
 }
@@ -115,7 +115,7 @@ void codicePorto(Port porto, int myQueueID, int shipsQueueID, int idx) {
          
     }
 
-    // launchGoodsDispatcher(myQueueID, porto, idx, shipsQueueID);
+    /* launchGoodsDispatcher(myQueueID, porto, idx, shipsQueueID); */
 
 
 }

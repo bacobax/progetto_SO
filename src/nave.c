@@ -169,10 +169,12 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     printShip(ship);
     sleep(2);
         }
-    */    
+    */
+
     sleep(1.5);
     chargeProducts(ship, 5);
-    printShip(ship);
+    
+    /*printShip(ship);*/
         
 
         while (1) {

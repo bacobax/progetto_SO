@@ -82,4 +82,7 @@ void accessPortForDischarge(Ship ship, int portID, int product_index);
 
 void updateExpTimeShip(Ship ship);
 
+void chargeProducts(Ship ship, int quantityToCharge);
+void dischargeProducts(Ship ship);
+
 #endif
