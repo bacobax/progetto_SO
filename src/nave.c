@@ -30,7 +30,7 @@ void chargeProducts(Ship ship, int quantityToCharge){
         
         availablePorts = portResponsesForCharge(ship, port_offers);
 
-        printf("NAVE: Aviable ports = %d\n", availablePorts);
+        printf("[%d]NAVE: Aviable ports = %d\n",getpid(), availablePorts);
         if (availablePorts == 0) {
             /* non ci sono porti disponibili per la quantità
                di merce che voglio caricare, riprovo a chiamare i porti decrementando la quantità*/

@@ -3,8 +3,13 @@
 #define CONFIG_1
 
 
-#define SO_PORTI    2
-#define SO_NAVI     2
+<<<<<<< HEAD
+#define SO_PORTI     2
+#define SO_NAVI      2
+=======
+#define SO_PORTI    3
+#define SO_NAVI     3
+>>>>>>> 6322012164be314578398e0b370ca0237d03c53d
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 #define SO_MIN_VITA  2 /* tonn */

@@ -38,7 +38,6 @@ void recvHandler(long type, char* text) {
             int keyMiaCoda;
             int keyCodaNave;
             semid = useSem(RESPRINTKEY, errorHandler);
-            printf("Porto %d, SBATTO SULLA MUTEX\n" , getppid());
             mutex(semid, LOCK, NULL);
 
             Port porto;
@@ -103,7 +102,8 @@ void recvHandler(long type, char* text) {
 
             if (sonostatoScelto == 1 && res == 1) {
                 printf("Porto %d: sono stato scelto\n", getppid());
-                /* addNotExpiredGood(0 - quantity, tipoTrovato, PORT);*/
+                
+                /* addNotExpiredGood(0 - quantity, tipoTrovato, PORT); */
             }
 
             mutexPro(waitToTravelSemID, idNaveMittente, LOCK, NULL);
