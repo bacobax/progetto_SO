@@ -27,6 +27,8 @@ void errorHandler(int err) {
         perror("msg recv error handler");
         break;
     case MERRGET:
+        printf("PID: %d, PPID: %d\n", getpid(), getppid());
+        
         perror("msg get error handler");
         break;
     case SHMERRGET:

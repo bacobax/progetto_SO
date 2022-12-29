@@ -11,13 +11,13 @@
 #include "../utils/vettoriInt.h"
 #include "../utils/supplies.h"
 
-#define PQUEUECHKEY 4000     /* key coda messaggi per azioni di caricamento*/
 #define PQUEUEDCHKEY 5000    /* key coda messaggi per azioni di scaricamento*/
 
 #define PQUEREQCHKEY 3999    
 #define PQUEREDCHKEY 3998
 
 #define PSEMVERIFYKEY 3997
+#define WAITTOTRAVELKEY 3996
 
 
 struct port {

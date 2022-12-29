@@ -22,7 +22,8 @@
     "algorithm": "c",
     "new": "c",
     "nave.h": "c",
-    "support.h": "c"
+    "support.h": "c",
+    "ipc.h": "c"
   },
   "C_Cpp.errorSquiggles": "enabled"
 }

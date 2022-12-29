@@ -269,10 +269,27 @@ void testSemafori() {
 void testCode() {
     int queueID;
     int key;
+    int res;
+    mex* messaggioRicevuto;
     printf("Chiave della coda: ");
     scanf("%d" , &key);
     queueID = useQueue(key, errorHandler);
     printQueueState(queueID, errorHandler);
+
+    do
+    {
+        printf("Vuoi leggere un messaggio? [0/1]\n");
+        scanf("%d", &res);
+        printf("\n");
+
+        if (res) {
+            messaggioRicevuto = msgRecv(queueID, 0, errorHandler, NULL, SYNC);
+            printf("TIPO: %ld\n", messaggioRicevuto->mtype);
+            printf("TESTO: '%s'\n", messaggioRicevuto->mtext);
+        }
+
+    } while (res == 1);
+    
 }
 
 int main(int argc, char const* argv[])

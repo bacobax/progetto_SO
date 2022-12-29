@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <signal.h>
+#include <sys/ipc.h>
 #include <time.h>
 #include "../src/porto.h"
 #include "../src/nave.h"
@@ -296,7 +297,7 @@ void refillerCode(int idx) {
         exit(EXIT_FAILURE);
     }
 
-    refillerID = useQueue(REFILLERQUEUE, errorHandler);
+    refillerID = useQueue(REFILLERQUEUE, NULL);
 
     while (1) {
         /*
@@ -354,9 +355,9 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
     checkInConfig();
     printf("P: finito configurazione\n");
 
-    msgQueueID = useQueue(PQUEUECHKEY + idx, errorHandler);
+    msgQueueID = 1;
 
-    shipQueueID = useQueue(SCHQUEUEKEY, errorHandler);
+    shipQueueID = 1;
     
     /*
         da aggiungere le due useQueue per le code di scaricamento

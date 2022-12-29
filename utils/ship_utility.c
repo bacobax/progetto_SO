@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/ipc.h>
 #include "../src/nave.h"
 #include "../src/porto.h"
 #include "../config1.h"
@@ -230,9 +231,10 @@ int portResponsesForCharge(Ship ship, PortOffer* port_offers){
     int queueID;
     int ports = 0;
     mex* response;
-    queueID = useQueue(SCHQUEUEKEY, errorHandler);
+    queueID = useQueue(ftok("./src/nave.c" , ship->shipID), errorHandler);
     
-    for(i=0; i<SO_PORTI; i++){
+    for (i = 0; i < SO_PORTI; i++) {
+        printf("[%d]Nave: aspetto su coda %d messaggio con type %d\n", getpid() ,queueID, i + 1);
         response = msgRecv(queueID, i + 1, errorHandler, NULL, SYNC);
 
         
@@ -275,7 +277,7 @@ void replyToPortsForCharge(Ship ship, int portID){
     char text[MEXBSIZE];
 
     for(i=0; i<SO_PORTI; i++){
-        queueID = useQueue(PQUEUECHKEY + i, errorHandler);
+        queueID = useQueue(ftok("./src/porto.c" , portID), errorHandler);
         
         if(i == portID){
             printf("[%d]Nave ho scelto il porto:%d\n", getpid(), i);
@@ -286,6 +288,7 @@ void replyToPortsForCharge(Ship ship, int portID){
             msgSend(queueID, text, (ship->shipID + 1), errorHandler);
         }
     }
+
 }
 
 void callPortsForDischarge(Ship ship, Product p){

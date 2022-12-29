@@ -4,6 +4,7 @@
 #include <errno.h>
 #include <time.h>
 #include <signal.h>
+#include <sys/ipc.h>
 #include "../src/porto.h"
 #include "../src/nave.h"
 #include "../src/dump.h"
@@ -56,7 +57,7 @@ void genera_porti(int risorse, int n_porti) {
     for (i = 0; i < n_porti; i++) {
         pid = fork();
         if (pid == 0) {
-
+            printf("PORTO %d: %d\n",i, getpid());
             quantity = (int*)malloc(sizeof(int));
             
             quantity = intElementAt(quantiesSupplies, i);
@@ -113,15 +114,37 @@ void creaCodePorti() {
     int msgQueue;
 
     for (i = 0; i < SO_PORTI; i++) {
-        msgQueue = createQueue(PQUEUECHKEY + i, errorHandler);
+        msgQueue = createQueue(ftok("./src/porto.c" , i), errorHandler);
+        printf("msgQueue id:%d port:%d\n", msgQueue, i);
     }
 }
+
+void creaCodeNavi() {
+    int i;
+    int msgQueue;
+
+    for (i = 0; i < SO_NAVI; i++) {
+        msgQueue = createQueue(ftok("./src/nave.c" , i), errorHandler);
+        printf("msgQueue id:%d nave:%d\n", msgQueue, i);
+    }
+}
+
 
 void distruggiCodePorti() {
     int i;
     int msgQueue;
     for (i = 0; i < SO_PORTI; i++) {
-        msgQueue = useQueue(PQUEUECHKEY + i, errorHandler);
+        msgQueue = useQueue(ftok("./src/porto.c" , i), errorHandler);
+        removeQueue(msgQueue, errorHandler);
+    }
+}
+
+
+void distruggiCodeNavi() {
+    int i;
+    int msgQueue;
+    for (i = 0; i < SO_PORTI; i++) {
+        msgQueue = useQueue(ftok("./src/nave.c" , i), errorHandler);
         removeQueue(msgQueue, errorHandler);
     }
 }
@@ -141,6 +164,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int waitEndDaySemID;
     int portRequestsQueueID;
     int controlPortsDisponibilitySemID;
+    int waitToTravelsemID;
     srand(time(NULL));
 
     if (signal(SIGUSR1, mastersighandler) == SIG_ERR) {
@@ -177,7 +201,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     /*il codice del master manco la usa*/
     msgRefillerID = createQueue(REFILLERQUEUE, errorHandler);
 
-    msgShipQueueID = createQueue(SCHQUEUEKEY, errorHandler);
+    // msgShipQueueID = createQueue(SCHQUEUEKEY, errorHandler);
 
     /* creare queue navi per fase di scaricamento TO-DO*/
 
@@ -197,9 +221,12 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     /* TO-DO creare coda porti richieste per fase di scaricamento*/
 
     creaCodePorti();
-
+    creaCodeNavi();
     /* TO-DO creare code porti per fase di scaricamento*/
+
+    waitToTravelsemID = createMultipleSem(WAITTOTRAVELKEY, SO_NAVI, SO_PORTI, errorHandler);
     
+
     codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID);
 
 
@@ -216,6 +243,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeSem(semShipsID, errorHandler);
     removeSem(waitEndDaySemID, errorHandler);
     removeSem(controlPortsDisponibilitySemID, errorHandler);
+    removeSem(waitToTravelsemID, errorHandler);
     printf("master tutti i sem sono stati rimoessi\n");
 
     removeShm(shipsShmid, errorHandler);
@@ -226,11 +254,12 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeQueue(msgRefillerID, errorHandler);
     printf("coda di refiller rimossa\n");
 
-    removeQueue(msgShipQueueID, errorHandler);
+    //removeQueue(msgShipQueueID, errorHandler);
     printf("coda delle navi rimossa\n");
 
     removeQueue(portRequestsQueueID, errorHandler);
     distruggiCodePorti();
+    distruggiCodeNavi();
     printf("coda dei porti rimossa\n");
 
     printf("master tutte le code sono state rimosse\n");

@@ -19,14 +19,15 @@ void chargeProducts(Ship ship, int quantityToCharge){
     int availablePorts;
     int portID;
     PortOffer port_offers[SO_PORTI];
-    
+    int waitToTravelSemID;
     initArrayOffers(port_offers);
 
     if(quantityToCharge == 0){
         dischargeProducts(ship);
     } else {
         callPortsForCharge(ship, quantityToCharge); /* mando msg a tutti i porti perchè voglio caricare*/
-    
+        printf("[%d]Nave: finito di chiamare i porti\n", getpid());
+        
         availablePorts = portResponsesForCharge(ship, port_offers);
 
         printf("NAVE: Aviable ports = %d\n", availablePorts);
@@ -37,13 +38,14 @@ void chargeProducts(Ship ship, int quantityToCharge){
         
         } else {
             /* ci sono porti che hanno merce da caricare*/
-            
+            waitToTravelSemID = useSem(WAITTOTRAVELKEY, NULL);
             portID = choosePortForCharge(port_offers);
 
             replyToPortsForCharge(ship, portID);
-
             
-
+            printf("[%d]Nave: Aspetto a partire...\n", getpid());
+            mutexPro(waitToTravelSemID, ship->shipID, WAITZERO, errorHandler);
+            printf("[%d]Nave: sono partita...\n", getpid());  
             travel(ship, portID);
             
             accessPortForCharge(ship, portID, port_offers[portID], quantityToCharge);
