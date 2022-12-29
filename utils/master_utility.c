@@ -113,7 +113,7 @@ void creaCodePorti() {
     int msgQueue;
 
     for (i = 0; i < SO_PORTI; i++) {
-        msgQueue = createQueue(PQUEUEKEY + i, errorHandler);
+        msgQueue = createQueue(PQUEUECHKEY + i, errorHandler);
     }
 }
 
@@ -121,7 +121,7 @@ void distruggiCodePorti() {
     int i;
     int msgQueue;
     for (i = 0; i < SO_PORTI; i++) {
-        msgQueue = useQueue(PQUEUEKEY + i, errorHandler);
+        msgQueue = useQueue(PQUEUECHKEY + i, errorHandler);
         removeQueue(msgQueue, errorHandler);
     }
 }
