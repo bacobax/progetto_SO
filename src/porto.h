@@ -53,4 +53,6 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
     forka il figlio che gestisce le navi che vogliono caricare dal porto
 */
 void launchGoodsDispatcher(int myQueueID, Port porto, int idx, int shipsQueueID);
+
+void launchDischarger(void (*recvHandler)(long,char*), int idx);
 #endif
