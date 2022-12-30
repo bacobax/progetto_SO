@@ -275,8 +275,10 @@ void refill(long type, char* text) {
 
     
     mutexPro(portBufferSem, (int)correctType, UNLOCK, errorHandler);
+    /*
+        reservePrint(printPorto, p, correctType);
 
-    reservePrint(printPorto, p, correctType);
+    */
     
     shmDetach(p-correctType, errorHandler);
 

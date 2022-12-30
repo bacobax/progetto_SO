@@ -227,8 +227,11 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     /* TO-DO creare code porti per fase di scaricamento*/
 
     waitToTravelsemID = createMultipleSem(WAITTOTRAVELKEY, SO_NAVI, SO_PORTI, errorHandler);
+    getAllVAlues(waitToTravelsemID, SO_NAVI);
     
-    waitResponsesID = createMultipleSem(WAITFIRSTRESPONSES, SO_NAVI, SO_PORTI, errorHandler);
+    waitResponsesID = createMultipleSem(WAITFIRSTRESPONSES, SO_NAVI, 1, errorHandler);
+
+    
     
     codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID);
 
@@ -246,7 +249,10 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeSem(semShipsID, errorHandler);
     removeSem(waitEndDaySemID, errorHandler);
     removeSem(controlPortsDisponibilitySemID, errorHandler);
+    /*
     removeSem(waitToTravelsemID, errorHandler);
+
+    */
     removeSem(waitResponsesID, errorHandler);
     printf("master tutti i sem sono stati rimoessi\n");
 

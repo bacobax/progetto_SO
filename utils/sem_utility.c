@@ -93,6 +93,7 @@ int createMultipleSem(int key, int nSem, int initValue, void (*errorHandler)(int
     arg.val = initValue;
 
     for (i = 0; i < nSem; i++) {
+        printf("inizializzo semaforo %d a %d\n" , i, arg.val);
         if (semctl(semid, i, SETVAL, arg) == -1) {
             if (errorHandler == NULL) {
                 perror("useSem -> semctl");
@@ -103,6 +104,7 @@ int createMultipleSem(int key, int nSem, int initValue, void (*errorHandler)(int
                 exit(EXIT_FAILURE);
             }
         }
+        getOneValue(semid, i);
     }
 
 
@@ -169,5 +171,31 @@ void mutexPro(int semid, int semIdx, int op, void (*errorHandler)(int err)) {
 }
 
 int getWaitingPxCount(int semid, int idx) {
-    return semctl(semid, idx, GETNCNT);
+    return semctl(semid, idx, GETALL);
+}
+
+void getAllVAlues(int semid, int length){
+    union semun arg;
+    arg.array = calloc(length, sizeof(unsigned short));
+    int i;
+    for(i = 0; i<length; i++){
+
+        arg.array[i] = -2;
+    }
+    printf("FACCIO LA CTL\n");
+    if(semctl(semid, 0,GETALL, arg) == -1){
+        perror("SEMCTL");
+    }
+    for(i=0; i<length; i++){
+        printf("VAL SEM IDX %d: %d\n" , i, arg.array[i]);
+
+    }
+}
+
+void getOneValue(int semid, int idx){
+    int val;
+    if((val = semctl(semid, idx,GETVAL)) == -1){
+        perror("SEMCTL");
+    }
+    printf("VALORE DEL SEMAFORO %d = %d\n" , idx, val);
 }

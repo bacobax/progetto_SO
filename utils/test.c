@@ -261,10 +261,24 @@ void testSemafori() {
     int semID;
     int key;
     int idx;
+    int n;
     printf("Chiave del set e idx semaforo: ");
+
+    
     scanf("%d %d", &key , &idx);
+    printf("FACCIO LA SEM GET\n");
     semID = useSem(key, errorHandler);
-    printf("\nNumero di px in attesa: %d\n", getWaitingPxCount(semID, idx));
+
+    getAllVAlues(semID , 20);
+
+    /*
+    n = getWaitingPxCount(semID, idx);
+    if(n == -1){
+        perror("");
+    }else{
+        printf("\nNumero di px in attesa: %d\n", n);
+
+    }*/
 }
 void testCode() {
     int queueID;
@@ -323,15 +337,19 @@ int main(int argc, char const* argv[])
         break;
     case 4:
         testSemFunc();
+        break;
     case 5:
         testMexParse();
+        break;
     case 6:
         testVariabileGlobale();
+         break;
     case 7:
         testFormuleMatrice();
-
+        break;
     case 8:
         testSemafori();
+        break;
     case 9:
         testCode();
     default:

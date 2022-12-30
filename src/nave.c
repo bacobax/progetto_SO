@@ -28,14 +28,18 @@ void chargeProducts(Ship ship, int quantityToCharge){
         dischargeProducts(ship);
     }
     else {
+        /*
         waitResponsesID= useSem(WAITFIRSTRESPONSES, NULL);
+        
+        */
         
         callPortsForCharge(ship, quantityToCharge); /* mando msg a tutti i porti perchè voglio caricare*/
         printf("[%d]Nave: finito di chiamare i porti\n", getpid());
+        /*
         mutexPro(waitResponsesID, ship->shipID, WAITZERO, errorHandler);
-        //mutexPro(waitResponsesID, ship->shipID, SO_PORTI, errorHandler);
-        printf("[%d]Nave: finito aspettare le risposte dai porti\n", getpid());
         
+        printf("[%d]Nave: finito aspettare le risposte dai porti\n", getpid());
+        */
 
         availablePorts = portResponsesForCharge(ship, port_offers);
         printf("[%d]NAVE: Aviable ports = %d\n",getpid(), availablePorts);
@@ -54,7 +58,10 @@ void chargeProducts(Ship ship, int quantityToCharge){
             
             printf("[%d]Nave: Aspetto a partire...\n", getpid());
             mutexPro(waitToTravelSemID, ship->shipID, WAITZERO, errorHandler);
+            /*
             mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler);
+            
+            */
             
             printf("[%d]Nave: sono partita...\n", getpid());
             travel(ship, portID);

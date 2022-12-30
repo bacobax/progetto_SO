@@ -137,7 +137,7 @@ int addProduct(Ship ship, Product p){
     }
     else
     {
-        printf("Nave: non c'è abbastanza capienza per un prodotto che pesa %d, capienza: %d\n" , p.weight, aviableCap);
+        printf("[%d]Nave: non c'è abbastanza capienza per un prodotto che pesa %d, capienza: %d\n" , getpid(),p.weight, aviableCap);
 
         return -1;
     }
@@ -204,9 +204,10 @@ void callPortsForCharge(Ship ship, int quantityToCharge){
     int i;
     char text[MEXBSIZE];
     int requestPortQueueID;
+    int waitResponseSemID;
     
     requestPortQueueID = useQueue(PQUEREQCHKEY, errorHandler);
-
+    waitResponseSemID = useSem(WAITFIRSTRESPONSES, errorHandler);
     
     sprintf(text, "%d %d", quantityToCharge , ship->shipID); 
 
@@ -217,6 +218,9 @@ void callPortsForCharge(Ship ship, int quantityToCharge){
         */
          printf("[%d]NAVE: invio domanda al porto %d\n",getpid() ,i);
          msgSend(requestPortQueueID, text, i+1, errorHandler);
+         mutexPro(waitResponseSemID, ship->shipID, WAITZERO, errorHandler);
+         mutexPro(waitResponseSemID, ship->shipID, UNLOCK, errorHandler);
+
          /*
                 poichè non ci possono essere type uguali a 0 aggiungo
                 all'id della nave +1
@@ -268,6 +272,7 @@ int choosePortForCharge(PortOffer* port_offers){
             }
         }
     }
+    printf("[%d]Nave: ho scelto il porto %d\n", getpid() , portID);
     return portID;
 }
 
@@ -275,7 +280,7 @@ void replyToPortsForCharge(Ship ship, int portID){
     int i;
     int queueID;
     char text[MEXBSIZE];
-    printf("[%d]Nave invio conferme ai porti di chi è stato scelto\n");
+    printf("[%d]Nave invio conferme ai porti di chi è stato scelto\n",getpid());
     for(i=0; i<SO_PORTI; i++){
         queueID = useQueue(ftok("./src/porto.c" , i), errorHandler);
         
