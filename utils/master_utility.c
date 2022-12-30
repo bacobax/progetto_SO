@@ -261,9 +261,10 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     
     removeQueue(portRequestsQueueID, errorHandler);
     distruggiCodePorti();
-    printf("coda delle navi rimossa\n");
-    distruggiCodeNavi();
     printf("coda dei porti rimossa\n");
+    
+    distruggiCodeNavi();
+    printf("coda delle navi rimossa\n");
 
     printf("master tutte le code sono state rimosse\n");
     
