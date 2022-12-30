@@ -86,6 +86,8 @@ void recvHandler(long type, char* text) {
                 sprintf(text, "%d %d", tipoTrovato, dataScadenzaTrovata);
                 msgSend(shipQueueID, text, idx + 1, errorHandler);
             }
+            printf("Port %d: Ho trovato il tipo %d con data di scadenza %d\n", getppid(), tipoTrovato, dataScadenzaTrovata);
+            
             mutexPro(waitResponsesID, idNaveMittente, LOCK, NULL);
             
             messaggioRicevuto = msgRecv(myQueueID, idNaveMittente + 1, errorHandler, NULL, SYNC);

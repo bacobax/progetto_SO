@@ -115,7 +115,6 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
                 *scadenza = currentScadenza;
             }
         }
-        printf("\n");
         
     }
 
