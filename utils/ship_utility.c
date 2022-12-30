@@ -373,6 +373,24 @@ int portResponsesForDischarge(Ship ship){
     return portID;
 }
 
+void replyToPortsForDischarge(Ship ship, int portID){
+    int i;
+    char mex[MEXBSIZE];
+    int queueID;
+
+    for(i=0; i<SO_PORTI; i++){
+        queueID = useQueue(ftok("./src/porto.h", i), errorHandler);
+        if(i == portID){
+            printf("[%d]Nave: mando msg CONFERMA al porto %d per scaricare\n", getpid(), portID);
+            sprintf(mex, "1");
+            msgSend(queueID, mex, i+1, errorHandler);
+        } else {
+            sprintf(mex, "0");
+            msgSend(queueID, mex, i+1, errorHandler);
+        }
+    }
+}
+
 void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int weight){
     int portShmID;
 
