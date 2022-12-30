@@ -21,6 +21,8 @@ void errorHandler(int err) {
         perror("msg ctl error handler");
         break;
     case MERRSND:
+        printf("PID: %d, PPID: %d\n", getpid(), getppid());
+        
         perror("msg snd error handler");
         break;
     case MERRRCV:

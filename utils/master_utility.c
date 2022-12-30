@@ -258,19 +258,11 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeQueue(msgRefillerID, errorHandler);
     printf("coda di refiller rimossa\n");
 
-<<<<<<< HEAD
-    /* removeQueue(msgShipQueueID, errorHandler); */
-=======
->>>>>>> 3af13df100cc2430be092b0d369be2bc93c14a9d
-    printf("coda delle navi rimossa\n");
     
     removeQueue(portRequestsQueueID, errorHandler);
     distruggiCodePorti();
-<<<<<<< HEAD
-    /* distruggiCodeNavi(); */
-=======
+    printf("coda delle navi rimossa\n");
     distruggiCodeNavi();
->>>>>>> 3af13df100cc2430be092b0d369be2bc93c14a9d
     printf("coda dei porti rimossa\n");
 
     printf("master tutte le code sono state rimosse\n");
