@@ -118,6 +118,16 @@ void creaCodePorti() {
         printf("msgQueue id:%d port:%d\n", msgQueue, i);
     }
 }
+void creaCodePortiDischarge() {
+     int i;
+    int msgQueue;
+
+    for (i = 0; i < SO_PORTI; i++) {
+        msgQueue = createQueue(ftok("./src/porto.h" , i), errorHandler);
+        printf("msgQueue id:%d port:%d\n", msgQueue, i);
+    }
+}
+
 
 void creaCodeNavi() {
     int i;
@@ -135,6 +145,14 @@ void distruggiCodePorti() {
     int msgQueue;
     for (i = 0; i < SO_PORTI; i++) {
         msgQueue = useQueue(ftok("./src/porto.c" , i), NULL);
+        removeQueue(msgQueue, errorHandler);
+    }
+}
+void distruggiCodePortiDischarge() {
+    int i;
+    int msgQueue;
+    for (i = 0; i < SO_PORTI; i++) {
+        msgQueue = useQueue(ftok("./src/porto.h" , i), NULL);
         removeQueue(msgQueue, errorHandler);
     }
 }
@@ -167,6 +185,8 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int controlPortsDisponibilitySemID;
     int waitToTravelsemID;
     int waitResponsesID;
+    int portsDischargeQueue;
+    int verifyRequestPortSemID;
     srand(time(NULL));
 
     if (signal(SIGUSR1, mastersighandler) == SIG_ERR) {
@@ -223,6 +243,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     /* TO-DO creare coda porti richieste per fase di scaricamento*/
 
     creaCodePorti();
+    creaCodePortiDischarge();
     creaCodeNavi();
     /* TO-DO creare code porti per fase di scaricamento*/
 
@@ -231,7 +252,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     
     waitResponsesID = createMultipleSem(WAITFIRSTRESPONSES, SO_NAVI, 1, errorHandler);
 
-    
+    verifyRequestPortSemID = createMultipleSem(P2SEMVERIFYKEY, SO_PORTI, 1, errorHandler);
     
     codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID);
 
@@ -249,6 +270,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeSem(semShipsID, errorHandler);
     removeSem(waitEndDaySemID, errorHandler);
     removeSem(controlPortsDisponibilitySemID, errorHandler);
+    removeSem(verifyRequestPortSemID, errorHandler);
     /*
     removeSem(waitToTravelsemID, errorHandler);
 
@@ -267,6 +289,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     
     removeQueue(portRequestsQueueID, errorHandler);
     distruggiCodePorti();
+    distruggiCodePortiDischarge();
     printf("coda dei porti rimossa\n");
     
     distruggiCodeNavi();
