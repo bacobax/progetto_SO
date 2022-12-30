@@ -203,7 +203,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     /*il codice del master manco la usa*/
     msgRefillerID = createQueue(REFILLERQUEUE, errorHandler);
 
-    // msgShipQueueID = createQueue(SCHQUEUEKEY, errorHandler);
+    /* msgShipQueueID = createQueue(SCHQUEUEKEY, errorHandler); */
 
     /* creare queue navi per fase di scaricamento TO-DO*/
 
@@ -258,11 +258,19 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeQueue(msgRefillerID, errorHandler);
     printf("coda di refiller rimossa\n");
 
+<<<<<<< HEAD
+    /* removeQueue(msgShipQueueID, errorHandler); */
+=======
+>>>>>>> 3af13df100cc2430be092b0d369be2bc93c14a9d
     printf("coda delle navi rimossa\n");
     
     removeQueue(portRequestsQueueID, errorHandler);
     distruggiCodePorti();
+<<<<<<< HEAD
+    /* distruggiCodeNavi(); */
+=======
     distruggiCodeNavi();
+>>>>>>> 3af13df100cc2430be092b0d369be2bc93c14a9d
     printf("coda dei porti rimossa\n");
 
     printf("master tutte le code sono state rimosse\n");
