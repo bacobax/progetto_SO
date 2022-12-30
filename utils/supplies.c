@@ -101,7 +101,10 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
     *tipo = -1;
     *scadenza = -1;
     *dayTrovato = -1;
+    /*
     printf("✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼✋🏼Valori della merce:\n");
+
+    */
     for (i = 0; i < SO_DAYS; i++) {
         for (j = 0; j < SO_MERCI; j++) {
             
@@ -109,7 +112,10 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
             
             currentScadenza = getExpirationTime(*S, j, i);
             currentValue = getValue(ton, currentScadenza);
+            /*
             printf("👾%f, ", currentValue);
+
+            */
             if (ton >= quantity && currentValue > value) {
                 value = currentValue;
                 *tipo = j;
@@ -117,7 +123,6 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
                 *scadenza = currentScadenza;
             }
         }
-        printf("\n");
         
     }
 

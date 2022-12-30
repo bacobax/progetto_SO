@@ -33,7 +33,7 @@ void chargeProducts(Ship ship, int quantityToCharge){
         callPortsForCharge(ship, quantityToCharge); /* mando msg a tutti i porti perchè voglio caricare*/
         printf("[%d]Nave: finito di chiamare i porti\n", getpid());
         mutexPro(waitResponsesID, ship->shipID, WAITZERO, errorHandler);
-        mutexPro(waitResponsesID, ship->shipID, SO_PORTI, errorHandler);
+        //mutexPro(waitResponsesID, ship->shipID, SO_PORTI, errorHandler);
         printf("[%d]Nave: finito aspettare le risposte dai porti\n", getpid());
         
 
