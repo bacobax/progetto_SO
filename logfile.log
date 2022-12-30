@@ -1,6 +1,66 @@
 ------------------Day 0 -----------------
 Tipo merce 0:
 	- Non scaduta:
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+		a) nei porti: 15
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 10
+=======
+<<<<<<< HEAD
+		a) nei porti: 8
+=======
+<<<<<<< HEAD
+		a) nei porti: 2
+=======
+<<<<<<< HEAD
+		a) nei porti: 17
+=======
+<<<<<<< HEAD
+		a) nei porti: 3
+>>>>>>> e15aac391cc451d48a9042f7c6e8ecd1374d784a
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 25
+		b) in nave: 0
+Tipo merce 1:
+	- Non scaduta:
+<<<<<<< HEAD
+=======
+		a) nei porti: 0
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 24
+		b) in nave: 0
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 0
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 21
+		b) in nave: 0
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 0
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 20
+		b) in nave: 0
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 30
+=======
+		a) nei porti: 19
+>>>>>>> 1ca6470ad02d68875044043f2aa4188d88efafcc
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 7
+		b) in nave: 0
+Tipo merce 1:
+	- Non scaduta:
+>>>>>>> 57ba2e4ba51e72b1d96a4e4e41829f0a1ffb1c05
 		a) nei porti: 4
 		b) in nave: 0
 	- Scaduta:
@@ -110,9 +170,114 @@ Tipo merce 4:
 Tipo merce 0:
 	- Non scaduta:
 		a) nei porti: 15
+>>>>>>> ba613ddf39848d18d3df8983cdc3b1b1f08ffada
+		b) in nave: 0
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 28
 		b) in nave: 0
 	- Scaduta:
+<<<<<<< HEAD
 		a) nei porti: 60
+=======
+<<<<<<< HEAD
+		a) nei porti: 4
+		b) in nave: 0
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 24
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 8
+		b) in nave: 0
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 19
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 9
+		b) in nave: 0
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 72
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 61
+		b) in nave: 0
+------------------Day 1 -----------------
+Tipo merce 0:
+	- Non scaduta:
+		a) nei porti: 15
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 10
+		b) in nave: 0
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 28
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 4
+		b) in nave: 0
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 24
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 8
+		b) in nave: 0
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 19
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 9
+		b) in nave: 0
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 72
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 61
+		b) in nave: 0
+------------------Day 2 -----------------
+Tipo merce 0:
+	- Non scaduta:
+		a) nei porti: 42
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 18
+		b) in nave: 0
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 44
+		b) in nave: 10
+	- Scaduta:
+		a) nei porti: 11
+		b) in nave: 0
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 44
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 14
+		b) in nave: 0
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 33
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 18
+		b) in nave: 0
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 128
+		b) in nave: 10
+	- Scaduta:
+		a) nei porti: 128
+=======
+		a) nei porti: 6
+>>>>>>> 57ba2e4ba51e72b1d96a4e4e41829f0a1ffb1c05
 		b) in nave: 0
 Tipo merce 1:
 	- Non scaduta:
@@ -120,14 +285,44 @@ Tipo merce 1:
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 64
+>>>>>>> ba613ddf39848d18d3df8983cdc3b1b1f08ffada
 		b) in nave: 0
+<<<<<<< HEAD
 Tipo merce 2:
 	- Non scaduta:
 		a) nei porti: 48
+=======
+------------------Day 3 -----------------
+Tipo merce 0:
+	- Non scaduta:
+		a) nei porti: 55
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 31
+		b) in nave: 0
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 51
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 30
+		b) in nave: 10
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 63
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 23
+		b) in nave: 0
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 49
+>>>>>>> 57ba2e4ba51e72b1d96a4e4e41829f0a1ffb1c05
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 30
 		b) in nave: 0
+<<<<<<< HEAD
 Tipo merce 3:
 	- Non scaduta:
 		a) nei porti: 61
@@ -177,6 +372,68 @@ Tipo merce 4:
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 281
+=======
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 197
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 201
+		b) in nave: 10
+------------------STATO FINALE -----------------
+Tipo merce 0:
+	- Non scaduta:
+		a) nei porti: 57
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 57
+		b) in nave: 0
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 49
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 61
+		b) in nave: 10
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 63
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 48
+		b) in nave: 0
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 52
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 55
+		b) in nave: 0
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 226
+		b) in nave: 0
+	- Scaduta:
+<<<<<<< HEAD
+		a) nei porti: 312
+		b) in nave: 10
+TOTALE MERCE: 1000 <==> SO_FILL: 1000
+✅
+=======
+		a) nei porti: 186
+>>>>>>> 57ba2e4ba51e72b1d96a4e4e41829f0a1ffb1c05
 		b) in nave: 0
 TOTALE MERCE: 780 <==> SO_FILL: 800
+<<<<<<< HEAD
 ❌
+=======
+❌
+=======
+TOTALE MERCE: 775 <==> SO_FILL: 800
+❌
+>>>>>>> 3af13df100cc2430be092b0d369be2bc93c14a9d
+>>>>>>> 1ca6470ad02d68875044043f2aa4188d88efafcc
+>>>>>>> e15aac391cc451d48a9042f7c6e8ecd1374d784a
+>>>>>>> 5033d5fc2e3f40a35f75f1e1df585fd7407f631e
+>>>>>>> ba613ddf39848d18d3df8983cdc3b1b1f08ffada
+>>>>>>> 57ba2e4ba51e72b1d96a4e4e41829f0a1ffb1c05

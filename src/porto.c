@@ -41,10 +41,13 @@ void recvHandler(long type, char* text) {
             
 
             Port porto;
-            
+
+            waitResponsesID = useSem(WAITFIRSTRESPONSES, errorHandler);
             sscanf(text, "%d %d", &quantity, &idNaveMittente);
             idx = type - 1;
-            
+
+            mutexPro(waitResponsesID, idNaveMittente, LOCK, errorHandler);
+                
             portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
 
             porto = ((Port)getShmAddress(portShmId, 0, errorHandler)) + idx;
@@ -65,7 +68,9 @@ void recvHandler(long type, char* text) {
 
             waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler);
 
-            waitResponsesID = useSem(WAITFIRSTRESPONSES, errorHandler);
+
+
+
             
             printf("Port %d: Ricevuto messaggio da nave %d con quantità %d\n", getppid(), idNaveMittente, quantity);
 
@@ -92,7 +97,11 @@ void recvHandler(long type, char* text) {
                 
             }
             
+            printf("\n\n[%d]Porto: RISPOSTA NAVE MANDATA\n\n", getpid());
+    /*
             mutexPro(waitResponsesID, idNaveMittente, LOCK, NULL);
+    
+    */
             
             messaggioRicevuto = msgRecv(myQueueID, idNaveMittente + 1, errorHandler, NULL, SYNC);
 
@@ -110,8 +119,9 @@ void recvHandler(long type, char* text) {
                 
                 /* addNotExpiredGood(0 - quantity, tipoTrovato, PORT); */
             }
-
+            
             mutexPro(waitToTravelSemID, idNaveMittente, LOCK, NULL);
+            getOneValue(waitToTravelSemID, idNaveMittente);        
 
 }
 
