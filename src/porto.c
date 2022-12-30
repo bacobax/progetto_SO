@@ -18,7 +18,7 @@
 #include "../utils/supplies.h"
 
 
-void recvHandler(long type, char* text) {
+void recvDischargeHandler(long type, char* text) {
 
             int quantity = -2;
             mex* messaggioRicevuto;
@@ -128,27 +128,13 @@ void recvHandler(long type, char* text) {
 
 void codicePorto(Port porto, int myQueueID, int shipsQueueID, int idx) {
     
-    int requestPortQueueID;
-    
-    requestPortQueueID = useQueue(PQUEREQCHKEY, errorHandler);
+   
     waitForStart();
 
+    launchDischarger(recvDischargeHandler, idx);
+    
     /* START */
-     while (1) {
-
-        /*
-            E' importante che sia sincrona la gestione del messaggio ricevuto
-            perchè prima di poterne ricevere un altro il porto deve poter aver aggiornato le sue disponibilità
-        */
-
-        /*
-            prendo il primo messaggio che arriva
-        */
-         msgRecv(requestPortQueueID, idx+1, errorHandler, recvHandler, ASYNC);
-         
-
-         
-    }
+    
 
     /* launchGoodsDispatcher(myQueueID, porto, idx, shipsQueueID); */
 

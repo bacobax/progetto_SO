@@ -184,15 +184,29 @@ int chooseQuantityToCharge(Ship ship){
        velocemente */
 }
 
-int chooseProductToDelivery(Ship ship){
+int firstValidExpTime(Product* p, int* idx) {
     int i;
-    int index = 0;                          /* do per scontato che ci sia almeno 1 tipo di merce sulla nave in questo caso nella posizione 0*/
-    Product* products = ship->products;
-    
-    for(i=1; i<SO_CAPACITY; i++){
-        if(products[i].product_type == -1) break;
+    *idx = -1;
+    for (i = 0; i < SO_CAPACITY; i++) {
+        if (p[i].expirationTime != -1) {
+            *idx = i;
+            return p[i].expirationTime;
+        }
+    }
+    return -1;
+}
 
-        if(products[i].expirationTime < products[index].expirationTime){
+int chooseProductToDelivery(Ship ship) {
+    int i;
+    int index;      
+    int expTime;                    /* do per scontato che ci sia almeno 1 tipo di merce sulla nave in questo caso nella posizione 0*/
+    Product* products = ship->products;
+    expTime = firstValidExpTime(ship->products, &index);
+    for(i=1; i<SO_CAPACITY; i++){
+        /*
+        if(products[i].product_type == -1) break;
+        */
+        if(products[i].expirationTime > 0 && products[i].expirationTime < expTime){
             index = i;        
         }
     }
@@ -299,7 +313,7 @@ void replyToPortsForCharge(Ship ship, int portID){
 
 }
 
-void callPortsForDischarge(Ship ship, Product p){
+void callPortsForDischarge(Ship ship, Product p) {
     int i;
     int queueID;
     char text[MEXBSIZE];
@@ -309,7 +323,9 @@ void callPortsForDischarge(Ship ship, Product p){
 
     sprintf(text, "%d %d", p.product_type, p.weight);
 
-    for(i=0; i<SO_PORTI; i++){
+    for (i = 0; i < SO_PORTI; i++) {
+        //TODO: implementare semaforo che aspetta che il porto abbia ricevuto prima di inviare il prossimo messaggio
+        
         printf("[%d]NAVE: invio domanda al porto %d per scaricare\n", getpid(), i);
 
         msgSend(requesetPortQueueID, text, i+1, errorHandler);
@@ -321,17 +337,20 @@ int portResponsesForDischarge(){
     int queueID;
     int portID = -1;
     mex* response;
-
+    intList* l;
+    l = intInit();
+    //TODO: usare la ftok => usare la stessa coda che usiamo per il caricamento
     queueID = useQueue(SDCHQUEUEKEY, errorHandler); /* coda di messaggi delle navi per le risposte di scaricamento*/
 
     for(i=0; i<SO_PORTI; i++){
         response = msgRecv(queueID, i+1, errorHandler, NULL, SYNC);
-
+        //TODO: collezionare una serie di risposte ciascuna delle quali è la differenza tra la disponibilità del porto per quel tipo di merce e la quantità richiesta
         printf("🤡[%d]Nave: Strlen del messaggio ricevuto per scaricare: %d\n" ,getpid() ,strlen(response->mtext) );
         if(strlen(response->mtext) > 1){
-            return i;
+             portID = i;
         }
     }
+    return portID;
 }
 
 void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int weight){

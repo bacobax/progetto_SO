@@ -444,3 +444,38 @@ void launchGoodsDispatcher(int myQueueID,Port porto, int idx, int shipsQueueID) 
     }
 }
 
+void dischargerCode(void (*recvHandler)(long, char*), int idx) {
+     int requestPortQueueID;
+    
+    requestPortQueueID = useQueue(PQUEREQCHKEY, errorHandler);
+    while (1) {
+
+        /*
+            E' importante che sia sincrona la gestione del messaggio ricevuto
+            perchè prima di poterne ricevere un altro il porto deve poter aver aggiornato le sue disponibilità
+        */
+
+        /*
+            prendo il primo messaggio che arriva
+        */
+         msgRecv(requestPortQueueID, idx+1, errorHandler, recvHandler, ASYNC);
+         
+
+         
+    }
+}
+
+void launchDischarger(void (*recvHandler)(long, char*), int idx) {
+    int pid;
+    pid = fork();
+    if (pid == -1) {
+        perror("Errore nel lanciare il discharger");
+        exit(1);
+    }
+    if (pid == 0) {
+        dischargerCode(recvHandler, idx);
+        exit(EXIT_FAILURE);
+    }
+    
+}
+
