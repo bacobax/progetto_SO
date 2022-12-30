@@ -464,7 +464,26 @@ void dischargerCode(void (*recvHandler)(long, char*), int idx) {
          
     }
 }
+void chargerCode(void (*recvHandler)(long, char*), int idx) {
+     int requestPortQueueID;
+    
+    requestPortQueueID = useQueue(PQUEREDCHKEY, errorHandler);
+    while (1) {
 
+        /*
+            E' importante che sia sincrona la gestione del messaggio ricevuto
+            perchè prima di poterne ricevere un altro il porto deve poter aver aggiornato le sue disponibilità
+        */
+
+        /*
+            prendo il primo messaggio che arriva
+        */
+         msgRecv(requestPortQueueID, idx+1, errorHandler, recvHandler, ASYNC);
+         
+
+         
+    }
+}
 void launchDischarger(void (*recvHandler)(long, char*), int idx) {
     int pid;
     pid = fork();
@@ -477,5 +496,27 @@ void launchDischarger(void (*recvHandler)(long, char*), int idx) {
         exit(EXIT_FAILURE);
     }
     
+}
+
+
+
+void launchCharger(void (*recvHandler)(long, char*), int idx) {
+    int pid;
+    pid = fork();
+    if (pid == -1) {
+        perror("Errore nel lanciare il charger");
+        exit(1);
+    }
+    if (pid == 0) {
+        chargerCode(recvHandler, idx);
+        exit(EXIT_FAILURE);
+    }
+}
+int checkRequests(Port p, int type, int quantity) {
+    
+    if (p->requests[type] == 0) return -1;
+    
+    p->requests[type] -= quantity;
+    return p->requests[type];
 }
 

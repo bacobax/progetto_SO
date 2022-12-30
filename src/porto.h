@@ -17,6 +17,7 @@
 #define PQUEREDCHKEY 3998
 
 #define PSEMVERIFYKEY 3997
+#define P2SEMVERIFYKEY 3995
 #define WAITTOTRAVELKEY 3996
 
 
@@ -55,4 +56,7 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
 void launchGoodsDispatcher(int myQueueID, Port porto, int idx, int shipsQueueID);
 
 void launchDischarger(void (*recvHandler)(long,char*), int idx);
+void launchCharger(void (*recvHandler)(long, char*), int idx);
+
+int checkRequests(Port p, int type, int quantity);
 #endif
