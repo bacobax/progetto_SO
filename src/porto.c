@@ -79,17 +79,22 @@ void recvHandler(long type, char* text) {
             mutexPro(controlPortsDisponibilitySemID, idx, LOCK, NULL);
             res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantity);
             mutexPro(controlPortsDisponibilitySemID, idx, UNLOCK, NULL);
+            printf("|Port %d: \n|\tTIPO TROVATO: %d \n|\tEXP TIME TROVATA:%d\n", getppid(), tipoTrovato, dataScadenzaTrovata);
 
             printf("Port %d: Ho trovato il tipo %d con data di scadenza %d\n", getppid(), tipoTrovato, dataScadenzaTrovata);
 
 
             if (res == -1) {
                 msgSend(shipQueueID, "x", idx + 1, errorHandler);
+                printf("✅Port %d: MSGSND NEGATIVA RIUSCITA", getppid(), idNaveMittente, quantity);
+                
             }
             else {
                 
                 sprintf(text, "%d %d", tipoTrovato, dataScadenzaTrovata);
                 msgSend(shipQueueID, text, idx + 1, errorHandler);
+                printf("✅Port %d: MSGSND POSITIVA RIUSCITA", getppid(), idNaveMittente, quantity);
+                
             }
             
             printf("\n\n[%d]Porto: RISPOSTA NAVE MANDATA\n\n", getpid());

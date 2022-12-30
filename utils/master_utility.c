@@ -264,12 +264,13 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeQueue(msgRefillerID, errorHandler);
     printf("coda di refiller rimossa\n");
 
-    printf("coda delle navi rimossa\n");
     
     removeQueue(portRequestsQueueID, errorHandler);
     distruggiCodePorti();
-    distruggiCodeNavi();
     printf("coda dei porti rimossa\n");
+    
+    distruggiCodeNavi();
+    printf("coda delle navi rimossa\n");
 
     printf("master tutte le code sono state rimosse\n");
     
