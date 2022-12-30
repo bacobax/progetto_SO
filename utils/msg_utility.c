@@ -28,9 +28,7 @@ void msgSend(int msgqID, char text[MEXBSIZE], long type, void (*errorHandler)(in
 
 mex* msgRecv(int msgqID, long type, void (*errorHandler)(int err), void (*callback)(long type, char text[MEXBSIZE]), int mod) {
     mex* m = (mex*)malloc(sizeof(mex));
-    printf("[%d]mRecv, eseguo msgrcv...\n", getpid());
     if (msgrcv(msgqID, m, MEXBSIZE, type, 0) == -1) {
-        printf("[%d]mRecv, errore nella msgrcv...\n", getpid());
         
         if (errorHandler != NULL) {
             errorHandler(MERRRCV);
@@ -41,7 +39,6 @@ mex* msgRecv(int msgqID, long type, void (*errorHandler)(int err), void (*callba
             exit(EXIT_FAILURE);
         }
     }
-        printf("[%d]mRecv, mrcv riuscita...\n", getpid());
 
     if (mod == SYNC) {
         return m;

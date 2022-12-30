@@ -275,15 +275,18 @@ void replyToPortsForCharge(Ship ship, int portID){
     int i;
     int queueID;
     char text[MEXBSIZE];
-
+    printf("[%d]Nave invio conferme ai porti di chi è stato scelto\n");
     for(i=0; i<SO_PORTI; i++){
-        queueID = useQueue(ftok("./src/porto.c" , portID), errorHandler);
+        queueID = useQueue(ftok("./src/porto.c" , i), errorHandler);
         
         if(i == portID){
             printf("[%d]Nave ho scelto il porto:%d\n", getpid(), i);
             sprintf(text, "1"); /*ok*/
             msgSend(queueID, text, (ship->shipID + 1), errorHandler);
-        } else {
+        }
+        else {
+            printf("[%d]Nave NON ho scelto il porto:%d\n", getpid(), i);
+            
             sprintf(text, "0"); /*negative*/
             msgSend(queueID, text, (ship->shipID + 1), errorHandler);
         }

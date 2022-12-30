@@ -3,8 +3,8 @@
 #define CONFIG_1
 
 
-#define SO_PORTI    2
-#define SO_NAVI     2
+#define SO_PORTI    8
+#define SO_NAVI     1
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 #define SO_MIN_VITA  2 /* tonn */
@@ -21,6 +21,7 @@
 #define WAITENDDAYKEY 3415
 
 #define WAITPORTRESPONSES 3002
+#define WAITFIRSTRESPONSES 3003
 
 #define RESPORTSBUFFERS 213
 #define WREXPTIMESSEM 246
@@ -40,7 +41,7 @@
 
 
 
-#define SO_FILL      500
+#define SO_FILL      800
 
 
 

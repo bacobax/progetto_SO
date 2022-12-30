@@ -37,8 +37,9 @@ void recvHandler(long type, char* text) {
             int waitToTravelSemID;
             int keyMiaCoda;
             int keyCodaNave;
-            semid = useSem(RESPRINTKEY, errorHandler);
-            mutex(semid, LOCK, NULL);
+            int waitResponsesID;
+            // semid = useSem(RESPRINTKEY, errorHandler);
+            // mutex(semid, LOCK, NULL);
 
             Port porto;
             
@@ -53,19 +54,21 @@ void recvHandler(long type, char* text) {
             keyCodaNave = ftok("./src/nave.c" , idNaveMittente);
 
             if(keyMiaCoda == -1 || keyCodaNave == -1){
-                perror("Errore Coda Nave:\n");
+                perror("Errore Coda Nave");
             }
 
             myQueueID = useQueue(keyMiaCoda, errorHandler);
 
             shipQueueID = useQueue(keyCodaNave, errorHandler);
-            printf("[%d]Porto - myQueueKEY:%d shipQueueKEY:%d\n", getpid(),keyMiaCoda, keyCodaNave);
+            // printf("[%d]Porto - myQueueKEY:%d shipQueueKEY:%d\n", getpid(),keyMiaCoda, keyCodaNave);
 
-            printf("[%d]Porto - myQueueID:%d shipQueueID:%d\n", getpid(),myQueueID, shipQueueID);
+            // printf("[%d]Porto - myQueueID:%d shipQueueID:%d\n", getpid(),myQueueID, shipQueueID);
 
             controlPortsDisponibilitySemID = useSem(PSEMVERIFYKEY, errorHandler);
 
             waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler);
+
+            waitResponsesID = useSem(WAITFIRSTRESPONSES, errorHandler);
             
             printf("Port %d: Ricevuto messaggio da nave %d con quantità %d\n", getppid(), idNaveMittente, quantity);
 
@@ -76,9 +79,8 @@ void recvHandler(long type, char* text) {
             mutexPro(controlPortsDisponibilitySemID, idx, UNLOCK, NULL);
 
             printf("Port %d: Ho trovato il tipo %d con data di scadenza %d\n", getppid(), tipoTrovato, dataScadenzaTrovata);
-            mutex(semid, UNLOCK, NULL);
+            // mutex(semid, UNLOCK, NULL);
 
-            printf("[%d]Porto Invio messaggio alla coda %d con type %d\n" , getpid(), shipQueueID, idx +1);
 
             if (res == -1) {
                 msgSend(shipQueueID, "x", idx + 1, errorHandler);
@@ -88,20 +90,21 @@ void recvHandler(long type, char* text) {
                 sprintf(text, "%d %d", tipoTrovato, dataScadenzaTrovata);
                 msgSend(shipQueueID, text, idx + 1, errorHandler);
             }
-
+            mutexPro(waitResponsesID, idNaveMittente, LOCK, NULL);
+            
             messaggioRicevuto = msgRecv(myQueueID, idNaveMittente + 1, errorHandler, NULL, SYNC);
 
             sscanf(messaggioRicevuto->mtext, "%d", &sonostatoScelto);
-            printf("Port %d: valore di sonostatoScelto = %d\n", getppid(), sonostatoScelto);
+            printf("Port %d: valore di sonostatoScelto = %d\n", idx, sonostatoScelto);
             if (sonostatoScelto == 0 && res != -1) {
-                printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", getppid());
+                printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", idx);
                 porto->supplies.magazine[dayTrovato][tipoTrovato] += quantity;
                 addNotExpiredGood(quantity, tipoTrovato, PORT);
             }
 
 
             if (sonostatoScelto == 1 && res == 1) {
-                printf("Porto %d: sono stato scelto\n", getppid());
+                printf("Porto %d: sono stato scelto\n", idx);
                 
                 /* addNotExpiredGood(0 - quantity, tipoTrovato, PORT); */
             }
