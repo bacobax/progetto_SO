@@ -132,11 +132,11 @@ void dischargeProducts(Ship ship) {
 
     */
 
-        portID = portResponsesForDischarge();
+        portID = portResponsesForDischarge(ship);
 
         if(portID == -1){
+            addExpiredGood(ship->products[product_index].weight, ship->products[product_index].product_type, SHIP);
             removeProduct(ship, product_index); /* vecchio prodotto da scaricare rimosso (tanto le domande dei porti sono tutte a 0) */
-            
             dischargeProducts(ship);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
         
         } else {
