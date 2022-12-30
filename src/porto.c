@@ -38,8 +38,7 @@ void recvHandler(long type, char* text) {
             int keyMiaCoda;
             int keyCodaNave;
             int waitResponsesID;
-            // semid = useSem(RESPRINTKEY, errorHandler);
-            // mutex(semid, LOCK, NULL);
+            
 
             Port porto;
             
@@ -60,9 +59,7 @@ void recvHandler(long type, char* text) {
             myQueueID = useQueue(keyMiaCoda, errorHandler);
 
             shipQueueID = useQueue(keyCodaNave, errorHandler);
-            // printf("[%d]Porto - myQueueKEY:%d shipQueueKEY:%d\n", getpid(),keyMiaCoda, keyCodaNave);
-
-            // printf("[%d]Porto - myQueueID:%d shipQueueID:%d\n", getpid(),myQueueID, shipQueueID);
+            
 
             controlPortsDisponibilitySemID = useSem(PSEMVERIFYKEY, errorHandler);
 
@@ -79,7 +76,6 @@ void recvHandler(long type, char* text) {
             mutexPro(controlPortsDisponibilitySemID, idx, UNLOCK, NULL);
 
             printf("Port %d: Ho trovato il tipo %d con data di scadenza %d\n", getppid(), tipoTrovato, dataScadenzaTrovata);
-            // mutex(semid, UNLOCK, NULL);
 
 
             if (res == -1) {
