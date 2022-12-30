@@ -70,7 +70,7 @@ int choosePortForCharge(PortOffer* port_offers);
 
 void replyToPortsForCharge(Ship ship, int portID);
 
-int portResponsesForDischarge();
+int portResponsesForDischarge(Ship ship);
 
 
 

@@ -35,6 +35,13 @@ double generateCord()
     return (rand() / div);
 }
 
+void initArrayResponses(int* a){
+    int i;
+    for(i=0; i<SO_PORTI; i++){
+        a[i] = -1;
+    }
+}
+
 void initArrayProducts(Product* products){
     int i;
     for(i=0; i<SO_CAPACITY; i++){
@@ -184,6 +191,28 @@ int chooseQuantityToCharge(Ship ship){
        velocemente */
 }
 
+<<<<<<< HEAD
+void findValidExpTime(Product* products, int* index){
+    *index = -1;
+    int i;
+    for(i=0; i<SO_CAPACITY; i++){
+        if(products[i].expirationTime != -1){
+            *index = i;
+        }
+    }
+}
+
+int chooseProductToDelivery(Ship ship){
+    int i;
+    int index;                          /* do per scontato che ci sia almeno 1 tipo di merce sulla nave in questo caso nella posizione 0*/
+    Product* products = ship->products;
+    
+    findValidExpTime(products, &index);
+
+    for(i=0; i<SO_CAPACITY; i++){
+
+        if(products[i].expirationTime>0 && products[i].expirationTime < products[index].expirationTime){
+=======
 int firstValidExpTime(Product* p, int* idx) {
     int i;
     *idx = -1;
@@ -207,6 +236,7 @@ int chooseProductToDelivery(Ship ship) {
         if(products[i].product_type == -1) break;
         */
         if(products[i].expirationTime > 0 && products[i].expirationTime < expTime){
+>>>>>>> c70c1d20a9b138fd932fbed2d7d129040c83d992
             index = i;        
         }
     }
@@ -318,25 +348,57 @@ void callPortsForDischarge(Ship ship, Product p) {
     int queueID;
     char text[MEXBSIZE];
     int requesetPortQueueID;
+    int waitResponseSemID = useSem(WAITFIRSTRESPONSES, errorHandler);
 
+    sprintf(text, "%d %d %d", p.product_type, p.weight, ship->shipID);
     requesetPortQueueID = useQueue(PQUEREDCHKEY, errorHandler);
 
+<<<<<<< HEAD
+    for(i=0; i<SO_PORTI; i++){
+=======
     sprintf(text, "%d %d", p.product_type, p.weight);
 
     for (i = 0; i < SO_PORTI; i++) {
         //TODO: implementare semaforo che aspetta che il porto abbia ricevuto prima di inviare il prossimo messaggio
         
+>>>>>>> c70c1d20a9b138fd932fbed2d7d129040c83d992
         printf("[%d]NAVE: invio domanda al porto %d per scaricare\n", getpid(), i);
-
         msgSend(requesetPortQueueID, text, i+1, errorHandler);
+        mutexPro(waitResponseSemID, ship->shipID, WAITZERO, errorHandler);
+        mutexPro(waitResponseSemID, ship->shipID, UNLOCK, errorHandler);
     }
 }
 
-int portResponsesForDischarge(){
+int portResponsesForDischarge(Ship ship){
     int i;
+    int max = 0;
     int queueID;
     int portID = -1;
     mex* response;
+<<<<<<< HEAD
+    int arrayResponses[SO_PORTI];
+    initArrayResponses(arrayResponses);
+
+    queueID = useQueue(ftok("./src/nave.c", ship->shipID), errorHandler); /* coda di messaggi delle navi per le risposte di scaricamento*/
+
+    for(i=0; i<SO_PORTI; i++){
+        response = msgRecv(queueID, i+1, errorHandler, NULL, SYNC);
+
+        printf("🤡[%d]Nave: messaggio ricevuto per scaricare: %s\n" ,getpid() , response->mtext);
+        if(strcmp(response->mtext, "NOPE") != 0){
+            printf("[%d]Nave: ho trovato porto %d in cui fare scarico\n", getpid(), i);
+            arrayResponses[i] = atoi(response->mtext);
+        }
+    }
+
+    for(i=0; i<SO_PORTI; i++){
+        if(arrayResponses[i] > max){
+          max = arrayResponses[i];
+          portID = i;  
+        } 
+    }
+    printf("[%d]Nave: ho scelto il porto %d per scaricare\n", getpid(), i);
+=======
     intList* l;
     l = intInit();
     //TODO: usare la ftok => usare la stessa coda che usiamo per il caricamento
@@ -350,6 +412,7 @@ int portResponsesForDischarge(){
              portID = i;
         }
     }
+>>>>>>> c70c1d20a9b138fd932fbed2d7d129040c83d992
     return portID;
 }
 
