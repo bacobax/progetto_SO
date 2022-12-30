@@ -139,7 +139,7 @@ void recvChargerHandler(long type, char* text) {
     int keyCodaNave;
     int shipQueueID;
     int verifyRequestSemID;
-    char text[MEXBSIZE];
+    char rtext[MEXBSIZE];
     
     idx = (int)type - 1;
 
@@ -180,7 +180,7 @@ void recvChargerHandler(long type, char* text) {
         msgSend(keyCodaNave, "NOPE", idx + 1, errorHandler);
     }
     else {
-        sprintf(text, "%d", res);
+        sprintf(rtext, "%d", res);
         msgSend(keyCodaNave, text, idx + 1, errorHandler);
     }
 
