@@ -58,10 +58,9 @@ void chargeProducts(Ship ship, int quantityToCharge){
             
             printf("[%d]Nave: Aspetto a partire...\n", getpid());
             mutexPro(waitToTravelSemID, ship->shipID, WAITZERO, errorHandler);
-            /*
             mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler);
             
-            */
+            
             
             printf("[%d]Nave: sono partita...\n", getpid());
             travel(ship, portID);
@@ -79,7 +78,7 @@ void dischargeProducts(Ship ship) {
 
     int portID;
     int product_index;
-
+    int waitToTravelSemID;
     if(ship->weight == 0){
 
         chargeProducts(ship, chooseQuantityToCharge(ship));
@@ -140,10 +139,13 @@ void dischargeProducts(Ship ship) {
             dischargeProducts(ship);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
         
         } else {
+            waitToTravelSemID = useSem(WAITTOTRAVELKEY, NULL);
 
             /* 3) Una volta arrivato al porto accedo alla prima banchina disponibile e rimuovo la merce che intendo
             consegnare dal carico della nave */
             replyToPortsForDischarge(ship, portID);
+            mutexPro(waitToTravelSemID, ship->shipID, WAITZERO, errorHandler);
+            mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler);
 
             travel(ship, portID);
             

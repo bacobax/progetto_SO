@@ -140,7 +140,9 @@ void recvChargerHandler(long type, char* text) {
     int shipQueueID;
     int verifyRequestSemID;
     char rtext[MEXBSIZE];
-    
+    int sonostatoScelto;
+    mex* messaggioRicevuto;
+    int waitToTravelSemID;
     idx = (int)type - 1;
 
     waitResponsesID = useSem(WAITFIRSTRESPONSES, errorHandler);
@@ -172,6 +174,8 @@ void recvChargerHandler(long type, char* text) {
 
     verifyRequestSemID = useSem(P2SEMVERIFYKEY, errorHandler);
 
+    waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler);
+    
     mutexPro(verifyRequestSemID, idx, LOCK, errorHandler);
     res = checkRequests(porto, tipoMerceRichiesto, quantity);
     mutexPro(verifyRequestSemID, idx, UNLOCK, errorHandler);
@@ -183,7 +187,22 @@ void recvChargerHandler(long type, char* text) {
         sprintf(rtext, "%d", res);
         msgSend(keyCodaNave, text, idx + 1, errorHandler);
     }
+    messaggioRicevuto = msgRecv(IDMiaCoda, idNaveMittente + 1, errorHandler, NULL, SYNC);
 
+    sscanf(messaggioRicevuto->mtext, "%d", &sonostatoScelto);
+    printf("Port %d: valore di sonostatoScelto = %d\n", idx, sonostatoScelto);
+    if (sonostatoScelto == 0 && res != -1) {
+        printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", idx);
+        porto->requests[tipoMerceRichiesto] += quantity;
+    }
+
+
+    if (sonostatoScelto == 1 && res == 1) {
+        printf("Porto %d: sono stato scelto\n", idx);
+        
+        /* addNotExpiredGood(0 - quantity, tipoTrovato, PORT); */
+    }
+    mutexPro(waitToTravelSemID, idNaveMittente, LOCK, errorHandler);
     //TODO: Fare una recv per sapere se sono stato scelto
 
     return;

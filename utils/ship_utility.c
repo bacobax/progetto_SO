@@ -396,10 +396,10 @@ void replyToPortsForDischarge(Ship ship, int portID){
         if(i == portID){
             printf("[%d]Nave: mando msg CONFERMA al porto %d per scaricare\n", getpid(), portID);
             sprintf(mex, "1");
-            msgSend(queueID, mex, i+1, errorHandler);
+            msgSend(queueID, mex, ship->shipID + 1, errorHandler);
         } else {
             sprintf(mex, "0");
-            msgSend(queueID, mex, i+1, errorHandler);
+            msgSend(queueID, mex, ship->shipID + 1, errorHandler);
         }
     }
 }
