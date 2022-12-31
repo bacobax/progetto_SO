@@ -468,7 +468,7 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
     sleep(1);
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler,  "accessPortForCharge->shipSemid LOCK");
 
-    if(ship->products[product_index].expirationTime > 0){
+    if(ship->products[product_index].expirationTime != -1){
         if (quantoPossoScaricare >= ship->products[product_index].weight) {
             addDeliveredGood(ship->products[product_index].weight, ship->products[product_index].product_type);
             
