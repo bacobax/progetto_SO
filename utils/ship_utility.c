@@ -85,8 +85,11 @@ Ship initShip(int shipID)
 
 void printLoadShip(Product* products){
     int i;
-    for(i=0; i<SO_CAPACITY; i++){
+    for (i = 0; i < SO_CAPACITY; i++) {
+        if (products[i].product_type != -1) {
         printf("\nProduct type:%d, Expiration time: %d, Weight: %d", products[i].product_type, products[i].expirationTime, products[i].weight);
+            
+        }
     }
     printf("\n");
 }

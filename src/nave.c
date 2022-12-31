@@ -106,7 +106,7 @@ void dischargeProducts(Ship ship) {
     
 
     */
-
+        printShip(ship);
         product_index = chooseProductToDelivery(ship);
 
         callPortsForDischarge(ship, ship->products[product_index]);  
@@ -137,6 +137,8 @@ void dischargeProducts(Ship ship) {
         if(portID == -1){
             addExpiredGood(ship->products[product_index].weight, ship->products[product_index].product_type, SHIP);
             removeProduct(ship, product_index); /* vecchio prodotto da scaricare rimosso (tanto le domande dei porti sono tutte a 0) */
+
+            printf("Riprovo a scegliere il prodotto da scaricare\n");
             dischargeProducts(ship);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
         
         } else {
@@ -171,14 +173,20 @@ void dischargeProducts(Ship ship) {
 
 int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identificativo della nave (es: nave 0, nave 1, nave 2, ecc..)*/
     int res;
-    Product p1, p2;
+    Product p1, p2, p3, p4;
     p1.product_type = 0;
     p1.expirationTime = 4;
     p1.weight = 3;
     p2.product_type = 1;
-    p2.expirationTime = 1;
-    p2.weight = 2;
-    
+    p2.expirationTime = 2;
+    p2.weight = 7;
+    p3.product_type = 2;
+    p3.expirationTime = 3;
+    p3.weight = 10;
+    p4.product_type = 3;
+    p4.expirationTime = 2;
+    p4.weight = 8;
+
     Ship ship;
     
     ship = initShip(atoi(argv[1]));
@@ -196,10 +204,15 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
         }
     */
     res = addProduct(ship, p1);
+    res = addProduct(ship, p2);
+    res = addProduct(ship, p3);
+    res = addProduct(ship, p4);
+    
 
     sleep(1.5);
     dischargeProducts(ship);
-    
+    printf("FINITO SCARICO\n");
+    printShip(ship);
     /*printShip(ship);*/
         
 
