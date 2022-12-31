@@ -50,15 +50,15 @@ void chargeProducts(Ship ship, int quantityToCharge){
         
         } else {
             /* ci sono porti che hanno merce da caricare*/
-            waitToTravelSemID = useSem(WAITTOTRAVELKEY, NULL);
+            waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler, "chargeProducts->waitToTravelSemID");
             
             portID = choosePortForCharge(port_offers);
 
             replyToPortsForCharge(ship, portID);
             
             printf("[%d]Nave: Aspetto a partire...\n", getpid());
-            mutexPro(waitToTravelSemID, ship->shipID, WAITZERO, errorHandler);
-            mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler);
+            mutexPro(waitToTravelSemID, ship->shipID, WAITZERO, errorHandler, "chargeProducts->waitToTravelSemID WAITZERO");
+            mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler, "chargeProducts->waitToTravelSemID +SO_PORTI");
             
             
             
@@ -140,13 +140,13 @@ void dischargeProducts(Ship ship) {
             dischargeProducts(ship);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
         
         } else {
-            waitToTravelSemID = useSem(WAITTOTRAVELKEY, NULL);
+            waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler,  "dischargeProducts->waitToTravelSemID");
 
             /* 3) Una volta arrivato al porto accedo alla prima banchina disponibile e rimuovo la merce che intendo
             consegnare dal carico della nave */
             replyToPortsForDischarge(ship, portID);
-            mutexPro(waitToTravelSemID, ship->shipID, WAITZERO, errorHandler);
-            mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler);
+            mutexPro(waitToTravelSemID, ship->shipID, WAITZERO, errorHandler, "dischargeProducts->waitToTravelSemID WAITZERO");
+            mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler, "dischargeProducts->waitToTravelSemID +SO_PORTI");
 
             travel(ship, portID);
             
@@ -173,7 +173,7 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     int res;
     Product p1, p2;
     p1.product_type = 0;
-    p1.expirationTime = 1;
+    p1.expirationTime = 4;
     p1.weight = 3;
     p2.product_type = 1;
     p2.expirationTime = 1;
@@ -190,15 +190,15 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     printf("Nave con id:%d partita\n", ship->shipID);
 
     /* while(1){
-    res = addProduct(ship, p1);
     res = addProduct(ship, p2);
     printShip(ship);
     sleep(2);
         }
     */
+    res = addProduct(ship, p1);
 
     sleep(1.5);
-    chargeProducts(ship, 5);
+    dischargeProducts(ship);
     
     /*printShip(ship);*/
         

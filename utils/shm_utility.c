@@ -10,7 +10,7 @@
 #include "./shm_utility.h"
 
 
-int createShm(int key, size_t shmSize, void (*errorHandler)(int err)) {
+int createShm(int key, size_t shmSize, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
 
     int shmid;
 
@@ -22,14 +22,14 @@ int createShm(int key, size_t shmSize, void (*errorHandler)(int err)) {
             exit(EXIT_FAILURE);
         }
         else {
-            errorHandler(SHMERRGET);
+            errorHandler(SHMERRGET, errCtx);
             exit(EXIT_FAILURE);
         }
     }
     return shmid;
 }
 
-int useShm(int key, size_t shmSize, void (*errorHandler)(int err)) {
+int useShm(int key, size_t shmSize, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     
     int shmid;
 
@@ -40,7 +40,7 @@ int useShm(int key, size_t shmSize, void (*errorHandler)(int err)) {
             exit(EXIT_FAILURE);
         }
         else {
-            errorHandler(SHMERRGET);
+            errorHandler(SHMERRGET, errCtx);
             exit(EXIT_FAILURE);
         }
 
@@ -49,7 +49,7 @@ int useShm(int key, size_t shmSize, void (*errorHandler)(int err)) {
 
 }
 
-void* getShmAddress(int shmid, int flag, void (*errorHandler)(int err)) {
+void* getShmAddress(int shmid, int flag, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     void* addr;
     addr = shmat(shmid, NULL, flag);
     if (addr == (void*)-1) {
@@ -58,34 +58,34 @@ void* getShmAddress(int shmid, int flag, void (*errorHandler)(int err)) {
             exit(EXIT_FAILURE);
         }
         else {
-            errorHandler(SHMERRAT);
+            errorHandler(SHMERRAT, errCtx);
             exit(EXIT_FAILURE);
         }
     }
     return addr;
 }
 
-void shmDetach(void* addrToRemove, void (*errorHandler)(int err)) {
+void shmDetach(void* addrToRemove, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     if (shmdt(addrToRemove) == -1) {
         if (errorHandler == NULL) {
             perror("shmDetach -> shmdt");
             exit(EXIT_FAILURE);
         }
         else {
-            errorHandler(SHMERRDT);
+            errorHandler(SHMERRDT, errCtx);
             exit(EXIT_FAILURE);
         }
     }
 }
 
-void removeShm(int shmid, void (*errorHandler)(int err)) {
+void removeShm(int shmid, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     if (shmctl(shmid, IPC_RMID, NULL) == -1) {
         if (errorHandler == NULL) {
             perror("removeShm -> shmctl");
             exit(EXIT_FAILURE);
         }
         else {
-            errorHandler(SHMERRCTL);
+            errorHandler(SHMERRCTL, errCtx);
             exit(EXIT_FAILURE);
         }
     }

@@ -20,7 +20,7 @@ union semun {
 };
 #endif 
 
-int useSem(int key, void (*errorHandler)(int err)) {
+int useSem(int key, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     int semid;
     semid = semget(key, 1, 0);
     if (semid == -1) {
@@ -29,7 +29,7 @@ int useSem(int key, void (*errorHandler)(int err)) {
             exit(EXIT_FAILURE);
         }
         else {
-            errorHandler(SERRGET);
+            errorHandler(SERRGET, errCtx);
             exit(EXIT_FAILURE);
         }
 
@@ -39,7 +39,7 @@ int useSem(int key, void (*errorHandler)(int err)) {
 
 }
 
-int createSem(int key, int initValue, void (*errorHandler)(int err)) {
+int createSem(int key, int initValue, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     int semid;
     union semun arg;
 
@@ -51,7 +51,7 @@ int createSem(int key, int initValue, void (*errorHandler)(int err)) {
             exit(EXIT_FAILURE);
         }
         else {
-            errorHandler(SERRGET);
+            errorHandler(SERRGET, errCtx);
             exit(EXIT_FAILURE);
         }
 
@@ -63,7 +63,7 @@ int createSem(int key, int initValue, void (*errorHandler)(int err)) {
             exit(EXIT_FAILURE);
         }
         else {
-            errorHandler(SERRCTL);
+            errorHandler(SERRCTL, errCtx);
             exit(EXIT_FAILURE);
         }
     }
@@ -71,7 +71,7 @@ int createSem(int key, int initValue, void (*errorHandler)(int err)) {
     return semid;
 }
 
-int createMultipleSem(int key, int nSem, int initValue, void (*errorHandler)(int err)) {
+int createMultipleSem(int key, int nSem, int initValue, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     int semid;
     union semun arg;
     int i;
@@ -83,7 +83,7 @@ int createMultipleSem(int key, int nSem, int initValue, void (*errorHandler)(int
             exit(EXIT_FAILURE);
         }
         else {
-            errorHandler(SERRGET);
+            errorHandler(SERRGET, errCtx);
             exit(EXIT_FAILURE);
         }
 
@@ -93,18 +93,16 @@ int createMultipleSem(int key, int nSem, int initValue, void (*errorHandler)(int
     arg.val = initValue;
 
     for (i = 0; i < nSem; i++) {
-        printf("inizializzo semaforo %d a %d\n" , i, arg.val);
-        if (semctl(semid, i, SETVAL, arg) == -1) {
+       if (semctl(semid, i, SETVAL, arg) == -1) {
             if (errorHandler == NULL) {
                 perror("useSem -> semctl");
                 exit(EXIT_FAILURE);
             }
             else {
-                errorHandler(SERRCTL);
+                errorHandler(SERRCTL, errCtx);
                 exit(EXIT_FAILURE);
             }
         }
-        getOneValue(semid, i);
     }
 
 
@@ -113,7 +111,7 @@ int createMultipleSem(int key, int nSem, int initValue, void (*errorHandler)(int
 
 
 
-void removeSem(int semid, void (*errorHandler)(int err)) {
+void removeSem(int semid, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     if (semctl(semid, 0, IPC_RMID, NULL) == -1) {
 
 
@@ -122,13 +120,13 @@ void removeSem(int semid, void (*errorHandler)(int err)) {
             exit(EXIT_FAILURE);
         }
         else {
-            errorHandler(SERRCTL);
+            errorHandler(SERRCTL, errCtx);
             exit(EXIT_FAILURE);
         }
     }
 }
 
-void mutex(int semid, int op, void (*errorHandler)(int err)) {
+void mutex(int semid, int op, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     struct sembuf* buf;
     buf = (struct sembuf*)malloc(sizeof(struct sembuf));
     buf->sem_num = 0;
@@ -142,14 +140,14 @@ void mutex(int semid, int op, void (*errorHandler)(int err)) {
 
         }
         else {
-            errorHandler(SERROP);
+            errorHandler(SERROP, errCtx);
             exit(EXIT_FAILURE);
         }
     }
     free(buf);
 }
 
-void mutexPro(int semid, int semIdx, int op, void (*errorHandler)(int err)) {
+void mutexPro(int semid, int semIdx, int op, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     struct sembuf* buf;
     buf = (struct sembuf*)malloc(sizeof(struct sembuf));
     buf->sem_num = semIdx;
@@ -163,7 +161,7 @@ void mutexPro(int semid, int semIdx, int op, void (*errorHandler)(int err)) {
 
         }
         else {
-            errorHandler(SERROP);
+            errorHandler(SERROP, errCtx);
             exit(EXIT_FAILURE);
         }
     }

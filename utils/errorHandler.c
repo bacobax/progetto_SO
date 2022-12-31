@@ -4,47 +4,61 @@
 #include "../config1.h"
 #include <stdio.h>
 #include <unistd.h>
+#include <string.h>
+#include <errno.h>
 
-void errorHandler(int err) {
+void printError(char* myerr, char* errCtx) {
+    printf("ERROR: %s error handler\nERRNO: %s\nCTX: %s\n", myerr, strerror(errno), errCtx);
+    printf("💥💥💥💥💥💥💥💥\n");
+    
+}
+
+void errorHandler(int err, char* errCtx) {
+    printf("💥💥💥💥💥💥💥💥\n");
     switch (err) {
     case SERRCTL:
-        perror("sem ctl error handler");
+        printError("sem ctl", errCtx);
         break;
     case SERRGET:
-        perror("sem get error handler");
+        printError("sem get", errCtx);
+         
         break;
     case SERROP:
-        printf("PID: %d, PPID: %d\n", getpid(), getppid());
-        perror("sem op error handler");
+        printError("sem op", errCtx);
+        
         break;
     case MERRCTL:
-        perror("msg ctl error handler");
+        printError("msg ctl", errCtx);
+             
         break;
     case MERRSND:
-        printf("PID: %d, PPID: %d\n", getpid(), getppid());
+        printError("msg snd", errCtx);
         
-        perror("msg snd error handler");
+        
         break;
     case MERRRCV:
-        perror("msg recv error handler");
+        printError("msg rcv", errCtx);
+          
         break;
     case MERRGET:
-        printf("PID: %d, PPID: %d\n", getpid(), getppid());
+        printError("msg get", errCtx);
         
-        perror("msg get error handler");
         break;
     case SHMERRGET:
-        perror("shm get error handler");
+        printError("shm get", errCtx);
+        
         break;
     case SHMERRAT:
-        perror("shm at error handler");
+        printError("shm at", errCtx);
+        
         break;
     case SHMERRDT:
-        perror("shm dt error handler");
+        printError("shm dt", errCtx);
+        
         break;
     case SHMERRCTL:
-        perror("shm ctl error handler");
-
+        printError("shm ctl", errCtx);
+        break;
     default:
         perror("Not Handlerd error");
     }

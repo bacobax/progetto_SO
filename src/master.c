@@ -40,7 +40,7 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
 
     printf("M: Finito generazione\n");
     aspettaConfigs(waitconfigSemID);
-    mutex(startSimulationSemID, LOCK, errorHandler);
+    mutex(startSimulationSemID, LOCK, errorHandler,  "mesterCode -> startSimulationSemID LOCK");
 
     
 
@@ -53,8 +53,8 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
             expirePortsGoods(i);
             expireShipGoods();
             refillPorts(ASYNC, msgRefillerID, quantitaAlGiorno, i);
-            mutex(waitEndDaySemID, WAITZERO, errHandler);
-            mutex(waitEndDaySemID, SO_PORTI, errHandler);
+            mutex(waitEndDaySemID, WAITZERO, errorHandler, "mesterCode -> waitEndDaySemID WAITZERO");
+            mutex(waitEndDaySemID, SO_PORTI, errorHandler, "mesterCode -> waitEndDaySemID +SO_PORTI");
             
         }
         #ifndef __linux__

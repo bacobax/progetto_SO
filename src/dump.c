@@ -13,9 +13,9 @@ void createDumpArea(){
     int logFileSemID;
     int i;
     GoodTypeInfo* arrGoods;
-    shmid = createShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler);
-    semid = createMultipleSem(DUMPSEMKEY, SO_MERCI, 1, errorHandler);
-    logFileSemID = createSem(LOGFILESEMKEY, 1, errorHandler);
+    shmid = createShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler, "create dump area");
+    semid = createMultipleSem(DUMPSEMKEY, SO_MERCI, 1, errorHandler, "creazione semafori per regolare la zona di dump");
+    logFileSemID = createSem(LOGFILESEMKEY, 1, errorHandler, "creazione semaforo per scrivere nel file di log");
 
    
 
@@ -29,12 +29,12 @@ void addExpiredGood(int quantity, int type, ctx where) {
     int semid;
     
     GoodTypeInfo* info;
-    shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler);
-    semid = useSem(DUMPSEMKEY, errorHandler);
+    shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler, "shm del dump");
+    semid = useSem(DUMPSEMKEY, errorHandler, "semafori del dump");
     
-    info = ((GoodTypeInfo*) getShmAddress(shmid, 0, errorHandler)) + type;
+    info = ((GoodTypeInfo*) getShmAddress(shmid, 0, errorHandler, "attach del tipo di merce del dump")) + type;
 
-    mutexPro(semid, type, LOCK, errorHandler);
+    mutexPro(semid, type, LOCK, errorHandler, "addExpiredGood LOCK");
 
     if (where == PORT) {
         info->expired_goods_on_port += quantity;
@@ -51,9 +51,9 @@ void addExpiredGood(int quantity, int type, ctx where) {
         exit(1);
     }
 
-    mutexPro(semid, type, UNLOCK, errorHandler);
+    mutexPro(semid, type, UNLOCK, errorHandler, "addExpiredGood UNLOCK");
 
-    shmDetach(info - type,errorHandler);
+    shmDetach(info - type,errorHandler, "addExpiredGood");
 
 }
 
@@ -62,12 +62,12 @@ void addNotExpiredGood(int quantity, int type, ctx where) {
     int semid;
     
     GoodTypeInfo* info;
-    shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler);
-    semid = useSem(DUMPSEMKEY, errorHandler);
+    shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler, "addNotExpiredGood");
+    semid = useSem(DUMPSEMKEY, errorHandler , "addNotExpiredGood");
     
-    info = ((GoodTypeInfo*) getShmAddress(shmid, 0, errorHandler)) + type;
+    info = ((GoodTypeInfo*) getShmAddress(shmid, 0, errorHandler, "addNotExpiredGood")) + type;
 
-    mutexPro(semid, type, LOCK, errorHandler);
+    mutexPro(semid, type, LOCK, errorHandler, "addNotExpiredGood LOCK");
 
     if (where == PORT) {
         info->goods_on_port += quantity;
@@ -80,13 +80,28 @@ void addNotExpiredGood(int quantity, int type, ctx where) {
         exit(1);
     }
 
-    mutexPro(semid, type, UNLOCK, errorHandler);
-    shmDetach(info - type,errorHandler);
+    mutexPro(semid, type, UNLOCK, errorHandler, "addNotExpiredGood UNLOCK");
+    shmDetach(info - type,errorHandler, "addNotExpiredGood");
 
 }
 
 void addDeliveredGood(int quantity, int type){
-    /* TO-DO*/
+    int shmid;
+    int semid;
+    
+    GoodTypeInfo* info;
+    shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler, "addDeliveredGood");
+    semid = useSem(DUMPSEMKEY, errorHandler, "addDeliveredGood");
+    
+    info = ((GoodTypeInfo*) getShmAddress(shmid, 0, errorHandler, "addDeliveredGood")) + type;
+
+    mutexPro(semid, type, LOCK, errorHandler, "addDeliveredGood LOCK");
+
+    info->delivered_goods += quantity;
+    
+
+    mutexPro(semid, type, UNLOCK, errorHandler, "addDeliveredGood LOCK");
+    shmDetach(info - type,errorHandler, "addDeliveredGood");
 }
 
 
@@ -95,13 +110,13 @@ void removeDumpArea() {
     int logFileSemID;
     int semid;
     
-    shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler);
-    semid = useSem(DUMPSEMKEY, errorHandler);
-    logFileSemID = useSem(LOGFILESEMKEY, errorHandler);
+    shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler , "removeDumpArea");
+    semid = useSem(DUMPSEMKEY, errorHandler, "removeDumpArea");
+    logFileSemID = useSem(LOGFILESEMKEY, errorHandler, "removeDumpArea");
     
-    removeSem(semid, errorHandler);
-    removeSem(logFileSemID, errorHandler);
-    removeShm(shmid, errorHandler);
+    removeSem(semid, errorHandler, "removeDumpArea");
+    removeSem(logFileSemID, errorHandler , "removeDumpArea");
+    removeShm(shmid, errorHandler, "removeDumpArea");
 }
 
 void printerCode(int day) {
@@ -112,13 +127,11 @@ void printerCode(int day) {
     int sum;
     GoodTypeInfo* arr;
 
-    logFileSemID = useSem(LOGFILESEMKEY, errorHandler);
-    shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler);
-    arr = (GoodTypeInfo*)getShmAddress(shmid, 0, errorHandler);
+    logFileSemID = useSem(LOGFILESEMKEY, errorHandler, "printerCode");
+    shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler , "printerCode");
+    arr = (GoodTypeInfo*)getShmAddress(shmid, 0, errorHandler ,"printerCode");
 
-    printf("Merce di tipo %d nel porto: %d\n", 0, arr[0].goods_on_port);
-
-    mutex(logFileSemID, LOCK, errorHandler);
+    mutex(logFileSemID, LOCK, errorHandler, "printerCode LOCK");
     printf("Scrivo nel logifle\n");
     fp = fopen("./logfile.log", "a+");
     if (fp == NULL) {
@@ -142,6 +155,8 @@ void printerCode(int day) {
         fprintf(fp, "\t- Scaduta:\n");
         fprintf(fp, "\t\ta) nei porti: %d\n", (arr + i)->expired_goods_on_port);
         fprintf(fp, "\t\tb) in nave: %d\n", (arr + i)->expired_goods_on_ship);
+        fprintf(fp, "\t- Consegnata: %d\n" ,  (arr + i)->delivered_goods);
+        
         sum += arr[i].delivered_goods + arr[i].goods_on_port + arr[i].goods_on_ship + arr[i].expired_goods_on_ship + arr[i].expired_goods_on_port;
     }
     if (day == SO_DAYS) {
@@ -156,8 +171,8 @@ void printerCode(int day) {
     }
 
     fclose(fp);
-    mutex(logFileSemID, UNLOCK, errorHandler);
-    shmDetach(arr, errorHandler);
+    mutex(logFileSemID, UNLOCK, errorHandler , "printerCode UNLOCK");
+    shmDetach(arr, errorHandler , "printerCode");
 }
 
 void printDump(int day) {

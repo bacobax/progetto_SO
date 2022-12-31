@@ -105,7 +105,7 @@ void mastersighandler(int s) {
 }
 
 void aspettaConfigs(int waitConfigSemID) {
-    mutex(waitConfigSemID, WAITZERO, errorHandler);
+    mutex(waitConfigSemID, WAITZERO, errorHandler, "aspettaConfigs");
 }
 
 
@@ -114,7 +114,7 @@ void creaCodePorti() {
     int msgQueue;
 
     for (i = 0; i < SO_PORTI; i++) {
-        msgQueue = createQueue(ftok("./src/porto.c" , i), errorHandler);
+        msgQueue = createQueue(ftok("./src/porto.c" , i), errorHandler, "creaCodePorti");
         printf("msgQueue id:%d port:%d\n", msgQueue, i);
     }
 }
@@ -123,7 +123,7 @@ void creaCodePortiDischarge() {
     int msgQueue;
 
     for (i = 0; i < SO_PORTI; i++) {
-        msgQueue = createQueue(ftok("./src/porto.h" , i), errorHandler);
+        msgQueue = createQueue(ftok("./src/porto.h" , i), errorHandler, "creaCodePortiDischarge");
         printf("msgQueue id:%d port:%d\n", msgQueue, i);
     }
 }
@@ -134,7 +134,7 @@ void creaCodeNavi() {
     int msgQueue;
 
     for (i = 0; i < SO_NAVI; i++) {
-        msgQueue = createQueue(ftok("./src/nave.c" , i), errorHandler);
+        msgQueue = createQueue(ftok("./src/nave.c" , i), errorHandler , "creaCodeNavi");
         printf("msgQueue id:%d nave:%d\n", msgQueue, i);
     }
 }
@@ -144,16 +144,16 @@ void distruggiCodePorti() {
     int i;
     int msgQueue;
     for (i = 0; i < SO_PORTI; i++) {
-        msgQueue = useQueue(ftok("./src/porto.c" , i), NULL);
-        removeQueue(msgQueue, errorHandler);
+        msgQueue = useQueue(ftok("./src/porto.c" , i), errorHandler , "distruggiCodePorti");
+        removeQueue(msgQueue, errorHandler , "distruggiCodePorti");
     }
 }
 void distruggiCodePortiDischarge() {
     int i;
     int msgQueue;
     for (i = 0; i < SO_PORTI; i++) {
-        msgQueue = useQueue(ftok("./src/porto.h" , i), NULL);
-        removeQueue(msgQueue, errorHandler);
+        msgQueue = useQueue(ftok("./src/porto.h" , i), errorHandler, "distruggiCodePortiDischarge");
+        removeQueue(msgQueue, errorHandler, "distruggiCodePortiDischarge");
     }
 }
 
@@ -163,9 +163,9 @@ void distruggiCodeNavi() {
     int msgQueue;
     
     for (i = 0; i < SO_NAVI; i++) {
-        msgQueue = useQueue(ftok("./src/nave.c", i), NULL);
+        msgQueue = useQueue(ftok("./src/nave.c", i), errorHandler, "distruggiCodeNavi");
         
-        removeQueue(msgQueue, errorHandler);
+        removeQueue(msgQueue, errorHandler, "distruggiCodeNavi");
     }
 }
 
@@ -187,6 +187,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int waitResponsesID;
     int portsDischargeQueue;
     int verifyRequestPortSemID;
+    int portDischargeRequestsQueueID;
     srand(time(NULL));
 
     if (signal(SIGUSR1, mastersighandler) == SIG_ERR) {
@@ -200,45 +201,46 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     }
 
 
-    startSimulationSemID = createSem(MASTKEY, 1, NULL);
-    reservePrintSem = createSem(RESPRINTKEY, 1, NULL);
-    controlPortsDisponibilitySemID = createMultipleSem(PSEMVERIFYKEY, SO_PORTI, 1, errorHandler);
+    startSimulationSemID = createSem(MASTKEY, 1, errorHandler, "creazione sem startSimulationSemID");
+    reservePrintSem = createSem(RESPRINTKEY, 1, errorHandler, "creazione sem reservePrintSem");
+    controlPortsDisponibilitySemID = createMultipleSem(PSEMVERIFYKEY, SO_PORTI, 1, errorHandler, "creazione sem per controllare i supplies in ordine");
     /*
     !dovrà essere SO_PORTI + SO_NAVI
     */
-    waitconfigSemID = createSem(WAITCONFIGKEY, SO_PORTI+ SO_NAVI, errorHandler);
+    waitconfigSemID = createSem(WAITCONFIGKEY, SO_PORTI+ SO_NAVI, errorHandler, "creazione sem waitconfig");
     
     createDumpArea();
-    portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
-    shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler);
+    portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler , "creazione shm dei porti");
+    shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler ,"creazione shm delle navi");
 
 
     /*creazione banchine*/
-    semBanchineID = createMultipleSem(BANCHINESEMKY, SO_PORTI, SO_BANCHINE, errorHandler);
+    semBanchineID = createMultipleSem(BANCHINESEMKY, SO_PORTI, SO_BANCHINE, errorHandler, "creazione semaforo banchine");
 
     if (portsShmid == EEXIST || shipsShmid == EEXIST) {
         perror("Le shm esistono già\n");
         exit(EXIT_FAILURE);
     }
     /*il codice del master manco la usa*/
-    msgRefillerID = createQueue(REFILLERQUEUE, errorHandler);
+    msgRefillerID = createQueue(REFILLERQUEUE, errorHandler, "creazione coda del refiller");
 
     /* msgShipQueueID = createQueue(SCHQUEUEKEY, errorHandler); */
 
     /* creare queue navi per fase di scaricamento TO-DO*/
 
-    reservePortsResourceSem = createMultipleSem(RESPORTSBUFFERS, SO_PORTI, 1, errorHandler);
+    reservePortsResourceSem = createMultipleSem(RESPORTSBUFFERS, SO_PORTI, 1, errorHandler, "creazione sem per scrivere nei supplies di un porto");
 
-    rwExpTimesPortSemID = createMultipleSem(WREXPTIMESSEM, SO_PORTI, 1, errorHandler);
+    rwExpTimesPortSemID = createMultipleSem(WREXPTIMESSEM, SO_PORTI, 1, errorHandler, "sem per leggere e scrivere negli exp time di un porto");
 
-    semShipsID = createMultipleSem(SEMSHIPKEY, SO_NAVI, 1, errorHandler);
+    semShipsID = createMultipleSem(SEMSHIPKEY, SO_NAVI, 1, errorHandler, "creazione sem per modificare carico di una nave");
 
     /*
         semaforo che serve al master per eseguirne la waitzero alla fine di ogni giorno
         in sintesi il master aspetta a passare il giorno finchè tutti i porti non hanno ricevuto la loro merce
     */
-    waitEndDaySemID = createSem(WAITENDDAYKEY, SO_PORTI, errorHandler);
-    portRequestsQueueID = createQueue(PQUEREQCHKEY, errorHandler);
+    waitEndDaySemID = createSem(WAITENDDAYKEY, SO_PORTI, errorHandler, "creazione sem waitEndDaySem");
+    portRequestsQueueID = createQueue(PQUEREQCHKEY, errorHandler, "creazione della coda delle richieste di carico dei porti");
+    portDischargeRequestsQueueID = createQueue(PQUEREDCHKEY, errorHandler, "creazione della coda delle richieste di scarico dei porti");
     
     /* TO-DO creare coda porti richieste per fase di scaricamento*/
 
@@ -247,12 +249,12 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     creaCodeNavi();
     /* TO-DO creare code porti per fase di scaricamento*/
 
-    waitToTravelsemID = createMultipleSem(WAITTOTRAVELKEY, SO_NAVI, SO_PORTI, errorHandler);
+    waitToTravelsemID = createMultipleSem(WAITTOTRAVELKEY, SO_NAVI, SO_PORTI, errorHandler , "creazione waitToTravelSem");
     getAllVAlues(waitToTravelsemID, SO_NAVI);
     
-    waitResponsesID = createMultipleSem(WAITFIRSTRESPONSES, SO_NAVI, 1, errorHandler);
+    waitResponsesID = createMultipleSem(WAITFIRSTRESPONSES, SO_NAVI, 1, errorHandler, "creazione waitResponsesSem");
 
-    verifyRequestPortSemID = createMultipleSem(P2SEMVERIFYKEY, SO_PORTI, 1, errorHandler);
+    verifyRequestPortSemID = createMultipleSem(P2SEMVERIFYKEY, SO_PORTI, 1, errorHandler, "creazione verifyRequestPortSemID");
     
     codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID);
 
@@ -261,33 +263,33 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     kill(0, SIGUSR1); /* uccide tutti i figli */
 
     printf("master sono ancora vivo dopo kill\n");
-    removeSem(startSimulationSemID, errorHandler);
-    removeSem(reservePrintSem, errorHandler);
-    removeSem(semBanchineID, errorHandler);
-    removeSem(reservePortsResourceSem, errorHandler);
-    removeSem(waitconfigSemID, errorHandler);
-    removeSem(rwExpTimesPortSemID, errorHandler);
-    removeSem(semShipsID, errorHandler);
-    removeSem(waitEndDaySemID, errorHandler);
-    removeSem(controlPortsDisponibilitySemID, errorHandler);
-    removeSem(verifyRequestPortSemID, errorHandler);
+    removeSem(startSimulationSemID, errorHandler, "startSimulationSemID");
+    removeSem(reservePrintSem, errorHandler, "reservePrintSem");
+    removeSem(semBanchineID, errorHandler, "semBanchineID");
+    removeSem(reservePortsResourceSem, errorHandler, "reservePortsResourceSem");
+    removeSem(waitconfigSemID, errorHandler, "waitconfigSemID");
+    removeSem(rwExpTimesPortSemID, errorHandler , "rwExpTimesPortSemID");
+    removeSem(semShipsID, errorHandler, "semShipsID");
+    removeSem(waitEndDaySemID, errorHandler, "waitEndDaySemID");
+    removeSem(controlPortsDisponibilitySemID, errorHandler, "controlPortsDisponibilitySemID");
+    removeSem(verifyRequestPortSemID, errorHandler, "verifyRequestPortSemID");
     /*
     removeSem(waitToTravelsemID, errorHandler);
 
     */
-    removeSem(waitResponsesID, errorHandler);
+    removeSem(waitResponsesID, errorHandler, "waitResponsesID");
     printf("master tutti i sem sono stati rimoessi\n");
 
-    removeShm(shipsShmid, errorHandler);
-    removeShm(portsShmid, errorHandler);
+    removeShm(shipsShmid, errorHandler, "shipsShmid");
+    removeShm(portsShmid, errorHandler, "portsShmid");
     removeDumpArea();
     printf("master tutte le shm sono state rimosse\n");
 
-    removeQueue(msgRefillerID, errorHandler);
+    removeQueue(msgRefillerID, errorHandler, "msgRefillerID");
     printf("coda di refiller rimossa\n");
 
-    
-    removeQueue(portRequestsQueueID, errorHandler);
+    removeQueue(portDischargeRequestsQueueID, errorHandler , "portDischargeRequestsQueueID");
+    removeQueue(portRequestsQueueID, errorHandler, "portRequestsQueueID");
     distruggiCodePorti();
     distruggiCodePortiDischarge();
     printf("coda dei porti rimossa\n");
@@ -313,7 +315,7 @@ void refillCode(intList* l, int msgRefillerID, int giorno) {
 
         */
         /* Invio messaggio alla coda 458752 con il seguente testo: 0|20 con tipo 0 */
-        msgSend(msgRefillerID, supportText, type, NULL);
+        msgSend(msgRefillerID, supportText, type, errorHandler, "refillCode");
     }
 
 }
@@ -356,19 +358,19 @@ void refillPorts(int opt, int msgRefillerID, int quantitaAlGiorno, int giorno) {
 void childExpirePortCode(Port p, int day, int idx) {
     int rwExpTimesPortSemID;
     int portBufferSemID;
-    rwExpTimesPortSemID = useSem(WREXPTIMESSEM, errorHandler);
-    portBufferSemID = useSem(RESPORTSBUFFERS, errorHandler);
+    rwExpTimesPortSemID = useSem(WREXPTIMESSEM, errorHandler, "useSem rwExpTimesPortSemID in childExpirePortCode");
+    portBufferSemID = useSem(RESPORTSBUFFERS, errorHandler, "useSem portBufferSemID in childExpirePortCode");
     
-    mutexPro(rwExpTimesPortSemID, idx, LOCK, errorHandler);
+    mutexPro(rwExpTimesPortSemID, idx, LOCK, errorHandler , "rwExpTimesPortSemID LOCK in childExpirePortCode");
     
     decrementExpTimes(&p->supplies, day);
     
-    mutexPro(rwExpTimesPortSemID, idx, UNLOCK, errorHandler);
+    mutexPro(rwExpTimesPortSemID, idx, UNLOCK, errorHandler, "rwExpTimesPortSemID UNLOCK in childExpirePortCode");
 
-    mutexPro(portBufferSemID, idx, LOCK, errorHandler);
+    mutexPro(portBufferSemID, idx, LOCK, errorHandler, "portBufferSemID LOCK in childExpirePortCode");
     
     removeExpiredGoods(&p->supplies);
-    mutexPro(portBufferSemID, idx, UNLOCK, errorHandler);
+    mutexPro(portBufferSemID, idx, UNLOCK, errorHandler, "portBufferSemID UNLOCK in childExpirePortCode");
     
 
 }
@@ -376,13 +378,13 @@ void childExpirePortCode(Port p, int day, int idx) {
 void childExpireShipCode(Ship ship){
     int semShipID;
 
-    semShipID = useSem(SEMSHIPKEY, errorHandler);
+    semShipID = useSem(SEMSHIPKEY, errorHandler, "childExpireShipCode");
 
-    mutexPro(semShipID, ship->shipID, LOCK, errorHandler);
+    mutexPro(semShipID, ship->shipID, LOCK, errorHandler , "childExpireShipCode LOCK");
 
     updateExpTimeShip(ship);
 
-    mutexPro(semShipID, ship->shipID, UNLOCK, errorHandler);    
+    mutexPro(semShipID, ship->shipID, UNLOCK, errorHandler, "childExpireShipCode UNLOCK");    
 
 }
 
@@ -391,8 +393,8 @@ void expirePortsGoods(int day) {
     int i;
     Port ports;
     int pid;
-    portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler);
-    ports = getShmAddress(portShmID, 0, errorHandler);
+    portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler, "expirePortsGoods");
+    ports = getShmAddress(portShmID, 0, errorHandler, "expirePortsGoods");
     for (i = 0; i < SO_PORTI; i++) {
         pid = fork();
         if (pid == -1) {
@@ -404,7 +406,7 @@ void expirePortsGoods(int day) {
             exit(EXIT_SUCCESS);
         }
     }
-    shmDetach(ports,NULL);
+    shmDetach(ports,errorHandler, "expirePortsGoods");
 }
 
 void expireShipGoods(){
@@ -412,14 +414,14 @@ void expireShipGoods(){
     int i;
     Ship ships;
     int pid;
-    shipShmID = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler);
+    shipShmID = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler,"expireShipGoods");
     for(i=0; i<SO_NAVI; i++) {
         pid = fork();
         if(pid == -1){
             perror("fork nel gestore risorse");
             exit(EXIT_FAILURE);
         } else if (pid == 0){
-            ships = (Ship)getShmAddress(shipShmID, 0, NULL);
+            ships = (Ship)getShmAddress(shipShmID, 0, errorHandler, "expireShipGoods");
             childExpireShipCode(ships + i);
             exit(EXIT_SUCCESS);
         }

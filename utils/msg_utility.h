@@ -25,7 +25,7 @@ typedef struct _mex {
 
 /* semplificazione della msgsnd con una gestione degli errori di default
    se si setta l'handler a NULL allora è usato quello di default */
-void msgSend(int msgqID, char text[MEXBSIZE], long type, void (*errorHandler)(int err));
+void msgSend(int msgqID, char text[MEXBSIZE], long type, void (*errorHandler)(int err, char* errCtx), char* errCtx);
 
 
 /* semplificazione della msgrcv con una gestione degli errori di default
@@ -36,26 +36,26 @@ mod può essere = SYNC oppure = ASYNC
 se è = SYNC, l'handler non è eseguito e ritorna il puntatore al messaggio (dev'essere liberato)
 se è = ASYNC, questa funzione crea un processo che getisce indipendentemente la ricezione del messaggio
 se è != ASYNC e != SYNC, da errore */
-mex* msgRecv(int msgqID, long type, void (*errorHandler)(int err), void (*callback)(long type, char text[MEXBSIZE]), int mod);
+mex* msgRecv(int msgqID, long type, void (*errorHandler)(int err, char* errCtx), void (*callback)(long type, char text[MEXBSIZE]), int mod, char* errCtx);
 
-mex* msgRecvPro(int msgqID, long type, void (*errorHandler)(int err), void (*callback)(long type, char text[MEXBSIZE], int arg), int mod, int arg);
+mex* msgRecvPro(int msgqID, long type, void (*errorHandler)(int err, char* errCtx), void (*callback)(long type, char text[MEXBSIZE], int arg), int mod, int arg, char* errCtx);
 
 
 /* in caso di successo restituisce l'id della queue
 restituisce EEXIST se esiste già
 se si presentano altri errori viene eseguito l'handler
 se si setta l'handler a NULL allora è usato quello di default */
-int createQueue(int key, void (*errorHandler)(int err));
+int createQueue(int key, void (*errorHandler)(int err, char* errCtx), char* errCtx);
 
 
 /* ritorna l'id di una queue esistente */
-int useQueue(int key, void (*errorHandler)(int err));
+int useQueue(int key, void (*errorHandler)(int err, char* errCtx), char* errCtx);
 
 /* ritorna il numero di messaggi */
-int getMexCount(int id, void (*errorHandler)(int err));
+int getMexCount(int id, void (*errorHandler)(int err, char* errCtx), char* errCtx);
 
-void printQueueState(int id, void (*errorHandler)(int err));
+void printQueueState(int id, void (*errorHandler)(int err, char* errCtx), char* errCtx);
 
-void removeQueue(int id, void (*errorHandler)(int err));
+void removeQueue(int id, void (*errorHandler)(int err, char* errCtx), char* errCtx);
 
 #endif

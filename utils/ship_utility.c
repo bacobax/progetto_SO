@@ -72,9 +72,9 @@ Ship initShip(int shipID)
 
     /* inizializziamo la nave in shm*/
 
-    shipShmId = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler);
+    shipShmId = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler, "initShip");
 
-    ship = ((struct ship*) getShmAddress(shipShmId, 0, errorHandler)) + shipID;
+    ship = ((struct ship*) getShmAddress(shipShmId, 0, errorHandler, "initShip")) + shipID;
     ship->shipID = shipID;
     ship->x = generateCord();
     ship->y = generateCord();
@@ -95,9 +95,9 @@ void printLoadShip(Product* products){
 void printShip(Ship ship)
 {
 
-    int resSemID = useSem(RESPRINTKEY, errorHandler);
+    int resSemID = useSem(RESPRINTKEY, errorHandler, "printShip");
 
-    mutex(resSemID, LOCK, errorHandler);
+    mutex(resSemID, LOCK, errorHandler, "printShip LOCK");
 
     printf("[%d]: Nave\n", ship->shipID);
 
@@ -110,7 +110,7 @@ void printShip(Ship ship)
 
     printf("______________________________________________\n");
 
-    mutex(resSemID, UNLOCK, errorHandler);
+    mutex(resSemID, UNLOCK, errorHandler, "printShip UNLOCK");
 }
 
 int addProduct(Ship ship, Product p){
@@ -227,8 +227,8 @@ void callPortsForCharge(Ship ship, int quantityToCharge){
     int requestPortQueueID;
     int waitResponseSemID;
     
-    requestPortQueueID = useQueue(PQUEREQCHKEY, errorHandler);
-    waitResponseSemID = useSem(WAITFIRSTRESPONSES, errorHandler);
+    requestPortQueueID = useQueue(PQUEREQCHKEY, errorHandler , "callPortsForCharge");
+    waitResponseSemID = useSem(WAITFIRSTRESPONSES, errorHandler, "callPortsForCharge");
     
     sprintf(text, "%d %d", quantityToCharge , ship->shipID); 
 
@@ -238,9 +238,9 @@ void callPortsForCharge(Ship ship, int quantityToCharge){
 
         */
          printf("[%d]NAVE: invio domanda al porto %d\n",getpid() ,i);
-         msgSend(requestPortQueueID, text, i+1, errorHandler);
-         mutexPro(waitResponseSemID, ship->shipID, WAITZERO, errorHandler);
-         mutexPro(waitResponseSemID, ship->shipID, UNLOCK, errorHandler);
+         msgSend(requestPortQueueID, text, i+1, errorHandler, "callPortsForCharge");
+         mutexPro(waitResponseSemID, ship->shipID, WAITZERO, errorHandler, "callPortsForCharge WAITZERO");
+         mutexPro(waitResponseSemID, ship->shipID, UNLOCK, errorHandler, "callPortsForCharge +1");
 
          /*
                 poichè non ci possono essere type uguali a 0 aggiungo
@@ -256,11 +256,11 @@ int portResponsesForCharge(Ship ship, PortOffer* port_offers){
     int queueID;
     int ports = 0;
     mex* response;
-    queueID = useQueue(ftok("./src/nave.c" , ship->shipID), errorHandler);
+    queueID = useQueue(ftok("./src/nave.c" , ship->shipID), errorHandler, "portResponsesForCharge");
     
     for (i = 0; i < SO_PORTI; i++) {
         printf("[%d]Nave: aspetto su coda %d messaggio con type %d\n", getpid() ,queueID, i + 1);
-        response = msgRecv(queueID, i + 1, errorHandler, NULL, SYNC);
+        response = msgRecv(queueID, i + 1, errorHandler, NULL, SYNC, "portResponsesForCharge");
 
         
         printf("🤡[%d]Nave: Strlen del messaggio ricevuto : %d\n" ,getpid() ,strlen(response->mtext) );
@@ -303,18 +303,18 @@ void replyToPortsForCharge(Ship ship, int portID){
     char text[MEXBSIZE];
     printf("[%d]Nave invio conferme ai porti di chi è stato scelto\n",getpid());
     for(i=0; i<SO_PORTI; i++){
-        queueID = useQueue(ftok("./src/porto.c" , i), errorHandler);
+        queueID = useQueue(ftok("./src/porto.c" , i), errorHandler, "replyToPortsForCharge");
         
         if(i == portID){
             printf("[%d]Nave ho scelto il porto:%d\n", getpid(), i);
             sprintf(text, "1"); /*ok*/
-            msgSend(queueID, text, (ship->shipID + 1), errorHandler);
+            msgSend(queueID, text, (ship->shipID + 1), errorHandler, "replyToPortsForCharge");
         }
         else {
             printf("[%d]Nave NON ho scelto il porto:%d\n", getpid(), i);
             
             sprintf(text, "0"); /*negative*/
-            msgSend(queueID, text, (ship->shipID + 1), errorHandler);
+            msgSend(queueID, text, (ship->shipID + 1), errorHandler, "replyToPortsForCharge");
         }
     }
 
@@ -325,10 +325,10 @@ void callPortsForDischarge(Ship ship, Product p) {
     int queueID;
     char text[MEXBSIZE];
     int requesetPortQueueID;
-    int waitResponseSemID = useSem(WAITFIRSTRESPONSES, errorHandler);
+    int waitResponseSemID = useSem(WAITFIRSTRESPONSES, errorHandler, "callPortsForDischarge");
 
     sprintf(text, "%d %d %d", p.product_type, p.weight, ship->shipID);
-    requesetPortQueueID = useQueue(PQUEREDCHKEY, errorHandler);
+    requesetPortQueueID = useQueue(PQUEREDCHKEY, errorHandler, "callPortsForDischarge");
 
     sprintf(text, "%d %d", p.product_type, p.weight);
 
@@ -336,9 +336,9 @@ void callPortsForDischarge(Ship ship, Product p) {
         //TODO: implementare semaforo che aspetta che il porto abbia ricevuto prima di inviare il prossimo messaggio
         
         printf("[%d]NAVE: invio domanda al porto %d per scaricare\n", getpid(), i);
-        msgSend(requesetPortQueueID, text, i+1, errorHandler);
-        mutexPro(waitResponseSemID, ship->shipID, WAITZERO, errorHandler);
-        mutexPro(waitResponseSemID, ship->shipID, UNLOCK, errorHandler);
+        msgSend(requesetPortQueueID, text, i+1, errorHandler, "callPortsForDischarge");
+        mutexPro(waitResponseSemID, ship->shipID, WAITZERO, errorHandler, "callPortsForDischarge WAITZERO");
+        mutexPro(waitResponseSemID, ship->shipID, UNLOCK, errorHandler, "callPortsForDischarge LOCK");
     }
 }
 
@@ -357,10 +357,10 @@ int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare){
     }
     initArrayResponses(arrayResponses);
 
-    queueID = useQueue(ftok("./src/nave.c", ship->shipID), errorHandler); /* coda di messaggi delle navi per le risposte di scaricamento*/
+    queueID = useQueue(ftok("./src/nave.c", ship->shipID), errorHandler, "portResponsesForDischarge"); /* coda di messaggi delle navi per le risposte di scaricamento*/
 
     for(i=0; i<SO_PORTI; i++){
-        response = msgRecv(queueID, i+1, errorHandler, NULL, SYNC);
+        response = msgRecv(queueID, i+1, errorHandler, NULL, SYNC, "portResponsesForDischarge");
 
         printf("🤡[%d]Nave: messaggio ricevuto per scaricare: %s\n" ,getpid() , response->mtext);
         if(strcmp(response->mtext, "NOPE") != 0){
@@ -393,14 +393,14 @@ void replyToPortsForDischarge(Ship ship, int portID){
     int queueID;
 
     for(i=0; i<SO_PORTI; i++){
-        queueID = useQueue(ftok("./src/porto.h", i), errorHandler);
+        queueID = useQueue(ftok("./src/porto.h", i), errorHandler, "replyToPortsForDischarge");
         if(i == portID){
             printf("[%d]Nave: mando msg CONFERMA al porto %d per scaricare\n", getpid(), portID);
             sprintf(mex, "1");
-            msgSend(queueID, mex, ship->shipID + 1, errorHandler);
+            msgSend(queueID, mex, ship->shipID + 1, errorHandler, "replyToPortsForDischarge");
         } else {
             sprintf(mex, "0");
-            msgSend(queueID, mex, ship->shipID + 1, errorHandler);
+            msgSend(queueID, mex, ship->shipID + 1, errorHandler, "replyToPortsForDischarge");
         }
     }
 }
@@ -411,21 +411,19 @@ void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int wei
     
     int pierSemID;
     int shipSemID;
-    int portBufferSemID;
     Port port;
     Product p;
     p.product_type = offer_choosen.product_type;
     p.expirationTime = offer_choosen.expirationTime;
     p.weight = weight;
 
-    portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler);
-    pierSemID = useSem(BANCHINESEMKY, errorHandler);
-    shipSemID = useSem(SEMSHIPKEY, errorHandler);
-    portBufferSemID = useSem(RESPORTSBUFFERS, errorHandler);
+    portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler, "accessPortForCharge");
+    pierSemID = useSem(BANCHINESEMKY, errorHandler, "accessPortForCharge->semaforo banchine");
+    shipSemID = useSem(SEMSHIPKEY, errorHandler, "accessPortForCharge->semaforo rw navi");
 
-    port = ((Port)getShmAddress(portShmID, 0, errorHandler)) + portID;
+    port = ((Port)getShmAddress(portShmID, 0, errorHandler, "accessPortForCharge")) + portID;
 
-    mutexPro(pierSemID, portID, LOCK, errorHandler);
+    mutexPro(pierSemID, portID, LOCK, errorHandler, "accessPortForCharge->semBanchine LOCK");
 
     /* in questo momento la nave è attraccata alla banchina del porto*/
 
@@ -435,17 +433,17 @@ void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int wei
 
     sleep(p.weight / SO_LOADSPEED);
 
-    mutexPro(shipSemID, ship->shipID, LOCK, errorHandler);
+    mutexPro(shipSemID, ship->shipID, LOCK, errorHandler, "accessPortForCharge-> shipSemID LOCK");
 
     printf("[%d]Nave: sono attracata alla banchina del porto per aggiungere la merce\n", getpid());
 
     addProduct(ship, p);
 
-    mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler);
+    mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler, "accessPortForCharge->shipSemID UNLOCK");
 
     printShip(ship);
 
-    mutexPro(pierSemID, portID, UNLOCK, errorHandler);
+    mutexPro(pierSemID, portID, UNLOCK, errorHandler, "accessPortForCharge->pierSemID UNLOCK");
 }
 
 void accessPortForDischarge(Ship ship, int portID, int product_index, int quantoPossoScaricare){
@@ -455,19 +453,18 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
     int portBufferSemID;
     Port port;
 
-    portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler);
-    pierSemID = useSem(BANCHINESEMKY, errorHandler);
-    shipSemID = useSem(SEMSHIPKEY, errorHandler);
-    portBufferSemID = useSem(RESPORTSBUFFERS, errorHandler);
+    portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler,"accessPortForDischarge");
+    pierSemID = useSem(BANCHINESEMKY, errorHandler,"accessPortForCharge->semaforo banchine");
+    shipSemID = useSem(SEMSHIPKEY, errorHandler,"accessPortForCharge->semaforo rw navi");
 
-    port = ((Port) getShmAddress(portShmID, 0, errorHandler)) + portID;
+    port = ((Port) getShmAddress(portShmID, 0, errorHandler, "accessPortForCharge")) + portID;
 
-    mutexPro(pierSemID, portID, LOCK, errorHandler);
+    mutexPro(pierSemID, portID, LOCK, errorHandler , "accessPortForCharge->pierSemID LOCK");
 
     /*nanosecsleep(ship->products[product_index].weight / SO_LOADSPEED);*/
     sleep(1);
 
-    mutexPro(shipSemID, ship->shipID, LOCK, errorHandler);
+    mutexPro(shipSemID, ship->shipID, LOCK, errorHandler,  "accessPortForCharge->shipSemid LOCK");
 
 
     if (quantoPossoScaricare >= ship->products[product_index].weight) {
@@ -480,9 +477,9 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
         ship->products[product_index].weight -= quantoPossoScaricare;
     }
 
-    mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler);
+    mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler, "accessPortForCharge->shipSemID UNLOCK");
 
-    mutexPro(pierSemID, portID, UNLOCK, errorHandler);
+    mutexPro(pierSemID, portID, UNLOCK, errorHandler, "accessPortForCharge->pierSemID UNLOCK");
 
 }
 
@@ -493,9 +490,9 @@ void travel(Ship ship, int portID)
     double dt_x, dt_y, spazio, nanosleep_arg;
     long tempo;
 
-    int portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);  /* prendo l'id della shm del porto */
+    int portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler, "travel");  /* prendo l'id della shm del porto */
 
-    p = ((Port)getShmAddress(portShmId, 0, errorHandler)) + portID;  /* prelevo la struttura del porto alla portID-esima posizione nella shm 
+    p = ((Port)getShmAddress(portShmId, 0, errorHandler, "travel")) + portID;  /* prelevo la struttura del porto alla portID-esima posizione nella shm 
 
      imposto la formula per il calcolo della distanza */
 

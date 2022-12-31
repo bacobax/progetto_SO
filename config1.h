@@ -53,6 +53,6 @@
 #define SO_LOADSPEED 200 
 
 /* funzione generale che gestisce l'errore */
-void errorHandler(int err);
+void errorHandler(int err, char* errCtx);
 
 #endif

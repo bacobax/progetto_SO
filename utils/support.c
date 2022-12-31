@@ -59,21 +59,21 @@ intList* distribute(int quantity, int parts) {
 
 void reservePrint(void (*printer)(void* obj, int idx), void* object, int idx) {
     int semid;
-    semid = useSem(RESPRINTKEY, ErrorHandler);
+    semid = useSem(RESPRINTKEY, ErrorHandler, "reservePrint");
 
-    mutex(semid, LOCK, NULL);
+    mutex(semid, LOCK, errorHandler, "reservePrint LOCK");
 
     printer(object, idx);
 
-    mutex(semid, UNLOCK, NULL);
+    mutex(semid, UNLOCK, errorHandler, "reservePrint UNLOCK");
 }
 
 
 
 void waitForStart() {
     int semid;
-    semid = useSem(MASTKEY, NULL);
-    mutex(semid, WAITZERO, NULL);
+    semid = useSem(MASTKEY, errorHandler,"waitForStart");
+    mutex(semid, WAITZERO, errorHandler, "waitForStart");
 }
 
 /*copia il contenuto di un array in un altro array
@@ -107,8 +107,8 @@ int nanosecsleep(long nanosec)
 #endif
 
 void checkInConfig() {
-    int waitConfigSemID = useSem(WAITCONFIGKEY, errorHandler);
-    mutex(waitConfigSemID, LOCK, errorHandler);
+    int waitConfigSemID = useSem(WAITCONFIGKEY, errorHandler, "checkInConfig");
+    mutex(waitConfigSemID, LOCK, errorHandler, "checkInConfig");
 }
 
 

@@ -8,14 +8,14 @@
 #include <errno.h>
 #include <time.h>
 
-void msgSend(int msgqID, char text[MEXBSIZE], long type, void (*errorHandler)(int err)) {
+void msgSend(int msgqID, char text[MEXBSIZE], long type, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     mex m;
     m.mtype = type;
     strcpy(m.mtext, text);
 
     if (msgsnd(msgqID, &m, MEXBSIZE, IPC_NOWAIT) == -1) {
         if (errorHandler != NULL) {
-            errorHandler(MERRSND);
+            errorHandler(MERRSND,errCtx);
             exit(EXIT_FAILURE);
         }
         else {
@@ -26,12 +26,12 @@ void msgSend(int msgqID, char text[MEXBSIZE], long type, void (*errorHandler)(in
 
 }
 
-mex* msgRecv(int msgqID, long type, void (*errorHandler)(int err), void (*callback)(long type, char text[MEXBSIZE]), int mod) {
+mex* msgRecv(int msgqID, long type, void (*errorHandler)(int err, char* errCtx), void (*callback)(long type, char text[MEXBSIZE]), int mod, char* errCtx) {
     mex* m = (mex*)malloc(sizeof(mex));
     if (msgrcv(msgqID, m, MEXBSIZE, type, 0) == -1) {
         
         if (errorHandler != NULL) {
-            errorHandler(MERRRCV);
+            errorHandler(MERRRCV,errCtx);
             exit(EXIT_FAILURE);
         }
         else {
@@ -52,7 +52,7 @@ mex* msgRecv(int msgqID, long type, void (*errorHandler)(int err), void (*callba
                 exit(EXIT_FAILURE);
             }
             else {
-                errorHandler(errno);
+                errorHandler(errno, errCtx);
                 exit(EXIT_FAILURE);
             }
 
@@ -74,12 +74,12 @@ mex* msgRecv(int msgqID, long type, void (*errorHandler)(int err), void (*callba
     }
 
 }
-mex* msgRecvPro(int msgqID, long type, void (*errorHandler)(int err), void (*callback)(long type, char text[MEXBSIZE], int arg), int mod, int arg) {
+mex* msgRecvPro(int msgqID, long type, void (*errorHandler)(int err, char* errCtx), void (*callback)(long type, char text[MEXBSIZE], int arg), int mod, int arg, char* errCtx) {
     mex* m = (mex*)malloc(sizeof(mex));
 
     if (msgrcv(msgqID, m, MEXBSIZE, type, 0) == -1) {
         if (errorHandler != NULL) {
-            errorHandler(MERRRCV);
+            errorHandler(MERRRCV, errCtx);
             exit(EXIT_FAILURE);
         }
         else {
@@ -100,7 +100,7 @@ mex* msgRecvPro(int msgqID, long type, void (*errorHandler)(int err), void (*cal
                 exit(EXIT_FAILURE);
             }
             else {
-                errorHandler(errno);
+                errorHandler(errno, errCtx);
                 exit(EXIT_FAILURE);
             }
 
@@ -123,14 +123,14 @@ mex* msgRecvPro(int msgqID, long type, void (*errorHandler)(int err), void (*cal
 
 }
 
-int createQueue(int key, void (*errorHandler)(int err)) {
+int createQueue(int key, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     int qid = msgget(key, IPC_CREAT | IPC_EXCL | 0666);
     if (errno == EEXIST) {
         return EEXIST;
     }
     if (qid == -1) {
         if (errorHandler != NULL) {
-            errorHandler(MERRGET);
+            errorHandler(MERRGET, errCtx);
         }
         else {
             perror("createQueue -> msgget");
@@ -140,11 +140,11 @@ int createQueue(int key, void (*errorHandler)(int err)) {
     return qid;
 }
 
-int useQueue(int key, void (*errorHandler)(int err)) {
+int useQueue(int key, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     int qid = msgget(key, 0);
     if (qid == -1) {
         if (errorHandler != NULL) {
-            errorHandler(MERRGET);
+            errorHandler(MERRGET, errCtx);
         }
         else {
             perror("useQueue -> msgget");
@@ -154,7 +154,7 @@ int useQueue(int key, void (*errorHandler)(int err)) {
     return qid;
 }
 
-int getMexCount(int id, void (*errorHandler)(int err)) {
+int getMexCount(int id, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     struct msqid_ds buf;
 
     if (msgctl(id, IPC_STAT, &buf) == -1) {
@@ -162,14 +162,14 @@ int getMexCount(int id, void (*errorHandler)(int err)) {
             perror("getMexCount -> msgctl");
             exit(EXIT_FAILURE);
         } else {
-            errorHandler(MERRCTL);
+            errorHandler(MERRCTL, errCtx);
             exit(EXIT_FAILURE);
         }
     }
     return buf.msg_qnum;
 }
 
-void printQueueState(int id, void (*errorHandler)(int err)) {
+void printQueueState(int id, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     struct msqid_ds buf;
 
     if (msgctl(id, IPC_STAT, &buf) == -1) {
@@ -177,7 +177,7 @@ void printQueueState(int id, void (*errorHandler)(int err)) {
             perror("printQueueState -> msgctl");
             exit(EXIT_FAILURE);
         } else {
-            errorHandler(MERRCTL);
+            errorHandler(MERRCTL, errCtx);
             exit(EXIT_FAILURE);
         }
     }
@@ -185,13 +185,13 @@ void printQueueState(int id, void (*errorHandler)(int err)) {
 
 }
 
-void removeQueue(int id, void (*errorHandler)(int err)) {
+void removeQueue(int id, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     if (msgctl(id, IPC_RMID, NULL) == -1) {
         if(errorHandler == NULL){
             perror("removeQueue -> msgctl");
             exit(EXIT_FAILURE);
         } else {
-            errorHandler(MERRCTL);
+            errorHandler(MERRCTL, errCtx);
             exit(EXIT_FAILURE);
         }
     }

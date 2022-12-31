@@ -37,9 +37,9 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     int j;
 
 
-    portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler);
+    portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler, "initPort");
 
-    p = ((Port)getShmAddress(portShmId, 0, errorHandler)) + pIndex;
+    p = ((Port)getShmAddress(portShmId, 0, errorHandler, "initPort")) + pIndex;
 
     /*
         Distribuisco randomicamente domanda e offerta
@@ -217,15 +217,15 @@ void refill(long type, char* text) {
     */
     int waitEndDaySemID;
 
-    waitEndDaySemID = useSem(WAITENDDAYKEY, errorHandler);
+    waitEndDaySemID = useSem(WAITENDDAYKEY, errorHandler, "refill->waitEndDaySem");
     
 
     srand((int)time(NULL) % getpid());
 
     correctType = (int)(type - 1);
     
-    portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler);
-    p = (Port)getShmAddress(portShmID, 0, errorHandler) + correctType;
+    portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler, "refill");
+    p = (Port)getShmAddress(portShmID, 0, errorHandler, "refill") + correctType;
 
 
     /*
@@ -248,10 +248,10 @@ void refill(long type, char* text) {
     /*
         semaforo per modificare il magazzino dei porti
     */
-    portBufferSem = useSem(RESPORTSBUFFERS, errorHandler);
+    portBufferSem = useSem(RESPORTSBUFFERS, errorHandler , "refill->useSem portBufferSem");
 
 
-    mutexPro(portBufferSem, (int)correctType, LOCK, errorHandler);
+    mutexPro(portBufferSem, (int)correctType, LOCK, errorHandler, "refill->portBufferSem LOCK");
     /* fillMagazine(&p->supplies, 0, supplies); */
 
     fillMagazine(&p->supplies, day, quanties);
@@ -274,18 +274,18 @@ void refill(long type, char* text) {
     }
 
     
-    mutexPro(portBufferSem, (int)correctType, UNLOCK, errorHandler);
+    mutexPro(portBufferSem, (int)correctType, UNLOCK, errorHandler, "refill->portBufferSem UNLOCK");
     /*
         reservePrint(printPorto, p, correctType);
 
     */
     
-    shmDetach(p-correctType, errorHandler);
+    shmDetach(p-correctType, errorHandler, "refill");
 
     /*
         decremento il semaforo per cui il master sta aspettando lo 0 per iniziare il nuovo giorno   
     */
-    mutex(waitEndDaySemID, -1, errorHandler);
+    mutex(waitEndDaySemID, -1, errorHandler, "refill->waitEndDaySem LOCK");
 }
 
 void refillerCode(int idx) {
@@ -299,14 +299,14 @@ void refillerCode(int idx) {
         exit(EXIT_FAILURE);
     }
 
-    refillerID = useQueue(REFILLERQUEUE, NULL);
+    refillerID = useQueue(REFILLERQUEUE, errorHandler, "useQueue in refillerCode");
 
     while (1) {
         /*
             idx+1 perchè nella coda di messaggi ci si riferisce all'indice di ogni porto incrementato di 1
             questo perchè type = 0 è riservato
         */
-        msgRecv(refillerID, (long)(idx + 1), errorHandler, refill, ASYNC);
+        msgRecv(refillerID, (long)(idx + 1), errorHandler, refill, ASYNC, "refillerCode");
     }
 }
 
@@ -370,8 +370,8 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
 
 }
 
-
-void goodsDispatcher(int myQueueID,Port porto, int idx, int shipsQueueID) {
+/*
+void goodsDispatcher(int myQueueID, Port porto, int idx, int shipsQueueID) {
     int quantity = -2;
     mex* messaggioRicevuto;
     int res;
@@ -391,7 +391,7 @@ void goodsDispatcher(int myQueueID,Port porto, int idx, int shipsQueueID) {
 
         /*
             prendo il primo messaggio che arriva
-        */
+        
         messaggioRicevuto = msgRecv(myQueueID, 0, errorHandler, NULL, SYNC);
         sscanf(messaggioRicevuto->mtext, "%d", &quantity);
         
@@ -429,6 +429,8 @@ void goodsDispatcher(int myQueueID,Port porto, int idx, int shipsQueueID) {
     }
 }
 
+
+
 void launchGoodsDispatcher(int myQueueID,Port porto, int idx, int shipsQueueID) {
 
     int pid;
@@ -443,11 +445,11 @@ void launchGoodsDispatcher(int myQueueID,Port porto, int idx, int shipsQueueID) 
         exit(EXIT_FAILURE);
     }
 }
-
+*/
 void dischargerCode(void (*recvHandler)(long, char*), int idx) {
      int requestPortQueueID;
     
-    requestPortQueueID = useQueue(PQUEREQCHKEY, errorHandler);
+    requestPortQueueID = useQueue(PQUEREQCHKEY, errorHandler, "dischargerCode");
     while (1) {
 
         /*
@@ -458,7 +460,7 @@ void dischargerCode(void (*recvHandler)(long, char*), int idx) {
         /*
             prendo il primo messaggio che arriva
         */
-         msgRecv(requestPortQueueID, idx+1, errorHandler, recvHandler, ASYNC);
+         msgRecv(requestPortQueueID, idx+1, errorHandler, recvHandler, ASYNC, "dischargerCode");
          
 
          
@@ -467,7 +469,7 @@ void dischargerCode(void (*recvHandler)(long, char*), int idx) {
 void chargerCode(void (*recvHandler)(long, char*), int idx) {
      int requestPortQueueID;
     
-    requestPortQueueID = useQueue(PQUEREDCHKEY, errorHandler);
+    requestPortQueueID = useQueue(PQUEREDCHKEY, errorHandler, "chargerCode");
     while (1) {
 
         /*
@@ -478,7 +480,7 @@ void chargerCode(void (*recvHandler)(long, char*), int idx) {
         /*
             prendo il primo messaggio che arriva
         */
-         msgRecv(requestPortQueueID, idx+1, errorHandler, recvHandler, ASYNC);
+         msgRecv(requestPortQueueID, idx+1, errorHandler, recvHandler, ASYNC, "chargerCode");
          
 
          
