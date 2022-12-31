@@ -98,7 +98,7 @@ void addDeliveredGood(int quantity, int type){
     mutexPro(semid, type, LOCK, errorHandler, "addDeliveredGood LOCK");
 
     info->delivered_goods += quantity;
-    
+    info->goods_on_ship -= quantity;
 
     mutexPro(semid, type, UNLOCK, errorHandler, "addDeliveredGood LOCK");
     shmDetach(info - type,errorHandler, "addDeliveredGood");

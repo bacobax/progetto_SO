@@ -73,7 +73,6 @@ Ship initShip(int shipID)
     /* inizializziamo la nave in shm*/
 
     shipShmId = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler, "initShip");
-
     ship = ((struct ship*) getShmAddress(shipShmId, 0, errorHandler, "initShip")) + shipID;
     ship->shipID = shipID;
     ship->x = generateCord();
@@ -326,11 +325,9 @@ void callPortsForDischarge(Ship ship, Product p) {
     char text[MEXBSIZE];
     int requesetPortQueueID;
     int waitResponseSemID = useSem(WAITFIRSTRESPONSES, errorHandler, "callPortsForDischarge");
-
     sprintf(text, "%d %d %d", p.product_type, p.weight, ship->shipID);
     requesetPortQueueID = useQueue(PQUEREDCHKEY, errorHandler, "callPortsForDischarge");
 
-    sprintf(text, "%d %d", p.product_type, p.weight);
 
     for (i = 0; i < SO_PORTI; i++) {
         //TODO: implementare semaforo che aspetta che il porto abbia ricevuto prima di inviare il prossimo messaggio
@@ -375,15 +372,19 @@ int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare){
             cond = 1;
         }
     }
+    if (!cond) {
+        return -1;
+    }
     max = arrayResponses[startIdx];
-    for(i=startIdx; i<SO_PORTI; i++){
+    portID = startIdx;
+    for (i = startIdx; i < SO_PORTI; i++) {
         if(validityArray[i] && arrayResponses[i] > max){
           max = arrayResponses[i];
           portID = i;  
         } 
     }
     *quantoPossoScaricare = max;
-    printf("[%d]Nave: ho scelto il porto %d per scaricare\n", getpid(), i);
+    printf("[%d]Nave: ho scelto il porto %d per scaricare\n", getpid(), portID);
     return portID;
 }
 

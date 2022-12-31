@@ -1,15 +1,15 @@
 ------------------Day 0 -----------------
 Tipo merce 0:
 	- Non scaduta:
-		a) nei porti: 42
+		a) nei porti: 0
 		b) in nave: 3
 	- Scaduta:
-		a) nei porti: 0
+		a) nei porti: 48
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 1:
 	- Non scaduta:
-		a) nei porti: 29
+		a) nei porti: 41
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
@@ -17,7 +17,7 @@ Tipo merce 1:
 	- Consegnata: 0
 Tipo merce 2:
 	- Non scaduta:
-		a) nei porti: 37
+		a) nei porti: 25
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
@@ -25,15 +25,15 @@ Tipo merce 2:
 	- Consegnata: 0
 Tipo merce 3:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 37
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 25
+		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 4:
 	- Non scaduta:
-		a) nei porti: 117
+		a) nei porti: 99
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
@@ -42,15 +42,15 @@ Tipo merce 4:
 ------------------Day 1 -----------------
 Tipo merce 0:
 	- Non scaduta:
-		a) nei porti: 42
+		a) nei porti: 0
 		b) in nave: 3
 	- Scaduta:
-		a) nei porti: 0
+		a) nei porti: 48
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 1:
 	- Non scaduta:
-		a) nei porti: 29
+		a) nei porti: 41
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
@@ -58,7 +58,7 @@ Tipo merce 1:
 	- Consegnata: 0
 Tipo merce 2:
 	- Non scaduta:
-		a) nei porti: 37
+		a) nei porti: 25
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
@@ -66,15 +66,15 @@ Tipo merce 2:
 	- Consegnata: 0
 Tipo merce 3:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 37
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 25
+		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 4:
 	- Non scaduta:
-		a) nei porti: 117
+		a) nei porti: 99
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
@@ -83,15 +83,15 @@ Tipo merce 4:
 ------------------Day 2 -----------------
 Tipo merce 0:
 	- Non scaduta:
-		a) nei porti: 77
+		a) nei porti: 0
 		b) in nave: 3
 	- Scaduta:
-		a) nei porti: 0
+		a) nei porti: 75
 		b) in nave: 0
-	- Consegnata: 0
+	- Consegnata: 3
 Tipo merce 1:
 	- Non scaduta:
-		a) nei porti: 70
+		a) nei porti: 74
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
@@ -99,7 +99,7 @@ Tipo merce 1:
 	- Consegnata: 0
 Tipo merce 2:
 	- Non scaduta:
-		a) nei porti: 80
+		a) nei porti: 64
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
@@ -107,15 +107,15 @@ Tipo merce 2:
 	- Consegnata: 0
 Tipo merce 3:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 77
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 69
+		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 4:
 	- Non scaduta:
-		a) nei porti: 204
+		a) nei porti: 210
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
@@ -124,23 +124,23 @@ Tipo merce 4:
 ------------------Day 3 -----------------
 Tipo merce 0:
 	- Non scaduta:
-		a) nei porti: 64
+		a) nei porti: 0
 		b) in nave: 3
 	- Scaduta:
-		a) nei porti: 42
+		a) nei porti: 125
 		b) in nave: 0
-	- Consegnata: 0
+	- Consegnata: 3
 Tipo merce 1:
 	- Non scaduta:
-		a) nei porti: 119
+		a) nei porti: 78
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 0
+		a) nei porti: 41
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 2:
 	- Non scaduta:
-		a) nei porti: 109
+		a) nei porti: 110
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
@@ -148,60 +148,60 @@ Tipo merce 2:
 	- Consegnata: 0
 Tipo merce 3:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 121
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 100
+		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 4:
 	- Non scaduta:
-		a) nei porti: 199
+		a) nei porti: 176
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 117
+		a) nei porti: 99
 		b) in nave: 0
 	- Consegnata: 0
 ------------------STATO FINALE -----------------
 Tipo merce 0:
 	- Non scaduta:
-		a) nei porti: 111
+		a) nei porti: 0
 		b) in nave: 3
 	- Scaduta:
-		a) nei porti: 42
+		a) nei porti: 161
 		b) in nave: 0
-	- Consegnata: 0
+	- Consegnata: 3
 Tipo merce 1:
 	- Non scaduta:
-		a) nei porti: 152
+		a) nei porti: 126
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 0
+		a) nei porti: 41
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 2:
 	- Non scaduta:
-		a) nei porti: 91
+		a) nei porti: 110
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 43
+		a) nei porti: 39
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 3:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 80
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 133
+		a) nei porti: 77
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 4:
 	- Non scaduta:
-		a) nei porti: 224
+		a) nei porti: 267
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 204
+		a) nei porti: 99
 		b) in nave: 0
 	- Consegnata: 0
-TOTALE MERCE: 1003 <==> SO_FILL: 1000
+TOTALE MERCE: 1006 <==> SO_FILL: 1000
 ❌

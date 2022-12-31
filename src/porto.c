@@ -133,7 +133,7 @@ void recvChargerHandler(long type, char* text) {
     int portShmId;
     Port porto;
     int idx;
-    int keyMiaCoda;
+    int keyMiaCoda; 
     int IDMiaCoda;
     int res;
     int keyCodaNave;
@@ -182,12 +182,15 @@ void recvChargerHandler(long type, char* text) {
     res = checkRequests(porto, tipoMerceRichiesto, quantity);
     mutexPro(verifyRequestSemID, idx, UNLOCK, errorHandler, "recvChargerHandler->verifyRequestSemID UNLOCK");
 
-    if (res != -1) {
-        msgSend(keyCodaNave, "NOPE", idx + 1, errorHandler, "recvChargerHandler->invio risposta negativa");
+    if (res == -1) {
+        printf("INVIO NOPE\n");
+        msgSend(shipQueueID, "NOPE", idx + 1, errorHandler, "recvChargerHandler->invio risposta negativa");
     }
     else {
+        printf("INVIO %d\n", res);
+        
         sprintf(rtext, "%d", res);
-        msgSend(keyCodaNave, text, idx + 1, errorHandler, "recvChargerHandler->invio risposta positiva");
+        msgSend(shipQueueID, rtext, idx + 1, errorHandler, "recvChargerHandler->invio risposta positiva");
     }
     messaggioRicevuto = msgRecv(IDMiaCoda, idNaveMittente + 1, errorHandler, NULL, SYNC, "recvChargerHandler->ricezione di sonostatoScelto");
 
