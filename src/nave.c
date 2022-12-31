@@ -79,7 +79,8 @@ void dischargeProducts(Ship ship) {
     int portID;
     int product_index;
     int waitToTravelSemID;
-    if(ship->weight == 0){
+    int quantoPossoScaricare;
+    if (ship->weight == 0) {
 
         chargeProducts(ship, chooseQuantityToCharge(ship));
 
@@ -131,7 +132,7 @@ void dischargeProducts(Ship ship) {
 
     */
 
-        portID = portResponsesForDischarge(ship);
+        portID = portResponsesForDischarge(ship, &quantoPossoScaricare);
 
         if(portID == -1){
             addExpiredGood(ship->products[product_index].weight, ship->products[product_index].product_type, SHIP);
@@ -149,7 +150,7 @@ void dischargeProducts(Ship ship) {
 
             travel(ship, portID);
             
-            accessPortForDischarge(ship, portID, product_index);
+            accessPortForDischarge(ship, portID, product_index, quantoPossoScaricare);
         }      
 
 

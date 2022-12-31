@@ -342,7 +342,7 @@ void callPortsForDischarge(Ship ship, Product p) {
     }
 }
 
-int portResponsesForDischarge(Ship ship){
+int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare){
     int i;
     int max;
     int queueID;
@@ -382,6 +382,7 @@ int portResponsesForDischarge(Ship ship){
           portID = i;  
         } 
     }
+    *quantoPossoScaricare = max;
     printf("[%d]Nave: ho scelto il porto %d per scaricare\n", getpid(), i);
     return portID;
 }
@@ -447,7 +448,7 @@ void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int wei
     mutexPro(pierSemID, portID, UNLOCK, errorHandler);
 }
 
-void accessPortForDischarge(Ship ship, int portID, int product_index){
+void accessPortForDischarge(Ship ship, int portID, int product_index, int quantoPossoScaricare){
     int portShmID;
     int pierSemID;
     int shipSemID;
@@ -468,8 +469,16 @@ void accessPortForDischarge(Ship ship, int portID, int product_index){
 
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler);
 
-    addDeliveredGood(ship->products[product_index].weight, ship->products[product_index].product_type);
-    removeProduct(ship, product_index);
+
+    if (quantoPossoScaricare >= ship->products[product_index].weight) {
+        addDeliveredGood(ship->products[product_index].weight, ship->products[product_index].product_type);
+        
+        removeProduct(ship, product_index);
+    }
+    else {
+        addDeliveredGood(quantoPossoScaricare, ship->products[product_index].product_type);
+        ship->products[product_index].weight -= quantoPossoScaricare;
+    }
 
     mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler);
 

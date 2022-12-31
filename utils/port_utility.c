@@ -513,10 +513,16 @@ void launchCharger(void (*recvHandler)(long, char*), int idx) {
     }
 }
 int checkRequests(Port p, int type, int quantity) {
-    
+    int diff;
+    int n = p->requests[type];
     if (p->requests[type] == 0) return -1;
-    
-    p->requests[type] -= quantity;
-    return p->requests[type];
+    if (quantity >= p->requests[type]) {
+        p->requests[type] = 0;
+    }
+    else {
+        p->requests[type] -= quantity;
+        
+    }
+    return n;
 }
 

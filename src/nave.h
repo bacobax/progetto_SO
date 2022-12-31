@@ -71,7 +71,7 @@ int choosePortForCharge(PortOffer* port_offers);
 void replyToPortsForCharge(Ship ship, int portID);
 void replyToPortsForDischarge(Ship ship, int portID);
 
-int portResponsesForDischarge(Ship ship);
+int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare);
 
 
 
@@ -79,7 +79,7 @@ void travel(Ship ship, int portID);
 
 
 void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int weight);
-void accessPortForDischarge(Ship ship, int portID, int product_index);
+void accessPortForDischarge(Ship ship, int portID, int product_index, int quantoPossoScaricare);
 
 void updateExpTimeShip(Ship ship);
 

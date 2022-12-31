@@ -193,7 +193,7 @@ void recvChargerHandler(long type, char* text) {
     printf("Port %d: valore di sonostatoScelto = %d\n", idx, sonostatoScelto);
     if (sonostatoScelto == 0 && res != -1) {
         printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", idx);
-        porto->requests[tipoMerceRichiesto] += quantity;
+        porto->requests[tipoMerceRichiesto] = res;
     }
 
 
