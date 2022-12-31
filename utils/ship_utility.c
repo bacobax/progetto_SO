@@ -344,11 +344,17 @@ void callPortsForDischarge(Ship ship, Product p) {
 
 int portResponsesForDischarge(Ship ship){
     int i;
-    int max = 0;
+    int max;
     int queueID;
     int portID = -1;
     mex* response;
+    int startIdx = -1;
     int arrayResponses[SO_PORTI];
+    int validityArray[SO_PORTI];
+    int cond = 0;
+    for (i = 0; i < SO_PORTI; i++) {
+        validityArray[i] = 0;
+    }
     initArrayResponses(arrayResponses);
 
     queueID = useQueue(ftok("./src/nave.c", ship->shipID), errorHandler); /* coda di messaggi delle navi per le risposte di scaricamento*/
@@ -360,11 +366,18 @@ int portResponsesForDischarge(Ship ship){
         if(strcmp(response->mtext, "NOPE") != 0){
             printf("[%d]Nave: ho trovato porto %d in cui fare scarico\n", getpid(), i);
             arrayResponses[i] = atoi(response->mtext);
+            validityArray[i] = 1;
         }
     }
-
-    for(i=0; i<SO_PORTI; i++){
-        if(arrayResponses[i] > max){
+    for (i = 0; i < SO_PORTI && !cond; i++) {
+        if (validityArray[i]) {
+            startIdx = i;
+            cond = 1;
+        }
+    }
+    max = arrayResponses[startIdx];
+    for(i=startIdx; i<SO_PORTI; i++){
+        if(validityArray[i] && arrayResponses[i] > max){
           max = arrayResponses[i];
           portID = i;  
         } 
