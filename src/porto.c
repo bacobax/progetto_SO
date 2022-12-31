@@ -208,7 +208,7 @@ void recvChargerHandler(long type, char* text) {
         /* addNotExpiredGood(0 - quantity, tipoTrovato, PORT); */
     }
     mutexPro(waitToTravelSemID, idNaveMittente, LOCK, errorHandler, "recvChargerHandler->waitToTravelSemID LOCK");
-    //TODO: Fare una recv per sapere se sono stato scelto
+    /*TODO: Fare una recv per sapere se sono stato scelto*/
 
     return;
 }

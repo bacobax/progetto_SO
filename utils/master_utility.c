@@ -273,10 +273,10 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeSem(waitEndDaySemID, errorHandler, "waitEndDaySemID");
     removeSem(controlPortsDisponibilitySemID, errorHandler, "controlPortsDisponibilitySemID");
     removeSem(verifyRequestPortSemID, errorHandler, "verifyRequestPortSemID");
-    /*
-    removeSem(waitToTravelsemID, errorHandler);
+    
+    removeSem(waitToTravelsemID, errorHandler, "waitToTravelsemID");
 
-    */
+    
     removeSem(waitResponsesID, errorHandler, "waitResponsesID");
     printf("master tutti i sem sono stati rimoessi\n");
 

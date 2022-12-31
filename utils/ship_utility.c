@@ -209,7 +209,9 @@ int chooseProductToDelivery(Ship ship) {
     int i;
     int index;      
     int expTime;                    /* do per scontato che ci sia almeno 1 tipo di merce sulla nave in questo caso nella posizione 0*/
+    int semID;
     Product* products = ship->products;
+
     expTime = firstValidExpTime(ship->products, &index);
     for(i=1; i<SO_CAPACITY; i++){
         /*
@@ -219,7 +221,6 @@ int chooseProductToDelivery(Ship ship) {
             index = i;        
         }
     }
-
     return index;
 }
 
@@ -333,7 +334,6 @@ void callPortsForDischarge(Ship ship, Product p) {
 
 
     for (i = 0; i < SO_PORTI; i++) {
-        //TODO: implementare semaforo che aspetta che il porto abbia ricevuto prima di inviare il prossimo messaggio
         
         printf("[%d]NAVE: invio domanda al porto %d per scaricare\n", getpid(), i);
         msgSend(requesetPortQueueID, text, i+1, errorHandler, "callPortsForDischarge");
@@ -464,22 +464,25 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
     port = ((Port) getShmAddress(portShmID, 0, errorHandler, "accessPortForCharge")) + portID;
 
     mutexPro(pierSemID, portID, LOCK, errorHandler , "accessPortForCharge->pierSemID LOCK");
-
     /*nanosecsleep(ship->products[product_index].weight / SO_LOADSPEED);*/
     sleep(1);
-
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler,  "accessPortForCharge->shipSemid LOCK");
 
+    if(ship->products[product_index].expirationTime > 0){
+        if (quantoPossoScaricare >= ship->products[product_index].weight) {
+            addDeliveredGood(ship->products[product_index].weight, ship->products[product_index].product_type);
+            
+            removeProduct(ship, product_index);
+        }
+        else {
+            addDeliveredGood(quantoPossoScaricare, ship->products[product_index].product_type);
+            ship->products[product_index].weight -= quantoPossoScaricare;
+        }
+    } else {
+        printf("\nOOPS! [%d]Nave con id:%d la merce che volevi scaricare è scaduta!!!\n", getpid(), ship->shipID);
+    }
 
-    if (quantoPossoScaricare >= ship->products[product_index].weight) {
-        addDeliveredGood(ship->products[product_index].weight, ship->products[product_index].product_type);
-        
-        removeProduct(ship, product_index);
-    }
-    else {
-        addDeliveredGood(quantoPossoScaricare, ship->products[product_index].product_type);
-        ship->products[product_index].weight -= quantoPossoScaricare;
-    }
+   
 
     mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler, "accessPortForCharge->shipSemID UNLOCK");
 

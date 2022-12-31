@@ -80,6 +80,7 @@ void dischargeProducts(Ship ship) {
     int product_index;
     int waitToTravelSemID;
     int quantoPossoScaricare;
+    
     if (ship->weight == 0) {
 
         chargeProducts(ship, chooseQuantityToCharge(ship));
@@ -108,7 +109,7 @@ void dischargeProducts(Ship ship) {
     */
         printShip(ship);
         product_index = chooseProductToDelivery(ship);
-
+        printf("\n\n[%d]Nave: la mia merce scade tra:%d\n\n", getpid(), ship->products[product_index]);
         callPortsForDischarge(ship, ship->products[product_index]);  
 
     /* 2 - Nave) Per ogni porto che mi risponde posso trovarmi in uno dei seguenti casi:
@@ -151,7 +152,7 @@ void dischargeProducts(Ship ship) {
             mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler, "dischargeProducts->waitToTravelSemID +SO_PORTI");
 
             travel(ship, portID);
-            
+            printf("\n\n[%d]Nave: la mia merce scade tra:%d E STO PER FARE accessPortForDischarge\n\n", getpid(), ship->products[product_index]);
             accessPortForDischarge(ship, portID, product_index, quantoPossoScaricare);
         }      
 
@@ -183,7 +184,7 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     p3.product_type = 2;
     p3.expirationTime = 3;
     p3.weight = 10;
-    p4.product_type = 3;
+    p4.product_type = 4;
     p4.expirationTime = 2;
     p4.weight = 8;
 
@@ -193,9 +194,9 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     int charge = 1;
 
     checkInConfig();
-    printf("Nave con id:%d: config finita, aspetto ok partenza dal master...\n", ship->shipID);
+    printf("[%d]Nave con id:%d: config finita, aspetto ok partenza dal master...\n", getpid(),ship->shipID);
     waitForStart();
-    printf("Nave con id:%d partita\n", ship->shipID);
+    printf("[%d]Nave con id:%d partita\n", getpid(),ship->shipID);
 
     /* while(1){
     res = addProduct(ship, p2);

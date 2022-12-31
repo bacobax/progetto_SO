@@ -94,13 +94,14 @@ void addDeliveredGood(int quantity, int type){
     semid = useSem(DUMPSEMKEY, errorHandler, "addDeliveredGood");
     
     info = ((GoodTypeInfo*) getShmAddress(shmid, 0, errorHandler, "addDeliveredGood")) + type;
-
+    printf("\n\nPRIMA DELLA MUTEXPRO DI ADD_DELIVERED_GOOD type:%d\n\n",type);
     mutexPro(semid, type, LOCK, errorHandler, "addDeliveredGood LOCK");
 
     info->delivered_goods += quantity;
     info->goods_on_ship -= quantity;
 
     mutexPro(semid, type, UNLOCK, errorHandler, "addDeliveredGood LOCK");
+    printf("\n\nDOPO LA MUTEXPRO DI ADD_DELIVERED_GOOD ANDATA A BUON FINE\n\n");
     shmDetach(info - type,errorHandler, "addDeliveredGood");
 }
 

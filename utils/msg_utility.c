@@ -13,7 +13,7 @@ void msgSend(int msgqID, char text[MEXBSIZE], long type, void (*errorHandler)(in
     m.mtype = type;
     strcpy(m.mtext, text);
 
-    if (msgsnd(msgqID, &m, MEXBSIZE, IPC_NOWAIT) == -1) {
+    if (msgsnd(msgqID, &m, MEXBSIZE, 0) == -1) {
         if (errorHandler != NULL) {
             errorHandler(MERRSND,errCtx);
             exit(EXIT_FAILURE);
