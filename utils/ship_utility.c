@@ -383,6 +383,7 @@ int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare){
 
     for (i = 0; i < SO_PORTI; i++) {
         validityArray[i] = 0;
+        fp[i] = NULL;
     }
     initArrayResponses(arrayResponses);
 
