@@ -4,16 +4,27 @@
 #include "../config1.h"
 #include "./msg_utility.h"
 
-int main(int argc, char const* argv[]) {
+int main(int argc, char* argv[]) {
+    /*
     int queueID;
     int type;
     mex* res;
     queueID = atoi(argv[1]);
     type = atoi(argv[2]);
-
-    // res = msgRecv(queueID, type, errorHandler, NULL, SYNC, "msg recv in queuereader");
-    // printf("%s" , res->mtext);
-    fprintf(stdout, "CIAO\n");
-
-    return 0;
+    
+    printf("[%d]queue_read queueID: %d type_msg:%d\n", queueID, type);
+    */
+    /* res = msgRecv(queueID, type, errorHandler, NULL, SYNC, "msg recv in queuereader"); */
+    /* printf("%s" , res->mtext); */
+    
+    /*fprintf(stdout, "CIAO\n");*/
+    /*printf("a");*/
+    
+    /*
+    char* s = "ciaoo!";
+    write(STDOUT_FILENO, s, strlen(s));*/
+    
+    char c = 'a';
+    fputc(c, stdout);
+    exit(EXIT_SUCCESS);
 }
