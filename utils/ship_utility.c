@@ -388,15 +388,15 @@ int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare){
 
     for (i = 0; i < SO_PORTI; i++) {
         sprintf(readerFileName, "./utils/bin/queuereader %d %d", queueID, i + 1);
-        fp[i] = popen("./utils/bin/queuereader", "r");
+        fp[i] = popen(readerFileName, "r");
         if (fp[i] == NULL) {
             perror("Errore nella popen");
             exit(EXIT_FAILURE);
         }
     }
     for (i = 0; i < SO_PORTI; i++) {
-        //fscanf(fp[i], "%s", textResponse);
-        while (fgets(textResponse, 1024, fp[i]) != NULL);
+        fscanf(fp[i], "%s", textResponse);
+        // while (fgets(textResponse, 1024, fp[i]) != NULL);
         if (ferror(fp[i])) {
             perror("Errore nella lettura della pipe");
             exit(1);

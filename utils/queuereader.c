@@ -15,5 +15,8 @@ int main(int argc, char const* argv[]) {
     // printf("%s" , res->mtext);
     fprintf(stdout, "CIAO\n");
 
+    while (1);
+    
+    
     return 0;
 }
