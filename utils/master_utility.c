@@ -315,7 +315,7 @@ void refillCode(intList* l, int msgRefillerID, int giorno) {
 
         */
         /* Invio messaggio alla coda 458752 con il seguente testo: 0|20 con tipo 0 */
-        msgSend(msgRefillerID, supportText, type, errorHandler, "refillCode");
+        msgSend(msgRefillerID, supportText, type, errorHandler,0, "refillCode");
     }
 
 }

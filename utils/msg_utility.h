@@ -25,7 +25,7 @@ typedef struct _mex {
 
 /* semplificazione della msgsnd con una gestione degli errori di default
    se si setta l'handler a NULL allora è usato quello di default */
-void msgSend(int msgqID, char text[MEXBSIZE], long type, void (*errorHandler)(int err, char* errCtx), char* errCtx);
+void msgSend(int msgqID, char text[MEXBSIZE], long type, void (*errorHandler)(int err, char* errCtx),int ipcNoWait ,char* errCtx);
 
 
 /* semplificazione della msgrcv con una gestione degli errori di default

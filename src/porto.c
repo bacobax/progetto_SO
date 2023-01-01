@@ -85,14 +85,14 @@ void recvDischargeHandler(long type, char* text) {
 
 
     if (res == -1) {
-        msgSend(shipQueueID, "x", idx + 1, errorHandler,"risposta negativa recvDischargerHandler");
+        msgSend(shipQueueID, "x", idx + 1, errorHandler,0, "risposta negativa recvDischargerHandler");
         printf("✅Port %d: MSGSND NEGATIVA RIUSCITA", getppid(), idNaveMittente, quantity);
         
     }
     else {
         
         sprintf(text, "%d %d", tipoTrovato, dataScadenzaTrovata);
-        msgSend(shipQueueID, text, idx + 1, errorHandler,"risposta positiva recvDischargerHandler");
+        msgSend(shipQueueID, text, idx + 1, errorHandler,0,"risposta positiva recvDischargerHandler");
         printf("✅Port %d: MSGSND POSITIVA RIUSCITA", getppid(), idNaveMittente, quantity);
         
     }
@@ -184,13 +184,13 @@ void recvChargerHandler(long type, char* text) {
 
     if (res == -1) {
         printf("INVIO NOPE\n");
-        msgSend(shipQueueID, "NOPE", idx + 1, errorHandler, "recvChargerHandler->invio risposta negativa");
+        msgSend(shipQueueID, "NOPE", idx + 1, errorHandler, 1,"recvChargerHandler->invio risposta negativa");
     }
     else {
         printf("INVIO %d\n", res);
         
         sprintf(rtext, "%d", res);
-        msgSend(shipQueueID, rtext, idx + 1, errorHandler, "recvChargerHandler->invio risposta positiva");
+        msgSend(shipQueueID, rtext, idx + 1, errorHandler,1, "recvChargerHandler->invio risposta positiva");
     }
     messaggioRicevuto = msgRecv(IDMiaCoda, idNaveMittente + 1, errorHandler, NULL, SYNC, "recvChargerHandler->ricezione di sonostatoScelto");
 

@@ -241,7 +241,7 @@ void callPortsForCharge(Ship ship, int quantityToCharge){
 
         */
          printf("[%d]NAVE: invio domanda al porto %d\n",getpid() ,i);
-         msgSend(requestPortQueueID, text, i+1, errorHandler, "callPortsForCharge");
+         msgSend(requestPortQueueID, text, i+1, errorHandler, 0,"callPortsForCharge");
          mutexPro(waitResponseSemID, ship->shipID, WAITZERO, errorHandler, "callPortsForCharge WAITZERO");
          mutexPro(waitResponseSemID, ship->shipID, UNLOCK, errorHandler, "callPortsForCharge +1");
 
@@ -259,10 +259,30 @@ int portResponsesForCharge(Ship ship, PortOffer* port_offers){
     int queueID;
     int ports = 0;
     mex* response;
-    queueID = useQueue(ftok("./src/nave.c" , ship->shipID), errorHandler, "portResponsesForCharge");
-    
+    FILE* fp[SO_PORTI];
+    char readerFileName[1024];
+    char textResponse[1024];
+    queueID = useQueue(ftok("./src/nave.c", ship->shipID), errorHandler, "portResponsesForCharge");
+    /*
     for (i = 0; i < SO_PORTI; i++) {
-        printf("[%d]Nave: aspetto su coda %d messaggio con type %d\n", getpid() ,queueID, i + 1);
+        sprintf(readerFileName, "./utils/bin/queuereader %d %d", queueID, i + 1);
+        fp[i] = popen("./utils/bin/queuereader", "r");
+        if (fp[i] == NULL) {
+            perror("Errore nella popen");
+            exit(EXIT_FAILURE);
+        }
+    }
+    for (i = 0; i < SO_PORTI; i++) {
+        fscanf(fp[i], "%s", textResponse);
+        if(strlen(response->mtext) > 1){
+            
+            sscanf(response->mtext, "%d %d", &port_offers[i].product_type, &port_offers[i].expirationTime);
+            ports++;
+        }
+    }
+    */
+    for (i = 0; i < SO_PORTI; i++) {
+        printf("[%d]Nave: aspetto su coda %d messaggio con type %d\n", getpid(), queueID, i + 1);
         response = msgRecv(queueID, i + 1, errorHandler, NULL, SYNC, "portResponsesForCharge");
 
         
@@ -273,6 +293,8 @@ int portResponsesForCharge(Ship ship, PortOffer* port_offers){
             ports++;
         }
     }
+    
+    
 
     return ports;
 }
@@ -311,13 +333,13 @@ void replyToPortsForCharge(Ship ship, int portID){
         if(i == portID){
             printf("[%d]Nave ho scelto il porto:%d\n", getpid(), i);
             sprintf(text, "1"); /*ok*/
-            msgSend(queueID, text, (ship->shipID + 1), errorHandler, "replyToPortsForCharge");
+            msgSend(queueID, text, (ship->shipID + 1), errorHandler,0 ,"replyToPortsForCharge");
         }
         else {
             printf("[%d]Nave NON ho scelto il porto:%d\n", getpid(), i);
             
             sprintf(text, "0"); /*negative*/
-            msgSend(queueID, text, (ship->shipID + 1), errorHandler, "replyToPortsForCharge");
+            msgSend(queueID, text, (ship->shipID + 1), errorHandler,0 ,"replyToPortsForCharge");
         }
     }
 
@@ -336,7 +358,7 @@ void callPortsForDischarge(Ship ship, Product p) {
     for (i = 0; i < SO_PORTI; i++) {
         
         printf("[%d]NAVE: invio domanda al porto %d per scaricare\n", getpid(), i);
-        msgSend(requesetPortQueueID, text, i+1, errorHandler, "callPortsForDischarge");
+        msgSend(requesetPortQueueID, text, i+1, errorHandler,0 ,"callPortsForDischarge");
         mutexPro(waitResponseSemID, ship->shipID, WAITZERO, errorHandler, "callPortsForDischarge WAITZERO");
         mutexPro(waitResponseSemID, ship->shipID, UNLOCK, errorHandler, "callPortsForDischarge LOCK");
     }
@@ -352,6 +374,10 @@ int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare){
     int arrayResponses[SO_PORTI];
     int validityArray[SO_PORTI];
     int cond = 0;
+    FILE* fp[SO_PORTI];
+    char readerFileName[1024];
+    char textResponse[1024] = "";
+    
     for (i = 0; i < SO_PORTI; i++) {
         validityArray[i] = 0;
     }
@@ -359,7 +385,34 @@ int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare){
 
     queueID = useQueue(ftok("./src/nave.c", ship->shipID), errorHandler, "portResponsesForDischarge"); /* coda di messaggi delle navi per le risposte di scaricamento*/
 
-    for(i=0; i<SO_PORTI; i++){
+
+    for (i = 0; i < SO_PORTI; i++) {
+        sprintf(readerFileName, "./utils/bin/queuereader %d %d", queueID, i + 1);
+        fp[i] = popen("./utils/bin/queuereader", "r");
+        if (fp[i] == NULL) {
+            perror("Errore nella popen");
+            exit(EXIT_FAILURE);
+        }
+    }
+    for (i = 0; i < SO_PORTI; i++) {
+        //fscanf(fp[i], "%s", textResponse);
+        while (fgets(textResponse, 1024, fp[i]) != NULL);
+        if (ferror(fp[i])) {
+            perror("Errore nella lettura della pipe");
+            exit(1);
+        }
+        printf("RESPONSE: %s\n", textResponse);
+        if (strcmp(textResponse, "NOPE") != 0) {
+            printf("[%d]Nave: ho trovato porto %d in cui fare scarico\n", getpid(), i);
+            arrayResponses[i] = atoi(response->mtext);
+            validityArray[i] = 1;
+        }
+    }
+    for (i = 0; i < SO_PORTI; i++) {
+        pclose(fp[i]);
+    }
+    /*
+    for (i = 0; i < SO_PORTI; i++) {
         response = msgRecv(queueID, i+1, errorHandler, NULL, SYNC, "portResponsesForDischarge");
 
         printf("🤡[%d]Nave: messaggio ricevuto per scaricare: %s\n" ,getpid() , response->mtext);
@@ -368,7 +421,7 @@ int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare){
             arrayResponses[i] = atoi(response->mtext);
             validityArray[i] = 1;
         }
-    }
+    }*/
     for (i = 0; i < SO_PORTI && !cond; i++) {
         if (validityArray[i]) {
             startIdx = i;
@@ -401,10 +454,10 @@ void replyToPortsForDischarge(Ship ship, int portID){
         if(i == portID){
             printf("[%d]Nave: mando msg CONFERMA al porto %d per scaricare\n", getpid(), portID);
             sprintf(mex, "1");
-            msgSend(queueID, mex, ship->shipID + 1, errorHandler, "replyToPortsForDischarge");
+            msgSend(queueID, mex, ship->shipID + 1, errorHandler,0 ,"replyToPortsForDischarge");
         } else {
             sprintf(mex, "0");
-            msgSend(queueID, mex, ship->shipID + 1, errorHandler, "replyToPortsForDischarge");
+            msgSend(queueID, mex, ship->shipID + 1, errorHandler,0 ,"replyToPortsForDischarge");
         }
     }
 }

@@ -149,21 +149,21 @@ void test1() {
 }
 
 void testShm() {
-    int shmid = createShm(IPC_PRIVATE, sizeof(int), NULL);
-    int* shmAddr = (int*)getShmAddress(shmid, 0, NULL);
+    int shmid = createShm(IPC_PRIVATE, sizeof(int), NULL, "dfs");
+    int* shmAddr = (int*)getShmAddress(shmid, 0, NULL, "fd");
     *shmAddr = 5;
     printf("%d\n", *shmAddr);
-    shmDetach(shmAddr, NULL);
-    removeShm(shmid, NULL);
+    shmDetach(shmAddr, NULL, "dsf");
+    removeShm(shmid, NULL, "dfs");
 }
 
 
 void testSemFunc() {
     int semid;
-    semid = createMultipleSem(IPC_PRIVATE, 10, 0, NULL);
+    semid = createMultipleSem(IPC_PRIVATE, 10, 0, NULL, "testSemFunc");
     printf("Creato il semaforo\n");
 
-    mutexPro(semid, 8, LOCK, NULL);
+    mutexPro(semid, 8, LOCK, NULL, "testSemFunc");
 
 }
 
@@ -267,7 +267,7 @@ void testSemafori() {
     
     scanf("%d %d", &key , &idx);
     printf("FACCIO LA SEM GET\n");
-    semID = useSem(key, errorHandler);
+    semID = useSem(key, errorHandler, "testSemafori");
 
     getAllVAlues(semID , 20);
 
@@ -284,11 +284,28 @@ void testCode() {
     int queueID;
     int key;
     int res;
+    int ftokId;
+    char text[1024];
     mex* messaggioRicevuto;
-    printf("Chiave della coda: ");
-    scanf("%d" , &key);
-    queueID = useQueue(key, errorHandler);
-    printQueueState(queueID, errorHandler);
+    printf("Vuoi usare ftok? ");
+    scanf("%d", &res);
+    if (res) {
+        printf("Inserire nome file:\n");
+        scanf("%s", text);
+        printf("Nome file: %s\n", text);
+        printf("Inserire id: \n");
+        scanf("%d", &ftokId);
+        key = ftok(text, ftokId);
+        printf("\nkey = %d\n", key);
+    }
+    else {
+        printf("Chiave della coda: ");
+        scanf("%d" , &key);
+    }
+
+    
+    queueID = useQueue(key, errorHandler, "testCode");
+    printQueueState(queueID, errorHandler ,"testCode printQueueState");
 
     do
     {
@@ -297,7 +314,7 @@ void testCode() {
         printf("\n");
 
         if (res) {
-            messaggioRicevuto = msgRecv(queueID, 0, errorHandler, NULL, SYNC);
+            messaggioRicevuto = msgRecv(queueID, 0, errorHandler, NULL, SYNC, "testCode");
             printf("TIPO: %ld\n", messaggioRicevuto->mtype);
             printf("TESTO: '%s'\n", messaggioRicevuto->mtext);
         }

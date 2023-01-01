@@ -169,11 +169,16 @@ void mutexPro(int semid, int semIdx, int op, void (*errorHandler)(int err, char*
 }
 
 int getWaitingPxCount(int semid, int idx) {
-    return semctl(semid, idx, GETALL);
+    return semctl(semid, idx, GETNCNT);
+}
+int getWaitingZeroPxCount(int semid, int idx) {
+    return semctl(semid, idx, GETZCNT);
 }
 
 void getAllVAlues(int semid, int length){
     union semun arg;
+    int v[length];
+    int v2[length];
     arg.array = calloc(length, sizeof(unsigned short));
     int i;
     for(i = 0; i<length; i++){
@@ -184,8 +189,18 @@ void getAllVAlues(int semid, int length){
     if(semctl(semid, 0,GETALL, arg) == -1){
         perror("SEMCTL");
     }
-    for(i=0; i<length; i++){
-        printf("VAL SEM IDX %d: %d\n" , i, arg.array[i]);
+    for (i = 0; i < length; i++) {
+        v[i] = getWaitingZeroPxCount(semid, i);
+    }
+    for (i = 0; i < length; i++) {
+        v2[i] = getWaitingPxCount(semid, i);
+    }
+    for (i = 0; i < length; i++) {
+        printf("------------\n");
+        printf("VAL SEM IDX %d: %d\n", i, arg.array[i]);
+        printf("WAITING PX IDX %d: %d\n" , i, v2[i]);
+        printf("WAITING ZERO PX IDX %d: %d\n" , i, v[i]);
+        printf("------------\n");
 
     }
 }

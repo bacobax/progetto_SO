@@ -8,12 +8,20 @@
 #include <errno.h>
 #include <time.h>
 
-void msgSend(int msgqID, char text[MEXBSIZE], long type, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
+void msgSend(int msgqID, char text[MEXBSIZE], long type, void (*errorHandler)(int err, char* errCtx),int ipcNoWait ,char* errCtx) {
     mex m;
+    int flag;
     m.mtype = type;
     strcpy(m.mtext, text);
 
-    if (msgsnd(msgqID, &m, MEXBSIZE, 0) == -1) {
+    if (ipcNoWait) {
+        flag = IPC_NOWAIT;
+    }
+    else {
+        flag = 0;
+    }
+
+    if (msgsnd(msgqID, &m, MEXBSIZE, flag) == -1) {
         if (errorHandler != NULL) {
             errorHandler(MERRSND,errCtx);
             exit(EXIT_FAILURE);
