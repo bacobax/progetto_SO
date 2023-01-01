@@ -362,6 +362,8 @@ void callPortsForDischarge(Ship ship, Product p) {
         mutexPro(waitResponseSemID, ship->shipID, WAITZERO, errorHandler, "callPortsForDischarge WAITZERO");
         mutexPro(waitResponseSemID, ship->shipID, UNLOCK, errorHandler, "callPortsForDischarge LOCK");
     }
+
+    printf("[%d]Nave con id:%d TUTTE LE DOMANDE DI RICHIESTA PER SCARICARE AL PORTO SONO STATE INVIATE\n", getpid(), ship->shipID);
 }
 
 int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare){
@@ -376,8 +378,9 @@ int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare){
     int cond = 0;
     FILE* fp[SO_PORTI];
     char readerFileName[1024];
-    char textResponse[1024] = "";
-    
+    char textResponse[1024];
+    char carattere;
+
     for (i = 0; i < SO_PORTI; i++) {
         validityArray[i] = 0;
     }
@@ -385,18 +388,37 @@ int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare){
 
     queueID = useQueue(ftok("./src/nave.c", ship->shipID), errorHandler, "portResponsesForDischarge"); /* coda di messaggi delle navi per le risposte di scaricamento*/
 
-
+    printf("[%d]Nave con id:%d sto per creare le pipes...\n", getpid(), ship->shipID);
+    /* CREAZIONE DELLE PIPES*/
     for (i = 0; i < SO_PORTI; i++) {
-        sprintf(readerFileName, "./utils/bin/queuereader %d %d", queueID, i + 1);
-        fp[i] = popen(readerFileName, "r");
+        /*sprintf(readerFileName, "./utils/bin/queuereader %d %d", queueID, i + 1);*/
+        fp[i] = popen("./utils/bin/queuereader", "r");
         if (fp[i] == NULL) {
             perror("Errore nella popen");
             exit(EXIT_FAILURE);
         }
+        printf("valore di fp[%d]:%d\n", i, fp[i]);
+        printf("[%d]Nave con id:%d, PIPE LANCIATA!\n", getpid(), ship->shipID); 
     }
+
+    printf("[%d]Nave con id:%d sono uscita dal for della creazione pipes\n", getpid(), ship->shipID);
+
     for (i = 0; i < SO_PORTI; i++) {
-        fscanf(fp[i], "%s", textResponse);
-        // while (fgets(textResponse, 1024, fp[i]) != NULL);
+        printf("[%d]Nave con id:%d leggo dal pipe...\n", getpid(), ship->shipID);
+        /*fscanf(fp[i], "%s", textResponse);*/
+        /*read(STDIN_FILENO, textResponse, 1024); */
+        fgets(textResponse, 1024, fp[i]);
+        /*
+        carattere = fgetc(fp[i]);
+        printf("[%d]Nave con id:%d ho letto dal pipe...\n", getpid(), ship->shipID);
+        printf("%c\n", carattere); */
+        printf("[%d]Nave con id:%d ho prelevato dal pipe:%s", getpid(), ship->shipID, textResponse);
+        
+
+        exit(EXIT_SUCCESS);
+
+
+        while (fgets(textResponse, 1024, fp[i]) != NULL);
         if (ferror(fp[i])) {
             perror("Errore nella lettura della pipe");
             exit(1);

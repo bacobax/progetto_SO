@@ -1,7 +1,8 @@
-all : master nave porto
+all : master nave porto queuereader
 	make master
 	make nave
 	make porto
+	make queuereader
 
 
 master : src/master.c src/dump.c utils/vettoriInt.c utils/vettoriString.c utils/sem_utility.c utils/msg_utility.c utils/errorHandler.c utils/shm_utility.c utils/support.c utils/master_utility.c utils/supplies.c utils/ship_utility.c
