@@ -407,12 +407,12 @@ int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare){
         printf("[%d]Nave con id:%d leggo dal pipe...\n", getpid(), ship->shipID);
         /*fscanf(fp[i], "%s", textResponse);*/
         /*read(STDIN_FILENO, textResponse, 1024); */
-        /*fgets(textResponse, 1024, fp[i])*/
-        
+        fgets(textResponse, 1024, fp[i]);
+        /*
         carattere = fgetc(fp[i]);
         printf("[%d]Nave con id:%d ho letto dal pipe...\n", getpid(), ship->shipID);
-        printf("%c\n", carattere); 
-        //printf("[%d]Nave con id:%d ho prelevato dal pipe:%s", getpid(), ship->shipID, textResponse);
+        printf("%c\n", carattere); */
+        printf("[%d]Nave con id:%d ho prelevato dal pipe:%s", getpid(), ship->shipID, textResponse);
         
 
         exit(EXIT_SUCCESS);

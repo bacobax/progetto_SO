@@ -23,8 +23,12 @@ int main(int argc, char* argv[]) {
     /*
     char* s = "ciaoo!";
     write(STDOUT_FILENO, s, strlen(s));*/
-    
+    /*
     char c = 'a';
     fputc(c, stdout);
+    */
+    char text[1024];
+    sprintf(text, "CIAO SONO IL PIPE\n");
+    fputs(text, stdout);
     exit(EXIT_SUCCESS);
 }
