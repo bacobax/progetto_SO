@@ -214,7 +214,6 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     dischargeProducts(ship);
     printf("FINITO SCARICO\n");
     printShip(ship);
-    /*printShip(ship);*/
         
 
         while (1) {
@@ -223,18 +222,18 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
 
     exit(EXIT_FAILURE);
 
-    /*
-    while (1) { 
-        if(charge == 1){
-            chargeProducts(ship);
-            charge = 0;
-        } else {
-            dischargeProducts(ship);
-            charge = 1;
-        }
-    } 
-    */
-    exit(EXIT_FAILURE); /* non deve mai raggiungere questa parte di codice*/
+    
+    // while (1) { 
+    //     if(charge == 1){
+    //         chargeProducts(ship, 10);
+    //         charge = 0;
+    //     } else {
+    //         dischargeProducts(ship);
+    //         charge = 1;
+    //     }
+    //     nanosecsleep(NANOS_MULT);
+    // }
+    
 }
 
 

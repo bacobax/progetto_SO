@@ -474,7 +474,6 @@ void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int wei
     
     int pierSemID;
     int shipSemID;
-    Port port;
     Product p;
     p.product_type = offer_choosen.product_type;
     p.expirationTime = offer_choosen.expirationTime;
@@ -484,7 +483,6 @@ void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int wei
     pierSemID = useSem(BANCHINESEMKY, errorHandler, "accessPortForCharge->semaforo banchine");
     shipSemID = useSem(SEMSHIPKEY, errorHandler, "accessPortForCharge->semaforo rw navi");
 
-    port = ((Port)getShmAddress(portShmID, 0, errorHandler, "accessPortForCharge")) + portID;
 
     mutexPro(pierSemID, portID, LOCK, errorHandler, "accessPortForCharge->semBanchine LOCK");
 
@@ -514,13 +512,11 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
     int pierSemID;
     int shipSemID;
     int portBufferSemID;
-    Port port;
 
     portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler,"accessPortForDischarge");
     pierSemID = useSem(BANCHINESEMKY, errorHandler,"accessPortForCharge->semaforo banchine");
     shipSemID = useSem(SEMSHIPKEY, errorHandler,"accessPortForCharge->semaforo rw navi");
 
-    port = ((Port) getShmAddress(portShmID, 0, errorHandler, "accessPortForCharge")) + portID;
 
     mutexPro(pierSemID, portID, LOCK, errorHandler , "accessPortForCharge->pierSemID LOCK");
     /*nanosecsleep(ship->products[product_index].weight / SO_LOADSPEED);*/
