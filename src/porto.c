@@ -184,13 +184,13 @@ void recvChargerHandler(long type, char* text) {
 
     if (res == -1) {
         printf("INVIO NOPE\n");
-        msgSend(shipQueueID, "NOPE", idx + 1, errorHandler, 1,"recvChargerHandler->invio risposta negativa");
+        msgSend(shipQueueID, "NOPE", idx + 1, errorHandler, 0,"recvChargerHandler->invio risposta negativa");
     }
     else {
         printf("INVIO %d\n", res);
         
         sprintf(rtext, "%d", res);
-        msgSend(shipQueueID, rtext, idx + 1, errorHandler,1, "recvChargerHandler->invio risposta positiva");
+        msgSend(shipQueueID, rtext, idx + 1, errorHandler,0, "recvChargerHandler->invio risposta positiva");
     }
     messaggioRicevuto = msgRecv(IDMiaCoda, idNaveMittente + 1, errorHandler, NULL, SYNC, "recvChargerHandler->ricezione di sonostatoScelto");
 

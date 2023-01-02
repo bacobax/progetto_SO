@@ -5,30 +5,21 @@
 #include "./msg_utility.h"
 
 int main(int argc, char* argv[]) {
-    /*
+    
     int queueID;
     int type;
     mex* res;
+    FILE* fp;
+    fp = fopen("./utils/bin/logQueuereader.log" , "a+");
+
     queueID = atoi(argv[1]);
     type = atoi(argv[2]);
+
+    fprintf(fp, "QUEUEID: %d, TYPE: %d\n", queueID, type);
     
-    printf("[%d]queue_read queueID: %d type_msg:%d\n", queueID, type);
-    */
-    /* res = msgRecv(queueID, type, errorHandler, NULL, SYNC, "msg recv in queuereader"); */
-    /* printf("%s" , res->mtext); */
+    res = msgRecv(queueID, type, errorHandler, NULL, SYNC, "msg recv in queuereader");
     
-    /*fprintf(stdout, "CIAO\n");*/
-    /*printf("a");*/
     
-    /*
-    char* s = "ciaoo!";
-    write(STDOUT_FILENO, s, strlen(s));*/
-    /*
-    char c = 'a';
-    fputc(c, stdout);
-    */
-    char text[1024];
-    sprintf(text, "CIAO SONO IL PIPE\n");
-    fputs(text, stdout);
+    fputs(res->mtext, stdout);
     exit(EXIT_SUCCESS);
 }

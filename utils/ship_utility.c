@@ -389,42 +389,25 @@ int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare){
 
     queueID = useQueue(ftok("./src/nave.c", ship->shipID), errorHandler, "portResponsesForDischarge"); /* coda di messaggi delle navi per le risposte di scaricamento*/
 
-    printf("[%d]Nave con id:%d sto per creare le pipes...\n", getpid(), ship->shipID);
     /* CREAZIONE DELLE PIPES*/
     for (i = 0; i < SO_PORTI; i++) {
-        /*sprintf(readerFileName, "./utils/bin/queuereader %d %d", queueID, i + 1);*/
-        fp[i] = popen("./utils/bin/queuereader", "r");
+        sprintf(readerFileName, "./utils/bin/queuereader %d %d", queueID, i + 1);
+        fp[i] = popen(readerFileName, "r");
         if (fp[i] == NULL) {
             perror("Errore nella popen");
             exit(EXIT_FAILURE);
         }
-        printf("valore di fp[%d]:%d\n", i, fp[i]);
-        printf("[%d]Nave con id:%d, PIPE LANCIATA!\n", getpid(), ship->shipID); 
     }
 
-    printf("[%d]Nave con id:%d sono uscita dal for della creazione pipes\n", getpid(), ship->shipID);
 
     for (i = 0; i < SO_PORTI; i++) {
-        printf("[%d]Nave con id:%d leggo dal pipe...\n", getpid(), ship->shipID);
-        /*fscanf(fp[i], "%s", textResponse);*/
-        /*read(STDIN_FILENO, textResponse, 1024); */
+        
         fgets(textResponse, 1024, fp[i]);
-        /*
-        carattere = fgetc(fp[i]);
-        printf("[%d]Nave con id:%d ho letto dal pipe...\n", getpid(), ship->shipID);
-        printf("%c\n", carattere); */
-        printf("[%d]Nave con id:%d ho prelevato dal pipe:%s", getpid(), ship->shipID, textResponse);
+       
+        printf("[%d]Nave con id:%d risposta del porto %d (dal pipe): %s\n", getpid(), ship->shipID, i,textResponse);
         
 
-        exit(EXIT_SUCCESS);
-
-
-        while (fgets(textResponse, 1024, fp[i]) != NULL);
-        if (ferror(fp[i])) {
-            perror("Errore nella lettura della pipe");
-            exit(1);
-        }
-        printf("RESPONSE: %s\n", textResponse);
+        
         if (strcmp(textResponse, "NOPE") != 0) {
             printf("[%d]Nave: ho trovato porto %d in cui fare scarico\n", getpid(), i);
             arrayResponses[i] = atoi(response->mtext);

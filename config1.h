@@ -3,8 +3,8 @@
 #define CONFIG_1
 
 
-#define SO_PORTI    1
-#define SO_NAVI     1
+#define SO_PORTI    10
+#define SO_NAVI     10
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 #define SO_MIN_VITA  2 /* tonn */
