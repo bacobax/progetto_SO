@@ -417,17 +417,7 @@ int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare){
     for (i = 0; i < SO_PORTI; i++) {
         pclose(fp[i]);
     }
-    /*
-    for (i = 0; i < SO_PORTI; i++) {
-        response = msgRecv(queueID, i+1, errorHandler, NULL, SYNC, "portResponsesForDischarge");
-
-        printf("🤡[%d]Nave: messaggio ricevuto per scaricare: %s\n" ,getpid() , response->mtext);
-        if(strcmp(response->mtext, "NOPE") != 0){
-            printf("[%d]Nave: ho trovato porto %d in cui fare scarico\n", getpid(), i);
-            arrayResponses[i] = atoi(response->mtext);
-            validityArray[i] = 1;
-        }
-    }*/
+    
     for (i = 0; i < SO_PORTI && !cond; i++) {
         if (validityArray[i]) {
             startIdx = i;
