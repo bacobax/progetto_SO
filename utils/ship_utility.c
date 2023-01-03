@@ -358,23 +358,23 @@ int communicatePortsForDischarge(Ship ship, Product p, int* quantoPossoScaricare
     int max;
     int portID = -1;
     
-    sprintf(text, "%d %d %d",1 ,p.product_type, p.weight);
+    sprintf(text, "%d %d", p.product_type, p.weight);
 
     for (i = 0; i < SO_PORTI; i++) {
         validityArray[i] = 0;
     }
     initArrayResponses(arrayResponses);
     
-    shipQueueID = useQueue(ftok("./src/nave.c", ship->shipID), errorHandler, "portResponsesForDischarge"); /* coda di messaggi delle navi per le risposte di scaricamento*/
+    shipQueueID = useQueue(ftok("./src/nave.c", ship->shipID), errorHandler, "communicatePortsForDischarge"); /* coda di messaggi delle navi per le risposte di scaricamento*/
+    portQueueID = useQueue(PQUEREDCHKEY, errorHandler, "callPortsForDischarge");
 
     for (i = 0; i < SO_PORTI; i++) {
 
-        portQueueID = useQueue(ftok("./src/porto.h", i), errorHandler, "callPortsForDischarge");
-
         printf("[%d]NAVE: invio domanda al porto %d per scaricare\n", getpid(), i);
         msgSend(portQueueID, text, ship->shipID + 1, errorHandler, 0, "callPortsForDischarge");
+    }
 
-        
+    for(i = 0; i<SO_PORTI; i++){    
         response = msgRecv(shipQueueID, i+1, errorHandler, NULL, SYNC, "msg recv in queuereader");
         printf("[%d]Nave con id:%d risposta del porto %d: %s\n", getpid(), ship->shipID,i, response->mtext);
         
@@ -384,6 +384,7 @@ int communicatePortsForDischarge(Ship ship, Product p, int* quantoPossoScaricare
             validityArray[i] = 1;
         }
     }
+
     for (i = 0; i < SO_PORTI && !cond; i++) {
         if (validityArray[i]) {
             startIdx = i;
@@ -421,12 +422,13 @@ void replyToPortsForDischarge(Ship ship, int portID){
         queueID = useQueue(ftok("./src/porto.h", i), errorHandler, "replyToPortsForDischarge");
         if(i == portID){
             printf("[%d]Nave: mando msg CONFERMA al porto %d per scaricare\n", getpid(), portID);
-            sprintf(mex, "0 1");
+            sprintf(mex, "1");
             msgSend(queueID, mex, ship->shipID + 1, errorHandler,0 ,"replyToPortsForDischarge");
         } else {
-            sprintf(mex, "0 0");
+            sprintf(mex, "0");
             msgSend(queueID, mex, ship->shipID + 1, errorHandler,0 ,"replyToPortsForDischarge");
         }
+        printf("[%d]Nave con id:%d TUTTE LE CONFERME SONO STATE MANDATE AL PORTO:%d\n", getpid(), ship->shipID, i);
     }
 }
 
@@ -488,7 +490,7 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
     if(ship->products[product_index].expirationTime != -1){
         if (quantoPossoScaricare >= ship->products[product_index].weight) {
             addDeliveredGood(ship->products[product_index].weight, ship->products[product_index].product_type);
-            
+            printf("[%d]Nave con id:%d merce consegnata\n", getpid(), ship->shipID);
             removeProduct(ship, product_index);
         }
         else {
