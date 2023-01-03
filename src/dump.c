@@ -6,13 +6,16 @@
 #include "../utils/sem_utility.h"
 #include "../config1.h"
 #include "./dump.h"
+#include "./porto.h"
 /* TODO: la shmDetach() è buggata, da risolvere */
 void createDumpArea(){
     int shmid;
     int semid;
     int logFileSemID;
     int i;
-    GoodTypeInfo* arrGoods;
+    int c;
+    int k;
+    GoodTypeInfo *arrGoods;
     shmid = createShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler, "create dump area");
     semid = createMultipleSem(DUMPSEMKEY, SO_MERCI, 1, errorHandler, "creazione semafori per regolare la zona di dump");
     logFileSemID = createSem(LOGFILESEMKEY, 1, errorHandler, "creazione semaforo per scrivere nel file di log");
@@ -124,13 +127,20 @@ void printerCode(int day) {
     FILE* fp;
     int logFileSemID;
     int shmid;
+    int portShmid;
     int i;
     int sum;
-    GoodTypeInfo* arr;
+    int c;
+    int k;
+    GoodTypeInfo *arr;
+    Port portArr;
+    Supplies s;
 
     logFileSemID = useSem(LOGFILESEMKEY, errorHandler, "printerCode");
-    shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler , "printerCode");
-    arr = (GoodTypeInfo*)getShmAddress(shmid, 0, errorHandler ,"printerCode");
+    shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler , "printerCode->useShm del dump");
+    portShmid = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler , "printerCode->useShm dei porti");
+    arr = (GoodTypeInfo*)getShmAddress(shmid, 0, errorHandler ,"printerCode->arr");
+    portArr = (Port)getShmAddress(portShmid, 0, errorHandler, "printerCode->portArr");
 
     mutex(logFileSemID, LOCK, errorHandler, "printerCode LOCK");
     printf("Scrivo nel logifle\n");
@@ -161,7 +171,41 @@ void printerCode(int day) {
         sum += arr[i].delivered_goods + arr[i].goods_on_port + arr[i].goods_on_ship + arr[i].expired_goods_on_ship + arr[i].expired_goods_on_port;
     }
     if (day == SO_DAYS) {
-        fprintf(fp, "TOTALE MERCE: %d <==> SO_FILL: %d\n", sum, SO_FILL);
+        for (i = 0; i < SO_PORTI; i++){
+            fprintf(fp, "Porto %d:\n",i);
+            fprintf(fp, "DOMANDE:\n");
+            for (c = 0; c < SO_MERCI; c++) {
+                fprintf(fp, "%d, \n", portArr[i].requests[c]);
+            }
+
+            s = portArr[i].supplies;
+
+            fprintf(fp, "SUPPLIES:\n");
+            for (c = 0; c < SO_DAYS; c++) {
+                
+                fprintf(fp,"GIORNO %d: [ ", c);
+                for (k = 0; k < SO_MERCI; k++) {
+                    fprintf(fp, "%d, ", s.magazine[c][k]);
+                }
+                fprintf(fp, "]\n");
+            }
+
+            fprintf(fp, "EXP TIMES:\n[");
+            
+            for (c = 0; c < SO_DAYS * SO_MERCI; c++) {
+                fprintf(fp, "%d, ", s.expirationTimes[c]);
+            }
+            fprintf(fp,"]\n");
+            fprintf(fp,"--------------------------------------\n");
+
+
+            fprintf(fp,"coords:\n");
+            fprintf(fp,"x: %f\n", portArr[i].x);
+            fprintf(fp,"y: %f\n", portArr[i].y);
+
+            fprintf(fp,"______________________________________________\n");
+        }
+            fprintf(fp, "TOTALE MERCE: %d <==> SO_FILL: %d\n", sum, SO_FILL);
         if (sum == SO_FILL) {
             fprintf(fp, "✅");
         }

@@ -195,16 +195,19 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     int res;
     Product p1, p2, p3, p4;
     p1.product_type = 0;
-    p1.expirationTime = 10;
+    p1.expirationTime = 15;
     p1.weight = 3;
+
     p2.product_type = 1;
-    p2.expirationTime = 12;
+    p2.expirationTime = 16;
     p2.weight = 7;
+
     p3.product_type = 2;
-    p3.expirationTime = 11;
+    p3.expirationTime = 13;
     p3.weight = 10;
+
     p4.product_type = 4;
-    p4.expirationTime = 9;
+    p4.expirationTime = 12;
     p4.weight = 8;
 
     Ship ship;
@@ -254,5 +257,4 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     // }*/
     
 }
-
 
