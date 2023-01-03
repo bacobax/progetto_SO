@@ -118,7 +118,7 @@ void recvDischargeHandler(long type, char *text)
     getOneValue(waitToTravelSemID, idNaveMittente);
 }
 
-void recvChargerHandler(long type, char *text, int idx)
+void recvChargerHandler(long type, char *text)
 {
     int quantity;
     int idNaveMittente;
@@ -137,10 +137,11 @@ void recvChargerHandler(long type, char *text, int idx)
     int sonostatoScelto;
     mex *messaggioRicevuto;
     int waitToTravelSemID;
+    int idx;
+    idx = type - 1;
 
-    idNaveMittente = type - 1;
 
-    sscanf(text, "%d %d", &tipoMerceRichiesto, &quantity);
+    sscanf(text, "%d %d %d", &tipoMerceRichiesto, &quantity, &idNaveMittente);
 
     printf("PORTO %d, ricevuta richiesta di scaricare %d merce di tipo %d dalla nave %d\n", getppid(), quantity, tipoMerceRichiesto, idNaveMittente);
 
@@ -188,12 +189,11 @@ void recvChargerHandler(long type, char *text, int idx)
         msgSend(shipQueueID, rtext, idx + 1, errorHandler, 0, "recvChargerHandler->invio risposta positiva");
     }
 
-    messaggioRicevuto = msgRecv(IDMiaCoda, type, errorHandler, NULL, SYNC, "recvChargerHandler->ricezione risposta");
+    messaggioRicevuto = msgRecv(IDMiaCoda, idNaveMittente + 1, errorHandler, NULL, SYNC, "recvChargerHandler->ricezione risposta");
     sscanf(messaggioRicevuto->mtext, "%d", &sonostatoScelto);
 
     printf("Port %d: valore di sonostatoScelto = %d\n", idx, sonostatoScelto);
-    if (sonostatoScelto == 0 && res != -1)
-    {
+    if (sonostatoScelto == 0 && res != -1){
         printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", idx);
         porto->requests[tipoMerceRichiesto] = res;
     }

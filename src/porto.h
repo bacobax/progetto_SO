@@ -56,7 +56,7 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
 void launchGoodsDispatcher(int myQueueID, Port porto, int idx, int shipsQueueID);
 
 void launchDischarger(void (*recvHandler)(long,char*), int idx);
-void launchCharger(void (*recvHandler)(long, char*, int), int idx);
+void launchCharger(void (*recvHandler)(long, char*), int idx);
 
 int checkRequests(Port p, int type, int quantity);
 #endif

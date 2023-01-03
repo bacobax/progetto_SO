@@ -467,7 +467,7 @@ void dischargerCode(void (*recvHandler)(long, char*), int idx) {
     }
 }
 
-void chargerCode(void (*recvHandler)(long, char*, int), int idx) {
+void chargerCode(void (*recvHandler)(long, char*), int idx) {
      int requestPortQueueID;
      mex* res;
     requestPortQueueID = useQueue(PQUEREDCHKEY, errorHandler, "dischargerCode");
@@ -481,7 +481,7 @@ void chargerCode(void (*recvHandler)(long, char*, int), int idx) {
         /*
             prendo il primo messaggio che arriva
         */
-        res = msgRecvPro(requestPortQueueID, 0, errorHandler, recvHandler, ASYNC, idx ,"chargerCode");
+        res = msgRecv(requestPortQueueID, idx + 1, errorHandler, recvHandler, ASYNC,"chargerCode");
         
     }
 }
@@ -501,7 +501,7 @@ void launchDischarger(void (*recvHandler)(long, char*), int idx) {
 
 
 
-void launchCharger(void (*recvHandler)(long, char*, int), int idx) {
+void launchCharger(void (*recvHandler)(long, char*), int idx) {
     int pid;
     pid = fork();
     if (pid == -1) {

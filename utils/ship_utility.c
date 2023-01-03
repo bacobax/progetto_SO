@@ -358,7 +358,7 @@ int communicatePortsForDischarge(Ship ship, Product p, int* quantoPossoScaricare
     int max;
     int portID = -1;
     
-    sprintf(text, "%d %d", p.product_type, p.weight);
+    sprintf(text, "%d %d %d", p.product_type, p.weight, ship->shipID);
 
     for (i = 0; i < SO_PORTI; i++) {
         validityArray[i] = 0;
@@ -371,10 +371,8 @@ int communicatePortsForDischarge(Ship ship, Product p, int* quantoPossoScaricare
     for (i = 0; i < SO_PORTI; i++) {
 
         printf("[%d]NAVE: invio domanda al porto %d per scaricare\n", getpid(), i);
-        msgSend(portQueueID, text, ship->shipID + 1, errorHandler, 0, "callPortsForDischarge");
-    }
-
-    for(i = 0; i<SO_PORTI; i++){    
+        msgSend(portQueueID, text, i+1, errorHandler, 0, "callPortsForDischarge");
+  
         response = msgRecv(shipQueueID, i+1, errorHandler, NULL, SYNC, "msg recv in queuereader");
         printf("[%d]Nave con id:%d risposta del porto %d: %s\n", getpid(), ship->shipID,i, response->mtext);
         
@@ -421,15 +419,18 @@ void replyToPortsForDischarge(Ship ship, int portID){
     for(i=0; i<SO_PORTI; i++){
         queueID = useQueue(ftok("./src/porto.h", i), errorHandler, "replyToPortsForDischarge");
         if(i == portID){
-            printf("[%d]Nave: mando msg CONFERMA al porto %d per scaricare\n", getpid(), portID);
+            printf("[%d]Nave: mando msg CONFERMA al porto %d per scaricare\n", getpid(), i);
             sprintf(mex, "1");
             msgSend(queueID, mex, ship->shipID + 1, errorHandler,0 ,"replyToPortsForDischarge");
-        } else {
+        }
+        else {
+            printf("[%d]Nave: mando msg CONFERMA NEGATIVA al porto %d per scaricare\n", getpid(), i);
             sprintf(mex, "0");
             msgSend(queueID, mex, ship->shipID + 1, errorHandler,0 ,"replyToPortsForDischarge");
         }
-        printf("[%d]Nave con id:%d TUTTE LE CONFERME SONO STATE MANDATE AL PORTO:%d\n", getpid(), ship->shipID, i);
     }
+    printf("[%d]Nave con id:%d TUTTE LE CONFERME SONO STATE MANDATE\n", getpid(), ship->shipID);
+    
 }
 
 void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int weight){

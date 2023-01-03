@@ -261,7 +261,6 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
 
     kill(0, SIGUSR1); /* uccide tutti i figli */
-
     printf("master sono ancora vivo dopo kill\n");
     removeSem(startSimulationSemID, errorHandler, "startSimulationSemID");
     removeSem(reservePrintSem, errorHandler, "reservePrintSem");
