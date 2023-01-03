@@ -110,7 +110,7 @@ void dischargeProducts(Ship ship) {
         printShip(ship);
         product_index = chooseProductToDelivery(ship);
         printf("\n\n[%d]Nave: la mia merce scade tra:%d\n\n", getpid(), ship->products[product_index]);
-        callPortsForDischarge(ship, ship->products[product_index]);  
+        portID = communicatePortsForDischarge(ship, ship->products[product_index], &quantoPossoScaricare);  
 
     /* 2 - Nave) Per ogni porto che mi risponde posso trovarmi in uno dei seguenti casi:
             
@@ -132,8 +132,25 @@ void dischargeProducts(Ship ship) {
         2 - Porto) Il porto non fa niente
 
     */
+    /*
+        for(int i=0; i<SO_PORTI; i++){
+            1)nave scrive su coda del porto i (ftok(porto.h , i)) 
+            2)Dentro il messaggio: 0/1|tipo di merce|peso merce TYPE: shipID +1
+                Porto:
+                sscanf("%d|%s", &scarico, &payload);
+                if(scarico){
+                    sscanf("%d|%d" , &type, &quantity);
+                    1)Porto scrive su coda della nave shipID (ftok(nave.c, shipID))
+                    2)Dentro il messaggio: richiesta di merce del tipo type
+                }else{
+                    ...
+                }
+            3)Nave riceve messaggio del porto
+        }
 
-        portID = portResponsesForDischarge(ship, &quantoPossoScaricare);
+    */
+    /*portID = portResponsesForDischarge(ship, &quantoPossoScaricare);*/
+        
         printf("PORT ID SCELTO: %d\n", portID);
         if(portID == -1){
             addExpiredGood(ship->products[product_index].weight, ship->products[product_index].product_type, SHIP);
@@ -147,9 +164,11 @@ void dischargeProducts(Ship ship) {
 
             /* 3) Una volta arrivato al porto accedo alla prima banchina disponibile e rimuovo la merce che intendo
             consegnare dal carico della nave */
+            
             replyToPortsForDischarge(ship, portID);
             mutexPro(waitToTravelSemID, ship->shipID, WAITZERO, errorHandler, "dischargeProducts->waitToTravelSemID WAITZERO");
             mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler, "dischargeProducts->waitToTravelSemID +SO_PORTI");
+
 
             travel(ship, portID);
             printf("\n\n[%d]Nave: la mia merce scade tra:%d E STO PER FARE accessPortForDischarge\n\n", getpid(), ship->products[product_index]);

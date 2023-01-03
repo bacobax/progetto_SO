@@ -345,79 +345,45 @@ void replyToPortsForCharge(Ship ship, int portID){
 
 }
 
-void callPortsForDischarge(Ship ship, Product p) {
+int communicatePortsForDischarge(Ship ship, Product p, int* quantoPossoScaricare) {
     int i;
-    int queueID;
+    int shipQueueID;
     char text[MEXBSIZE];
-    int requesetPortQueueID;
-    int waitResponseSemID = useSem(WAITFIRSTRESPONSES, errorHandler, "callPortsForDischarge");
-    sprintf(text, "%d %d %d", p.product_type, p.weight, ship->shipID);
-    requesetPortQueueID = useQueue(PQUEREDCHKEY, errorHandler, "callPortsForDischarge");
-
-
-    for (i = 0; i < SO_PORTI; i++) {
-        
-        printf("[%d]NAVE: invio domanda al porto %d per scaricare\n", getpid(), i);
-        msgSend(requesetPortQueueID, text, i+1, errorHandler,0 ,"callPortsForDischarge");
-        mutexPro(waitResponseSemID, ship->shipID, WAITZERO, errorHandler, "callPortsForDischarge WAITZERO");
-        mutexPro(waitResponseSemID, ship->shipID, UNLOCK, errorHandler, "callPortsForDischarge LOCK");
-    }
-
-    printf("[%d]Nave con id:%d TUTTE LE DOMANDE DI RICHIESTA PER SCARICARE AL PORTO SONO STATE INVIATE\n", getpid(), ship->shipID);
-}
-
-int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare){
-    int i;
-    int max;
-    int queueID;
-    int portID = -1;
+    int portQueueID;
     mex* response;
-    int startIdx = -1;
     int arrayResponses[SO_PORTI];
     int validityArray[SO_PORTI];
     int cond = 0;
-    FILE* fp[SO_PORTI];
-    char readerFileName[1024];
-    char textResponse[1024];
-    char carattere;
+    int startIdx;
+    int max;
+    int portID = -1;
+    
+    sprintf(text, "%d %d %d",1 ,p.product_type, p.weight);
 
     for (i = 0; i < SO_PORTI; i++) {
         validityArray[i] = 0;
-        fp[i] = NULL;
     }
     initArrayResponses(arrayResponses);
-
-    queueID = useQueue(ftok("./src/nave.c", ship->shipID), errorHandler, "portResponsesForDischarge"); /* coda di messaggi delle navi per le risposte di scaricamento*/
-
-    /* CREAZIONE DELLE PIPES*/
-    for (i = 0; i < SO_PORTI; i++) {
-        sprintf(readerFileName, "./utils/bin/queuereader %d %d", queueID, i + 1);
-        fp[i] = popen(readerFileName, "r");
-        if (fp[i] == NULL) {
-            perror("Errore nella popen");
-            exit(EXIT_FAILURE);
-        }
-    }
-
+    
+    shipQueueID = useQueue(ftok("./src/nave.c", ship->shipID), errorHandler, "portResponsesForDischarge"); /* coda di messaggi delle navi per le risposte di scaricamento*/
 
     for (i = 0; i < SO_PORTI; i++) {
-        
-        fgets(textResponse, 1024, fp[i]);
-       
-        printf("[%d]Nave con id:%d risposta del porto %d (dal pipe): %s\n", getpid(), ship->shipID, i,textResponse);
-        
+
+        portQueueID = useQueue(ftok("./src/porto.h", i), errorHandler, "callPortsForDischarge");
+
+        printf("[%d]NAVE: invio domanda al porto %d per scaricare\n", getpid(), i);
+        msgSend(portQueueID, text, ship->shipID + 1, errorHandler, 0, "callPortsForDischarge");
 
         
-        if (strcmp(textResponse, "NOPE") != 0) {
+        response = msgRecv(shipQueueID, i+1, errorHandler, NULL, SYNC, "msg recv in queuereader");
+        printf("[%d]Nave con id:%d risposta del porto %d: %s\n", getpid(), ship->shipID,i, response->mtext);
+        
+        if (strcmp(response->mtext, "NOPE") != 0) {
             printf("[%d]Nave: ho trovato porto %d in cui fare scarico\n", getpid(), i);
             arrayResponses[i] = atoi(response->mtext);
             validityArray[i] = 1;
         }
     }
-    for (i = 0; i < SO_PORTI; i++) {
-        pclose(fp[i]);
-    }
-    
     for (i = 0; i < SO_PORTI && !cond; i++) {
         if (validityArray[i]) {
             startIdx = i;
@@ -428,7 +394,9 @@ int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare){
         return -1;
     }
     max = arrayResponses[startIdx];
+    
     portID = startIdx;
+    
     for (i = startIdx; i < SO_PORTI; i++) {
         if(validityArray[i] && arrayResponses[i] > max){
           max = arrayResponses[i];
@@ -436,8 +404,12 @@ int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare){
         } 
     }
     *quantoPossoScaricare = max;
+    
     printf("[%d]Nave: ho scelto il porto %d per scaricare\n", getpid(), portID);
+    printf("[%d]Nave con id:%d TUTTE LE DOMANDE DI RICHIESTA PER SCARICARE AL PORTO SONO STATE INVIATE\n", getpid(), ship->shipID);
+    
     return portID;
+
 }
 
 void replyToPortsForDischarge(Ship ship, int portID){
@@ -449,10 +421,10 @@ void replyToPortsForDischarge(Ship ship, int portID){
         queueID = useQueue(ftok("./src/porto.h", i), errorHandler, "replyToPortsForDischarge");
         if(i == portID){
             printf("[%d]Nave: mando msg CONFERMA al porto %d per scaricare\n", getpid(), portID);
-            sprintf(mex, "1");
+            sprintf(mex, "0 1");
             msgSend(queueID, mex, ship->shipID + 1, errorHandler,0 ,"replyToPortsForDischarge");
         } else {
-            sprintf(mex, "0");
+            sprintf(mex, "0 0");
             msgSend(queueID, mex, ship->shipID + 1, errorHandler,0 ,"replyToPortsForDischarge");
         }
     }
@@ -526,8 +498,6 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
     } else {
         printf("\nOOPS! [%d]Nave con id:%d la merce che volevi scaricare è scaduta!!!\n", getpid(), ship->shipID);
     }
-
-   
 
     mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler, "accessPortForCharge->shipSemID UNLOCK");
 

@@ -63,7 +63,7 @@ int chooseProductToDelivery(Ship ship);
 void initArrayOffers(PortOffer* offers);
 
 void callPortsForCharge(Ship ship, int quantityToCharge);
-void callPortsForDischarge(Ship ship, Product p);  
+int communicatePortsForDischarge(Ship ship, Product p, int* quantoPossoScaricare);  
 
 int portResponsesForCharge(Ship ship, PortOffer* port_offers);
 int choosePortForCharge(PortOffer* port_offers);
@@ -71,12 +71,8 @@ int choosePortForCharge(PortOffer* port_offers);
 void replyToPortsForCharge(Ship ship, int portID);
 void replyToPortsForDischarge(Ship ship, int portID);
 
-int portResponsesForDischarge(Ship ship, int* quantoPossoScaricare);
-
-
 
 void travel(Ship ship, int portID);
-
 
 void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int weight);
 void accessPortForDischarge(Ship ship, int portID, int product_index, int quantoPossoScaricare);

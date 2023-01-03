@@ -449,7 +449,7 @@ void launchGoodsDispatcher(int myQueueID,Port porto, int idx, int shipsQueueID) 
 void dischargerCode(void (*recvHandler)(long, char*), int idx) {
      int requestPortQueueID;
     
-    requestPortQueueID = useQueue(PQUEREQCHKEY, errorHandler, "dischargerCode");
+    requestPortQueueID = useQueue(ftok("./src/porto.c", idx), errorHandler, "dischargerCode");
     while (1) {
 
         /*
@@ -460,16 +460,16 @@ void dischargerCode(void (*recvHandler)(long, char*), int idx) {
         /*
             prendo il primo messaggio che arriva
         */
-         msgRecv(requestPortQueueID, idx+1, errorHandler, recvHandler, ASYNC, "dischargerCode");
+         msgRecvPro(requestPortQueueID, 0, errorHandler, recvHandler, ASYNC, idx, "dischargerCode");
          
 
          
     }
 }
-void chargerCode(void (*recvHandler)(long, char*), int idx) {
+void chargerCodeAsync(void (*recvHandler)(long, char*), int idx) {
      int requestPortQueueID;
     
-    requestPortQueueID = useQueue(PQUEREDCHKEY, errorHandler, "chargerCode");
+    requestPortQueueID = useQueue(ftok("./src/porto.h", idx), errorHandler, "dischargerCode");
     while (1) {
 
         /*
@@ -480,10 +480,26 @@ void chargerCode(void (*recvHandler)(long, char*), int idx) {
         /*
             prendo il primo messaggio che arriva
         */
-         msgRecv(requestPortQueueID, idx+1, errorHandler, recvHandler, ASYNC, "chargerCode");
-         
+         msgRecvPro(requestPortQueueID, 0, errorHandler, recvHandler, ASYNC, idx,"chargerCode");
+              
+    }
+}
+void chargerCodeSync(void (*recvHandler)(long, char*, int), int idx) {
+     int requestPortQueueID;
+     mex* res;
+    requestPortQueueID = useQueue(ftok("./src/porto.h", idx), errorHandler, "dischargerCode");
+    while (1) {
 
-         
+        /*
+            E' importante che sia sincrona la gestione del messaggio ricevuto
+            perchè prima di poterne ricevere un altro il porto deve poter aver aggiornato le sue disponibilità
+        */
+
+        /*
+            prendo il primo messaggio che arriva
+        */
+        res = msgRecv(requestPortQueueID, 0, errorHandler, NULL, SYNC, "chargerCode");
+        recvHandler(res->mtype, res->mtext, idx);
     }
 }
 void launchDischarger(void (*recvHandler)(long, char*), int idx) {
@@ -502,7 +518,7 @@ void launchDischarger(void (*recvHandler)(long, char*), int idx) {
 
 
 
-void launchCharger(void (*recvHandler)(long, char*), int idx) {
+void launchCharger(void (*recvHandler)(long, char*, int), int idx) {
     int pid;
     pid = fork();
     if (pid == -1) {
@@ -510,7 +526,7 @@ void launchCharger(void (*recvHandler)(long, char*), int idx) {
         exit(1);
     }
     if (pid == 0) {
-        chargerCode(recvHandler, idx);
+        chargerCodeSync(recvHandler, idx);
         exit(EXIT_FAILURE);
     }
 }
@@ -523,7 +539,6 @@ int checkRequests(Port p, int type, int quantity) {
     }
     else {
         p->requests[type] -= quantity;
-        
     }
     return n;
 }

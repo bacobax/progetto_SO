@@ -125,14 +125,12 @@ void recvDischargeHandler(long type, char* text) {
 
 }
 
-void recvChargerHandler(long type, char* text) {
-    int waitResponsesID;
+void recvChargerHandler(long type, char* text, int idx) {
     int quantity;
     int idNaveMittente;
     int tipoMerceRichiesto;
     int portShmId;
     Port porto;
-    int idx;
     int keyMiaCoda; 
     int IDMiaCoda;
     int res;
@@ -140,74 +138,84 @@ void recvChargerHandler(long type, char* text) {
     int shipQueueID;
     int verifyRequestSemID;
     char rtext[MEXBSIZE];
+    char payload[MEXBSIZE];
+    int richiestaScarico;
     int sonostatoScelto;
     mex* messaggioRicevuto;
     int waitToTravelSemID;
-    idx = (int)type - 1;
 
-    waitResponsesID = useSem(WAITFIRSTRESPONSES, errorHandler, "recvChargerHandler->waitResponsesID");
-    sscanf(text, "%d %d %d", &tipoMerceRichiesto, &quantity, &idNaveMittente);
-    printf("PORTO %d, ricevuta richiesta di scaricare %d merce di tipo %d dalla nave %d\n", getppid(), quantity, tipoMerceRichiesto, idNaveMittente);
+    idNaveMittente = type - 1;
 
-    
-    mutexPro(waitResponsesID, idNaveMittente, LOCK, errorHandler,"recvChargerHandler->waitResponsesID LOCK");
+    sscanf(text, "%d %s", richiestaScarico, payload);
 
+    if (richiestaScarico) {
+        sscanf(payload, "%d %d", &tipoMerceRichiesto, &quantity);
+        printf("PORTO %d, ricevuta richiesta di scaricare %d merce di tipo %d dalla nave %d\n", getppid(), quantity, tipoMerceRichiesto, idNaveMittente);
 
-    portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler, "recvChargerHandler");
-
-    porto = ((Port)getShmAddress(portShmId, 0, errorHandler, "recvChargerHandler")) + idx;
-
-    keyMiaCoda = ftok("./src/porto.h", idx);
-    if (keyMiaCoda == -1) {
-        perror("Ftok keyMiaCoda");
-        exit(EXIT_FAILURE);
-    }
-
-    keyCodaNave = ftok("./src/nave.c" , idNaveMittente);
-
-    if(keyCodaNave == -1){
-        perror("Errore Coda Nave");
-    }
-
-    shipQueueID = useQueue(keyCodaNave, errorHandler,  "recvChargerHandler->shipQueueID");
-    
-
-    IDMiaCoda = useQueue(keyMiaCoda, errorHandler,  "recvChargerHandler->IDMiaCoda");
-
-    verifyRequestSemID = useSem(P2SEMVERIFYKEY, errorHandler,  "recvChargerHandler->verifyRequestSemID");
-
-    waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler,"recvChargerHandler->waitToTtravelSemID");
-    
-    mutexPro(verifyRequestSemID, idx, LOCK, errorHandler, "recvChargerHandler->verifyRequestSemID LOCK");
-    res = checkRequests(porto, tipoMerceRichiesto, quantity);
-    mutexPro(verifyRequestSemID, idx, UNLOCK, errorHandler, "recvChargerHandler->verifyRequestSemID UNLOCK");
-
-    if (res == -1) {
-        printf("INVIO NOPE\n");
-        msgSend(shipQueueID, "NOPE", idx + 1, errorHandler, 0,"recvChargerHandler->invio risposta negativa");
-    }
-    else {
-        printf("INVIO %d\n", res);
         
-        sprintf(rtext, "%d", res);
-        msgSend(shipQueueID, rtext, idx + 1, errorHandler,0, "recvChargerHandler->invio risposta positiva");
-    }
-    messaggioRicevuto = msgRecv(IDMiaCoda, idNaveMittente + 1, errorHandler, NULL, SYNC, "recvChargerHandler->ricezione di sonostatoScelto");
+        portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler, "recvChargerHandler");
 
-    sscanf(messaggioRicevuto->mtext, "%d", &sonostatoScelto);
-    printf("Port %d: valore di sonostatoScelto = %d\n", idx, sonostatoScelto);
-    if (sonostatoScelto == 0 && res != -1) {
-        printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", idx);
-        porto->requests[tipoMerceRichiesto] = res;
-    }
-
-
-    if (sonostatoScelto == 1 && res == 1) {
-        printf("Porto %d: sono stato scelto\n", idx);
+        porto = ((Port)getShmAddress(portShmId, 0, errorHandler, "recvChargerHandler")) + idx;
         
-        /* addNotExpiredGood(0 - quantity, tipoTrovato, PORT); */
+        keyMiaCoda = ftok("./src/porto.h", idx);
+        if (keyMiaCoda == -1) {
+            perror("Ftok keyMiaCoda");
+            exit(EXIT_FAILURE);
+        }
+        printf("IDX : %d, KEY: %d\n", idx, keyMiaCoda);
+
+        keyCodaNave = ftok("./src/nave.c" , idNaveMittente);
+
+        if(keyCodaNave == -1){
+            perror("Errore Coda Nave");
+        }
+
+        shipQueueID = useQueue(keyCodaNave, errorHandler,  "recvChargerHandler->shipQueueID");
+        
+
+        IDMiaCoda = useQueue(keyMiaCoda, errorHandler,  "recvChargerHandler->IDMiaCoda");
+
+        verifyRequestSemID = useSem(P2SEMVERIFYKEY, errorHandler,  "recvChargerHandler->verifyRequestSemID");
+
+        waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler,"recvChargerHandler->waitToTtravelSemID");
+        
+        mutexPro(verifyRequestSemID, idx, LOCK, errorHandler, "recvChargerHandler->verifyRequestSemID LOCK");
+        res = checkRequests(porto, tipoMerceRichiesto, quantity);
+        mutexPro(verifyRequestSemID, idx, UNLOCK, errorHandler, "recvChargerHandler->verifyRequestSemID UNLOCK");
+
+        if (res == -1) {
+            printf("INVIO NOPE\n");
+            msgSend(shipQueueID, "NOPE", idx + 1, errorHandler, 0,"recvChargerHandler->invio risposta negativa");
+        }else {
+            printf("INVIO %d\n", res);
+            
+            sprintf(rtext, "%d", res);
+            msgSend(shipQueueID, rtext, idx + 1, errorHandler,0, "recvChargerHandler->invio risposta positiva");
+        }
+    }else {
+        sscanf(messaggioRicevuto->mtext, "%d", &sonostatoScelto);
+        printf("Port %d: valore di sonostatoScelto = %d\n", idx, sonostatoScelto);
+        if (sonostatoScelto == 0 && res != -1) {
+            printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", idx);
+            porto->requests[tipoMerceRichiesto] = res;
+        }
+
+        /*
+            UTILIZZARE DUE CODE DIVERSE PER OGNI PORTO UNA CHE RICEVE LE RICHIESTE
+            DELLE NAVI E UNA CHE RICEVE LE CONFERME SE IL PORTO È STATO SCELTO OPPURE NO.
+            UTILIZZARE LE CODE IN ASINCRONO.
+        */
+        if (sonostatoScelto == 1 && res == 1) {
+            printf("Porto %d: sono stato scelto\n", idx);
+            
+        }
+        mutexPro(waitToTravelSemID, idNaveMittente, LOCK, errorHandler, "recvChargerHandler->waitToTravelSemID LOCK");
     }
-    mutexPro(waitToTravelSemID, idNaveMittente, LOCK, errorHandler, "recvChargerHandler->waitToTravelSemID LOCK");
+    
+   
+    // messaggioRicevuto = msgRecv(IDMiaCoda, idNaveMittente + 1, errorHandler, NULL, SYNC, "recvChargerHandler->ricezione di sonostatoScelto");
+
+    
     /*TODO: Fare una recv per sapere se sono stato scelto*/
 
     return;

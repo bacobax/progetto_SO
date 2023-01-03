@@ -17,7 +17,6 @@ int main(int argc, char* argv[]) {
 
     fprintf(fp, "QUEUEID: %d, TYPE: %d\n", queueID, type);
     
-    res = msgRecv(queueID, type, errorHandler, NULL, SYNC, "msg recv in queuereader");
     
     
     fputs(res->mtext, stdout);
