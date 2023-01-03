@@ -33,7 +33,7 @@ void chargeProducts(Ship ship, int quantityToCharge){
         
         */
         
-        callPortsForCharge(ship, quantityToCharge); /* mando msg a tutti i porti perchè voglio caricare*/
+        availablePorts = communicatePortsForCharge(ship, quantityToCharge, port_offers); /* mando msg a tutti i porti perchè voglio caricare*/
         printf("[%d]Nave: finito di chiamare i porti\n", getpid());
         /*
         mutexPro(waitResponsesID, ship->shipID, WAITZERO, errorHandler);
@@ -41,7 +41,7 @@ void chargeProducts(Ship ship, int quantityToCharge){
         printf("[%d]Nave: finito aspettare le risposte dai porti\n", getpid());
         */
 
-        availablePorts = portResponsesForCharge(ship, port_offers);
+        /*availablePorts = portResponsesForCharge(ship, port_offers);*/
         printf("[%d]NAVE: Aviable ports = %d\n",getpid(), availablePorts);
         if (availablePorts == 0) {
             /* non ci sono porti disponibili per la quantità
@@ -60,15 +60,12 @@ void chargeProducts(Ship ship, int quantityToCharge){
             mutexPro(waitToTravelSemID, ship->shipID, WAITZERO, errorHandler, "chargeProducts->waitToTravelSemID WAITZERO");
             mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler, "chargeProducts->waitToTravelSemID +SO_PORTI");
             
-            
-            
+        
             printf("[%d]Nave: sono partita...\n", getpid());
             travel(ship, portID);
             
             accessPortForCharge(ship, portID, port_offers[portID], quantityToCharge);
-
-            
-            
+    
         }
     }
     
@@ -192,6 +189,7 @@ void dischargeProducts(Ship ship) {
 
 
 int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identificativo della nave (es: nave 0, nave 1, nave 2, ecc..)*/
+    /*
     int res;
     Product p1, p2, p3, p4;
     p1.product_type = 0;
@@ -209,7 +207,7 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     p4.product_type = 4;
     p4.expirationTime = 12;
     p4.weight = 8;
-
+    */
     Ship ship;
     
     ship = initShip(atoi(argv[1]));
@@ -226,17 +224,26 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     sleep(2);
         }
     */
+    /*
     res = addProduct(ship, p1);
     res = addProduct(ship, p2);
     res = addProduct(ship, p3);
     res = addProduct(ship, p4);
-    
-
+    */
+    /*
     sleep(1.5);
     dischargeProducts(ship);
     printf("FINITO SCARICO\n");
     printShip(ship);
-        
+    */
+
+    /* SO_FILL / SO_DAYS / SO_PORTI / SO_MERCI*/
+
+    /* valore per decrementare: differenza tra valore attuale e offerta più alta che trova i porti*/
+
+    chargeProducts(ship, chooseQuantityToCharge(ship));
+    printf("FINITO CARICAMENTO");
+    printShip(ship);    
 
         while (1) {
             sleep(1);

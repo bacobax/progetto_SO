@@ -224,79 +224,34 @@ int chooseProductToDelivery(Ship ship) {
     return index;
 }
 
-void callPortsForCharge(Ship ship, int quantityToCharge){
+int communicatePortsForCharge(Ship ship, int quantityToCharge, PortOffer* port_offers){
+    int aviablePorts = 0;
     int i;
     char text[MEXBSIZE];
     int requestPortQueueID;
-    int waitResponseSemID;
-    
-    requestPortQueueID = useQueue(PQUEREQCHKEY, errorHandler , "callPortsForCharge");
-    waitResponseSemID = useSem(WAITFIRSTRESPONSES, errorHandler, "callPortsForCharge");
-    
+    int shipQueueID;
+    mex* response;
+
+    requestPortQueueID = useQueue(PQUERECHKEY, errorHandler , "communicatePortsForCharge");
+    shipQueueID = useQueue(ftok("./src/nave.c", ship->shipID), errorHandler, "communicatePortsForCharge");
+
     sprintf(text, "%d %d", quantityToCharge , ship->shipID); 
 
     for (i = 0; i < SO_PORTI; i++) {
-        /*
-            queueID = useQueue(PQUEUEKEY + i, errorHandler);
-
-        */
-         printf("[%d]NAVE: invio domanda al porto %d\n",getpid() ,i);
-         msgSend(requestPortQueueID, text, i+1, errorHandler, 0,"callPortsForCharge");
-         mutexPro(waitResponseSemID, ship->shipID, WAITZERO, errorHandler, "callPortsForCharge WAITZERO");
-         mutexPro(waitResponseSemID, ship->shipID, UNLOCK, errorHandler, "callPortsForCharge +1");
-
-         /*
-                poichè non ci possono essere type uguali a 0 aggiungo
-                all'id della nave +1
-         */
-    }
-    
-
-}
-
-int portResponsesForCharge(Ship ship, PortOffer* port_offers){
-    int i;
-    int queueID;
-    int ports = 0;
-    mex* response;
-    FILE* fp[SO_PORTI];
-    char readerFileName[1024];
-    char textResponse[1024];
-    queueID = useQueue(ftok("./src/nave.c", ship->shipID), errorHandler, "portResponsesForCharge");
-    /*
-    for (i = 0; i < SO_PORTI; i++) {
-        sprintf(readerFileName, "./utils/bin/queuereader %d %d", queueID, i + 1);
-        fp[i] = popen("./utils/bin/queuereader", "r");
-        if (fp[i] == NULL) {
-            perror("Errore nella popen");
-            exit(EXIT_FAILURE);
-        }
-    }
-    for (i = 0; i < SO_PORTI; i++) {
-        fscanf(fp[i], "%s", textResponse);
-        if(strlen(response->mtext) > 1){
-            
-            sscanf(response->mtext, "%d %d", &port_offers[i].product_type, &port_offers[i].expirationTime);
-            ports++;
-        }
-    }
-    */
-    for (i = 0; i < SO_PORTI; i++) {
-        printf("[%d]Nave: aspetto su coda %d messaggio con type %d\n", getpid(), queueID, i + 1);
-        response = msgRecv(queueID, i + 1, errorHandler, NULL, SYNC, "portResponsesForCharge");
-
         
-        printf("🤡[%d]Nave: Strlen del messaggio ricevuto : %d\n" ,getpid() ,strlen(response->mtext) );
-        if(strlen(response->mtext) > 1){
-            
+        printf("[%d]NAVE: invio domanda al porto %d per caricare\n",getpid() ,i);
+        msgSend(requestPortQueueID, text, i+1, errorHandler, 0,"callPortsForCharge");
+
+        response = msgRecv(shipQueueID, i+1, errorHandler, NULL, SYNC, "msg recv communicatePortsForCharge");
+        printf("[%d]Nave con id:%d risposta dal porto%d: %s\n", getpid(), ship->shipID, i, response->mtext);
+
+        if(strlen(response->mtext) > 1){ 
             sscanf(response->mtext, "%d %d", &port_offers[i].product_type, &port_offers[i].expirationTime);
-            ports++;
+            aviablePorts++;
         }
     }
-    
-    
 
-    return ports;
+    return aviablePorts;
 }
 
 int choosePortForCharge(PortOffer* port_offers){
@@ -326,14 +281,15 @@ void replyToPortsForCharge(Ship ship, int portID){
     int i;
     int queueID;
     char text[MEXBSIZE];
+
     printf("[%d]Nave invio conferme ai porti di chi è stato scelto\n",getpid());
     for(i=0; i<SO_PORTI; i++){
-        queueID = useQueue(ftok("./src/porto.c" , i), errorHandler, "replyToPortsForCharge");
-        
+        queueID = useQueue(ftok("./src/porto.c" , i), errorHandler, "replyToPortsForCharge"); 
         if(i == portID){
+
             printf("[%d]Nave ho scelto il porto:%d\n", getpid(), i);
             sprintf(text, "1"); /*ok*/
-            msgSend(queueID, text, (ship->shipID + 1), errorHandler,0 ,"replyToPortsForCharge");
+            msgSend(queueID, text, ship->shipID + 1, errorHandler,0 ,"replyToPortsForCharge");
         }
         else {
             printf("[%d]Nave NON ho scelto il porto:%d\n", getpid(), i);
@@ -373,7 +329,7 @@ int communicatePortsForDischarge(Ship ship, Product p, int* quantoPossoScaricare
         printf("[%d]NAVE: invio domanda al porto %d per scaricare\n", getpid(), i);
         msgSend(portQueueID, text, i+1, errorHandler, 0, "callPortsForDischarge");
   
-        response = msgRecv(shipQueueID, i+1, errorHandler, NULL, SYNC, "msg recv in queuereader");
+        response = msgRecv(shipQueueID, i+1, errorHandler, NULL, SYNC, "msg recv in communicatePortsForDischarge");
         printf("[%d]Nave con id:%d risposta del porto %d: %s\n", getpid(), ship->shipID,i, response->mtext);
         
         if (strcmp(response->mtext, "NOPE") != 0) {
@@ -435,8 +391,6 @@ void replyToPortsForDischarge(Ship ship, int portID){
 
 void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int weight){
     int portShmID;
-
-    
     int pierSemID;
     int shipSemID;
     Product p;
@@ -463,13 +417,16 @@ void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int wei
 
     printf("[%d]Nave: sono attracata alla banchina del porto per aggiungere la merce\n", getpid());
 
+    /* TO-DO GESTIRE PROBEMA MERCE SCADUTA UNA VOLTA ARRIVATO AL PORTO*/
+
     addProduct(ship, p);
 
     mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler, "accessPortForCharge->shipSemID UNLOCK");
 
-    printShip(ship);
-
     mutexPro(pierSemID, portID, UNLOCK, errorHandler, "accessPortForCharge->pierSemID UNLOCK");
+    
+    printf("[%d]Nave con id:%d prodotto caricato con successo\n", getpid(), ship->shipID);
+
 }
 
 void accessPortForDischarge(Ship ship, int portID, int product_index, int quantoPossoScaricare){

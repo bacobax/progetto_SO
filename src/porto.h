@@ -13,7 +13,7 @@
 
 #define PQUEUEDCHKEY 5000    /* key coda messaggi per azioni di scaricamento*/
 
-#define PQUEREQCHKEY 3999    
+#define PQUERECHKEY 3999    
 #define PQUEREDCHKEY 3998
 
 #define PSEMVERIFYKEY 3997

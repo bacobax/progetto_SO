@@ -3,13 +3,13 @@
 #define CONFIG_1
 
 
-#define SO_PORTI    100
-#define SO_NAVI     1
+#define SO_PORTI    1
+#define SO_NAVI     3
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 #define SO_MIN_VITA  10 /* tonn */
 #define SO_MAX_VITA  15/* tonn */
-#define SO_DAYS      10
+#define SO_DAYS      5
 
 /*chiavi dei semafori*/
 /* chiave del semaforo del master */
@@ -41,14 +41,14 @@
 
 
 
-#define SO_FILL      2000
+#define SO_FILL      50
 
 
 
 /* ciao */
 #define SO_SPEED     500
 #define SO_LATO      4
-#define SO_CAPACITY  100
+#define SO_CAPACITY  5
 #define SO_BANCHINE  10
 #define SO_LOADSPEED 200 
 

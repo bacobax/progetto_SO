@@ -62,7 +62,7 @@ int chooseProductToDelivery(Ship ship);
 
 void initArrayOffers(PortOffer* offers);
 
-void callPortsForCharge(Ship ship, int quantityToCharge);
+int communicatePortsForCharge(Ship ship, int quantityToCharge, PortOffer* port_offers);
 int communicatePortsForDischarge(Ship ship, Product p, int* quantoPossoScaricare);  
 
 int portResponsesForCharge(Ship ship, PortOffer* port_offers);

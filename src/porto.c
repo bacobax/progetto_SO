@@ -41,11 +41,13 @@ void recvDischargeHandler(long type, char *text)
 
     Port porto;
 
-    waitResponsesID = useSem(WAITFIRSTRESPONSES, errorHandler, "recvDischargerHandler->waitResponsesID useSem");
+    /*waitResponsesID = useSem(WAITFIRSTRESPONSES, errorHandler, "recvDischargerHandler->waitResponsesID useSem");*/
     sscanf(text, "%d %d", &quantity, &idNaveMittente);
     idx = type - 1;
 
-    mutexPro(waitResponsesID, idNaveMittente, LOCK, errorHandler, "recvDischargerHandler->waitResponsesID LOCK");
+    /*mutexPro(waitResponsesID, idNaveMittente, LOCK, errorHandler, "recvDischargerHandler->waitResponsesID LOCK");*/
+
+    printf("PORTO %d, ricevuta richiesta di caricare %d quantità merce dalla nave %d\n", idx, quantity, idNaveMittente);
 
     portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler, "RecvDischargerHandler");
 
@@ -64,10 +66,8 @@ void recvDischargeHandler(long type, char *text)
     shipQueueID = useQueue(keyCodaNave, errorHandler, "RecvDischargerHandler->shipQueueID");
 
     controlPortsDisponibilitySemID = useSem(PSEMVERIFYKEY, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID");
-
     waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler, "RecvDischargerHandler->waitToTravelSemID");
 
-    printf("Port %d: Ricevuto messaggio da nave %d con quantità %d\n", getppid(), idNaveMittente, quantity);
 
     /* Operazione controllata da semaforo, per permettere di controllare le disponibilità per una richiesta solo quando non lo si sta già facendo per un altra*/
     mutexPro(controlPortsDisponibilitySemID, idx, LOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID LOCK");
@@ -75,7 +75,6 @@ void recvDischargeHandler(long type, char *text)
     mutexPro(controlPortsDisponibilitySemID, idx, UNLOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID UNLOCK");
     printf("|Port %d: \n|\tTIPO TROVATO: %d \n|\tEXP TIME TROVATA:%d\n", getppid(), tipoTrovato, dataScadenzaTrovata);
 
-    printf("Port %d: Ho trovato il tipo %d con data di scadenza %d\n", getppid(), tipoTrovato, dataScadenzaTrovata);
 
     if (res == -1)
     {
@@ -90,15 +89,15 @@ void recvDischargeHandler(long type, char *text)
         printf("✅Port %d: MSGSND POSITIVA RIUSCITA", getppid(), idNaveMittente, quantity);
     }
 
-    printf("\n\n[%d]Porto: RISPOSTA NAVE MANDATA\n\n", getpid());
+    printf("\n\n[%d]Porto: RISPOSTA NAVE MANDATA\n\n", getppid());
     /*
         mutexPro(waitResponsesID, idNaveMittente, LOCK, NULL);
 
     */
 
     messaggioRicevuto = msgRecv(myQueueID, idNaveMittente + 1, errorHandler, NULL, SYNC, "recvDischargerHandler->ricezione di sonostatoScelto");
-
     sscanf(messaggioRicevuto->mtext, "%d", &sonostatoScelto);
+    
     printf("Port %d: valore di sonostatoScelto = %d\n", idx, sonostatoScelto);
     if (sonostatoScelto == 0 && res != -1)
     {
@@ -115,7 +114,9 @@ void recvDischargeHandler(long type, char *text)
     }
 
     mutexPro(waitToTravelSemID, idNaveMittente, LOCK, NULL, "RecvDischargerHandler->waitToTravelSemID LOCK");
-    getOneValue(waitToTravelSemID, idNaveMittente);
+    /*getOneValue(waitToTravelSemID, idNaveMittente);*/
+
+    return;
 }
 
 void recvChargerHandler(long type, char *text)

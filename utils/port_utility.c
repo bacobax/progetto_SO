@@ -448,8 +448,8 @@ void launchGoodsDispatcher(int myQueueID,Port porto, int idx, int shipsQueueID) 
 */
 void dischargerCode(void (*recvHandler)(long, char*), int idx) {
      int requestPortQueueID;
-    
-    requestPortQueueID = useQueue(ftok("./src/porto.c", idx), errorHandler, "dischargerCode");
+     mex* res;
+    requestPortQueueID = useQueue(PQUERECHKEY, errorHandler, "dischargerCode");
     while (1) {
 
         /*
@@ -460,7 +460,7 @@ void dischargerCode(void (*recvHandler)(long, char*), int idx) {
         /*
             prendo il primo messaggio che arriva
         */
-         msgRecvPro(requestPortQueueID, 0, errorHandler, recvHandler, ASYNC, idx, "dischargerCode");
+        res = msgRecv(requestPortQueueID, idx + 1, errorHandler, recvHandler, ASYNC, "dischargerCode");
          
 
          
@@ -485,6 +485,8 @@ void chargerCode(void (*recvHandler)(long, char*), int idx) {
         
     }
 }
+
+/* per operazioni di carico della nave*/
 void launchDischarger(void (*recvHandler)(long, char*), int idx) {
     int pid;
     pid = fork();
@@ -500,7 +502,7 @@ void launchDischarger(void (*recvHandler)(long, char*), int idx) {
 }
 
 
-
+/* per operazioni di scarico della nave*/
 void launchCharger(void (*recvHandler)(long, char*), int idx) {
     int pid;
     pid = fork();
