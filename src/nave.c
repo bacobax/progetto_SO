@@ -33,9 +33,9 @@ void chargeProducts(Ship ship, int quantityToCharge){
                 e la nave è vuota
             */
             printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
-            printf("SITUAZIONE DEGENERE: SONO VUOTA E NON TROVO NESSUN PORTO DOVE CARICARE");
+            printf("SITUAZIONE DEGENERE: SONO VUOTA E NON TROVO NESSUN PORTO DOVE CARICARE\n");
             printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
-            
+            exit(EXIT_FAILURE);
         }
     }
     else {
@@ -88,7 +88,9 @@ void dischargeProducts(Ship ship) {
     int product_index;
     int waitToTravelSemID;
     int quantoPossoScaricare;
-    
+    /*
+        Se non può scaricare quello che ha 
+    */
     if (ship->weight == 0) {
 
         
@@ -162,6 +164,7 @@ void dischargeProducts(Ship ship) {
         
         printf("PORT ID SCELTO: %d\n", portID);
         if(portID == -1){
+
             addExpiredGood(ship->products[product_index].weight, ship->products[product_index].product_type, SHIP);
             removeProduct(ship, product_index); /* vecchio prodotto da scaricare rimosso (tanto le domande dei porti sono tutte a 0) */
 
@@ -253,9 +256,35 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     /* SO_FILL / SO_DAYS / SO_PORTI / SO_MERCI*/
 
     /* valore per decrementare: differenza tra valore attuale e offerta più alta che trova i porti*/
-/*
+if(!haSensoContinuare()){
+    printf("NON HA SENSO CONTINUARE\n");
+    exit(EXIT_FAILURE);
+}
 chargeProducts(ship, chooseQuantityToCharge(ship));
     printf("FINITO CARICAMENTO");
+
+dischargeProducts(ship);
+    printf("FINITO SCARICAMENTO");
+
+chargeProducts(ship, chooseQuantityToCharge(ship));
+    printf("FINITO CARICAMENTO");
+
+dischargeProducts(ship);
+    printf("FINITO SCARICAMENTO");
+
+chargeProducts(ship, chooseQuantityToCharge(ship));
+    printf("FINITO CARICAMENTO");
+
+dischargeProducts(ship);
+    printf("FINITO SCARICAMENTO");
+
+chargeProducts(ship, chooseQuantityToCharge(ship));
+    printf("FINITO CARICAMENTO");
+
+dischargeProducts(ship);
+    printf("FINITO SCARICAMENTO");
+
+
     printShip(ship);    
 
         while (1) {
@@ -263,10 +292,10 @@ chargeProducts(ship, chooseQuantityToCharge(ship));
         }
 
     exit(EXIT_FAILURE);
-*/
-    
 
     
+
+    /*
     while (1) { 
         if(charge == 1){
             chargeProducts(ship, 10);
@@ -275,8 +304,11 @@ chargeProducts(ship, chooseQuantityToCharge(ship));
             dischargeProducts(ship);
             charge = 1;
         }
-        nanosecsleep(NANOS_MULT/2);
+        sleep(0.5);
+        /*
+         nanosecsleep(NANOS_MULT/2);
+        
     }
-    
+    */
 }
 

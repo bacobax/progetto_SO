@@ -188,6 +188,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int portsDischargeQueue;
     int verifyRequestPortSemID;
     int portDischargeRequestsQueueID;
+    int i;
     srand(time(NULL));
 
     if (signal(SIGUSR1, mastersighandler) == SIG_ERR) {
@@ -258,7 +259,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     
     codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID);
 
-
+    lockAllGoodsDump();
 
     kill(0, SIGUSR1); /* uccide tutti i figli */
     printf("master sono ancora vivo dopo kill\n");

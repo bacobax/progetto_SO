@@ -59,4 +59,8 @@ void launchDischarger(void (*recvHandler)(long,char*), int idx);
 void launchCharger(void (*recvHandler)(long, char*), int idx);
 
 int checkRequests(Port p, int type, int quantity);
+
+int allRequestsZero();
+int haSensoContinuare();
+
 #endif

@@ -2,6 +2,7 @@
 #include "../config1.h"
 #include "./support.h"
 #include "../src/dump.h"
+#include "../src/porto.h"
 #include "./sem_utility.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -127,10 +128,35 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
                 lo stesso tipo di merce con la quantità aggiornata
             */
             S->magazine[*dayTrovato][*tipo] -= quantity;
+            printf("PORTO: tolgo %d\n" ,quantity);
+
             addNotExpiredGood(0 - quantity, *tipo, PORT);
         res = 1;
     }
     return res;
 
 }
+
+int filter(int el){
+    return el!=0;
+}
+intList* tipiDiMerceOfferti(Port p){
+    intList* ret;
+    intList* aux;
+    int i;
+    int j;
+    ret = intInit();
+
+    for(i=0; i<SO_DAYS; i++){
+        aux = findIdxs(p->supplies.magazine[i], SO_MERCI,filter);
+        ret = intUnion(ret, aux);
+    }
+    return ret;
+
+}
+
+intList* tipiDiMerceRichiesti(Port p){
+    return findIdxs(p->requests, SO_MERCI,filter);
+}
+
 

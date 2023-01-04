@@ -7,7 +7,23 @@
 #include "../config1.h"
 #include "./dump.h"
 #include "./porto.h"
-/* TODO: la shmDetach() è buggata, da risolvere */
+void lockAllGoodsDump(){
+    int semid;
+    int i;
+    semid = useSem(DUMPSEMKEY, errorHandler, "lockAllGoodsDump");
+    for(i=0; i<SO_MERCI; i++){
+        mutexPro(semid, i, LOCK, errorHandler, "lockAllGoodsDump");
+    }
+}
+void unlockAllGoodsDump(){
+    int semid;
+    int i;
+    semid = useSem(DUMPSEMKEY, errorHandler, "lockAllGoodsDump");
+    for(i=0; i<SO_MERCI; i++){
+        mutexPro(semid, i, UNLOCK, errorHandler, "lockAllGoodsDump");
+    }
+}
+
 void createDumpArea(){
     int shmid;
     int semid;
@@ -24,7 +40,7 @@ void createDumpArea(){
 
     /*per cancellare il contenuto del logfile*/
     fclose(fopen("./logfile.log", "w"));
-
+    return semid;
 }
 
 void addExpiredGood(int quantity, int type, ctx where) {
@@ -97,14 +113,12 @@ void addDeliveredGood(int quantity, int type){
     semid = useSem(DUMPSEMKEY, errorHandler, "addDeliveredGood");
     
     info = ((GoodTypeInfo*) getShmAddress(shmid, 0, errorHandler, "addDeliveredGood")) + type;
-    printf("\n\nPRIMA DELLA MUTEXPRO DI ADD_DELIVERED_GOOD type:%d\n\n",type);
     mutexPro(semid, type, LOCK, errorHandler, "addDeliveredGood LOCK");
 
     info->delivered_goods += quantity;
     info->goods_on_ship -= quantity;
 
     mutexPro(semid, type, UNLOCK, errorHandler, "addDeliveredGood LOCK");
-    printf("\n\nDOPO LA MUTEXPRO DI ADD_DELIVERED_GOOD ANDATA A BUON FINE\n\n");
     shmDetach(info - type,errorHandler, "addDeliveredGood");
 }
 
@@ -158,6 +172,7 @@ void printerCode(int day) {
 
     }
     sum = 0;
+    lockAllGoodsDump();
     for (i = 0; i < SO_MERCI; i++) {
         fprintf(fp, "Tipo merce %d:\n", i);
         fprintf(fp, "\t- Non scaduta:\n");
@@ -214,7 +229,7 @@ void printerCode(int day) {
         }
         
     }
-
+    unlockAllGoodsDump();
     fclose(fp);
     mutex(logFileSemID, UNLOCK, errorHandler , "printerCode UNLOCK");
     shmDetach(arr, errorHandler , "printerCode");

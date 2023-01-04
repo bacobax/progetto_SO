@@ -103,6 +103,7 @@ void recvDischargeHandler(long type, char *text)
     {
         printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", idx);
         porto->supplies.magazine[dayTrovato][tipoTrovato] += quantity;
+        printf("PORTO: riaggiungo %d\n" , quantity);
         addNotExpiredGood(quantity, tipoTrovato, PORT);
     }
 

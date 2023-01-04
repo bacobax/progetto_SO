@@ -235,3 +235,56 @@ int* toArray(intList* l, int* length) {
     intFreeList(l);
     return retArray;
 }
+int contain(intList* l, int n){
+    intNode* aux;
+    int cond = 0;
+
+    for(aux = l->first; aux!=NULL && !cond; aux = aux->next){
+        if(aux->numero == n){
+            cond = 1;
+        }
+    }
+    return cond;
+}
+
+intList* intIntersect(intList* l1, intList* l2){
+    intList* min;
+    intList* max;
+    intList* ret;
+    intNode* aux;
+    ret = intInit();
+    if(l1.length<l2.length){
+        min = l1;
+        max = l2;
+    }else{
+        min = l2;
+        max = l1;
+    }
+    for(aux = min->first; aux!=NULL; aux = aux->next){
+        if(contain(max,aux->numero)){
+            intPush(ret,aux->numero);
+        }
+    }
+
+    return ret;
+}
+
+intList* intUnion(intList* l1, intList* l2){
+    
+    intList* ret;
+    intNode* aux;
+    ret = intInit();
+    
+    for(aux = l1->first; aux!=NULL; aux = aux->next){
+        if(!contain(ret,aux->numero)){
+            intPush(ret,aux->numero);
+        }
+    }
+    for(aux = l2->first; aux!=NULL; aux = aux->next){
+        if(!contain(ret,aux->numero)){
+            intPush(ret,aux->numero);
+        }
+    }
+
+    return ret;
+}

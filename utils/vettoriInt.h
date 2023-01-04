@@ -73,5 +73,9 @@ int* toArray(intList* l, int* length);
 /*ritorna una lista di indici tali che per cisacuno di essi l'elemento in posizione di quell'indice rispetta la condizione 'booleana' imposta da filter()*/
 intList* findIdxs(int* vect, int length, int(*filter)(int));
 
+intList* intIntersect(intList* l1, intList* l2);
+intList* intUnion(intList* l1, intList* l2);
+
+int contain(intList* l1, int n);
 
 #endif

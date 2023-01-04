@@ -36,4 +36,7 @@ void addDeliveredGood(int quantity, int type);
 void printDump(int day);
 void removeDumpArea();
 
+void lockAllGoodsDump();
+void unlockAllGoodsDump();
+
 #endif

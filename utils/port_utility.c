@@ -528,3 +528,57 @@ int checkRequests(Port p, int type, int quantity) {
     return n;
 }
 
+int allRequestsZero(){
+    int portShmid;
+    Port portArr;
+    int i;
+    int j;
+    int cond = 1;
+    portShmid = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler,"allRequestsZero");
+    portArr = getShmAddress(portShmid,0,errorHandler,"allRequestsZero");
+
+    for(i=0; i<SO_PORTI && cond; i++){
+        for(j=0;j<SO_MERCI && cond; j++){
+            if(portArr[i].requests[j] > 0){
+                cond = 0;
+            }
+        }
+    }
+
+    shmDetach(portArr,errorHandler,"allRequestsZero");
+    return cond;
+}
+
+int haSensoContinuare(){
+    int portShmid;
+    Port portArr;
+    int i;
+    int j;
+    int cond = 1;
+    intList* merciTotaliRichieste = intInit();
+    intList* merciTotaliOfferte = intInit();
+    intList* aux0;
+    intList* aux1;
+
+    portShmid = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler,"allRequestsZero");
+    portArr = getShmAddress(portShmid,0,errorHandler,"allRequestsZero");
+
+    for(i=0;i<SO_PORTI; i++){
+        aux0 = tipiDiMerceRichiesti(portArr + i);
+        aux1 = tipiDiMerceOfferti(portArr + i);
+        merciTotaliRichieste = intUnion(merciTotaliRichieste,aux0);
+        merciTotaliOfferte = intUnion(merciTotaliOfferte, aux1);
+        intFreeList(aux0);
+        intFreeList(aux1);
+    }
+
+
+    shmDetach(portArr,errorHandler,"allRequestsZero");
+    cond = intIntersect(merciTotaliOfferte, merciTotaliRichieste)->length!=0;
+    intFreeList(merciTotaliOfferte);
+    intFreeList(merciTotaliRichieste);
+
+    return cond;
+}
+
+
