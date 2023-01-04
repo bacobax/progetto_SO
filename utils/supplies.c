@@ -137,26 +137,3 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
 
 }
 
-int filter(int el){
-    return el!=0;
-}
-intList* tipiDiMerceOfferti(Port p){
-    intList* ret;
-    intList* aux;
-    int i;
-    int j;
-    ret = intInit();
-
-    for(i=0; i<SO_DAYS; i++){
-        aux = findIdxs(p->supplies.magazine[i], SO_MERCI,filter);
-        ret = intUnion(ret, aux);
-    }
-    return ret;
-
-}
-
-intList* tipiDiMerceRichiesti(Port p){
-    return findIdxs(p->requests, SO_MERCI,filter);
-}
-
-

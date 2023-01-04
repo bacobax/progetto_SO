@@ -155,7 +155,7 @@ void printPorto(void* p, int idx) {
 
 
 int filterIdxs(int request) {
-    return request != 0;
+    return request != 0 && request != -1;
 }
 
 
@@ -370,82 +370,6 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
 
 }
 
-/*
-void goodsDispatcher(int myQueueID, Port porto, int idx, int shipsQueueID) {
-    int quantity = -2;
-    mex* messaggioRicevuto;
-    int res;
-    int tipoTrovato;
-    int dayTrovato;
-    int dataScadenzaTrovata;
-    char text[MEXBSIZE];
-    int sonostatoScelto;
-    
-  
-    while (1) {
-
-        /*
-            E' importante che sia sincrona la gestione del messaggio ricevuto
-            perchè prima di poterne ricevere un altro il porto deve poter aver aggiornato le sue disponibilità
-        */
-
-        /*
-            prendo il primo messaggio che arriva
-        
-        messaggioRicevuto = msgRecv(myQueueID, 0, errorHandler, NULL, SYNC);
-        sscanf(messaggioRicevuto->mtext, "%d", &quantity);
-        
-        printf("Port %d: Ricevuto messaggio da nave %d con quantità %d\n", getpid(), messaggioRicevuto->mtype - 1, quantity);
-
-        
-        res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantity);
-        
-        printf("Port %d: Ho trovato il tipo %d con data di scadenza %d\n", getpid(), tipoTrovato, dataScadenzaTrovata);
-
-        
-
-        if (res == -1) {
-            msgSend(shipsQueueID, "x", idx + 1, errorHandler);
-        }
-        else {
-
-            porto->supplies.magazine[dayTrovato][tipoTrovato] -= quantity;
-            sprintf(text, "%d %d", tipoTrovato, dataScadenzaTrovata);
-            msgSend(shipsQueueID, text, idx + 1, errorHandler);
-        }
-
-        messaggioRicevuto = msgRecv(myQueueID, messaggioRicevuto->mtype, errorHandler, NULL, SYNC);
-
-        sscanf(messaggioRicevuto->mtext, "%d", &sonostatoScelto);
-        printf("Port %d: valore di sonostatoScelto = %d\n", getpid(), sonostatoScelto);
-        if (sonostatoScelto == 0 && res != -1) {
-            printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", getpid());
-            porto->supplies.magazine[dayTrovato][tipoTrovato] += quantity;
-        }
-
-        if (sonostatoScelto == 1 && res == 1) {
-            printf("Porto %d: sono stato scelto\n", getpid());
-        }
-    }
-}
-
-
-
-void launchGoodsDispatcher(int myQueueID,Port porto, int idx, int shipsQueueID) {
-
-    int pid;
-    pid = fork();
-    if(pid == -1){
-        perror("Errore nel forkare il dispatcher dei beni\n");
-        exit(EXIT_FAILURE);
-    }
-
-    if(pid == 0){
-        goodsDispatcher(myQueueID,porto,idx,shipsQueueID);
-        exit(EXIT_FAILURE);
-    }
-}
-*/
 void dischargerCode(void (*recvHandler)(long, char*), int idx) {
      int requestPortQueueID;
      mex* res;
@@ -548,6 +472,30 @@ int allRequestsZero(){
     shmDetach(portArr,errorHandler,"allRequestsZero");
     return cond;
 }
+int filter(int el){
+    return el!=0;
+}
+
+
+
+intList* tipiDiMerceOfferti(Port p) {
+    intList* ret;
+    intList* aux;
+    int i;
+    int j;
+    ret = intInit();
+
+    for(i=0; i<SO_DAYS; i++){
+        aux = findIdxs(p->supplies.magazine[i], SO_MERCI,filterIdxs);
+        ret = intUnion(ret, aux);
+    }
+    return ret;
+
+}
+
+intList* tipiDiMerceRichiesti(Port p){
+    return findIdxs(p->requests, SO_MERCI,filterIdxs);
+}
 
 int haSensoContinuare(){
     int portShmid;
@@ -571,7 +519,11 @@ int haSensoContinuare(){
         intFreeList(aux0);
         intFreeList(aux1);
     }
-
+    printf("MERCI TOTALI RICHIESTE: \n");
+    intStampaLista(merciTotaliRichieste);
+    
+    printf("MERCI TOTALI OFFERTE: \n");
+    intStampaLista(merciTotaliOfferte);
 
     shmDetach(portArr,errorHandler,"allRequestsZero");
     cond = intIntersect(merciTotaliOfferte, merciTotaliRichieste)->length!=0;

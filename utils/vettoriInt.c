@@ -253,7 +253,7 @@ intList* intIntersect(intList* l1, intList* l2){
     intList* ret;
     intNode* aux;
     ret = intInit();
-    if(l1.length<l2.length){
+    if(l1->length<l2->length){
         min = l1;
         max = l2;
     }else{

@@ -13,7 +13,10 @@
 #include "./dump.h"
 #include "./nave.h"
 #include "./porto.h"
-
+/*
+    TODO: aggiungere criterio alla nave per scegliere il porto in cui caricare: il tipo di offerta che deve accettare dev'essere tra i tipi di merce totali richiesti
+    TODO: non decrementare più di 1 quantity, ma settarla direttamente a min{max delle offerte, aviable cap}
+*/
 
 void chargeProducts(Ship ship, int quantityToCharge){
     int availablePorts;
@@ -262,24 +265,28 @@ if(!haSensoContinuare()){
 }
 chargeProducts(ship, chooseQuantityToCharge(ship));
     printf("FINITO CARICAMENTO");
-
+if(!haSensoContinuare()){
+    printf("NON HA SENSO CONTINUARE\n");
+    exit(EXIT_FAILURE);
+}
 dischargeProducts(ship);
     printf("FINITO SCARICAMENTO");
-
+if(!haSensoContinuare()){
+    printf("NON HA SENSO CONTINUARE\n");
+    exit(EXIT_FAILURE);
+}
 chargeProducts(ship, chooseQuantityToCharge(ship));
     printf("FINITO CARICAMENTO");
-
+if(!haSensoContinuare()){
+    printf("NON HA SENSO CONTINUARE\n");
+    exit(EXIT_FAILURE);
+}
 dischargeProducts(ship);
     printf("FINITO SCARICAMENTO");
-
-chargeProducts(ship, chooseQuantityToCharge(ship));
-    printf("FINITO CARICAMENTO");
-
-dischargeProducts(ship);
-    printf("FINITO SCARICAMENTO");
-
-chargeProducts(ship, chooseQuantityToCharge(ship));
-    printf("FINITO CARICAMENTO");
+if(!haSensoContinuare()){
+    printf("NON HA SENSO CONTINUARE\n");
+    exit(EXIT_FAILURE);
+}
 
 dischargeProducts(ship);
     printf("FINITO SCARICAMENTO");

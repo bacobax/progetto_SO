@@ -2,7 +2,6 @@
 #define SUPPLIES_H
 #include "../config1.h"
 #include "./vettoriInt.h"
-#include "../src/porto.h"
 /*
     libreria creata con lo scopo di effetture alcune operazioni sulle offerte di un porto cercandola di trattare un po' come una 'scatola nera'
 */
@@ -50,7 +49,5 @@ void removeExpiredGoods(Supplies* S);
 */
 int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, int quantity);
 
-intList* tipiDiMerceOfferti(Port p);
-intList* tipiDiMerceRichiesti(Port p);
 
 #endif

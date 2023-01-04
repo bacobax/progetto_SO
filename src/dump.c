@@ -40,7 +40,7 @@ void createDumpArea(){
 
     /*per cancellare il contenuto del logfile*/
     fclose(fopen("./logfile.log", "w"));
-    return semid;
+    
 }
 
 void addExpiredGood(int quantity, int type, ctx where) {

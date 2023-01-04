@@ -62,5 +62,7 @@ int checkRequests(Port p, int type, int quantity);
 
 int allRequestsZero();
 int haSensoContinuare();
+intList* tipiDiMerceOfferti(Port p);
+intList* tipiDiMerceRichiesti(Port p);
 
 #endif
