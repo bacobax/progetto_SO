@@ -497,7 +497,20 @@ intList* tipiDiMerceRichiesti(Port p){
     return findIdxs(p->requests, SO_MERCI,filterIdxs);
 }
 
-int haSensoContinuare(){
+intList* getAllTypeRequests(Port portArr) {
+    int i;
+    intList* ret = intInit();
+    intList* tipiRichiesti;
+    for (i = 0; i < SO_PORTI; i++) {
+        tipiRichiesti = tipiDiMerceRichiesti(portArr + i);
+        ret = intUnion(ret, tipiRichiesti);
+        intFreeList(tipiRichiesti);
+    }
+    return ret;
+}
+
+
+int haSensoContinuare() {
     int portShmid;
     Port portArr;
     int i;
