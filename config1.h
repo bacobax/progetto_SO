@@ -3,8 +3,8 @@
 #define CONFIG_1
 
 
-#define SO_PORTI    2
-#define SO_NAVI     1
+#define SO_PORTI    3
+#define SO_NAVI     3
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 #define SO_MIN_VITA  10 /* tonn */
@@ -22,7 +22,7 @@
 
 #define WAITPORTRESPONSES 3002
 #define WAITFIRSTRESPONSES 3003
-
+#define WAITRMVDUMPKEY 3001
 #define RESPORTSBUFFERS 213
 #define WREXPTIMESSEM 246
 
@@ -48,7 +48,7 @@
 /* ciao */
 #define SO_SPEED     500
 #define SO_LATO      4
-#define SO_CAPACITY  50
+#define SO_CAPACITY  100
 #define SO_BANCHINE  10
 #define SO_LOADSPEED 200 
 

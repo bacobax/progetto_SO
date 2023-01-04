@@ -46,7 +46,7 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
 
     
     for (i = 0; i < SO_DAYS; i++) {
-        printDump(i);
+        printDump(SYNC, i);
         
         printf("Master: dormo\n");
         if (i > 0) {
@@ -64,7 +64,6 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
         sleep(1);
         #endif
     }
-    printDump(i);
     #ifndef __linux__
     nanosecsleep(NANOS_MULT);
     #endif

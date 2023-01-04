@@ -43,11 +43,5 @@ void decrementExpTimes(Supplies* S, int day);
 */
 void removeExpiredGoods(Supplies* S);
 
-/*
-    algoritmo che trova la migliore coppia di coordinate della matrice (tipo merce, giorno di distribuzione della merce) che corrisponde
-    alla migliore quantità disponibile da offrire di fronte alla richiesta di merce pari a {{quantity}}
-*/
-int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, int quantity);
-
 
 #endif

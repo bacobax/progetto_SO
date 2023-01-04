@@ -188,6 +188,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int portsDischargeQueue;
     int verifyRequestPortSemID;
     int portDischargeRequestsQueueID;
+    int waitToRemoveDump;
     int i;
     srand(time(NULL));
 
@@ -257,11 +258,17 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     verifyRequestPortSemID = createMultipleSem(P2SEMVERIFYKEY, SO_PORTI, 1, errorHandler, "creazione verifyRequestPortSemID");
     
+    waitToRemoveDump = createSem(WAITRMVDUMPKEY, 1, errorHandler, "craezione semaforo remove dump");
+
     codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID);
-
-    lockAllGoodsDump();
-
     kill(0, SIGUSR1); /* uccide tutti i figli */
+
+    printf("FACCIO IL PRINT DEL DUMP DEL %d ESIMO GIORNO\n", SO_DAYS);
+    printDump(SYNC , SO_DAYS);
+    printf("MASTER: FACCIO LA WAITZERO...\n");
+    mutex(waitToRemoveDump, WAITZERO, errorHandler, "mutex waitzero remove dump");
+    printf("MASTER: HO PASSATO LA WAITZERO...\n");
+
     printf("master sono ancora vivo dopo kill\n");
     removeSem(startSimulationSemID, errorHandler, "startSimulationSemID");
     removeSem(reservePrintSem, errorHandler, "reservePrintSem");
@@ -273,10 +280,9 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeSem(waitEndDaySemID, errorHandler, "waitEndDaySemID");
     removeSem(controlPortsDisponibilitySemID, errorHandler, "controlPortsDisponibilitySemID");
     removeSem(verifyRequestPortSemID, errorHandler, "verifyRequestPortSemID");
-    
+    removeSem(waitToRemoveDump, errorHandler, "waitToRemoveDump");
     removeSem(waitToTravelsemID, errorHandler, "waitToTravelsemID");
-
-    
+    removeSem(waitToRemoveDump, errorHandler, "waitToRemoveDump");
     removeSem(waitResponsesID, errorHandler, "waitResponsesID");
     printf("master tutti i sem sono stati rimoessi\n");
 

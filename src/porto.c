@@ -38,7 +38,7 @@ void recvDischargeHandler(long type, char *text)
     int keyMiaCoda;
     int keyCodaNave;
     int waitResponsesID;
-
+    Port arrPorts;
     Port porto;
 
     /*waitResponsesID = useSem(WAITFIRSTRESPONSES, errorHandler, "recvDischargerHandler->waitResponsesID useSem");*/
@@ -51,7 +51,8 @@ void recvDischargeHandler(long type, char *text)
 
     portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler, "RecvDischargerHandler");
 
-    porto = ((Port)getShmAddress(portShmId, 0, errorHandler, "RecvDischargerHandler")) + idx;
+    arrPorts = ((Port)getShmAddress(portShmId, 0, errorHandler, "RecvDischargerHandler"));
+    porto = arrPorts + idx;
 
     keyMiaCoda = ftok("./src/porto.c", idx);
     keyCodaNave = ftok("./src/nave.c", idNaveMittente);
@@ -71,7 +72,7 @@ void recvDischargeHandler(long type, char *text)
 
     /* Operazione controllata da semaforo, per permettere di controllare le disponibilità per una richiesta solo quando non lo si sta già facendo per un altra*/
     mutexPro(controlPortsDisponibilitySemID, idx, LOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID LOCK");
-    res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantity);
+    res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantity, arrPorts);
     mutexPro(controlPortsDisponibilitySemID, idx, UNLOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID UNLOCK");
     printf("|Port %d: \n|\tTIPO TROVATO: %d \n|\tEXP TIME TROVATA:%d\n", getppid(), tipoTrovato, dataScadenzaTrovata);
 
@@ -116,7 +117,7 @@ void recvDischargeHandler(long type, char *text)
 
     mutexPro(waitToTravelSemID, idNaveMittente, LOCK, NULL, "RecvDischargerHandler->waitToTravelSemID LOCK");
     /*getOneValue(waitToTravelSemID, idNaveMittente);*/
-
+    shmDetach(arrPorts, errorHandler, "recvDischargerHandler");
     return;
 }
 
@@ -242,3 +243,4 @@ int main(int argc, char const *argv[])
 
     mySettedPort(supplyDisponibility, requestDisponibility, idx, codicePorto);
 }
+

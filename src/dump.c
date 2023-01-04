@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/signal.h>
 
 #include "../utils/shm_utility.h"
 #include "../utils/sem_utility.h"
+#include "../utils/msg_utility.h"
 #include "../config1.h"
 #include "./dump.h"
 #include "./porto.h"
@@ -136,7 +138,10 @@ void removeDumpArea() {
     removeSem(logFileSemID, errorHandler , "removeDumpArea");
     removeShm(shmid, errorHandler, "removeDumpArea");
 }
-
+void signalHandler(int s){
+    printf("NON FACCIO NULLA DUMP\n");
+    return;
+}
 void printerCode(int day) {
     FILE* fp;
     int logFileSemID;
@@ -146,18 +151,25 @@ void printerCode(int day) {
     int sum;
     int c;
     int k;
+    int waitToRemoveDumpKey;
     GoodTypeInfo *arr;
     Port portArr;
     Supplies s;
+
+    if(signal(SIGUSR1, signalHandler)== SIG_ERR){
+        perror("Errore nel settare il signal nel printerCode");
+        exit(1);
+    }
 
     logFileSemID = useSem(LOGFILESEMKEY, errorHandler, "printerCode");
     shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler , "printerCode->useShm del dump");
     portShmid = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler , "printerCode->useShm dei porti");
     arr = (GoodTypeInfo*)getShmAddress(shmid, 0, errorHandler ,"printerCode->arr");
     portArr = (Port)getShmAddress(portShmid, 0, errorHandler, "printerCode->portArr");
+    waitToRemoveDumpKey = useSem(WAITRMVDUMPKEY, errorHandler, "waitToRemoveDumpKey in printerCode");
 
     mutex(logFileSemID, LOCK, errorHandler, "printerCode LOCK");
-    printf("Scrivo nel logifle\n");
+    printf("Scrivo nel logifle %d\n" ,day);
     fp = fopen("./logfile.log", "a+");
     if (fp == NULL) {
         perror("Errore nell'apertura del file log");
@@ -185,7 +197,7 @@ void printerCode(int day) {
         
         sum += arr[i].delivered_goods + arr[i].goods_on_port + arr[i].goods_on_ship + arr[i].expired_goods_on_ship + arr[i].expired_goods_on_port;
     }
-    if (day == SO_DAYS) {
+    if (day == SO_DAYS || day == 0) {
         for (i = 0; i < SO_PORTI; i++){
             fprintf(fp, "Porto %d:\n",i);
             fprintf(fp, "DOMANDE:\n");
@@ -221,7 +233,7 @@ void printerCode(int day) {
             fprintf(fp,"______________________________________________\n");
         }
             fprintf(fp, "TOTALE MERCE: %d <==> SO_FILL: %d\n", sum, SO_FILL);
-        if (sum == SO_FILL) {
+        if (sum == SO_FILL && day == SO_DAYS) {
             fprintf(fp, "✅");
         }
         else {
@@ -231,20 +243,28 @@ void printerCode(int day) {
     }
     unlockAllGoodsDump();
     fclose(fp);
-    mutex(logFileSemID, UNLOCK, errorHandler , "printerCode UNLOCK");
     shmDetach(arr, errorHandler , "printerCode");
+    mutex(logFileSemID, UNLOCK, errorHandler , "printerCode UNLOCK");
+    if(day==SO_DAYS){
+        printf("Faccio la lock\n");
+        mutex(waitToRemoveDumpKey, LOCK, errorHandler, "LOCK in waitToRemoveDumpID");
+    }
 }
 
-void printDump(int day) {
+void printDump(int mod, int day) {
     int pid;
+    if(mod == ASYNC){
+        pid = fork();
+        if (pid == -1) {
+            perror("Errore nel forkare il dump printer\n");
+            exit(EXIT_FAILURE);
+        }
+        if (pid == 0) {
+            printerCode(day);
 
-    pid = fork();
-    if (pid == -1) {
-        perror("Errore nel forkare il dump printer\n");
-        exit(EXIT_FAILURE);
-    }
-    if (pid == 0) {
+            exit(EXIT_SUCCESS);
+        }    
+    }else{
         printerCode(day);
-        exit(EXIT_SUCCESS);
-    }    
+    }
 }

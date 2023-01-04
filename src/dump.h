@@ -2,7 +2,7 @@
 #define DUMP_H
 #define DUMPSEMKEY 392
 #define LOGFILESEMKEY 393
-
+#include "../utils/msg_utility.h"
 typedef struct goodTypeInfo {                       /* struttura che contiene le 4 informazioni relative per ogni tipo di merce nella simulazione*/
   int goods_on_ship;             /* numero di beni TOTALI di quel tipo presenti sulla nave PRONTI PER ESSERE CONSEGNATI */
   int goods_on_port;             /* numero di beni TOTALI di quel tipo presenti nel porto PRONTI PER ESSERE CARICATI*/
@@ -33,7 +33,7 @@ void addDeliveredGood(int quantity, int type);
     - altri utilità se ci vengono in mente  
 */
 
-void printDump(int day);
+void printDump(int mod, int day);
 void removeDumpArea();
 
 void lockAllGoodsDump();

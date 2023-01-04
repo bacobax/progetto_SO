@@ -59,6 +59,7 @@ void initArrayOffers(PortOffer* port_offers){
     }
 }
 
+
 Ship initShip(int shipID)
 {
     Ship ship;
@@ -187,10 +188,39 @@ int removeProduct(Ship ship, int product_index){
 }
 
 int chooseQuantityToCharge(Ship ship){
-    return availableCapacity(ship);
-    /* il massimo che posso caricare
-       valutare se conviene caricare di meno per essere più leggeri e viaggiare più
-       velocemente */
+    intList *tipiDaCaricare;
+    int shmPort;
+    Port portArr;
+    int i;
+    int j;
+    int k;
+    int cap;
+
+    tipiDaCaricare = haSensoContinuare();
+    printf("CHOOSE QUANTITY\n");
+    int max = 0;
+    shmPort = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler, "chooseQuantityToCharge->useShm");
+    portArr =  (Port)getShmAddress(shmPort, 0, errorHandler, "chooseQuantityToCharge->getShmAddress");
+    
+    for(i=0; i<SO_PORTI; i++){
+        for(j=0; j<SO_DAYS; j++){
+            for(k=0; k<SO_MERCI; k++){
+                if(portArr[i].supplies.magazine[j][k] > max && contain(tipiDaCaricare, k)){
+                    max = portArr[i].supplies.magazine[j][k];
+                }
+            }
+        }
+    }
+    intFreeList(tipiDaCaricare);
+    shmDetach(portArr, errorHandler, "chooseQuantityToCharge->shmDetach");
+
+    if(max < availableCapacity(ship)){
+        cap = max;
+    } else {
+        cap = availableCapacity(ship); 
+    }
+    printf("BEST QUANTITY: %d\n", cap);
+    return cap;
 }
 
 int firstValidExpTime(Product* p, int* idx) {

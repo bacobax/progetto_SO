@@ -24,22 +24,25 @@ void chargeProducts(Ship ship, int quantityToCharge){
     PortOffer port_offers[SO_PORTI];
     int waitToTravelSemID;
     int waitResponsesID;
-    
+    intList *tipiDaCaricare;
+    tipiDaCaricare = haSensoContinuare();
+    printf("ALL'ESTERNO\n");
+
+    if (tipiDaCaricare->length == 0)
+    {
+        printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
+        printf("[%d]Nave con id:%d NON HA PIÙ SENSO CONTINUARE\n", getpid(), ship->shipID);
+        printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
+        intFreeList(tipiDaCaricare);
+        exit(EXIT_FAILURE);
+    }
+    intFreeList(tipiDaCaricare);
+
+
     initArrayOffers(port_offers);
 
     if (quantityToCharge == 0) {
-        if (ship->weight != 0) {
-            dischargeProducts(ship);
-        }else {
-            /*
-                Questo può accadere quando tutti i porti richiedono solo più della merce (e quindi senza offrirla)
-                e la nave è vuota
-            */
-            printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
-            printf("SITUAZIONE DEGENERE: SONO VUOTA E NON TROVO NESSUN PORTO DOVE CARICARE\n");
-            printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
-            exit(EXIT_FAILURE);
-        }
+        dischargeProducts(ship);
     }
     else {
         /*
@@ -60,7 +63,7 @@ void chargeProducts(Ship ship, int quantityToCharge){
         if (availablePorts == 0) {
             /* non ci sono porti disponibili per la quantità
                di merce che voglio caricare, riprovo a chiamare i porti decrementando la quantità*/
-            chargeProducts(ship, quantityToCharge - 1); 
+            chargeProducts(ship, chooseQuantityToCharge(ship)); 
         
         } else {
             /* ci sono porti che hanno merce da caricare*/
@@ -96,7 +99,6 @@ void dischargeProducts(Ship ship) {
     */
     if (ship->weight == 0) {
 
-        
         chargeProducts(ship, chooseQuantityToCharge(ship));
 
     } else {
@@ -259,63 +261,19 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     /* SO_FILL / SO_DAYS / SO_PORTI / SO_MERCI*/
 
     /* valore per decrementare: differenza tra valore attuale e offerta più alta che trova i porti*/
-if(!haSensoContinuare()){
-    printf("NON HA SENSO CONTINUARE\n");
-    exit(EXIT_FAILURE);
-}
-chargeProducts(ship, chooseQuantityToCharge(ship));
-    printf("FINITO CARICAMENTO");
-if(!haSensoContinuare()){
-    printf("NON HA SENSO CONTINUARE\n");
-    exit(EXIT_FAILURE);
-}
-dischargeProducts(ship);
-    printf("FINITO SCARICAMENTO");
-if(!haSensoContinuare()){
-    printf("NON HA SENSO CONTINUARE\n");
-    exit(EXIT_FAILURE);
-}
-chargeProducts(ship, chooseQuantityToCharge(ship));
-    printf("FINITO CARICAMENTO");
-if(!haSensoContinuare()){
-    printf("NON HA SENSO CONTINUARE\n");
-    exit(EXIT_FAILURE);
-}
-dischargeProducts(ship);
-    printf("FINITO SCARICAMENTO");
-if(!haSensoContinuare()){
-    printf("NON HA SENSO CONTINUARE\n");
-    exit(EXIT_FAILURE);
-}
 
-dischargeProducts(ship);
-    printf("FINITO SCARICAMENTO");
-
-
-    printShip(ship);    
-
-        while (1) {
-            sleep(1);
-        }
-
-    exit(EXIT_FAILURE);
-
+/**/
     
-
-    /*
+    
     while (1) { 
         if(charge == 1){
-            chargeProducts(ship, 10);
+            chargeProducts(ship, chooseQuantityToCharge(ship));
             charge = 0;
         } else {
             dischargeProducts(ship);
             charge = 1;
         }
-        sleep(0.5);
-        /*
-         nanosecsleep(NANOS_MULT/2);
-        
+        sleep(1);
     }
-    */
 }
 

@@ -61,10 +61,18 @@ void launchCharger(void (*recvHandler)(long, char*), int idx);
 int checkRequests(Port p, int type, int quantity);
 
 int allRequestsZero();
-int haSensoContinuare();
+intList *haSensoContinuare();
+
 intList* getAllTypeRequests(Port portArr);
 intList* getAllTypeSupplies(Port portArr);
 intList* tipiDiMerceOfferti(Port p);
 intList* tipiDiMerceRichiesti(Port p);
+double getValue(int quantity, int scadenza, int tipo, Port arrPorts);
+
+/*
+    algoritmo che trova la migliore coppia di coordinate della matrice (tipo merce, giorno di distribuzione della merce) che corrisponde
+    alla migliore quantità disponibile da offrire di fronte alla richiesta di merce pari a {{quantity}}
+*/
+int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, int quantity, Port arrPorts);
 
 #endif
