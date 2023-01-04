@@ -140,7 +140,7 @@ int addProduct(Ship ship, Product p){
                 ship->weight = ship->weight + p.weight;
                 printf("NAVE: aggiungo %d\n", products[i].weight);
                 addNotExpiredGood(products[i].weight, products[i].product_type, SHIP);
-
+                    
                 break;
             }
         }
