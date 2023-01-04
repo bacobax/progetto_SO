@@ -24,8 +24,19 @@ void chargeProducts(Ship ship, int quantityToCharge){
     
     initArrayOffers(port_offers);
 
-    if(quantityToCharge == 0){
-        dischargeProducts(ship);
+    if (quantityToCharge == 0) {
+        if (ship->weight != 0) {
+            dischargeProducts(ship);
+        }else {
+            /*
+                Questo può accadere quando tutti i porti richiedono solo più della merce (e quindi senza offrirla)
+                e la nave è vuota
+            */
+            printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
+            printf("SITUAZIONE DEGENERE: SONO VUOTA E NON TROVO NESSUN PORTO DOVE CARICARE");
+            printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
+            
+        }
     }
     else {
         /*
@@ -80,6 +91,7 @@ void dischargeProducts(Ship ship) {
     
     if (ship->weight == 0) {
 
+        
         chargeProducts(ship, chooseQuantityToCharge(ship));
 
     } else {
@@ -154,6 +166,7 @@ void dischargeProducts(Ship ship) {
             removeProduct(ship, product_index); /* vecchio prodotto da scaricare rimosso (tanto le domande dei porti sono tutte a 0) */
 
             printf("Riprovo a scegliere il prodotto da scaricare\n");
+            
             dischargeProducts(ship);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
         
         } else {
@@ -240,8 +253,8 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     /* SO_FILL / SO_DAYS / SO_PORTI / SO_MERCI*/
 
     /* valore per decrementare: differenza tra valore attuale e offerta più alta che trova i porti*/
-
-    chargeProducts(ship, chooseQuantityToCharge(ship));
+/*
+chargeProducts(ship, chooseQuantityToCharge(ship));
     printf("FINITO CARICAMENTO");
     printShip(ship);    
 
@@ -250,18 +263,20 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
         }
 
     exit(EXIT_FAILURE);
+*/
+    
 
     
-    /* while (1) { 
-    //     if(charge == 1){
-    //         chargeProducts(ship, 10);
-    //         charge = 0;
-    //     } else {
-    //         dischargeProducts(ship);
-    //         charge = 1;
-    //     }
-    //     nanosecsleep(NANOS_MULT);
-    // }*/
+    while (1) { 
+        if(charge == 1){
+            chargeProducts(ship, 10);
+            charge = 0;
+        } else {
+            dischargeProducts(ship);
+            charge = 1;
+        }
+        nanosecsleep(NANOS_MULT/2);
+    }
     
 }
 
