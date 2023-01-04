@@ -3,8 +3,8 @@
 #define CONFIG_1
 
 
-#define SO_PORTI    3
-#define SO_NAVI     3
+#define SO_PORTI    2
+#define SO_NAVI     1
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 #define SO_MIN_VITA  10 /* tonn */
@@ -28,7 +28,9 @@
 
 #define SEMSHIPKEY 9090
 
-
+#define ENDPROGRAMSHM 3216 
+#define WAITSHIPSSEM 3217
+#define WAITPORTSSEM 3218
 
 /*chiavi delle shm*/
 #define PSHMKEY       342

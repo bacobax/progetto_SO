@@ -15,8 +15,8 @@ void ErrorHandler(int err) {
 }
 
 void quitSignalHandler(int sig) {
-    printf("Porto: ricevuto segnale di terminazione\n");
-    exit(EXIT_SUCCESS);
+    printf("Porto: ricevuto segnale di terminazione non faccio null\n");
+    
 }
 
 int random_int(int min, int max) {

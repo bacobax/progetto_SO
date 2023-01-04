@@ -166,7 +166,10 @@ void printerCode(int day) {
     portShmid = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler , "printerCode->useShm dei porti");
     arr = (GoodTypeInfo*)getShmAddress(shmid, 0, errorHandler ,"printerCode->arr");
     portArr = (Port)getShmAddress(portShmid, 0, errorHandler, "printerCode->portArr");
+    
     waitToRemoveDumpKey = useSem(WAITRMVDUMPKEY, errorHandler, "waitToRemoveDumpKey in printerCode");
+    
+    
 
     mutex(logFileSemID, LOCK, errorHandler, "printerCode LOCK");
     printf("Scrivo nel logifle %d\n" ,day);
@@ -245,6 +248,7 @@ void printerCode(int day) {
     fclose(fp);
     shmDetach(arr, errorHandler , "printerCode");
     mutex(logFileSemID, UNLOCK, errorHandler , "printerCode UNLOCK");
+    
     if(day==SO_DAYS){
         printf("Faccio la lock\n");
         mutex(waitToRemoveDumpKey, LOCK, errorHandler, "LOCK in waitToRemoveDumpID");

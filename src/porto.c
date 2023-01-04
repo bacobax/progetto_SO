@@ -2,9 +2,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <signal.h>
 
 #include <sys/types.h>
 #include <sys/ipc.h>
+#include <sys/wait.h>
 #include "../config1.h"
 #include "../utils/msg_utility.h"
 #include "../utils/shm_utility.h"
@@ -219,15 +221,32 @@ void recvChargerHandler(long type, char *text)
     return;
 }
 
-void codicePorto(Port porto, int myQueueID, int shipsQueueID, int idx)
+void codicePorto(int endShmId, int idx)
 {
-
+    int* endNow;
+    int aspettoMortePortiSemID;
+    int aspettoMorteNaviSemID;
     waitForStart();
-
+    endNow =(int*)getShmAddress(endShmId, 0, errorHandler, "codicePorto");
+    aspettoMortePortiSemID = useSem(WAITPORTSSEM, errorHandler, "aspettoMortePortiSemID in codicePorto");
+    aspettoMorteNaviSemID = useSem(WAITSHIPSSEM, errorHandler, "aspettoMortePortiSemID in codicePorto");
     launchDischarger(recvDischargeHandler, idx);
     launchCharger(recvChargerHandler, idx);
-    /* START */
 
+    /* START */
+    while(1){
+
+
+
+        sleep(1);
+        if(*endNow){
+            mutex(aspettoMorteNaviSemID, WAITZERO, errorHandler, "waitzero su aspettoMorteNaviSemID");
+            kill(0, SIGUSR1);
+            mutex(aspettoMortePortiSemID, LOCK, errorHandler, "LOCK su aspettoMortePortiSemID");
+            exit(EXIT_SUCCESS);
+        }
+
+    }
     /* launchGoodsDispatcher(myQueueID, porto, idx, shipsQueueID); */
 }
 

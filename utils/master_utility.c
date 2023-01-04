@@ -5,6 +5,7 @@
 #include <time.h>
 #include <signal.h>
 #include <sys/ipc.h>
+#include <sys/wait.h>
 #include "../src/porto.h"
 #include "../src/nave.h"
 #include "../src/dump.h"
@@ -175,6 +176,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int reservePortsResourceSem;
     int portsShmid;
     int shipsShmid;
+    int endShmID;
     int semBanchineID;
     int semShipsID;
     int msgRefillerID;
@@ -190,6 +192,9 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int portDischargeRequestsQueueID;
     int waitToRemoveDump;
     int i;
+    int* terminateValue;
+    int waitPortsSemID;
+    int waitShipsSemID;
     srand(time(NULL));
 
     if (signal(SIGUSR1, mastersighandler) == SIG_ERR) {
@@ -209,12 +214,17 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     /*
     !dovrà essere SO_PORTI + SO_NAVI
     */
+
+   waitPortsSemID = createSem(WAITPORTSSEM, SO_PORTI, errorHandler, "master crazione waitPortsSemID");
+   waitShipsSemID = createSem(WAITSHIPSSEM, SO_NAVI, errorHandler, "master creazione waitShipsSemID");
+
     waitconfigSemID = createSem(WAITCONFIGKEY, SO_PORTI+ SO_NAVI, errorHandler, "creazione sem waitconfig");
     
     createDumpArea();
     portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler , "creazione shm dei porti");
     shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler ,"creazione shm delle navi");
-
+    endShmID = createShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "crazione shm intero terminazione programma");
+    terminateValue = (int*)getShmAddress(endShmID, 0, errorHandler, "master getShmAddress endShm");
 
     /*creazione banchine*/
     semBanchineID = createMultipleSem(BANCHINESEMKY, SO_PORTI, SO_BANCHINE, errorHandler, "creazione semaforo banchine");
@@ -260,15 +270,23 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     
     waitToRemoveDump = createSem(WAITRMVDUMPKEY, 1, errorHandler, "craezione semaforo remove dump");
 
+
     codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID);
-    kill(0, SIGUSR1); /* uccide tutti i figli */
+    /* kill(0, SIGUSR1);  uccide tutti i figli */
+
+    *terminateValue = 1;
+    printf("SETTATO A 1 TERMINATE VALUE, ASPETTO FIGLI...\n");
+    /*
+    wait_all(SO_NAVI + SO_PORTI + (SO_PORTI * 3));
+    */
+    mutex(waitPortsSemID, WAITZERO, errorHandler, "master mutex WAITZERO on ports");
 
     printf("FACCIO IL PRINT DEL DUMP DEL %d ESIMO GIORNO\n", SO_DAYS);
-    printDump(SYNC , SO_DAYS);
+    printDump(ASYNC , SO_DAYS);
     printf("MASTER: FACCIO LA WAITZERO...\n");
     mutex(waitToRemoveDump, WAITZERO, errorHandler, "mutex waitzero remove dump");
     printf("MASTER: HO PASSATO LA WAITZERO...\n");
-
+    lockAllGoodsDump();
     printf("master sono ancora vivo dopo kill\n");
     removeSem(startSimulationSemID, errorHandler, "startSimulationSemID");
     removeSem(reservePrintSem, errorHandler, "reservePrintSem");
@@ -282,12 +300,16 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeSem(verifyRequestPortSemID, errorHandler, "verifyRequestPortSemID");
     removeSem(waitToRemoveDump, errorHandler, "waitToRemoveDump");
     removeSem(waitToTravelsemID, errorHandler, "waitToTravelsemID");
-    removeSem(waitToRemoveDump, errorHandler, "waitToRemoveDump");
     removeSem(waitResponsesID, errorHandler, "waitResponsesID");
+
+    removeSem(waitPortsSemID, errorHandler, "waitPortsSemID");
+    removeSem(waitShipsSemID, errorHandler, "waitShipsSemID");
+    
     printf("master tutti i sem sono stati rimoessi\n");
 
     removeShm(shipsShmid, errorHandler, "shipsShmid");
     removeShm(portsShmid, errorHandler, "portsShmid");
+    removeShm(endShmID, errorHandler, "endShmID");
     removeDumpArea();
     printf("master tutte le shm sono state rimosse\n");
 

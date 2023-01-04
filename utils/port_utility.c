@@ -4,6 +4,7 @@
 #include <string.h>
 #include <signal.h>
 #include <sys/ipc.h>
+#include <sys/wait.h>
 #include <time.h>
 #include "../src/porto.h"
 #include "../src/nave.h"
@@ -288,17 +289,18 @@ void refill(long type, char* text) {
     mutex(waitEndDaySemID, -1, errorHandler, "refill->waitEndDaySem LOCK");
 }
 
-void refillerCode(int idx) {
+void refillerCode(int endShmId,int idx) {
     /*
         questo è una sorta di listener, che ascolta sempre in attesa di un messaggio per l'idx passatogli come argomento
         (indice del porto proprietario del refiller)
     */
+    int *endNow;
     int refillerID;
     if (signal(SIGUSR1, refillerQuitHandler) == SIG_ERR) {
         perror("Refiller: non riesco a settare il signal handler\n");
         exit(EXIT_FAILURE);
     }
-
+    endNow = getShmAddress(endShmId, 0, errorHandler, "refillerCode");
     refillerID = useQueue(REFILLERQUEUE, errorHandler, "useQueue in refillerCode");
 
     while (1) {
@@ -307,10 +309,14 @@ void refillerCode(int idx) {
             questo perchè type = 0 è riservato
         */
         msgRecv(refillerID, (long)(idx + 1), errorHandler, refill, ASYNC, "refillerCode");
+        if(*endNow){
+            waitpid(0, NULL, 0);
+            exit(EXIT_SUCCESS);
+        }
     }
 }
 
-void launchRefiller(int idx) {
+void launchRefiller( int idx, int endShmId) {
     int pid = fork();
 
     if (pid == -1) {
@@ -318,19 +324,18 @@ void launchRefiller(int idx) {
         exit(EXIT_FAILURE);
     }
     if (pid == 0) {
-        refillerCode(idx);
+        refillerCode(endShmId, idx);
         exit(EXIT_FAILURE);
     }
 }
 
 
-void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*codicePorto)(Port porto, int myQueueID, int shipsQueueID, int idx)) {
+void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*codicePorto)(int endShmId, int idx)) {
      
     void (*oldHandler)(int);
-    int i;
+    int endShmId;
     Port p;
-    int msgQueueID;
-    int shipQueueID;
+
     /*
         questo perchè per qualche motivo srand(time(NULL)) non generava unici seed tra un processo unico e l'altro
         fonte della soluzione: https://stackoverflow.com/questions/35641747/why-does-each-child-process-generate-the-same-random-number-when-using-rand
@@ -346,34 +351,40 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
         perror("signal");
         exit(1);
     }
-    
+    endShmId = useShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "mySettedPort");
 
     p = initPort(supplyDisponibility,requestDisponibility, idx);
 
 
 
-    launchRefiller(idx);
+    launchRefiller(idx,endShmId);
 
     checkInConfig();
     printf("P: finito configurazione\n");
 
-    msgQueueID = 1;
-
-    shipQueueID = 1;
+    
     
     /*
         da aggiungere le due useQueue per le code di scaricamento
     */
 
-    codicePorto(p, msgQueueID,shipQueueID, idx);
+    codicePorto(endShmId, idx);
 
 
 }
 
 void dischargerCode(void (*recvHandler)(long, char*), int idx) {
      int requestPortQueueID;
+     int endShmID;
+     int* terminateValue;
      mex* res;
+     endShmID = useShm(ENDPROGRAMSHM, sizeof(int), errorHandler, "dischargerCode");
+    terminateValue = (int*) getShmAddress(endShmID, 0, errorHandler, "dischargerCode"); 
     requestPortQueueID = useQueue(PQUERECHKEY, errorHandler, "dischargerCode");
+    if (signal(SIGUSR1, refillerQuitHandler) == SIG_ERR) {
+        perror("dischargerCode: non riesco a settare il signal handler\n");
+        exit(EXIT_FAILURE);
+    }
     while (1) {
 
         /*
@@ -386,7 +397,11 @@ void dischargerCode(void (*recvHandler)(long, char*), int idx) {
         */
         res = msgRecv(requestPortQueueID, idx + 1, errorHandler, recvHandler, ASYNC, "dischargerCode");
          
+        if(*terminateValue == 1){
+            waitpid(0, NULL, 0);
 
+            exit(EXIT_SUCCESS);
+        }
          
     }
 }
@@ -394,7 +409,14 @@ void dischargerCode(void (*recvHandler)(long, char*), int idx) {
 void chargerCode(void (*recvHandler)(long, char*), int idx) {
      int requestPortQueueID;
      mex* res;
+     int* terminateValue;
+    int endShmID = useShm(ENDPROGRAMSHM, sizeof(int), errorHandler, "dischargerCode");
+    terminateValue = (int*) getShmAddress(endShmID, 0, errorHandler, "dischargerCode"); 
     requestPortQueueID = useQueue(PQUEREDCHKEY, errorHandler, "dischargerCode");
+    if (signal(SIGUSR1, refillerQuitHandler) == SIG_ERR) {
+        perror("ChargerCode: non riesco a settare il signal handler\n");
+        exit(EXIT_FAILURE);
+    }
     while (1) {
 
         /*
@@ -407,6 +429,12 @@ void chargerCode(void (*recvHandler)(long, char*), int idx) {
         */
         res = msgRecv(requestPortQueueID, idx + 1, errorHandler, recvHandler, ASYNC,"chargerCode");
         
+        if(*terminateValue == 1){
+            waitpid(0, NULL, 0);
+
+            exit(EXIT_SUCCESS);
+        }
+
     }
 }
 

@@ -230,7 +230,9 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     p4.weight = 8;
     */
     Ship ship;
-    
+    int endShmID = useShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "Nave: use end shm");
+    int* terminateValue = (int*)getShmAddress(endShmID, 0, errorHandler, "Nave: getShmAddress di endShm");
+    int waitShipSemID = useSem(WAITSHIPSSEM, errorHandler, "nave waitShipSemID");
     ship = initShip(atoi(argv[1]));
     int charge = 1;
 
@@ -274,6 +276,13 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
             charge = 1;
         }
         sleep(1);
+        printf("NAVE TERMINATEVALUE: %d\n" , *terminateValue);
+        if (*terminateValue == 1)
+        {
+            printf("[%d]Nave con id:%d il programma è terminato\n", getpid(), ship->shipID);
+            mutex(waitShipSemID, LOCK, errorHandler, "nave mutex LOCK waitShipSemID");
+            exit(EXIT_SUCCESS);
+        }
     }
 }
 

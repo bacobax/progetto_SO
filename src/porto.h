@@ -39,7 +39,7 @@ Port initPort(int supplyDisponibility, int requestDisponibility, int pIndex);
 
 void printPorto(void* p, int idx);
 
-void launchRefiller(int idx);
+void launchRefiller(int idx, int endShmId);
 /*
     void freePort(Port p)
 */
@@ -48,12 +48,11 @@ void launchRefiller(int idx);
 /*
 funzione per separare la logica della configurazione del porto da quella della sua routine
 */
-void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*codicePorto)(Port porto, int myQueueID, int shipsQueueID, int idx));
+void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*codicePorto)(int idx, int endShmId));
 
 /*
     forka il figlio che gestisce le navi che vogliono caricare dal porto
 */
-void launchGoodsDispatcher(int myQueueID, Port porto, int idx, int shipsQueueID);
 
 void launchDischarger(void (*recvHandler)(long,char*), int idx);
 void launchCharger(void (*recvHandler)(long, char*), int idx);
