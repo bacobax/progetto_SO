@@ -18,6 +18,12 @@
     TODO: non decrementare più di 1 quantity, ma settarla direttamente a min{max delle offerte, aviable cap}
 */
 
+void exitNave(){
+    int waitShipSemID = useSem(WAITSHIPSSEM, errorHandler, "nave waitShipSemID");   
+    mutex(waitShipSemID, LOCK, errorHandler, "nave mutex LOCK waitShipSemID");
+    exit(0);
+}
+
 void chargeProducts(Ship ship, int quantityToCharge){
     int availablePorts;
     int portID;
@@ -26,15 +32,14 @@ void chargeProducts(Ship ship, int quantityToCharge){
     int waitResponsesID;
     intList *tipiDaCaricare;
     tipiDaCaricare = haSensoContinuare();
-    printf("ALL'ESTERNO\n");
 
     if (tipiDaCaricare->length == 0)
     {
         printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
-        printf("[%d]Nave con id:%d NON HA PIÙ SENSO CONTINUARE\n", getpid(), ship->shipID);
+        printf("Nave con id:%d NON HA PIÙ SENSO CONTINUARE\n", ship->shipID);
         printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
         intFreeList(tipiDaCaricare);
-        exit(EXIT_FAILURE);
+        exitNave();
     }
     intFreeList(tipiDaCaricare);
 
@@ -59,7 +64,7 @@ void chargeProducts(Ship ship, int quantityToCharge){
         */
 
         /*availablePorts = portResponsesForCharge(ship, port_offers);*/
-        printf("[%d]NAVE: Aviable ports = %d\n",getpid(), availablePorts);
+        printf("NAVE con id:%d: Aviable ports = %d\n",ship->shipID, availablePorts);
         if (availablePorts == 0) {
             /* non ci sono porti disponibili per la quantità
                di merce che voglio caricare, riprovo a chiamare i porti decrementando la quantità*/
@@ -69,16 +74,16 @@ void chargeProducts(Ship ship, int quantityToCharge){
             /* ci sono porti che hanno merce da caricare*/
             waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler, "chargeProducts->waitToTravelSemID");
             
-            portID = choosePortForCharge(port_offers);
+            portID = choosePortForCharge(port_offers, ship->shipID);
 
             replyToPortsForCharge(ship, portID);
             
-            printf("[%d]Nave: Aspetto a partire...\n", getpid());
+            printf("Nave con id:%d: Aspetto a partire...\n", ship->shipID);
             mutexPro(waitToTravelSemID, ship->shipID, WAITZERO, errorHandler, "chargeProducts->waitToTravelSemID WAITZERO");
             mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler, "chargeProducts->waitToTravelSemID +SO_PORTI");
             
         
-            printf("[%d]Nave: sono partita...\n", getpid());
+            printf("Nave con id:%d: sono partita...\n", ship->shipID);
             travel(ship, portID);
             
             accessPortForCharge(ship, portID, port_offers[portID], quantityToCharge);
@@ -125,7 +130,7 @@ void dischargeProducts(Ship ship) {
     */
         printShip(ship);
         product_index = chooseProductToDelivery(ship);
-        printf("\n\n[%d]Nave: la mia merce scade tra:%d\n\n", getpid(), ship->products[product_index]);
+        printf("\n\nNave con id:%d: la mia merce scade tra:%d\n\n", ship->shipID, ship->products[product_index]);
         portID = communicatePortsForDischarge(ship, ship->products[product_index], &quantoPossoScaricare);  
 
     /* 2 - Nave) Per ogni porto che mi risponde posso trovarmi in uno dei seguenti casi:
@@ -167,13 +172,12 @@ void dischargeProducts(Ship ship) {
     */
     /*portID = portResponsesForDischarge(ship, &quantoPossoScaricare);*/
         
-        printf("PORT ID SCELTO: %d\n", portID);
         if(portID == -1){
 
             addExpiredGood(ship->products[product_index].weight, ship->products[product_index].product_type, SHIP);
             removeProduct(ship, product_index); /* vecchio prodotto da scaricare rimosso (tanto le domande dei porti sono tutte a 0) */
 
-            printf("Riprovo a scegliere il prodotto da scaricare\n");
+            printf("Nave con id:%d: riprovo a scegliere il prodotto da scaricare\n", ship->shipID);
             
             dischargeProducts(ship);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
         
@@ -189,7 +193,7 @@ void dischargeProducts(Ship ship) {
 
 
             travel(ship, portID);
-            printf("\n\n[%d]Nave: la mia merce scade tra:%d E STO PER FARE accessPortForDischarge\n\n", getpid(), ship->products[product_index]);
+            printf("\n\nNave con id:%d: la mia merce scade tra:%d E STO PER FARE accessPortForDischarge\n\n", ship->shipID, ship->products[product_index]);
             accessPortForDischarge(ship, portID, product_index, quantoPossoScaricare);
         }      
 
@@ -232,14 +236,13 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     Ship ship;
     int endShmID = useShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "Nave: use end shm");
     int* terminateValue = (int*)getShmAddress(endShmID, 0, errorHandler, "Nave: getShmAddress di endShm");
-    int waitShipSemID = useSem(WAITSHIPSSEM, errorHandler, "nave waitShipSemID");
     ship = initShip(atoi(argv[1]));
     int charge = 1;
 
     checkInConfig();
-    printf("[%d]Nave con id:%d: config finita, aspetto ok partenza dal master...\n", getpid(),ship->shipID);
+    printf("Nave con id:%d: config finita, aspetto ok partenza dal master...\n", ship->shipID);
     waitForStart();
-    printf("[%d]Nave con id:%d partita\n", getpid(),ship->shipID);
+    printf("Nave con id:%d partita\n", ship->shipID);
 
     /* while(1){
     res = addProduct(ship, p2);
@@ -268,6 +271,13 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     
     
     while (1) { 
+        printf("NAVE con id:%d TERMINATEVALUE: %d\n" , ship->shipID,*terminateValue);
+
+        if (*terminateValue == 1)
+        {
+            printf("Nave con id:%d il programma è terminato\n", ship->shipID);
+            exitNave();
+        }
         if(charge == 1){
             chargeProducts(ship, chooseQuantityToCharge(ship));
             charge = 0;
@@ -276,13 +286,7 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
             charge = 1;
         }
         sleep(1);
-        printf("NAVE TERMINATEVALUE: %d\n" , *terminateValue);
-        if (*terminateValue == 1)
-        {
-            printf("[%d]Nave con id:%d il programma è terminato\n", getpid(), ship->shipID);
-            mutex(waitShipSemID, LOCK, errorHandler, "nave mutex LOCK waitShipSemID");
-            exit(EXIT_SUCCESS);
-        }
+        
     }
 }
 

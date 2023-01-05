@@ -204,10 +204,13 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     sigaddset(&new_sig_set, SIGUSR1);
     sigprocmask(SIG_BLOCK, &new_sig_set, NULL);
 
+    /*
     new_sig_action.sa_handler = NULL;
     new_sig_action.sa_flags = 0;
     new_sig_action.sa_mask = new_sig_set;
-    
+    */
+    /*sigaction(SIGUSR1, &new_sig_action, NULL);*/
+
     if (signal(SIGUSR1, mastersighandler) == SIG_ERR) {
         perror("signal\n");
         exit(EXIT_FAILURE);
@@ -291,7 +294,6 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     wait_all(SO_NAVI + SO_PORTI + (SO_PORTI * 3));
     */
     mutex(waitPortsSemID, WAITZERO, errorHandler, "master mutex WAITZERO on ports");
-
     printf("FACCIO IL PRINT DEL DUMP DEL %d ESIMO GIORNO\n", SO_DAYS);
     printDump(ASYNC , SO_DAYS);
     printf("MASTER: FACCIO LA WAITZERO...\n");

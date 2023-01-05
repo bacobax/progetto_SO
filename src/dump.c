@@ -89,8 +89,9 @@ void addNotExpiredGood(int quantity, int type, ctx where) {
     info = ((GoodTypeInfo*) getShmAddress(shmid, 0, errorHandler, "addNotExpiredGood")) + type;
 
     mutexPro(semid, type, LOCK, errorHandler, "addNotExpiredGood LOCK");
-
-    if (where == PORT) {
+    printf("DUMP: %s %s %d\n", (where == PORT ? "PORT" : "NAVE"), (quantity <0 ? "tolgo" : "aggiungo") ,(quantity<0 ? -1 * quantity : quantity) );
+    if (where == PORT)
+    {
         info->goods_on_port += quantity;
     }
     else if (where == SHIP) {

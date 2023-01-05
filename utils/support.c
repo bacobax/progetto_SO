@@ -1,8 +1,10 @@
 
 #include "../config1.h"
 #include <stdio.h>
+#include <signal.h>
 #include <stdlib.h>
 #include <sys/time.h>
+#include <sys/types.h>
 #include <unistd.h>
 
 #include "./support.h"
@@ -111,4 +113,9 @@ void checkInConfig() {
     mutex(waitConfigSemID, LOCK, errorHandler, "checkInConfig");
 }
 
+void clearSigMask(){
+    sigset_t ss;
+    sigemptyset(&ss);
+    sigprocmask(SIG_SETMASK, &ss, NULL);
 
+}

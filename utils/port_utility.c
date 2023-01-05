@@ -16,6 +16,9 @@
 #include "./vettoriInt.h"
 
 void refillerQuitHandler(int sig) {
+    
+    kill(0, SIGUSR1);
+    
     printf("refiller: ricevuto segnale di terminazione\n");
     exit(EXIT_SUCCESS);
 }
@@ -86,7 +89,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
         }
         else if (c == 0) {
             addExpiredGood(p->supplies.magazine[0][i], i, PORT);
-            p->supplies.magazine[0][i] = 0;
+            p->supplies.magazine[0][i] = -2;
         }
         else {
             printf("Errore nella rand");
@@ -271,7 +274,7 @@ void refill(long type, char* text) {
         */
         addExpiredGood(p->supplies.magazine[day][tipoMerceDaAzzerare], tipoMerceDaAzzerare, PORT);
         
-        p->supplies.magazine[day][tipoMerceDaAzzerare] = 0;
+        p->supplies.magazine[day][tipoMerceDaAzzerare] = -2;
     }
 
     
@@ -296,14 +299,13 @@ void refillerCode(int endShmId,int idx) {
     */
     int *endNow;
     int refillerID;
-    if (signal(SIGUSR1, refillerQuitHandler) == SIG_ERR) {
-        perror("Refiller: non riesco a settare il signal handler\n");
-        exit(EXIT_FAILURE);
-    }
+    
     endNow = getShmAddress(endShmId, 0, errorHandler, "refillerCode");
     refillerID = useQueue(REFILLERQUEUE, errorHandler, "useQueue in refillerCode");
 
-    while (1) {
+    clearSigMask();
+    while (1)
+    {
         /*
             idx+1 perchè nella coda di messaggi ci si riferisce all'indice di ogni porto incrementato di 1
             questo perchè type = 0 è riservato
@@ -335,6 +337,10 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
     void (*oldHandler)(int);
     int endShmId;
     Port p;
+    /*
+    signal(SIGUSR1, SIG_IGN);
+
+    */
 
     /*
         questo perchè per qualche motivo srand(time(NULL)) non generava unici seed tra un processo unico e l'altro
@@ -370,17 +376,16 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
 }
 
 void dischargerCode(void (*recvHandler)(long, char*), int idx) {
-     int requestPortQueueID;
-     int endShmID;
-     int* terminateValue;
-     mex* res;
-     endShmID = useShm(ENDPROGRAMSHM, sizeof(int), errorHandler, "dischargerCode");
+    int requestPortQueueID;
+    int endShmID;
+    int* terminateValue;
+    mex* res;
+    endShmID = useShm(ENDPROGRAMSHM, sizeof(int), errorHandler, "dischargerCode");
     terminateValue = (int*) getShmAddress(endShmID, 0, errorHandler, "dischargerCode"); 
     requestPortQueueID = useQueue(PQUERECHKEY, errorHandler, "dischargerCode");
-    if (signal(SIGUSR1, refillerQuitHandler) == SIG_ERR) {
-        perror("dischargerCode: non riesco a settare il signal handler\n");
-        exit(EXIT_FAILURE);
-    }
+
+    clearSigMask();
+
     while (1) {
 
         /*
@@ -403,16 +408,18 @@ void dischargerCode(void (*recvHandler)(long, char*), int idx) {
 }
 
 void chargerCode(void (*recvHandler)(long, char*), int idx) {
-     int requestPortQueueID;
-     mex* res;
-     int* terminateValue;
+    int requestPortQueueID;
+    mex* res;
+    int* terminateValue;
     int endShmID = useShm(ENDPROGRAMSHM, sizeof(int), errorHandler, "dischargerCode");
     terminateValue = (int*) getShmAddress(endShmID, 0, errorHandler, "dischargerCode"); 
     requestPortQueueID = useQueue(PQUEREDCHKEY, errorHandler, "dischargerCode");
+    clearSigMask();
+    /*
     if (signal(SIGUSR1, refillerQuitHandler) == SIG_ERR) {
         perror("ChargerCode: non riesco a settare il signal handler\n");
         exit(EXIT_FAILURE);
-    }
+    }*/
     while (1) {
 
         /*
@@ -497,7 +504,7 @@ int allRequestsZero(){
     return cond;
 }
 int filter(int el){
-    return el!=0;
+    return el!=-2;
 }
 
 
@@ -556,12 +563,14 @@ intList* haSensoContinuare() {
         intFreeList(aux0);
         intFreeList(aux1);
     }
+    
     printf("MERCI TOTALI RICHIESTE: \n");
     intStampaLista(merciTotaliRichieste);
     
     printf("MERCI TOTALI OFFERTE: \n");
     intStampaLista(merciTotaliOfferte);
-
+    
+   
     shmDetach(portArr,errorHandler,"allRequestsZero");
     inter = intIntersect(merciTotaliOfferte, merciTotaliRichieste);
     intFreeList(merciTotaliOfferte);

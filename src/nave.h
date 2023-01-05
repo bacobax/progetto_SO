@@ -66,7 +66,7 @@ int communicatePortsForCharge(Ship ship, int quantityToCharge, PortOffer* port_o
 int communicatePortsForDischarge(Ship ship, Product p, int* quantoPossoScaricare);  
 
 int portResponsesForCharge(Ship ship, PortOffer* port_offers);
-int choosePortForCharge(PortOffer* port_offers);
+int choosePortForCharge(PortOffer* port_offers, int idx);
 
 void replyToPortsForCharge(Ship ship, int portID);
 void replyToPortsForDischarge(Ship ship, int portID);
