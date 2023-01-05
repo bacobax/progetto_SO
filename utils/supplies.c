@@ -20,7 +20,7 @@ void fillMagazine(Supplies* S, int day, int* supplies) {
 
     for (i = 0; i < SO_MERCI; i++) {
         S->magazine[day][i] = supplies[i];
-        addNotExpiredGood(supplies[i], i, PORT);
+        addNotExpiredGood(supplies[i], i, PORT, 1,0);
     }
 
 }

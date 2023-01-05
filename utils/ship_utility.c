@@ -137,7 +137,7 @@ int addProduct(Ship ship, Product p){
                 products[i].expirationTime = p.expirationTime;
                 products[i].weight = p.weight;
                 ship->weight = ship->weight + p.weight;
-                addNotExpiredGood(products[i].weight, products[i].product_type, SHIP);
+                addNotExpiredGood(products[i].weight, products[i].product_type, SHIP, 0, ship->shipID);
                     
                 return 0;
             }

@@ -74,9 +74,9 @@ void recvDischargeHandler(long type, char *text)
 
     /* Operazione controllata da semaforo, per permettere di controllare le disponibilità per una richiesta solo quando non lo si sta già facendo per un altra*/
     mutexPro(controlPortsDisponibilitySemID, idx, LOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID LOCK");
-    res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantity, arrPorts);
+    res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantity, arrPorts, idx);
     mutexPro(controlPortsDisponibilitySemID, idx, UNLOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID UNLOCK");
-    printf("|Port %d: \n|\tTIPO TROVATO: %d \n|\tEXP TIME TROVATA:%d\n", idx, tipoTrovato, dataScadenzaTrovata);
+    printf("|Port %d: \n|\tTIPO TROVATO: %d \n|\tEXP TIME TROVATA:%d\n\tPER NAVE: %d\n", idx, tipoTrovato, dataScadenzaTrovata, idNaveMittente);
 
 
     if (res == -1)
@@ -90,7 +90,6 @@ void recvDischargeHandler(long type, char *text)
         msgSend(shipQueueID, text, idx + 1, errorHandler, 0, "risposta positiva recvDischargerHandler");
     }
 
-    printf("\n\n[%d]Porto: RISPOSTA NAVE MANDATA\n\n", getppid());
     /*
         mutexPro(waitResponsesID, idNaveMittente, LOCK, NULL);
 
@@ -105,7 +104,7 @@ void recvDischargeHandler(long type, char *text)
         printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", idx);
         porto->supplies.magazine[dayTrovato][tipoTrovato] += quantity;
         printf("PORTO %d: riaggiungo %d\n" , idx, quantity);
-        addNotExpiredGood(quantity, tipoTrovato, PORT);
+        addNotExpiredGood(quantity, tipoTrovato, PORT, 0, idx);
     }
 
     if (sonostatoScelto == 1 && res == 1)

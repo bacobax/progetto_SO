@@ -593,7 +593,7 @@ double getValue(int quantity, int scadenza, int tipo, Port arrPorts) {
 }
 
 
-int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, int quantity, Port arrPorts) {
+int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, int quantity, Port arrPorts, int idx) {
     int i;
     int j;
     /*
@@ -637,7 +637,7 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
             S->magazine[*dayTrovato][*tipo] -= quantity;
             printf("PORTO: tolgo %d\n" ,quantity);
 
-            addNotExpiredGood(0 - quantity, *tipo, PORT);
+            addNotExpiredGood(0 - quantity, *tipo, PORT, 0, idx);
         res = 1;
     }
     return res;

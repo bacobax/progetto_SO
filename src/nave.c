@@ -68,6 +68,7 @@ void chargeProducts(Ship ship, int quantityToCharge){
         if (availablePorts == 0) {
             /* non ci sono porti disponibili per la quantità
                di merce che voglio caricare, riprovo a chiamare i porti decrementando la quantità*/
+            replyToPortsForCharge(ship, -1);
             chargeProducts(ship, chooseQuantityToCharge(ship)); 
         
         } else {
@@ -211,82 +212,33 @@ void dischargeProducts(Ship ship) {
     }
 }
 
-
+void shipRoutine(Ship ship, int* terminateValue, int restTime){
+    if (*terminateValue == 1){
+        printf("Nave con id:%d il programma è terminato\n", ship->shipID);
+        exitNave();
+    }
+    chargeProducts(ship, chooseQuantityToCharge(ship));
+    sleep(restTime);
+    dischargeProducts(ship);
+    sleep(restTime);   
+}
 
 int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identificativo della nave (es: nave 0, nave 1, nave 2, ecc..)*/
-    /*
-    int res;
-    Product p1, p2, p3, p4;
-    p1.product_type = 0;
-    p1.expirationTime = 15;
-    p1.weight = 3;
 
-    p2.product_type = 1;
-    p2.expirationTime = 16;
-    p2.weight = 7;
-
-    p3.product_type = 2;
-    p3.expirationTime = 13;
-    p3.weight = 10;
-
-    p4.product_type = 4;
-    p4.expirationTime = 12;
-    p4.weight = 8;
-    */
     Ship ship;
     int endShmID = useShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "Nave: use end shm");
     int* terminateValue = (int*)getShmAddress(endShmID, 0, errorHandler, "Nave: getShmAddress di endShm");
     ship = initShip(atoi(argv[1]));
-    int charge = 1;
+    int restTime = 1;
 
     checkInConfig();
     printf("Nave con id:%d: config finita, aspetto ok partenza dal master...\n", ship->shipID);
     waitForStart();
     printf("Nave con id:%d partita\n", ship->shipID);
 
-    /* while(1){
-    res = addProduct(ship, p2);
-    printShip(ship);
-    sleep(2);
-        }
-    */
-    /*
-    res = addProduct(ship, p1);
-    res = addProduct(ship, p2);
-    res = addProduct(ship, p3);
-    res = addProduct(ship, p4);
-    */
-    /*
-    sleep(1.5);
-    dischargeProducts(ship);
-    printf("FINITO SCARICO\n");
-    printShip(ship);
-    */
-
-    /* SO_FILL / SO_DAYS / SO_PORTI / SO_MERCI*/
-
-    /* valore per decrementare: differenza tra valore attuale e offerta più alta che trova i porti*/
-
-/**/
     
-    
-    while (1) { 
-        printf("NAVE con id:%d TERMINATEVALUE: %d\n" , ship->shipID,*terminateValue);
-
-        if (*terminateValue == 1)
-        {
-            printf("Nave con id:%d il programma è terminato\n", ship->shipID);
-            exitNave();
-        }
-        if(charge == 1){
-            chargeProducts(ship, chooseQuantityToCharge(ship));
-            charge = 0;
-        } else {
-            dischargeProducts(ship);
-            charge = 1;
-        }
-        sleep(1);
-        
+    while (1) {      
+        shipRoutine(ship, terminateValue, restTime);
     }
 }
 

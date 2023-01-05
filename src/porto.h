@@ -72,6 +72,6 @@ double getValue(int quantity, int scadenza, int tipo, Port arrPorts);
     algoritmo che trova la migliore coppia di coordinate della matrice (tipo merce, giorno di distribuzione della merce) che corrisponde
     alla migliore quantità disponibile da offrire di fronte alla richiesta di merce pari a {{quantity}}
 */
-int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, int quantity, Port arrPorts);
+int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, int quantity, Port arrPorts, int idx);
 
 #endif
