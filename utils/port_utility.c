@@ -159,7 +159,7 @@ void printPorto(void* p, int idx) {
 
 
 int filterIdxs(int request) {
-    return request != 0 && request != -1;
+    return request != 0 && request != -1 && request != -2;
 }
 
 
@@ -504,7 +504,7 @@ int allRequestsZero(){
     return cond;
 }
 int filter(int el){
-    return el!=-2;
+    return el!=-2 ;
 }
 
 

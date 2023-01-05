@@ -41,8 +41,8 @@ void createDumpArea(){
    
 
     /*per cancellare il contenuto del logfile*/
-    fclose(fopen("./logfile.log", "w"));
-    fclose(fopen("./utils/historyTransictions.log", "w"));
+    fclose(fopen("./logs/logfile.log", "w"));
+    fclose(fopen("./logs/historyTransictions.log", "w"));
     
 }
 
@@ -84,7 +84,7 @@ void addNotExpiredGood(int quantity, int type, ctx where, int refilling, int idx
     int shmid;
     int semid;
     FILE *fp;
-    fp = fopen("./utils/historyTransictions.log", "a+"); 
+    fp = fopen("./logs/historyTransictions.log", "a+"); 
     GoodTypeInfo* info;
     shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler, "addNotExpiredGood");
     semid = useSem(DUMPSEMKEY, errorHandler , "addNotExpiredGood");
@@ -180,7 +180,7 @@ void printerCode(int day) {
 
     mutex(logFileSemID, LOCK, errorHandler, "printerCode LOCK");
     printf("Scrivo nel logifle %d\n" ,day);
-    fp = fopen("./logfile.log", "a+");
+    fp = fopen("./logs/logfile.log", "a+");
     if (fp == NULL) {
         perror("Errore nell'apertura del file log");
         exit(EXIT_FAILURE);

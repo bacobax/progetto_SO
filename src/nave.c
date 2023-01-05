@@ -62,6 +62,7 @@ void chargeProducts(Ship ship, int quantityToCharge){
         
         printf("[%d]Nave: finito aspettare le risposte dai porti\n", getpid());
         */
+        waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler, "chargeProducts->waitToTravelSemID");
 
         /*availablePorts = portResponsesForCharge(ship, port_offers);*/
         printf("NAVE con id:%d: Aviable ports = %d\n",ship->shipID, availablePorts);
@@ -70,10 +71,12 @@ void chargeProducts(Ship ship, int quantityToCharge){
                di merce che voglio caricare, riprovo a chiamare i porti decrementando la quantità*/
             replyToPortsForCharge(ship, -1);
             chargeProducts(ship, chooseQuantityToCharge(ship)); 
+
+            mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler, "chargeProducts->waitToTravelSemID +SO_PORTI");
+
         
         } else {
             /* ci sono porti che hanno merce da caricare*/
-            waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler, "chargeProducts->waitToTravelSemID");
             
             portID = choosePortForCharge(port_offers, ship->shipID);
 
@@ -131,47 +134,11 @@ void dischargeProducts(Ship ship) {
     */
         printShip(ship);
         product_index = chooseProductToDelivery(ship);
-        printf("\n\nNave con id:%d: la mia merce scade tra:%d\n\n", ship->shipID, ship->products[product_index]);
+        printf("PROD IDX: %d", product_index);
+        printf("\n\nNave con id:%d: la mia merce scade tra:%d\n\n", ship->shipID, ship->products[product_index].expirationTime);
         portID = communicatePortsForDischarge(ship, ship->products[product_index], &quantoPossoScaricare);  
 
-    /* 2 - Nave) Per ogni porto che mi risponde posso trovarmi in uno dei seguenti casi:
-            
-            - Conferma positiva dal porto, ho consegnato (DOMANDA merce - quantità che volevo consegnare) quindi
-              nel migliore dei casi ho azzerato la domanda per quel tipo di merce di quel determinato porto.
-
-            - Conferma negativa dal porto, la domanda di quel tipo di merce che volevo consegnare è scesa a 0.
-
-          Se ho trovato almeno un porto con conferma positiva faccio la travel() e mi dirigo da lui, il primo che
-          mi risponde, vado al punto 3).
-
-          Se tutti i porti mi hanno inviato una conferma negativa allora la domanda di quel tipo di merce
-          in tutti i porti è pari a 0, torno al punto 1) scegliendo un tipo di merce diverso.
-          
-          Se tornando ripetutamente al punto 1) arrivo ad esaurire tutte le merci perchè o sono scadute o 
-          nessun porto ha DOMANDA relativa al mio carico, allora faccio chargeProducts()       
-
-        
-        2 - Porto) Il porto non fa niente
-
-    */
-    /*
-        for(int i=0; i<SO_PORTI; i++){
-            1)nave scrive su coda del porto i (ftok(porto.h , i)) 
-            2)Dentro il messaggio: 0/1|tipo di merce|peso merce TYPE: shipID +1
-                Porto:
-                sscanf("%d|%s", &scarico, &payload);
-                if(scarico){
-                    sscanf("%d|%d" , &type, &quantity);
-                    1)Porto scrive su coda della nave shipID (ftok(nave.c, shipID))
-                    2)Dentro il messaggio: richiesta di merce del tipo type
-                }else{
-                    ...
-                }
-            3)Nave riceve messaggio del porto
-        }
-
-    */
-    /*portID = portResponsesForDischarge(ship, &quantoPossoScaricare);*/
+    
         
         if(portID == -1){
 
@@ -194,7 +161,7 @@ void dischargeProducts(Ship ship) {
 
 
             travel(ship, portID);
-            printf("\n\nNave con id:%d: la mia merce scade tra:%d E STO PER FARE accessPortForDischarge\n\n", ship->shipID, ship->products[product_index]);
+            printf("\n\nNave con id:%d: la mia merce scade tra:%d E STO PER FARE accessPortForDischarge\n\n", ship->shipID, ship->products[product_index].expirationTime);
             accessPortForDischarge(ship, portID, product_index, quantoPossoScaricare);
         }      
 
@@ -219,6 +186,10 @@ void shipRoutine(Ship ship, int* terminateValue, int restTime){
     }
     chargeProducts(ship, chooseQuantityToCharge(ship));
     sleep(restTime);
+    if (*terminateValue == 1){
+        printf("Nave con id:%d il programma è terminato\n", ship->shipID);
+        exitNave();
+    }
     dischargeProducts(ship);
     sleep(restTime);   
 }

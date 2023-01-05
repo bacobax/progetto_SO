@@ -221,6 +221,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
         exit(EXIT_FAILURE);
     }
 
+    initErrorHandler();
 
     startSimulationSemID = createSem(MASTKEY, 1, errorHandler, "creazione sem startSimulationSemID");
     reservePrintSem = createSem(RESPRINTKEY, 1, errorHandler, "creazione sem reservePrintSem");
@@ -341,7 +342,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     printf("master tutte le code sono state rimosse\n");
     
     printf("Master, ho rimosso tutto\n");
-
+    removeErrorHandler();
 }
 
 void refillCode(intList* l, int msgRefillerID, int giorno) {

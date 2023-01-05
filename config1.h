@@ -3,8 +3,8 @@
 #define CONFIG_1
 
 
-#define SO_PORTI    50
-#define SO_NAVI     50
+#define SO_PORTI    1
+#define SO_NAVI     20
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 #define SO_MIN_VITA  10 /* tonn */
@@ -19,6 +19,8 @@
 /* chiave del semaforo che permette la reserve print */
 #define RESPRINTKEY  124
 #define WAITENDDAYKEY 3415
+
+#define ERRFILESEMID 3214
 
 #define WAITPORTRESPONSES 3002
 #define WAITFIRSTRESPONSES 3003

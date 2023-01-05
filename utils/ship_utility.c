@@ -235,7 +235,7 @@ int firstValidExpTime(Product* p, int* idx) {
 
 int chooseProductToDelivery(Ship ship) {
     int i;
-    int index;      
+    int index = -2;      
     int expTime;                    /* do per scontato che ci sia almeno 1 tipo di merce sulla nave in questo caso nella posizione 0*/
     int semID;
     Product* products = ship->products;
@@ -470,7 +470,7 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
    
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler,  "accessPortForCharge->shipSemid LOCK");
 
-    if(ship->products[product_index].expirationTime != -1){
+    if(ship->products[product_index].expirationTime > 0){
         if (quantoPossoScaricare >= ship->products[product_index].weight) {
             addDeliveredGood(ship->products[product_index].weight, ship->products[product_index].product_type);
             removeProduct(ship, product_index);
@@ -478,6 +478,7 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
         else {
             addDeliveredGood(quantoPossoScaricare, ship->products[product_index].product_type);
             ship->products[product_index].weight -= quantoPossoScaricare;
+            ship->weight -= quantoPossoScaricare;
         }
     } else {
         printf("\nOOPS! Nave con id:%d la merce che volevi scaricare è scaduta!!!\n", ship->shipID);
