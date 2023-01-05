@@ -197,7 +197,17 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int waitShipsSemID;
     srand(time(NULL));
 
+    struct sigaction new_sig_action;
+    sigset_t new_sig_set;
 
+    sigemptyset(&new_sig_set);
+    sigaddset(&new_sig_set, SIGUSR1);
+    sigprocmask(SIG_BLOCK, &new_sig_set, NULL);
+
+    new_sig_action.sa_handler = NULL;
+    new_sig_action.sa_flags = 0;
+    new_sig_action.sa_mask = new_sig_set;
+    
     if (signal(SIGUSR1, mastersighandler) == SIG_ERR) {
         perror("signal\n");
         exit(EXIT_FAILURE);

@@ -241,8 +241,10 @@ void codicePorto(int endShmId, int idx)
         sleep(1);
         if(*endNow){
             mutex(aspettoMorteNaviSemID, WAITZERO, errorHandler, "waitzero su aspettoMorteNaviSemID");
+            printf("[%d] PORTO UCCIDO TUTTI I FIGLI\n", idx);
             kill(0, SIGUSR1);
             mutex(aspettoMortePortiSemID, LOCK, errorHandler, "LOCK su aspettoMortePortiSemID");
+            printf("[%d]PORTO TERMINO\n", idx);
             exit(EXIT_SUCCESS);
         }
 

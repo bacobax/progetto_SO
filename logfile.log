@@ -1,59 +1,59 @@
 ------------------Day 0 -----------------
 Tipo merce 0:
 	- Non scaduta:
-		a) nei porti: 87
+		a) nei porti: 71
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 54
+		a) nei porti: 41
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 1:
 	- Non scaduta:
-		a) nei porti: 70
+		a) nei porti: 73
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 52
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 67
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 58
 		b) in nave: 0
 	- Consegnata: 0
-Tipo merce 2:
-	- Non scaduta:
-		a) nei porti: 0
-		b) in nave: 0
-	- Scaduta:
-		a) nei porti: 122
-		b) in nave: 0
-	- Consegnata: 0
 Tipo merce 3:
 	- Non scaduta:
-		a) nei porti: 37
+		a) nei porti: 115
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 70
+		a) nei porti: 22
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 4:
 	- Non scaduta:
-		a) nei porti: 302
+		a) nei porti: 206
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 0
+		a) nei porti: 95
 		b) in nave: 0
 	- Consegnata: 0
 Porto 0:
 DOMANDE:
-149, 
-136, 
-154, 
+68, 
+51, 
 0, 
-0, 
+71, 
+225, 
 SUPPLIES:
-GIORNO 0: [ 0, 0, 0, 37, 108, ]
+GIORNO 0: [ 0, 0, 22, 0, 0, ]
 GIORNO 1: [ -1, -1, -1, -1, -1, ]
 GIORNO 2: [ -1, -1, -1, -1, -1, ]
 GIORNO 3: [ -1, -1, -1, -1, -1, ]
 GIORNO 4: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[14, 15, 11, 15, 13, 10, 10, 13, 15, 13, 13, 15, 14, 13, 11, 13, 13, 14, 12, 15, 15, 13, 11, 14, 11, ]
+[11, 12, 15, 14, 12, 15, 13, 12, 14, 15, 14, 12, 12, 13, 13, 12, 15, 11, 13, 12, 14, 15, 13, 12, 15, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -63,184 +63,387 @@ Porto 1:
 DOMANDE:
 0, 
 0, 
-454, 
-516, 
 0, 
+0, 
+183, 
 SUPPLIES:
-GIORNO 0: [ 87, 70, 0, 0, 194, ]
+GIORNO 0: [ 15, 25, 24, 23, 0, ]
 GIORNO 1: [ -1, -1, -1, -1, -1, ]
 GIORNO 2: [ -1, -1, -1, -1, -1, ]
 GIORNO 3: [ -1, -1, -1, -1, -1, ]
 GIORNO 4: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[10, 11, 13, 11, 12, 12, 12, 13, 11, 15, 14, 15, 15, 11, 13, 13, 11, 15, 14, 11, 12, 14, 14, 15, 12, ]
+[14, 11, 10, 11, 15, 13, 11, 11, 11, 11, 10, 10, 10, 13, 14, 11, 11, 11, 15, 11, 15, 10, 12, 15, 10, ]
 --------------------------------------
 coords:
 x: 4.000000
 y: 0.000000
 ______________________________________________
+Porto 2:
+DOMANDE:
+99, 
+58, 
+0, 
+0, 
+0, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 21, 22, 48, ]
+GIORNO 1: [ -1, -1, -1, -1, -1, ]
+GIORNO 2: [ -1, -1, -1, -1, -1, ]
+GIORNO 3: [ -1, -1, -1, -1, -1, ]
+GIORNO 4: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[14, 11, 11, 14, 14, 14, 13, 12, 10, 15, 15, 12, 11, 11, 15, 15, 12, 14, 15, 13, 12, 10, 15, 13, 14, ]
+--------------------------------------
+coords:
+x: 4.000000
+y: 4.000000
+______________________________________________
+Porto 3:
+DOMANDE:
+0, 
+96, 
+71, 
+0, 
+0, 
+SUPPLIES:
+GIORNO 0: [ 29, 0, 0, 29, 55, ]
+GIORNO 1: [ -1, -1, -1, -1, -1, ]
+GIORNO 2: [ -1, -1, -1, -1, -1, ]
+GIORNO 3: [ -1, -1, -1, -1, -1, ]
+GIORNO 4: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[12, 11, 15, 13, 10, 11, 15, 15, 10, 14, 10, 15, 15, 15, 12, 13, 10, 11, 11, 13, 10, 12, 13, 14, 13, ]
+--------------------------------------
+coords:
+x: 0.000000
+y: 4.000000
+______________________________________________
+Porto 4:
+DOMANDE:
+0, 
+0, 
+356, 
+0, 
+0, 
+SUPPLIES:
+GIORNO 0: [ 27, 48, 0, 41, 103, ]
+GIORNO 1: [ -1, -1, -1, -1, -1, ]
+GIORNO 2: [ -1, -1, -1, -1, -1, ]
+GIORNO 3: [ -1, -1, -1, -1, -1, ]
+GIORNO 4: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[14, 12, 14, 11, 13, 15, 11, 13, 13, 13, 13, 15, 13, 15, 14, 14, 15, 11, 15, 11, 13, 14, 12, 10, 13, ]
+--------------------------------------
+coords:
+x: 0.581995
+y: 2.710380
+______________________________________________
 TOTALE MERCE: 800 <==> SO_FILL: 4000
 ❌------------------Day 1 -----------------
 Tipo merce 0:
 	- Non scaduta:
-		a) nei porti: 0
-		b) in nave: 87
+		a) nei porti: 42
+		b) in nave: 29
 	- Scaduta:
-		a) nei porti: 54
+		a) nei porti: 41
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 1:
 	- Non scaduta:
-		a) nei porti: 70
+		a) nei porti: 25
+		b) in nave: 48
+	- Scaduta:
+		a) nei porti: 52
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 67
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 58
 		b) in nave: 0
 	- Consegnata: 0
-Tipo merce 2:
-	- Non scaduta:
-		a) nei porti: 0
-		b) in nave: 0
-	- Scaduta:
-		a) nei porti: 122
-		b) in nave: 0
-	- Consegnata: 0
 Tipo merce 3:
 	- Non scaduta:
-		a) nei porti: 37
-		b) in nave: 0
+		a) nei porti: 74
+		b) in nave: 41
 	- Scaduta:
-		a) nei porti: 70
+		a) nei porti: 22
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 4:
 	- Non scaduta:
-		a) nei porti: 302
-		b) in nave: 0
+		a) nei porti: 3
+		b) in nave: 155
 	- Scaduta:
-		a) nei porti: 0
+		a) nei porti: 95
 		b) in nave: 0
 	- Consegnata: 0
 ------------------Day 2 -----------------
 Tipo merce 0:
 	- Non scaduta:
-		a) nei porti: 51
-		b) in nave: 87
+		a) nei porti: 112
+		b) in nave: 29
 	- Scaduta:
-		a) nei porti: 109
+		a) nei porti: 75
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 1:
 	- Non scaduta:
-		a) nei porti: 158
-		b) in nave: 0
+		a) nei porti: 75
+		b) in nave: 48
 	- Scaduta:
-		a) nei porti: 94
+		a) nei porti: 106
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 2:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 114
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 272
+		a) nei porti: 117
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 3:
 	- Non scaduta:
-		a) nei porti: 89
-		b) in nave: 0
+		a) nei porti: 192
+		b) in nave: 41
 	- Scaduta:
-		a) nei porti: 127
+		a) nei porti: 36
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 4:
 	- Non scaduta:
-		a) nei porti: 613
-		b) in nave: 0
+		a) nei porti: 291
+		b) in nave: 155
 	- Scaduta:
-		a) nei porti: 0
+		a) nei porti: 161
 		b) in nave: 0
 	- Consegnata: 0
 ------------------Day 3 -----------------
 Tipo merce 0:
 	- Non scaduta:
-		a) nei porti: 152
+		a) nei porti: 194
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 136
+		a) nei porti: 106
 		b) in nave: 0
-	- Consegnata: 87
+	- Consegnata: 29
 Tipo merce 1:
 	- Non scaduta:
-		a) nei porti: 249
+		a) nei porti: 162
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 124
+		a) nei porti: 155
 		b) in nave: 0
-	- Consegnata: 0
+	- Consegnata: 48
 Tipo merce 2:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 160
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 374
+		a) nei porti: 198
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 3:
 	- Non scaduta:
-		a) nei porti: 117
+		a) nei porti: 322
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 210
+		a) nei porti: 53
 		b) in nave: 0
-	- Consegnata: 0
+	- Consegnata: 41
 Tipo merce 4:
 	- Non scaduta:
-		a) nei porti: 951
+		a) nei porti: 478
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 0
+		a) nei porti: 251
 		b) in nave: 0
-	- Consegnata: 0
+	- Consegnata: 155
 ------------------Day 4 -----------------
 Tipo merce 0:
 	- Non scaduta:
-		a) nei porti: 115
-		b) in nave: 100
-	- Scaduta:
-		a) nei porti: 187
+		a) nei porti: 261
 		b) in nave: 0
-	- Consegnata: 87
+	- Scaduta:
+		a) nei porti: 145
+		b) in nave: 0
+	- Consegnata: 29
 Tipo merce 1:
 	- Non scaduta:
-		a) nei porti: 333
+		a) nei porti: 215
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 181
+		a) nei porti: 217
 		b) in nave: 0
-	- Consegnata: 0
+	- Consegnata: 48
 Tipo merce 2:
 	- Non scaduta:
-		a) nei porti: 0
+		a) nei porti: 227
 		b) in nave: 0
 	- Scaduta:
-		a) nei porti: 507
+		a) nei porti: 238
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 3:
 	- Non scaduta:
-		a) nei porti: 156
+		a) nei porti: 405
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 75
+		b) in nave: 0
+	- Consegnata: 41
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 379
+		b) in nave: 465
+	- Scaduta:
+		a) nei porti: 355
+		b) in nave: 0
+	- Consegnata: 155
+------------------STATO FINALE -----------------
+Tipo merce 0:
+	- Non scaduta:
+		a) nei porti: 302
+		b) in nave: 28
+	- Scaduta:
+		a) nei porti: 187
+		b) in nave: 0
+	- Consegnata: 29
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 265
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 271
+		b) in nave: 0
+	- Consegnata: 48
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 280
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 299
 		b) in nave: 0
 	- Consegnata: 0
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 431
+		b) in nave: 72
+	- Scaduta:
+		a) nei porti: 92
+		b) in nave: 0
+	- Consegnata: 41
 Tipo merce 4:
 	- Non scaduta:
-		a) nei porti: 1235
-		b) in nave: 0
+		a) nei porti: 650
+		b) in nave: 112
 	- Scaduta:
-		a) nei porti: 0
-		b) in nave: 0
-	- Consegnata: 0
+		a) nei porti: 456
+		b) in nave: 100
+	- Consegnata: 408
+Porto 0:
+DOMANDE:
+68, 
+51, 
+0, 
+30, 
+0, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 22, 0, 0, ]
+GIORNO 1: [ 0, 0, 17, 0, 0, ]
+GIORNO 2: [ 0, 0, 9, 0, 0, ]
+GIORNO 3: [ 0, 0, 26, 0, 0, ]
+GIORNO 4: [ 0, 0, 19, 0, 0, ]
+EXP TIMES:
+[7, 8, 11, 10, 8, 12, 10, 9, 11, 12, 12, 10, 10, 11, 11, 11, 14, 10, 12, 11, 14, 15, 13, 12, 15, ]
+--------------------------------------
+coords:
+x: 0.000000
+y: 0.000000
+______________________________________________
+Porto 1:
+DOMANDE:
+0, 
+0, 
+0, 
+0, 
+0, 
+SUPPLIES:
+GIORNO 0: [ 15, 25, 24, 23, 0, ]
+GIORNO 1: [ 15, 9, 14, 16, 0, ]
+GIORNO 2: [ 1, 22, 20, 19, 0, ]
+GIORNO 3: [ 17, 17, 24, 18, 0, ]
+GIORNO 4: [ 8, 13, 12, 8, 0, ]
+EXP TIMES:
+[10, 7, 6, 7, 11, 10, 8, 8, 8, 8, 8, 8, 8, 11, 12, 10, 10, 10, 14, 10, 15, 10, 12, 15, 10, ]
+--------------------------------------
+coords:
+x: 4.000000
+y: 0.000000
+______________________________________________
+Porto 2:
+DOMANDE:
+70, 
+58, 
+0, 
+0, 
+0, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 21, 22, 48, ]
+GIORNO 1: [ 0, 0, 16, 18, 57, ]
+GIORNO 2: [ 0, 0, 17, 24, 41, ]
+GIORNO 3: [ 0, 0, 17, 20, 0, ]
+GIORNO 4: [ 0, 0, 22, 20, 47, ]
+EXP TIMES:
+[10, 7, 7, 10, 10, 11, 10, 9, 7, 12, 13, 10, 9, 9, 13, 14, 11, 13, 14, 12, 12, 10, 15, 13, 14, ]
+--------------------------------------
+coords:
+x: 4.000000
+y: 4.000000
+______________________________________________
+Porto 3:
+DOMANDE:
+0, 
+48, 
+71, 
+0, 
+0, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 1, 55, ]
+GIORNO 1: [ 16, 0, 0, 22, 47, ]
+GIORNO 2: [ 11, 0, 0, 15, 29, ]
+GIORNO 3: [ 26, 0, 0, 19, 76, ]
+GIORNO 4: [ 17, 0, 0, 14, 43, ]
+EXP TIMES:
+[8, 7, 11, 9, 6, 8, 12, 12, 7, 11, 8, 13, 13, 13, 10, 12, 9, 10, 10, 12, 10, 12, 13, 14, 13, ]
+--------------------------------------
+coords:
+x: 0.000000
+y: 4.000000
+______________________________________________
+Porto 4:
+DOMANDE:
+0, 
+0, 
+356, 
+0, 
+0, 
+SUPPLIES:
+GIORNO 0: [ 27, 0, 0, 0, 3, ]
+GIORNO 1: [ 39, 41, 0, 34, 0, ]
+GIORNO 2: [ 42, 65, 0, 72, 17, ]
+GIORNO 3: [ 24, 36, 0, 26, 6, ]
+GIORNO 4: [ 44, 37, 0, 40, 181, ]
+EXP TIMES:
+[10, 8, 10, 7, 9, 12, 8, 10, 10, 10, 11, 13, 11, 13, 12, 13, 14, 10, 14, 10, 13, 14, 12, 10, 13, ]
+--------------------------------------
+coords:
+x: 0.581995
+y: 2.710380
+______________________________________________
+TOTALE MERCE: 4071 <==> SO_FILL: 4000
+❌

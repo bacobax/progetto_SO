@@ -346,11 +346,7 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
     /*
         setto il segnale che gestisce il segnle di terminazione che invia il master
     */
-    oldHandler = signal(SIGUSR1, quitSignalHandler);
-    if (oldHandler == SIG_ERR) {
-        perror("signal");
-        exit(1);
-    }
+    
     endShmId = useShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "mySettedPort");
 
     p = initPort(supplyDisponibility,requestDisponibility, idx);
