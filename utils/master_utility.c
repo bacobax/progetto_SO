@@ -197,6 +197,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int waitShipsSemID;
     srand(time(NULL));
 
+
     if (signal(SIGUSR1, mastersighandler) == SIG_ERR) {
         perror("signal\n");
         exit(EXIT_FAILURE);
