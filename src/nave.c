@@ -233,7 +233,7 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     day = (int *)getShmAddress(dayShmID, 0, errorHandler, "dayShmID nel main della nave");
 
     ship = initShip(atoi(argv[1]));
-    restTime = 1;
+    restTime = 0.5;
 
     checkInConfig();
     printf("Nave con id:%d: config finita, aspetto ok partenza dal master...\n", ship->shipID);
