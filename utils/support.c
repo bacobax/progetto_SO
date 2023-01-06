@@ -1,8 +1,10 @@
 
 #include "../config1.h"
 #include <stdio.h>
+#include <signal.h>
 #include <stdlib.h>
 #include <sys/time.h>
+#include <sys/types.h>
 #include <unistd.h>
 
 #include "./support.h"
@@ -86,7 +88,7 @@ void copyArray(int a[], int* a1, int length) {
 }
 
 
-#ifndef __linux__
+
 int nanosecsleep(long nanosec)
 {
    struct timespec rem;
@@ -101,14 +103,18 @@ int nanosecsleep(long nanosec)
 
    req.tv_nsec = nanosec % NANOS_MULT;
    
-
    return nanosleep(&req , &rem);
 }
-#endif
+
 
 void checkInConfig() {
     int waitConfigSemID = useSem(WAITCONFIGKEY, errorHandler, "checkInConfig");
     mutex(waitConfigSemID, LOCK, errorHandler, "checkInConfig");
 }
 
+void clearSigMask(){
+    sigset_t ss;
+    sigemptyset(&ss);
+    sigprocmask(SIG_SETMASK, &ss, NULL);
 
+}

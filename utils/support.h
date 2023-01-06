@@ -30,8 +30,6 @@ int nanosecsleep(long nanosec);
 */
 void checkInConfig();
 
-
-
-
+void clearSigMask();
 
 #endif

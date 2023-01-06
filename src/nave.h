@@ -20,6 +20,7 @@ struct ship {
     double y;
     int weight;
     Product products[SO_CAPACITY];
+    Product promisedProduct;
 };
 typedef struct ship* Ship;
 
@@ -66,7 +67,7 @@ int communicatePortsForCharge(Ship ship, int quantityToCharge, PortOffer* port_o
 int communicatePortsForDischarge(Ship ship, Product p, int* quantoPossoScaricare);  
 
 int portResponsesForCharge(Ship ship, PortOffer* port_offers);
-int choosePortForCharge(PortOffer* port_offers);
+int choosePortForCharge(PortOffer* port_offers, int idx);
 
 void replyToPortsForCharge(Ship ship, int portID);
 void replyToPortsForDischarge(Ship ship, int portID);
@@ -74,14 +75,14 @@ void replyToPortsForDischarge(Ship ship, int portID);
 
 void travel(Ship ship, int portID);
 
-void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int weight);
+void accessPortForCharge(Ship ship, int portID);
 void accessPortForDischarge(Ship ship, int portID, int product_index, int quantoPossoScaricare);
 
 void updateExpTimeShip(Ship ship);
 
-void chargeProducts(Ship ship, int quantityToCharge);
-void dischargeProducts(Ship ship);
+/*void chargeProducts(Ship ship, int quantityToCharge, int* day);
+void dischargeProducts(Ship ship);*/
 
-
+void exitNave();
 
 #endif

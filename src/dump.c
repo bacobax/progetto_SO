@@ -41,7 +41,8 @@ void createDumpArea(){
    
 
     /*per cancellare il contenuto del logfile*/
-    fclose(fopen("./logfile.log", "w"));
+    fclose(fopen("./logs/logfile.log", "w"));
+    fclose(fopen("./logs/historyTransictions.log", "w"));
     
 }
 
@@ -50,6 +51,7 @@ void addExpiredGood(int quantity, int type, ctx where) {
     int semid;
     
     GoodTypeInfo* info;
+   
     shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler, "shm del dump");
     semid = useSem(DUMPSEMKEY, errorHandler, "semafori del dump");
     
@@ -78,10 +80,11 @@ void addExpiredGood(int quantity, int type, ctx where) {
 
 }
 
-void addNotExpiredGood(int quantity, int type, ctx where) {
+void addNotExpiredGood(int quantity, int type, ctx where, int refilling, int idx) {
     int shmid;
     int semid;
-    
+    FILE *fp;
+    fp = fopen("./logs/historyTransictions.log", "a+"); 
     GoodTypeInfo* info;
     shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler, "addNotExpiredGood");
     semid = useSem(DUMPSEMKEY, errorHandler , "addNotExpiredGood");
@@ -89,8 +92,11 @@ void addNotExpiredGood(int quantity, int type, ctx where) {
     info = ((GoodTypeInfo*) getShmAddress(shmid, 0, errorHandler, "addNotExpiredGood")) + type;
 
     mutexPro(semid, type, LOCK, errorHandler, "addNotExpiredGood LOCK");
-
-    if (where == PORT) {
+    if(!refilling){
+        fprintf(fp, "DUMP: %s IDX: %d, %s %d\n", (where == PORT ? "PORT" : "NAVE"),idx , (quantity <0 ? "tolgo" : "aggiungo") ,(quantity<0 ? -1 * quantity : quantity) );
+    }
+    if (where == PORT)
+    {
         info->goods_on_port += quantity;
     }
     else if (where == SHIP) {
@@ -100,7 +106,7 @@ void addNotExpiredGood(int quantity, int type, ctx where) {
         perror("Il contesto può solo essere PORT o SHIP\n");
         exit(1);
     }
-
+    fclose(fp);
     mutexPro(semid, type, UNLOCK, errorHandler, "addNotExpiredGood UNLOCK");
     shmDetach(info - type,errorHandler, "addNotExpiredGood");
 
@@ -109,8 +115,9 @@ void addNotExpiredGood(int quantity, int type, ctx where) {
 void addDeliveredGood(int quantity, int type){
     int shmid;
     int semid;
-    
+    FILE *fp;
     GoodTypeInfo* info;
+    
     shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler, "addDeliveredGood");
     semid = useSem(DUMPSEMKEY, errorHandler, "addDeliveredGood");
     
@@ -173,7 +180,7 @@ void printerCode(int day) {
 
     mutex(logFileSemID, LOCK, errorHandler, "printerCode LOCK");
     printf("Scrivo nel logifle %d\n" ,day);
-    fp = fopen("./logfile.log", "a+");
+    fp = fopen("./logs/logfile.log", "a+");
     if (fp == NULL) {
         perror("Errore nell'apertura del file log");
         exit(EXIT_FAILURE);

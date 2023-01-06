@@ -74,25 +74,22 @@ void recvDischargeHandler(long type, char *text)
 
     /* Operazione controllata da semaforo, per permettere di controllare le disponibilità per una richiesta solo quando non lo si sta già facendo per un altra*/
     mutexPro(controlPortsDisponibilitySemID, idx, LOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID LOCK");
-    res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantity, arrPorts);
+    res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantity, arrPorts, idx);
     mutexPro(controlPortsDisponibilitySemID, idx, UNLOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID UNLOCK");
-    printf("|Port %d: \n|\tTIPO TROVATO: %d \n|\tEXP TIME TROVATA:%d\n", getppid(), tipoTrovato, dataScadenzaTrovata);
+    printf("|Port %d: \n|\tTIPO TROVATO: %d \n|\tEXP TIME TROVATA:%d\n\tPER NAVE: %d\n", idx, tipoTrovato, dataScadenzaTrovata, idNaveMittente);
 
 
     if (res == -1)
     {
         msgSend(shipQueueID, "x", idx + 1, errorHandler, 0, "risposta negativa recvDischargerHandler");
-        printf("✅Port %d: MSGSND NEGATIVA RIUSCITA", getppid(), idNaveMittente, quantity);
     }
     else
     {
 
         sprintf(text, "%d %d", tipoTrovato, dataScadenzaTrovata);
         msgSend(shipQueueID, text, idx + 1, errorHandler, 0, "risposta positiva recvDischargerHandler");
-        printf("✅Port %d: MSGSND POSITIVA RIUSCITA", getppid(), idNaveMittente, quantity);
     }
 
-    printf("\n\n[%d]Porto: RISPOSTA NAVE MANDATA\n\n", getppid());
     /*
         mutexPro(waitResponsesID, idNaveMittente, LOCK, NULL);
 
@@ -101,13 +98,21 @@ void recvDischargeHandler(long type, char *text)
     messaggioRicevuto = msgRecv(myQueueID, idNaveMittente + 1, errorHandler, NULL, SYNC, "recvDischargerHandler->ricezione di sonostatoScelto");
     sscanf(messaggioRicevuto->mtext, "%d", &sonostatoScelto);
     
-    printf("Port %d: valore di sonostatoScelto = %d\n", idx, sonostatoScelto);
+    printf("Port %d: valore di sonostatoScelto = %d\n dalla nave %d\n", idx, sonostatoScelto, idNaveMittente);
     if (sonostatoScelto == 0 && res != -1)
     {
         printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", idx);
         porto->supplies.magazine[dayTrovato][tipoTrovato] += quantity;
-        printf("PORTO: riaggiungo %d\n" , quantity);
-        addNotExpiredGood(quantity, tipoTrovato, PORT);
+        printf("PORTO %d: riaggiungo %d\n" , idx, quantity);
+        
+        addNotExpiredGood(quantity, tipoTrovato, PORT, 0, idx);
+        /*
+            SE LA MERCE E' SCADUTA MENTRE IL PORTO ASPETTAVA DI SAPERE SE E' STATO SCELTO
+            SE LA MERCE FOSSE SCADUTA PRIMA IL PROBLEMA NON ESISTEREBBE
+        */
+        if(getExpirationTime(porto->supplies,tipoTrovato, dayTrovato)== 0){
+            addExpiredGood(quantity, tipoTrovato, PORT);
+        }
     }
 
     if (sonostatoScelto == 1 && res == 1)
@@ -148,7 +153,7 @@ void recvChargerHandler(long type, char *text)
 
     sscanf(text, "%d %d %d", &tipoMerceRichiesto, &quantity, &idNaveMittente);
 
-    printf("PORTO %d, ricevuta richiesta di scaricare %d merce di tipo %d dalla nave %d\n", getppid(), quantity, tipoMerceRichiesto, idNaveMittente);
+    printf("PORTO %d, ricevuta richiesta di scaricare %d merce di tipo %d dalla nave %d\n", idx, quantity, tipoMerceRichiesto, idNaveMittente);
 
     portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler, "recvChargerHandler");
 
@@ -160,7 +165,6 @@ void recvChargerHandler(long type, char *text)
         perror("Ftok keyMiaCoda");
         exit(EXIT_FAILURE);
     }
-    printf("IDX : %d, KEY: %d\n", idx, keyMiaCoda);
 
     keyCodaNave = ftok("./src/nave.c", idNaveMittente);
 
@@ -183,12 +187,10 @@ void recvChargerHandler(long type, char *text)
 
     if (res == -1)
     {
-        printf("\nINVIO NOPE\n");
         msgSend(shipQueueID, "NOPE", idx + 1, errorHandler, 0, "recvChargerHandler->invio risposta negativa");
     }
     else
     {
-        printf("\nINVIO %d\n", res);
 
         sprintf(rtext, "%d", res);
         msgSend(shipQueueID, rtext, idx + 1, errorHandler, 0, "recvChargerHandler->invio risposta positiva");
@@ -197,7 +199,7 @@ void recvChargerHandler(long type, char *text)
     messaggioRicevuto = msgRecv(IDMiaCoda, idNaveMittente + 1, errorHandler, NULL, SYNC, "recvChargerHandler->ricezione risposta");
     sscanf(messaggioRicevuto->mtext, "%d", &sonostatoScelto);
 
-    printf("Port %d: valore di sonostatoScelto = %d\n", idx, sonostatoScelto);
+    printf("Port %d: valore di sonostatoScelto = %d dalla nave %d\n", idx, sonostatoScelto, idNaveMittente);
     if (sonostatoScelto == 0 && res != -1){
         printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", idx);
         porto->requests[tipoMerceRichiesto] = res;
@@ -208,16 +210,7 @@ void recvChargerHandler(long type, char *text)
         printf("Porto %d: sono stato scelto\n", idx);
     }
     mutexPro(waitToTravelSemID, idNaveMittente, LOCK, errorHandler, "recvChargerHandler->waitToTravelSemID LOCK");
-    /*
-       UTILIZZARE DUE CODE DIVERSE PER OGNI PORTO UNA CHE RICEVE LE RICHIESTE
-       DELLE NAVI E UNA CHE RICEVE LE CONFERME SE IL PORTO È STATO SCELTO OPPURE NO.
-       UTILIZZARE LE CODE IN ASINCRONO.
-   */
-
-    /*messaggioRicevuto = msgRecv(IDMiaCoda, idNaveMittente + 1, errorHandler, NULL, SYNC, "recvChargerHandler->ricezione di sonostatoScelto");*/
-
-    /*TODO: Fare una recv per sapere se sono stato scelto*/
-
+    
     return;
 }
 

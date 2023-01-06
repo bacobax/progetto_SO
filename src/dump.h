@@ -18,7 +18,7 @@ void createDumpArea();
 
 
 void addExpiredGood(int quantity, int type, ctx where);
-void addNotExpiredGood(int quantity, int type, ctx where);
+void addNotExpiredGood(int quantity, int type, ctx where, int refilling, int idx);
 void addDeliveredGood(int quantity, int type);
 /*
     TO-DO

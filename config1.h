@@ -3,13 +3,13 @@
 #define CONFIG_1
 
 
-#define SO_PORTI    5
-#define SO_NAVI     5
+#define SO_PORTI    4
+#define SO_NAVI     4
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
-#define SO_MIN_VITA  10 /* tonn */
-#define SO_MAX_VITA  15/* tonn */
-#define SO_DAYS      5
+#define SO_MIN_VITA  3 /* tonn */
+#define SO_MAX_VITA  7/* tonn */
+#define SO_DAYS      7
 
 /*chiavi dei semafori*/
 /* chiave del semaforo del master */
@@ -19,6 +19,10 @@
 /* chiave del semaforo che permette la reserve print */
 #define RESPRINTKEY  124
 #define WAITENDDAYKEY 3415
+
+#define ERRFILESEMID 3214
+#define DAYWORLDSHM 3213
+#define WAITENDDAYSHIPSEM 3212
 
 #define WAITPORTRESPONSES 3002
 #define WAITFIRSTRESPONSES 3003
@@ -43,12 +47,12 @@
 
 
 
-#define SO_FILL      4000
+#define SO_FILL      10000
 
 
 
 /* ciao */
-#define SO_SPEED     500
+#define SO_SPEED     0.7
 #define SO_LATO      4
 #define SO_CAPACITY  100
 #define SO_BANCHINE  10

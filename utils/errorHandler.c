@@ -1,20 +1,43 @@
 #include "msg_utility.h"
 #include "sem_utility.h"
 #include "shm_utility.h"
+#include <sys/ipc.h>
 #include "../config1.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
 #include <errno.h>
 
+void initErrorHandler(){
+    int semid;
+    FILE *fp;
+    semid = createSem(ERRFILESEMID, 1, errorHandler, "initErrorHandler");
+
+    fclose(fopen("./logs/errorLog.log", "w"));
+}
+
+void removeErrorHandler(){
+    
+   removeSem(useSem(ERRFILESEMID, errorHandler, "removeErrorHandler"), errorHandler, "removeErrorHandler");
+}
+
 void printError(char* myerr, char* errCtx) {
-    printf("ERROR: %s error handler\nERRNO: %s\nCTX: %s\n", myerr, strerror(errno), errCtx);
-    printf("💥💥💥💥💥💥💥💥\n");
+    int semid;
+    FILE *fp;
+    int hash = IPC_PRIVATE;
+    semid = useSem(ERRFILESEMID, errorHandler, "printError");
+    mutex(semid, LOCK, errorHandler, "LOCK printError");
+    printf("❌❌❌❌❌❌❌❌❌❌❌❌❌ HASH %d\n", hash);
+    fp = fopen("./logs/errorLog.log", "a+");
+    fprintf(fp, "💥💥💥💥💥💥💥💥\n");
+    fprintf(fp, "ERROR: %s error handler\nERRNO: %s\nCTX: %s\nHASH: %d", myerr, strerror(errno), errCtx, hash);
+    fprintf(fp ,"💥💥💥💥💥💥💥💥\n");
+    mutex(semid, UNLOCK, errorHandler, "UNLOCK printError");
+
     
 }
 
 void errorHandler(int err, char* errCtx) {
-    printf("💥💥💥💥💥💥💥💥\n");
     switch (err) {
     case SERRCTL:
         printError("sem ctl", errCtx);
