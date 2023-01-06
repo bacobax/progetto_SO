@@ -208,15 +208,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     new_sig_action.sa_flags = 0;
     new_sig_action.sa_mask = new_sig_set;
     
-    if (signal(SIGUSR1, mastersighandler) == SIG_ERR) {
-        perror("signal\n");
-        exit(EXIT_FAILURE);
-    }
-
-    if (signal(SIGALRM, mastersighandler) == SIG_ERR) {
-        perror("signal\n");
-        exit(EXIT_FAILURE);
-    }
+    
 
 
     startSimulationSemID = createSem(MASTKEY, 1, errorHandler, "creazione sem startSimulationSemID");
