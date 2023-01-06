@@ -564,11 +564,6 @@ intList* haSensoContinuare() {
         intFreeList(aux1);
     }
     
-    printf("MERCI TOTALI RICHIESTE: \n");
-    intStampaLista(merciTotaliRichieste);
-    
-    printf("MERCI TOTALI OFFERTE: \n");
-    intStampaLista(merciTotaliOfferte);
     
    
     shmDetach(portArr,errorHandler,"allRequestsZero");

@@ -104,7 +104,15 @@ void recvDischargeHandler(long type, char *text)
         printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", idx);
         porto->supplies.magazine[dayTrovato][tipoTrovato] += quantity;
         printf("PORTO %d: riaggiungo %d\n" , idx, quantity);
+        
         addNotExpiredGood(quantity, tipoTrovato, PORT, 0, idx);
+        /*
+            SE LA MERCE E' SCADUTA MENTRE IL PORTO ASPETTAVA DI SAPERE SE E' STATO SCELTO
+            SE LA MERCE FOSSE SCADUTA PRIMA IL PROBLEMA NON ESISTEREBBE
+        */
+        if(getExpirationTime(porto->supplies,tipoTrovato, dayTrovato)== 0){
+            addExpiredGood(quantity, tipoTrovato, PORT);
+        }
     }
 
     if (sonostatoScelto == 1 && res == 1)

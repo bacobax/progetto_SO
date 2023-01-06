@@ -24,23 +24,44 @@ void exitNave(){
     exit(0);
 }
 
-void chargeProducts(Ship ship, int quantityToCharge){
+void chargeProducts(Ship ship, int quantityToCharge, int* day){
     int availablePorts;
     int portID;
     PortOffer port_offers[SO_PORTI];
     int waitToTravelSemID;
     int waitResponsesID;
+    int waitEndDaySemID;
+    int waitEndDayShipSemID;
     intList *tipiDaCaricare;
-    tipiDaCaricare = haSensoContinuare();
 
-    if (tipiDaCaricare->length == 0)
-    {
-        printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
-        printf("Nave con id:%d NON HA PIÙ SENSO CONTINUARE\n", ship->shipID);
-        printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
-        intFreeList(tipiDaCaricare);
-        exitNave();
+    tipiDaCaricare = haSensoContinuare();
+    printf("TIPI DA CARICARE: \n");
+    intStampaLista(tipiDaCaricare);
+
+    waitEndDaySemID = useSem(WAITENDDAYKEY, errorHandler, "waitEndDay in chargeproducts");
+    waitEndDayShipSemID = useSem(WAITENDDAYSHIPSEM, errorHandler, "waitEndDayShipSemID in chargeProducts");
+    printf("CONTROLLO SE HA SENSO CONTINUARE: day: %d\n", *day);
+
+    if(tipiDaCaricare->length == 0){
+        if(*day < SO_DAYS -1){
+            printf("SBATTO SU WAITZERO\n");
+            mutex(waitEndDayShipSemID, 1, errorHandler, "+1 waitEndDayShipSemID");
+            mutex(waitEndDaySemID, WAITZERO, errorHandler, "WAITZERO su waitEndDaySemID");
+            mutex(waitEndDayShipSemID, -1, errorHandler, "-1 waitEndDayShipSemID");
+            
+            printf("E' PASSATO IL GIORNO\n");
+            chargeProducts(ship, quantityToCharge, day);
+            return;
+        }else{
+            printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
+            printf("Nave con id:%d NON HA PIÙ SENSO CONTINUARE\n", ship->shipID);
+            printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
+            intFreeList(tipiDaCaricare);
+            exitNave();
+        }
+        
     }
+
     intFreeList(tipiDaCaricare);
 
 
@@ -70,7 +91,7 @@ void chargeProducts(Ship ship, int quantityToCharge){
             /* non ci sono porti disponibili per la quantità
                di merce che voglio caricare, riprovo a chiamare i porti decrementando la quantità*/
             replyToPortsForCharge(ship, -1);
-            chargeProducts(ship, chooseQuantityToCharge(ship)); 
+            chargeProducts(ship, chooseQuantityToCharge(ship), day); 
 
             mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler, "chargeProducts->waitToTravelSemID +SO_PORTI");
 
@@ -79,6 +100,10 @@ void chargeProducts(Ship ship, int quantityToCharge){
             /* ci sono porti che hanno merce da caricare*/
             
             portID = choosePortForCharge(port_offers, ship->shipID);
+
+            ship->promisedProduct.expirationTime = port_offers[portID].expirationTime;
+            ship->promisedProduct.product_type = port_offers[portID].product_type;
+            ship->promisedProduct.weight = quantityToCharge;
 
             replyToPortsForCharge(ship, portID);
             
@@ -90,14 +115,14 @@ void chargeProducts(Ship ship, int quantityToCharge){
             printf("Nave con id:%d: sono partita...\n", ship->shipID);
             travel(ship, portID);
             
-            accessPortForCharge(ship, portID, port_offers[portID], quantityToCharge);
+            accessPortForCharge(ship, portID);
     
         }
     }
     
 }
 
-void dischargeProducts(Ship ship) {
+void dischargeProducts(Ship ship, int* day) {
 
     int portID;
     int product_index;
@@ -108,7 +133,7 @@ void dischargeProducts(Ship ship) {
     */
     if (ship->weight == 0) {
 
-        chargeProducts(ship, chooseQuantityToCharge(ship));
+        chargeProducts(ship, chooseQuantityToCharge(ship), day);
 
     } else {
 
@@ -147,7 +172,7 @@ void dischargeProducts(Ship ship) {
 
             printf("Nave con id:%d: riprovo a scegliere il prodotto da scaricare\n", ship->shipID);
             
-            dischargeProducts(ship);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
+            dischargeProducts(ship, day);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
         
         } else {
             waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler,  "dischargeProducts->waitToTravelSemID");
@@ -179,28 +204,36 @@ void dischargeProducts(Ship ship) {
     }
 }
 
-void shipRoutine(Ship ship, int* terminateValue, int restTime){
+void shipRoutine(Ship ship, int* terminateValue, int restTime, int* day){
     if (*terminateValue == 1){
         printf("Nave con id:%d il programma è terminato\n", ship->shipID);
         exitNave();
     }
-    chargeProducts(ship, chooseQuantityToCharge(ship));
+    chargeProducts(ship, chooseQuantityToCharge(ship), day);
     sleep(restTime);
     if (*terminateValue == 1){
         printf("Nave con id:%d il programma è terminato\n", ship->shipID);
         exitNave();
     }
-    dischargeProducts(ship);
+    dischargeProducts(ship, day);
     sleep(restTime);   
 }
 
 int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identificativo della nave (es: nave 0, nave 1, nave 2, ecc..)*/
-
+    int endShmID;
+    int dayShmID;
+    int *day;
     Ship ship;
-    int endShmID = useShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "Nave: use end shm");
-    int* terminateValue = (int*)getShmAddress(endShmID, 0, errorHandler, "Nave: getShmAddress di endShm");
+    int *terminateValue;
+    int restTime;
+    endShmID = useShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "Nave: use end shm");
+    terminateValue = (int*)getShmAddress(endShmID, 0, errorHandler, "Nave: getShmAddress di endShm");
+
+    dayShmID = useShm(DAYWORLDSHM, sizeof(int), errorHandler, "dayShmID nel main della nave");
+    day = (int *)getShmAddress(dayShmID, 0, errorHandler, "dayShmID nel main della nave");
+
     ship = initShip(atoi(argv[1]));
-    int restTime = 1;
+    restTime = 1;
 
     checkInConfig();
     printf("Nave con id:%d: config finita, aspetto ok partenza dal master...\n", ship->shipID);
@@ -209,7 +242,7 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
 
     
     while (1) {      
-        shipRoutine(ship, terminateValue, restTime);
+        shipRoutine(ship, terminateValue, restTime, day);
     }
 }
 

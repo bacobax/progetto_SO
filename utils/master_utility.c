@@ -170,13 +170,14 @@ void distruggiCodeNavi() {
     }
 }
 
-void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID)) {
+void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID, int* day, int waitEndDayShipsSemID)) {
     int startSimulationSemID;
     int reservePrintSem;
     int reservePortsResourceSem;
     int portsShmid;
     int shipsShmid;
     int endShmID;
+    int dayShmID;
     int semBanchineID;
     int semShipsID;
     int msgRefillerID;
@@ -193,8 +194,10 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int waitToRemoveDump;
     int i;
     int* terminateValue;
+    int* day;
     int waitPortsSemID;
     int waitShipsSemID;
+    int waitEndDayShipSemID;
     srand(time(NULL));
 
     struct sigaction new_sig_action;
@@ -233,6 +236,8 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
    waitPortsSemID = createSem(WAITPORTSSEM, SO_PORTI, errorHandler, "master crazione waitPortsSemID");
    waitShipsSemID = createSem(WAITSHIPSSEM, SO_NAVI, errorHandler, "master creazione waitShipsSemID");
 
+    waitEndDayShipSemID = createSem(WAITENDDAYSHIPSEM, 0, errorHandler, "master create waitEndDayShipSem");
+
     waitconfigSemID = createSem(WAITCONFIGKEY, SO_PORTI+ SO_NAVI, errorHandler, "creazione sem waitconfig");
     
     createDumpArea();
@@ -240,6 +245,9 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler ,"creazione shm delle navi");
     endShmID = createShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "crazione shm intero terminazione programma");
     terminateValue = (int*)getShmAddress(endShmID, 0, errorHandler, "master getShmAddress endShm");
+
+    dayShmID = createShm(DAYWORLDSHM, sizeof(int), errorHandler, "crazione day shm master");
+    day = (int*) getShmAddress(dayShmID, 0, errorHandler, "master getShmAddress day");
 
     /*creazione banchine*/
     semBanchineID = createMultipleSem(BANCHINESEMKY, SO_PORTI, SO_BANCHINE, errorHandler, "creazione semaforo banchine");
@@ -286,7 +294,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     waitToRemoveDump = createSem(WAITRMVDUMPKEY, 1, errorHandler, "craezione semaforo remove dump");
 
 
-    codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID);
+    codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID, day, waitEndDayShipSemID);
     /* kill(0, SIGUSR1);  uccide tutti i figli */
 
     *terminateValue = 1;
@@ -318,12 +326,15 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     removeSem(waitPortsSemID, errorHandler, "waitPortsSemID");
     removeSem(waitShipsSemID, errorHandler, "waitShipsSemID");
-    
+    removeSem(waitEndDayShipSemID, errorHandler, "waitEndDayShipSemID");
     printf("master tutti i sem sono stati rimoessi\n");
 
     removeShm(shipsShmid, errorHandler, "shipsShmid");
     removeShm(portsShmid, errorHandler, "portsShmid");
+    shmDetach(terminateValue, errorHandler, "master terminateValue detach");
+    shmDetach(day, errorHandler, "master day detach");
     removeShm(endShmID, errorHandler, "endShmID");
+    removeShm(dayShmID, errorHandler, "daySmID");
     removeDumpArea();
     printf("master tutte le shm sono state rimosse\n");
 

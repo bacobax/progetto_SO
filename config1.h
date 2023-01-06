@@ -4,12 +4,12 @@
 
 
 #define SO_PORTI    1
-#define SO_NAVI     20
+#define SO_NAVI     1
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
-#define SO_MIN_VITA  10 /* tonn */
-#define SO_MAX_VITA  15/* tonn */
-#define SO_DAYS      5
+#define SO_MIN_VITA  3 /* tonn */
+#define SO_MAX_VITA  7/* tonn */
+#define SO_DAYS      7
 
 /*chiavi dei semafori*/
 /* chiave del semaforo del master */
@@ -21,6 +21,8 @@
 #define WAITENDDAYKEY 3415
 
 #define ERRFILESEMID 3214
+#define DAYWORLDSHM 3213
+#define WAITENDDAYSHIPSEM 3212
 
 #define WAITPORTRESPONSES 3002
 #define WAITFIRSTRESPONSES 3003

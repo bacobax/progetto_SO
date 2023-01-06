@@ -14,8 +14,8 @@ void errHandler(int er) {
     perror("errore nella WAITZERO GIORNALIERA NEL MASTER");
 }
 
-void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID) {
-    int i;
+void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID, int* day, int waitEndDayShipsSemID) {
+    
     int quantitaAlGiorno;
     int resto;
     int quantitaPrimoGiorno;
@@ -45,15 +45,16 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     
 
     
-    for (i = 0; i < SO_DAYS; i++) {
-        printDump(SYNC, i);
-        
+    for (*day = 0; *day < SO_DAYS; *day = *day +1) {
+        printDump(ASYNC, *day);
+        printf("MASTER: DAY: %d\n", *day);
         printf("Master: dormo\n");
-        if (i > 0) {
-            expirePortsGoods(i);
+        if (*day > 0) {
+            expirePortsGoods(*day);
             expireShipGoods();
-            refillPorts(ASYNC, msgRefillerID, quantitaAlGiorno, i);
+            refillPorts(ASYNC, msgRefillerID, quantitaAlGiorno, *day);
             mutex(waitEndDaySemID, WAITZERO, errorHandler, "mesterCode -> waitEndDaySemID WAITZERO");
+            mutex(waitEndDayShipsSemID, WAITZERO, errorHandler, "mesterCode -> waitEndDaySemID WAITZERO");
             mutex(waitEndDaySemID, SO_PORTI, errorHandler, "mesterCode -> waitEndDaySemID +SO_PORTI");
             
         }
@@ -63,6 +64,7 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
         #ifdef __linux__
         sleep(1);
         #endif
+
     }
     #ifndef __linux__
     nanosecsleep(NANOS_MULT);

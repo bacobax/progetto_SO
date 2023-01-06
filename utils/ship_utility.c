@@ -80,6 +80,10 @@ Ship initShip(int shipID)
     ship->y = generateCord();
     ship->weight = 0;
     initArrayProducts(ship->products); /* inizializzo l'array con tutti i valori a -1*/
+    
+    ship->promisedProduct.product_type = -1;
+    ship->promisedProduct.expirationTime = -1;
+    ship->promisedProduct.weight = -1;
 
     return ship;
 }
@@ -416,15 +420,12 @@ void replyToPortsForDischarge(Ship ship, int portID){
     
 }
 
-void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int weight){
+void accessPortForCharge(Ship ship, int portID){
     int portShmID;
     int pierSemID;
     int shipSemID;
-    Product p;
-    p.product_type = offer_choosen.product_type;
-    p.expirationTime = offer_choosen.expirationTime;
-    p.weight = weight;
-
+    
+    
     portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler, "accessPortForCharge");
     pierSemID = useSem(BANCHINESEMKY, errorHandler, "accessPortForCharge->semaforo banchine");
     shipSemID = useSem(SEMSHIPKEY, errorHandler, "accessPortForCharge->semaforo rw navi");
@@ -437,16 +438,21 @@ void accessPortForCharge(Ship ship, int portID, PortOffer offer_choosen, int wei
     /* il porto ha già decrementato */
 
     /* nanosecsleep(p.weight / SO_LOADSPEED);  da cambiare nanosecsleep perchè il parametro da mandare deve essere di tipo double*/
-
-    sleep(p.weight / SO_LOADSPEED);
-
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler, "accessPortForCharge-> shipSemID LOCK");
 
     printf("Nave con id:%d: sono attracata alla banchina del porto per aggiungere la merce\n", ship->shipID);
 
     /* TO-DO GESTIRE PROBEMA MERCE SCADUTA UNA VOLTA ARRIVATO AL PORTO*/
-
-    addProduct(ship, p);
+    if(ship->promisedProduct.expirationTime != 0){
+         sleep(ship->promisedProduct.weight / SO_LOADSPEED);
+         addProduct(ship, ship->promisedProduct);
+           
+    }else{
+        printf("\nOOPS! Nave con id:%d la merce che volevo caricare è scaduta!!!\n", ship->shipID);
+        ship->promisedProduct.product_type = -1;
+        ship->promisedProduct.expirationTime = -1;
+        ship->promisedProduct.weight = -1;
+    }
     
     mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler, "accessPortForCharge->shipSemID UNLOCK");
 
@@ -544,6 +550,10 @@ void updateExpTimeShip(Ship ship){
             
             printShip(ship);
         }
+    }
+
+    if(ship->promisedProduct.expirationTime > 0 ){
+        ship->promisedProduct.expirationTime -= 1;
     }
 }
 
