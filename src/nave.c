@@ -14,8 +14,11 @@
 #include "./nave.h"
 #include "./porto.h"
 /*
-    TODO: aggiungere criterio alla nave per scegliere il porto in cui caricare: il tipo di offerta che deve accettare dev'essere tra i tipi di merce totali richiesti
-    TODO: non decrementare più di 1 quantity, ma settarla direttamente a min{max delle offerte, aviable cap}
+   TODO: risolvere problema della merce scaduta in discharge e ricontrollare in charge
+   TODO: vedere se i calcoli delle distanze prima dei viaggi hanno senso
+   TODO: vedere se i calcoli dei tempi prima dei viaggi hanno senso
+   TODO: Fare sì che se la nave non ha abbastanza tempo per compiere il viaggio termini (algoritmo per scegliere la merce da scaricare / caricare min(tempo rimanente simulazione, data di scadenza minore))
+   TODO: Controllare se le navi si sparpagliano in tutti i porti
 */
 
 
@@ -232,7 +235,7 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     day = (int *)getShmAddress(dayShmID, 0, errorHandler, "dayShmID nel main della nave");
 
     ship = initShip(atoi(argv[1]));
-    restTime = 0.2;
+    restTime = 1;
 
     checkInConfig();
     printf("Nave con id:%d: config finita, aspetto ok partenza dal master...\n", ship->shipID);

@@ -529,8 +529,11 @@ void travel(Ship ship, int portID)
     printf("Nave con id:%d: viaggio per %ld secondi...\n", ship->shipID, tempo);
 
     
-    /*nanosecsleep(tempo); */
+    nanosecsleep(tempo);
+    /*
     sleep(0.5);
+    
+    */
 
     printf("Nave con id:%d: viaggio finito...\n", ship->shipID);
     
