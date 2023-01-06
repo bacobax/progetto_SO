@@ -210,7 +210,6 @@ int chooseQuantityToCharge(Ship ship){
     portArr =  (Port)getShmAddress(shmPort, 0, errorHandler, "chooseQuantityToCharge->getShmAddress");
     
     for(i=0; i<SO_PORTI; i++){
-        reservePrint(printPorto, portArr + i, i);
         
         for(j=0; j<SO_DAYS; j++){
             for(k=0; k<SO_MERCI; k++){
