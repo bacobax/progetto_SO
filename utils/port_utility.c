@@ -86,7 +86,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
         int c = rand() % 2;
         if (c == 1) {
             p->requests[i] = 0;
-        }
+        }/*
         else if (c == 0) {
             addExpiredGood(p->supplies.magazine[0][i], i, PORT);
             p->supplies.magazine[0][i] = -2;
@@ -94,7 +94,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
         else {
             printf("Errore nella rand");
             exit(EXIT_FAILURE);
-        }
+        }*/
     }
 
     /*
@@ -264,18 +264,18 @@ void refill(long type, char* text) {
     /*
         Azzero le offerte del tipo di merce per cui c'è già la domanda
     */
-
+/*
     for (i = 0; i < listOfIdxs->length; i++) {
         tipoMerceDaAzzerare = *(intElementAt(listOfIdxs, i));
         /*
             scelgo di marcare direttamente come merce scaduta la merce dell'offerta che
             non potrà mai essere offerta per il fatto che c'è già la domanda per quel tipo di merce,
 
-        */
+        
         addExpiredGood(p->supplies.magazine[day][tipoMerceDaAzzerare], tipoMerceDaAzzerare, PORT);
         
         p->supplies.magazine[day][tipoMerceDaAzzerare] = -2;
-    }
+    }*/
 
     
     mutexPro(portBufferSem, (int)correctType, UNLOCK, errorHandler, "refill->portBufferSem UNLOCK");
@@ -507,35 +507,30 @@ int filter(int el){
     return el!=-2 ;
 }
 
-
+int filterReq(int req){
+    return req == 0;
+}
 
 intList* tipiDiMerceOfferti(Port p) {
-    intList* ret;
-    intList* aux;
-    int i;
-    int j;
-    ret = intInit();
 
-    for(i=0; i<SO_DAYS; i++){
-        aux = findIdxs(p->supplies.magazine[i], SO_MERCI,filterIdxs);
-        ret = intUnion(ret, aux);
-    }
-    return ret;
-
+    return findIdxs(p->requests, SO_MERCI, filterReq);
 }
 
 intList* tipiDiMerceRichiesti(Port p){
     return findIdxs(p->requests, SO_MERCI,filterIdxs);
 }
 
-intList* getAllTypeRequests(Port portArr) {
+intList* getAllOtherTypeRequests(Port portArr, int idx) {
     int i;
     intList* ret = intInit();
     intList* tipiRichiesti;
     for (i = 0; i < SO_PORTI; i++) {
-        tipiRichiesti = tipiDiMerceRichiesti(portArr + i);
-        ret = intUnion(ret, tipiRichiesti);
-        intFreeList(tipiRichiesti);
+        if(i!=idx){
+            tipiRichiesti = tipiDiMerceRichiesti(portArr + i);
+            ret = intUnion(ret, tipiRichiesti);
+            intFreeList(tipiRichiesti);
+        }
+        
     }
     return ret;
 }
@@ -575,13 +570,13 @@ intList* haSensoContinuare() {
 }
 
 
-double getValue(int quantity, int scadenza, int tipo, Port arrPorts) {
-    intList *tipiDiMerceRichiestiNelGioco = getAllTypeRequests(arrPorts);
-    if (scadenza == 0 || !contain(tipiDiMerceRichiestiNelGioco, tipo))
+double getValue(int quantity, int scadenza, int tipo, Port arrPorts, int idx) {
+    intList *tipiDiMerceRichiestiAltriPorti = getAllOtherTypeRequests(arrPorts, idx);
+    if (scadenza == 0 || contain(tipiDiMerceRichiesti(arrPorts + idx) , tipo) || !contain(tipiDiMerceRichiestiAltriPorti, tipo))
     {
         return 0;
     }
-    else
+    else /*scadenza > 0 && le mie richieste non contengono il tipo di merce di questa offerta && le richieste degli altri porti contengono il tipo di merce di questa offerta*/
     {
         return quantity / (double)scadenza;
     }
@@ -610,7 +605,7 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
             ton = S->magazine[i][j];
             
             currentScadenza = getExpirationTime(*S, j, i);
-            currentValue = getValue(ton, currentScadenza,j ,arrPorts);
+            currentValue = getValue(ton, currentScadenza,j ,arrPorts,idx);
             if (ton >= quantity && currentValue > value) {
                 value = currentValue;
                 *tipo = j;

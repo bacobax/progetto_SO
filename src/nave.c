@@ -18,11 +18,7 @@
     TODO: non decrementare più di 1 quantity, ma settarla direttamente a min{max delle offerte, aviable cap}
 */
 
-void exitNave(){
-    int waitShipSemID = useSem(WAITSHIPSSEM, errorHandler, "nave waitShipSemID");   
-    mutex(waitShipSemID, LOCK, errorHandler, "nave mutex LOCK waitShipSemID");
-    exit(0);
-}
+
 
 void chargeProducts(Ship ship, int quantityToCharge, int* day){
     int availablePorts;
@@ -204,19 +200,22 @@ void dischargeProducts(Ship ship, int* day) {
     }
 }
 
-void shipRoutine(Ship ship, int* terminateValue, int restTime, int* day){
+void shipRoutine(Ship ship, int* terminateValue, double restTime, int* day){
     if (*terminateValue == 1){
         printf("Nave con id:%d il programma è terminato\n", ship->shipID);
         exitNave();
     }
     chargeProducts(ship, chooseQuantityToCharge(ship), day);
-    sleep(restTime);
+    printf("DORMO PER %f SEC\n" , restTime);
+
+    nanosecsleep((long)(restTime * NANOS_MULT));
     if (*terminateValue == 1){
         printf("Nave con id:%d il programma è terminato\n", ship->shipID);
         exitNave();
     }
     dischargeProducts(ship, day);
-    sleep(restTime);   
+    printf("DORMO PER %f SEC\n" , restTime);
+    nanosecsleep((long)(restTime * NANOS_MULT));   
 }
 
 int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identificativo della nave (es: nave 0, nave 1, nave 2, ecc..)*/
@@ -225,7 +224,7 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     int *day;
     Ship ship;
     int *terminateValue;
-    int restTime;
+    double restTime;
     endShmID = useShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "Nave: use end shm");
     terminateValue = (int*)getShmAddress(endShmID, 0, errorHandler, "Nave: getShmAddress di endShm");
 
@@ -240,7 +239,8 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     waitForStart();
     printf("Nave con id:%d partita\n", ship->shipID);
 
-    
+   
+
     while (1) {      
         shipRoutine(ship, terminateValue, restTime, day);
     }

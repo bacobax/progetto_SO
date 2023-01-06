@@ -98,7 +98,7 @@ void recvDischargeHandler(long type, char *text)
     messaggioRicevuto = msgRecv(myQueueID, idNaveMittente + 1, errorHandler, NULL, SYNC, "recvDischargerHandler->ricezione di sonostatoScelto");
     sscanf(messaggioRicevuto->mtext, "%d", &sonostatoScelto);
     
-    printf("Port %d: valore di sonostatoScelto = %d\n dalla nave %d", idx, sonostatoScelto, idNaveMittente);
+    printf("Port %d: valore di sonostatoScelto = %d\n dalla nave %d\n", idx, sonostatoScelto, idNaveMittente);
     if (sonostatoScelto == 0 && res != -1)
     {
         printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", idx);

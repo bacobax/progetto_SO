@@ -62,11 +62,12 @@ int checkRequests(Port p, int type, int quantity);
 int allRequestsZero();
 intList *haSensoContinuare();
 
-intList* getAllTypeRequests(Port portArr);
+intList *getAllOtherTypeRequests(Port portArr, int idx);
+
 intList* getAllTypeSupplies(Port portArr);
 intList* tipiDiMerceOfferti(Port p);
 intList* tipiDiMerceRichiesti(Port p);
-double getValue(int quantity, int scadenza, int tipo, Port arrPorts);
+double getValue(int quantity, int scadenza, int tipo, Port arrPorts, int idx);
 
 /*
     algoritmo che trova la migliore coppia di coordinate della matrice (tipo merce, giorno di distribuzione della merce) che corrisponde

@@ -83,6 +83,6 @@ void updateExpTimeShip(Ship ship);
 /*void chargeProducts(Ship ship, int quantityToCharge, int* day);
 void dischargeProducts(Ship ship);*/
 
-
+void exitNave();
 
 #endif

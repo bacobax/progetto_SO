@@ -188,6 +188,11 @@ int removeProduct(Ship ship, int product_index){
         }
     }
 }
+void exitNave(){
+    int waitShipSemID = useSem(WAITSHIPSSEM, errorHandler, "nave waitShipSemID");   
+    mutex(waitShipSemID, LOCK, errorHandler, "nave mutex LOCK waitShipSemID");
+    exit(0);
+}
 
 int chooseQuantityToCharge(Ship ship){
     intList *tipiDaCaricare;
@@ -205,21 +210,27 @@ int chooseQuantityToCharge(Ship ship){
     portArr =  (Port)getShmAddress(shmPort, 0, errorHandler, "chooseQuantityToCharge->getShmAddress");
     
     for(i=0; i<SO_PORTI; i++){
+        reservePrint(printPorto, portArr + i, i);
+        
         for(j=0; j<SO_DAYS; j++){
             for(k=0; k<SO_MERCI; k++){
-                if(portArr[i].supplies.magazine[j][k] > max && contain(tipiDaCaricare, k)){
+                if(portArr[i].supplies.magazine[j][k] > max && contain(getAllOtherTypeRequests(portArr, i), k) && portArr[i].requests[k]==0){
                     max = portArr[i].supplies.magazine[j][k];
                 }
             }
         }
     }
-    intFreeList(tipiDaCaricare);
     shmDetach(portArr, errorHandler, "chooseQuantityToCharge->shmDetach");
+    
+    intFreeList(tipiDaCaricare);
 
-    if(max < availableCapacity(ship)){
+    if (max < availableCapacity(ship))
+    {
         cap = max;
-    } else {
-        cap = availableCapacity(ship); 
+    }
+    else
+    {
+        cap = availableCapacity(ship);
     }
     printf("BEST QUANTITY: %d\n", cap);
     return cap;
