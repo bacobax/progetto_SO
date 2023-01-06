@@ -73,7 +73,7 @@ void replyToPortsForCharge(Ship ship, int portID);
 void replyToPortsForDischarge(Ship ship, int portID);
 
 
-void travel(Ship ship, int portID);
+void travel(Ship ship, int portID, int* day);
 
 void accessPortForCharge(Ship ship, int portID);
 void accessPortForDischarge(Ship ship, int portID, int product_index, int quantoPossoScaricare);

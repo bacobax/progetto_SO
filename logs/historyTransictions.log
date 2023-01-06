@@ -1,2 +1,14 @@
-DUMP: PORT IDX: 1, tolgo 100
+DUMP: PORT IDX: 3, tolgo 100
+DUMP: PORT IDX: 3, tolgo 65
+DUMP: NAVE IDX: 1, aggiungo 100
+DUMP: NAVE IDX: 0, aggiungo 65
+DUMP: PORT IDX: 3, tolgo 100
+DUMP: PORT IDX: 3, tolgo 100
+DUMP: NAVE IDX: 1, aggiungo 100
 DUMP: NAVE IDX: 0, aggiungo 100
+DUMP: PORT IDX: 3, tolgo 100
+DUMP: PORT IDX: 3, tolgo 100
+DUMP: NAVE IDX: 1, aggiungo 100
+DUMP: NAVE IDX: 0, aggiungo 100
+DUMP: PORT IDX: 3, tolgo 100
+DUMP: NAVE IDX: 1, aggiungo 100

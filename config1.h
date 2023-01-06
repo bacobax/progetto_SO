@@ -4,12 +4,12 @@
 
 
 #define SO_PORTI    4
-#define SO_NAVI     1
+#define SO_NAVI     2
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 #define SO_MIN_VITA  3 /* tonn */
 #define SO_MAX_VITA  7/* tonn */
-#define SO_DAYS      7
+#define SO_DAYS      15
 
 /*chiavi dei semafori*/
 /* chiave del semaforo del master */
@@ -52,8 +52,8 @@
 
 
 /* ciao */
-#define SO_SPEED     0.7    /* 1,41 secondi massimo tempo di spostam*/
-#define SO_LATO      4
+#define SO_SPEED     3   
+#define SO_LATO      7
 #define SO_CAPACITY  100
 #define SO_BANCHINE  10
 #define SO_LOADSPEED 200 

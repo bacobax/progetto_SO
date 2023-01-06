@@ -109,7 +109,7 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day){
             
         
             printf("Nave con id:%d: sono partita...\n", ship->shipID);
-            travel(ship, portID);
+            travel(ship, portID, day);
             
             accessPortForCharge(ship, portID);
     
@@ -181,7 +181,7 @@ void dischargeProducts(Ship ship, int* day) {
             mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler, "dischargeProducts->waitToTravelSemID +SO_PORTI");
 
 
-            travel(ship, portID);
+            travel(ship, portID, day);
             printf("\n\nNave con id:%d: la mia merce scade tra:%d E STO PER FARE accessPortForDischarge\n\n", ship->shipID, ship->products[product_index].expirationTime);
             accessPortForDischarge(ship, portID, product_index, quantoPossoScaricare);
         }      

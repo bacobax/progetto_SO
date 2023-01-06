@@ -456,17 +456,15 @@ void accessPortForCharge(Ship ship, int portID){
     if(ship->promisedProduct.expirationTime != 0){
          sleep(ship->promisedProduct.weight / SO_LOADSPEED);
          addProduct(ship, ship->promisedProduct);
-           
     }else{
         printf("\nOOPS! Nave con id:%d la merce che volevo caricare è scaduta!!!\n", ship->shipID);
         addNotExpiredGood(ship->promisedProduct.weight,ship->promisedProduct.product_type,SHIP, 0, ship->shipID);
         addExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, SHIP);
-        ship->promisedProduct.product_type = -1;
-        ship->promisedProduct.expirationTime = -1;
-        ship->promisedProduct.weight = -1;
-
     }
-    
+    ship->promisedProduct.product_type = -1;
+    ship->promisedProduct.expirationTime = -1;
+    ship->promisedProduct.weight = -1;
+      
     mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler, "accessPortForCharge->shipSemID UNLOCK");
 
     mutexPro(pierSemID, portID, UNLOCK, errorHandler, "accessPortForCharge->pierSemID UNLOCK");
@@ -490,7 +488,7 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler,  "accessPortForCharge->shipSemid LOCK");
 
     if(ship->products[product_index].expirationTime > 0){
-        if (quantoPossoScaricare == ship->products[product_index].weight) {
+        if (quantoPossoScaricare >= ship->products[product_index].weight) {
             addDeliveredGood(ship->products[product_index].weight, ship->products[product_index].product_type);
             removeProduct(ship, product_index);
         }
@@ -510,14 +508,15 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
 
 }
 
-void travel(Ship ship, int portID)
+void travel(Ship ship, int portID, int* day)
 {
 
     Port p;
     double dt_x, dt_y, spazio, nanosleep_arg;
     long tempo;
-
-    int portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler, "travel");  /* prendo l'id della shm del porto */
+    double tempoInSecondi;
+    int tempoRimanente;
+    int portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler, "travel"); /* prendo l'id della shm del porto */
 
     p = ((Port)getShmAddress(portShmId, 0, errorHandler, "travel")) + portID;  /* prelevo la struttura del porto alla portID-esima posizione nella shm 
 
@@ -529,10 +528,27 @@ void travel(Ship ship, int portID)
     spazio = sqrt(pow(dt_x, 2) + pow(dt_y, 2));
     
     /* spazio/SO_SPEED è misurato in giorni (secondi), quindi spazio/SO_SPEED*1000000000 sono il numero di nanosecondi per cui fare la sleep */
-    tempo = (long)((spazio / SO_SPEED) * NANOS_MULT);
-    printf("Nave con id:%d: viaggio per %ld secondi...\n", ship->shipID, tempo);
+    tempoInSecondi = spazio / SO_SPEED;
 
-    
+    tempo = (long)((spazio / SO_SPEED) * NANOS_MULT);
+
+    tempoRimanente = SO_DAYS - 1 - (*day);
+
+    printf("Nave con id:%d: viaggio per %f secondi...\n", ship->shipID, tempoInSecondi);
+    if (tempoInSecondi > tempoRimanente)
+    {
+        printf("Nave con id:%d non avrei abbastanza giorni per raggiungere il porto: %d, termino...\n", ship->shipID, portID);
+        if(ship->promisedProduct.expirationTime != -1){
+            addNotExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, SHIP, 0, ship->shipID);
+            if(ship->promisedProduct.expirationTime == 0){
+                addExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, SHIP);
+            }
+        }
+        
+        
+        exitNave();
+    }
+    printf("NAVE, STO PER FARE LA NANOSECSLEEP\n");
     nanosecsleep(tempo);
     /*
     sleep(0.5);
