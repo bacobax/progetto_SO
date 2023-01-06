@@ -14,9 +14,6 @@
 #include "./nave.h"
 #include "./porto.h"
 /*
-   TODO: risolvere problema della merce scaduta in discharge e ricontrollare in charge
-   TODO: vedere se i calcoli delle distanze prima dei viaggi hanno senso
-   TODO: vedere se i calcoli dei tempi prima dei viaggi hanno senso
    TODO: Fare sì che se la nave non ha abbastanza tempo per compiere il viaggio termini (algoritmo per scegliere la merce da scaricare / caricare min(tempo rimanente simulazione, data di scadenza minore))
    TODO: Controllare se le navi si sparpagliano in tutti i porti
 */
@@ -235,6 +232,7 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     day = (int *)getShmAddress(dayShmID, 0, errorHandler, "dayShmID nel main della nave");
 
     ship = initShip(atoi(argv[1]));
+    printShip(ship);
     restTime = 1;
 
     checkInConfig();

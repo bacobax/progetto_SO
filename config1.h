@@ -4,7 +4,7 @@
 
 
 #define SO_PORTI    4
-#define SO_NAVI     4
+#define SO_NAVI     1
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 #define SO_MIN_VITA  3 /* tonn */
@@ -52,7 +52,7 @@
 
 
 /* ciao */
-#define SO_SPEED     0.7
+#define SO_SPEED     0.7    /* 1,41 secondi massimo tempo di spostam*/
 #define SO_LATO      4
 #define SO_CAPACITY  100
 #define SO_BANCHINE  10

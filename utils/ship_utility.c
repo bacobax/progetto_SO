@@ -459,9 +459,12 @@ void accessPortForCharge(Ship ship, int portID){
            
     }else{
         printf("\nOOPS! Nave con id:%d la merce che volevo caricare è scaduta!!!\n", ship->shipID);
+        addNotExpiredGood(ship->promisedProduct.weight,ship->promisedProduct.product_type,SHIP, 0, ship->shipID);
+        addExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, SHIP);
         ship->promisedProduct.product_type = -1;
         ship->promisedProduct.expirationTime = -1;
         ship->promisedProduct.weight = -1;
+
     }
     
     mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler, "accessPortForCharge->shipSemID UNLOCK");
@@ -487,7 +490,7 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler,  "accessPortForCharge->shipSemid LOCK");
 
     if(ship->products[product_index].expirationTime > 0){
-        if (quantoPossoScaricare >= ship->products[product_index].weight) {
+        if (quantoPossoScaricare == ship->products[product_index].weight) {
             addDeliveredGood(ship->products[product_index].weight, ship->products[product_index].product_type);
             removeProduct(ship, product_index);
         }
@@ -497,6 +500,7 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
             ship->weight -= quantoPossoScaricare;
         }
     } else {
+        
         printf("\nOOPS! Nave con id:%d la merce che volevi scaricare è scaduta!!!\n", ship->shipID);
     }
 
