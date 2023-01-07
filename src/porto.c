@@ -8,6 +8,7 @@
 #include <sys/ipc.h>
 #include <sys/wait.h>
 #include "../config1.h"
+#include "../utils/errorHandler.h"
 #include "../utils/msg_utility.h"
 #include "../utils/shm_utility.h"
 #include "../utils/sem_utility.h"
@@ -210,7 +211,7 @@ void recvChargerHandler(long type, char *text)
         printf("Porto %d: sono stato scelto\n", idx);
     }
     mutexPro(waitToTravelSemID, idNaveMittente, LOCK, errorHandler, "recvChargerHandler->waitToTravelSemID LOCK");
-    
+    shmDetach(porto - idx, errorHandler, "recvChargerHandler");
     return;
 }
 
@@ -238,6 +239,7 @@ void codicePorto(int endShmId, int idx)
             kill(0, SIGUSR1);
             mutex(aspettoMortePortiSemID, LOCK, errorHandler, "LOCK su aspettoMortePortiSemID");
             printf("[%d]PORTO TERMINO\n", idx);
+            shmDetach(endNow, errorHandler, "endNowDetach porto");
             exit(EXIT_SUCCESS);
         }
 

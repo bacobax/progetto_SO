@@ -1,3 +1,4 @@
+#include "./errorHandler.h"
 #include "./msg_utility.h"
 #include <string.h>
 #include <sys/msg.h>

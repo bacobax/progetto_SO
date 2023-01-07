@@ -7,6 +7,7 @@
 #include "../config1.h"
 #include "./support.h"
 #include "../src/dump.h"
+#include "./errorHandler.h"
 #include "./msg_utility.h"
 #include "./sem_utility.h"
 #include "./shm_utility.h"
@@ -565,7 +566,8 @@ void travel(Ship ship, int portID, int* day)
    
     ship->x = p->x;
     ship->y = p->y;
-    
+    shmDetach(p - portID, errorHandler, "travel");
+
 }
 
 void updateExpTimeShip(Ship ship){

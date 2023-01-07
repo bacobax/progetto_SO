@@ -7,6 +7,7 @@
 #include <errno.h>
 #include <time.h>
 #include <sys/types.h> 
+#include "./errorHandler.h"
 #include "./shm_utility.h"
 
 

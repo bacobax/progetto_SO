@@ -1,6 +1,7 @@
 #include "./msg_utility.h"
 #include "./vettoriInt.h"
 #include "./support.h"
+#include "./errorHandler.h"
 #include "./shm_utility.h"
 #include "./sem_utility.h"
 #include "../config1.h"

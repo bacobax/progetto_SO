@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <sys/signal.h>
 
+#include "../utils/errorHandler.h"
 #include "../utils/shm_utility.h"
 #include "../utils/sem_utility.h"
 #include "../utils/msg_utility.h"
@@ -253,7 +254,8 @@ void printerCode(int day) {
     }
     unlockAllGoodsDump();
     fclose(fp);
-    shmDetach(arr, errorHandler , "printerCode");
+    shmDetach(arr, errorHandler , "printerCode arr");
+    shmDetach(portArr, errorHandler , "printerCode portArr");
     mutex(logFileSemID, UNLOCK, errorHandler , "printerCode UNLOCK");
     
     if(day==SO_DAYS){

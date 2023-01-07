@@ -2,6 +2,7 @@
 #include "sem_utility.h"
 #include "shm_utility.h"
 #include <sys/ipc.h>
+#include "./errorHandler.h"
 #include "../config1.h"
 #include <stdio.h>
 #include <unistd.h>

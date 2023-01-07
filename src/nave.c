@@ -5,6 +5,7 @@
 #include <signal.h>
 
 #include "../config1.h"
+#include "../utils/errorHandler.h"
 #include "../utils/sem_utility.h"
 #include "../utils/shm_utility.h"
 #include "../utils/support.h"
@@ -64,7 +65,7 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day){
     initArrayOffers(port_offers);
 
     if (quantityToCharge == 0) {
-        dischargeProducts(ship);
+        dischargeProducts(ship, day);
     }
     else {
         /*

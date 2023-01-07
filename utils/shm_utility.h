@@ -2,10 +2,7 @@
 
 #define SHM_UTILITY_H
 
-#define SHMERRGET 7
-#define SHMERRAT  8
-#define SHMERRDT  9
-#define SHMERRCTL 10
+
 
 #include <sys/types.h>
 

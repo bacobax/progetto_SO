@@ -14,10 +14,6 @@ typedef struct _mex {
 #define SYNC 0
 #define ASYNC 1
 
-#define MERRGET 0
-#define MERRCTL 1
-#define MERRSND 2
-#define MERRRCV 3
 
 
 

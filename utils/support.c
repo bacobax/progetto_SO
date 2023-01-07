@@ -3,11 +3,12 @@
 #include <stdio.h>
 #include <signal.h>
 #include <stdlib.h>
-#include <sys/time.h>
+#include <time.h>
 #include <sys/types.h>
 #include <unistd.h>
 
 #include "./support.h"
+#include "./errorHandler.h"
 #include "./sem_utility.h"
 #include "./vettoriInt.h"
 

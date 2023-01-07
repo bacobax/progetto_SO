@@ -7,9 +7,12 @@
 #include <errno.h>
 #include <time.h>
 #include <sys/types.h> 
+#include "./errorHandler.h"
 #include "./sem_utility.h"
-
+/*
 #if defined(__linux__)
+
+*/
 
 union semun {
     int val;
@@ -18,7 +21,10 @@ union semun {
     struct seminfo* __buf;
 
 };
+/*
 #endif 
+
+*/
 
 int useSem(int key, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     int semid;

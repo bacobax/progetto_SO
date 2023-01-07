@@ -10,6 +10,7 @@
 #include "../src/nave.h"
 #include "../src/dump.h"
 #include "../config1.h"
+#include "./errorHandler.h"
 #include "./vettoriInt.h"
 #include "./support.h"
 #include "./shm_utility.h"

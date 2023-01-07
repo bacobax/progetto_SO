@@ -4,6 +4,7 @@
 #include <signal.h>
 #include <time.h>
 #include "../config1.h"
+#include "../utils/errorHandler.h"
 #include "../utils/sem_utility.h"
 #include "../utils/support.h"
 

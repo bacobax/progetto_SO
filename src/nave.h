@@ -80,8 +80,8 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
 
 void updateExpTimeShip(Ship ship);
 
-/*void chargeProducts(Ship ship, int quantityToCharge, int* day);
-void dischargeProducts(Ship ship);*/
+void chargeProducts(Ship ship, int quantityToCharge, int* day);
+void dischargeProducts(Ship ship, int* day);
 
 void exitNave();
 

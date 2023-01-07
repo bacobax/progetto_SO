@@ -2,10 +2,6 @@
 
 #define SEM_UTILITY_H
 
-#define SERRGET 4
-#define SERRCTL 5
-#define SERROP  6
-
 #define LOCK -1
 #define UNLOCK 1
 #define WAITZERO 0

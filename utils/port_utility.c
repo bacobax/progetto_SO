@@ -9,6 +9,7 @@
 #include "../src/porto.h"
 #include "../src/nave.h"
 #include "../src/dump.h"
+#include "./errorHandler.h"
 #include "./sem_utility.h"
 #include "./shm_utility.h"
 #include "./msg_utility.h"
@@ -299,8 +300,10 @@ void refillerCode(int endShmId,int idx) {
     */
     int *endNow;
     int refillerID;
-    
+    /*
     endNow = getShmAddress(endShmId, 0, errorHandler, "refillerCode");
+
+    */
     refillerID = useQueue(REFILLERQUEUE, errorHandler, "useQueue in refillerCode");
 
     clearSigMask();
@@ -310,11 +313,13 @@ void refillerCode(int endShmId,int idx) {
             idx+1 perchè nella coda di messaggi ci si riferisce all'indice di ogni porto incrementato di 1
             questo perchè type = 0 è riservato
         */
+        
         msgRecv(refillerID, (long)(idx + 1), errorHandler, refill, ASYNC, "refillerCode");
-        if(*endNow){
+        /*
+        if (*endNow) {
             waitpid(0, NULL, 0);
             exit(EXIT_SUCCESS);
-        }
+        }*/
     }
 }
 
@@ -381,7 +386,10 @@ void dischargerCode(void (*recvHandler)(long, char*), int idx) {
     int* terminateValue;
     mex* res;
     endShmID = useShm(ENDPROGRAMSHM, sizeof(int), errorHandler, "dischargerCode");
-    terminateValue = (int*) getShmAddress(endShmID, 0, errorHandler, "dischargerCode"); 
+    /*
+    terminateValue = (int*)getShmAddress(endShmID, 0, errorHandler, "dischargerCode");
+
+    */
     requestPortQueueID = useQueue(PQUERECHKEY, errorHandler, "dischargerCode");
 
     clearSigMask();
@@ -397,12 +405,12 @@ void dischargerCode(void (*recvHandler)(long, char*), int idx) {
             prendo il primo messaggio che arriva
         */
         res = msgRecv(requestPortQueueID, idx + 1, errorHandler, recvHandler, ASYNC, "dischargerCode");
-         
+         /*
         if(*terminateValue == 1){
             waitpid(0, NULL, 0);
 
             exit(EXIT_SUCCESS);
-        }
+        }*/
          
     }
 }
@@ -412,7 +420,10 @@ void chargerCode(void (*recvHandler)(long, char*), int idx) {
     mex* res;
     int* terminateValue;
     int endShmID = useShm(ENDPROGRAMSHM, sizeof(int), errorHandler, "dischargerCode");
-    terminateValue = (int*) getShmAddress(endShmID, 0, errorHandler, "dischargerCode"); 
+    /*
+        terminateValue = (int*)getShmAddress(endShmID, 0, errorHandler, "dischargerCode");
+
+    */
     requestPortQueueID = useQueue(PQUEREDCHKEY, errorHandler, "dischargerCode");
     clearSigMask();
     /*
@@ -431,12 +442,14 @@ void chargerCode(void (*recvHandler)(long, char*), int idx) {
             prendo il primo messaggio che arriva
         */
         res = msgRecv(requestPortQueueID, idx + 1, errorHandler, recvHandler, ASYNC,"chargerCode");
-        
-        if(*terminateValue == 1){
+        /*
+if (*terminateValue == 1) {
             waitpid(0, NULL, 0);
 
             exit(EXIT_SUCCESS);
         }
+        */
+        
 
     }
 }
