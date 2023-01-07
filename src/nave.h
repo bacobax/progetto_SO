@@ -18,6 +18,7 @@ struct ship {
     double x;
     double y;
     int weight;
+    int pid;
     Product products[SO_CAPACITY];
     Product promisedProduct;
 };

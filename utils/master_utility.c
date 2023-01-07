@@ -185,6 +185,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int shipsShmid;
     int endShmID;
     int dayShmID;
+    int stormSwellShmID;
     int semBanchineID;
     int semShipsID;
     int msgRefillerID;
@@ -239,6 +240,8 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     dayShmID = createShm(DAYWORLDSHM, sizeof(int), errorHandler, "crazione day shm master");
     day = (int*) getShmAddress(dayShmID, 0, errorHandler, "master getShmAddress day");
+
+    stormSwellShmID = createShm(STORMSWELLSHMKEY, sizeof(unsigned int) * 2, errorHandler, "crate stormSellShm");
 
     /*creazione banchine*/
     semBanchineID = createMultipleSem(BANCHINESEMKY, SO_PORTI, SO_BANCHINE, errorHandler, "creazione semaforo banchine");
@@ -322,6 +325,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     removeShm(shipsShmid, errorHandler, "shipsShmid");
     removeShm(portsShmid, errorHandler, "portsShmid");
+    removeShm(stormSwellShmID, errorHandler, "stormSwellShm");
     shmDetach(terminateValue, errorHandler, "master terminateValue detach");
     shmDetach(day, errorHandler, "master day detach");
     removeShm(endShmID, errorHandler, "endShmID");

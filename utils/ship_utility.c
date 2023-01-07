@@ -65,15 +65,17 @@ Ship initShip(int shipID)
 {
     Ship ship;
     int shipShmId;
-
-    if (signal(SIGUSR1, quitSignalHandlerShip) == SIG_ERR)
-    { /* imposto l'handler per la signal SIGUSR1 */
-        perror("Error trying to set a signal handler for SIGUSR1");
-        exit(EXIT_FAILURE);
-    }
+    /*
+        if (signal(SIGUSR1, quitSignalHandlerShip) == SIG_ERR)
+        { /* imposto l'handler per la signal SIGUSR1 
+            perror("Error trying to set a signal handler for SIGUSR1");
+            exit(EXIT_FAILURE);
+        }
+    */
+    
 
     /* inizializziamo la nave in shm*/
-
+    ship->pid = getpid();
     shipShmId = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler, "initShip");
     ship = ((struct ship*) getShmAddress(shipShmId, 0, errorHandler, "initShip")) + shipID;
     ship->shipID = shipID;
@@ -442,12 +444,14 @@ void accessPortForCharge(Ship ship, int portID){
     int portShmID;
     int pierSemID;
     int shipSemID;
-    
+    int stormSwellShmID;
+    int* victimIdx;
     
     portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler, "accessPortForCharge");
     pierSemID = useSem(BANCHINESEMKY, errorHandler, "accessPortForCharge->semaforo banchine");
     shipSemID = useSem(SEMSHIPKEY, errorHandler, "accessPortForCharge->semaforo rw navi");
-
+    stormSwellShmID = useShm(STORMSWELLSHMKEY, sizeof(unsigned int) * 2, errorHandler, "accessPortForCharge");
+    victimIdx = ((unsigned int*) getShmAddress(stormSwellShmID, 0, errorHandler, "accessPortForCharge")) + 1;
 
     mutexPro(pierSemID, portID, LOCK, errorHandler, "accessPortForCharge->semBanchine LOCK");
 
@@ -462,7 +466,14 @@ void accessPortForCharge(Ship ship, int portID){
 
     /* TO-DO GESTIRE PROBEMA MERCE SCADUTA UNA VOLTA ARRIVATO AL PORTO*/
     if(ship->promisedProduct.expirationTime != 0){
-         sleep(ship->promisedProduct.weight / SO_LOADSPEED);
+        
+        /* PRIMA NANOSEECSLEEP E POI CONTROLLO SE SONO VITTIMA, RICORDARSI DI RESETTARE IL VALORE DALLA NAVE*/
+        
+        if(ship->shipID == *victimIdx){
+         sleep(ship->promisedProduct.weight / (SO_LOADSPEED + SO_SWELL_DURATION));
+        } else {
+          sleep(ship->promisedProduct.weight / SO_LOADSPEED);  
+        }
          addProduct(ship, ship->promisedProduct);
     }else{
         printf("\nOOPS! Nave con id:%d la merce che volevo caricare è scaduta!!!\n", ship->shipID);
@@ -477,7 +488,7 @@ void accessPortForCharge(Ship ship, int portID){
 
     mutexPro(pierSemID, portID, UNLOCK, errorHandler, "accessPortForCharge->pierSemID UNLOCK");
     
-
+    shmDetach(victimIdx - 1, errorHandler, "shmDetach accessPortForCharge");
 }
 
 void accessPortForDischarge(Ship ship, int portID, int product_index, int quantoPossoScaricare){
@@ -485,6 +496,8 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
     int pierSemID;
     int shipSemID;
     int portBufferSemID;
+    int stormSwellShmID;
+    int* victimIdx;
 
     portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler,"accessPortForDischarge");
     pierSemID = useSem(BANCHINESEMKY, errorHandler,"accessPortForCharge->semaforo banchine");
