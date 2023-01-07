@@ -85,10 +85,10 @@ void addNotExpiredGood(int quantity, int type, ctx where, int refilling, int idx
     int shmid;
     int semid;
     FILE *fp;
-    fp = fopen("./logs/historyTransictions.log", "a+"); 
     GoodTypeInfo* info;
     shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler, "addNotExpiredGood");
     semid = useSem(DUMPSEMKEY, errorHandler , "addNotExpiredGood");
+    fp = fopen("./logs/historyTransictions.log", "a+"); 
     
     info = ((GoodTypeInfo*) getShmAddress(shmid, 0, errorHandler, "addNotExpiredGood")) + type;
 
@@ -191,7 +191,7 @@ void printerCode(int day) {
         
     }
     else {
-            fprintf(fp, "------------------STATO FINALE -----------------\n", day);
+            fprintf(fp, "------------------STATO FINALE -----------------\n");
 
     }
     sum = 0;

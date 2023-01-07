@@ -14,10 +14,6 @@
 #include "./dump.h"
 #include "./nave.h"
 #include "./porto.h"
-/*
-   TODO: Fare sì che se la nave non ha abbastanza tempo per compiere il viaggio termini (algoritmo per scegliere la merce da scaricare / caricare min(tempo rimanente simulazione, data di scadenza minore))
-   TODO: Controllare se le navi si sparpagliano in tutti i porti
-*/
 
 
 
@@ -225,7 +221,7 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     int *day;
     Ship ship;
     int *terminateValue;
-    double restTime;
+    double restTime = RESTTIMESHIP;
     endShmID = useShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "Nave: use end shm");
     terminateValue = (int*)getShmAddress(endShmID, 0, errorHandler, "Nave: getShmAddress di endShm");
 
@@ -234,7 +230,6 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
 
     ship = initShip(atoi(argv[1]));
     printShip(ship);
-    restTime = 1;
 
     checkInConfig();
     printf("Nave con id:%d: config finita, aspetto ok partenza dal master...\n", ship->shipID);

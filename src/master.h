@@ -11,6 +11,7 @@ void genera_navi();
 /* funzione che genera porti */
 void genera_porti(int risorse, int n_porti);
 
+FILE* genera_meteo();
 
 /* codice che verrà eseguito dal processo master (configurazione esclusa)*/
 void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem,  int waitconfigSemID, int msgRefillerID, int waitEndDaySemID, int* day, int waitEndDayShipsSemID);

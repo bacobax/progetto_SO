@@ -22,13 +22,16 @@
 void genera_navi() {
     int i;
     int pid;
+    char* argv[3];
     for (i = 0; i < SO_NAVI; i++) {  /* provo a creare due navi*/
         pid = fork();
         if (pid == 0) {
 
             char s[50];
             sprintf(s, "%d", i);
-            char* argv[] = {"nave", s, NULL};
+            argv[0] = "nave";
+            argv[1] = s;
+            argv[2] = NULL;
         
             execve("./bin/nave", argv, NULL);
 
@@ -52,7 +55,7 @@ void genera_porti(int risorse, int n_porti) {
     char strQuantitySupply[50];
     char strQuantityRequest[50];
     char strIdx[50];
-    
+    char* temp[5];
     quantiesSupplies = distribute(risorse, n_porti);
     quantiesRequests = distribute(SO_FILL, n_porti);
     
@@ -73,8 +76,11 @@ void genera_porti(int risorse, int n_porti) {
 
             sprintf(strIdx, "%d", i);
 
-
-            char* temp[] = { "porto",strQuantitySupply, strQuantityRequest, strIdx , NULL };
+            temp[0] = "porto";
+            temp[1] = strQuantitySupply;
+            temp[2] = strQuantityRequest;
+            temp[3] = strIdx;
+            temp[4] = NULL;
 
             execve("./bin/porto", temp, NULL);
 
@@ -199,7 +205,6 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int waitPortsSemID;
     int waitShipsSemID;
     int waitEndDayShipSemID;
-    srand(time(NULL));
 
     struct sigaction new_sig_action;
     sigset_t new_sig_set;
@@ -207,24 +212,9 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     sigemptyset(&new_sig_set);
     sigaddset(&new_sig_set, SIGUSR1);
     sigprocmask(SIG_BLOCK, &new_sig_set, NULL);
+    srand(time(NULL));
 
-    /*
-    new_sig_action.sa_handler = NULL;
-    new_sig_action.sa_flags = 0;
-    new_sig_action.sa_mask = new_sig_set;
-    */
-    /*sigaction(SIGUSR1, &new_sig_action, NULL);*/
-
-    if (signal(SIGUSR1, mastersighandler) == SIG_ERR) {
-        perror("signal\n");
-        exit(EXIT_FAILURE);
-    }
-
-    if (signal(SIGALRM, mastersighandler) == SIG_ERR) {
-        perror("signal\n");
-        exit(EXIT_FAILURE);
-    }
-
+   
     initErrorHandler();
 
     startSimulationSemID = createSem(MASTKEY, 1, errorHandler, "creazione sem startSimulationSemID");
@@ -234,12 +224,12 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     !dovrà essere SO_PORTI + SO_NAVI
     */
 
-   waitPortsSemID = createSem(WAITPORTSSEM, SO_PORTI, errorHandler, "master crazione waitPortsSemID");
+   waitPortsSemID = createSem(WAITPORTSSEM, SO_PORTI + 1, errorHandler, "master crazione waitPortsSemID");
    waitShipsSemID = createSem(WAITSHIPSSEM, SO_NAVI, errorHandler, "master creazione waitShipsSemID");
 
     waitEndDayShipSemID = createSem(WAITENDDAYSHIPSEM, 0, errorHandler, "master create waitEndDayShipSem");
 
-    waitconfigSemID = createSem(WAITCONFIGKEY, SO_PORTI+ SO_NAVI, errorHandler, "creazione sem waitconfig");
+    waitconfigSemID = createSem(WAITCONFIGKEY, SO_PORTI+ SO_NAVI+ 1, errorHandler, "creazione sem waitconfig");
     
     createDumpArea();
     portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler , "creazione shm dei porti");
@@ -482,3 +472,12 @@ void expireShipGoods(){
     }
 }
 
+
+FILE* genera_meteo() {
+    int pid;
+    FILE* fp;
+
+    return popen("./bin/meteo", "w");
+    
+
+}

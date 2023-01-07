@@ -124,6 +124,7 @@ void printShip(Ship ship)
 int addProduct(Ship ship, Product p){
     int i;
     int aviableCap;
+    int res = -1;
     Product *products = ship->products;
     aviableCap = availableCapacity(ship);
     if (aviableCap >= p.weight)
@@ -144,7 +145,7 @@ int addProduct(Ship ship, Product p){
                 ship->weight = ship->weight + p.weight;
                 addNotExpiredGood(products[i].weight, products[i].product_type, SHIP, 0, ship->shipID);
                     
-                return 0;
+                res = 0;
             }
         }
     }
@@ -152,8 +153,10 @@ int addProduct(Ship ship, Product p){
     {
         printf("🤡Nave con id:%d: non c'è abbastanza capienza per un prodotto che pesa %d, capienza: %d\n" , ship->shipID,p.weight, aviableCap);
 
-        return -1;
+        res = -1;
     }
+
+    return res;
 }
 
 int compareProducts(Product p1, Product p2){
@@ -175,6 +178,7 @@ int findProduct(Product* products, Product p){
 
 int removeProduct(Ship ship, int product_index){
     int i;
+    int res = -1;
     Product* products = ship->products;
     
     if(product_index<0 || product_index>SO_CAPACITY) return -1;
@@ -185,10 +189,12 @@ int removeProduct(Ship ship, int product_index){
             products[i].product_type = -1;
             products[i].expirationTime = -1;
             products[i].weight = -1;
-            return 0;
+            res = 0;
         }
     }
+    return res;
 }
+
 void exitNave(){
     int waitShipSemID = useSem(WAITSHIPSSEM, errorHandler, "nave waitShipSemID");   
     mutex(waitShipSemID, LOCK, errorHandler, "nave mutex LOCK waitShipSemID");
@@ -203,10 +209,11 @@ int chooseQuantityToCharge(Ship ship){
     int j;
     int k;
     int cap;
+    int max;
 
     tipiDaCaricare = haSensoContinuare();
     printf("CHOOSE QUANTITY\n");
-    int max = 0;
+    max = 0;
     shmPort = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler, "chooseQuantityToCharge->useShm");
     portArr =  (Port)getShmAddress(shmPort, 0, errorHandler, "chooseQuantityToCharge->getShmAddress");
     

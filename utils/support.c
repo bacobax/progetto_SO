@@ -62,7 +62,7 @@ intList* distribute(int quantity, int parts) {
 
 void reservePrint(void (*printer)(void* obj, int idx), void* object, int idx) {
     int semid;
-    semid = useSem(RESPRINTKEY, ErrorHandler, "reservePrint");
+    semid = useSem(RESPRINTKEY, errorHandler, "reservePrint");
 
     mutex(semid, LOCK, errorHandler, "reservePrint LOCK");
 

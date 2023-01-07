@@ -39,7 +39,7 @@ Port initPort(int supplyDisponibility, int requestDisponibility, int pIndex);
 
 void printPorto(void* p, int idx);
 
-void launchRefiller(int idx, int endShmId);
+void launchRefiller(int idx);
 /*
     void freePort(Port p)
 */

@@ -4,7 +4,6 @@
 
 #include "../config1.h"
 
-/* #define SCHQUEUEKEY 9091   /* key coda messaggi per azioni di caricamento */
 #define SDCHQUEUEKEY 9092  /* key coda messaggi per azioni di scaricamento*/
 
 struct product {

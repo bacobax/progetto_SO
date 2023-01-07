@@ -261,24 +261,6 @@ void refill(long type, char* text) {
 
     fillMagazine(&p->supplies, day, quanties);
 
-
-    /*
-        Azzero le offerte del tipo di merce per cui c'è già la domanda
-    */
-/*
-    for (i = 0; i < listOfIdxs->length; i++) {
-        tipoMerceDaAzzerare = *(intElementAt(listOfIdxs, i));
-        /*
-            scelgo di marcare direttamente come merce scaduta la merce dell'offerta che
-            non potrà mai essere offerta per il fatto che c'è già la domanda per quel tipo di merce,
-
-        
-        addExpiredGood(p->supplies.magazine[day][tipoMerceDaAzzerare], tipoMerceDaAzzerare, PORT);
-        
-        p->supplies.magazine[day][tipoMerceDaAzzerare] = -2;
-    }*/
-
-    
     mutexPro(portBufferSem, (int)correctType, UNLOCK, errorHandler, "refill->portBufferSem UNLOCK");
     /*
         reservePrint(printPorto, p, correctType);
@@ -293,17 +275,13 @@ void refill(long type, char* text) {
     mutex(waitEndDaySemID, -1, errorHandler, "refill->waitEndDaySem LOCK");
 }
 
-void refillerCode(int endShmId,int idx) {
+void refillerCode(int idx) {
     /*
         questo è una sorta di listener, che ascolta sempre in attesa di un messaggio per l'idx passatogli come argomento
         (indice del porto proprietario del refiller)
     */
-    int *endNow;
     int refillerID;
-    /*
-    endNow = getShmAddress(endShmId, 0, errorHandler, "refillerCode");
-
-    */
+    
     refillerID = useQueue(REFILLERQUEUE, errorHandler, "useQueue in refillerCode");
 
     clearSigMask();
@@ -315,15 +293,11 @@ void refillerCode(int endShmId,int idx) {
         */
         
         msgRecv(refillerID, (long)(idx + 1), errorHandler, refill, ASYNC, "refillerCode");
-        /*
-        if (*endNow) {
-            waitpid(0, NULL, 0);
-            exit(EXIT_SUCCESS);
-        }*/
+       
     }
 }
 
-void launchRefiller( int idx, int endShmId) {
+void launchRefiller(int idx) {
     int pid = fork();
 
     if (pid == -1) {
@@ -331,7 +305,7 @@ void launchRefiller( int idx, int endShmId) {
         exit(EXIT_FAILURE);
     }
     if (pid == 0) {
-        refillerCode(endShmId, idx);
+        refillerCode(idx);
         exit(EXIT_FAILURE);
     }
 }
@@ -364,7 +338,7 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
 
 
 
-    launchRefiller(idx,endShmId);
+    launchRefiller(idx);
 
     checkInConfig();
     printf("P: finito configurazione\n");
@@ -382,14 +356,8 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
 
 void dischargerCode(void (*recvHandler)(long, char*), int idx) {
     int requestPortQueueID;
-    int endShmID;
-    int* terminateValue;
     mex* res;
-    endShmID = useShm(ENDPROGRAMSHM, sizeof(int), errorHandler, "dischargerCode");
-    /*
-    terminateValue = (int*)getShmAddress(endShmID, 0, errorHandler, "dischargerCode");
-
-    */
+    
     requestPortQueueID = useQueue(PQUERECHKEY, errorHandler, "dischargerCode");
 
     clearSigMask();
@@ -405,12 +373,7 @@ void dischargerCode(void (*recvHandler)(long, char*), int idx) {
             prendo il primo messaggio che arriva
         */
         res = msgRecv(requestPortQueueID, idx + 1, errorHandler, recvHandler, ASYNC, "dischargerCode");
-         /*
-        if(*terminateValue == 1){
-            waitpid(0, NULL, 0);
-
-            exit(EXIT_SUCCESS);
-        }*/
+        
          
     }
 }
@@ -418,19 +381,10 @@ void dischargerCode(void (*recvHandler)(long, char*), int idx) {
 void chargerCode(void (*recvHandler)(long, char*), int idx) {
     int requestPortQueueID;
     mex* res;
-    int* terminateValue;
-    int endShmID = useShm(ENDPROGRAMSHM, sizeof(int), errorHandler, "dischargerCode");
-    /*
-        terminateValue = (int*)getShmAddress(endShmID, 0, errorHandler, "dischargerCode");
-
-    */
+    
     requestPortQueueID = useQueue(PQUEREDCHKEY, errorHandler, "dischargerCode");
     clearSigMask();
-    /*
-    if (signal(SIGUSR1, refillerQuitHandler) == SIG_ERR) {
-        perror("ChargerCode: non riesco a settare il signal handler\n");
-        exit(EXIT_FAILURE);
-    }*/
+   
     while (1) {
 
         /*
@@ -442,14 +396,7 @@ void chargerCode(void (*recvHandler)(long, char*), int idx) {
             prendo il primo messaggio che arriva
         */
         res = msgRecv(requestPortQueueID, idx + 1, errorHandler, recvHandler, ASYNC,"chargerCode");
-        /*
-if (*terminateValue == 1) {
-            waitpid(0, NULL, 0);
-
-            exit(EXIT_SUCCESS);
-        }
-        */
-        
+ 
 
     }
 }

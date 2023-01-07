@@ -20,6 +20,8 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     int quantitaAlGiorno;
     int resto;
     int quantitaPrimoGiorno;
+    FILE* meteoPipe;
+    char pypeDay[128];
     /*
     quantitaAlGiorno rappresenta la divisione di SO_FILL per SO_DAYS, solo che può darsi che SO_FILL non sia divisbile per SO_DAYS,
     la soluzione che ho pensato è che per tutti i giorni diversi dal primo si tiene in considerazione soltanto la parte intera della divisione
@@ -36,7 +38,7 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     genera_porti(quantitaPrimoGiorno, SO_PORTI); /* da tradurre in inglese */
 
 
-   
+    meteoPipe = genera_meteo();
     genera_navi();
 
     printf("M: Finito generazione\n");
@@ -46,7 +48,9 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     
 
     
-    for (*day = 0; *day < SO_DAYS; *day = *day +1) {
+    for (*day = 0; *day < SO_DAYS; *day = *day + 1) {
+        fprintf(meteoPipe, "%d\n", *day);
+        fflush(meteoPipe);
         printDump(ASYNC, *day);
         printf("MASTER: DAY: %d\n", *day);
         printf("Master: dormo\n");
@@ -59,20 +63,18 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
             mutex(waitEndDaySemID, SO_PORTI, errorHandler, "mesterCode -> waitEndDaySemID +SO_PORTI");
             
         }
-        #ifndef __linux__
         nanosecsleep(NANOS_MULT);
-        #endif
-        #ifdef __linux__
-        sleep(1);
-        #endif
+        
+
+
 
     }
-    #ifndef __linux__
+    if (pclose(meteoPipe) == -1) {
+        perror("meteoPipe close");
+        exit(EXIT_FAILURE);
+    }
     nanosecsleep(NANOS_MULT);
-    #endif
-    #ifdef __linux__
-        sleep(1);
-     #endif
+    
 }
 
 int main(int argc, char const* argv[]) {

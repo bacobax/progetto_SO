@@ -183,11 +183,12 @@ int getWaitingZeroPxCount(int semid, int idx) {
 
 void getAllVAlues(int semid, int length){
     union semun arg;
-    int v[length];
-    int v2[length];
-    arg.array = calloc(length, sizeof(unsigned short));
+    int* v = calloc(length, sizeof(int));
+    int* v2= calloc(length, sizeof(int));
     int i;
-    for(i = 0; i<length; i++){
+    arg.array = calloc(length, sizeof(unsigned short));
+    
+    for (i = 0; i < length; i++) {
 
         arg.array[i] = -2;
     }
@@ -209,6 +210,8 @@ void getAllVAlues(int semid, int length){
         printf("------------\n");
 
     }
+    free(v);
+    free(v2);
 }
 
 void getOneValue(int semid, int idx){

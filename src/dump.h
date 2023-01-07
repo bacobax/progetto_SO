@@ -40,3 +40,4 @@ void lockAllGoodsDump();
 void unlockAllGoodsDump();
 
 #endif
+
