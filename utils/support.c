@@ -41,8 +41,8 @@ intList* distribute(int quantity, int parts) {
     int last_q;
     int i;
 
-
-    max_q = quantity / parts;
+    
+    max_q = quantity / (parts-1);
 
     /* minimo: la metà della quantità che gli verrebbe distribuita se le quantità fossero distribuite in parti uguali */
     min_q = quantity / parts / 2;

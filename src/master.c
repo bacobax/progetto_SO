@@ -45,7 +45,8 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     aspettaConfigs(waitconfigSemID);
     mutex(startSimulationSemID, LOCK, errorHandler,  "mesterCode -> startSimulationSemID LOCK");
 
-    
+
+    printf("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅\n");
 
     
     for (*day = 0; *day < SO_DAYS; *day = *day + 1) {

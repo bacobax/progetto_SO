@@ -141,13 +141,11 @@ void launchSwell(){
 
 int main(int argc, char* argv[]) {
     int day;
-    int* terminateValue;
     int endShmID;
     int aspettoMortePortiSemID;
     char str[128];
     
     endShmID = useShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "getEndDayShmID meteo");
-    terminateValue = (int*) getShmAddress(endShmID, 0, errorHandler, "meteo terminateValue");
 
     
     aspettoMortePortiSemID = useSem(WAITPORTSSEM, errorHandler, "aspettoMortePortiSemID in codicePorto");

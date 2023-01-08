@@ -562,6 +562,8 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
             printf("\nOOPS! Nave con id:%d la merce che volevi scaricare è scaduta mentre la stavi scaricando!!!\n", ship->shipID);
             
         }
+
+        shmDetach(port-portID, errorHandler, "accessPortDischarge shmDetach");
     } else {
         
         printf("\nOOPS! Nave con id:%d la merce che volevi scaricare è scaduta!!!\n", ship->shipID);
