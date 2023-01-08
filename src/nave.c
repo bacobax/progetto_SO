@@ -59,16 +59,16 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day){
 
 
     initArrayOffers(port_offers);
+    
 
     if (quantityToCharge == 0) {
         dischargeProducts(ship, day);
     }
     else {
-        /*
-        waitResponsesID= useSem(WAITFIRSTRESPONSES, NULL);
+
         
-        */
         
+
         availablePorts = communicatePortsForCharge(ship, quantityToCharge, port_offers); /* mando msg a tutti i porti perchè voglio caricare*/
         printf("[%d]Nave: finito di chiamare i porti\n", getpid());
         /*
@@ -84,7 +84,9 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day){
             /* non ci sono porti disponibili per la quantità
                di merce che voglio caricare, riprovo a chiamare i porti decrementando la quantità*/
             replyToPortsForCharge(ship, -1);
-            chargeProducts(ship, chooseQuantityToCharge(ship), day); 
+
+            
+            chargeProducts(ship, chooseQuantityToCharge(ship), day);
 
             mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler, "chargeProducts->waitToTravelSemID +SO_PORTI");
 
@@ -103,7 +105,8 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day){
             printf("Nave con id:%d: Aspetto a partire...\n", ship->shipID);
             mutexPro(waitToTravelSemID, ship->shipID, WAITZERO, errorHandler, "chargeProducts->waitToTravelSemID WAITZERO");
             mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler, "chargeProducts->waitToTravelSemID +SO_PORTI");
-            
+
+
         
             printf("Nave con id:%d: sono partita...\n", ship->shipID);
             travel(ship, portID, day);
@@ -121,6 +124,8 @@ void dischargeProducts(Ship ship, int* day) {
     int product_index;
     int waitToTravelSemID;
     int quantoPossoScaricare;
+    int ;
+
     /*
         Se non può scaricare quello che ha 
     */
@@ -150,21 +155,26 @@ void dischargeProducts(Ship ship, int* day) {
     
 
     */
+        printf("IN DISCHARGE\n");
         printShip(ship);
         product_index = chooseProductToDelivery(ship);
         printf("PROD IDX: %d", product_index);
         printf("\n\nNave con id:%d: la mia merce scade tra:%d\n\n", ship->shipID, ship->products[product_index].expirationTime);
-        portID = communicatePortsForDischarge(ship, ship->products[product_index], &quantoPossoScaricare);  
 
-    
         
+        portID = communicatePortsForDischarge(ship, ship->products[product_index], &quantoPossoScaricare);
+
         if(portID == -1){
 
+            
             addExpiredGood(ship->products[product_index].weight, ship->products[product_index].product_type, SHIP);
             removeProduct(ship, product_index); /* vecchio prodotto da scaricare rimosso (tanto le domande dei porti sono tutte a 0) */
 
             printf("Nave con id:%d: riprovo a scegliere il prodotto da scaricare\n", ship->shipID);
             
+            
+            
+
             dischargeProducts(ship, day);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
         
         } else {
@@ -176,12 +186,14 @@ void dischargeProducts(Ship ship, int* day) {
             replyToPortsForDischarge(ship, portID);
             mutexPro(waitToTravelSemID, ship->shipID, WAITZERO, errorHandler, "dischargeProducts->waitToTravelSemID WAITZERO");
             mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler, "dischargeProducts->waitToTravelSemID +SO_PORTI");
+            
 
 
             travel(ship, portID, day);
             printf("\n\nNave con id:%d: la mia merce scade tra:%d E STO PER FARE accessPortForDischarge\n\n", ship->shipID, ship->products[product_index].expirationTime);
             accessPortForDischarge(ship, portID, product_index, quantoPossoScaricare);
-        }      
+            
+        }
 
 
     /*

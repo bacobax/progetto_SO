@@ -19,8 +19,12 @@ struct ship {
     double y;
     int weight;
     int pid;
+    
     Product products[SO_CAPACITY];
     Product promisedProduct;
+    unsigned short storm;
+    unsigned short dead;
+  
 };
 typedef struct ship* Ship;
 

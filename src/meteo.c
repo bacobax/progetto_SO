@@ -5,6 +5,7 @@
 #include <time.h>
 #include "../config1.h"
 #include "./nave.h"
+#include "./porto.h"
 #include "../utils/errorHandler.h"
 #include "../utils/support.h"
 #include "../utils/shm_utility.h"
@@ -17,26 +18,51 @@
 */
 void malestormRoutine() {
     int victimIdx;
+    int i;
     Ship victimShip;
     int shipShmID;
     int waitShipSemID;
-    
+    intList* shipsList;
+    int a[SO_NAVI];
+    int victim;
+
     waitShipSemID = useSem(WAITSHIPSSEM, errorHandler, "nave waitShipSemID");
-
     shipShmID = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler, "shipShmID in malestormRoutine");
+    
+    for(i=0; i<SO_NAVI; i++){
+        a[i] = i;
+    }
+    shipsList = intInitFromArray(a, SO_NAVI); 
+    
     while (1) {
-        victimIdx = random_int(0, SO_NAVI - 1);
-        nanosecsleep(0.04166667 * NANOS_MULT * SO_MAELSTROM);
+        if (shipsList->length > 0) {
+            victimIdx = random_int(-1, shipsList->length - 1);
+            victim = *(intElementAt(shipsList, victimIdx));
+            printf("Tra %d ore killo la nave %d\n", SO_MAELSTROM, victim);
+            printf("ASPETTO %f secondi\n", ((double)(0.04166667 * NANOS_MULT) * SO_MAELSTROM));
+            nanosecsleep((double)(0.04166667 * NANOS_MULT) * SO_MAELSTROM);
 
-        
-        victimShip = ((Ship)getShmAddress(shipShmID, 0, errorHandler, "getShmAddress in malestormRoutine di shipsArray")) + victimIdx;
-        
-        mutex(waitShipSemID, LOCK, errorHandler, "nave mutex LOCK waitShipSemID");
+            
+            victimShip = ((Ship)getShmAddress(shipShmID, 0, errorHandler, "getShmAddress in malestormRoutine di shipsArray")) + victim;
 
-        kill(shipsArray[victimIdx].pid, SIGTERM);
+
+            
+
+            printf("PID VITTIMA %d\n", victimShip->pid);
+            /*
+            kill(victimShip->pid, SIGKILL);
+            */
+            victimShip->dead = 1;
+            
+            shmDetach(victimShip - victim, errorHandler, "malestormRoutine");
+            intRemove(shipsList, victimIdx);
+            
+        }
+        else {
+            printf("MALESTORM: Ho rimosso tutte le navi\n");
+            exit(EXIT_SUCCESS);
+        }
         
-        shmDetach(victimShip - victimIdx, errorHandler, "malestormRoutine");
-        printf("🌊🌊🌊🌊🌊🌊\nUccisa la nave %d\n🌊🌊🌊🌊🌊🌊\n", victimIdx);
     }
         
 }
@@ -62,14 +88,14 @@ void malestormHandler() {
 */
 
 void stormRoutine(){
-    int shmID;
-    unsigned int* value;
+    int shmShipID;
+    Ship ship;
     int victimIdx;
-    shmID = useShm(STORMSWELLSHMKEY, sizeof(unsigned int) * 2, errorHandler, "meteo stormRoutine");
-    value = (unsigned int*) getShmAddress(shmID, 0, errorHandler, "getShmAddress meteo stormRoutine");
     victimIdx = random_int(0, SO_NAVI - 1);
-    *value = victimIdx;
-    shmDetach(value,errorHandler,"stormRoutine");
+    shmShipID = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler, "meteo stormRoutine");
+    ship = ((Ship) getShmAddress(shmShipID, 0, errorHandler, "getShmAddress meteo stormRoutine")) + victimIdx;
+    ship->storm = 1;
+    shmDetach(ship - victimIdx,errorHandler,"stormRoutine");
 }
 
 void launchStorm() {
@@ -84,14 +110,14 @@ void launchStorm() {
 }
 
 void swellRoutine(){
-    int shmID;
-    unsigned int* value;
+    int shmPortID;
+    Port port;
     int victimIdx;
-    shmID = useShm(STORMSWELLSHMKEY, sizeof(unsigned int) * 2, errorHandler, "meteo stormRoutine");
-    value = ((unsigned int*) getShmAddress(shmID, 0, errorHandler, "getShmAddress meteo stormRoutine")) + 1;
-    victimIdx = random_int(0, SO_NAVI - 1);
-    *value = victimIdx;
-    shmDetach(value-1,errorHandler, "swellRoutine");
+    victimIdx = random_int(0, SO_PORTI - 1);
+    shmPortID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler, "meteo swellRoutine");
+    port = ((Port)getShmAddress(shmPortID, 0, errorHandler, "getShmAddress meteo stormRoutine")) + victimIdx;
+    port->swell = 1;
+    shmDetach(port - victimIdx, errorHandler, "swellRoutine");
 }
 
 void launchSwell(){
@@ -130,9 +156,11 @@ int main(int argc, char* argv[]) {
     while (fgets(str, 128, stdin) != NULL) {
         day = atoi(str);
         printf("Giorno %d\n", day);
-
-        launchStorm();
-        launchSwell();
+        /*
+            launchStorm();
+            launchSwell();
+        */
+        
 
     }
     mutex(aspettoMortePortiSemID, LOCK, errorHandler, "LOCK su aspettoMortePortiSemID");
@@ -141,3 +169,4 @@ int main(int argc, char* argv[]) {
         
 
 }
+

@@ -185,7 +185,6 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int shipsShmid;
     int endShmID;
     int dayShmID;
-    int stormSwellShmID;
     int semBanchineID;
     int semShipsID;
     int msgRefillerID;
@@ -231,6 +230,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     waitEndDayShipSemID = createSem(WAITENDDAYSHIPSEM, 0, errorHandler, "master create waitEndDayShipSem");
 
     waitconfigSemID = createSem(WAITCONFIGKEY, SO_PORTI+ SO_NAVI+ 1, errorHandler, "creazione sem waitconfig");
+
     
     createDumpArea();
     portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler , "creazione shm dei porti");
@@ -241,7 +241,6 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     dayShmID = createShm(DAYWORLDSHM, sizeof(int), errorHandler, "crazione day shm master");
     day = (int*) getShmAddress(dayShmID, 0, errorHandler, "master getShmAddress day");
 
-    stormSwellShmID = createShm(STORMSWELLSHMKEY, sizeof(unsigned int) * 2, errorHandler, "crate stormSellShm");
 
     /*creazione banchine*/
     semBanchineID = createMultipleSem(BANCHINESEMKY, SO_PORTI, SO_BANCHINE, errorHandler, "creazione semaforo banchine");
@@ -325,7 +324,6 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     removeShm(shipsShmid, errorHandler, "shipsShmid");
     removeShm(portsShmid, errorHandler, "portsShmid");
-    removeShm(stormSwellShmID, errorHandler, "stormSwellShm");
     shmDetach(terminateValue, errorHandler, "master terminateValue detach");
     shmDetach(day, errorHandler, "master day detach");
     removeShm(endShmID, errorHandler, "endShmID");
@@ -425,11 +423,12 @@ void childExpirePortCode(Port p, int day, int idx) {
 
 void childExpireShipCode(Ship ship){
     int semShipID;
-
     semShipID = useSem(SEMSHIPKEY, errorHandler, "childExpireShipCode");
-
-    mutexPro(semShipID, ship->shipID, LOCK, errorHandler , "childExpireShipCode LOCK");
-
+    
+    mutexPro(semShipID, ship->shipID, LOCK, errorHandler, "childExpireShipCode LOCK");
+    if (ship->dead) {
+        exit(0);
+    }
     updateExpTimeShip(ship);
 
     mutexPro(semShipID, ship->shipID, UNLOCK, errorHandler, "childExpireShipCode UNLOCK");    

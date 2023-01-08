@@ -3,8 +3,8 @@
 #define CONFIG_1
 
 
-#define SO_PORTI    1
-#define SO_NAVI     1
+#define SO_PORTI    4
+#define SO_NAVI     2
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 #define SO_MIN_VITA  3 /* tonn */
@@ -23,8 +23,8 @@
 #define ERRFILESEMID 3214
 #define DAYWORLDSHM 3213
 #define WAITENDDAYSHIPSEM 3212
+#define CANDEADSEMKEY 3211
 
-#define STORMSWELLSHMKEY 3000
 
 #define WAITPORTRESPONSES 3002
 #define WAITFIRSTRESPONSES 3003
@@ -59,11 +59,10 @@
 #define SO_CAPACITY  100
 #define SO_BANCHINE  10
 #define SO_LOADSPEED 200
-#define SO_MALESTORM /*???*/ 
 #define RESTTIMESHIP 1
-#define SO_MAELSTROM 12
+#define SO_MAELSTROM 36
 
-#define SO_SWELL_DURATION /*???*/
-#define SO_STORM_DURATION /*???*/
+#define SO_SWELL_DURATION 3
+#define SO_STORM_DURATION 3
 
 #endif

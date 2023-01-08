@@ -24,6 +24,7 @@
 struct port {
 
     int requests[SO_MERCI];
+    unsigned short swell;
     Supplies supplies;
     double x;
     double y;

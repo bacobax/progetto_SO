@@ -288,3 +288,14 @@ intList* intUnion(intList* l1, intList* l2){
 
     return ret;
 }
+void removeWhere(intList* l, int el) {
+    intNode* aux;
+    int idx = 0;
+    for (aux = l->first; aux != NULL; aux = aux->next) {
+        if(aux->numero == el){
+            intRemove(l, idx);
+        }
+        idx++;
+    }
+    
+}
