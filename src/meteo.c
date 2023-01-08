@@ -157,7 +157,9 @@ int main(int argc, char* argv[]) {
     printf("Meteo chekInConfig finita...\n");
     waitForStart();
 
+    /*
     malestormHandler();
+    */
     printf("Meteo partito...\n");
 
     while (fgets(str, 128, stdin) != NULL) {
@@ -166,12 +168,10 @@ int main(int argc, char* argv[]) {
             break;
         }
         printf("Giorno %d\n", day);
-        /*
-            launchStorm();
-            launchSwell();
-        */
         
-
+        launchStorm();
+        launchSwell();
+        
     }
     mutex(aspettoMortePortiSemID, LOCK, errorHandler, "LOCK su aspettoMortePortiSemID");
     printf("Meteo: termino\n");
