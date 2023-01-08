@@ -54,7 +54,7 @@
 
 
 /* ciao */
-#define SO_SPEED     4   
+#define SO_SPEED     10   
 #define SO_LATO      7
 #define SO_CAPACITY  80
 #define SO_BANCHINE  10
@@ -62,7 +62,7 @@
 #define RESTTIMESHIP 1
 #define SO_MAELSTROM (24*SO_DAYS)/3
 
-#define SO_SWELL_DURATION 3
-#define SO_STORM_DURATION 3
+#define SO_SWELL_DURATION 12
+#define SO_STORM_DURATION 12
 
 #endif

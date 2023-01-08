@@ -482,7 +482,7 @@ void accessPortForCharge(Ship ship, int portID){
        
         nanosecsleep((p.weight / SO_LOADSPEED)*NANOS_MULT);
         if (port->swell) {
-            printf("Dormo %d ore in più perchè c'è la SWELL\n" , SO_SWELL_DURATION);
+            printf("⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️\nDormo %d ore in più perchè c'è la SWELL\n⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️\n" , SO_SWELL_DURATION);
             nanosecsleep((double)(NANOS_MULT* 0.04166667) * SO_SWELL_DURATION);
             port->swell = 0;
         }
@@ -623,7 +623,7 @@ void travel(Ship ship, int portID, int* day)
     printf("NAVE, STO PER FARE LA NANOSECSLEEP\n");
     nanosecsleep(tempo);
     if (ship->storm == 1) {
-        printf("Nave con id:%d ho beccato una tempesta\n", ship->shipID);
+        printf("🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️\nNave con id:%d ho beccato una tempesta\n🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️\n", ship->shipID);
         nanosecsleep((double)(NANOS_MULT * 0.04166667) * SO_STORM_DURATION);
         ship->storm = 0;
     }

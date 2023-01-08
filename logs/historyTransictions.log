@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 DUMP: PORT IDX: 3, tolgo 56
 DUMP: PORT IDX: 3, tolgo 26
 DUMP: PORT IDX: 0, tolgo 20
@@ -96,3 +97,45 @@ DUMP: PORT IDX: 0, tolgo 12
 DUMP: PORT IDX: 3, tolgo 12
 DUMP: PORT IDX: 3, aggiungo 12
 DUMP: NAVE IDX: 2, aggiungo 12
+=======
+DUMP: PORT IDX: 1, tolgo 62
+DUMP: PORT IDX: 2, tolgo 54
+DUMP: PORT IDX: 3, tolgo 23
+DUMP: NAVE IDX: 0, aggiungo 62
+DUMP: NAVE IDX: 2, aggiungo 54
+DUMP: NAVE IDX: 1, aggiungo 23
+DUMP: PORT IDX: 2, tolgo 54
+DUMP: PORT IDX: 1, tolgo 50
+DUMP: NAVE IDX: 2, aggiungo 54
+DUMP: NAVE IDX: 0, aggiungo 50
+DUMP: PORT IDX: 1, tolgo 57
+DUMP: PORT IDX: 1, tolgo 49
+DUMP: PORT IDX: 2, tolgo 45
+DUMP: NAVE IDX: 2, aggiungo 49
+DUMP: NAVE IDX: 1, aggiungo 57
+DUMP: NAVE IDX: 0, aggiungo 45
+DUMP: PORT IDX: 3, tolgo 49
+DUMP: PORT IDX: 2, tolgo 45
+DUMP: NAVE IDX: 0, aggiungo 45
+DUMP: NAVE IDX: 2, aggiungo 49
+DUMP: PORT IDX: 2, tolgo 54
+DUMP: PORT IDX: 3, tolgo 47
+DUMP: NAVE IDX: 0, aggiungo 47
+DUMP: NAVE IDX: 1, aggiungo 54
+DUMP: PORT IDX: 2, tolgo 54
+DUMP: NAVE IDX: 2, aggiungo 54
+DUMP: PORT IDX: 3, tolgo 43
+DUMP: PORT IDX: 1, tolgo 43
+DUMP: NAVE IDX: 0, aggiungo 43
+DUMP: PORT IDX: 2, tolgo 59
+DUMP: NAVE IDX: 1, aggiungo 43
+DUMP: PORT IDX: 3, tolgo 40
+DUMP: NAVE IDX: 0, aggiungo 40
+DUMP: NAVE IDX: 2, aggiungo 59
+DUMP: PORT IDX: 1, tolgo 47
+DUMP: NAVE IDX: 0, aggiungo 47
+DUMP: PORT IDX: 1, tolgo 52
+DUMP: NAVE IDX: 2, aggiungo 52
+DUMP: PORT IDX: 1, tolgo 43
+DUMP: NAVE IDX: 1, aggiungo 43
+>>>>>>> 6321d952610fd214aeacca3d9667cf4f8a5be4f2
