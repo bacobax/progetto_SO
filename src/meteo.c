@@ -25,7 +25,10 @@ void malestormRoutine() {
     intList* shipsList;
     int a[SO_NAVI];
     int victim;
-
+    int semShipID;
+    semShipID = useSem(SEMSHIPKEY, errorHandler, "childExpireShipCode");
+    
+    
     waitShipSemID = useSem(WAITSHIPSSEM, errorHandler, "nave waitShipSemID");
     shipShmID = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler, "shipShmID in malestormRoutine");
     
@@ -52,7 +55,11 @@ void malestormRoutine() {
             /*
             kill(victimShip->pid, SIGKILL);
             */
+            mutexPro(semShipID, victim, LOCK, errorHandler, "semShipID LOCK");
+        
             victimShip->dead = 1;
+            
+            mutexPro(semShipID, victim, UNLOCK, errorHandler, "semShipID UNLOCK");
             
             shmDetach(victimShip - victim, errorHandler, "malestormRoutine");
             intRemove(shipsList, victimIdx);
@@ -149,12 +156,15 @@ int main(int argc, char* argv[]) {
     checkInConfig();
     printf("Meteo chekInConfig finita...\n");
     waitForStart();
-    printf("Meteo partito...\n");
 
     malestormHandler();
+    printf("Meteo partito...\n");
 
     while (fgets(str, 128, stdin) != NULL) {
         day = atoi(str);
+        if (day == -1) {
+            break;
+        }
         printf("Giorno %d\n", day);
         /*
             launchStorm();

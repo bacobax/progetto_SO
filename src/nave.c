@@ -99,6 +99,7 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day){
             ship->promisedProduct.expirationTime = port_offers[portID].expirationTime;
             ship->promisedProduct.product_type = port_offers[portID].product_type;
             ship->promisedProduct.weight = quantityToCharge;
+            ship->promisedProduct.distributionDay = port_offers[portID].distributionDay;
 
             replyToPortsForCharge(ship, portID);
             
@@ -124,8 +125,8 @@ void dischargeProducts(Ship ship, int* day) {
     int product_index;
     int waitToTravelSemID;
     int quantoPossoScaricare;
-    int ;
-
+    
+    printf("DISCHARGE: WEIGHT: %d\n", ship->weight);
     /*
         Se non può scaricare quello che ha 
     */

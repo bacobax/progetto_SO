@@ -87,7 +87,7 @@ void recvDischargeHandler(long type, char *text)
     else
     {
 
-        sprintf(text, "%d %d", tipoTrovato, dataScadenzaTrovata);
+        sprintf(text, "%d %d %d", tipoTrovato, dataScadenzaTrovata , dayTrovato);
         msgSend(shipQueueID, text, idx + 1, errorHandler, 0, "risposta positiva recvDischargerHandler");
     }
 

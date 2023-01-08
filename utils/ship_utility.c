@@ -57,6 +57,8 @@ void initArrayOffers(PortOffer* port_offers){
     for(i=0; i<SO_PORTI; i++){
         port_offers[i].expirationTime = -1;
         port_offers[i].product_type = -1;
+        port_offers[i].distributionDay = -1;
+        port_offers[i].weight = -1;
     }
 }
 
@@ -86,9 +88,6 @@ Ship initShip(int shipID)
     ship->weight = 0;
     initArrayProducts(ship->products); /* inizializzo l'array con tutti i valori a -1*/
     
-    ship->promisedProduct.product_type = -1;
-    ship->promisedProduct.expirationTime = -1;
-    ship->promisedProduct.weight = -1;
     return ship;
 }
 
@@ -96,7 +95,7 @@ void printLoadShip(Product* products){
     int i;
     for (i = 0; i < SO_CAPACITY; i++) {
         if (products[i].product_type != -1) {
-        printf("\nProduct type:%d, Expiration time: %d, Weight: %d", products[i].product_type, products[i].expirationTime, products[i].weight);
+            printf("\nProduct type:%d, Expiration time: %d, Weight: %d", products[i].product_type, products[i].expirationTime, products[i].weight);
             
         }
     }
@@ -134,6 +133,7 @@ int addProduct(Ship ship, Product p){
     int res = -1;
     Product *products = ship->products;
     aviableCap = availableCapacity(ship);
+    printf("AGGIUNGO IL PRODOTTO CHE PESA %d, aviable cap: %d\n", p.weight, aviableCap);
     if (aviableCap >= p.weight)
     {
         for (i = 0; i < SO_CAPACITY; i++)
@@ -152,7 +152,8 @@ int addProduct(Ship ship, Product p){
                 ship->weight = ship->weight + p.weight;
                 addNotExpiredGood(products[i].weight, products[i].product_type, SHIP, 0, ship->shipID);
                     
-                res = 0;
+                return 0;
+                
             }
         }
     }
@@ -303,7 +304,7 @@ int communicatePortsForCharge(Ship ship, int quantityToCharge, PortOffer* port_o
         printf("Nave con id:%d risposta dal porto %d: %s\n", ship->shipID, i, response->mtext);
 
         if(strlen(response->mtext) > 1){ 
-            sscanf(response->mtext, "%d %d", &port_offers[i].product_type, &port_offers[i].expirationTime);
+            sscanf(response->mtext, "%d %d %d", &port_offers[i].product_type, &port_offers[i].expirationTime, &port_offers[i].distributionDay);
             aviablePorts++;
         }
     }
@@ -497,12 +498,13 @@ void accessPortForCharge(Ship ship, int portID){
     ship->promisedProduct.product_type = -1;
     ship->promisedProduct.expirationTime = -1;
     ship->promisedProduct.weight = -1;
+    ship->promisedProduct.distributionDay = -1;
       
     mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler, "accessPortForCharge->shipSemID UNLOCK");
 
     mutexPro(pierSemID, portID, UNLOCK, errorHandler, "accessPortForCharge->pierSemID UNLOCK");
     if (ship->dead) {
-            printf("🌊🌊🌊🌊🌊🌊\nUccisa la nave %d\n🌊🌊🌊🌊🌊🌊\n", ship->shipID);
+            printf("🌊🌊🌊🌊🌊🌊\nNave %d, sono stata uccisa\n🌊🌊🌊🌊🌊🌊\n", ship->shipID);
             exitNave();
     }
     
@@ -570,7 +572,7 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
 
     mutexPro(pierSemID, portID, UNLOCK, errorHandler, "accessPortForCharge->pierSemID UNLOCK");
     if (ship->dead) {
-            printf("🌊🌊🌊🌊🌊🌊\nUccisa la nave %d\n🌊🌊🌊🌊🌊🌊\n", ship->shipID);
+            printf("🌊🌊🌊🌊🌊🌊\nNave %d, sono stata uccisa\n🌊🌊🌊🌊🌊🌊\n", ship->shipID);
             exitNave();
     }
 }
@@ -583,7 +585,10 @@ void travel(Ship ship, int portID, int* day)
     long tempo;
     double tempoInSecondi;
     int tempoRimanente;
-    int portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler, "travel"); /* prendo l'id della shm del porto */
+    int portShmId;
+    int portBufferSem;
+    portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler, "travel"); /* prendo l'id della shm del porto */
+    portBufferSem = useSem(RESPORTSBUFFERS, errorHandler , "refill->useSem portBufferSem");
 
     p = ((Port)getShmAddress(portShmId, 0, errorHandler, "travel")) + portID;  /* prelevo la struttura del porto alla portID-esima posizione nella shm 
 
@@ -624,7 +629,21 @@ void travel(Ship ship, int portID, int* day)
     }
 
     if (ship->dead) {
-        printf("🌊🌊🌊🌊🌊🌊\nUccisa la nave %d\n🌊🌊🌊🌊🌊🌊\n", ship->shipID);
+        if (ship->promisedProduct.expirationTime != -1) {
+            if (ship->promisedProduct.expirationTime == 0) {
+                addNotExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, PORT, 0, portID);
+                addExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, PORT);
+            }
+            else {
+                addNotExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, PORT, 0, portID);
+
+
+                mutexPro(portBufferSem, portID, LOCK, errorHandler, "refill->portBufferSem LOCK");
+                p->supplies.magazine[ship->promisedProduct.distributionDay][ship->promisedProduct.product_type] += ship->promisedProduct.weight;
+                mutexPro(portBufferSem, portID, UNLOCK, errorHandler, "refill->portBufferSem UNLOCK");
+            }
+        }
+        printf("🌊🌊🌊🌊🌊🌊\nNave %d, sono stata uccisa\n🌊🌊🌊🌊🌊🌊\n", ship->shipID);
         exitNave();
     }
 
@@ -646,16 +665,15 @@ void updateExpTimeShip(Ship ship){
     int i;
     Product* products = ship->products;
 
-    if(ship->dead == 1){
-        exit(0);
-    }
+   
 
     for(i=0; i<SO_CAPACITY; i++){
         if(products[i].product_type == -1) break;
         
         products[i].expirationTime = products[i].expirationTime -1;
 
-        if(products[i].expirationTime == 0){
+        if (products[i].expirationTime == 0) {
+            
             addExpiredGood(products[i].weight, products[i].product_type, SHIP);
             removeProduct(ship, i);
             printf("IN EXP TIMES:\n");
@@ -663,7 +681,7 @@ void updateExpTimeShip(Ship ship){
         }
     }
 
-    if(ship->promisedProduct.expirationTime > 0 ){
+    if(ship->promisedProduct.expirationTime > 0){
         ship->promisedProduct.expirationTime -= 1;
     }
 }

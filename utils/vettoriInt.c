@@ -139,6 +139,7 @@ void intRemove(intList* lista, int idx) {
         innerAux = lista->first;
         lista->first = lista->first->next;
         free(innerAux);
+        lista->length -= 1;
         return;
     }
     count = 0;
@@ -147,6 +148,7 @@ void intRemove(intList* lista, int idx) {
             innerAux = aux->next->next;
             free(aux->next);
             aux->next = innerAux;
+            lista->length -= 1;
             return;
         }
 

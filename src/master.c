@@ -59,7 +59,7 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
             expireShipGoods();
             refillPorts(ASYNC, msgRefillerID, quantitaAlGiorno, *day);
             mutex(waitEndDaySemID, WAITZERO, errorHandler, "mesterCode -> waitEndDaySemID WAITZERO");
-            mutex(waitEndDayShipsSemID, WAITZERO, errorHandler, "mesterCode -> waitEndDaySemID WAITZERO");
+            mutex(waitEndDayShipsSemID, WAITZERO, errorHandler, "mesterCode -> waitEndDayShipSemID WAITZERO");
             mutex(waitEndDaySemID, SO_PORTI, errorHandler, "mesterCode -> waitEndDaySemID +SO_PORTI");
             
         }
@@ -69,6 +69,10 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
 
 
     }
+    fprintf(meteoPipe, "%d\n", EOF);
+    fflush(meteoPipe);
+    printf("Master, faccio la pclose\n");
+        
     if (pclose(meteoPipe) == -1) {
         perror("meteoPipe close");
         exit(EXIT_FAILURE);

@@ -200,7 +200,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int portDischargeRequestsQueueID;
     int waitToRemoveDump;
     int i;
-    int* terminateValue;
+    unsigned int* terminateValue;
     int* day;
     int waitPortsSemID;
     int waitShipsSemID;
@@ -236,7 +236,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler , "creazione shm dei porti");
     shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler ,"creazione shm delle navi");
     endShmID = createShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "crazione shm intero terminazione programma");
-    terminateValue = (int*)getShmAddress(endShmID, 0, errorHandler, "master getShmAddress endShm");
+    terminateValue = (unsigned int*)getShmAddress(endShmID, 0, errorHandler, "master getShmAddress endShm");
 
     dayShmID = createShm(DAYWORLDSHM, sizeof(int), errorHandler, "crazione day shm master");
     day = (int*) getShmAddress(dayShmID, 0, errorHandler, "master getShmAddress day");
@@ -289,9 +289,9 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID, day, waitEndDayShipSemID);
     /* kill(0, SIGUSR1);  uccide tutti i figli */
+    printf("SETTATO A 1 TERMINATE VALUE, ASPETTO FIGLI...\n");
 
     *terminateValue = 1;
-    printf("SETTATO A 1 TERMINATE VALUE, ASPETTO FIGLI...\n");
     /*
     wait_all(SO_NAVI + SO_PORTI + (SO_PORTI * 3));
     */
@@ -426,9 +426,12 @@ void childExpireShipCode(Ship ship){
     semShipID = useSem(SEMSHIPKEY, errorHandler, "childExpireShipCode");
     
     mutexPro(semShipID, ship->shipID, LOCK, errorHandler, "childExpireShipCode LOCK");
+    
     if (ship->dead) {
-        exit(0);
+        mutexPro(semShipID, ship->shipID, UNLOCK, errorHandler, "childExpireShipCode UNLOCK");    
+        exit(EXIT_SUCCESS);
     }
+    
     updateExpTimeShip(ship);
 
     mutexPro(semShipID, ship->shipID, UNLOCK, errorHandler, "childExpireShipCode UNLOCK");    
@@ -467,7 +470,9 @@ void expireShipGoods(){
         if(pid == -1){
             perror("fork nel gestore risorse");
             exit(EXIT_FAILURE);
-        } else if (pid == 0){
+        }
+        else if (pid == 0) {
+            
             ships = (Ship)getShmAddress(shipShmID, 0, errorHandler, "expireShipGoods");
             childExpireShipCode(ships + i);
             exit(EXIT_SUCCESS);

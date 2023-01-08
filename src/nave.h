@@ -13,6 +13,15 @@ struct product {
 };
 typedef struct product Product;
 
+struct port_offer{
+    int product_type;
+    int expirationTime;
+    int distributionDay;
+    int weight;
+};
+typedef struct port_offer PortOffer;
+
+
 struct ship {
     int shipID;
     double x;
@@ -21,24 +30,13 @@ struct ship {
     int pid;
     
     Product products[SO_CAPACITY];
-    Product promisedProduct;
+    PortOffer promisedProduct;
     unsigned short storm;
     unsigned short dead;
   
 };
 typedef struct ship* Ship;
 
-struct port_offer{
-    int product_type;
-    int expirationTime;
-};
-typedef struct port_offer PortOffer;
-
-struct product_for_delivery{
-    int product_type;
-    int weight;
-};
-typedef struct product_for_delivery ProductToDelivery;
 
 
 /* TUTTE LE FUNZIONI SOTTOSTANTI SONO RELATIVE ALLA NAVE*/
