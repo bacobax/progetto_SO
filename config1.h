@@ -54,15 +54,17 @@
 
 
 /* ciao */
-#define SO_SPEED     7
+#define SO_SPEED     10
 #define SO_LATO      10
-#define SO_CAPACITY  80
+#define SO_CAPACITY  1000
 #define SO_BANCHINE  10
 #define SO_LOADSPEED 50
-#define RESTTIMESHIP 0.5
-#define SO_MAELSTROM 24
+#define SO_MAELSTROM 12
 
 #define SO_SWELL_DURATION 12
 #define SO_STORM_DURATION 12
+
+#define RESTTIMESHIP 0
+#define WITH_MALESTORM 0
 
 #endif
