@@ -28,6 +28,8 @@ struct port {
     Supplies supplies;
     double x;
     double y;
+    int deliveredGoods;
+    int sentGoods;
 };
 
 typedef struct port* Port;

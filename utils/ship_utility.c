@@ -127,13 +127,15 @@ void printShip(Ship ship)
     mutex(resSemID, UNLOCK, errorHandler, "printShip UNLOCK");
 }
 
-int addProduct(Ship ship, Product p){
+int addProduct(Ship ship, Product p, Port port){
     int i;
     int aviableCap;
     int res = -1;
     Product *products = ship->products;
     aviableCap = availableCapacity(ship);
     printf("AGGIUNGO IL PRODOTTO CHE PESA %d, aviable cap: %d\n", p.weight, aviableCap);
+
+
     if (aviableCap >= p.weight)
     {
         for (i = 0; i < SO_CAPACITY; i++)
@@ -150,6 +152,7 @@ int addProduct(Ship ship, Product p){
                 products[i].expirationTime = p.expirationTime;
                 products[i].weight = p.weight;
                 ship->weight = ship->weight + p.weight;
+                port->sentGoods += p.weight;
                 addNotExpiredGood(products[i].weight, products[i].product_type, SHIP, 0, ship->shipID);
                     
                 return 0;
@@ -159,7 +162,10 @@ int addProduct(Ship ship, Product p){
     }
     else
     {
-        printf("🤡Nave con id:%d: non c'è abbastanza capienza per un prodotto che pesa %d, capienza: %d\n" , ship->shipID,p.weight, aviableCap);
+        /*
+        Non capiterà mai
+        */
+        printf("🤡Nave con id:%d: non c'è abbastanza capienza per un prodotto che pesa %d, capienza: %d\n", ship->shipID, p.weight, aviableCap);
 
         res = -1;
     }
@@ -487,9 +493,11 @@ void accessPortForCharge(Ship ship, int portID){
             port->swell = 0;
         }
         
+        addProduct(ship, p, port);
         shmDetach(port - portID, errorHandler, "shmDetach Porto");
-        addProduct(ship, p);
-    }else{
+        
+    }
+    else {
         printf("\nOOPS! Nave con id:%d la merce che volevo caricare è scaduta!!!\n", ship->shipID);
         addNotExpiredGood(ship->promisedProduct.weight,ship->promisedProduct.product_type,SHIP, 0, ship->shipID);
         addExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, SHIP);
@@ -549,12 +557,12 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
         if (ship->products[product_index].expirationTime > 0) {
             if (quantoPossoScaricare >= p.weight) {
 
-                addDeliveredGood(p.weight, p.product_type);
+                addDeliveredGood(p.weight, p.product_type, portID);
                 removeProduct(ship, product_index);
                         
                         
             }else {
-                addDeliveredGood(quantoPossoScaricare, ship->products[product_index].product_type);
+                addDeliveredGood(quantoPossoScaricare, ship->products[product_index].product_type, portID);
                 ship->products[product_index].weight -= quantoPossoScaricare;
                 ship->weight -= quantoPossoScaricare;
             }

@@ -214,10 +214,10 @@ void getAllVAlues(int semid, int length){
     free(v2);
 }
 
-void getOneValue(int semid, int idx){
+int getOneValue(int semid, int idx){
     int val;
     if((val = semctl(semid, idx,GETVAL)) == -1){
         perror("SEMCTL");
     }
-    printf("VALORE DEL SEMAFORO %d = %d\n" , idx, val);
+    return val;
 }

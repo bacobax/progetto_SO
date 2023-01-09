@@ -30,6 +30,6 @@ int getWaitingPxCount(int semid, int idx);
 
 void getAllVAlues(int semid, int length);
 
-void getOneValue(int semid, int idx);
+int getOneValue(int semid, int idx);
 
 #endif

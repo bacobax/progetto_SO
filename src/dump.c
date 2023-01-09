@@ -113,23 +113,31 @@ void addNotExpiredGood(int quantity, int type, ctx where, int refilling, int idx
 
 }
 
-void addDeliveredGood(int quantity, int type){
+void addDeliveredGood(int quantity, int type, int portIdx){
     int shmid;
     int semid;
-    FILE *fp;
+    int portShmId;
+    Port portArr;
+    FILE* fp;
     GoodTypeInfo* info;
     
     shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler, "addDeliveredGood");
     semid = useSem(DUMPSEMKEY, errorHandler, "addDeliveredGood");
-    
-    info = ((GoodTypeInfo*) getShmAddress(shmid, 0, errorHandler, "addDeliveredGood")) + type;
+    portShmId = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler, "portShmid addDeliveredGood");
+
+    portArr = ((Port)getShmAddress(portShmId,0,errorHandler,"addDeliveredGood portArr"));
+
+    info = ((GoodTypeInfo*)getShmAddress(shmid, 0, errorHandler, "addDeliveredGood")) + type;
     mutexPro(semid, type, LOCK, errorHandler, "addDeliveredGood LOCK");
 
     info->delivered_goods += quantity;
     info->goods_on_ship -= quantity;
-
+    
+    portArr[portIdx].deliveredGoods += quantity;
+    
     mutexPro(semid, type, UNLOCK, errorHandler, "addDeliveredGood LOCK");
-    shmDetach(info - type,errorHandler, "addDeliveredGood");
+    shmDetach(info - type,errorHandler, "info addDeliveredGood");
+    shmDetach(portArr,errorHandler, "portArr addDeliveredGood");
 }
 
 
@@ -208,9 +216,17 @@ void printerCode(int day) {
         
         sum += arr[i].delivered_goods + arr[i].goods_on_port + arr[i].goods_on_ship + arr[i].expired_goods_on_ship + arr[i].expired_goods_on_port;
     }
+
+    /*
+        printNaviConCaricoABordo(fp)
+        printNaviSenzaCaricoABordo(fp)
+    */
+
     if (day == SO_DAYS || day == 0) {
         for (i = 0; i < SO_PORTI; i++){
-            fprintf(fp, "Porto %d:\n",i);
+            fprintf(fp, "Porto %d:\n", i);
+            fprintf(fp, "Merci ricevute: %d\n", portArr[i].deliveredGoods);
+            fprintf(fp, "Merci spedite: %d\n", portArr[i].sentGoods);
             fprintf(fp, "DOMANDE:\n");
             for (c = 0; c < SO_MERCI; c++) {
                 fprintf(fp, "%d, \n", portArr[i].requests[c]);

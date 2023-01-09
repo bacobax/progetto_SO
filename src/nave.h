@@ -3,7 +3,7 @@
 
 
 #include "../config1.h"
-
+#include "./porto.h"
 #define SDCHQUEUEKEY 9092  /* key coda messaggi per azioni di scaricamento*/
 
 struct product {
@@ -53,7 +53,7 @@ void printLoadShip(Product* products);
 
 void printShip(Ship ship);
 
-int addProduct(Ship ship, Product p);
+int addProduct(Ship ship, Product p, Port port);
 
 int findProduct(Product* products, Product p); /* ritorna l'indice del vettore in cui il prodotto è contenuto */
 

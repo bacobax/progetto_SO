@@ -22,6 +22,7 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     int quantitaPrimoGiorno;
     FILE* meteoPipe;
     char pypeDay[128];
+    int aliveShips=SO_NAVI;
     /*
     quantitaAlGiorno rappresenta la divisione di SO_FILL per SO_DAYS, solo che può darsi che SO_FILL non sia divisbile per SO_DAYS,
     la soluzione che ho pensato è che per tutti i giorni diversi dal primo si tiene in considerazione soltanto la parte intera della divisione
@@ -49,26 +50,29 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     printf("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅\n");
 
     
-    for (*day = 0; *day < SO_DAYS; *day = *day + 1) {
-        fprintf(meteoPipe, "%d\n", *day);
-        fflush(meteoPipe);
-        printDump(ASYNC, *day);
-        printf("MASTER: DAY: %d\n", *day);
-        printf("Master: dormo\n");
-        if (*day > 0) {
-            expirePortsGoods(*day);
-            expireShipGoods();
-            refillPorts(ASYNC, msgRefillerID, quantitaAlGiorno, *day);
-            mutex(waitEndDaySemID, WAITZERO, errorHandler, "mesterCode -> waitEndDaySemID WAITZERO");
-            mutex(waitEndDayShipsSemID, WAITZERO, errorHandler, "mesterCode -> waitEndDayShipSemID WAITZERO");
-            mutex(waitEndDaySemID, SO_PORTI, errorHandler, "mesterCode -> waitEndDaySemID +SO_PORTI");
+    for (*day = 0; *day < SO_DAYS && aliveShips>0; *day = *day + 1) {
+        aliveShips = countAliveShips();
+        if (aliveShips) {
+            fprintf(meteoPipe, "%d\n", *day);
+            fflush(meteoPipe);
+            printDump(ASYNC, *day);
+            printf("MASTER: DAY: %d\n", *day);
+            printf("Master: dormo\n");
+            if (*day > 0) {
+                expirePortsGoods(*day);
+                expireShipGoods();
+                refillPorts(ASYNC, msgRefillerID, quantitaAlGiorno, *day);
+                mutex(waitEndDaySemID, WAITZERO, errorHandler, "mesterCode -> waitEndDaySemID WAITZERO");
+                mutex(waitEndDayShipsSemID, WAITZERO, errorHandler, "mesterCode -> waitEndDayShipSemID WAITZERO");
+                mutex(waitEndDaySemID, SO_PORTI, errorHandler, "mesterCode -> waitEndDaySemID +SO_PORTI");
             
+            }
+             nanosecsleep(NANOS_MULT); 
         }
-        nanosecsleep(NANOS_MULT);
+        else {
+            printf("Terminazione simulazione per navi morte\n");
+        }
         
-
-
-
     }
     fprintf(meteoPipe, "%d\n", EOF);
     fflush(meteoPipe);

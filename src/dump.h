@@ -3,6 +3,14 @@
 #define DUMPSEMKEY 392
 #define LOGFILESEMKEY 393
 #include "../utils/msg_utility.h"
+/*
+  Navi in mare con carico -> runtime
+  Navi in mare senza carico -> runtime
+  Porti che stanno facendo operazioni di carico/scarico -> runtime
+  Per ogni porto:
+      Merce spedita e ricevuta,
+      N. di banchine occupate/totali
+*/
 typedef struct goodTypeInfo {                       /* struttura che contiene le 4 informazioni relative per ogni tipo di merce nella simulazione*/
   int goods_on_ship;             /* numero di beni TOTALI di quel tipo presenti sulla nave PRONTI PER ESSERE CONSEGNATI */
   int goods_on_port;             /* numero di beni TOTALI di quel tipo presenti nel porto PRONTI PER ESSERE CARICATI*/
@@ -19,7 +27,7 @@ void createDumpArea();
 
 void addExpiredGood(int quantity, int type, ctx where);
 void addNotExpiredGood(int quantity, int type, ctx where, int refilling, int idx);
-void addDeliveredGood(int quantity, int type);
+void addDeliveredGood(int quantity, int type, int portIdx);
 /*
     TO-DO
 

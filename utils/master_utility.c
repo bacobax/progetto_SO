@@ -489,3 +489,8 @@ FILE* genera_meteo() {
     
 
 }
+
+int countAliveShips(){
+    int waitShipSemID = useSem(WAITSHIPSSEM, errorHandler, "nave waitShipSemID");   
+    return getOneValue(waitShipSemID, 0);
+}

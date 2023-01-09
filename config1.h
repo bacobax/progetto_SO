@@ -4,11 +4,11 @@
 
 
 #define SO_PORTI    4
-#define SO_NAVI     5
+#define SO_NAVI     1
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 
-#define SO_DAYS      40
+#define SO_DAYS      4
 #define SO_MIN_VITA  7 /* tonn */
 #define SO_MAX_VITA  40/* tonn */
 /*chiavi dei semafori*/
@@ -60,7 +60,7 @@
 #define SO_BANCHINE  10
 #define SO_LOADSPEED 200
 #define RESTTIMESHIP 0.5
-#define SO_MAELSTROM (24*SO_DAYS)/5
+#define SO_MAELSTROM 48
 
 #define SO_SWELL_DURATION 12
 #define SO_STORM_DURATION 12
