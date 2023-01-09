@@ -771,6 +771,32 @@ void printStatoNavi(FILE* fp){
     fprintf(fp, "Numero di navi rallentate a causa delle tempeste: %d\n", countShipWhere(ships, caughtByStorm));
     fprintf(fp, "Numero di navi affondate:%d\n", countShipWhere(ships, isDead));
 
+
     shmDetach(ships, errorHandler, "printStatoNave");
+}
+
+
+void waitEndDay(){
+    int waitEndDaySemID;
+    int waitEndDayShipSemID;
+    waitEndDaySemID = useSem(WAITENDDAYKEY, errorHandler, "waitEndDay in chargeproducts");
+    waitEndDayShipSemID = useSem(WAITENDDAYSHIPSEM, errorHandler, "waitEndDayShipSemID in chargeProducts");
+    mutex(waitEndDayShipSemID, 1, errorHandler, "+1 waitEndDayShipSemID");
+    mutex(waitEndDaySemID, WAITZERO, errorHandler, "WAITZERO su waitEndDaySemID");
+    mutex(waitEndDayShipSemID, -1, errorHandler, "-1 waitEndDayShipSemID");
+}
+
+void waitToTravel(Ship ship){
+    int waitToTravelSemID;
+    waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler, "chargeProducts->waitToTravelSemID");
+    mutexPro(waitToTravelSemID, ship->shipID, WAITZERO, errorHandler, "chargeProducts->waitToTravelSemID WAITZERO");
+    mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler, "chargeProducts->waitToTravelSemID +SO_PORTI");
+}
+
+void initPromisedProduct(Ship ship, PortOffer port_offer, int quantityToCharge){
+    ship->promisedProduct.expirationTime = port_offer.expirationTime;
+    ship->promisedProduct.product_type = port_offer.product_type;
+    ship->promisedProduct.weight = quantityToCharge;
+    ship->promisedProduct.distributionDay = port_offer.distributionDay;
 }
 

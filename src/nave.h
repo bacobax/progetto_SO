@@ -90,4 +90,10 @@ void exitNave();
 
 void printStatoNavi(FILE* fp);
 
+void waitEndDay();
+
+void waitToTravel(Ship ship);
+
+void initPromisedProduct(Ship ship, PortOffer port_offer, int quantityToCharge);
+
 #endif
