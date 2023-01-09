@@ -166,11 +166,14 @@ void printerCode(int day, int last) {
     int portShmid;
     int i;
     int sum;
-    int c;
-    int k;
     int merceRefillata;
     int merceDaRefillare;
     int waitToRemoveDumpKey;
+    int deliveredGoods;
+    int notExpiredGoodsOnPorts;
+    int notExpiredGoodsOnShips;
+    int expiredGoodsOnPorts;
+    int expiredGoodsOnShips;
     GoodTypeInfo *arr;
     Port portArr;
     Supplies s;
@@ -207,6 +210,11 @@ void printerCode(int day, int last) {
     }
     sum = 0;
     lockAllGoodsDump();
+    deliveredGoods = 0;
+    notExpiredGoodsOnPorts = 0;
+    notExpiredGoodsOnShips = 0;
+    expiredGoodsOnPorts = 0;
+    expiredGoodsOnShips = 0;
     for (i = 0; i < SO_MERCI; i++) {
         fprintf(fp, "Tipo merce %d:\n", i);
         fprintf(fp, "\t- Non scaduta:\n");
@@ -216,11 +224,15 @@ void printerCode(int day, int last) {
         fprintf(fp, "\t\ta) nei porti: %d\n", (arr + i)->expired_goods_on_port);
         fprintf(fp, "\t\tb) in nave: %d\n", (arr + i)->expired_goods_on_ship);
         fprintf(fp, "\t- Consegnata: %d\n" ,  (arr + i)->delivered_goods);
-        
-        sum += arr[i].delivered_goods + arr[i].goods_on_port + arr[i].goods_on_ship + arr[i].expired_goods_on_ship + arr[i].expired_goods_on_port;
+        expiredGoodsOnShips += arr[i].expired_goods_on_ship;
+        expiredGoodsOnPorts +=  arr[i].expired_goods_on_port;
+        deliveredGoods += arr[i].delivered_goods;
+        notExpiredGoodsOnShips +=  arr[i].goods_on_ship;
+        notExpiredGoodsOnPorts += arr[i].goods_on_port;
     }
 
-    
+    sum = expiredGoodsOnPorts+ expiredGoodsOnShips + notExpiredGoodsOnPorts+notExpiredGoodsOnShips+deliveredGoods;
+
     printStatoNavi(fp);
 
     printStatoPorti(fp, portArr);
@@ -237,6 +249,13 @@ void printerCode(int day, int last) {
     if(last){
         merceDaRefillare = (SO_FILL/SO_DAYS)*(SO_DAYS-day);
         merceRefillata = SO_FILL - merceDaRefillare;
+        fprintf(fp,"Merce rimasta in porto: %d\n" , notExpiredGoodsOnPorts);
+        fprintf(fp,"Merce rimasta in nave: %d\n" , notExpiredGoodsOnShips);
+        fprintf(fp, "Merce scaduta in porto: %d\n" , expiredGoodsOnPorts);
+        fprintf(fp, "Merce scaduta in nave: %d\n" , expiredGoodsOnShips);
+        fprintf(fp, "Merce consegnata: %d\n" , deliveredGoods);
+
+
         fprintf(fp, "TOTALE MERCE: %d <==> IN GIOCO: %d\n", sum, merceRefillata);
         if (sum ==  merceRefillata) {
             fprintf(fp, "✅");

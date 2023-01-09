@@ -156,8 +156,11 @@ int main(int argc, char* argv[]) {
     printf("Meteo chekInConfig finita...\n");
     waitForStart();
 
+    if (WITH_MALESTORM) {
+        malestormHandler();     
+    }
+
     
-    malestormHandler();
     
     
     

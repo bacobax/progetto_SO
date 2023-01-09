@@ -617,7 +617,7 @@ void printStatoPorti(FILE *fp, Port portArr){
     int k;
     Supplies s;
     semPierID = useSem(BANCHINESEMKY, errorHandler, "printStatoNavi");
-    fprintf("Porti interessati da mareggiata: %d\n" , countPortsWhere(portArr, caughtBySwell));
+    fprintf(fp, "Porti interessati da mareggiata: %d\n" , countPortsWhere(portArr, caughtBySwell));
     for (i = 0; i < SO_PORTI; i++)
     {
         fprintf(fp, "Porto %d:\n", i);

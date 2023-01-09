@@ -495,7 +495,7 @@ int countAliveShips(){
     return getOneValue(waitShipSemID, 0);
 }
 
-resetWeatherTargets(Port arrPort, Ship arrShip){
+void resetWeatherTargets(Port arrPort, Ship arrShip){
     int i;
     for(i = 0; i< SO_NAVI; i++){
         if(arrShip[i].weatherTarget == 1) {
@@ -509,3 +509,4 @@ resetWeatherTargets(Port arrPort, Ship arrShip){
         }
     }
 }
+

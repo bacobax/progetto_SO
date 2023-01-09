@@ -38,4 +38,6 @@ void expirePortsGoods(int day);
 void expireShipGoods();
 
 int countAliveShips();
+
+void resetWeatherTargets(Port ports, Ship ships);
 #endif
