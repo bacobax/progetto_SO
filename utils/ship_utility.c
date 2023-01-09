@@ -489,6 +489,7 @@ void accessPortForCharge(Ship ship, int portID){
        
         nanosecsleep((p.weight / SO_LOADSPEED)*NANOS_MULT);
         if (port->swell) {
+            port->weatherTarget = 1;
             printf("⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️\nDormo %d ore in più perchè c'è la SWELL\n⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️\n" , SO_SWELL_DURATION);
             nanosecsleep((double)(NANOS_MULT* 0.04166667) * SO_SWELL_DURATION);
             port->swell = 0;
@@ -702,39 +703,74 @@ void updateExpTimeShip(Ship ship){
     }
 }
 
+int countShipWhere(Ship arrShip , int(*f)(int,Ship)){
+    int count;
+    int i;
+    count = 0;
+    for (i = 0; i < SO_NAVI; i++){
+        if(f(i,arrShip+i)){
+            count++;
+        }
+    }
+    return count;
+}
+
+int weigthMaggioreDiZero(int idx, Ship ship){
+    return !ship->dead && ship->inSea && ship->weight > 0;
+}
+
+int weigthMinoreDiZero(int idx, Ship ship){
+    return !ship->dead && ship->inSea && ship->weight <= 0;
+}
+
+int isTargeted(int idx, Ship ship){
+    return ship->weatherTarget == 1;
+}
+
+int isDead(int idx, Ship ship){
+    return ship->dead;
+}
+
+int caughtByStorm(int idx, Ship ship){
+    return ship->weatherTarget;
+}
+
 void printStatoNavi(FILE* fp){
     int shmShip;
-    Ship ship; 
+    Ship ships; 
     int i;
     int j;
     int semPierID;
-    int shipsInSeaWithProducts = 0;
-    int shipsInSeaWithoutProducts = 0;
     int shipsInPorts = 0;
-
     semPierID = useSem(BANCHINESEMKY, errorHandler, "printStatoNavi");
 
     shmShip = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler, "printStatoNavi");
-    ship = (Ship)getShmAddress(shmShip, 0, errorHandler, "printStatoNavi");
+    ships = (Ship)getShmAddress(shmShip, 0, errorHandler, "printStatoNavi");
+
+    /*
     for(i=0; i<SO_NAVI; i++){
         if(ship[i].inSea){
-            if(ship[i].weight>0){           /* nave in mare con carico a bordo*/
+            if(ship[i].weight>0){            nave in mare con carico a bordo
                 shipsInSeaWithProducts++;
-            } else {                        /* nave in mare senza carico a bordo*/
+            } else {                         nave in mare senza carico a bordo
                 shipsInSeaWithoutProducts++;
             }
         }
-    }    
+    } 
+    */
 
-    for(i=0; i<SO_PORTI; i++){              /* navi in porto che fanno operazioni di carico/scarico*/
-        
+    for (i = 0; i < SO_PORTI; i++)
+    { /* navi in porto che fanno operazioni di carico/scarico*/
+
         shipsInPorts += SO_BANCHINE - getOneValue(semPierID, i);
     }
 
-    fprintf(fp, "Numero di nave in mare senza carico:%d\n", shipsInSeaWithoutProducts);
-    fprintf(fp, "Numero di navi in mare con carico a bordo:%d\n", shipsInSeaWithProducts);
+    fprintf(fp, "Numero di nave in mare senza carico:%d\n", countShipWhere(ships, weigthMinoreDiZero));
+    fprintf(fp, "Numero di navi in mare con carico a bordo:%d\n", countShipWhere(ships, weigthMaggioreDiZero));
     fprintf(fp, "Numero di navi in porto che stanno facendo operazioni di carico/scarico:%d\n", shipsInPorts);
+    fprintf(fp, "Numero di navi rallentate a causa delle tempeste: %d\n", countShipWhere(ships, caughtByStorm));
+    fprintf(fp, "Numero di navi affondate:%d\n", countShipWhere(ships, isDead));
 
-    shmDetach(ship, errorHandler, "printStatoNave");
+    shmDetach(ships, errorHandler, "printStatoNave");
 }
 

@@ -222,48 +222,10 @@ void printerCode(int day, int last) {
 
     
     printStatoNavi(fp);
+
+    printStatoPorti(fp, portArr);
     
 
-    if (last|| day == 0) {
-        for (i = 0; i < SO_PORTI; i++){
-            fprintf(fp, "Porto %d:\n", i);
-            fprintf(fp, "Merci ricevute: %d\n", portArr[i].deliveredGoods);
-            fprintf(fp, "Merci spedite: %d\n", portArr[i].sentGoods);
-            fprintf(fp, "DOMANDE:\n");
-            for (c = 0; c < SO_MERCI; c++) {
-                fprintf(fp, "%d, \n", portArr[i].requests[c]);
-            }
-
-            s = portArr[i].supplies;
-
-            fprintf(fp, "SUPPLIES:\n");
-            for (c = 0; c < SO_DAYS; c++) {
-                
-                fprintf(fp,"GIORNO %d: [ ", c);
-                for (k = 0; k < SO_MERCI; k++) {
-                    fprintf(fp, "%d, ", s.magazine[c][k]);
-                }
-                fprintf(fp, "]\n");
-            }
-
-            fprintf(fp, "EXP TIMES:\n[");
-            
-            for (c = 0; c < SO_DAYS * SO_MERCI; c++) {
-                fprintf(fp, "%d, ", s.expirationTimes[c]);
-            }
-            fprintf(fp,"]\n");
-            fprintf(fp,"--------------------------------------\n");
-
-
-            fprintf(fp,"coords:\n");
-            fprintf(fp,"x: %f\n", portArr[i].x);
-            fprintf(fp,"y: %f\n", portArr[i].y);
-
-            fprintf(fp,"______________________________________________\n");
-        }
-        
-        
-    }
     /*
         SO_FILL = 10
         se SO_DAYS = 2

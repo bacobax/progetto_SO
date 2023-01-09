@@ -4,12 +4,7 @@
 #define LOGFILESEMKEY 393
 #include "../utils/msg_utility.h"
 /*
-  Per ogni porto:
       Giornaliero: 
-        - N. di banchine occupate/totali
-        - N. di barche sono state rallentate
-        - N. di porti sono stati interessati da mareggiata
-        - N. navi affondate
         - Merce affondata 
 */
 typedef struct goodTypeInfo {                       /* struttura che contiene le 4 informazioni relative per ogni tipo di merce nella simulazione*/

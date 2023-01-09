@@ -594,3 +594,66 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
 
 }
 
+int countPortsWhere(Port arrPort , int(*f)(int,Port)){
+    int count;
+    int i;
+    count = 0;
+    for (i = 0; i < SO_PORTI; i++){
+        if(f(i,arrPort+i)){
+            count++;
+        }
+    }
+    return count;
+}
+
+int caughtBySwell(int idx, Port p){
+    return p->weatherTarget;
+}
+
+void printStatoPorti(FILE *fp, Port portArr){
+    int semPierID;
+    int i;
+    int c;
+    int k;
+    Supplies s;
+    semPierID = useSem(BANCHINESEMKY, errorHandler, "printStatoNavi");
+    fprintf("Porti interessati da mareggiata: %d\n" , countPortsWhere(portArr, caughtBySwell));
+    for (i = 0; i < SO_PORTI; i++)
+    {
+        fprintf(fp, "Porto %d:\n", i);
+        fprintf(fp, "Banchine occupate totali: %d\n", SO_BANCHINE - getOneValue(semPierID, i));
+        fprintf(fp, "Merci ricevute: %d\n", portArr[i].deliveredGoods);
+        fprintf(fp, "Merci spedite: %d\n", portArr[i].sentGoods);
+        fprintf(fp, "DOMANDE:\n");
+        for (c = 0; c < SO_MERCI; c++) {
+            fprintf(fp, "%d, \n", portArr[i].requests[c]);
+        }
+
+        s = portArr[i].supplies;
+
+        fprintf(fp, "SUPPLIES:\n");
+        for (c = 0; c < SO_DAYS; c++) {
+            
+            fprintf(fp,"GIORNO %d: [ ", c);
+            for (k = 0; k < SO_MERCI; k++) {
+                fprintf(fp, "%d, ", s.magazine[c][k]);
+            }
+            fprintf(fp, "]\n");
+        }
+
+        fprintf(fp, "EXP TIMES:\n[");
+        
+        for (c = 0; c < SO_DAYS * SO_MERCI; c++) {
+            fprintf(fp, "%d, ", s.expirationTimes[c]);
+        }
+        fprintf(fp,"]\n");
+        fprintf(fp,"--------------------------------------\n");
+
+
+        fprintf(fp,"coords:\n");
+        fprintf(fp,"x: %f\n", portArr[i].x);
+        fprintf(fp,"y: %f\n", portArr[i].y);
+
+        fprintf(fp,"______________________________________________\n");
+    }
+}

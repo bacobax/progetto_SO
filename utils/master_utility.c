@@ -494,3 +494,18 @@ int countAliveShips(){
     int waitShipSemID = useSem(WAITSHIPSSEM, errorHandler, "nave waitShipSemID");   
     return getOneValue(waitShipSemID, 0);
 }
+
+resetWeatherTargets(Port arrPort, Ship arrShip){
+    int i;
+    for(i = 0; i< SO_NAVI; i++){
+        if(arrShip[i].weatherTarget == 1) {
+            arrShip[i].weatherTarget = 0;
+        }
+    }
+
+    for(i = 0; i< SO_PORTI; i++){
+        if(arrPort[i].weatherTarget == 1){
+            arrPort[i].weatherTarget = 0;
+        }
+    }
+}

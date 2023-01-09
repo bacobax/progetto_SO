@@ -6,7 +6,7 @@
 
 
 /*Queste funzioni sono implementate in /utils/port_utility.c*/
-
+#include <stdio.h>
 #include "../config1.h"
 #include "../utils/vettoriInt.h"
 #include "../utils/supplies.h"
@@ -78,5 +78,7 @@ double getValue(int quantity, int scadenza, int tipo, Port arrPorts, int idx);
     alla migliore quantità disponibile da offrire di fronte alla richiesta di merce pari a {{quantity}}
 */
 int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, int quantity, Port arrPorts, int idx);
+
+void printStatoPorti(FILE *fp, Port portArr);
 
 #endif

@@ -7,6 +7,7 @@
 #include "../utils/errorHandler.h"
 #include "../utils/sem_utility.h"
 #include "../utils/support.h"
+#include "../utils/shm_utility.h"
 
 #include "./master.h"
 #include "./dump.h"
@@ -23,6 +24,8 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     FILE* meteoPipe;
     char pypeDay[128];
     int aliveShips=SO_NAVI;
+    Port ports;
+    Ship ships;
     /*
     quantitaAlGiorno rappresenta la divisione di SO_FILL per SO_DAYS, solo che può darsi che SO_FILL non sia divisbile per SO_DAYS,
     la soluzione che ho pensato è che per tutti i giorni diversi dal primo si tiene in considerazione soltanto la parte intera della divisione
@@ -44,6 +47,10 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
 
     printf("M: Finito generazione\n");
     aspettaConfigs(waitconfigSemID);
+
+    ports = (Port)getShmAddress(portsShmid, 0, errorHandler, "master");
+    ships = (Ship)getShmAddress(shipsShmid, 0, errorHandler, "master");
+
     mutex(startSimulationSemID, LOCK, errorHandler,  "mesterCode -> startSimulationSemID LOCK");
 
 
@@ -69,11 +76,15 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
             
             }
              nanosecsleep(NANOS_MULT);
+             resetWeatherTargets(ports, ships);
         }
         else {
             printf("Terminazione simulazione per navi morte\n");
         }
     }
+    shmDetach(ports, errorHandler, "master");
+    shmDetach(ships, errorHandler, "master");
+
     fprintf(meteoPipe, "%d\n", EOF);
     fflush(meteoPipe);
     printf("Master, faccio la pclose\n");
@@ -86,8 +97,6 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     if(!aliveShips){
         *day -= 1;
     }
-
-    nanosecsleep(NANOS_MULT);
     
 }
 
