@@ -87,15 +87,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
         int c = rand() % 2;
         if (c == 1) {
             p->requests[i] = 0;
-        }/*
-        else if (c == 0) {
-            addExpiredGood(p->supplies.magazine[0][i], i, PORT);
-            p->supplies.magazine[0][i] = -2;
         }
-        else {
-            printf("Errore nella rand");
-            exit(EXIT_FAILURE);
-        }*/
     }
 
     /*
@@ -125,11 +117,13 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
         p->y = SO_LATO;
     }
     else {
-        p->x = (double)rand() / (double)(RAND_MAX / (SO_LATO));
-        p->y = (double)rand() / (double)(RAND_MAX / (SO_LATO));
+        p->x = generateCord();
+        p->y = generateCord();
     }
-
+    /*
     reservePrint(printPorto, p, pIndex);
+    
+    */
 
 
     return p;
@@ -137,20 +131,20 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
 
 
 
-void printPorto(void* p, int idx) {
+void printPorto(void* p, int idx, FILE* stream) {
 
     int i;
-    printf("[%d]Porto %d:\n", getpid(),idx);
-    printf("DOMANDE:\n");
+    fprintf(stream, "[%d]Risorse porto %d:\n", getpid(),idx);
+    fprintf(stream,"DOMANDE:\n");
     for (i = 0; i < SO_MERCI; i++) {
-        printf("%d, \n", ((Port)p)->requests[i]);
+        fprintf(stream,"%d, \n", ((Port)p)->requests[i]);
     }
 
-    printSupplies(((Port)p)->supplies);
+    printSupplies(((Port)p)->supplies, stream);
 
-    printf("coords:\n");
-    printf("x: %f\n", ((Port)p)->x);
-    printf("y: %f\n", ((Port)p)->y);
+    fprintf(stream,"coords:\n");
+    fprintf(stream, "x: %f\n", ((Port)p)->x);
+    fprintf(stream,"y: %f\n", ((Port)p)->y);
 
     printf("______________________________________________\n");
 
@@ -208,13 +202,7 @@ void refill(long type, char* text) {
         anche se sappiamo che length = SO_MERCI
     */
     int length;
-    /*
-        lista dinamica che conterrà gli indici delle posizioni dell'array delle offerte nelle quali l'offerta per quel tipo di merce è a 0
-        e ovviamente se è a 0 è perchè c'è già la domanda per quel tipo di merce
-    */
-    intList* listOfIdxs;
-
-    int tipoMerceDaAzzerare;
+    
     
     int i;
     /*
@@ -233,13 +221,7 @@ void refill(long type, char* text) {
     p = (Port)getShmAddress(portShmID, 0, errorHandler, "refill") + correctType;
 
 
-    /*
-        contiene gli indici delle domande != 0, così da sapere quali indici dell'offerta azzerare
-    */
-    listOfIdxs = findIdxs(p->requests, SO_MERCI, filterIdxs);
-    /*
-        printf("Ricevuto il messaggio %s\n", text);
-    */
+    
 
 
     sscanf(text, "%d|%d", &day, &quantity);
@@ -301,7 +283,7 @@ void launchRefiller(int idx) {
     int pid = fork();
 
     if (pid == -1) {
-        perror("Error launching the refiller");
+        throwError("Error launching the refiller","launchRefiller");
         exit(EXIT_FAILURE);
     }
     if (pid == 0) {
@@ -311,16 +293,16 @@ void launchRefiller(int idx) {
 }
 
 
-void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*codicePorto)(int endShmId, int idx)) {
+void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*codicePorto)(int endShmId, int idx,int aspettoMortePortiSemID, int aspettoMorteNaviSemID)) {
      
     void (*oldHandler)(int);
     int endShmId;
+    int aspettoMortePortiSemID;
+    int aspettoMorteNaviSemID;
     Port p;
-    /*
-    signal(SIGUSR1, SIG_IGN);
-
-    */
-
+    aspettoMortePortiSemID = useSem(WAITPORTSSEM, errorHandler, "aspettoMortePortiSemID in codicePorto");
+    aspettoMorteNaviSemID = useSem(WAITSHIPSSEM, errorHandler, "aspettoMortePortiSemID in codicePorto");
+  
     /*
         questo perchè per qualche motivo srand(time(NULL)) non generava unici seed tra un processo unico e l'altro
         fonte della soluzione: https://stackoverflow.com/questions/35641747/why-does-each-child-process-generate-the-same-random-number-when-using-rand
@@ -349,7 +331,7 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
         da aggiungere le due useQueue per le code di scaricamento
     */
 
-    codicePorto(endShmId, idx);
+    codicePorto(endShmId, idx, aspettoMortePortiSemID, aspettoMorteNaviSemID);
 
 
 }
@@ -406,7 +388,7 @@ void launchDischarger(void (*recvHandler)(long, char*), int idx) {
     int pid;
     pid = fork();
     if (pid == -1) {
-        perror("Errore nel lanciare il discharger");
+        throwError("Errore nel lanciare il discharger","launchDischarger");
         exit(1);
     }
     if (pid == 0) {
@@ -422,7 +404,7 @@ void launchCharger(void (*recvHandler)(long, char*), int idx) {
     int pid;
     pid = fork();
     if (pid == -1) {
-        perror("Errore nel lanciare il charger");
+        throwError("Errore nel lanciare il charger","launchCharger");
         exit(1);
     }
     if (pid == 0) {
@@ -497,7 +479,6 @@ intList* getAllOtherTypeRequests(Port portArr, int idx) {
 
 
 intList* haSensoContinuare() {
-    int portShmid;
     Port portArr;
     int i;
     int j;
@@ -507,8 +488,7 @@ intList* haSensoContinuare() {
     intList* aux0;
     intList* aux1;
 
-    portShmid = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler,"allRequestsZero");
-    portArr = getShmAddress(portShmid,0,errorHandler,"allRequestsZero");
+    portArr = getPortsArray();
 
     for(i=0;i<SO_PORTI; i++){
         aux0 = tipiDiMerceRichiesti(portArr + i);
@@ -520,7 +500,6 @@ intList* haSensoContinuare() {
     }
     
     
-   
     shmDetach(portArr,errorHandler,"allRequestsZero");
     inter = intIntersect(merciTotaliOfferte, merciTotaliRichieste);
     intFreeList(merciTotaliOfferte);
@@ -624,36 +603,22 @@ void printStatoPorti(FILE *fp, Port portArr){
         fprintf(fp, "Banchine occupate totali: %d\n", SO_BANCHINE - getOneValue(semPierID, i));
         fprintf(fp, "Merci ricevute: %d\n", portArr[i].deliveredGoods);
         fprintf(fp, "Merci spedite: %d\n", portArr[i].sentGoods);
-        fprintf(fp, "DOMANDE:\n");
-        for (c = 0; c < SO_MERCI; c++) {
-            fprintf(fp, "%d, \n", portArr[i].requests[c]);
-        }
-
-        s = portArr[i].supplies;
-
-        fprintf(fp, "SUPPLIES:\n");
-        for (c = 0; c < SO_DAYS; c++) {
-            
-            fprintf(fp,"GIORNO %d: [ ", c);
-            for (k = 0; k < SO_MERCI; k++) {
-                fprintf(fp, "%d, ", s.magazine[c][k]);
-            }
-            fprintf(fp, "]\n");
-        }
-
-        fprintf(fp, "EXP TIMES:\n[");
-        
-        for (c = 0; c < SO_DAYS * SO_MERCI; c++) {
-            fprintf(fp, "%d, ", s.expirationTimes[c]);
-        }
-        fprintf(fp,"]\n");
-        fprintf(fp,"--------------------------------------\n");
+        printPorto(portArr + i, i, fp);
+    }
+}
 
 
-        fprintf(fp,"coords:\n");
-        fprintf(fp,"x: %f\n", portArr[i].x);
-        fprintf(fp,"y: %f\n", portArr[i].y);
-
-        fprintf(fp,"______________________________________________\n");
+void restorePromisedGoods(Port porto, int dayTrovato, int tipoTrovato, int quantity, int myPortIdx){
+    printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", myPortIdx);
+    porto->supplies.magazine[dayTrovato][tipoTrovato] += quantity;
+    printf("PORTO %d: riaggiungo %d\n" , myPortIdx, quantity);
+    
+    addNotExpiredGood(quantity, tipoTrovato, PORT, 0, myPortIdx);
+    /*
+        SE LA MERCE E' SCADUTA MENTRE IL PORTO ASPETTAVA DI SAPERE SE E' STATO SCELTO
+        SE LA MERCE FOSSE SCADUTA PRIMA IL PROBLEMA NON ESISTEREBBE
+    */
+    if(getExpirationTime(porto->supplies,tipoTrovato, dayTrovato)== 0){
+        addExpiredGood(quantity, tipoTrovato, PORT);
     }
 }

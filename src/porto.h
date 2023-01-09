@@ -41,7 +41,7 @@ typedef struct port* Port;
 Port initPort(int supplyDisponibility, int requestDisponibility, int pIndex);
 
 
-void printPorto(void* p, int idx);
+void printPorto(void* p, int idx, FILE* stream);
 
 void launchRefiller(int idx);
 /*
@@ -52,7 +52,7 @@ void launchRefiller(int idx);
 /*
 funzione per separare la logica della configurazione del porto da quella della sua routine
 */
-void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*codicePorto)(int idx, int endShmId));
+void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*codicePorto)(int idx, int endShmId,int aspettoMortePortiSemID, int aspettoMorteNaviSemID));
 
 /*
     forka il figlio che gestisce le navi che vogliono caricare dal porto
@@ -80,5 +80,6 @@ double getValue(int quantity, int scadenza, int tipo, Port arrPorts, int idx);
 int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, int quantity, Port arrPorts, int idx);
 
 void printStatoPorti(FILE *fp, Port portArr);
+void restorePromisedGoods(Port porto, int dayTrovato, int tipoTrovato, int quantity, int myPortIdx);
 
 #endif

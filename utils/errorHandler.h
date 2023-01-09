@@ -5,5 +5,6 @@ typedef enum errors_ {SERRGET,SERRCTL,SERROP,MERRGET,MERRCTL,MERRSND,MERRRCV,SHM
 void errorHandler(int err, char* errCtx);
 void removeErrorHandler();
 void initErrorHandler();
+void throwError(char *myerr, char *errCtx);
 
 #endif

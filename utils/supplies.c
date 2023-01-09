@@ -32,26 +32,26 @@ int getExpirationTime(Supplies S, int tipoMerce, int giornoDistribuzione) {
 }
 
 
-void printSupplies(Supplies s) {
+void printSupplies(Supplies s, FILE* stream) {
     int i;
     int j;
-    printf("SUPPLIES:\n");
+    fprintf(stream,"SUPPLIES:\n");
     for (i = 0; i < SO_DAYS; i++) {
         
-        printf("GIORNO %d: [ ", i);
+        fprintf(stream,"GIORNO %d: [ ", i);
         for (j = 0; j < SO_MERCI; j++) {
-            printf("%d, ", s.magazine[i][j]);
+            fprintf(stream,"%d, ", s.magazine[i][j]);
         }
-        printf("]\n");
+        fprintf(stream,"]\n");
     }
 
-    printf("EXP TIMES:\n[");
+    fprintf(stream,"EXP TIMES:\n[");
     
     for (i = 0; i < SO_DAYS * SO_MERCI; i++) {
-        printf("%d, ", s.expirationTimes[i]);
+        fprintf(stream,"%d, ", s.expirationTimes[i]);
     }
-    printf("]\n");
-    printf("--------------------------------------\n");
+    fprintf(stream,"]\n");
+    fprintf(stream,"--------------------------------------\n");
 
 }
 

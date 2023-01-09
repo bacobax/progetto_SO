@@ -62,7 +62,7 @@ void recvDischargeHandler(long type, char *text)
 
     if (keyMiaCoda == -1 || keyCodaNave == -1)
     {
-        perror("Errore Coda Nave");
+        throwError("Errore Coda Nave", "recvDischargeHandler");
     }
 
     myQueueID = useQueue(keyMiaCoda, errorHandler, "RecvDischargerHandler->myQueueID");
@@ -100,27 +100,12 @@ void recvDischargeHandler(long type, char *text)
     sscanf(messaggioRicevuto->mtext, "%d", &sonostatoScelto);
     
     printf("Port %d: valore di sonostatoScelto = %d\n dalla nave %d\n", idx, sonostatoScelto, idNaveMittente);
-    if (sonostatoScelto == 0 && res != -1)
-    {
-        printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", idx);
-        porto->supplies.magazine[dayTrovato][tipoTrovato] += quantity;
-        printf("PORTO %d: riaggiungo %d\n" , idx, quantity);
-        
-        addNotExpiredGood(quantity, tipoTrovato, PORT, 0, idx);
-        /*
-            SE LA MERCE E' SCADUTA MENTRE IL PORTO ASPETTAVA DI SAPERE SE E' STATO SCELTO
-            SE LA MERCE FOSSE SCADUTA PRIMA IL PROBLEMA NON ESISTEREBBE
-        */
-        if(getExpirationTime(porto->supplies,tipoTrovato, dayTrovato)== 0){
-            addExpiredGood(quantity, tipoTrovato, PORT);
-        }
+    if (sonostatoScelto == 0 && res != -1){
+        restorePromisedGoods(porto, dayTrovato, tipoTrovato, quantity, idx);
     }
-
     if (sonostatoScelto == 1 && res == 1)
     {
         printf("Porto %d: sono stato scelto\n", idx);
-
-        /* addNotExpiredGood(0 - quantity, tipoTrovato, PORT); */
     }
 
     mutexPro(waitToTravelSemID, idNaveMittente, LOCK, NULL, "RecvDischargerHandler->waitToTravelSemID LOCK");
@@ -136,15 +121,11 @@ void recvChargerHandler(long type, char *text)
     int tipoMerceRichiesto;
     int portShmId;
     Port porto;
-    int keyMiaCoda;
     int IDMiaCoda;
     int res;
-    int keyCodaNave;
     int shipQueueID;
     int verifyRequestSemID;
     char rtext[MEXBSIZE];
-    char payload[MEXBSIZE];
-    int richiestaScarico;
     int sonostatoScelto;
     mex *messaggioRicevuto;
     int waitToTravelSemID;
@@ -160,23 +141,11 @@ void recvChargerHandler(long type, char *text)
 
     porto = ((Port)getShmAddress(portShmId, 0, errorHandler, "recvChargerHandler")) + idx;
 
-    keyMiaCoda = ftok("./src/porto.h", idx);
-    if (keyMiaCoda == -1)
-    {
-        perror("Ftok keyMiaCoda");
-        exit(EXIT_FAILURE);
-    }
+    
 
-    keyCodaNave = ftok("./src/nave.c", idNaveMittente);
+    shipQueueID = useQueue(ftok("./src/nave.c", idNaveMittente), errorHandler, "recvChargerHandler->shipQueueID");
 
-    if (keyCodaNave == -1)
-    {
-        perror("Errore Coda Nave");
-    }
-
-    shipQueueID = useQueue(keyCodaNave, errorHandler, "recvChargerHandler->shipQueueID");
-
-    IDMiaCoda = useQueue(keyMiaCoda, errorHandler, "recvChargerHandler->IDMiaCoda");
+    IDMiaCoda = useQueue( ftok("./src/porto.h", idx), errorHandler, "recvChargerHandler->IDMiaCoda");
 
     verifyRequestSemID = useSem(P2SEMVERIFYKEY, errorHandler, "recvChargerHandler->verifyRequestSemID");
 
@@ -215,15 +184,13 @@ void recvChargerHandler(long type, char *text)
     return;
 }
 
-void codicePorto(int endShmId, int idx)
+void codicePorto(int endShmId, int idx, int aspettoMortePortiSemID,int aspettoMorteNaviSemID )
 {
     int* endNow;
-    int aspettoMortePortiSemID;
-    int aspettoMorteNaviSemID;
-    waitForStart();
     endNow =(int*)getShmAddress(endShmId, 0, errorHandler, "codicePorto");
-    aspettoMortePortiSemID = useSem(WAITPORTSSEM, errorHandler, "aspettoMortePortiSemID in codicePorto");
-    aspettoMorteNaviSemID = useSem(WAITSHIPSSEM, errorHandler, "aspettoMortePortiSemID in codicePorto");
+
+    waitForStart();
+  
     launchDischarger(recvDischargeHandler, idx);
     launchCharger(recvChargerHandler, idx);
 

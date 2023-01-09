@@ -2,6 +2,7 @@
 #define SUPPLIES_H
 #include "../config1.h"
 #include "./vettoriInt.h"
+#include <stdio.h>
 /*
     libreria creata con lo scopo di effetture alcune operazioni sulle offerte di un porto cercandola di trattare un po' come una 'scatola nera'
 */
@@ -31,7 +32,7 @@ int getExpirationTime(Supplies S, int tipoMerce, int giornoDistribuzione);
 /*
     stampa del magazzino delle scadenze
 */
-void printSupplies(Supplies S);
+void printSupplies(Supplies S, FILE* stream);
 
 /*
     decrementa i tepi di vita delle merci distribuite in un giorno < di {{day}}

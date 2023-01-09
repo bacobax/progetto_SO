@@ -12,6 +12,7 @@ void reservePrint(void (*printer)(void* obj, int idx), void* obj, int idx);
 /* handler del segnale USR1 che quitta */
 void quitSignalHandler(int sig);
 
+double generateCord(); /* genere una coordinata double */
 
 
 

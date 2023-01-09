@@ -58,13 +58,14 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day){
         availablePorts = communicatePortsForCharge(ship, quantityToCharge, port_offers); /* mando msg a tutti i porti perchè voglio caricare*/
         printf("[%d]Nave: finito di chiamare i porti\n", getpid());
         
-        printf("NAVE con id:%d: Aviable ports = %d\n",ship->shipID, availablePorts);
+        printf("[%d]Nave: Aviable ports = %d\n",ship->shipID, availablePorts);
         if (availablePorts == 0) {
             /* non ci sono porti disponibili per la quantità
                di merce che voglio caricare, riprovo a chiamare i porti decrementando la quantità*/
             replyToPortsForCharge(ship, -1);
 
             chargeProducts(ship, chooseQuantityToCharge(ship), day);
+            
             waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler, "chargeProducts");
             mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler, "chargeProducts->waitToTravelSemID +SO_PORTI");
 
@@ -78,10 +79,10 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day){
 
             replyToPortsForCharge(ship, portID);
             
-            printf("Nave con id:%d: Aspetto a partire...\n", ship->shipID);
+            printf("[%d]Nave: Aspetto a partire...\n", ship->shipID);
             waitToTravel(ship);
 
-            printf("Nave con id:%d: sono partita...\n", ship->shipID);
+            printf("[%d]Nave: Sono partita...\n", ship->shipID);
             travel(ship, portID, day);
             
             accessPortForCharge(ship, portID);
@@ -98,7 +99,6 @@ void dischargeProducts(Ship ship, int* day) {
     int waitToTravelSemID;
     int quantoPossoScaricare;
     
-    printf("DISCHARGE: WEIGHT: %d\n", ship->weight);
     /*
         Se non può scaricare quello che ha 
     */
@@ -137,9 +137,9 @@ void dischargeProducts(Ship ship, int* day) {
         if(portID == -1){
 
             addExpiredGood(ship->products[product_index].weight, ship->products[product_index].product_type, SHIP);
-            removeProduct(ship, product_index); /* vecchio prodotto da scaricare rimosso (tanto le domande dei porti sono tutte a 0) */
+            removeProduct(ship, product_index); 
 
-            printf("Nave con id:%d: riprovo a scegliere il prodotto da scaricare\n", ship->shipID);
+            printf("[%d]Nave: riprovo a scegliere il prodotto da scaricare\n", ship->shipID);
             
             dischargeProducts(ship, day);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
         
@@ -152,7 +152,6 @@ void dischargeProducts(Ship ship, int* day) {
             replyToPortsForDischarge(ship, portID);
             waitToTravel(ship);            
 
-
             travel(ship, portID, day);
             accessPortForDischarge(ship, portID, product_index, quantoPossoScaricare);
             
@@ -162,19 +161,13 @@ void dischargeProducts(Ship ship, int* day) {
 }
 
 void shipRoutine(Ship ship, int* terminateValue, double restTime, int* day){
-    if (*terminateValue == 1){
-        printf("Nave con id:%d il programma è terminato\n", ship->shipID);
-        exitNave();
-    }
+
+    checkTerminateValue(ship, terminateValue);
     chargeProducts(ship, chooseQuantityToCharge(ship), day);
     nanosecsleep((long)(restTime * NANOS_MULT));
-    
-    if (*terminateValue == 1){
-        printf("Nave con id:%d il programma è terminato\n", ship->shipID);
-        exitNave();
-    }
+
+    checkTerminateValue(ship, terminateValue);
     dischargeProducts(ship, day);
-    printf("DORMO PER %f SEC\n" , restTime);
     nanosecsleep((long)(restTime * NANOS_MULT)); 
 }
 
@@ -182,9 +175,10 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     int endShmID;
     int dayShmID;
     int *day;
-    Ship ship;
     int *terminateValue;
     double restTime = RESTTIMESHIP;
+    Ship ship;
+
     endShmID = useShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "Nave: use end shm");
     terminateValue = (int*)getShmAddress(endShmID, 0, errorHandler, "Nave: getShmAddress di endShm");
 
@@ -192,7 +186,6 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     day = (int *)getShmAddress(dayShmID, 0, errorHandler, "dayShmID nel main della nave");
 
     ship = initShip(atoi(argv[1]));
-    printShip(ship);
 
     checkInConfig();
     printf("Nave con id:%d: config finita, aspetto ok partenza dal master...\n", ship->shipID);

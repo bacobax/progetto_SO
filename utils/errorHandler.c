@@ -8,6 +8,8 @@
 #include <unistd.h>
 #include <string.h>
 #include <errno.h>
+#include <time.h>
+#include <stdlib.h>
 
 void initErrorHandler(){
     int semid;
@@ -22,19 +24,19 @@ void removeErrorHandler(){
    removeSem(useSem(ERRFILESEMID, errorHandler, "removeErrorHandler"), errorHandler, "removeErrorHandler");
 }
 
-void printError(char* myerr, char* errCtx) {
+void throwError(char* myerr, char* errCtx) {
     int semid;
     FILE *fp;
-    int hash = IPC_PRIVATE;
-    semid = useSem(ERRFILESEMID, errorHandler, "printError");
-    mutex(semid, LOCK, errorHandler, "LOCK printError");
+    int hash = rand();
+    semid = useSem(ERRFILESEMID, errorHandler, "throwError");
+    mutex(semid, LOCK, errorHandler, "LOCK throwError");
     printf("❌❌❌❌❌❌❌❌❌❌❌❌❌ HASH %d\n", hash);
     fp = fopen("./logs/errorLog.log", "a+");
     fprintf(fp, "💥💥💥💥💥💥💥💥\n");
     fprintf(fp, "ERROR: %s error handler\nERRNO: %s\nCTX: %s\nHASH: %d\n", myerr, strerror(errno), errCtx, hash);
     fprintf(fp, "💥💥💥💥💥💥💥💥\n");
     fclose(fp);
-    mutex(semid, UNLOCK, errorHandler, "UNLOCK printError");
+    mutex(semid, UNLOCK, errorHandler, "UNLOCK throwError");
 
     
 }
@@ -42,47 +44,47 @@ void printError(char* myerr, char* errCtx) {
 void errorHandler(int err, char* errCtx) {
     switch (err) {
     case SERRCTL:
-        printError("sem ctl", errCtx);
+        throwError("sem ctl", errCtx);
         break;
     case SERRGET:
-        printError("sem get", errCtx);
+        throwError("sem get", errCtx);
          
         break;
     case SERROP:
-        printError("sem op", errCtx);
+        throwError("sem op", errCtx);
         
         break;
     case MERRCTL:
-        printError("msg ctl", errCtx);
+        throwError("msg ctl", errCtx);
              
         break;
     case MERRSND:
-        printError("msg snd", errCtx);
+        throwError("msg snd", errCtx);
         
         
         break;
     case MERRRCV:
-        printError("msg rcv", errCtx);
+        throwError("msg rcv", errCtx);
           
         break;
     case MERRGET:
-        printError("msg get", errCtx);
+        throwError("msg get", errCtx);
         
         break;
     case SHMERRGET:
-        printError("shm get", errCtx);
+        throwError("shm get", errCtx);
         
         break;
     case SHMERRAT:
-        printError("shm at", errCtx);
+        throwError("shm at", errCtx);
         
         break;
     case SHMERRDT:
-        printError("shm dt", errCtx);
+        throwError("shm dt", errCtx);
         
         break;
     case SHMERRCTL:
-        printError("shm ctl", errCtx);
+        throwError("shm ctl", errCtx);
         break;
     default:
         perror("Not Handlerd error");

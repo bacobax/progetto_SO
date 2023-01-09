@@ -13,9 +13,6 @@
 #include "./vettoriInt.h"
 
 
-void ErrorHandler(int err) {
-    perror("reservePrint->useSem");
-}
 
 void quitSignalHandler(int sig) {
     printf("Porto: ricevuto segnale di terminazione non faccio null\n");
@@ -118,4 +115,13 @@ void clearSigMask(){
     sigemptyset(&ss);
     sigprocmask(SIG_SETMASK, &ss, NULL);
 
+}
+
+double generateCord()
+{
+    double range, div;
+
+    range = (SO_LATO); /* max-min */
+    div = RAND_MAX / range;
+    return (rand() / div);
 }

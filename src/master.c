@@ -12,9 +12,7 @@
 #include "./master.h"
 #include "./dump.h"
 
-void errHandler(int er) {
-    perror("errore nella WAITZERO GIORNALIERA NEL MASTER");
-}
+
 
 void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID, int* day, int waitEndDayShipsSemID) {
     
@@ -90,7 +88,7 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     printf("Master, faccio la pclose\n");
         
     if (pclose(meteoPipe) == -1) {
-        perror("meteoPipe close");
+        throwError("meteoPipe close" ,"master");
         exit(EXIT_FAILURE);
     }
     

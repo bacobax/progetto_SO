@@ -72,7 +72,8 @@ void addExpiredGood(int quantity, int type, ctx where) {
         
     }
     else {
-        perror("Il contesto può solo essere PORT o SHIP\n");
+        
+        throwError("Il contesto può solo essere PORT o SHIP", "addExpiredGood");
         exit(1);
     }
 
@@ -105,7 +106,8 @@ void addNotExpiredGood(int quantity, int type, ctx where, int refilling, int idx
         info->goods_on_ship += quantity;
     }
     else {
-        perror("Il contesto può solo essere PORT o SHIP\n");
+        throwError("Il contesto può solo essere PORT o SHIP", "addNotExpiredGood");
+        
         exit(1);
     }
     fclose(fp);
@@ -178,11 +180,7 @@ void printerCode(int day, int last) {
     Port portArr;
     Supplies s;
 
-    if(signal(SIGUSR1, signalHandler)== SIG_ERR){
-        perror("Errore nel settare il signal nel printerCode");
-        exit(1);
-    }
-
+   
     logFileSemID = useSem(LOGFILESEMKEY, errorHandler, "printerCode");
     shmid = useShm(DUMPSHMKEY, SO_MERCI * sizeof(GoodTypeInfo), errorHandler , "printerCode->useShm del dump");
     portShmid = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler , "printerCode->useShm dei porti");
@@ -197,7 +195,7 @@ void printerCode(int day, int last) {
     printf("Scrivo nel logifle %d\n" ,day);
     fp = fopen("./logs/logfile.log", "a+");
     if (fp == NULL) {
-        perror("Errore nell'apertura del file log");
+        throwError("Errore nell'apertura del file log", "printerCode");
         exit(EXIT_FAILURE);
     }
     if (day < SO_DAYS) {
@@ -282,7 +280,7 @@ void printDump(int mod, int day, int last) {
     if(mod == ASYNC){
         pid = fork();
         if (pid == -1) {
-            perror("Errore nel forkare il dump printer\n");
+            throwError("Errore nel forkare il dump printer\n", "printDump");
             exit(EXIT_FAILURE);
         }
         if (pid == 0) {

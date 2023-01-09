@@ -46,7 +46,6 @@ int checkCapacity(); /* ritorna il numero di ton presenti sulla nave */
 
 int availableCapacity(); /* ritorna il numero di ton disponibili sulla nave */
 
-double generateCord(); /* genere una coordinata double */
 
 Ship initShip(int shipID);
 
@@ -95,5 +94,23 @@ void waitEndDay();
 void waitToTravel(Ship ship);
 
 void initPromisedProduct(Ship ship, PortOffer port_offer, int quantityToCharge);
+
+void checkTerminateValue(Ship ship, int* terminateValue);
+
+Port getPortsArray();
+
+int getPortQueueRequest(int key);
+
+int getPortQueueCharge(int id);
+
+int getPortQueueDischarge(int id);
+
+int getShipQueue(int id);
+
+int getPierSem();
+
+int getShipSem();
+
+void checkShipDead(Ship ship);
 
 #endif

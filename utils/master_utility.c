@@ -38,7 +38,7 @@ void genera_navi() {
             exit(EXIT_FAILURE);
         }
         else if (pid == -1) {
-            perror("fork");
+            throwError("fork", "generaNavi");
             exit(EXIT_FAILURE);
         }
     }
@@ -84,11 +84,11 @@ void genera_porti(int risorse, int n_porti) {
 
             execve("./bin/porto", temp, NULL);
 
-            perror("execve");
+            throwError("execve" , "generaPorti");
             exit(EXIT_FAILURE);
         }
         else if (pid == -1) {
-            perror("fork");
+            throwError("fork", "generaPorti");
             exit(EXIT_FAILURE);
         }
         printf("Generato porto %d\n", i);
@@ -246,7 +246,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     semBanchineID = createMultipleSem(BANCHINESEMKY, SO_PORTI, SO_BANCHINE, errorHandler, "creazione semaforo banchine");
 
     if (portsShmid == EEXIST || shipsShmid == EEXIST) {
-        perror("Le shm esistono già\n");
+        throwError("Le shm esistono già\n" , "mySettedMain");
         exit(EXIT_FAILURE);
     }
     /*il codice del master manco la usa*/
@@ -378,7 +378,7 @@ void refillPorts(int opt, int msgRefillerID, int quantitaAlGiorno, int giorno) {
     else if (opt == ASYNC) {
         pid = fork();
         if (pid == -1) {
-            perror("Errore nella fork in refillPorts\n");
+            throwError("Errore nella fork in refillPorts\n","refillPorts");
             exit(EXIT_FAILURE);
         }
         if (pid == 0) {
@@ -394,7 +394,7 @@ void refillPorts(int opt, int msgRefillerID, int quantitaAlGiorno, int giorno) {
         }
     }
     else {
-        perror("refillPorts: Inserire SYNC o ASYNC (0 o 1) come opt\n");
+        throwError("refillPorts: Inserire SYNC o ASYNC (0 o 1) come opt\n","refillPorts");
         exit(EXIT_FAILURE);
 
     }
@@ -448,7 +448,7 @@ void expirePortsGoods(int day) {
     for (i = 0; i < SO_PORTI; i++) {
         pid = fork();
         if (pid == -1) {
-            perror("fork nel gestore delle risorse");
+            throwError("fork nel gestore delle risorse","expirePortsGoods");
             exit(EXIT_FAILURE);
         }
         if (pid == 0) {
@@ -468,7 +468,7 @@ void expireShipGoods(){
     for(i=0; i<SO_NAVI; i++) {
         pid = fork();
         if(pid == -1){
-            perror("fork nel gestore risorse");
+            throwError("fork nel gestore risorse","expireShipGoods");
             exit(EXIT_FAILURE);
         }
         else if (pid == 0) {

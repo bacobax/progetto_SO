@@ -79,7 +79,7 @@ void malestormHandler() {
     pid = fork();
 
     if (pid == -1) {
-        perror("fork in launchStorm");
+        throwError("fork in launchStorm", "malestormHandler");
         exit(EXIT_FAILURE);
     }
     if (pid == 0) {
@@ -109,7 +109,7 @@ void stormRoutine(){
 void launchStorm() {
     int pid = fork();
     if(pid == -1){
-        perror("fork in launchStorm");
+        throwError("fork in launchStorm","launchStorm");
         exit(EXIT_FAILURE);
     } else if(pid == 0){
         stormRoutine();
@@ -131,7 +131,7 @@ void swellRoutine(){
 void launchSwell(){
     int pid = fork();
     if(pid == -1){
-        perror("fork in launchSwell");
+        throwError("fork in launchSwell","launchSwell");
         exit(EXIT_FAILURE);
     } else if(pid == 0){
         swellRoutine();
