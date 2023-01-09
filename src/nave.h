@@ -33,7 +33,8 @@ struct ship {
     PortOffer promisedProduct;
     unsigned short storm;
     unsigned short dead;
-  
+    unsigned short weatherTarget;
+    unsigned short inSea;
 };
 typedef struct ship* Ship;
 
@@ -86,5 +87,7 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day);
 void dischargeProducts(Ship ship, int* day);
 
 void exitNave();
+
+void printStatoNavi(FILE* fp);
 
 #endif

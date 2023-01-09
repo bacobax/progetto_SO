@@ -66,9 +66,6 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day){
     }
     else {
 
-        
-        
-
         availablePorts = communicatePortsForCharge(ship, quantityToCharge, port_offers); /* mando msg a tutti i porti perchè voglio caricare*/
         printf("[%d]Nave: finito di chiamare i porti\n", getpid());
         /*
@@ -219,13 +216,14 @@ void shipRoutine(Ship ship, int* terminateValue, double restTime, int* day){
     printf("DORMO PER %f SEC\n" , restTime);
 
     nanosecsleep((long)(restTime * NANOS_MULT));
+    /*
     if (*terminateValue == 1){
         printf("Nave con id:%d il programma è terminato\n", ship->shipID);
         exitNave();
     }
     dischargeProducts(ship, day);
     printf("DORMO PER %f SEC\n" , restTime);
-    nanosecsleep((long)(restTime * NANOS_MULT));   
+    nanosecsleep((long)(restTime * NANOS_MULT)); */
 }
 
 int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identificativo della nave (es: nave 0, nave 1, nave 2, ecc..)*/

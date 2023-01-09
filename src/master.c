@@ -49,13 +49,14 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
 
     printf("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅\n");
 
-    
-    for (*day = 0; *day < SO_DAYS && aliveShips>0; *day = *day + 1) {
+    for (*day = 0; aliveShips && *day < SO_DAYS; *day = *day + 1) {
         aliveShips = countAliveShips();
-        if (aliveShips) {
+        
+        if (aliveShips)
+        {
             fprintf(meteoPipe, "%d\n", *day);
             fflush(meteoPipe);
-            printDump(ASYNC, *day);
+            printDump(ASYNC, *day,0);
             printf("MASTER: DAY: %d\n", *day);
             printf("Master: dormo\n");
             if (*day > 0) {
@@ -67,12 +68,11 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
                 mutex(waitEndDaySemID, SO_PORTI, errorHandler, "mesterCode -> waitEndDaySemID +SO_PORTI");
             
             }
-             nanosecsleep(NANOS_MULT); 
+             nanosecsleep(NANOS_MULT);
         }
         else {
             printf("Terminazione simulazione per navi morte\n");
         }
-        
     }
     fprintf(meteoPipe, "%d\n", EOF);
     fflush(meteoPipe);
@@ -82,6 +82,11 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
         perror("meteoPipe close");
         exit(EXIT_FAILURE);
     }
+    
+    if(!aliveShips){
+        *day -= 1;
+    }
+
     nanosecsleep(NANOS_MULT);
     
 }

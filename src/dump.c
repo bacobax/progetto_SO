@@ -10,6 +10,7 @@
 #include "../config1.h"
 #include "./dump.h"
 #include "./porto.h"
+#include "./nave.h"
 void lockAllGoodsDump(){
     int semid;
     int i;
@@ -158,7 +159,7 @@ void signalHandler(int s){
     printf("NON FACCIO NULLA DUMP\n");
     return;
 }
-void printerCode(int day) {
+void printerCode(int day, int last) {
     FILE* fp;
     int logFileSemID;
     int shmid;
@@ -167,6 +168,8 @@ void printerCode(int day) {
     int sum;
     int c;
     int k;
+    int merceRefillata;
+    int merceDaRefillare;
     int waitToRemoveDumpKey;
     GoodTypeInfo *arr;
     Port portArr;
@@ -217,12 +220,11 @@ void printerCode(int day) {
         sum += arr[i].delivered_goods + arr[i].goods_on_port + arr[i].goods_on_ship + arr[i].expired_goods_on_ship + arr[i].expired_goods_on_port;
     }
 
-    /*
-        printNaviConCaricoABordo(fp)
-        printNaviSenzaCaricoABordo(fp)
-    */
+    
+    printStatoNavi(fp);
+    
 
-    if (day == SO_DAYS || day == 0) {
+    if (last|| day == 0) {
         for (i = 0; i < SO_PORTI; i++){
             fprintf(fp, "Porto %d:\n", i);
             fprintf(fp, "Merci ricevute: %d\n", portArr[i].deliveredGoods);
@@ -259,28 +261,42 @@ void printerCode(int day) {
 
             fprintf(fp,"______________________________________________\n");
         }
-            fprintf(fp, "TOTALE MERCE: %d <==> SO_FILL: %d\n", sum, SO_FILL);
-        if (sum == SO_FILL && day == SO_DAYS) {
+        
+        
+    }
+    /*
+        SO_FILL = 10
+        se SO_DAYS = 2
+        Q.TA GG = 5
+        Se day = 1
+        merceDaRefillare = 5
+        merceRefillata = 5
+    */
+    if(last){
+        merceDaRefillare = (SO_FILL/SO_DAYS)*(SO_DAYS-day);
+        merceRefillata = SO_FILL - merceDaRefillare;
+        fprintf(fp, "TOTALE MERCE: %d <==> IN GIOCO: %d\n", sum, merceRefillata);
+        if (sum ==  merceRefillata) {
             fprintf(fp, "✅");
         }
         else {
             fprintf(fp, "❌");   
         }
-        
     }
+    
     unlockAllGoodsDump();
     fclose(fp);
     shmDetach(arr, errorHandler , "printerCode arr");
     shmDetach(portArr, errorHandler , "printerCode portArr");
     mutex(logFileSemID, UNLOCK, errorHandler , "printerCode UNLOCK");
     
-    if(day==SO_DAYS){
+    if(last){
         printf("Faccio la lock\n");
         mutex(waitToRemoveDumpKey, LOCK, errorHandler, "LOCK in waitToRemoveDumpID");
     }
 }
 
-void printDump(int mod, int day) {
+void printDump(int mod, int day, int last) {
     int pid;
     if(mod == ASYNC){
         pid = fork();
@@ -289,11 +305,11 @@ void printDump(int mod, int day) {
             exit(EXIT_FAILURE);
         }
         if (pid == 0) {
-            printerCode(day);
+            printerCode(day,last);
 
             exit(EXIT_SUCCESS);
         }    
     }else{
-        printerCode(day);
+        printerCode(day, last);
     }
 }

@@ -4,12 +4,13 @@
 #define LOGFILESEMKEY 393
 #include "../utils/msg_utility.h"
 /*
-  Navi in mare con carico -> runtime
-  Navi in mare senza carico -> runtime
-  Porti che stanno facendo operazioni di carico/scarico -> runtime
   Per ogni porto:
-      Merce spedita e ricevuta,
-      N. di banchine occupate/totali
+      Giornaliero: 
+        - N. di banchine occupate/totali
+        - N. di barche sono state rallentate
+        - N. di porti sono stati interessati da mareggiata
+        - N. navi affondate
+        - Merce affondata 
 */
 typedef struct goodTypeInfo {                       /* struttura che contiene le 4 informazioni relative per ogni tipo di merce nella simulazione*/
   int goods_on_ship;             /* numero di beni TOTALI di quel tipo presenti sulla nave PRONTI PER ESSERE CONSEGNATI */
@@ -41,7 +42,7 @@ void addDeliveredGood(int quantity, int type, int portIdx);
     - altri utilità se ci vengono in mente  
 */
 
-void printDump(int mod, int day);
+void printDump(int mod, int day, int last);
 void removeDumpArea();
 
 void lockAllGoodsDump();

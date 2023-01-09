@@ -39,7 +39,8 @@ void malestormRoutine() {
     
     while (1) {
         if (shipsList->length > 0) {
-            victimIdx = random_int(-1, shipsList->length - 1);
+            victimIdx = random_int(0, shipsList->length - 1);
+            printf("METEO: nave vittima per malestorm:%d\n", victimIdx);
             victim = *(intElementAt(shipsList, victimIdx));
             printf("Tra %d ore killo la nave %d\n", SO_MAELSTROM, victim);
             printf("ASPETTO %f secondi\n", ((double)(0.04166667 * NANOS_MULT) * SO_MAELSTROM));
@@ -155,9 +156,11 @@ int main(int argc, char* argv[]) {
     printf("Meteo chekInConfig finita...\n");
     waitForStart();
 
-    /*
+    
     malestormHandler();
-    */
+    
+    
+    
     printf("Meteo partito...\n");
 
     while (fgets(str, 128, stdin) != NULL) {

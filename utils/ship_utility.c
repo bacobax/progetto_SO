@@ -87,7 +87,8 @@ Ship initShip(int shipID)
     ship->y = generateCord();
     ship->weight = 0;
     initArrayProducts(ship->products); /* inizializzo l'array con tutti i valori a -1*/
-    
+    ship->inSea = 1;
+
     return ship;
 }
 
@@ -467,6 +468,7 @@ void accessPortForCharge(Ship ship, int portID){
     portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler, "accessPortForCharge");
     pierSemID = useSem(BANCHINESEMKY, errorHandler, "accessPortForCharge->semaforo banchine");
     shipSemID = useSem(SEMSHIPKEY, errorHandler, "accessPortForCharge->semaforo rw navi");
+    ship->inSea = 0;
 
     mutexPro(pierSemID, portID, LOCK, errorHandler, "accessPortForCharge->semBanchine LOCK");
 
@@ -478,7 +480,6 @@ void accessPortForCharge(Ship ship, int portID){
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler, "accessPortForCharge-> shipSemID LOCK");
 
     printf("Nave con id:%d: sono attracata alla banchina del porto per aggiungere la merce\n", ship->shipID);
-
     /* TO-DO GESTIRE PROBEMA MERCE SCADUTA UNA VOLTA ARRIVATO AL PORTO*/
     if(ship->promisedProduct.expirationTime != 0){
         
@@ -509,7 +510,7 @@ void accessPortForCharge(Ship ship, int portID){
     ship->promisedProduct.distributionDay = -1;
       
     mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler, "accessPortForCharge->shipSemID UNLOCK");
-
+    ship->inSea = 1;
     mutexPro(pierSemID, portID, UNLOCK, errorHandler, "accessPortForCharge->pierSemID UNLOCK");
     if (ship->dead) {
             printf("🌊🌊🌊🌊🌊🌊\nNave %d, sono stata uccisa\n🌊🌊🌊🌊🌊🌊\n", ship->shipID);
@@ -538,6 +539,7 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
     shipSemID = useSem(SEMSHIPKEY, errorHandler,"accessPortForCharge->semaforo rw navi");
 
     
+    ship->inSea = 0;
     
     mutexPro(pierSemID, portID, LOCK, errorHandler, "accessPortForDisCharge->pierSemID LOCK");
    
@@ -548,6 +550,7 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
         
         nanosecsleep((p.weight / SO_LOADSPEED) * NANOS_MULT);
         if (port->swell) {
+            port->weatherTarget = 1;
             printf("Porto %d colpito da una mareggiata, devo aspettare %d ore in più\n" , portID, SO_SWELL_DURATION);
             nanosecsleep((double)(NANOS_MULT  * 0.04166667)*SO_SWELL_DURATION);
             port->swell = 0;
@@ -579,6 +582,7 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
 
     
     mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler, "accessPortForCharge->shipSemID UNLOCK");
+    ship->inSea = 1;
 
     mutexPro(pierSemID, portID, UNLOCK, errorHandler, "accessPortForCharge->pierSemID UNLOCK");
     if (ship->dead) {
@@ -631,8 +635,11 @@ void travel(Ship ship, int portID, int* day)
         exitNave();
     }
     printf("NAVE, STO PER FARE LA NANOSECSLEEP\n");
+    ship->inSea = 1;
     nanosecsleep(tempo);
+
     if (ship->storm == 1) {
+        ship->weatherTarget = 1;
         printf("🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️\nNave con id:%d ho beccato una tempesta\n🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️\n", ship->shipID);
         nanosecsleep((double)(NANOS_MULT * 0.04166667) * SO_STORM_DURATION);
         ship->storm = 0;
@@ -656,7 +663,6 @@ void travel(Ship ship, int portID, int* day)
         printf("🌊🌊🌊🌊🌊🌊\nNave %d, sono stata uccisa\n🌊🌊🌊🌊🌊🌊\n", ship->shipID);
         exitNave();
     }
-
     printf("Nave con id:%d: viaggio finito...\n", ship->shipID);
     
 
@@ -694,5 +700,41 @@ void updateExpTimeShip(Ship ship){
     if(ship->promisedProduct.expirationTime > 0){
         ship->promisedProduct.expirationTime -= 1;
     }
+}
+
+void printStatoNavi(FILE* fp){
+    int shmShip;
+    Ship ship; 
+    int i;
+    int j;
+    int semPierID;
+    int shipsInSeaWithProducts = 0;
+    int shipsInSeaWithoutProducts = 0;
+    int shipsInPorts = 0;
+
+    semPierID = useSem(BANCHINESEMKY, errorHandler, "printStatoNavi");
+
+    shmShip = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler, "printStatoNavi");
+    ship = (Ship)getShmAddress(shmShip, 0, errorHandler, "printStatoNavi");
+    for(i=0; i<SO_NAVI; i++){
+        if(ship[i].inSea){
+            if(ship[i].weight>0){           /* nave in mare con carico a bordo*/
+                shipsInSeaWithProducts++;
+            } else {                        /* nave in mare senza carico a bordo*/
+                shipsInSeaWithoutProducts++;
+            }
+        }
+    }    
+
+    for(i=0; i<SO_PORTI; i++){              /* navi in porto che fanno operazioni di carico/scarico*/
+        
+        shipsInPorts += SO_BANCHINE - getOneValue(semPierID, i);
+    }
+
+    fprintf(fp, "Numero di nave in mare senza carico:%d\n", shipsInSeaWithoutProducts);
+    fprintf(fp, "Numero di navi in mare con carico a bordo:%d\n", shipsInSeaWithProducts);
+    fprintf(fp, "Numero di navi in porto che stanno facendo operazioni di carico/scarico:%d\n", shipsInPorts);
+
+    shmDetach(ship, errorHandler, "printStatoNave");
 }
 
