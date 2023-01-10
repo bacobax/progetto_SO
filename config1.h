@@ -4,27 +4,27 @@
 
 
 #define SO_PORTI    4
-#define SO_NAVI     3
-#define SO_MERCI     5
+#define SO_NAVI     10
+#define SO_MERCI     1
 #define SO_SIZE      20 /* tonn */
 
-#define SO_DAYS      20
-#define SO_MIN_VITA  10 /* tonn */
-#define SO_MAX_VITA  30/* tonn */
-#define SO_FILL      100000
+#define SO_DAYS      10
+#define SO_MIN_VITA  50 /* tonn */
+#define SO_MAX_VITA  50/* tonn */
+#define SO_FILL      500000/25
 
 
 
 /* ciao */
-#define SO_SPEED     5
-#define SO_LATO      10
-#define SO_CAPACITY  1000
-#define SO_BANCHINE  10
-#define SO_LOADSPEED 50
+#define SO_SPEED     500
+#define SO_LATO      1000
+#define SO_CAPACITY  10
+#define SO_BANCHINE  2
+#define SO_LOADSPEED 200
 #define SO_MAELSTROM 12
 
-#define SO_SWELL_DURATION 12
-#define SO_STORM_DURATION 12
+#define SO_SWELL_DURATION 24
+#define SO_STORM_DURATION 6
 
 /*chiavi dei semafori*/
 /* chiave del semaforo del master */

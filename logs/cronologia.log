@@ -1,38 +1,40 @@
-DAY: 2:
-	Nave  2 caricata  395 merce di tipo  4 dal Porto  3
-DAY: 2:
-	Nave  2 caricata  605 merce di tipo  4 dal Porto  3
-DAY: 2:
-	Nave  0 caricata  463 merce di tipo  4 dal Porto  1
-DAY: 2:
-	Nave  1 caricata  304 merce di tipo  0 dal Porto  0
-DAY: 4:
-	Nave  2 scaricata  605 merce di tipo  4 al Porto  0
-DAY: 4:
-	Nave  0 caricata  391 merce di tipo  0 dal Porto  2
-DAY: 5:
-	Nave  1 caricata  370 merce di tipo  2 dal Porto  2
-DAY: 6:
-	Nave  0 caricata  146 merce di tipo  1 dal Porto  2
-DAY: 6:
-	Nave  2 caricata  605 merce di tipo  4 dal Porto  3
-DAY: 8:
-	Nave  2 scaricata  395 merce di tipo  4 al Porto  0
-DAY: 9:
-	Nave  1 caricata  326 merce di tipo  3 dal Porto  1
-DAY: 10:
-	Nave  2 caricata  395 merce di tipo  4 dal Porto  1
-DAY: 10:
-	Nave  0 scaricata  146 merce di tipo  1 al Porto  3
-DAY: 12:
-	Nave  1 scaricata  304 merce di tipo  0 al Porto  1
-DAY: 12:
-	Nave  2 scaricata  395 merce di tipo  4 al Porto  0
-DAY: 15:
-	Nave  2 caricata  395 merce di tipo  0 dal Porto  3
-DAY: 15:
-	Nave  0 caricata  146 merce di tipo  3 dal Porto  1
-DAY: 17:
-	Nave  1 caricata  304 merce di tipo  4 dal Porto  3
-DAY: 17:
-	Nave  2 scaricata  395 merce di tipo  0 al Porto  1
+DAY: 0:🚢 8 ⏪️ 10|0 ⏪️ Porto 0
+DAY: 0:🚢 4 ⏪️ 10|0 ⏪️ Porto 0
+DAY: 0:🚢 1 ⏪️ 10|0 ⏪️ Porto 0
+DAY: 0:🚢 0 ⏪️ 10|0 ⏪️ Porto 0
+DAY: 0:🚢 9 ⏪️ 10|0 ⏪️ Porto 0
+DAY: 0:🚢 3 ⏪️ 10|0 ⏪️ Porto 0
+DAY: 0:🚢 2 ⏪️ 10|0 ⏪️ Porto 0
+DAY: 0:🚢 5 ⏪️ 10|0 ⏪️ Porto 0
+DAY: 0:🚢 6 ⏪️ 10|0 ⏪️ Porto 0
+DAY: 0:🚢 7 ⏪️ 10|0 ⏪️ Porto 0
+DAY: 3:🚢 1 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 3:🚢 6 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 3:🚢 0 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 3:🚢 4 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 3:🚢 8 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 3:🚢 9 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 3:🚢 2 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 3:🚢 5 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 3:🚢 3 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 3:🚢 7 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 5:🚢 1 ⏪️ 10|0 ⏪️ Porto 2
+DAY: 5:🚢 0 ⏪️ 10|0 ⏪️ Porto 2
+DAY: 5:🚢 6 ⏪️ 10|0 ⏪️ Porto 2
+DAY: 5:🚢 4 ⏪️ 10|0 ⏪️ Porto 2
+DAY: 5:🚢 8 ⏪️ 10|0 ⏪️ Porto 2
+DAY: 5:🚢 9 ⏪️ 10|0 ⏪️ Porto 2
+DAY: 5:🚢 2 ⏪️ 10|0 ⏪️ Porto 2
+DAY: 5:🚢 3 ⏪️ 10|0 ⏪️ Porto 2
+DAY: 5:🚢 5 ⏪️ 10|0 ⏪️ Porto 2
+DAY: 5:🚢 7 ⏪️ 10|0 ⏪️ Porto 2
+DAY: 8:🚢 2 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 8:🚢 4 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 8:🚢 7 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 8:🚢 1 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 8:🚢 5 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 8:🚢 9 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 8:🚢 3 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 8:🚢 8 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 8:🚢 0 ⏩️ 10|0 ⏩️ Porto 3
+DAY: 8:🚢 6 ⏩️ 10|0 ⏩️ Porto 3

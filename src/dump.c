@@ -62,7 +62,7 @@ void transactionPrinterCode(int idxNave, int idxPorto, int carico, int ton, int 
     fp = fopen("./logs/cronologia.log", "a+");
     mutex(txSemID, LOCK, errorHandler, "mutex(txSemID, LOCK");
     
-    fprintf(fp, "DAY: %d:\n\tNave % d % s % d merce di tipo % d % s Porto % d\n", *day, idxNave, (carico ? "caricata" : "scaricata"), ton, tipoMerce, (carico ? "dal" : "al"), idxPorto);
+    fprintf(fp, "DAY: %d:🚢 %d %s %d|%d %s Porto %d\n", *day, idxNave, (carico ? "⏪️" : "⏩️"), ton, tipoMerce, (carico ? "⏪️" : "⏩️"), idxPorto);
 
     mutex(txSemID, UNLOCK, errorHandler, "mutex(txSemID, UNLOCK");
     fclose(fp);
@@ -290,8 +290,12 @@ void printerCode(int day, int last) {
         fprintf(fp,"Merce rimasta in nave: %d\n" , notExpiredGoodsOnShips);
         fprintf(fp, "Merce scaduta in porto: %d\n" , expiredGoodsOnPorts);
         fprintf(fp, "Merce scaduta in nave: %d\n" , expiredGoodsOnShips);
-        fprintf(fp, "Merce consegnata: %d\n" , deliveredGoods);
+        fprintf(fp, "Merce consegnata: %d (%.2f%% di SO_FILL)\n" , deliveredGoods,((double)( deliveredGoods* 100))/SO_FILL);
 
+        /*
+            SO_FILL/100 = Merce_conse/x
+            x = M_C*100
+        */
 
         fprintf(fp, "TOTALE MERCE: %d <==> IN GIOCO: %d\n", sum, merceRefillata);
         if (sum ==  merceRefillata) {
