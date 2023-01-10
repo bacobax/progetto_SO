@@ -166,10 +166,11 @@ void shipRoutine(Ship ship, int* terminateValue, double restTime, int* day){
     chargeProducts(ship, chooseQuantityToCharge(ship), day);
     nanosecsleep((long)(restTime * NANOS_MULT));
     
+    /*
     checkTerminateValue(ship, terminateValue);
     dischargeProducts(ship, day);
     nanosecsleep((long)(restTime * NANOS_MULT)); 
-    
+    */
     
     
     

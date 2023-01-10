@@ -9,6 +9,7 @@
 #include "../src/dump.h"
 #include "./errorHandler.h"
 #include "./msg_utility.h"
+#include "./vettoriInt.h"
 #include "./sem_utility.h"
 #include "./shm_utility.h"
 #include <string.h>
@@ -529,60 +530,39 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
     int* victimIdx;
     Product p;
     Port port;
+    int i;
 
+    
     p.product_type = ship->products[product_index].product_type;
     p.expirationTime = ship->products[product_index].expirationTime;
     p.weight = ship->products[product_index].weight;
+    
 
     pierSemID = getPierSem();
     shipSemID = getShipSem();
 
     ship->inSea = 0;
+
+    port = getPortsArray();
+    port = port + portID;
     
     mutexPro(pierSemID, portID, LOCK, errorHandler, "accessPortForDisCharge->pierSemID LOCK");
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler,  "accessPortForDisCharge->shipSemid LOCK");
-
-    if (ship->products[product_index].expirationTime > 0) {
-        port = getPortsArray();
-        port = port + portID;
+    i=0;
+    while(product_index != -1){
+        product_index = deliverProduct(ship, port, product_index, p, portID, i==0);
         
-        nanosecsleep((p.weight / SO_LOADSPEED) * NANOS_MULT);
-        if (port->swell) {
-            port->weatherTarget = 1;
-            printf("Porto %d colpito da una mareggiata, devo aspettare %d ore in più\n" , portID, SO_SWELL_DURATION);
-            nanosecsleep((double)(NANOS_MULT  * 0.04166667)*SO_SWELL_DURATION);
-            port->swell = 0;
+        if(product_index != -1){
+            p.product_type = ship->products[product_index].product_type;
+            p.expirationTime = ship->products[product_index].expirationTime;
+            p.weight = ship->products[product_index].weight;
         }
 
-        
-        if (ship->products[product_index].expirationTime > 0) {
-            if (quantoPossoScaricare >= p.weight) {
 
-                addDeliveredGood(p.weight, p.product_type, portID);
-                printTransaction(ship->shipID, portID, 0, p.weight, p.product_type);
-                removeProduct(ship, product_index);
-                       
-                        
-            }else {
-                addDeliveredGood(quantoPossoScaricare, ship->products[product_index].product_type, portID);
-                printTransaction(ship->shipID, portID, 0, quantoPossoScaricare, ship->products[product_index].product_type);
-                
-                ship->products[product_index].weight -= quantoPossoScaricare;
-                ship->weight -= quantoPossoScaricare;
-                
-            }
-        }else {
-            printf("\nOOPS! [%d]Nave: la merce che volevi scaricare è scaduta mentre la stavi scaricando!!!\n", ship->shipID);
-            
-        }
-
-        shmDetach(port-portID, errorHandler, "accessPortDischarge shmDetach");
-    } else {
-        
-        printf("\nOOPS! [%d]Nave: la merce che volevi scaricare è scaduta!!!\n", ship->shipID);
     }
-
     
+    shmDetach(port-portID, errorHandler, "accessPortDischarge shmDetach");
+
     mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler, "accessPortForCharge->shipSemID UNLOCK");
     ship->inSea = 1;
 
@@ -818,4 +798,78 @@ void checkShipDead(Ship ship){
         printf("🌊🌊🌊🌊🌊🌊\n[%d]Nave: sono stata uccisa\n🌊🌊🌊🌊🌊🌊\n", ship->shipID);
         exitNave();
     }
+}
+int f(int el){
+    return el > 0;
+}
+int chooseNewProductIndex(Ship s, Port p){
+    int i;
+    for (i = 0; i < SO_CAPACITY; i++){
+        if(s->products[i].product_type!= -1 && contain(findIdxs(p->requests,SO_MERCI,f),s->products[i].product_type)){
+            return i;
+        }
+    }
+    return -1;
+}
+
+int deliverProduct(Ship ship, Port port, int product_index, Product p, int portID, int firstProd){
+
+    int quantoPossoScaricare;
+    int new_index;
+    int verifyRequestSemID;
+    
+    verifyRequestSemID = useSem(P2SEMVERIFYKEY, errorHandler, "recvChargerHandler->verifyRequestSemID");
+
+    /* TODO: SEMAFORO PROTEZIONE RICHIESTE LOCK*/
+    if(!firstProd){
+        mutexPro(verifyRequestSemID, portID, LOCK, errorHandler, "recvChargerHandler->verifyRequestSemID LOCK");
+
+        quantoPossoScaricare = checkRequests(port, p.product_type, p.weight);
+        mutexPro(verifyRequestSemID, portID, UNLOCK, errorHandler, "recvChargerHandler->verifyRequestSemID UNLOCK");
+
+    }else{
+        quantoPossoScaricare = port->requests[p.product_type];
+    }
+
+    /*UNLOCK*/
+    
+    if(quantoPossoScaricare!=-1){
+    
+        if (ship->products[product_index].expirationTime > 0) {
+                
+                nanosecsleep((p.weight / SO_LOADSPEED) * NANOS_MULT);
+                if (port->swell) {
+                    port->weatherTarget = 1;
+                    printf("Porto %d colpito da una mareggiata, devo aspettare %d ore in più\n" , portID, SO_SWELL_DURATION);
+                    nanosecsleep((double)(NANOS_MULT  * 0.04166667)*SO_SWELL_DURATION);
+                    port->swell = 0;
+                }
+
+                if (quantoPossoScaricare >= p.weight) {
+                    if(!firstProd){
+
+                    }
+                    addDeliveredGood(p.weight, p.product_type, portID);
+                    printTransaction(ship->shipID, portID, 0, p.weight, p.product_type);
+                    removeProduct(ship, product_index);
+                            
+                }else {
+                    if(!firstProd){
+
+                    }
+                    addDeliveredGood(quantoPossoScaricare, ship->products[product_index].product_type, portID);
+                    printTransaction(ship->shipID, portID, 0, quantoPossoScaricare, ship->products[product_index].product_type);
+                    
+                    ship->products[product_index].weight -= quantoPossoScaricare;
+                    ship->weight -= quantoPossoScaricare;
+                }
+            } else {
+                printf("\nOOPS! [%d]Nave: la merce che volevi scaricare è scaduta!!!\n", ship->shipID);
+            }
+    } else {
+        printf("\nOOPS! [%d]Nave: la merce che volevi scaricare ha raggiunto richiesta pari a 0\n", ship->shipID);
+    }
+
+    new_index = chooseNewProductIndex(ship,port);
+    return new_index;
 }
