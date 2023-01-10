@@ -165,10 +165,15 @@ void shipRoutine(Ship ship, int* terminateValue, double restTime, int* day){
     checkTerminateValue(ship, terminateValue);
     chargeProducts(ship, chooseQuantityToCharge(ship), day);
     nanosecsleep((long)(restTime * NANOS_MULT));
-
+    
     checkTerminateValue(ship, terminateValue);
     dischargeProducts(ship, day);
     nanosecsleep((long)(restTime * NANOS_MULT)); 
+    
+    
+    
+    
+    
 }
 
 int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identificativo della nave (es: nave 0, nave 1, nave 2, ecc..)*/

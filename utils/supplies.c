@@ -5,24 +5,39 @@
 #include "../src/porto.h"
 #include "./sem_utility.h"
 #include "./shm_utility.h"
+#include "./errorHandler.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 void fillExpirationTime(Supplies* S) {
     int i;
+    double media;
+    int dumpShmID;
+    DumpArea* dump;
+
+    dumpShmID = useShm(DUMPSHMKEY, sizeof(DumpArea), errorHandler, "fillExpirationTime");
+    dump = (DumpArea*)getShmAddress(dumpShmID, 0, errorHandler, "fillExpirationTime");
+
+    media = ((double)(SO_MIN_VITA + SO_MAX_VITA)) / 2;
     for (i = 0; i < SO_MERCI * SO_DAYS; i++) {
         S->expirationTimes[i] = random_int(SO_MIN_VITA, SO_MAX_VITA);
+        dump->expTimeVariance += mod(((double)S->expirationTimes[i]) - media);
     }
+    shmDetach(dump, errorHandler, "fillExpirationTime");
 }
 
 void fillMagazine(Supplies* S, int day, int* supplies) {
     int i;
-
+    int dumpShmid;
+    DumpArea* dump;
+    dumpShmid = useShm(DUMPSHMKEY, sizeof(DumpArea), errorHandler, "fillMagazine");
+    dump = (DumpArea*)getShmAddress(dumpShmid, 0, errorHandler, "fillMagazine");
     for (i = 0; i < SO_MERCI; i++) {
         S->magazine[day][i] = supplies[i];
-        addNotExpiredGood(supplies[i], i, PORT, 1,0);
+        dump->tempoScaricamentoTot += ((double)(S->magazine[day][i])) / SO_LOADSPEED;
+        addNotExpiredGood(supplies[i], i, PORT, 1, 0);
     }
-
+    shmDetach(dump, errorHandler, "fillMagazine");
 }
 
 

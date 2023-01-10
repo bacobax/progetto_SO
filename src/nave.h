@@ -97,15 +97,6 @@ void initPromisedProduct(Ship ship, PortOffer port_offer, int quantityToCharge);
 
 void checkTerminateValue(Ship ship, int* terminateValue);
 
-Port getPortsArray();
-
-int getPortQueueRequest(int key);
-
-int getPortQueueCharge(int id);
-
-int getPortQueueDischarge(int id);
-
-int getShipQueue(int id);
 
 int getPierSem();
 

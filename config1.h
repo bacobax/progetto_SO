@@ -3,14 +3,29 @@
 #define CONFIG_1
 
 
-#define SO_PORTI    10
-#define SO_NAVI     10
+#define SO_PORTI    4
+#define SO_NAVI     3
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 
 #define SO_DAYS      20
-#define SO_MIN_VITA  7 /* tonn */
-#define SO_MAX_VITA  40/* tonn */
+#define SO_MIN_VITA  20 /* tonn */
+#define SO_MAX_VITA  30/* tonn */
+#define SO_FILL      10000
+
+
+
+/* ciao */
+#define SO_SPEED     10
+#define SO_LATO      10
+#define SO_CAPACITY  200
+#define SO_BANCHINE  10
+#define SO_LOADSPEED 50
+#define SO_MAELSTROM 12
+
+#define SO_SWELL_DURATION 12
+#define SO_STORM_DURATION 12
+
 /*chiavi dei semafori*/
 /* chiave del semaforo del master */
 #define MASTKEY       132
@@ -49,20 +64,7 @@
 
 
 
-#define SO_FILL      100000
 
-
-
-/* ciao */
-#define SO_SPEED     10
-#define SO_LATO      10
-#define SO_CAPACITY  1000
-#define SO_BANCHINE  10
-#define SO_LOADSPEED 50
-#define SO_MAELSTROM 12
-
-#define SO_SWELL_DURATION 12
-#define SO_STORM_DURATION 12
 
 #define RESTTIMESHIP 0
 #define WITH_MALESTORM 0

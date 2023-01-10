@@ -435,7 +435,6 @@ void childExpireShipCode(Ship ship){
     updateExpTimeShip(ship);
 
     mutexPro(semShipID, ship->shipID, UNLOCK, errorHandler, "childExpireShipCode UNLOCK");    
-
 }
 
 void expirePortsGoods(int day) {
