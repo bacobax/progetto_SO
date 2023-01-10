@@ -1,5 +1,6 @@
 
 #include "../config1.h"
+#include "../src/porto.h"
 #include <stdio.h>
 #include <signal.h>
 #include <stdlib.h>
@@ -7,6 +8,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <sys/ipc.h>
+#include <math.h>
 
 
 #include "./support.h"
@@ -163,7 +165,54 @@ int getShipQueue(int id){
     queueID = useQueue(ftok("./src/nave.c", id), errorHandler, "communicate ports");
     return queueID;
 }
+/*in secondi*/
+double getTempoDiViaggio(double x, double y, double x1, double y1) {
+    double spazio;
+
+    spazio = sqrt(pow(x - x1, 2) + pow(y - y1, 2));
+
+    return spazio / SO_SPEED;
+
+}
 
 double mod(double r) {
     return ((r < 0) ? r * (-1) : r);
+}
+int fact(int n) {
+    if (n == 0) {
+        return 1;
+    }
+    else {
+        return fact(n - 1) * n;
+    }
+}
+int choose(int n, int k) {
+    return fact(n) / (fact(k) * fact(n - k));
+}
+
+double mediaTempoViaggioFraPorti() {
+    Port portArr;
+    int c;
+    int i;
+    int j;
+    int length;
+    length = choose(SO_PORTI, 2);
+    int coppieDiPorti[length][2];
+    double tempi[length];
+    double sum = 0;
+    c = 0;
+    portArr = getPortsArray();
+    for (i = 0; i < SO_PORTI-1; i++) {
+        for (j = i + 1; j < SO_PORTI; j++) {
+            coppieDiPorti[c][0] = i;
+            coppieDiPorti[c][1] = j;
+            c++;
+        }
+    }
+    for (i = 0; i < length; i++) {
+        sum += getTempoDiViaggio(portArr[coppieDiPorti[i][0]].x, portArr[coppieDiPorti[i][0]].y, portArr[coppieDiPorti[i][1]].x, portArr[coppieDiPorti[i][1]].y);
+    }
+
+    shmDetach(portArr, errorHandler, "mediaDistanzaFraPorti");
+    return sum / length;
 }

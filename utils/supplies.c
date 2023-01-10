@@ -28,12 +28,16 @@ void fillExpirationTime(Supplies* S) {
 
 void fillMagazine(Supplies* S, int day, int* supplies) {
     int i;
-
+    int dumpShmid;
+    DumpArea* dump;
+    dumpShmid = useShm(DUMPSHMKEY, sizeof(DumpArea), errorHandler, "fillMagazine");
+    dump = (DumpArea*)getShmAddress(dumpShmid, 0, errorHandler, "fillMagazine");
     for (i = 0; i < SO_MERCI; i++) {
         S->magazine[day][i] = supplies[i];
-        addNotExpiredGood(supplies[i], i, PORT, 1,0);
+        dump->tempoScaricamentoTot += ((double)(S->magazine[day][i])) / SO_LOADSPEED;
+        addNotExpiredGood(supplies[i], i, PORT, 1, 0);
     }
-
+    shmDetach(dump, errorHandler, "fillMagazine");
 }
 
 

@@ -46,4 +46,9 @@ int getShipQueue(int id);
 
 double mod(double z);
 
+
+int choose(int n, int k);
+
+double mediaTempoViaggioFraPorti();
+
 #endif

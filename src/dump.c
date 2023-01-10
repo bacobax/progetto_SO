@@ -7,6 +7,7 @@
 #include "../utils/shm_utility.h"
 #include "../utils/sem_utility.h"
 #include "../utils/msg_utility.h"
+#include "../utils/support.h"
 #include "../config1.h"
 #include "./dump.h"
 #include "./porto.h"
@@ -291,7 +292,8 @@ void printerCode(int day, int last) {
         fprintf(fp, "Merce scaduta in porto: %d\n" , expiredGoodsOnPorts);
         fprintf(fp, "Merce scaduta in nave: %d\n" , expiredGoodsOnShips);
         fprintf(fp, "Merce consegnata: %d (%.2f%% di SO_FILL)\n" , deliveredGoods,((double)( deliveredGoods* 100))/SO_FILL);
-
+        fprintf(fp, "Tempo di viaggio medio viaggio tra porti: %f\n", mediaTempoViaggioFraPorti());
+        fprintf(fp, "Tempo medio scaricamento di lotti: %f\n", (dump->tempoScaricamentoTot)/((double)(SO_PORTI * SO_DAYS * SO_MERCI)));
         /*
             SO_FILL/100 = Merce_conse/x
             x = M_C*100
