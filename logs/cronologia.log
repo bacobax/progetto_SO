@@ -1,0 +1,38 @@
+DAY: 2:
+	Nave  2 caricata  395 merce di tipo  4 dal Porto  3
+DAY: 2:
+	Nave  2 caricata  605 merce di tipo  4 dal Porto  3
+DAY: 2:
+	Nave  0 caricata  463 merce di tipo  4 dal Porto  1
+DAY: 2:
+	Nave  1 caricata  304 merce di tipo  0 dal Porto  0
+DAY: 4:
+	Nave  2 scaricata  605 merce di tipo  4 al Porto  0
+DAY: 4:
+	Nave  0 caricata  391 merce di tipo  0 dal Porto  2
+DAY: 5:
+	Nave  1 caricata  370 merce di tipo  2 dal Porto  2
+DAY: 6:
+	Nave  0 caricata  146 merce di tipo  1 dal Porto  2
+DAY: 6:
+	Nave  2 caricata  605 merce di tipo  4 dal Porto  3
+DAY: 8:
+	Nave  2 scaricata  395 merce di tipo  4 al Porto  0
+DAY: 9:
+	Nave  1 caricata  326 merce di tipo  3 dal Porto  1
+DAY: 10:
+	Nave  2 caricata  395 merce di tipo  4 dal Porto  1
+DAY: 10:
+	Nave  0 scaricata  146 merce di tipo  1 al Porto  3
+DAY: 12:
+	Nave  1 scaricata  304 merce di tipo  0 al Porto  1
+DAY: 12:
+	Nave  2 scaricata  395 merce di tipo  4 al Porto  0
+DAY: 15:
+	Nave  2 caricata  395 merce di tipo  0 dal Porto  3
+DAY: 15:
+	Nave  0 caricata  146 merce di tipo  3 dal Porto  1
+DAY: 17:
+	Nave  1 caricata  304 merce di tipo  4 dal Porto  3
+DAY: 17:
+	Nave  2 scaricata  395 merce di tipo  0 al Porto  1

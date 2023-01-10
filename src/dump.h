@@ -2,11 +2,14 @@
 #define DUMP_H
 #define DUMPSEMKEY 392
 #define LOGFILESEMKEY 393
+#define TXFILESEMKEY 394
 #include "../utils/msg_utility.h"
 /*
       Giornaliero: 
         - Merce affondata 
 */
+
+
 typedef struct goodTypeInfo {                       /* struttura che contiene le 4 informazioni relative per ogni tipo di merce nella simulazione*/
   int goods_on_ship;             /* numero di beni TOTALI di quel tipo presenti sulla nave PRONTI PER ESSERE CONSEGNATI */
   int goods_on_port;             /* numero di beni TOTALI di quel tipo presenti nel porto PRONTI PER ESSERE CARICATI*/
@@ -14,6 +17,11 @@ typedef struct goodTypeInfo {                       /* struttura che contiene le
   int expired_goods_on_ship;     /* numero di beni TOTALI di quel tipo scaduti nelle navi*/
   int expired_goods_on_port;     /* numero di beni TOTALI di quel tipo scaduti nei porti*/
 } GoodTypeInfo;
+
+typedef struct dumpArea {
+  GoodTypeInfo types[SO_MERCI];
+  double expTimeVariance;
+} DumpArea;
 
 typedef enum Context { PORT, SHIP } ctx;
 
@@ -42,6 +50,7 @@ void removeDumpArea();
 
 void lockAllGoodsDump();
 void unlockAllGoodsDump();
+void printTransaction(int idxNave, int idxPorto, int carico, int ton, int tipoMerce);
 
 #endif
 

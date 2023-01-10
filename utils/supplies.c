@@ -5,14 +5,25 @@
 #include "../src/porto.h"
 #include "./sem_utility.h"
 #include "./shm_utility.h"
+#include "./errorHandler.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 void fillExpirationTime(Supplies* S) {
     int i;
+    double media;
+    int dumpShmID;
+    DumpArea* dump;
+
+    dumpShmID = useShm(DUMPSHMKEY, sizeof(DumpArea), errorHandler, "fillExpirationTime");
+    dump = (DumpArea*)getShmAddress(dumpShmID, 0, errorHandler, "fillExpirationTime");
+
+    media = ((double)(SO_MIN_VITA + SO_MAX_VITA)) / 2;
     for (i = 0; i < SO_MERCI * SO_DAYS; i++) {
         S->expirationTimes[i] = random_int(SO_MIN_VITA, SO_MAX_VITA);
+        dump->expTimeVariance += mod(((double)S->expirationTimes[i]) - media);
     }
+    shmDetach(dump, errorHandler, "fillExpirationTime");
 }
 
 void fillMagazine(Supplies* S, int day, int* supplies) {

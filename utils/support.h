@@ -2,6 +2,7 @@
 #define SUPPORT_H
 #define NANOS_MULT 1000000000
 #include "./vettoriInt.h"
+#include "../src/porto.h"
 
 /* distribuisce casualmente un quantità "quantity" in "parts" parti */
 intList* distribute(int quantity, int parts);
@@ -32,5 +33,17 @@ int nanosecsleep(long nanosec);
 void checkInConfig();
 
 void clearSigMask();
+
+Port getPortsArray();
+
+int getPortQueueRequest(int key);
+
+int getPortQueueCharge(int id);
+
+int getPortQueueDischarge(int id);
+
+int getShipQueue(int id);
+
+double mod(double z);
 
 #endif

@@ -498,6 +498,8 @@ void accessPortForCharge(Ship ship, int portID){
         }
         
         addProduct(ship, p, port);
+        printTransaction(ship->shipID, portID, 1, p.weight, p.product_type);
+        
         shmDetach(port - portID, errorHandler, "shmDetach Porto");
         
     }
@@ -557,13 +559,17 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
             if (quantoPossoScaricare >= p.weight) {
 
                 addDeliveredGood(p.weight, p.product_type, portID);
+                printTransaction(ship->shipID, portID, 0, p.weight, p.product_type);
                 removeProduct(ship, product_index);
-                        
+                       
                         
             }else {
                 addDeliveredGood(quantoPossoScaricare, ship->products[product_index].product_type, portID);
+                printTransaction(ship->shipID, portID, 0, quantoPossoScaricare, ship->products[product_index].product_type);
+                
                 ship->products[product_index].weight -= quantoPossoScaricare;
                 ship->weight -= quantoPossoScaricare;
+                
             }
         }else {
             printf("\nOOPS! [%d]Nave: la merce che volevi scaricare è scaduta mentre la stavi scaricando!!!\n", ship->shipID);
@@ -793,38 +799,6 @@ void checkTerminateValue(Ship ship, int* terminateValue){
         printf("Nave con id:%d il programma è terminato\n", ship->shipID);
         exitNave();
     }   
-}
-
-Port getPortsArray(){
-   int portShmid;
-   Port portArr;
-   portShmid = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler,"get ports array");
-   portArr = getShmAddress(portShmid,0,errorHandler,"get ports array"); 
-   return portArr;
-}
-
-int getPortQueueRequest(int key){
-    int queueID;
-    queueID = useQueue(key, errorHandler , "communicate ports");
-    return queueID;
-}
-
-int getPortQueueCharge(int id){
-    int queueID;
-    queueID = useQueue(ftok("./src/porto.c" , id), errorHandler, "reply to ports");
-    return queueID;
-}
-
-int getPortQueueDischarge(int id){
-    int queueID;
-    queueID = useQueue(ftok("./src/porto.h", id), errorHandler, "reply to ports");
-    return queueID;
-}
-
-int getShipQueue(int id){
-    int queueID;
-    queueID = useQueue(ftok("./src/nave.c", id), errorHandler, "communicate ports");
-    return queueID;
 }
 
 int getPierSem(){

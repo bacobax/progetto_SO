@@ -6,12 +6,15 @@
 #include <time.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <sys/ipc.h>
+
 
 #include "./support.h"
 #include "./errorHandler.h"
 #include "./sem_utility.h"
+#include "./msg_utility.h"
+#include "./shm_utility.h"
 #include "./vettoriInt.h"
-
 
 
 void quitSignalHandler(int sig) {
@@ -124,4 +127,43 @@ double generateCord()
     range = (SO_LATO); /* max-min */
     div = RAND_MAX / range;
     return (rand() / div);
+}
+
+Port getPortsArray(){
+   int portShmid;
+   Port portArr;
+   portShmid = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler,"get ports array");
+   portArr = getShmAddress(portShmid,0,errorHandler,"get ports array"); 
+   return portArr;
+}
+
+
+
+
+int getPortQueueRequest(int key){
+    int queueID;
+    queueID = useQueue(key, errorHandler , "communicate ports");
+    return queueID;
+}
+
+int getPortQueueCharge(int id){
+    int queueID;
+    queueID = useQueue(ftok("./src/porto.c" , id), errorHandler, "reply to ports");
+    return queueID;
+}
+
+int getPortQueueDischarge(int id){
+    int queueID;
+    queueID = useQueue(ftok("./src/porto.h", id), errorHandler, "reply to ports");
+    return queueID;
+}
+
+int getShipQueue(int id){
+    int queueID;
+    queueID = useQueue(ftok("./src/nave.c", id), errorHandler, "communicate ports");
+    return queueID;
+}
+
+double mod(double r) {
+    return ((r < 0) ? r * (-1) : r);
 }
