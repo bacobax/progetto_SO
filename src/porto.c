@@ -91,10 +91,6 @@ void recvDischargeHandler(long type, char *text)
         msgSend(shipQueueID, text, idx + 1, errorHandler, 0, "risposta positiva recvDischargerHandler");
     }
 
-    /*
-        mutexPro(waitResponsesID, idNaveMittente, LOCK, NULL);
-
-    */
 
     messaggioRicevuto = msgRecv(myQueueID, idNaveMittente + 1, errorHandler, NULL, SYNC, "recvDischargerHandler->ricezione di sonostatoScelto");
     sscanf(messaggioRicevuto->mtext, "%d", &sonostatoScelto);
