@@ -291,7 +291,7 @@ void printerCode(int day, int last) {
         fprintf(fp,"Merce rimasta in nave: %d\n" , notExpiredGoodsOnShips);
         fprintf(fp, "Merce scaduta in porto: %d\n" , expiredGoodsOnPorts);
         fprintf(fp, "Merce scaduta in nave: %d\n" , expiredGoodsOnShips);
-        fprintf(fp, "Merce consegnata: %d (%.2f%% di SO_FILL)\n" , deliveredGoods,((double)( deliveredGoods* 100))/SO_FILL);
+        fprintf(fp, "Merce consegnata: %d (%.4f%% di SO_FILL)\n" , deliveredGoods,((double)( deliveredGoods* 100))/SO_FILL);
         fprintf(fp, "Tempo di viaggio medio viaggio tra porti: %f\n", mediaTempoViaggioFraPorti());
         fprintf(fp, "Tempo medio scaricamento di lotti: %f\n", (dump->tempoScaricamentoTot)/((double)(SO_PORTI * SO_DAYS * SO_MERCI)));
         /*

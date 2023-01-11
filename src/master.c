@@ -15,7 +15,6 @@
 
 
 void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID, int* day, int waitEndDayShipsSemID) {
-    exit(1);
     int quantitaAlGiorno;
     int resto;
     int quantitaPrimoGiorno;

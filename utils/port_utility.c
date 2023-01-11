@@ -452,15 +452,31 @@ int filter(int el){
 int filterReq(int req){
     return req == 0;
 }
+intList* validSupplies(Port p){
+    int i;
+    intList* ret = intInit();
+    for (i = 0; i < SO_MERCI; i++) {
+        if (validSupply(p->supplies, i)) {
+            intPush(ret, i);
+        }
+    }
+    return ret;
+}
 
 intList* tipiDiMerceOfferti(Port p) {
-
-    return findIdxs(p->requests, SO_MERCI, filterReq);
+    intList* tipiMerceSenzaRichiesta = findIdxs(p->requests, SO_MERCI, filterReq);
+    intList* tipiMerceOffertaMaggioreDiZero = validSupplies(p);
+    intList* ret;
+    ret = intIntersect(tipiMerceSenzaRichiesta, tipiMerceOffertaMaggioreDiZero);
+    intFreeList(tipiMerceSenzaRichiesta);
+    intFreeList(tipiMerceOffertaMaggioreDiZero);
+    return ret;
 }
 
 intList* tipiDiMerceRichiesti(Port p){
     return findIdxs(p->requests, SO_MERCI,filterIdxs);
 }
+
 
 intList* getAllOtherTypeRequests(Port portArr, int idx) {
     int i;

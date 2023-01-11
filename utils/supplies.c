@@ -97,3 +97,17 @@ void removeExpiredGoods(Supplies* S) {
     l'ho aggiustata con una divisione
     
 */
+
+int validSupply(Supplies s, int type){
+    /* ritorna true se c'è almeno un elemento maggiore di 0 in p.megazine[tutti i giorni][type]
+        int magazine[SO_DAYS][SO_MERCI];
+    */
+    int i;
+    int j;
+    for(i=0; i<SO_DAYS; i++){
+        if (s.magazine[i][type] > 0) {
+            return 1;
+        }
+    }
+    return 0;
+}

@@ -4,7 +4,7 @@
 
 
 #define SO_PORTI    4
-#define SO_NAVI     1
+#define SO_NAVI     15
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 

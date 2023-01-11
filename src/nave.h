@@ -103,5 +103,6 @@ int getPierSem();
 int getShipSem();
 
 void checkShipDead(Ship ship);
+int deliverProduct(Ship ship, Port port, int product_index, Product p, int portID, int firstProd);
 
 #endif

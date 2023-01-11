@@ -44,5 +44,6 @@ void decrementExpTimes(Supplies* S, int day);
 */
 void removeExpiredGoods(Supplies* S);
 
+int validSupply(Supplies p, int type);
 
 #endif
