@@ -4,7 +4,7 @@
 
 
 #define SO_PORTI    4
-#define SO_NAVI     3
+#define SO_NAVI     1
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 
@@ -18,7 +18,7 @@
 /* ciao */
 #define SO_SPEED     10
 #define SO_LATO      10
-#define SO_CAPACITY  200
+#define SO_CAPACITY  150
 #define SO_BANCHINE  10
 #define SO_LOADSPEED 50
 #define SO_MAELSTROM 12

@@ -282,7 +282,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     
     waitResponsesID = createMultipleSem(WAITFIRSTRESPONSES, SO_NAVI, 1, errorHandler, "creazione waitResponsesSem");
 
-    verifyRequestPortSemID = createMultipleSem(P2SEMVERIFYKEY, SO_PORTI, 1, errorHandler, "creazione verifyRequestPortSemID");
+    verifyRequestPortSemID = createMultipleSem(P2SEMVERIFYKEY, SO_PORTI*SO_MERCI, 1, errorHandler, "creazione verifyRequestPortSemID");
     
     waitToRemoveDump = createSem(WAITRMVDUMPKEY, 1, errorHandler, "craezione semaforo remove dump");
 
