@@ -17,7 +17,7 @@
 
 
 
-void chargeProducts(Ship ship, int quantityToCharge, int* day){
+void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* terminateValue){
     int availablePorts;
     int portID;
     PortOffer port_offers[SO_PORTI];
@@ -29,12 +29,13 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day){
     printf("[%d]Nave tipi da caricare: \n", ship->shipID);
     intStampaLista(tipiDaCaricare);
 
+    checkTerminateValue(ship, terminateValue);
     
     printf("[%d]Nave, controllo se ha senso continuare-day: %d\n", ship->shipID,*day);
     if(tipiDaCaricare->length == 0){
         if(*day < SO_DAYS -1){
             waitEndDay();
-            chargeProducts(ship, quantityToCharge, day);
+            chargeProducts(ship, chooseQuantityToCharge(ship) ,day, terminateValue);
             return;
         }else{
             printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
@@ -51,7 +52,7 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day){
     
 
     if (quantityToCharge == 0) {
-        dischargeProducts(ship, day);
+        dischargeProducts(ship, day, terminateValue);
     }
     else {
 
@@ -64,7 +65,7 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day){
                di merce che voglio caricare, riprovo a chiamare i porti decrementando la quantità*/
             replyToPortsForCharge(ship, -1);
 
-            chargeProducts(ship, chooseQuantityToCharge(ship), day);
+            chargeProducts(ship, chooseQuantityToCharge(ship), day, terminateValue);
             
             waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler, "chargeProducts");
             mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler, "chargeProducts->waitToTravelSemID +SO_PORTI");
@@ -92,7 +93,7 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day){
     
 }
 
-void dischargeProducts(Ship ship, int* day) {
+void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
 
     int portID;
     int product_index;
@@ -102,32 +103,35 @@ void dischargeProducts(Ship ship, int* day) {
     /*
         Se non può scaricare quello che ha 
     */
-    if (ship->weight == 0) {
+    checkTerminateValue(ship, terminateValue);
+    if (ship->weight == 0)
+    {
 
-        chargeProducts(ship, chooseQuantityToCharge(ship), day);
+        chargeProducts(ship, chooseQuantityToCharge(ship), day, terminateValue);
+    }
+    else
+    {
 
-    } else {
+        /*
 
-    /*
+            1 - Nave) Mando un msg a tutti i porti indicano il tipo di merce che voglio scaricare e la quantità che possiedo
+                  (scelgo la merce con tempo di scadenza minore di tutte le altre merci che posseggo).
 
-        1 - Nave) Mando un msg a tutti i porti indicano il tipo di merce che voglio scaricare e la quantità che possiedo
-              (scelgo la merce con tempo di scadenza minore di tutte le altre merci che posseggo).
+           2 - Porto) il porto riceve il messaggio è valuta guardando il suo magazzino se la merce si può consegnare
+                      oppure no perchè la domanda è arrivata a 0.
 
-       2 - Porto) il porto riceve il messaggio è valuta guardando il suo magazzino se la merce si può consegnare
-                  oppure no perchè la domanda è arrivata a 0.
+                        - Se si può consegnare decrementa la domanda e manda una conferma positiva al porto
+                        - Altrimenti manda una conferma negativa
 
-                    - Se si può consegnare decrementa la domanda e manda una conferma positiva al porto
-                    - Altrimenti manda una conferma negativa
+                        OVVIAMENTE POICHÈ LA PRIORITÀ È CONSEGNARE LE MERCI IN "FIN DI VITA", ALLA PRIMA NAVE
+                        CHE MANDA UN MESSAGGIO POSITIVO DI CONFERMA IL PORTO SI DISINTERESSA DELLE RICHIESTE SUCCESSIVE
+                        SE LA SUA DOMANDA È ARRIVATA A 0.
+                        ALTRIMENTI CONTINUA FINO A QUANDO LA DOMANDA PER QUEL TIPO DI MERCE SCENDE A 0
 
-                    OVVIAMENTE POICHÈ LA PRIORITÀ È CONSEGNARE LE MERCI IN "FIN DI VITA", ALLA PRIMA NAVE
-                    CHE MANDA UN MESSAGGIO POSITIVO DI CONFERMA IL PORTO SI DISINTERESSA DELLE RICHIESTE SUCCESSIVE
-                    SE LA SUA DOMANDA È ARRIVATA A 0.
-                    ALTRIMENTI CONTINUA FINO A QUANDO LA DOMANDA PER QUEL TIPO DI MERCE SCENDE A 0
+                        POLITICA FIFO
 
-                    POLITICA FIFO   
-    
 
-    */
+        */
         product_index = chooseProductToDelivery(ship);
         printf("[%d]Nave ho scelto per scaricare: %d", ship->shipID,product_index);
 
@@ -141,7 +145,7 @@ void dischargeProducts(Ship ship, int* day) {
 
             printf("[%d]Nave: riprovo a scegliere il prodotto da scaricare\n", ship->shipID);
             
-            dischargeProducts(ship, day);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
+            dischargeProducts(ship, day, terminateValue);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
         
         } else {
 
@@ -156,14 +160,13 @@ void dischargeProducts(Ship ship, int* day) {
             accessPortForDischarge(ship, portID, product_index, quantoPossoScaricare);
             
         }
-
     }
 }
 
-void shipRoutine(Ship ship, int* terminateValue, double restTime, int* day){
+void shipRoutine(Ship ship, unsigned int* terminateValue, double restTime, int* day){
 
     checkTerminateValue(ship, terminateValue);
-    chargeProducts(ship, chooseQuantityToCharge(ship), day);
+    chargeProducts(ship, chooseQuantityToCharge(ship), day, terminateValue);
     nanosecsleep((long)(restTime * NANOS_MULT));
     
     /*
@@ -181,12 +184,12 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     int endShmID;
     int dayShmID;
     int *day;
-    int *terminateValue;
+    unsigned int *terminateValue;
     double restTime = RESTTIMESHIP;
     Ship ship;
 
     endShmID = useShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "Nave: use end shm");
-    terminateValue = (int*)getShmAddress(endShmID, 0, errorHandler, "Nave: getShmAddress di endShm");
+    terminateValue = (unsigned int*)getShmAddress(endShmID, 0, errorHandler, "Nave: getShmAddress di endShm");
 
     dayShmID = useShm(DAYWORLDSHM, sizeof(int), errorHandler, "dayShmID nel main della nave");
     day = (int *)getShmAddress(dayShmID, 0, errorHandler, "dayShmID nel main della nave");

@@ -192,7 +192,7 @@ int choose(int n, int k) {
 
 double mediaTempoViaggioFraPorti() {
     Port portArr;
-    int c;
+    long c;
     int i;
     int j;
     char text[64]

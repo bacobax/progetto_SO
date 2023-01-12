@@ -23,6 +23,7 @@ void genera_navi() {
     int i;
     int pid;
     char* argv[3];
+    FILE* fp;
     for (i = 0; i < SO_NAVI; i++) {  /* provo a creare due navi*/
         pid = fork();
         if (pid == 0) {
@@ -32,7 +33,10 @@ void genera_navi() {
             argv[0] = "nave";
             argv[1] = s;
             argv[2] = NULL;
-        
+            fp = fopen("./logs/exitShipLog.log", "a+");
+            fprintf(fp,"[%d]Nave IDX %d: creata\n",getpid(),i);
+            fclose(fp);
+
             execve("./bin/nave", argv, NULL);
 
             exit(EXIT_FAILURE);
@@ -297,7 +301,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     */
     mutex(waitPortsSemID, WAITZERO, errorHandler, "master mutex WAITZERO on ports");
     printf("FACCIO IL PRINT DEL DUMP DEL %d ESIMO GIORNO\n", SO_DAYS);
-    printDump(ASYNC , *day, 1);
+    printDump(SYNC , *day, 1);
     printf("MASTER: FACCIO LA WAITZERO...\n");
     mutex(waitToRemoveDump, WAITZERO, errorHandler, "mutex waitzero remove dump");
     printf("MASTER: HO PASSATO LA WAITZERO...\n");
