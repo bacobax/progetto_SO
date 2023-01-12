@@ -43,7 +43,7 @@ void recvDischargeHandler(long type, char *text)
     int waitResponsesID;
     Port arrPorts;
     Port porto;
-
+   
     /*waitResponsesID = useSem(WAITFIRSTRESPONSES, errorHandler, "recvDischargerHandler->waitResponsesID useSem");*/
     sscanf(text, "%d %d", &quantity, &idNaveMittente);
     idx = type - 1;
@@ -127,8 +127,7 @@ void recvChargerHandler(long type, char *text)
     int waitToTravelSemID;
     int idx;
     idx = type - 1;
-
-
+    
     sscanf(text, "%d %d %d", &tipoMerceRichiesto, &quantity, &idNaveMittente);
 
     printf("PORTO %d, ricevuta richiesta di scaricare %d merce di tipo %d dalla nave %d\n", idx, quantity, tipoMerceRichiesto, idNaveMittente);

@@ -770,6 +770,7 @@ void waitToTravel(Ship ship){
     int waitToTravelSemID;
     waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler, "chargeProducts->waitToTravelSemID");
     mutexPro(waitToTravelSemID, ship->shipID, WAITZERO, errorHandler, "chargeProducts->waitToTravelSemID WAITZERO");
+    sleep(0.2);
     mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler, "chargeProducts->waitToTravelSemID +SO_PORTI");
 }
 
@@ -852,17 +853,13 @@ int deliverProduct(Ship ship, Port port, int product_index, Product p, int portI
                 }
 
                 if (quantoPossoScaricare >= p.weight) {
-                    if(!firstProd){
-
-                    }
+                    
                     addDeliveredGood(p.weight, p.product_type, portID);
                     printTransaction(ship->shipID, portID, 0, p.weight, p.product_type);
                     removeProduct(ship, product_index);
                             
                 }else {
-                    if(!firstProd){
-
-                    }
+                    
                     addDeliveredGood(quantoPossoScaricare, ship->products[product_index].product_type, portID);
                     printTransaction(ship->shipID, portID, 0, quantoPossoScaricare, ship->products[product_index].product_type);
                     

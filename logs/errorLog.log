@@ -1,12 +1,6 @@
 💥💥💥💥💥💥💥💥
-ERROR: fork nel gestore risorse error handler
-ERRNO: Resource temporarily unavailable
-CTX: expireShipGoods
-HASH: 1274671924
-💥💥💥💥💥💥💥💥
-💥💥💥💥💥💥💥💥
-ERROR: Not Handlerd error error handler
-ERRNO: Resource temporarily unavailable
-CTX: dischargerCode
-HASH: 933749806
+ERROR: c = 6, sum = 6.828427, sum/c = 1.138071 error handler
+ERRNO: Operation timed out
+CTX: mediaTempoViaggioFraPorti
+HASH: 1628403466
 💥💥💥💥💥💥💥💥

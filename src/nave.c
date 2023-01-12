@@ -61,8 +61,7 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
         
         printf("[%d]Nave: Aviable ports = %d\n",ship->shipID, availablePorts);
         if (availablePorts == 0) {
-            /* non ci sono porti disponibili per la quantità
-               di merce che voglio caricare, riprovo a chiamare i porti decrementando la quantità*/
+            
             replyToPortsForCharge(ship, -1);
             
             waitToTravel(ship);
@@ -143,7 +142,8 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
             removeProduct(ship, product_index); 
 
             printf("[%d]Nave: riprovo a scegliere il prodotto da scaricare\n", ship->shipID);
-            
+            replyToPortsForDischarge(ship, -1);
+            waitToTravel(ship); 
             dischargeProducts(ship, day, terminateValue);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
         
         } else {
@@ -186,7 +186,7 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     unsigned int *terminateValue;
     double restTime = RESTTIMESHIP;
     Ship ship;
-
+    signal(SIGCHLD, SIG_IGN);
     endShmID = useShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "Nave: use end shm");
     terminateValue = (unsigned int*)getShmAddress(endShmID, 0, errorHandler, "Nave: getShmAddress di endShm");
 

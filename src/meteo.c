@@ -145,6 +145,7 @@ int main(int argc, char* argv[]) {
     int endShmID;
     int aspettoMortePortiSemID;
     char str[128];
+    signal(SIGCHLD, SIG_IGN);
     
     endShmID = useShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "getEndDayShmID meteo");
 

@@ -213,6 +213,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     struct sigaction new_sig_action;
     sigset_t new_sig_set;
 
+    signal(SIGCHLD, SIG_IGN);
     sigemptyset(&new_sig_set);
     sigaddset(&new_sig_set, SIGUSR1);
     sigprocmask(SIG_BLOCK, &new_sig_set, NULL);
@@ -293,7 +294,6 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID, day, waitEndDayShipSemID);
     /* kill(0, SIGUSR1);  uccide tutti i figli */
-    exit(0);
     printf("SETTATO A 1 TERMINATE VALUE, ASPETTO FIGLI...\n");
 
     *terminateValue = 1;
