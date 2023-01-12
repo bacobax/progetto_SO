@@ -82,8 +82,8 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
 
 void updateExpTimeShip(Ship ship);
 
-void chargeProducts(Ship ship, int quantityToCharge, int* day);
-void dischargeProducts(Ship ship, int* day);
+void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* terminateValue);
+void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue);
 
 void exitNave();
 
@@ -95,7 +95,7 @@ void waitToTravel(Ship ship);
 
 void initPromisedProduct(Ship ship, PortOffer port_offer, int quantityToCharge);
 
-void checkTerminateValue(Ship ship, int* terminateValue);
+void checkTerminateValue(Ship ship, unsigned int* terminateValue);
 
 
 int getPierSem();

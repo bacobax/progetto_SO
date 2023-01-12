@@ -355,7 +355,8 @@ void dischargerCode(void (*recvHandler)(long, char*), int idx) {
             prendo il primo messaggio che arriva
         */
         res = msgRecv(requestPortQueueID, idx + 1, errorHandler, recvHandler, ASYNC, "dischargerCode");
-        
+        sleep(0.2);
+
          
     }
 }
@@ -378,7 +379,7 @@ void chargerCode(void (*recvHandler)(long, char*), int idx) {
             prendo il primo messaggio che arriva
         */
         res = msgRecv(requestPortQueueID, idx + 1, errorHandler, recvHandler, ASYNC,"chargerCode");
- 
+        sleep(0.2);
 
     }
 }

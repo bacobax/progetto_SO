@@ -49,6 +49,7 @@ void createDumpArea(){
     fclose(fopen("./logs/logfile.log", "w"));
     fclose(fopen("./logs/historyTransictions.log", "w"));
     fclose(fopen("./logs/cronologia.log", "w"));
+    fclose(fopen("./logs/exitShipLog.log", "w"));
     
 }
 

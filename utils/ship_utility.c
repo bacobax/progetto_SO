@@ -239,8 +239,14 @@ int removeProduct(Ship ship, int product_index){
 }
 
 void exitNave(){
+    FILE* fp = fopen("./logs/exitShipLog.log", "a+");
     int waitShipSemID = useSem(WAITSHIPSSEM, errorHandler, "nave waitShipSemID");   
+    fprintf(fp,"[%d]Nave: faccio la lock\n", getpid());
+
     mutex(waitShipSemID, LOCK, errorHandler, "nave mutex LOCK waitShipSemID");
+    fprintf(fp,"[%d]Nave: uscita\n", getpid());
+
+    fclose(fp);
     exit(0);
 }
 
@@ -774,7 +780,7 @@ void initPromisedProduct(Ship ship, PortOffer port_offer, int quantityToCharge){
     ship->promisedProduct.distributionDay = port_offer.distributionDay;
 }
 
-void checkTerminateValue(Ship ship, int* terminateValue){
+void checkTerminateValue(Ship ship, unsigned int* terminateValue){
  if (*terminateValue == 1){
         printf("Nave con id:%d il programma è terminato\n", ship->shipID);
         exitNave();
