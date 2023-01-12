@@ -195,24 +195,21 @@ double mediaTempoViaggioFraPorti() {
     int c;
     int i;
     int j;
-    int length;
-    length = choose(SO_PORTI, 2);
-    int coppieDiPorti[length][2];
-    double tempi[length];
+   
+   
     double sum = 0;
     c = 0;
     portArr = getPortsArray();
     for (i = 0; i < SO_PORTI-1; i++) {
         for (j = i + 1; j < SO_PORTI; j++) {
-            coppieDiPorti[c][0] = i;
-            coppieDiPorti[c][1] = j;
+            sum += getTempoDiViaggio(portArr[i].x, portArr[i].y, portArr[j].x, portArr[j].y);
+
+        
             c++;
         }
     }
-    for (i = 0; i < length; i++) {
-        sum += getTempoDiViaggio(portArr[coppieDiPorti[i][0]].x, portArr[coppieDiPorti[i][0]].y, portArr[coppieDiPorti[i][1]].x, portArr[coppieDiPorti[i][1]].y);
-    }
+    
 
     shmDetach(portArr, errorHandler, "mediaDistanzaFraPorti");
-    return sum / length;
+    return sum / c;
 }

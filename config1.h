@@ -1,14 +1,31 @@
 #ifndef CONFIG_1
 
 #define CONFIG_1
+/*
+
+TODO: CAPIRE IN QUANTO TEMPO MEDIO UNA NAVE SI REFILLA COMPLETAMENTE 
+
+TODO: CAPIRE QUANTO TEMPO CI METTE A FARE UNA OPERAZIONE DI CHARGE
+
+30/30 CRASHA
+
+25/30 CRASHA
+
+24/30 FUNIONA
+
+23/30 FUNZIONA
 
 
-#define SO_PORTI    4
-#define SO_NAVI     15
+20/30 FUNZIONA
+
+*/
+
+#define SO_PORTI    25
+#define SO_NAVI     30
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 
-#define SO_DAYS      20
+#define SO_DAYS     10
 #define SO_MIN_VITA  20 /* tonn */
 #define SO_MAX_VITA  30/* tonn */
 #define SO_FILL      10000
@@ -18,7 +35,7 @@
 /* ciao */
 #define SO_SPEED     10
 #define SO_LATO      10
-#define SO_CAPACITY  150
+#define SO_CAPACITY  50
 #define SO_BANCHINE  10
 #define SO_LOADSPEED 50
 #define SO_MAELSTROM 12

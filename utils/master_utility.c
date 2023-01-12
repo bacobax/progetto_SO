@@ -297,7 +297,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     */
     mutex(waitPortsSemID, WAITZERO, errorHandler, "master mutex WAITZERO on ports");
     printf("FACCIO IL PRINT DEL DUMP DEL %d ESIMO GIORNO\n", SO_DAYS);
-    printDump(ASYNC , *day, 1);
+    printDump(SYNC , *day, 1);
     printf("MASTER: FACCIO LA WAITZERO...\n");
     mutex(waitToRemoveDump, WAITZERO, errorHandler, "mutex waitzero remove dump");
     printf("MASTER: HO PASSATO LA WAITZERO...\n");

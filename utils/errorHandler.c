@@ -87,6 +87,6 @@ void errorHandler(int err, char* errCtx) {
         throwError("shm ctl", errCtx);
         break;
     default:
-        perror("Not Handlerd error");
+        throwError("Not Handlerd error", errCtx);
     }
 }
