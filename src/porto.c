@@ -105,7 +105,7 @@ void recvDischargeHandler(long type, char *text)
     }
 
     mutexPro(waitToTravelSemID, idNaveMittente, LOCK, NULL, "RecvDischargerHandler->waitToTravelSemID LOCK");
-    /*getOneValue(waitToTravelSemID, idNaveMittente);*/
+    
     shmDetach(arrPorts, errorHandler, "recvDischargerHandler");
     return;
 }

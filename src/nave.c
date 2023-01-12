@@ -64,13 +64,12 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
             /* non ci sono porti disponibili per la quantità
                di merce che voglio caricare, riprovo a chiamare i porti decrementando la quantità*/
             replyToPortsForCharge(ship, -1);
-
+            
+            waitToTravel(ship);
+      
             chargeProducts(ship, chooseQuantityToCharge(ship), day, terminateValue);
             
-            waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler, "chargeProducts");
-            mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler, "chargeProducts->waitToTravelSemID +SO_PORTI");
-
-      
+            
         } else {
             /* ci sono porti che hanno merce da caricare*/
             

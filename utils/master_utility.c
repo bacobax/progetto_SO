@@ -293,6 +293,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID, day, waitEndDayShipSemID);
     /* kill(0, SIGUSR1);  uccide tutti i figli */
+    exit(0);
     printf("SETTATO A 1 TERMINATE VALUE, ASPETTO FIGLI...\n");
 
     *terminateValue = 1;

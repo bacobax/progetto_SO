@@ -195,7 +195,7 @@ double mediaTempoViaggioFraPorti() {
     long c;
     int i;
     int j;
-    char text[64]
+    char text[128];
     double sum = 0;
     c = 0;
     portArr = getPortsArray();
@@ -205,8 +205,8 @@ double mediaTempoViaggioFraPorti() {
             c++;
         }
     }
-   
-    throwError("")
+    sprintf(text, "c = %ld, sum = %f, sum/c = %f", c, sum, sum / c);
+    throwError(text, "mediaTempoViaggioFraPorti");
     shmDetach(portArr, errorHandler, "mediaDistanzaFraPorti");
     return sum / c;
 }
