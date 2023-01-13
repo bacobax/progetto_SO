@@ -104,8 +104,7 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
     checkTerminateValue(ship, terminateValue);
     if (ship->weight == 0)
     {
-
-        chargeProducts(ship, chooseQuantityToCharge(ship), day, terminateValue);
+        return;
     }
     else
     {

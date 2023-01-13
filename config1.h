@@ -24,7 +24,7 @@ n<36/((1.138 + 0.27)*2)
 */
 
 #define SO_PORTI    4
-#define SO_NAVI     1
+#define SO_NAVI     30
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 
@@ -38,7 +38,7 @@ n<36/((1.138 + 0.27)*2)
 /* ciao */
 #define SO_SPEED     10
 #define SO_LATO      10
-#define SO_CAPACITY  5000
+#define SO_CAPACITY  50
 #define SO_BANCHINE  10
 #define SO_LOADSPEED 50
 #define SO_MAELSTROM 12
