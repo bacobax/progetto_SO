@@ -110,6 +110,7 @@ Ship initShip(int shipID)
     ship->x = generateCord();
     ship->y = generateCord();
     ship->weight = 0;
+    ship->nChargesOptimal = (int)numeroDiCarichiOttimale();
     initArrayProducts(ship->products); /* inizializzo l'array con tutti i valori a -1*/
     ship->inSea = 1;
 

@@ -50,5 +50,6 @@ double mod(double z);
 int choose(int n, int k);
 
 double mediaTempoViaggioFraPorti();
+double numeroDiCarichiOttimale();
 
 #endif

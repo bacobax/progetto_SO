@@ -45,6 +45,7 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     printf("M: Finito generazione\n");
     aspettaConfigs(waitconfigSemID);
 
+   
     ports = (Port)getShmAddress(portsShmid, 0, errorHandler, "master");
     ships = (Ship)getShmAddress(shipsShmid, 0, errorHandler, "master");
 

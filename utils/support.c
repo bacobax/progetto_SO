@@ -210,3 +210,17 @@ double mediaTempoViaggioFraPorti() {
     shmDetach(portArr, errorHandler, "mediaDistanzaFraPorti");
     return sum / c;
 }
+
+double numeroDiCarichiOttimale() {
+    double probabilitaDiCambiarePorto;
+    double tempoDiViaggioMedio;
+    double tempoDiScaricoMedio;
+    double tempoDiViaggioEffettivo;
+    double res;
+    tempoDiViaggioMedio = mediaTempoViaggioFraPorti();
+    probabilitaDiCambiarePorto =(double)(SO_PORTI - 1) / SO_PORTI;
+    tempoDiViaggioEffettivo = (double)probabilitaDiCambiarePorto * tempoDiViaggioMedio;
+    tempoDiScaricoMedio = ((double)SO_FILL / SO_LOADSPEED) / (SO_PORTI * SO_DAYS * SO_MERCI);
+    res = (double)(SO_DAYS - 1) / ((tempoDiViaggioEffettivo + tempoDiScaricoMedio) * 2);
+    return res;
+}

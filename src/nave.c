@@ -50,7 +50,8 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
     initArrayOffers(port_offers);
     
 
-    if (quantityToCharge == 0) {
+    if (quantityToCharge == 0 || ship->nChargesOptimal == 0) {
+        ship->nChargesOptimal = (int)(numeroDiCarichiOttimale());
         dischargeProducts(ship, day, terminateValue);
     }
     else {
@@ -84,7 +85,7 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
             travel(ship, portID, day);
             
             accessPortForCharge(ship, portID);
-    
+            ship->nChargesOptimal -= 1;
         }
     }
     
@@ -156,7 +157,7 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
 
             travel(ship, portID, day);
             accessPortForDischarge(ship, portID, product_index, quantoPossoScaricare);
-            
+            dischargeProducts(ship, day, terminateValue);
         }
     }
 }
