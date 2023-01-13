@@ -85,7 +85,7 @@ void updateExpTimeShip(Ship ship);
 void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* terminateValue);
 void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue);
 
-void exitNave();
+void exitNave(Ship s);
 
 void printStatoNavi(FILE* fp);
 

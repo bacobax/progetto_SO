@@ -34,14 +34,14 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
     if(tipiDaCaricare->length == 0){
         if(*day < SO_DAYS -1){
             waitEndDay();
-            chargeProducts(ship, chooseQuantityToCharge(ship) ,day, terminateValue);
+            
             return;
         }else{
             printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
             printf("Nave con id:%d NON HA PIÙ SENSO CONTINUARE\n", ship->shipID);
             printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
             intFreeList(tipiDaCaricare);
-            exitNave();
+            exitNave(ship);
         }
         
     }

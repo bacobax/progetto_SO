@@ -18,10 +18,6 @@
 #include <time.h>
 
 
-void quitSignalHandlerShip(int sig){
-    printf("PID[%d] Nave termino!\n", getpid());
-    exit(EXIT_SUCCESS);
-}
 
 int availableCapacity(Ship ship)
 {
@@ -195,7 +191,7 @@ int addProduct(Ship ship, Product p, Port port){
         Non capiterà mai
         */
         printf("🤡Nave con id:%d: non c'è abbastanza capienza per un prodotto che pesa %d, capienza: %d\n", ship->shipID, p.weight, aviableCap);
-
+    throwError("Add product failed" , "addProduct");
         res = -1;
     }
 
@@ -238,15 +234,17 @@ int removeProduct(Ship ship, int product_index){
     return res;
 }
 
-void exitNave(){
+void exitNave(Ship s){
+    s->dead = 1;
     FILE* fp = fopen("./logs/exitShipLog.log", "a+");
     int waitShipSemID = useSem(WAITSHIPSSEM, errorHandler, "nave waitShipSemID");   
     fprintf(fp,"[%d]Nave: faccio la lock\n", getpid());
-
+    
     mutex(waitShipSemID, LOCK, errorHandler, "nave mutex LOCK waitShipSemID");
     fprintf(fp,"[%d]Nave: uscita\n", getpid());
 
     fclose(fp);
+    
     exit(0);
 }
 
@@ -614,7 +612,7 @@ void travel(Ship ship, int portID, int* day)
             }
         }
         
-        exitNave();
+        exitNave(ship);
     }
 
     ship->inSea = 1;
@@ -643,7 +641,7 @@ void travel(Ship ship, int portID, int* day)
             }
         }
         printf("🌊🌊🌊🌊🌊🌊\n[%d]Nave: sono stata uccisa\n🌊🌊🌊🌊🌊🌊\n", ship->shipID);
-        exitNave();
+        exitNave(ship);
     }
     printf("[%d]Nave: viaggio finito...\n", ship->shipID);
     
@@ -784,7 +782,7 @@ void initPromisedProduct(Ship ship, PortOffer port_offer, int quantityToCharge){
 void checkTerminateValue(Ship ship, unsigned int* terminateValue){
  if (*terminateValue == 1){
         printf("Nave con id:%d il programma è terminato\n", ship->shipID);
-        exitNave();
+        exitNave(ship);
     }   
 }
 
@@ -803,7 +801,7 @@ int getShipSem(){
 void checkShipDead(Ship ship){
     if (ship->dead) {
         printf("🌊🌊🌊🌊🌊🌊\n[%d]Nave: sono stata uccisa\n🌊🌊🌊🌊🌊🌊\n", ship->shipID);
-        exitNave();
+        exitNave(ship);
     }
 }
 int f(int el){

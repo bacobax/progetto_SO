@@ -17,18 +17,19 @@ TODO: CAPIRE QUANTO TEMPO CI METTE A FARE UNA OPERAZIONE DI CHARGE
 
 
 20/30 FUNZIONA
-
+La nave non può essere > n*lotto medio
+Dove n è < 
 */
 
-#define SO_PORTI    4
-#define SO_NAVI     30
+#define SO_PORTI    100
+#define SO_NAVI     100
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 
 #define SO_DAYS     37
 #define SO_MIN_VITA  20 /* tonn */
 #define SO_MAX_VITA  30/* tonn */
-#define SO_FILL      100000
+#define SO_FILL      1000000
 
 
 

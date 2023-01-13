@@ -21,7 +21,6 @@ void malestormRoutine() {
     int i;
     Ship victimShip;
     int shipShmID;
-    int waitShipSemID;
     intList* shipsList;
     int a[SO_NAVI];
     int victim;
@@ -29,7 +28,6 @@ void malestormRoutine() {
     semShipID = useSem(SEMSHIPKEY, errorHandler, "childExpireShipCode");
     
     
-    waitShipSemID = useSem(WAITSHIPSSEM, errorHandler, "nave waitShipSemID");
     shipShmID = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler, "shipShmID in malestormRoutine");
     
     for(i=0; i<SO_NAVI; i++){
@@ -53,9 +51,7 @@ void malestormRoutine() {
             
 
             printf("PID VITTIMA %d\n", victimShip->pid);
-            /*
-            kill(victimShip->pid, SIGKILL);
-            */
+            
             mutexPro(semShipID, victim, LOCK, errorHandler, "semShipID LOCK");
         
             victimShip->dead = 1;
