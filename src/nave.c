@@ -29,7 +29,6 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
     printf("[%d]Nave tipi da caricare: \n", ship->shipID);
     intStampaLista(tipiDaCaricare);
 
-    checkTerminateValue(ship, terminateValue);
     
     printf("[%d]Nave, controllo se ha senso continuare-day: %d\n", ship->shipID,*day);
     if(tipiDaCaricare->length == 0){

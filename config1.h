@@ -21,7 +21,7 @@ TODO: CAPIRE QUANTO TEMPO CI METTE A FARE UNA OPERAZIONE DI CHARGE
 */
 
 #define SO_PORTI    4
-#define SO_NAVI     10
+#define SO_NAVI     30
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 

@@ -1,6 +1,30 @@
 💥💥💥💥💥💥💥💥
-ERROR: c = 6, sum = 6.828427, sum/c = 1.138071 error handler
-ERRNO: Operation timed out
-CTX: mediaTempoViaggioFraPorti
-HASH: 1628403466
+ERROR: msg get error handler
+ERRNO: No space left on device
+CTX: creaCodeNavi
+HASH: 383213949
+💥💥💥💥💥💥💥💥
+💥💥💥💥💥💥💥💥
+ERROR: msg get error handler
+ERRNO: No such file or directory
+CTX: communicate ports
+HASH: 1622650073
+💥💥💥💥💥💥💥💥
+💥💥💥💥💥💥💥💥
+ERROR: msg rcv error handler
+ERRNO: Invalid argument
+CTX: msg recv communicatePortsForCharge
+HASH: 984943658
+💥💥💥💥💥💥💥💥
+💥💥💥💥💥💥💥💥
+ERROR: msg get error handler
+ERRNO: No such file or directory
+CTX: RecvDischargerHandler->shipQueueID
+HASH: 139799678
+💥💥💥💥💥💥💥💥
+💥💥💥💥💥💥💥💥
+ERROR: msg snd error handler
+ERRNO: Invalid argument
+CTX: risposta negativa recvDischargerHandler
+HASH: 266078328
 💥💥💥💥💥💥💥💥

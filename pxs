@@ -1,892 +1,110 @@
   PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.06 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.01 nave 0
-10266 ttys000    0:00.01 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.01 nave 3
-10269 ttys000    0:00.01 nave 4
-10270 ttys000    0:00.01 nave 5
-10271 ttys000    0:00.01 nave 6
-10272 ttys000    0:00.01 nave 7
-10273 ttys000    0:00.01 nave 8
-10274 ttys000    0:00.01 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.01 porto 463 21469 2
-10281 ttys000    0:00.01 porto 348 32788 0
-10282 ttys000    0:00.01 porto 1477 20043 3
-10283 ttys000    0:00.01 porto 440 25700 1
-10285 ttys000    0:00.01 porto 463 21469 2
-10286 ttys000    0:00.01 porto 348 32788 0
-10287 ttys000    0:00.01 porto 1477 20043 3
-10288 ttys000    0:00.01 porto 440 25700 1
-  772 ttys001    0:00.02 /bin/zsh -il
-10769 ttys001    0:00.00 ./observer
-10770 ttys001    0:00.00 sh -c ps >> ./pxs
+  731 ttys000    0:00.05 /bin/zsh -il
+10298 ttys000    0:00.28 bin/master
+10299 ttys000    0:00.00 porto 341 31002 0
+10300 ttys000    0:00.00 porto 574 17968 1
+10301 ttys000    0:00.00 porto 820 20714 2
+10302 ttys000    0:00.00 porto 993 30316 3
+10334 ttys000    0:00.01 porto 574 17968 1
+10335 ttys000    0:00.01 porto 341 31002 0
+10336 ttys000    0:00.01 porto 993 30316 3
+10337 ttys000    0:00.01 porto 820 20714 2
+10339 ttys000    0:00.11 porto 574 17968 1
+10340 ttys000    0:00.12 porto 341 31002 0
+10341 ttys000    0:00.11 porto 993 30316 3
+10342 ttys000    0:00.11 porto 820 20714 2
+10345 ttys000    0:00.10 porto 574 17968 1
+10346 ttys000    0:00.10 porto 341 31002 0
+10347 ttys000    0:00.09 porto 993 30316 3
+10348 ttys000    0:00.09 porto 820 20714 2
+  740 ttys001    0:00.03 /bin/zsh -il
+14730 ttys001    0:00.00 ./observer
+14731 ttys001    0:00.00 sh -c ps >> ./pxs
   PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.06 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.01 nave 0
-10266 ttys000    0:00.01 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.01 nave 3
-10269 ttys000    0:00.01 nave 4
-10270 ttys000    0:00.01 nave 5
-10271 ttys000    0:00.01 nave 6
-10272 ttys000    0:00.01 nave 7
-10273 ttys000    0:00.01 nave 8
-10274 ttys000    0:00.01 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.01 porto 463 21469 2
-10281 ttys000    0:00.01 porto 348 32788 0
-10282 ttys000    0:00.01 porto 1477 20043 3
-10283 ttys000    0:00.01 porto 440 25700 1
-10285 ttys000    0:00.01 porto 463 21469 2
-10286 ttys000    0:00.01 porto 348 32788 0
-10287 ttys000    0:00.01 porto 1477 20043 3
-10288 ttys000    0:00.01 porto 440 25700 1
-  772 ttys001    0:00.02 /bin/zsh -il
-10769 ttys001    0:00.00 ./observer
-10772 ttys001    0:00.00 sh -c ps >> ./pxs
+  731 ttys000    0:00.05 /bin/zsh -il
+10298 ttys000    0:00.28 bin/master
+10299 ttys000    0:00.00 porto 341 31002 0
+10300 ttys000    0:00.00 porto 574 17968 1
+10301 ttys000    0:00.00 porto 820 20714 2
+10302 ttys000    0:00.00 porto 993 30316 3
+10334 ttys000    0:00.01 porto 574 17968 1
+10335 ttys000    0:00.01 porto 341 31002 0
+10336 ttys000    0:00.01 porto 993 30316 3
+10337 ttys000    0:00.01 porto 820 20714 2
+10339 ttys000    0:00.11 porto 574 17968 1
+10340 ttys000    0:00.12 porto 341 31002 0
+10341 ttys000    0:00.11 porto 993 30316 3
+10342 ttys000    0:00.11 porto 820 20714 2
+10345 ttys000    0:00.10 porto 574 17968 1
+10346 ttys000    0:00.10 porto 341 31002 0
+10347 ttys000    0:00.09 porto 993 30316 3
+10348 ttys000    0:00.09 porto 820 20714 2
+  740 ttys001    0:00.03 /bin/zsh -il
+14730 ttys001    0:00.00 ./observer
+14733 ttys001    0:00.00 sh -c ps >> ./pxs
   PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.06 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.01 nave 0
-10266 ttys000    0:00.01 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.01 nave 3
-10269 ttys000    0:00.01 nave 4
-10270 ttys000    0:00.01 nave 5
-10271 ttys000    0:00.01 nave 6
-10272 ttys000    0:00.01 nave 7
-10273 ttys000    0:00.01 nave 8
-10274 ttys000    0:00.01 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.01 porto 463 21469 2
-10281 ttys000    0:00.01 porto 348 32788 0
-10282 ttys000    0:00.01 porto 1477 20043 3
-10283 ttys000    0:00.01 porto 440 25700 1
-10285 ttys000    0:00.01 porto 463 21469 2
-10286 ttys000    0:00.01 porto 348 32788 0
-10287 ttys000    0:00.01 porto 1477 20043 3
-10288 ttys000    0:00.01 porto 440 25700 1
-  772 ttys001    0:00.02 /bin/zsh -il
-10769 ttys001    0:00.00 ./observer
-10774 ttys001    0:00.00 sh -c ps >> ./pxs
+  731 ttys000    0:00.05 /bin/zsh -il
+10298 ttys000    0:00.28 bin/master
+10299 ttys000    0:00.00 porto 341 31002 0
+10300 ttys000    0:00.00 porto 574 17968 1
+10301 ttys000    0:00.00 porto 820 20714 2
+10302 ttys000    0:00.00 porto 993 30316 3
+10334 ttys000    0:00.01 porto 574 17968 1
+10335 ttys000    0:00.01 porto 341 31002 0
+10336 ttys000    0:00.01 porto 993 30316 3
+10337 ttys000    0:00.01 porto 820 20714 2
+10339 ttys000    0:00.11 porto 574 17968 1
+10340 ttys000    0:00.12 porto 341 31002 0
+10341 ttys000    0:00.11 porto 993 30316 3
+10342 ttys000    0:00.11 porto 820 20714 2
+10345 ttys000    0:00.10 porto 574 17968 1
+10346 ttys000    0:00.10 porto 341 31002 0
+10347 ttys000    0:00.09 porto 993 30316 3
+10348 ttys000    0:00.09 porto 820 20714 2
+  740 ttys001    0:00.03 /bin/zsh -il
+14730 ttys001    0:00.00 ./observer
+14735 ttys001    0:00.00 sh -c ps >> ./pxs
   PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.06 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.01 nave 0
-10266 ttys000    0:00.01 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.01 nave 3
-10269 ttys000    0:00.01 nave 4
-10270 ttys000    0:00.01 nave 5
-10271 ttys000    0:00.01 nave 6
-10272 ttys000    0:00.01 nave 7
-10273 ttys000    0:00.01 nave 8
-10274 ttys000    0:00.01 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.01 porto 463 21469 2
-10281 ttys000    0:00.01 porto 348 32788 0
-10282 ttys000    0:00.01 porto 1477 20043 3
-10283 ttys000    0:00.01 porto 440 25700 1
-10285 ttys000    0:00.01 porto 463 21469 2
-10286 ttys000    0:00.01 porto 348 32788 0
-10287 ttys000    0:00.01 porto 1477 20043 3
-10288 ttys000    0:00.01 porto 440 25700 1
-10787 ttys000    0:00.00 bin/master
-10788 ttys000    0:00.00 bin/master
-10792 ttys000    0:00.00 bin/master
-10793 ttys000    0:00.00 bin/master
-10795 ttys000    0:00.00 (master)
-  772 ttys001    0:00.02 /bin/zsh -il
-10769 ttys001    0:00.00 ./observer
-10776 ttys001    0:00.00 sh -c ps >> ./pxs
+  731 ttys000    0:00.05 /bin/zsh -il
+10298 ttys000    0:00.28 bin/master
+10299 ttys000    0:00.00 porto 341 31002 0
+10300 ttys000    0:00.00 porto 574 17968 1
+10301 ttys000    0:00.00 porto 820 20714 2
+10302 ttys000    0:00.00 porto 993 30316 3
+10334 ttys000    0:00.01 porto 574 17968 1
+10335 ttys000    0:00.01 porto 341 31002 0
+10336 ttys000    0:00.01 porto 993 30316 3
+10337 ttys000    0:00.01 porto 820 20714 2
+10339 ttys000    0:00.11 porto 574 17968 1
+10340 ttys000    0:00.12 porto 341 31002 0
+10341 ttys000    0:00.11 porto 993 30316 3
+10342 ttys000    0:00.11 porto 820 20714 2
+10345 ttys000    0:00.10 porto 574 17968 1
+10346 ttys000    0:00.10 porto 341 31002 0
+10347 ttys000    0:00.09 porto 993 30316 3
+10348 ttys000    0:00.09 porto 820 20714 2
+  740 ttys001    0:00.03 /bin/zsh -il
+14730 ttys001    0:00.00 ./observer
+14737 ttys001    0:00.00 sh -c ps >> ./pxs
   PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.06 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.01 nave 0
-10266 ttys000    0:00.01 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.01 nave 3
-10269 ttys000    0:00.01 nave 4
-10270 ttys000    0:00.01 nave 5
-10271 ttys000    0:00.01 nave 6
-10272 ttys000    0:00.01 nave 7
-10273 ttys000    0:00.01 nave 8
-10274 ttys000    0:00.01 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.01 porto 463 21469 2
-10281 ttys000    0:00.01 porto 348 32788 0
-10282 ttys000    0:00.01 porto 1477 20043 3
-10283 ttys000    0:00.01 porto 440 25700 1
-10285 ttys000    0:00.01 porto 463 21469 2
-10286 ttys000    0:00.01 porto 348 32788 0
-10287 ttys000    0:00.01 porto 1477 20043 3
-10288 ttys000    0:00.01 porto 440 25700 1
-10787 ttys000    0:00.00 bin/master
-10788 ttys000    0:00.00 bin/master
-10792 ttys000    0:00.00 bin/master
-10793 ttys000    0:00.00 bin/master
-  772 ttys001    0:00.02 /bin/zsh -il
-10769 ttys001    0:00.00 ./observer
-10800 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.08 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.02 nave 0
-10266 ttys000    0:00.02 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.01 nave 3
-10269 ttys000    0:00.01 nave 4
-10270 ttys000    0:00.02 nave 5
-10271 ttys000    0:00.02 nave 6
-10272 ttys000    0:00.02 nave 7
-10273 ttys000    0:00.02 nave 8
-10274 ttys000    0:00.02 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.02 porto 463 21469 2
-10281 ttys000    0:00.02 porto 348 32788 0
-10282 ttys000    0:00.02 porto 1477 20043 3
-10283 ttys000    0:00.02 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.02 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-  772 ttys001    0:00.03 /bin/zsh -il
-11100 ttys001    0:00.00 ./observer
-11101 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.08 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.02 nave 0
-10266 ttys000    0:00.02 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.01 nave 3
-10269 ttys000    0:00.01 nave 4
-10270 ttys000    0:00.02 nave 5
-10271 ttys000    0:00.02 nave 6
-10272 ttys000    0:00.02 nave 7
-10273 ttys000    0:00.02 nave 8
-10274 ttys000    0:00.02 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.02 porto 463 21469 2
-10281 ttys000    0:00.02 porto 348 32788 0
-10282 ttys000    0:00.02 porto 1477 20043 3
-10283 ttys000    0:00.02 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.02 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-  772 ttys001    0:00.03 /bin/zsh -il
-11100 ttys001    0:00.00 ./observer
-11103 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.08 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.02 nave 0
-10266 ttys000    0:00.02 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.01 nave 3
-10269 ttys000    0:00.01 nave 4
-10270 ttys000    0:00.02 nave 5
-10271 ttys000    0:00.02 nave 6
-10272 ttys000    0:00.02 nave 7
-10273 ttys000    0:00.02 nave 8
-10274 ttys000    0:00.02 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.02 porto 463 21469 2
-10281 ttys000    0:00.02 porto 348 32788 0
-10282 ttys000    0:00.02 porto 1477 20043 3
-10283 ttys000    0:00.02 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.02 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-  772 ttys001    0:00.03 /bin/zsh -il
-11100 ttys001    0:00.00 ./observer
-11105 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.08 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.02 nave 0
-10266 ttys000    0:00.02 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.01 nave 3
-10269 ttys000    0:00.01 nave 4
-10270 ttys000    0:00.02 nave 5
-10271 ttys000    0:00.02 nave 6
-10272 ttys000    0:00.02 nave 7
-10273 ttys000    0:00.02 nave 8
-10274 ttys000    0:00.02 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.02 porto 463 21469 2
-10281 ttys000    0:00.02 porto 348 32788 0
-10282 ttys000    0:00.02 porto 1477 20043 3
-10283 ttys000    0:00.02 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.02 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-  772 ttys001    0:00.03 /bin/zsh -il
-11100 ttys001    0:00.00 ./observer
-11107 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.08 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.02 nave 0
-10266 ttys000    0:00.02 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.01 nave 3
-10269 ttys000    0:00.01 nave 4
-10270 ttys000    0:00.02 nave 5
-10271 ttys000    0:00.02 nave 6
-10272 ttys000    0:00.02 nave 7
-10273 ttys000    0:00.02 nave 8
-10274 ttys000    0:00.02 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.02 porto 463 21469 2
-10281 ttys000    0:00.02 porto 348 32788 0
-10282 ttys000    0:00.02 porto 1477 20043 3
-10283 ttys000    0:00.02 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.02 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-11116 ttys000    0:00.00 bin/master
-11117 ttys000    0:00.00 bin/master
-11118 ttys000    0:00.00 bin/master
-11119 ttys000    0:00.00 (master)
-11120 ttys000    0:00.00 bin/master
-11121 ttys000    0:00.00 bin/master
-11122 ttys000    0:00.00 bin/master
-11124 ttys000    0:00.00 (master)
-11125 ttys000    0:00.00 bin/master
-  772 ttys001    0:00.03 /bin/zsh -il
-11100 ttys001    0:00.00 ./observer
-11131 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.09 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.02 nave 0
-10266 ttys000    0:00.02 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.02 nave 3
-10269 ttys000    0:00.02 nave 4
-10270 ttys000    0:00.02 nave 5
-10271 ttys000    0:00.02 nave 6
-10272 ttys000    0:00.02 nave 7
-10273 ttys000    0:00.02 nave 8
-10274 ttys000    0:00.02 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.02 porto 463 21469 2
-10281 ttys000    0:00.02 porto 348 32788 0
-10282 ttys000    0:00.02 porto 1477 20043 3
-10283 ttys000    0:00.02 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.02 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-11275 ttys000    0:00.00 (master)
-  772 ttys001    0:00.03 /bin/zsh -il
-11308 ttys001    0:00.00 ./observer
-11309 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.09 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.02 nave 0
-10266 ttys000    0:00.02 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.02 nave 3
-10269 ttys000    0:00.02 nave 4
-10270 ttys000    0:00.02 nave 5
-10271 ttys000    0:00.02 nave 6
-10272 ttys000    0:00.02 nave 7
-10273 ttys000    0:00.02 nave 8
-10274 ttys000    0:00.02 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.02 porto 463 21469 2
-10281 ttys000    0:00.02 porto 348 32788 0
-10282 ttys000    0:00.02 porto 1477 20043 3
-10283 ttys000    0:00.02 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.02 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-11323 ttys000    0:00.00 bin/master
-11324 ttys000    0:00.00 bin/master
-11325 ttys000    0:00.00 (master)
-  772 ttys001    0:00.03 /bin/zsh -il
-11308 ttys001    0:00.00 ./observer
-11338 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.09 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.02 nave 0
-10266 ttys000    0:00.02 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.02 nave 3
-10269 ttys000    0:00.02 nave 4
-10270 ttys000    0:00.02 nave 5
-10271 ttys000    0:00.02 nave 6
-10272 ttys000    0:00.02 nave 7
-10273 ttys000    0:00.02 nave 8
-10274 ttys000    0:00.02 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.02 porto 463 21469 2
-10281 ttys000    0:00.02 porto 348 32788 0
-10282 ttys000    0:00.02 porto 1477 20043 3
-10283 ttys000    0:00.02 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.02 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-11323 ttys000    0:00.00 bin/master
-11324 ttys000    0:00.00 bin/master
-  772 ttys001    0:00.03 /bin/zsh -il
-11308 ttys001    0:00.00 ./observer
-11345 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.09 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.02 nave 0
-10266 ttys000    0:00.02 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.02 nave 3
-10269 ttys000    0:00.02 nave 4
-10270 ttys000    0:00.02 nave 5
-10271 ttys000    0:00.02 nave 6
-10272 ttys000    0:00.02 nave 7
-10273 ttys000    0:00.02 nave 8
-10274 ttys000    0:00.02 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.02 porto 463 21469 2
-10281 ttys000    0:00.02 porto 348 32788 0
-10282 ttys000    0:00.02 porto 1477 20043 3
-10283 ttys000    0:00.02 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.02 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-11323 ttys000    0:00.00 bin/master
-11324 ttys000    0:00.00 bin/master
-  772 ttys001    0:00.03 /bin/zsh -il
-11308 ttys001    0:00.00 ./observer
-11347 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.09 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.02 nave 0
-10266 ttys000    0:00.02 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.02 nave 3
-10269 ttys000    0:00.02 nave 4
-10270 ttys000    0:00.02 nave 5
-10271 ttys000    0:00.02 nave 6
-10272 ttys000    0:00.02 nave 7
-10273 ttys000    0:00.02 nave 8
-10274 ttys000    0:00.02 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.02 porto 463 21469 2
-10281 ttys000    0:00.02 porto 348 32788 0
-10282 ttys000    0:00.02 porto 1477 20043 3
-10283 ttys000    0:00.02 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.02 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-11323 ttys000    0:00.00 bin/master
-11324 ttys000    0:00.00 bin/master
-  772 ttys001    0:00.03 /bin/zsh -il
-11308 ttys001    0:00.00 ./observer
-11349 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.10 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.02 nave 0
-10266 ttys000    0:00.02 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.02 nave 3
-10269 ttys000    0:00.02 nave 4
-10270 ttys000    0:00.02 nave 5
-10271 ttys000    0:00.02 nave 6
-10272 ttys000    0:00.02 nave 7
-10273 ttys000    0:00.02 nave 8
-10274 ttys000    0:00.02 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.02 porto 463 21469 2
-10281 ttys000    0:00.02 porto 348 32788 0
-10282 ttys000    0:00.02 porto 1477 20043 3
-10283 ttys000    0:00.02 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.03 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-  772 ttys001    0:00.03 /bin/zsh -il
-11461 ttys001    0:00.00 ./observer
-11462 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.10 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.02 nave 0
-10266 ttys000    0:00.02 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.02 nave 3
-10269 ttys000    0:00.02 nave 4
-10270 ttys000    0:00.02 nave 5
-10271 ttys000    0:00.02 nave 6
-10272 ttys000    0:00.02 nave 7
-10273 ttys000    0:00.02 nave 8
-10274 ttys000    0:00.02 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.02 porto 463 21469 2
-10281 ttys000    0:00.02 porto 348 32788 0
-10282 ttys000    0:00.02 porto 1477 20043 3
-10283 ttys000    0:00.02 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.03 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-11471 ttys000    0:00.00 bin/master
-11472 ttys000    0:00.00 bin/master
-11473 ttys000    0:00.00 (master)
-11475 ttys000    0:00.00 bin/master
-11477 ttys000    0:00.00 bin/master
-11479 ttys000    0:00.00 bin/master
-11480 ttys000    0:00.00 bin/master
-  772 ttys001    0:00.03 /bin/zsh -il
-11461 ttys001    0:00.00 ./observer
-11486 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.10 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.02 nave 0
-10266 ttys000    0:00.02 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.02 nave 3
-10269 ttys000    0:00.02 nave 4
-10270 ttys000    0:00.02 nave 5
-10271 ttys000    0:00.02 nave 6
-10272 ttys000    0:00.02 nave 7
-10273 ttys000    0:00.02 nave 8
-10274 ttys000    0:00.02 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.02 porto 463 21469 2
-10281 ttys000    0:00.02 porto 348 32788 0
-10282 ttys000    0:00.02 porto 1477 20043 3
-10283 ttys000    0:00.02 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.03 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-11471 ttys000    0:00.00 bin/master
-11472 ttys000    0:00.00 bin/master
-11475 ttys000    0:00.00 bin/master
-11477 ttys000    0:00.00 bin/master
-11479 ttys000    0:00.00 bin/master
-11480 ttys000    0:00.00 bin/master
-  772 ttys001    0:00.03 /bin/zsh -il
-11461 ttys001    0:00.00 ./observer
-11493 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.10 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.02 nave 0
-10266 ttys000    0:00.02 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.02 nave 3
-10269 ttys000    0:00.02 nave 4
-10270 ttys000    0:00.02 nave 5
-10271 ttys000    0:00.02 nave 6
-10272 ttys000    0:00.02 nave 7
-10273 ttys000    0:00.02 nave 8
-10274 ttys000    0:00.02 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.02 porto 463 21469 2
-10281 ttys000    0:00.02 porto 348 32788 0
-10282 ttys000    0:00.02 porto 1477 20043 3
-10283 ttys000    0:00.02 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.03 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-11471 ttys000    0:00.00 bin/master
-11472 ttys000    0:00.00 bin/master
-11475 ttys000    0:00.00 bin/master
-11477 ttys000    0:00.00 (master)
-11479 ttys000    0:00.00 bin/master
-11480 ttys000    0:00.00 bin/master
-  772 ttys001    0:00.03 /bin/zsh -il
-11461 ttys001    0:00.00 ./observer
-11495 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.10 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.02 ./bin/meteo
-10265 ttys000    0:00.02 nave 0
-10266 ttys000    0:00.02 nave 1
-10267 ttys000    0:00.02 nave 2
-10268 ttys000    0:00.02 nave 3
-10269 ttys000    0:00.02 nave 4
-10270 ttys000    0:00.02 nave 5
-10271 ttys000    0:00.02 nave 6
-10272 ttys000    0:00.02 nave 7
-10273 ttys000    0:00.02 nave 8
-10274 ttys000    0:00.02 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.02 porto 463 21469 2
-10281 ttys000    0:00.02 porto 348 32788 0
-10282 ttys000    0:00.02 porto 1477 20043 3
-10283 ttys000    0:00.02 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.03 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-11471 ttys000    0:00.00 bin/master
-11472 ttys000    0:00.00 (master)
-11475 ttys000    0:00.00 bin/master
-11479 ttys000    0:00.00 bin/master
-11480 ttys000    0:00.00 bin/master
-  772 ttys001    0:00.03 /bin/zsh -il
-11461 ttys001    0:00.00 ./observer
-11502 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.12 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.03 ./bin/meteo
-10265 ttys000    0:00.03 nave 0
-10266 ttys000    0:00.03 nave 1
-10267 ttys000    0:00.03 nave 2
-10268 ttys000    0:00.02 nave 3
-10269 ttys000    0:00.02 nave 4
-10270 ttys000    0:00.03 nave 5
-10271 ttys000    0:00.03 nave 6
-10272 ttys000    0:00.03 nave 7
-10273 ttys000    0:00.03 nave 8
-10274 ttys000    0:00.03 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.03 porto 463 21469 2
-10281 ttys000    0:00.04 porto 348 32788 0
-10282 ttys000    0:00.03 porto 1477 20043 3
-10283 ttys000    0:00.03 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.03 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-11705 ttys000    0:00.00 bin/master
-11709 ttys000    0:00.00 bin/master
-11710 ttys000    0:00.00 bin/master
-  772 ttys001    0:00.04 /bin/zsh -il
-11734 ttys001    0:00.00 ./observer
-11735 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.12 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.03 ./bin/meteo
-10265 ttys000    0:00.03 nave 0
-10266 ttys000    0:00.03 nave 1
-10267 ttys000    0:00.03 nave 2
-10268 ttys000    0:00.02 nave 3
-10269 ttys000    0:00.02 nave 4
-10270 ttys000    0:00.03 nave 5
-10271 ttys000    0:00.03 nave 6
-10272 ttys000    0:00.03 nave 7
-10273 ttys000    0:00.03 nave 8
-10274 ttys000    0:00.03 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.03 porto 463 21469 2
-10281 ttys000    0:00.04 porto 348 32788 0
-10282 ttys000    0:00.03 porto 1477 20043 3
-10283 ttys000    0:00.03 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.03 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-11705 ttys000    0:00.00 bin/master
-11709 ttys000    0:00.00 bin/master
-11710 ttys000    0:00.00 bin/master
-  772 ttys001    0:00.04 /bin/zsh -il
-11734 ttys001    0:00.00 ./observer
-11737 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.12 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.03 ./bin/meteo
-10265 ttys000    0:00.03 nave 0
-10266 ttys000    0:00.03 nave 1
-10267 ttys000    0:00.03 nave 2
-10268 ttys000    0:00.02 nave 3
-10269 ttys000    0:00.02 nave 4
-10270 ttys000    0:00.03 nave 5
-10271 ttys000    0:00.03 nave 6
-10272 ttys000    0:00.03 nave 7
-10273 ttys000    0:00.03 nave 8
-10274 ttys000    0:00.03 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.03 porto 463 21469 2
-10281 ttys000    0:00.04 porto 348 32788 0
-10282 ttys000    0:00.03 porto 1477 20043 3
-10283 ttys000    0:00.03 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.03 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-11705 ttys000    0:00.00 bin/master
-11709 ttys000    0:00.00 bin/master
-11710 ttys000    0:00.00 bin/master
-  772 ttys001    0:00.04 /bin/zsh -il
-11734 ttys001    0:00.00 ./observer
-11740 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.12 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.03 ./bin/meteo
-10265 ttys000    0:00.03 nave 0
-10266 ttys000    0:00.03 nave 1
-10267 ttys000    0:00.03 nave 2
-10268 ttys000    0:00.02 nave 3
-10269 ttys000    0:00.02 nave 4
-10270 ttys000    0:00.03 nave 5
-10271 ttys000    0:00.03 nave 6
-10272 ttys000    0:00.03 nave 7
-10273 ttys000    0:00.03 nave 8
-10274 ttys000    0:00.03 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.03 porto 463 21469 2
-10281 ttys000    0:00.04 porto 348 32788 0
-10282 ttys000    0:00.03 porto 1477 20043 3
-10283 ttys000    0:00.03 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.03 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-11705 ttys000    0:00.00 bin/master
-11709 ttys000    0:00.00 bin/master
-11710 ttys000    0:00.00 bin/master
-  772 ttys001    0:00.04 /bin/zsh -il
-11734 ttys001    0:00.00 ./observer
-11745 ttys001    0:00.00 sh -c ps >> ./pxs
-  PID TTY           TIME CMD
-  758 ttys000    0:00.11 /bin/zsh -il
-10259 ttys000    0:00.12 bin/master
-10260 ttys000    0:00.00 porto 348 32788 0
-10261 ttys000    0:00.00 porto 440 25700 1
-10262 ttys000    0:00.00 porto 463 21469 2
-10263 ttys000    0:00.00 porto 1477 20043 3
-10264 ttys000    0:00.03 ./bin/meteo
-10265 ttys000    0:00.03 nave 0
-10266 ttys000    0:00.03 nave 1
-10267 ttys000    0:00.03 nave 2
-10268 ttys000    0:00.02 nave 3
-10269 ttys000    0:00.02 nave 4
-10270 ttys000    0:00.03 nave 5
-10271 ttys000    0:00.03 nave 6
-10272 ttys000    0:00.03 nave 7
-10273 ttys000    0:00.03 nave 8
-10274 ttys000    0:00.03 nave 9
-10275 ttys000    0:00.01 porto 348 32788 0
-10276 ttys000    0:00.01 porto 463 21469 2
-10277 ttys000    0:00.01 porto 1477 20043 3
-10278 ttys000    0:00.01 porto 440 25700 1
-10280 ttys000    0:00.03 porto 463 21469 2
-10281 ttys000    0:00.04 porto 348 32788 0
-10282 ttys000    0:00.03 porto 1477 20043 3
-10283 ttys000    0:00.03 porto 440 25700 1
-10285 ttys000    0:00.02 porto 463 21469 2
-10286 ttys000    0:00.03 porto 348 32788 0
-10287 ttys000    0:00.02 porto 1477 20043 3
-10288 ttys000    0:00.02 porto 440 25700 1
-11705 ttys000    0:00.00 bin/master
-11709 ttys000    0:00.00 bin/master
-11710 ttys000    0:00.00 bin/master
-  772 ttys001    0:00.04 /bin/zsh -il
-11734 ttys001    0:00.00 ./observer
-11747 ttys001    0:00.00 sh -c ps >> ./pxs
+  731 ttys000    0:00.05 /bin/zsh -il
+10298 ttys000    0:00.28 bin/master
+10299 ttys000    0:00.00 porto 341 31002 0
+10300 ttys000    0:00.00 porto 574 17968 1
+10301 ttys000    0:00.00 porto 820 20714 2
+10302 ttys000    0:00.00 porto 993 30316 3
+10334 ttys000    0:00.01 porto 574 17968 1
+10335 ttys000    0:00.01 porto 341 31002 0
+10336 ttys000    0:00.01 porto 993 30316 3
+10337 ttys000    0:00.01 porto 820 20714 2
+10339 ttys000    0:00.11 porto 574 17968 1
+10340 ttys000    0:00.12 porto 341 31002 0
+10341 ttys000    0:00.11 porto 993 30316 3
+10342 ttys000    0:00.11 porto 820 20714 2
+10345 ttys000    0:00.10 porto 574 17968 1
+10346 ttys000    0:00.10 porto 341 31002 0
+10347 ttys000    0:00.09 porto 993 30316 3
+10348 ttys000    0:00.09 porto 820 20714 2
+  740 ttys001    0:00.03 /bin/zsh -il
+14730 ttys001    0:00.00 ./observer
+14739 ttys001    0:00.00 sh -c ps >> ./pxs
