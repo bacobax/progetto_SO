@@ -1,0 +1,110 @@
+  PID TTY           TIME CMD
+  731 ttys000    0:00.05 /bin/zsh -il
+10298 ttys000    0:00.28 bin/master
+10299 ttys000    0:00.00 porto 341 31002 0
+10300 ttys000    0:00.00 porto 574 17968 1
+10301 ttys000    0:00.00 porto 820 20714 2
+10302 ttys000    0:00.00 porto 993 30316 3
+10334 ttys000    0:00.01 porto 574 17968 1
+10335 ttys000    0:00.01 porto 341 31002 0
+10336 ttys000    0:00.01 porto 993 30316 3
+10337 ttys000    0:00.01 porto 820 20714 2
+10339 ttys000    0:00.11 porto 574 17968 1
+10340 ttys000    0:00.12 porto 341 31002 0
+10341 ttys000    0:00.11 porto 993 30316 3
+10342 ttys000    0:00.11 porto 820 20714 2
+10345 ttys000    0:00.10 porto 574 17968 1
+10346 ttys000    0:00.10 porto 341 31002 0
+10347 ttys000    0:00.09 porto 993 30316 3
+10348 ttys000    0:00.09 porto 820 20714 2
+  740 ttys001    0:00.03 /bin/zsh -il
+14730 ttys001    0:00.00 ./observer
+14731 ttys001    0:00.00 sh -c ps >> ./pxs
+  PID TTY           TIME CMD
+  731 ttys000    0:00.05 /bin/zsh -il
+10298 ttys000    0:00.28 bin/master
+10299 ttys000    0:00.00 porto 341 31002 0
+10300 ttys000    0:00.00 porto 574 17968 1
+10301 ttys000    0:00.00 porto 820 20714 2
+10302 ttys000    0:00.00 porto 993 30316 3
+10334 ttys000    0:00.01 porto 574 17968 1
+10335 ttys000    0:00.01 porto 341 31002 0
+10336 ttys000    0:00.01 porto 993 30316 3
+10337 ttys000    0:00.01 porto 820 20714 2
+10339 ttys000    0:00.11 porto 574 17968 1
+10340 ttys000    0:00.12 porto 341 31002 0
+10341 ttys000    0:00.11 porto 993 30316 3
+10342 ttys000    0:00.11 porto 820 20714 2
+10345 ttys000    0:00.10 porto 574 17968 1
+10346 ttys000    0:00.10 porto 341 31002 0
+10347 ttys000    0:00.09 porto 993 30316 3
+10348 ttys000    0:00.09 porto 820 20714 2
+  740 ttys001    0:00.03 /bin/zsh -il
+14730 ttys001    0:00.00 ./observer
+14733 ttys001    0:00.00 sh -c ps >> ./pxs
+  PID TTY           TIME CMD
+  731 ttys000    0:00.05 /bin/zsh -il
+10298 ttys000    0:00.28 bin/master
+10299 ttys000    0:00.00 porto 341 31002 0
+10300 ttys000    0:00.00 porto 574 17968 1
+10301 ttys000    0:00.00 porto 820 20714 2
+10302 ttys000    0:00.00 porto 993 30316 3
+10334 ttys000    0:00.01 porto 574 17968 1
+10335 ttys000    0:00.01 porto 341 31002 0
+10336 ttys000    0:00.01 porto 993 30316 3
+10337 ttys000    0:00.01 porto 820 20714 2
+10339 ttys000    0:00.11 porto 574 17968 1
+10340 ttys000    0:00.12 porto 341 31002 0
+10341 ttys000    0:00.11 porto 993 30316 3
+10342 ttys000    0:00.11 porto 820 20714 2
+10345 ttys000    0:00.10 porto 574 17968 1
+10346 ttys000    0:00.10 porto 341 31002 0
+10347 ttys000    0:00.09 porto 993 30316 3
+10348 ttys000    0:00.09 porto 820 20714 2
+  740 ttys001    0:00.03 /bin/zsh -il
+14730 ttys001    0:00.00 ./observer
+14735 ttys001    0:00.00 sh -c ps >> ./pxs
+  PID TTY           TIME CMD
+  731 ttys000    0:00.05 /bin/zsh -il
+10298 ttys000    0:00.28 bin/master
+10299 ttys000    0:00.00 porto 341 31002 0
+10300 ttys000    0:00.00 porto 574 17968 1
+10301 ttys000    0:00.00 porto 820 20714 2
+10302 ttys000    0:00.00 porto 993 30316 3
+10334 ttys000    0:00.01 porto 574 17968 1
+10335 ttys000    0:00.01 porto 341 31002 0
+10336 ttys000    0:00.01 porto 993 30316 3
+10337 ttys000    0:00.01 porto 820 20714 2
+10339 ttys000    0:00.11 porto 574 17968 1
+10340 ttys000    0:00.12 porto 341 31002 0
+10341 ttys000    0:00.11 porto 993 30316 3
+10342 ttys000    0:00.11 porto 820 20714 2
+10345 ttys000    0:00.10 porto 574 17968 1
+10346 ttys000    0:00.10 porto 341 31002 0
+10347 ttys000    0:00.09 porto 993 30316 3
+10348 ttys000    0:00.09 porto 820 20714 2
+  740 ttys001    0:00.03 /bin/zsh -il
+14730 ttys001    0:00.00 ./observer
+14737 ttys001    0:00.00 sh -c ps >> ./pxs
+  PID TTY           TIME CMD
+  731 ttys000    0:00.05 /bin/zsh -il
+10298 ttys000    0:00.28 bin/master
+10299 ttys000    0:00.00 porto 341 31002 0
+10300 ttys000    0:00.00 porto 574 17968 1
+10301 ttys000    0:00.00 porto 820 20714 2
+10302 ttys000    0:00.00 porto 993 30316 3
+10334 ttys000    0:00.01 porto 574 17968 1
+10335 ttys000    0:00.01 porto 341 31002 0
+10336 ttys000    0:00.01 porto 993 30316 3
+10337 ttys000    0:00.01 porto 820 20714 2
+10339 ttys000    0:00.11 porto 574 17968 1
+10340 ttys000    0:00.12 porto 341 31002 0
+10341 ttys000    0:00.11 porto 993 30316 3
+10342 ttys000    0:00.11 porto 820 20714 2
+10345 ttys000    0:00.10 porto 574 17968 1
+10346 ttys000    0:00.10 porto 341 31002 0
+10347 ttys000    0:00.09 porto 993 30316 3
+10348 ttys000    0:00.09 porto 820 20714 2
+  740 ttys001    0:00.03 /bin/zsh -il
+14730 ttys001    0:00.00 ./observer
+14739 ttys001    0:00.00 sh -c ps >> ./pxs

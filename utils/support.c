@@ -192,27 +192,21 @@ int choose(int n, int k) {
 
 double mediaTempoViaggioFraPorti() {
     Port portArr;
-    int c;
+    long c;
     int i;
     int j;
-    int length;
-    length = choose(SO_PORTI, 2);
-    int coppieDiPorti[length][2];
-    double tempi[length];
+    char text[128];
     double sum = 0;
     c = 0;
     portArr = getPortsArray();
     for (i = 0; i < SO_PORTI-1; i++) {
         for (j = i + 1; j < SO_PORTI; j++) {
-            coppieDiPorti[c][0] = i;
-            coppieDiPorti[c][1] = j;
+                    sum += getTempoDiViaggio(portArr[i].x, portArr[i].y, portArr[j].x, portArr[j].y);
             c++;
         }
     }
-    for (i = 0; i < length; i++) {
-        sum += getTempoDiViaggio(portArr[coppieDiPorti[i][0]].x, portArr[coppieDiPorti[i][0]].y, portArr[coppieDiPorti[i][1]].x, portArr[coppieDiPorti[i][1]].y);
-    }
-
+    sprintf(text, "c = %ld, sum = %f, sum/c = %f", c, sum, sum / c);
+    throwError(text, "mediaTempoViaggioFraPorti");
     shmDetach(portArr, errorHandler, "mediaDistanzaFraPorti");
-    return sum / length;
+    return sum / c;
 }

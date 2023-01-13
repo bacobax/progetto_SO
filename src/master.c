@@ -85,15 +85,17 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     fprintf(meteoPipe, "%d\n", EOF);
     fflush(meteoPipe);
     printf("Master, faccio la pclose\n");
+    /*
+    pclose(meteoPipe);
+
+    */
+    printf("ENTRO\n");
+    if (!aliveShips) {
+    printf("SPACCO\n");
         
-    if (pclose(meteoPipe) == -1) {
-        throwError("meteoPipe close" ,"master");
-        exit(EXIT_FAILURE);
+        *day = *day - 1;
     }
-    
-    if(!aliveShips){
-        *day -= 1;
-    }
+    printf("CIAO\n");
     
 }
 

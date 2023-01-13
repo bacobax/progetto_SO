@@ -41,7 +41,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     int i;
     int j;
 
-
+    signal(SIGCHLD, SIG_IGN);
     portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler, "initPort");
 
     p = ((Port)getShmAddress(portShmId, 0, errorHandler, "initPort")) + pIndex;
@@ -131,22 +131,22 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
 
 
 
-void printPorto(void* p, int idx, FILE* stream) {
+void printPorto(Port p, int idx, FILE* stream) {
 
     int i;
     fprintf(stream, "[%d]Risorse porto %d:\n", getpid(),idx);
     fprintf(stream,"DOMANDE:\n");
     for (i = 0; i < SO_MERCI; i++) {
-        fprintf(stream,"%d, \n", ((Port)p)->requests[i]);
+        fprintf(stream,"%d, \n", p->requests[i]);
     }
 
-    printSupplies(((Port)p)->supplies, stream);
+    printSupplies(p->supplies, stream);
 
     fprintf(stream,"coords:\n");
-    fprintf(stream, "x: %f\n", ((Port)p)->x);
-    fprintf(stream,"y: %f\n", ((Port)p)->y);
+    fprintf(stream, "x: %f\n", p->x);
+    fprintf(stream,"y: %f\n",  p->y);
 
-    printf("______________________________________________\n");
+    fprintf(stream ,"______________________________________________\n");
 
 }
 
@@ -263,6 +263,7 @@ void refillerCode(int idx) {
         (indice del porto proprietario del refiller)
     */
     int refillerID;
+    signal(SIGCHLD, SIG_IGN);
     
     refillerID = useQueue(REFILLERQUEUE, errorHandler, "useQueue in refillerCode");
 
@@ -339,6 +340,7 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
 void dischargerCode(void (*recvHandler)(long, char*), int idx) {
     int requestPortQueueID;
     mex* res;
+    signal(SIGCHLD, SIG_IGN);
     
     requestPortQueueID = useQueue(PQUERECHKEY, errorHandler, "dischargerCode");
 
@@ -355,7 +357,8 @@ void dischargerCode(void (*recvHandler)(long, char*), int idx) {
             prendo il primo messaggio che arriva
         */
         res = msgRecv(requestPortQueueID, idx + 1, errorHandler, recvHandler, ASYNC, "dischargerCode");
-        
+        sleep(0.2);
+
          
     }
 }
@@ -363,6 +366,7 @@ void dischargerCode(void (*recvHandler)(long, char*), int idx) {
 void chargerCode(void (*recvHandler)(long, char*), int idx) {
     int requestPortQueueID;
     mex* res;
+    signal(SIGCHLD, SIG_IGN);
     
     requestPortQueueID = useQueue(PQUEREDCHKEY, errorHandler, "dischargerCode");
     clearSigMask();
@@ -378,7 +382,7 @@ void chargerCode(void (*recvHandler)(long, char*), int idx) {
             prendo il primo messaggio che arriva
         */
         res = msgRecv(requestPortQueueID, idx + 1, errorHandler, recvHandler, ASYNC,"chargerCode");
- 
+        sleep(0.2);
 
     }
 }
@@ -403,6 +407,7 @@ void launchDischarger(void (*recvHandler)(long, char*), int idx) {
 void launchCharger(void (*recvHandler)(long, char*), int idx) {
     int pid;
     pid = fork();
+    
     if (pid == -1) {
         throwError("Errore nel lanciare il charger","launchCharger");
         exit(1);

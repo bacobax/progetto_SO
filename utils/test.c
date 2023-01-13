@@ -66,10 +66,11 @@ int scegliPortoPerOffrire(int tipo, int quantita, Porto* porti) {
     return idx;
 
 }
+/*
 
 void test0() {
 
-    /* Porto 0 */
+    /* Porto 0 
     Porto p0;
     int mercip0[] = { 4, 3, 3 };
 
@@ -82,7 +83,7 @@ void test0() {
     p0.domanda = &domandap0;
     p0.offerta = &offertap0;
 
-    /* Porto 1 */
+    /* Porto 1 
     
     Porto p1;
 
@@ -97,7 +98,7 @@ void test0() {
     p1.domanda = &domandap1;
     p1.offerta = &offertap1;
 
-    /* Porto 2 */
+    /* Porto 2 
 
     Porto p2;
     int mercip2[] = { 7, 1,19 };
@@ -118,11 +119,11 @@ void test0() {
     //     {2,1, mercip1, {TIPO0,4}, {TIPO2,  4}},
     //     {3,4, mercip2, {TIPO0,7}, {TIPO2, 12}},
     //     {5,2, mercip3, {TIPO0,9}, {TIPO0,  5}},
-    // }; */
+    // }; 
     int idx = scegliPortoPerOffrire(TIPO0, 8, porti);
     printf("Il miglior porto è il porto %d\n", idx);
 
-}
+}*/
 
 int mapCriterio(int el, int idx) {
     return el * 2;
@@ -342,7 +343,7 @@ int main(int argc, char const* argv[])
     switch (s)
     {
     case 0:
-        test0();
+        
         break;
     case 1:
         test1();

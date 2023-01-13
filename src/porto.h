@@ -41,7 +41,7 @@ typedef struct port* Port;
 Port initPort(int supplyDisponibility, int requestDisponibility, int pIndex);
 
 
-void printPorto(void* p, int idx, FILE* stream);
+void printPorto(Port p, int idx, FILE* stream);
 
 void launchRefiller(int idx);
 /*

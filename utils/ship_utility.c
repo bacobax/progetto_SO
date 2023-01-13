@@ -239,8 +239,14 @@ int removeProduct(Ship ship, int product_index){
 }
 
 void exitNave(){
+    FILE* fp = fopen("./logs/exitShipLog.log", "a+");
     int waitShipSemID = useSem(WAITSHIPSSEM, errorHandler, "nave waitShipSemID");   
+    fprintf(fp,"[%d]Nave: faccio la lock\n", getpid());
+
     mutex(waitShipSemID, LOCK, errorHandler, "nave mutex LOCK waitShipSemID");
+    fprintf(fp,"[%d]Nave: uscita\n", getpid());
+
+    fclose(fp);
     exit(0);
 }
 
@@ -764,6 +770,7 @@ void waitToTravel(Ship ship){
     int waitToTravelSemID;
     waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler, "chargeProducts->waitToTravelSemID");
     mutexPro(waitToTravelSemID, ship->shipID, WAITZERO, errorHandler, "chargeProducts->waitToTravelSemID WAITZERO");
+    sleep(0.2);
     mutexPro(waitToTravelSemID, ship->shipID, SO_PORTI, errorHandler, "chargeProducts->waitToTravelSemID +SO_PORTI");
 }
 
@@ -774,7 +781,7 @@ void initPromisedProduct(Ship ship, PortOffer port_offer, int quantityToCharge){
     ship->promisedProduct.distributionDay = port_offer.distributionDay;
 }
 
-void checkTerminateValue(Ship ship, int* terminateValue){
+void checkTerminateValue(Ship ship, unsigned int* terminateValue){
  if (*terminateValue == 1){
         printf("Nave con id:%d il programma è terminato\n", ship->shipID);
         exitNave();
@@ -846,17 +853,13 @@ int deliverProduct(Ship ship, Port port, int product_index, Product p, int portI
                 }
 
                 if (quantoPossoScaricare >= p.weight) {
-                    if(!firstProd){
-
-                    }
+                    
                     addDeliveredGood(p.weight, p.product_type, portID);
                     printTransaction(ship->shipID, portID, 0, p.weight, p.product_type);
                     removeProduct(ship, product_index);
                             
                 }else {
-                    if(!firstProd){
-
-                    }
+                    
                     addDeliveredGood(quantoPossoScaricare, ship->products[product_index].product_type, portID);
                     printTransaction(ship->shipID, portID, 0, quantoPossoScaricare, ship->products[product_index].product_type);
                     
