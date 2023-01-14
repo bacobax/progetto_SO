@@ -7,16 +7,26 @@
 Dove n è < (SO_DAYs -1)/((T_V_M + T_C_M) * 2)
 n<36/((1.138 + 0.27)*2)
 
+SO_DAYS 37 SO_FILL 1000000 SO_CAPACITY 50
+
+50/50 non crasha
+80/80 non crasha
+
+100/100 CRASH
+90/90 CRASH
+80/100 CRASH
+85/85 CRASH
+
 */
 
-#define SO_PORTI    100
-#define SO_NAVI     150
+#define SO_PORTI    8
+#define SO_NAVI     80
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 
 #define SO_DAYS     37
-#define SO_MIN_VITA  20 /* tonn */
-#define SO_MAX_VITA  30/* tonn */
+#define SO_MIN_VITA  40 /* tonn */
+#define SO_MAX_VITA  40/* tonn */
 #define SO_FILL      1000000
 
 
@@ -24,8 +34,8 @@ n<36/((1.138 + 0.27)*2)
 /* ciao */
 #define SO_SPEED     10
 #define SO_LATO      10
-#define SO_CAPACITY  50
-#define SO_BANCHINE  10
+#define SO_CAPACITY  700
+#define SO_BANCHINE  20
 #define SO_LOADSPEED 50
 #define SO_MAELSTROM 12
 
