@@ -3,35 +3,21 @@
 #define CONFIG_1
 /*
 
-TODO: CAPIRE IN QUANTO TEMPO MEDIO UNA NAVE SI REFILLA COMPLETAMENTE 
 
-TODO: CAPIRE QUANTO TEMPO CI METTE A FARE UNA OPERAZIONE DI CHARGE
-
-30/30 CRASHA
-
-25/30 CRASHA
-
-24/30 FUNIONA
-
-23/30 FUNZIONA
-
-
-20/30 FUNZIONA
-La nave non può essere > n*lotto medio
 Dove n è < (SO_DAYs -1)/((T_V_M + T_C_M) * 2)
 n<36/((1.138 + 0.27)*2)
 
 */
 
-#define SO_PORTI    4
-#define SO_NAVI     30
+#define SO_PORTI    100
+#define SO_NAVI     150
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 
 #define SO_DAYS     37
 #define SO_MIN_VITA  20 /* tonn */
 #define SO_MAX_VITA  30/* tonn */
-#define SO_FILL      10000
+#define SO_FILL      1000000
 
 
 

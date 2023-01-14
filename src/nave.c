@@ -156,7 +156,7 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
 
             travel(ship, portID, day);
             accessPortForDischarge(ship, portID, product_index, quantoPossoScaricare);
-            dischargeProducts(ship, day, terminateValue);
+            
         }
     }
 }
@@ -197,11 +197,10 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     checkInConfig();
     printf("Nave con id:%d: config finita, aspetto ok partenza dal master...\n", ship->shipID);
     waitForStart();
+    ship->nChargesOptimal = (int)numeroDiCarichiOttimale();
     printf("Nave con id:%d partita\n", ship->shipID);
 
-   
-
-    while (1) {      
+       while (1) {      
         shipRoutine(ship, terminateValue, restTime, day);
     }
 }

@@ -195,7 +195,6 @@ double mediaTempoViaggioFraPorti() {
     long c;
     int i;
     int j;
-    char text[128];
     double sum = 0;
     c = 0;
     portArr = getPortsArray();
@@ -205,8 +204,6 @@ double mediaTempoViaggioFraPorti() {
             c++;
         }
     }
-    sprintf(text, "c = %ld, sum = %f, sum/c = %f", c, sum, sum / c);
-    throwError(text, "mediaTempoViaggioFraPorti");
     shmDetach(portArr, errorHandler, "mediaDistanzaFraPorti");
     return sum / c;
 }
@@ -217,10 +214,19 @@ double numeroDiCarichiOttimale() {
     double tempoDiScaricoMedio;
     double tempoDiViaggioEffettivo;
     double res;
+    char text[128];
     tempoDiViaggioMedio = mediaTempoViaggioFraPorti();
     probabilitaDiCambiarePorto =(double)(SO_PORTI - 1) / SO_PORTI;
     tempoDiViaggioEffettivo = (double)probabilitaDiCambiarePorto * tempoDiViaggioMedio;
     tempoDiScaricoMedio = ((double)SO_FILL / SO_LOADSPEED) / (SO_PORTI * SO_DAYS * SO_MERCI);
+    /*
+        k = tempoDiViaggioMedio + tempoDiScaricoMedio ~= tempo di una charge/dscharge
+        n*k< SO_DAYS-1 - n*k <==> 2nk < SO_DAYS - 1 <==> n < (SO_DAYS - 1)/k*2 <==> n < (SO_DAYS - 1)/((tempoDiViaggioMedio + tempoDiScaricoMedio)*2) 
+    
+    */
     res = (double)(SO_DAYS - 1) / ((tempoDiViaggioEffettivo + tempoDiScaricoMedio) * 2);
+    sprintf(text, "numero di carichi ottimali: %d\n", (int)res);
+    throwError(text, "numeroDiCarichiOttimale");
+
     return res;
 }

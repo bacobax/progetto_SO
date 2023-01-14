@@ -78,3 +78,8 @@
   79537 pts/3    00:00:00 observer
   79540 pts/3    00:00:00 sh
   79541 pts/3    00:00:00 ps
+    PID TTY          TIME CMD
+  27246 pts/0    00:00:00 bash
+  53694 pts/0    00:00:00 observer
+  53695 pts/0    00:00:00 sh
+  53696 pts/0    00:00:00 ps

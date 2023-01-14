@@ -4,8 +4,9 @@
 #include <unistd.h>
 int main(int argc, char const* argv[]) {
     for (int i = 0; i < atoi(argv[1]); i++) {
-        system("ps >> ./pxs");
+        system("ps aux>> ./pxs");
 
         sleep(0.2);
+
     }
 }
