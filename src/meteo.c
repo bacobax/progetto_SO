@@ -114,14 +114,12 @@ void launchStorm() {
 }
 
 void swellRoutine(){
-    int shmPortID;
     Port port;
     int victimIdx;
     victimIdx = random_int(0, SO_PORTI - 1);
-    shmPortID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler, "meteo swellRoutine");
-    port = ((Port)getShmAddress(shmPortID, 0, errorHandler, "getShmAddress meteo stormRoutine")) + victimIdx;
+    port =getPort(victimIdx);
     port->swell = 1;
-    shmDetach(port - victimIdx, errorHandler, "swellRoutine");
+    shmDetach(port, errorHandler, "swellRoutine");
 }
 
 void launchSwell(){

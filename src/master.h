@@ -39,5 +39,5 @@ void expireShipGoods();
 
 int countAliveShips();
 
-void resetWeatherTargets(Port ports, Ship ships);
+void resetWeatherTargets( Ship ships);
 #endif

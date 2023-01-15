@@ -155,15 +155,14 @@ void addDeliveredGood(int quantity, int type, int portIdx){
     int shmid;
     int semid;
     int portShmId;
-    Port portArr;
+    Port port;
     FILE* fp;
     DumpArea* dump;
     
     shmid = useShm(DUMPSHMKEY, sizeof(DumpArea), errorHandler, "addDeliveredGood");
     semid = useSem(DUMPSEMKEY, errorHandler, "addDeliveredGood");
-    portShmId = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler, "portShmid addDeliveredGood");
 
-    portArr = ((Port)getShmAddress(portShmId,0,errorHandler,"addDeliveredGood portArr"));
+    port = getPort(portIdx);
 
     dump = ((DumpArea*)getShmAddress(shmid, 0, errorHandler, "addDeliveredGood"));
     mutexPro(semid, type, LOCK, errorHandler, "addDeliveredGood LOCK");
@@ -171,11 +170,11 @@ void addDeliveredGood(int quantity, int type, int portIdx){
     dump->types[type].delivered_goods += quantity;
     dump->types[type].goods_on_ship -= quantity;
     
-    portArr[portIdx].deliveredGoods += quantity;
+    port->deliveredGoods += quantity;
     
     mutexPro(semid, type, UNLOCK, errorHandler, "addDeliveredGood LOCK");
     shmDetach(dump,errorHandler, "dump addDeliveredGood");
-    shmDetach(portArr,errorHandler, "portArr addDeliveredGood");
+    shmDetach(port,errorHandler, "portArr addDeliveredGood");
 }
 
 
@@ -214,15 +213,12 @@ void printerCode(int day, int last) {
     int expiredGoodsOnPorts;
     int expiredGoodsOnShips;
     DumpArea *dump;
-    Port portArr;
     Supplies s;
 
    
     logFileSemID = useSem(LOGFILESEMKEY, errorHandler, "printerCode");
     shmid = useShm(DUMPSHMKEY,sizeof(DumpArea), errorHandler , "printerCode->useShm del dump");
-    portShmid = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler , "printerCode->useShm dei porti");
     dump = (DumpArea*)getShmAddress(shmid, 0, errorHandler ,"printerCode->dump");
-    portArr = (Port)getShmAddress(portShmid, 0, errorHandler, "printerCode->portArr");
     
     waitToRemoveDumpKey = useSem(WAITRMVDUMPKEY, errorHandler, "waitToRemoveDumpKey in printerCode");
     
@@ -270,7 +266,7 @@ void printerCode(int day, int last) {
 
     printStatoNavi(fp);
 
-    printStatoPorti(fp, portArr);
+    printStatoPorti(fp);
     
 
     /*
@@ -312,7 +308,6 @@ void printerCode(int day, int last) {
     unlockAllGoodsDump();
     fclose(fp);
     shmDetach(dump, errorHandler , "printerCode dump");
-    shmDetach(portArr, errorHandler , "printerCode portArr");
     mutex(logFileSemID, UNLOCK, errorHandler , "printerCode UNLOCK");
     
     if(last){

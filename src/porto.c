@@ -32,7 +32,6 @@ void recvDischargeHandler(long type, char *text)
     int sonostatoScelto;
     int idx;
     int idNaveMittente;
-    int portShmId;
     int myQueueID;
     int shipQueueID;
     int controlPortsDisponibilitySemID;
@@ -41,7 +40,6 @@ void recvDischargeHandler(long type, char *text)
     int keyMiaCoda;
     int keyCodaNave;
     int waitResponsesID;
-    Port arrPorts;
     Port porto;
    
     /*waitResponsesID = useSem(WAITFIRSTRESPONSES, errorHandler, "recvDischargerHandler->waitResponsesID useSem");*/
@@ -52,10 +50,7 @@ void recvDischargeHandler(long type, char *text)
 
     printf("PORTO %d, ricevuta richiesta di caricare %d quantità merce dalla nave %d\n", idx, quantity, idNaveMittente);
 
-    portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler, "RecvDischargerHandler");
-
-    arrPorts = ((Port)getShmAddress(portShmId, 0, errorHandler, "RecvDischargerHandler"));
-    porto = arrPorts + idx;
+    porto = getPort(idx);
 
     keyMiaCoda = ftok("./src/porto.c", idx);
     keyCodaNave = ftok("./src/nave.c", idNaveMittente);
@@ -75,7 +70,7 @@ void recvDischargeHandler(long type, char *text)
 
     /* Operazione controllata da semaforo, per permettere di controllare le disponibilità per una richiesta solo quando non lo si sta già facendo per un altra*/
     mutexPro(controlPortsDisponibilitySemID, idx, LOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID LOCK");
-    res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantity, arrPorts, idx);
+    res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantity, idx);
     mutexPro(controlPortsDisponibilitySemID, idx, UNLOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID UNLOCK");
     printf("|Port %d: \n|\tTIPO TROVATO: %d \n|\tEXP TIME TROVATA:%d\n\tPER NAVE: %d\n", idx, tipoTrovato, dataScadenzaTrovata, idNaveMittente);
 
@@ -106,7 +101,7 @@ void recvDischargeHandler(long type, char *text)
 
     mutexPro(waitToTravelSemID, idNaveMittente, LOCK, NULL, "RecvDischargerHandler->waitToTravelSemID LOCK");
     
-    shmDetach(arrPorts, errorHandler, "recvDischargerHandler");
+    shmDetach(porto, errorHandler, "recvDischargerHandler");
     return;
 }
 
@@ -132,11 +127,7 @@ void recvChargerHandler(long type, char *text)
 
     printf("PORTO %d, ricevuta richiesta di scaricare %d merce di tipo %d dalla nave %d\n", idx, quantity, tipoMerceRichiesto, idNaveMittente);
 
-    portShmId = useShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler, "recvChargerHandler");
-
-    porto = ((Port)getShmAddress(portShmId, 0, errorHandler, "recvChargerHandler")) + idx;
-
-    
+    porto = getPort(idx);
 
     shipQueueID = useQueue(ftok("./src/nave.c", idNaveMittente), errorHandler, "recvChargerHandler->shipQueueID");
 
@@ -175,7 +166,7 @@ void recvChargerHandler(long type, char *text)
         printf("Porto %d: sono stato scelto\n", idx);
     }
     mutexPro(waitToTravelSemID, idNaveMittente, LOCK, errorHandler, "recvChargerHandler->waitToTravelSemID LOCK");
-    shmDetach(porto - idx, errorHandler, "recvChargerHandler");
+    shmDetach(porto, errorHandler, "recvChargerHandler");
     return;
 }
 
@@ -183,11 +174,11 @@ void codicePorto(int endShmId, int idx, int aspettoMortePortiSemID,int aspettoMo
 {
     int* endNow;
     endNow =(int*)getShmAddress(endShmId, 0, errorHandler, "codicePorto");
-
-    waitForStart();
-  
     launchDischarger(recvDischargeHandler, idx);
     launchCharger(recvChargerHandler, idx);
+    waitForStart();
+  
+    
 
     /* START */
     while(1){

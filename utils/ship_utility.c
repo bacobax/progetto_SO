@@ -252,7 +252,7 @@ void exitNave(Ship s){
 int chooseQuantityToCharge(Ship ship){
     intList *tipiDaCaricare;
     int shmPort;
-    Port portArr;
+    Port port;
     int i;
     int j;
     int k;
@@ -262,20 +262,19 @@ int chooseQuantityToCharge(Ship ship){
     tipiDaCaricare = haSensoContinuare();
     printf("CHOOSE QUANTITY\n");
     max = 0;
-    shmPort = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler, "chooseQuantityToCharge->useShm");
-    portArr =  (Port)getShmAddress(shmPort, 0, errorHandler, "chooseQuantityToCharge->getShmAddress");
     
     for(i=0; i<SO_PORTI; i++){
-        
-        for(j=0; j<SO_DAYS; j++){
+        port = getPort(i);
+        for (j = 0; j < SO_DAYS; j++)
+        {
             for(k=0; k<SO_MERCI; k++){
-                if(portArr[i].supplies.magazine[j][k] > max && contain(getAllOtherTypeRequests(portArr, i), k) && portArr[i].requests[k]==0){
-                    max = portArr[i].supplies.magazine[j][k];
+                if(port->supplies.magazine[j][k] > max && contain(getAllOtherTypeRequests(i), k) && port->requests[k]==0){
+                    max = port->supplies.magazine[j][k];
                 }
             }
         }
+        shmDetach(port, errorHandler, "port detach chooseQuantityToCharge");
     }
-    shmDetach(portArr, errorHandler, "chooseQuantityToCharge->shmDetach");
     
     intFreeList(tipiDaCaricare);
 
@@ -491,8 +490,7 @@ void accessPortForCharge(Ship ship, int portID){
     printf("[%d]Nave: sono attracata alla banchina del porto per aggiungere la merce\n", ship->shipID);
     if(ship->promisedProduct.expirationTime != 0){
                 
-        port = getPortsArray();
-        port = port + portID;
+        port = getPort(portID);
        
         nanosecsleep((p.weight / SO_LOADSPEED)*NANOS_MULT);
 
@@ -506,7 +504,7 @@ void accessPortForCharge(Ship ship, int portID){
         addProduct(ship, p, port);
         printTransaction(ship->shipID, portID, 1, p.weight, p.product_type);
         
-        shmDetach(port - portID, errorHandler, "shmDetach Porto");
+        shmDetach(port, errorHandler, "shmDetach Porto");
         
     }
     else {
@@ -548,8 +546,7 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
 
     ship->inSea = 0;
 
-    port = getPortsArray();
-    port = port + portID;
+    port = getPort(portID);
     
     mutexPro(pierSemID, portID, LOCK, errorHandler, "accessPortForDisCharge->pierSemID LOCK");
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler,  "accessPortForDisCharge->shipSemid LOCK");
@@ -566,7 +563,7 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
 
     }
     
-    shmDetach(port-portID, errorHandler, "accessPortDischarge shmDetach");
+    shmDetach(port, errorHandler, "accessPortDischarge shmDetach");
 
     mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler, "accessPortForCharge->shipSemID UNLOCK");
     ship->inSea = 1;
@@ -586,8 +583,7 @@ void travel(Ship ship, int portID, int* day)
 
     portBufferSem = useSem(RESPORTSBUFFERS, errorHandler , "refill->useSem portBufferSem");
 
-    p = getPortsArray();  /* prelevo la struttura del porto alla portID-esima posizione nella shm*/ 
-    p = p + portID;
+    p = getPort(portID);  /* prelevo la struttura del porto alla portID-esima posizione nella shm*/ 
 
     /* imposto la formula per il calcolo della distanza */
 
@@ -653,7 +649,7 @@ void travel(Ship ship, int portID, int* day)
    
     ship->x = p->x;
     ship->y = p->y;
-    shmDetach(p - portID, errorHandler, "travel");
+    shmDetach(p, errorHandler, "travel");
 
 }
 

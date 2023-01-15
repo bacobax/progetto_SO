@@ -50,7 +50,7 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
     initArrayOffers(port_offers);
     
 
-    if (quantityToCharge == 0 || ship->nChargesOptimal == 0) {
+    if (quantityToCharge == 0) {
         dischargeProducts(ship, day, terminateValue);
     }
     else {

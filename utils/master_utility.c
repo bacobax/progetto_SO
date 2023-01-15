@@ -181,6 +181,25 @@ void distruggiCodeNavi() {
     }
 }
 
+void creaShmPorti(){
+    int shmid;
+    int i;
+    for(i=0; i<SO_PORTI; i++){
+        shmid = createShm(ftok("./utils/port_utility.c", i), sizeof(struct port), errorHandler, "creaShmPorti");
+    }
+    return;
+}
+
+void distruggiShmPorti(){
+    int shmid;
+    int i;
+    for(i=0; i<SO_PORTI; i++){
+        shmid = useShm(ftok("./utils/port_utility.c", i), sizeof(struct port), errorHandler, "distruggiShmPorti");
+        removeShm(shmid , errorHandler, "distruggiShmPorti");
+    }
+    return;
+}
+
 void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID, int* day, int waitEndDayShipsSemID)) {
     int startSimulationSemID;
     int reservePrintSem;
@@ -238,8 +257,13 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     
     createDumpArea();
-    portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler , "creazione shm dei porti");
-    shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler ,"creazione shm delle navi");
+    /*
+        !deprecated
+        portsShmid = createShm(PSHMKEY, SO_PORTI * sizeof(struct port), errorHandler , "creazione shm dei porti");
+    
+    */
+    creaShmPorti();
+    shipsShmid = createShm(SSHMKEY, SO_NAVI * sizeof(struct ship), errorHandler, "creazione shm delle navi");
     endShmID = createShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "crazione shm intero terminazione programma");
     terminateValue = (unsigned int*)getShmAddress(endShmID, 0, errorHandler, "master getShmAddress endShm");
 
@@ -328,7 +352,11 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     printf("master tutti i sem sono stati rimoessi\n");
 
     removeShm(shipsShmid, errorHandler, "shipsShmid");
+    distruggiShmPorti();
+    /*
     removeShm(portsShmid, errorHandler, "portsShmid");
+
+    */
     shmDetach(terminateValue, errorHandler, "master terminateValue detach");
     shmDetach(day, errorHandler, "master day detach");
     removeShm(endShmID, errorHandler, "endShmID");
@@ -443,12 +471,10 @@ void childExpireShipCode(Ship ship){
 }
 
 void expirePortsGoods(int day) {
-    int portShmID;
     int i;
-    Port ports;
+    Port port;
     int pid;
-    portShmID = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler, "expirePortsGoods");
-    ports = getShmAddress(portShmID, 0, errorHandler, "expirePortsGoods");
+    
     for (i = 0; i < SO_PORTI; i++) {
         pid = fork();
         if (pid == -1) {
@@ -456,11 +482,12 @@ void expirePortsGoods(int day) {
             exit(EXIT_FAILURE);
         }
         if (pid == 0) {
-            childExpirePortCode(ports + i, day, i);
+            port = getPort(i);
+            childExpirePortCode(port, day, i);
+            shmDetach(port, errorHandler, "expirePortsGoods");
             exit(EXIT_SUCCESS);
         }
     }
-    shmDetach(ports,errorHandler, "expirePortsGoods");
 }
 
 void expireShipGoods(){
@@ -499,18 +526,23 @@ int countAliveShips(){
     return getOneValue(waitShipSemID, 0);
 }
 
-void resetWeatherTargets(Port arrPort, Ship arrShip){
+void resetWeatherTargets(Ship arrShip){
     int i;
-    for(i = 0; i< SO_NAVI; i++){
+    Port p;
+    for (i = 0; i < SO_NAVI; i++)
+    {
         if(arrShip[i].weatherTarget == 1) {
             arrShip[i].weatherTarget = 0;
         }
     }
 
     for(i = 0; i< SO_PORTI; i++){
-        if(arrPort[i].weatherTarget == 1){
-            arrPort[i].weatherTarget = 0;
+        p = getPort(i);
+        if (p->weatherTarget == 1)
+        {
+            p->weatherTarget = 0;
         }
+        shmDetach(p, errorHandler, "resetWeatherTargets");
     }
 }
 

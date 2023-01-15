@@ -21,7 +21,7 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     FILE* meteoPipe;
     char pypeDay[128];
     int aliveShips=SO_NAVI;
-    Port ports;
+    int c;
     Ship ships;
     /*
     quantitaAlGiorno rappresenta la divisione di SO_FILL per SO_DAYS, solo che può darsi che SO_FILL non sia divisbile per SO_DAYS,
@@ -46,11 +46,13 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     aspettaConfigs(waitconfigSemID);
 
    
-    ports = (Port)getShmAddress(portsShmid, 0, errorHandler, "master");
     ships = (Ship)getShmAddress(shipsShmid, 0, errorHandler, "master");
 
-    mutex(startSimulationSemID, LOCK, errorHandler,  "mesterCode -> startSimulationSemID LOCK");
+    printf("PID MASTER: %d, press any number to continue\n", getpid());
+    scanf("%d", &c);
 
+    mutex(startSimulationSemID, LOCK, errorHandler,  "mesterCode -> startSimulationSemID LOCK");
+    
 
     printf("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅\n");
 
@@ -74,13 +76,12 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
             
             }
              nanosecsleep(NANOS_MULT);
-             resetWeatherTargets(ports, ships);
+             resetWeatherTargets(ships);
         }
         else {
             printf("Terminazione simulazione per navi morte\n");
         }
     }
-    shmDetach(ports, errorHandler, "master");
     shmDetach(ships, errorHandler, "master");
 
     fprintf(meteoPipe, "%d\n", EOF);

@@ -66,20 +66,20 @@ int checkRequests(Port p, int type, int quantity);
 int allRequestsZero();
 intList *haSensoContinuare();
 
-intList *getAllOtherTypeRequests(Port portArr, int idx);
+intList *getAllOtherTypeRequests(int idx);
 
 intList* getAllTypeSupplies(Port portArr);
 intList* tipiDiMerceOfferti(Port p);
 intList* tipiDiMerceRichiesti(Port p);
-double getValue(int quantity, int scadenza, int tipo, Port arrPorts, int idx);
+double getValue(int quantity, int scadenza, int tipo, int idx);
 
 /*
     algoritmo che trova la migliore coppia di coordinate della matrice (tipo merce, giorno di distribuzione della merce) che corrisponde
     alla migliore quantità disponibile da offrire di fronte alla richiesta di merce pari a {{quantity}}
 */
-int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, int quantity, Port arrPorts, int idx);
+int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, int quantity, int idx);
 
-void printStatoPorti(FILE *fp, Port portArr);
+void printStatoPorti(FILE *fp);
 void restorePromisedGoods(Port porto, int dayTrovato, int tipoTrovato, int quantity, int myPortIdx);
 
 #endif

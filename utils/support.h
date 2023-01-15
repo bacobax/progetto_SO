@@ -34,7 +34,7 @@ void checkInConfig();
 
 void clearSigMask();
 
-Port getPortsArray();
+Port getPort(int portID);
 
 int getPortQueueRequest(int key);
 

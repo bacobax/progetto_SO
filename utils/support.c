@@ -131,12 +131,12 @@ double generateCord()
     return (rand() / div);
 }
 
-Port getPortsArray(){
+Port getPort(int portID){
    int portShmid;
-   Port portArr;
-   portShmid = useShm(PSHMKEY, sizeof(struct port) * SO_PORTI, errorHandler,"get ports array");
-   portArr = getShmAddress(portShmid,0,errorHandler,"get ports array"); 
-   return portArr;
+   Port port;
+   portShmid = useShm(ftok("./utils/port_utility.c", portID), sizeof(struct port), errorHandler,"get port array");
+   port = (Port) getShmAddress(portShmid,0,errorHandler,"get port array"); 
+   return port;
 }
 
 
@@ -191,20 +191,23 @@ int choose(int n, int k) {
 }
 
 double mediaTempoViaggioFraPorti() {
-    Port portArr;
     long c;
     int i;
     int j;
     double sum = 0;
+    Port p1;
+    Port p2;
     c = 0;
-    portArr = getPortsArray();
     for (i = 0; i < SO_PORTI-1; i++) {
         for (j = i + 1; j < SO_PORTI; j++) {
-                    sum += getTempoDiViaggio(portArr[i].x, portArr[i].y, portArr[j].x, portArr[j].y);
+            p1 = getPort(i);
+            p2 = getPort(j);
+            sum += getTempoDiViaggio(p1->x, p1->y, p2->x, p2->y);
+            shmDetach(p1,errorHandler,"mediaTempoViaggioFraPorti p1");
+            shmDetach(p2, errorHandler, "mediaTempoVIaggioFraPorti p2");
             c++;
         }
     }
-    shmDetach(portArr, errorHandler, "mediaDistanzaFraPorti");
     return sum / c;
 }
 
