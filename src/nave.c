@@ -51,7 +51,6 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
     
 
     if (quantityToCharge == 0 || ship->nChargesOptimal == 0) {
-        ship->nChargesOptimal = (int)(numeroDiCarichiOttimale());
         dischargeProducts(ship, day, terminateValue);
     }
     else {
@@ -85,7 +84,7 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
             travel(ship, portID, day);
             
             accessPortForCharge(ship, portID);
-            ship->nChargesOptimal -= 1;
+           
         }
     }
     

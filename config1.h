@@ -19,22 +19,22 @@ SO_DAYS 37 SO_FILL 1000000 SO_CAPACITY 50
 
 */
 
-#define SO_PORTI    8
-#define SO_NAVI     80
+#define SO_PORTI    30
+#define SO_NAVI     8
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 
 #define SO_DAYS     37
 #define SO_MIN_VITA  40 /* tonn */
 #define SO_MAX_VITA  40/* tonn */
-#define SO_FILL      1000000
+#define SO_FILL      100000
 
 
 
 /* ciao */
 #define SO_SPEED     10
 #define SO_LATO      10
-#define SO_CAPACITY  700
+#define SO_CAPACITY  50
 #define SO_BANCHINE  20
 #define SO_LOADSPEED 50
 #define SO_MAELSTROM 12
