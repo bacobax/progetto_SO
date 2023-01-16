@@ -124,7 +124,6 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
 
 
         */
-        mutexPro(shipSem , ship->shipID, LOCK, errorHandler , "dischargeP");
 
         product_index = chooseProductToDelivery(ship);
         printf("[%d]Nave ho scelto per scaricare: %d", ship->shipID,product_index);
@@ -133,7 +132,6 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
 
         portID = communicatePortsForDischargeV1(ship, prod, &quantoPossoScaricare, portResponses);
 
-        //TODO: SONO ARRIVATO QUI
         
         if (portID == -1) {
 
@@ -146,13 +144,13 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
         
         } else {
             
-            mutexPro(shipSem , ship->shipID, UNLOCK, errorHandler , "dischargeP");
 
 
             /* 3) Una volta arrivato al porto accedo alla prima banchina disponibile e rimuovo la merce che intendo
             consegnare dal carico della nave */
             
             replyToPortsForDischargeV1(ship, portID, quantoPossoScaricare, portResponses, prod);
+            //TODO: SONO ARRIVATO QUI
 
             travel(ship, portID, day);
             accessPortForDischargeV1(ship, portID, product_index, quantoPossoScaricare);
