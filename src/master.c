@@ -23,6 +23,9 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     int aliveShips=SO_NAVI;
     int c;
     Ship ships;
+    FILE* fp;
+    fclose(fopen("./logs/masterlog.log" , "w"));
+    fp = fopen("./logs/masterlog.log" , "a+");
     /*
     quantitaAlGiorno rappresenta la divisione di SO_FILL per SO_DAYS, solo che può darsi che SO_FILL non sia divisbile per SO_DAYS,
     la soluzione che ho pensato è che per tutti i giorni diversi dal primo si tiene in considerazione soltanto la parte intera della divisione
@@ -33,7 +36,7 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     resto = SO_FILL % SO_DAYS;
     quantitaPrimoGiorno = quantitaAlGiorno + (resto);
 
-    printf("Quantità primo giorno: %d\n" , quantitaPrimoGiorno);
+    fprintf(fp,"Quantità primo giorno: %d\n" , quantitaPrimoGiorno);
     
     /*  per ora ho usato solo startSimulationSemID */
     genera_porti(quantitaPrimoGiorno, SO_PORTI); /* da tradurre in inglese */
@@ -42,7 +45,7 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     meteoPipe = genera_meteo();
     genera_navi();
 
-    printf("M: Finito generazione\n");
+    fprintf(fp,"M: Finito generazione\n");
     aspettaConfigs(waitconfigSemID);
 
    
@@ -54,7 +57,7 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     mutex(startSimulationSemID, LOCK, errorHandler,  "mesterCode -> startSimulationSemID LOCK");
     
 
-    printf("✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅\n");
+    fprintf(fp,"✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅\n");
 
     for (*day = 0; aliveShips && *day < SO_DAYS; *day = *day + 1) {
         aliveShips = countAliveShips();
@@ -64,8 +67,8 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
             fprintf(meteoPipe, "%d\n", *day);
             fflush(meteoPipe);
             printDump(ASYNC, *day,0);
-            printf("MASTER: DAY: %d\n", *day);
-            printf("Master: dormo\n");
+            fprintf(fp,"MASTER: DAY: %d\n", *day);
+            fprintf(fp,"Master: dormo\n");
             if (*day > 0) {
                 expirePortsGoods(*day);
                 expireShipGoods();
@@ -79,26 +82,25 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
              resetWeatherTargets(ships);
         }
         else {
-            printf("Terminazione simulazione per navi morte\n");
+            fprintf(fp,"Terminazione simulazione per navi morte\n");
         }
     }
-    shmDetach(ships, errorHandler, "master");
 
     fprintf(meteoPipe, "%d\n", EOF);
     fflush(meteoPipe);
-    printf("Master, faccio la pclose\n");
+    fprintf(fp,"Master, faccio la pclose\n");
     /*
     pclose(meteoPipe);
 
     */
-    printf("ENTRO\n");
+    fprintf(fp,"ENTRO\n");
     if (!aliveShips) {
-    printf("SPACCO\n");
+    fprintf(fp,"SPACCO\n");
         
         *day = *day - 1;
     }
-    printf("CIAO\n");
-    
+    fprintf(fp,"CIAO\n");
+    fclose(fp);
 }
 
 int main(int argc, char const* argv[]) {

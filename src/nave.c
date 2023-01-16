@@ -96,7 +96,7 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
     int product_index;
     int waitToTravelSemID;
     int quantoPossoScaricare;
-    
+    int shipSem = getShipSem();
     /*
         Se non può scaricare quello che ha 
     */
@@ -128,16 +128,21 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
 
 
         */
+        mutexPro(shipSem , ship->shipID, LOCK, errorHandler , "dischargeP");
+
         product_index = chooseProductToDelivery(ship);
         printf("[%d]Nave ho scelto per scaricare: %d", ship->shipID,product_index);
-
-        
+        if(product_index < 0){
+            throwError("Nessun prodotto trovato perchè sono scaduti" , "dfgse");
+            return;
+        }
         portID = communicatePortsForDischarge(ship, ship->products[product_index], &quantoPossoScaricare);
 
         if(portID == -1){
 
             addExpiredGood(ship->products[product_index].weight, ship->products[product_index].product_type, SHIP);
             removeProduct(ship, product_index); 
+            mutexPro(shipSem , ship->shipID, UNLOCK, errorHandler , "dischargeP");
 
             printf("[%d]Nave: riprovo a scegliere il prodotto da scaricare\n", ship->shipID);
             replyToPortsForDischarge(ship, -1);
@@ -145,6 +150,8 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
             dischargeProducts(ship, day, terminateValue);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
         
         } else {
+            
+            mutexPro(shipSem , ship->shipID, UNLOCK, errorHandler , "dischargeP");
 
 
             /* 3) Una volta arrivato al porto accedo alla prima banchina disponibile e rimuovo la merce che intendo

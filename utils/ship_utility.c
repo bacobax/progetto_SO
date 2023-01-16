@@ -236,7 +236,7 @@ int removeProduct(Ship ship, int product_index){
 }
 
 void exitNave(Ship s){
-    s->dead = 1;
+    
     FILE* fp = fopen("./logs/exitShipLog.log", "a+");
     int waitShipSemID = useSem(WAITSHIPSSEM, errorHandler, "nave waitShipSemID");   
     fprintf(fp,"[%d]Nave: faccio la lock\n", getpid());
@@ -245,7 +245,7 @@ void exitNave(Ship s){
     fprintf(fp,"[%d]Nave: uscita\n", getpid());
 
     fclose(fp);
-    
+    s->dead = 1;
     exit(0);
 }
 
@@ -549,12 +549,14 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
     port = getPort(portID);
     
     mutexPro(pierSemID, portID, LOCK, errorHandler, "accessPortForDisCharge->pierSemID LOCK");
+    printf("Faccio lock di shipSemID discharge\n");
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler,  "accessPortForDisCharge->shipSemid LOCK");
+    printf("Passata lock shipSemID discharge\n");
     i=0;
-    while(product_index != -1){
+    while(product_index >=0){
         product_index = deliverProduct(ship, port, product_index, p, portID, i==0);
         
-        if(product_index != -1){
+        if(product_index >= 0){
             p.product_type = ship->products[product_index].product_type;
             p.expirationTime = ship->products[product_index].expirationTime;
             p.weight = ship->products[product_index].weight;
@@ -823,49 +825,52 @@ int deliverProduct(Ship ship, Port port, int product_index, Product p, int portI
     verifyRequestSemID = useSem(P2SEMVERIFYKEY, errorHandler, "recvChargerHandler->verifyRequestSemID");
 
     /* TODO: SEMAFORO PROTEZIONE RICHIESTE LOCK*/
-    if(!firstProd){
-        mutexPro(verifyRequestSemID, portID, LOCK, errorHandler, "recvChargerHandler->verifyRequestSemID LOCK");
+    if (ship->products[product_index].expirationTime > 0) {
 
-        quantoPossoScaricare = checkRequests(port, p.product_type, p.weight);
-        mutexPro(verifyRequestSemID, portID, UNLOCK, errorHandler, "recvChargerHandler->verifyRequestSemID UNLOCK");
+        if(!firstProd){
+            mutexPro(verifyRequestSemID, portID, LOCK, errorHandler, "recvChargerHandler->verifyRequestSemID LOCK");
 
-    }else{
-        quantoPossoScaricare = port->requests[p.product_type];
-    }
+            quantoPossoScaricare = checkRequests(port, p.product_type, p.weight);
+            mutexPro(verifyRequestSemID, portID, UNLOCK, errorHandler, "recvChargerHandler->verifyRequestSemID UNLOCK");
 
-    /*UNLOCK*/
-    
-    if(quantoPossoScaricare!=-1){
-    
-        if (ship->products[product_index].expirationTime > 0) {
-                
-                nanosecsleep((p.weight / SO_LOADSPEED) * NANOS_MULT);
-                if (port->swell) {
-                    port->weatherTarget = 1;
-                    printf("Porto %d colpito da una mareggiata, devo aspettare %d ore in più\n" , portID, SO_SWELL_DURATION);
-                    nanosecsleep((double)(NANOS_MULT  * 0.04166667)*SO_SWELL_DURATION);
-                    port->swell = 0;
-                }
+        }else{
+            quantoPossoScaricare = port->requests[p.product_type];
+        }
 
-                if (quantoPossoScaricare >= p.weight) {
+        /*UNLOCK*/
+        
+        if(quantoPossoScaricare!=-1){
+        
                     
-                    addDeliveredGood(p.weight, p.product_type, portID);
-                    printTransaction(ship->shipID, portID, 0, p.weight, p.product_type);
-                    removeProduct(ship, product_index);
-                            
-                }else {
-                    
-                    addDeliveredGood(quantoPossoScaricare, ship->products[product_index].product_type, portID);
-                    printTransaction(ship->shipID, portID, 0, quantoPossoScaricare, ship->products[product_index].product_type);
-                    
-                    ship->products[product_index].weight -= quantoPossoScaricare;
-                    ship->weight -= quantoPossoScaricare;
-                }
-            } else {
-                printf("\nOOPS! [%d]Nave: la merce che volevi scaricare è scaduta!!!\n", ship->shipID);
+            nanosecsleep((p.weight / SO_LOADSPEED) * NANOS_MULT);
+            if (port->swell) {
+                port->weatherTarget = 1;
+                printf("Porto %d colpito da una mareggiata, devo aspettare %d ore in più\n" , portID, SO_SWELL_DURATION);
+                nanosecsleep((double)(NANOS_MULT  * 0.04166667)*SO_SWELL_DURATION);
+                port->swell = 0;
             }
+
+            if (quantoPossoScaricare >= p.weight) {
+                
+                addDeliveredGood(p.weight, p.product_type, portID);
+                printTransaction(ship->shipID, portID, 0, p.weight, p.product_type);
+                removeProduct(ship, product_index);
+                        
+            }else {
+                
+                addDeliveredGood(quantoPossoScaricare, ship->products[product_index].product_type, portID);
+                printTransaction(ship->shipID, portID, 0, quantoPossoScaricare, ship->products[product_index].product_type);
+                
+                ship->products[product_index].weight -= quantoPossoScaricare;
+                ship->weight -= quantoPossoScaricare;
+            }
+        } else {
+            printf("\nOOPS! [%d]Nave: la merce che volevi scaricare ha raggiunto richiesta pari a 0\n", ship->shipID);
+
+        }
     } else {
-        printf("\nOOPS! [%d]Nave: la merce che volevi scaricare ha raggiunto richiesta pari a 0\n", ship->shipID);
+        printf("\nOOPS! [%d]Nave: la merce che volevi scaricare è scaduta!!!\n", ship->shipID);
+        
     }
 
     new_index = chooseNewProductIndex(ship,port);
