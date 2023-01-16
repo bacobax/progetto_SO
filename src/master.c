@@ -68,7 +68,10 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
             printf("Master: dormo\n");
             if (*day > 0) {
                 expirePortsGoods(*day);
+                /*
                 expireShipGoods();
+
+                */
                 refillPorts(ASYNC, msgRefillerID, quantitaAlGiorno, *day);
                 mutex(waitEndDaySemID, WAITZERO, errorHandler, "mesterCode -> waitEndDaySemID WAITZERO");
                 mutex(waitEndDayShipsSemID, WAITZERO, errorHandler, "mesterCode -> waitEndDayShipSemID WAITZERO");

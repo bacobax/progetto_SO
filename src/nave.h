@@ -1,23 +1,24 @@
 #ifndef NAVE_H
 #define NAVE_H
 
-
+#include "../utils/loadShip.h"
 #include "../config1.h"
 #include "./porto.h"
 #define SDCHQUEUEKEY 9092  /* key coda messaggi per azioni di scaricamento*/
-
+/*
 struct product {
     int product_type;    
     int expirationTime;
     int weight;
 };
-typedef struct product Product;
+typedef struct product Product;*/
 
 struct port_offer{
     int product_type;
     int expirationTime;
     int distributionDay;
     int weight;
+    int portID;
 };
 typedef struct port_offer PortOffer;
 
@@ -26,11 +27,10 @@ struct ship {
     int shipID;
     double x;
     double y;
-    int weight;
+    
     int pid;
     
-    Product products[SO_CAPACITY];
-    PortOffer promisedProduct;
+    loadShip loadship;
     unsigned short storm;
     unsigned short dead;
     unsigned short weatherTarget;
@@ -45,7 +45,7 @@ typedef struct ship* Ship;
 
 int checkCapacity(); /* ritorna il numero di ton presenti sulla nave */
 
-int availableCapacity(); /* ritorna il numero di ton disponibili sulla nave */
+int availableCapacity(Ship ship); /* ritorna il numero di ton disponibili sulla nave */
 
 
 Ship initShip(int shipID);
@@ -65,20 +65,30 @@ int chooseQuantityToCharge(Ship ship);
 int chooseProductToDelivery(Ship ship);
 
 void initArrayOffers(PortOffer* offers);
+int communicatePortsForChargeV1(int quantityToCharge, PortOffer* port_offers);
 
 int communicatePortsForCharge(Ship ship, int quantityToCharge, PortOffer* port_offers);
-int communicatePortsForDischarge(Ship ship, Product p, int* quantoPossoScaricare);  
+int communicatePortsForDischargeV1(Ship ship, Product p, int* quantoPossoScaricare, int* arrayResponses);
+
+int communicatePortsForDischarge(Ship ship, Product p, int* quantoPossoScaricare);
 
 int portResponsesForCharge(Ship ship, PortOffer* port_offers);
 int choosePortForCharge(PortOffer* port_offers, int idx);
+void replyToPortsForChargeV1(int portID, PortOffer* port_offers);
 
 void replyToPortsForCharge(Ship ship, int portID);
+void replyToPortsForDischargeV1(Ship ship, int portID, int quantoPossoScaricare, int* portResponses, Product prod);
+
 void replyToPortsForDischarge(Ship ship, int portID);
 
+void travelCharge(Ship ship, int portID, int* day, PortOffer* port_offers);
 
 void travel(Ship ship, int portID, int* day);
 
+void accessPortForChargeV1(Ship ship, int portID, PortOffer* port_offers);
+
 void accessPortForCharge(Ship ship, int portID);
+void accessPortForDischargeV1(Ship ship, int portID, int product_index, int quantoPossoScaricare);
 void accessPortForDischarge(Ship ship, int portID, int product_index, int quantoPossoScaricare);
 
 void updateExpTimeShip(Ship ship);

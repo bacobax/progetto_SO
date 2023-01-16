@@ -55,16 +55,14 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
     }
     else {
 
-        availablePorts = communicatePortsForCharge(ship, quantityToCharge, port_offers); /* mando msg a tutti i porti perchè voglio caricare*/
+        availablePorts = communicatePortsForChargeV1(quantityToCharge, port_offers); /* mando msg a tutti i porti perchè voglio caricare*/
         printf("[%d]Nave: finito di chiamare i porti\n", getpid());
         
         printf("[%d]Nave: Aviable ports = %d\n",ship->shipID, availablePorts);
         if (availablePorts == 0) {
             
-            replyToPortsForCharge(ship, -1);
-            
-            waitToTravel(ship);
-      
+            replyToPortsForChargeV1(-1, port_offers);
+           
             chargeProducts(ship, chooseQuantityToCharge(ship), day, terminateValue);
             
             
@@ -72,19 +70,17 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
             /* ci sono porti che hanno merce da caricare*/
             
             portID = choosePortForCharge(port_offers, ship->shipID);
-
-            initPromisedProduct(ship, port_offers[portID], quantityToCharge);
-
-            replyToPortsForCharge(ship, portID);
             
-            printf("[%d]Nave: Aspetto a partire...\n", ship->shipID);
-            waitToTravel(ship);
-
+            replyToPortsForChargeV1(portID, port_offers);
+            
+            
             printf("[%d]Nave: Sono partita...\n", ship->shipID);
-            travel(ship, portID, day);
+            travelCharge(ship, portID, day, port_offers);
             
-            accessPortForCharge(ship, portID);
-           
+            accessPortForChargeV1(ship, portID, port_offers);
+            /*
+                TODO: checkMerceScaduta();
+            */
         }
     }
     
@@ -96,12 +92,13 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
     int product_index;
     int waitToTravelSemID;
     int quantoPossoScaricare;
-    
+    int portResponses[SO_PORTI];
+    Product prod = NULL;
     /*
         Se non può scaricare quello che ha 
     */
     checkTerminateValue(ship, terminateValue);
-    if (ship->weight == 0)
+    if (ship->loadship->weightLoad == 0)
     {
         return;
     }
@@ -131,17 +128,19 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
         product_index = chooseProductToDelivery(ship);
         printf("[%d]Nave ho scelto per scaricare: %d", ship->shipID,product_index);
 
+        prod = productAt(ship->loadship, product_index);
+
+        portID = communicatePortsForDischargeV1(ship, prod, &quantoPossoScaricare, portResponses);
+
+        //TODO: SONO ARRIVATO QUI
         
-        portID = communicatePortsForDischarge(ship, ship->products[product_index], &quantoPossoScaricare);
+        if (portID == -1) {
 
-        if(portID == -1){
-
-            addExpiredGood(ship->products[product_index].weight, ship->products[product_index].product_type, SHIP);
-            removeProduct(ship, product_index); 
+            addExpiredGood(prod->weight, prod->product_type, SHIP);
+            removeProduct(ship->loadship, product_index); 
 
             printf("[%d]Nave: riprovo a scegliere il prodotto da scaricare\n", ship->shipID);
-            replyToPortsForDischarge(ship, -1);
-            waitToTravel(ship); 
+            replyToPortsForDischargeV1(ship, -1, quantoPossoScaricare, portResponses, prod);
             dischargeProducts(ship, day, terminateValue);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
         
         } else {
@@ -150,11 +149,10 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
             /* 3) Una volta arrivato al porto accedo alla prima banchina disponibile e rimuovo la merce che intendo
             consegnare dal carico della nave */
             
-            replyToPortsForDischarge(ship, portID);
-            waitToTravel(ship);            
+            replyToPortsForDischargeV1(ship, portID, quantoPossoScaricare, portResponses, prod);
 
             travel(ship, portID, day);
-            accessPortForDischarge(ship, portID, product_index, quantoPossoScaricare);
+            accessPortForDischargeV1(ship, portID, product_index, quantoPossoScaricare);
             
         }
     }

@@ -635,10 +635,7 @@ void printStatoPorti(FILE *fp){
 
 
 void restorePromisedGoods(Port porto, int dayTrovato, int tipoTrovato, int quantity, int myPortIdx){
-    printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", myPortIdx);
-    porto->supplies.magazine[dayTrovato][tipoTrovato] += quantity;
-    printf("PORTO %d: riaggiungo %d\n" , myPortIdx, quantity);
-    
+   
     addNotExpiredGood(quantity, tipoTrovato, PORT, 0, myPortIdx);
     /*
         SE LA MERCE E' SCADUTA MENTRE IL PORTO ASPETTAVA DI SAPERE SE E' STATO SCELTO
@@ -646,5 +643,11 @@ void restorePromisedGoods(Port porto, int dayTrovato, int tipoTrovato, int quant
     */
     if(getExpirationTime(porto->supplies,tipoTrovato, dayTrovato)== 0){
         addExpiredGood(quantity, tipoTrovato, PORT);
+    }
+    else {
+        printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", myPortIdx);
+        porto->supplies.magazine[dayTrovato][tipoTrovato] += quantity;
+        printf("PORTO %d: riaggiungo %d\n" , myPortIdx, quantity);
+    
     }
 }
