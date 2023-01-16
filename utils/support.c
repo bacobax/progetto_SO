@@ -217,7 +217,7 @@ double numeroDiCarichiOttimale() {
     double tempoDiScaricoMedio;
     double tempoDiViaggioEffettivo;
     double res;
-    char text[128];
+    
     tempoDiViaggioMedio = mediaTempoViaggioFraPorti();
     probabilitaDiCambiarePorto =(double)(SO_PORTI - 1) / SO_PORTI;
     tempoDiViaggioEffettivo = (double)probabilitaDiCambiarePorto * tempoDiViaggioMedio;
@@ -228,8 +228,7 @@ double numeroDiCarichiOttimale() {
     
     */
     res = (double)(SO_DAYS - 1) / ((tempoDiViaggioEffettivo + tempoDiScaricoMedio) * 2);
-    sprintf(text, "numero di carichi ottimali: %d\n", (int)res);
-    throwError(text, "numeroDiCarichiOttimale");
+ 
 
     return res;
 }

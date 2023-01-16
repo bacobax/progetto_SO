@@ -28,7 +28,7 @@ void msgSend(int msgqID, char text[MEXBSIZE], long type, void (*errorHandler)(in
             exit(EXIT_FAILURE);
         }
         else {
-            perror("msgSend -> msgsnd");
+            throwError("msgSend -> msgsnd", "msgSend");
             exit(EXIT_FAILURE);
         }
     }
@@ -44,7 +44,7 @@ mex* msgRecv(int msgqID, long type, void (*errorHandler)(int err, char* errCtx),
             exit(EXIT_FAILURE);
         }
         else {
-            perror("msgRecv -> msgrcv");
+            throwError("msgRecv -> msgrcv", msgRecv);
             exit(EXIT_FAILURE);
         }
     }
@@ -57,7 +57,7 @@ mex* msgRecv(int msgqID, long type, void (*errorHandler)(int err, char* errCtx),
 
         if (pid == -1) {
             if (errorHandler == NULL) {
-                perror("msgRecv -> fork");
+                throwError("msgRecv -> fork" , "msgRecv");
                 exit(EXIT_FAILURE);
             }
             else {
@@ -92,7 +92,7 @@ mex* msgRecvPro(int msgqID, long type, void (*errorHandler)(int err, char* errCt
             exit(EXIT_FAILURE);
         }
         else {
-            perror("msgRecv -> msgrcv");
+            throwError("msgRecv -> msgrcv", "msgRecvPro");
             exit(EXIT_FAILURE);
         }
     }
@@ -105,7 +105,7 @@ mex* msgRecvPro(int msgqID, long type, void (*errorHandler)(int err, char* errCt
 
         if (pid == -1) {
             if (errorHandler == NULL) {
-                perror("msgRecv -> fork");
+                throwError("msgRecv -> fork", "msgRecvPro");
                 exit(EXIT_FAILURE);
             }
             else {
@@ -142,7 +142,7 @@ int createQueue(int key, void (*errorHandler)(int err, char* errCtx), char* errC
             errorHandler(MERRGET, errCtx);
         }
         else {
-            perror("createQueue -> msgget");
+            throwError("createQueue -> msgget", "createQueue");
             exit(EXIT_FAILURE);
         }
     }
@@ -156,7 +156,7 @@ int useQueue(int key, void (*errorHandler)(int err, char* errCtx), char* errCtx)
             errorHandler(MERRGET, errCtx);
         }
         else {
-            perror("useQueue -> msgget");
+            throwError("useQueue -> msgget", "useQueue");
             exit(EXIT_FAILURE);
         }
     }
@@ -168,7 +168,7 @@ int getMexCount(int id, void (*errorHandler)(int err, char* errCtx), char* errCt
 
     if (msgctl(id, IPC_STAT, &buf) == -1) {
         if(errorHandler == NULL){
-            perror("getMexCount -> msgctl");
+            throwError("getMexCount -> msgctl", "getMexCount");
             exit(EXIT_FAILURE);
         } else {
             errorHandler(MERRCTL, errCtx);
@@ -183,7 +183,7 @@ void printQueueState(int id, void (*errorHandler)(int err, char* errCtx), char* 
 
     if (msgctl(id, IPC_STAT, &buf) == -1) {
         if(errorHandler == NULL){
-            perror("printQueueState -> msgctl");
+            throwError("printQueueState -> msgctl", "printQueueState");
             exit(EXIT_FAILURE);
         } else {
             errorHandler(MERRCTL, errCtx);
@@ -197,7 +197,7 @@ void printQueueState(int id, void (*errorHandler)(int err, char* errCtx), char* 
 void removeQueue(int id, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     if (msgctl(id, IPC_RMID, NULL) == -1) {
         if(errorHandler == NULL){
-            perror("removeQueue -> msgctl");
+            throwError("removeQueue -> msgctl", "removeQueue");
             exit(EXIT_FAILURE);
         } else {
             errorHandler(MERRCTL, errCtx);

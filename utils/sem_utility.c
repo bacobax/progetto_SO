@@ -31,7 +31,7 @@ int useSem(int key, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     semid = semget(key, 1, 0);
     if (semid == -1) {
         if (errorHandler == NULL) {
-            perror("useSem -> semget");
+            throwError("useSem -> semget" , "useSem");
             exit(EXIT_FAILURE);
         }
         else {
@@ -53,7 +53,7 @@ int createSem(int key, int initValue, void (*errorHandler)(int err, char* errCtx
     if (errno == EEXIST) return errno;
     if (semid == -1) {
         if (errorHandler == NULL) {
-            perror("useSem -> semget");
+            throwError("useSem -> semget", "createSem");
             exit(EXIT_FAILURE);
         }
         else {
@@ -65,7 +65,7 @@ int createSem(int key, int initValue, void (*errorHandler)(int err, char* errCtx
     arg.val = initValue;
     if (semctl(semid, 0, SETVAL, arg) == -1) {
         if (errorHandler == NULL) {
-            perror("useSem -> semctl");
+            throwError("useSem -> semctl", "createSem");
             exit(EXIT_FAILURE);
         }
         else {
@@ -85,7 +85,7 @@ int createMultipleSem(int key, int nSem, int initValue, void (*errorHandler)(int
     if (errno == EEXIST) return errno;
     if (semid == -1) {
         if (errorHandler == NULL) {
-            perror("useSem -> semget");
+            throwError("useSem -> semget", "createMultipleSem");
             exit(EXIT_FAILURE);
         }
         else {
@@ -101,7 +101,7 @@ int createMultipleSem(int key, int nSem, int initValue, void (*errorHandler)(int
     for (i = 0; i < nSem; i++) {
        if (semctl(semid, i, SETVAL, arg) == -1) {
             if (errorHandler == NULL) {
-                perror("useSem -> semctl");
+                throwError("useSem -> semctl", "createMultipleSem");
                 exit(EXIT_FAILURE);
             }
             else {
@@ -122,7 +122,7 @@ void removeSem(int semid, void (*errorHandler)(int err, char* errCtx), char* err
 
 
         if (errorHandler == NULL) {
-            perror("removeSem->semctl");
+            throwError("removeSem->semctl", "removeSem");
             exit(EXIT_FAILURE);
         }
         else {
@@ -141,7 +141,7 @@ void mutex(int semid, int op, void (*errorHandler)(int err, char* errCtx), char*
     if (semop(semid, buf, 1) == -1) {
         free(buf);
         if (errorHandler == NULL) {
-            perror("mutex->semop");
+            throwError("mutex->semop", "mutex");
             exit(EXIT_FAILURE);
 
         }
@@ -162,7 +162,7 @@ void mutexPro(int semid, int semIdx, int op, void (*errorHandler)(int err, char*
     if (semop(semid, buf, 1) == -1) {
         free(buf);
         if (errorHandler == NULL) {
-            perror("mutex->semop");
+            throwError("mutex->semop", "mutexPro");
             exit(EXIT_FAILURE);
 
         }
@@ -194,7 +194,7 @@ void getAllVAlues(int semid, int length){
     }
     printf("FACCIO LA CTL\n");
     if(semctl(semid, 0,GETALL, arg) == -1){
-        perror("SEMCTL");
+        throwError("SEMCTL", "getAllValues");
     }
     for (i = 0; i < length; i++) {
         v[i] = getWaitingZeroPxCount(semid, i);
@@ -217,7 +217,7 @@ void getAllVAlues(int semid, int length){
 int getOneValue(int semid, int idx){
     int val;
     if((val = semctl(semid, idx,GETVAL)) == -1){
-        perror("SEMCTL");
+        throwError("SEMCTL", "getOneValue");
     }
     return val;
 }

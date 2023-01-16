@@ -19,7 +19,7 @@ int createShm(int key, size_t shmSize, void (*errorHandler)(int err, char* errCt
     if (errno == EEXIST) return errno;
     if (shmid == -1) {
         if (errorHandler == NULL) {
-            perror("createShm -> shmget");
+            throwError("createShm -> shmget", "createShm");
             exit(EXIT_FAILURE);
         }
         else {
@@ -37,7 +37,7 @@ int useShm(int key, size_t shmSize, void (*errorHandler)(int err, char* errCtx),
     shmid = shmget(key, shmSize, 0);
     if (shmid == -1) {
         if (errorHandler == NULL) {
-            perror("useShm -> shmget");
+            throwError("useShm -> shmget", "useshm");
             exit(EXIT_FAILURE);
         }
         else {
@@ -55,7 +55,7 @@ void* getShmAddress(int shmid, int flag, void (*errorHandler)(int err, char* err
     addr = shmat(shmid, NULL, flag);
     if (addr == (void*)-1) {
         if (errorHandler == NULL) {
-            perror("getShmAddress -> shmat");
+            throwError("getShmAddress -> shmat", "getshmAddress");
             exit(EXIT_FAILURE);
         }
         else {
@@ -69,7 +69,7 @@ void* getShmAddress(int shmid, int flag, void (*errorHandler)(int err, char* err
 void shmDetach(void* addrToRemove, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     if (shmdt(addrToRemove) == -1) {
         if (errorHandler == NULL) {
-            perror("shmDetach -> shmdt");
+            throwError("shmDetach -> shmdt", "shmDetach");
             exit(EXIT_FAILURE);
         }
         else {
@@ -82,7 +82,7 @@ void shmDetach(void* addrToRemove, void (*errorHandler)(int err, char* errCtx), 
 void removeShm(int shmid, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
     if (shmctl(shmid, IPC_RMID, NULL) == -1) {
         if (errorHandler == NULL) {
-            perror("removeShm -> shmctl");
+            throwError("removeShm -> shmctl", "removeShm");
             exit(EXIT_FAILURE);
         }
         else {
