@@ -52,6 +52,6 @@ void removeDumpArea();
 void lockAllGoodsDump();
 void unlockAllGoodsDump();
 void printTransaction(int idxNave, int idxPorto, int carico, int ton, int tipoMerce);
-
+void logShip(int shipID, char* msg);
 #endif
 

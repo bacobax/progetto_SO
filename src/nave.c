@@ -56,9 +56,8 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
     else {
 
         availablePorts = communicatePortsForCharge(ship, quantityToCharge, port_offers); /* mando msg a tutti i porti perchè voglio caricare*/
-        printf("[%d]Nave: finito di chiamare i porti\n", getpid());
+        logShip(ship->shipID, "finito di chiamare i porti\n");
         
-        printf("[%d]Nave: Aviable ports = %d\n",ship->shipID, availablePorts);
         if (availablePorts == 0) {
             
             replyToPortsForCharge(ship, -1);
@@ -77,10 +76,10 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
 
             replyToPortsForCharge(ship, portID);
             
-            printf("[%d]Nave: Aspetto a partire...\n", ship->shipID);
+            logShip(ship->shipID, " Aspetto a partire...\n");
             waitToTravel(ship);
 
-            printf("[%d]Nave: Sono partita...\n", ship->shipID);
+            logShip( ship->shipID," Sono partita...\n");
             travel(ship, portID, day);
             
             accessPortForCharge(ship, portID);
@@ -131,7 +130,8 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
         mutexPro(shipSem , ship->shipID, LOCK, errorHandler , "dischargeP");
 
         product_index = chooseProductToDelivery(ship);
-        printf("[%d]Nave ho scelto per scaricare: %d", ship->shipID,product_index);
+        logShip(ship->shipID, "ho scelto per scaricare");
+        printf("[%d]Nave ho scelto per scaricare: %d", ship->shipID, product_index);
         if(product_index < 0){
             throwError("Nessun prodotto trovato perchè sono scaduti" , "dfgse");
             return;
@@ -144,7 +144,7 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
             removeProduct(ship, product_index); 
             mutexPro(shipSem , ship->shipID, UNLOCK, errorHandler , "dischargeP");
 
-            printf("[%d]Nave: riprovo a scegliere il prodotto da scaricare\n", ship->shipID);
+            logShip(" riprovo a scegliere il prodotto da scaricare\n", ship->shipID);
             replyToPortsForDischarge(ship, -1);
             waitToTravel(ship); 
             dischargeProducts(ship, day, terminateValue);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
@@ -201,11 +201,11 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     ship = initShip(atoi(argv[1]));
 
     checkInConfig();
-    printf("Nave con id:%d: config finita, aspetto ok partenza dal master...\n", ship->shipID);
+    logShip(ship->shipID, "config finita, aspetto ok partenza dal master");
     waitForStart();
     ship->nChargesOptimal = (int)numeroDiCarichiOttimale();
-    printf("Nave con id:%d partita\n", ship->shipID);
-
+    logShip(ship->shipID, "partita...");
+    
        while (1) {      
         shipRoutine(ship, terminateValue, restTime, day);
     }

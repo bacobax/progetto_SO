@@ -458,8 +458,9 @@ void childExpireShipCode(Ship ship){
     int semShipID;
     semShipID = useSem(SEMSHIPKEY, errorHandler, "childExpireShipCode");
     printf("EXPIRER PID: %d\n" , getpid());
+    logShip(ship->shipID, "expirer nave FACCIO LOCK semShipID");
     mutexPro(semShipID, ship->shipID, LOCK, errorHandler, "childExpireShipCode LOCK");
-    
+    logShip(ship->shipID, "expirer passo la LOCK");
     if (ship->dead) {
         mutexPro(semShipID, ship->shipID, UNLOCK, errorHandler, "childExpireShipCode UNLOCK");    
         exit(EXIT_SUCCESS);
@@ -467,6 +468,7 @@ void childExpireShipCode(Ship ship){
     
     updateExpTimeShip(ship);
 
+    logShip(ship->shipID, "expirer nave FACCIO UNLOCK semShipID");
     mutexPro(semShipID, ship->shipID, UNLOCK, errorHandler, "childExpireShipCode UNLOCK");    
 }
 

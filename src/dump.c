@@ -50,7 +50,7 @@ void createDumpArea(){
     fclose(fopen("./logs/historyTransictions.log", "w"));
     fclose(fopen("./logs/cronologia.log", "w"));
     fclose(fopen("./logs/exitShipLog.log", "w"));
-    
+    fclose(fopen("./logs/logNavi.log", "w"));
 }
 
 void transactionPrinterCode(int idxNave, int idxPorto, int carico, int ton, int tipoMerce) {
@@ -332,4 +332,14 @@ void printDump(int mod, int day, int last) {
     }else{
         printerCode(day, last);
     }
+}
+
+
+void logShip(int shipID, char* msg){
+    FILE* fp;
+    fp = fopen("./logs/logNavi.log", "a+");
+
+    fprintf(fp, "[%d]Nave: %s\n", shipID, msg);
+
+    fclose(fp);
 }

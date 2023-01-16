@@ -221,7 +221,7 @@ int removeProduct(Ship ship, int product_index){
     int res = -1;
     Product* products = ship->products;
     
-    if(product_index<0 || product_index>SO_CAPACITY) return -1;
+    if(product_index<0 || product_index>=SO_CAPACITY) return -1;
 
     for(i=0; i<SO_CAPACITY; i++){
         if(i == product_index){
@@ -332,14 +332,15 @@ int communicatePortsForCharge(Ship ship, int quantityToCharge, PortOffer* port_o
     sprintf(text, "%d %d", quantityToCharge , ship->shipID); 
 
     for (i = 0; i < SO_PORTI; i++) {
-        
-        printf("[%d]Nave: invio domanda al porto %d per caricare\n", ship->shipID ,i);
+        printf("[%d]Nave: invio domanda al porto %d per caricare\n", ship->shipID, i);
+        logShip(ship->shipID, " invio domanda al porto %d per caricare");
         msgSend(requestPortQueueID, text, i+1, errorHandler, 0,"callPortsForCharge");
 
         response = msgRecv(shipQueueID, i+1, errorHandler, NULL, SYNC, "msg recv communicatePortsForCharge");
-        printf("[%d]Nave: risposta dal porto %d: %s\n", ship->shipID, i, response->mtext);
-
-        if(strlen(response->mtext) > 1){ 
+        printf("[%d]Nave risposta dal porto %d: %s\n", ship->shipID, i, response->mtext);
+        logShip(ship->shipID,"RICEVUTA RISPOSTA PORTO\n");
+        if (strlen(response->mtext) > 1)
+        {
             sscanf(response->mtext, "%d %d %d", &port_offers[i].product_type, &port_offers[i].expirationTime, &port_offers[i].distributionDay);
             aviablePorts++;
         }
@@ -368,7 +369,7 @@ int choosePortForCharge(PortOffer* port_offers, int idx){
             }
         }
     }
-    printf("[%d]Nave: ho scelto il porto %d\n", idx , portID);
+    logShip(idx, " ho scelto il porto");
     return portID;
 }
 
@@ -377,17 +378,17 @@ void replyToPortsForCharge(Ship ship, int portID){
     int queueID;
     char text[MEXBSIZE];
 
-    printf("[%d]Nave: invio conferme ai porti di chi è stato scelto\n", ship->shipID);
+    logShip(ship->shipID, " invio conferme ai porti di chi è stato scelto");
     for(i=0; i<SO_PORTI; i++){
         queueID =  getPortQueueCharge(i);
         if(i == portID){
 
-            printf("[%d]Nave: ho scelto il porto:%d\n", ship->shipID, i);
+            logShip(ship->shipID, " ho scelto il porto");
             sprintf(text, "1"); /*ok*/
             msgSend(queueID, text, ship->shipID + 1, errorHandler,0 ,"replyToPortsForCharge");
         }
         else {
-            printf("[%d]Nave: NON ho scelto il porto:%d\n", ship->shipID, i);
+            logShip(ship->shipID, " NON ho scelto il porto");
             sprintf(text, "0"); /*negative*/
             msgSend(queueID, text, (ship->shipID + 1), errorHandler,0 ,"replyToPortsForCharge");
         }
@@ -416,11 +417,11 @@ int communicatePortsForDischarge(Ship ship, Product p, int* quantoPossoScaricare
 
     for (i = 0; i < SO_PORTI; i++) {
 
-        printf("[%d]Nave: invio domanda al porto %d per scaricare\n", ship->shipID, i);
+        logShip(ship->shipID, " invio domanda al porto per scaricare");
         msgSend(portQueueID, text, i+1, errorHandler, 0, "callPortsForDischarge");
   
         response = msgRecv(shipQueueID, i+1, errorHandler, NULL, SYNC, "msg recv in communicatePortsForDischarge");
-        printf("[%d]Nave: risposta del porto %d: %s\n", ship->shipID, i, response->mtext);
+        logShip(ship->shipID, " risposta del porto");
         
         if (strcmp(response->mtext, "NOPE") != 0) {
             printf("Nave con id:%d: ho trovato porto %d in cui fare scarico\n", ship->shipID, i);
@@ -434,7 +435,7 @@ int communicatePortsForDischarge(Ship ship, Product p, int* quantoPossoScaricare
 
     portID = chooseBestPort(validityArray, arrayResponses, startIdx, quantoPossoScaricare);
        
-    printf("[%d]Nave: ho scelto il porto %d per scaricare\n", ship->shipID, portID);
+    logShip(ship->shipID, " ho scelto il porto per scaricare");
     
     return portID;
 
@@ -448,17 +449,17 @@ void replyToPortsForDischarge(Ship ship, int portID){
     for(i=0; i<SO_PORTI; i++){
         queueID = getPortQueueDischarge(i);
         if(i == portID){
-            printf("[%d]Nave: mando msg CONFERMA al porto %d per scaricare\n",ship->shipID, i);
+            logShip(ship->shipID, " mando msg CONFERMA al porto per scaricare");
             sprintf(mex, "1");
             msgSend(queueID, mex, ship->shipID + 1, errorHandler,0 ,"replyToPortsForDischarge");
         }
         else {
-            printf("[%d]Nave: mando msg CONFERMA NEGATIVA al porto %d per scaricare\n", ship->shipID, i);
+            logShip(ship->shipID, " mando msg CONFERMA NEGATIVA al porto per scaricare");
             sprintf(mex, "0");
             msgSend(queueID, mex, ship->shipID + 1, errorHandler,0 ,"replyToPortsForDischarge");
         }
     }
-    printf("[%d]Nave: TUTTE LE CONFERME SONO STATE MANDATE\n", ship->shipID);
+    logShip(ship->shipID, " TUTTE LE CONFERME SONO STATE MANDATE");
     
 }
 
@@ -484,11 +485,11 @@ void accessPortForCharge(Ship ship, int portID){
     /* in questo momento la nave è attraccata alla banchina del porto*/
 
     /* il porto ha già decrementato */
-
+    logShip( ship->shipID, "[%d]FACCIO LOCK DI SHIP SHMID+ DURANTE UNA CHARGE");
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler, "accessPortForCharge-> shipSemID LOCK");
 
-    printf("[%d]Nave: sono attracata alla banchina del porto per aggiungere la merce\n", ship->shipID);
-    if(ship->promisedProduct.expirationTime != 0){
+    logShip(ship->shipID, " sono attracata alla banchina del porto per aggiungere la merce");
+    if(ship->promisedProduct.expirationTime > 0){
                 
         port = getPort(portID);
        
@@ -496,19 +497,20 @@ void accessPortForCharge(Ship ship, int portID){
 
         if (port->swell) {
             port->weatherTarget = 1;
-            printf("⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️\n[%d]Nave: rallentata %d ore in più perchè c'è mareggiata\n⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️\n" , ship->shipID,SO_SWELL_DURATION);
+            logShip(ship->shipID, "⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️\nrallentata %d ore in più perchè c'è mareggiata\n⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️⚓️\n");
             nanosecsleep((double)(NANOS_MULT* 0.04166667) * SO_SWELL_DURATION);
             port->swell = 0;
         }
         
         addProduct(ship, p, port);
+        logShip(ship->shipID, "merce caricata con successo");
         printTransaction(ship->shipID, portID, 1, p.weight, p.product_type);
         
         shmDetach(port, errorHandler, "shmDetach Porto");
         
     }
     else {
-        printf("\nOOPS! [%d]Nave: la merce che volevo caricare è scaduta!!!\n", ship->shipID);
+        logShip( ship->shipID, "\nOOPS! [%d]Nave: la merce che volevo caricare è scaduta!!!\n");
         addNotExpiredGood(ship->promisedProduct.weight,ship->promisedProduct.product_type,SHIP, 0, ship->shipID);
         addExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, SHIP);
     }
@@ -549,9 +551,9 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
     port = getPort(portID);
     
     mutexPro(pierSemID, portID, LOCK, errorHandler, "accessPortForDisCharge->pierSemID LOCK");
-    printf("Faccio lock di shipSemID discharge\n");
+    logShip(ship->shipID, "Faccio lock di shipSemID discharge\n");
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler,  "accessPortForDisCharge->shipSemid LOCK");
-    printf("Passata lock shipSemID discharge\n");
+    logShip(ship->shipID, "Passata lock shipSemID discharge\n");
     i=0;
     while(product_index >=0){
         product_index = deliverProduct(ship, port, product_index, p, portID, i==0);
@@ -599,10 +601,10 @@ void travel(Ship ship, int portID, int* day)
     tempoInSecondi = spazio / SO_SPEED;
     tempoRimanente = SO_DAYS - 1 - (*day);
 
-    printf("[%d]Nave: viaggio per %f secondi...\n", ship->shipID, tempoInSecondi);
+    logShip(ship->shipID, " viaggio per %f secondi...\n");
     if (tempoInSecondi > tempoRimanente)
     {
-        printf("[%d]Nave: non avrei abbastanza giorni per raggiungere il porto: %d, termino...\n", ship->shipID, portID);
+        logShip(ship->shipID, " non avrei abbastanza giorni per raggiungere il porto: %d, termino...\n");
         if(ship->promisedProduct.expirationTime != -1){
             addNotExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, SHIP, 0, ship->shipID);
             
@@ -619,7 +621,7 @@ void travel(Ship ship, int portID, int* day)
 
     if (ship->storm == 1) {
         ship->weatherTarget = 1;
-        printf("🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️\n[%d]Nave: ho beccato una tempesta\n🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️\n", ship->shipID);
+        logShip(ship->shipID, "🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️\n[%d]Nave: ho beccato una tempesta\n🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️\n");
         nanosecsleep((double)(NANOS_MULT * 0.04166667) * SO_STORM_DURATION);
         ship->storm = 0;
     }
@@ -642,7 +644,7 @@ void travel(Ship ship, int portID, int* day)
         printf("🌊🌊🌊🌊🌊🌊\n[%d]Nave: sono stata uccisa\n🌊🌊🌊🌊🌊🌊\n", ship->shipID);
         exitNave(ship);
     }
-    printf("[%d]Nave: viaggio finito...\n", ship->shipID);
+    logShip(ship->shipID, " viaggio finito...\n");
     
 
     /* Dopo aver fatto la nanosleep la nave si trova esattamente sulle coordinate del porto
@@ -659,12 +661,13 @@ void updateExpTimeShip(Ship ship){
     int i;
     Product* products = ship->products;
 
-   
+    logShip(ship->shipID, "faccio scadere le mie risorse");
 
     for(i=0; i<SO_CAPACITY; i++){
-        if(products[i].product_type == -1) break;
+        if(products[i].expirationTime > 0){
+            products[i].expirationTime = products[i].expirationTime -1;  
+        } 
         
-        products[i].expirationTime = products[i].expirationTime -1;
 
         if (products[i].expirationTime == 0) {
             
@@ -780,7 +783,7 @@ void initPromisedProduct(Ship ship, PortOffer port_offer, int quantityToCharge){
 
 void checkTerminateValue(Ship ship, unsigned int* terminateValue){
  if (*terminateValue == 1){
-        printf("Nave con id:%d il programma è terminato\n", ship->shipID);
+        logShip(ship->shipID, "il programma è terminato\n");
         exitNave(ship);
     }   
 }
@@ -865,11 +868,11 @@ int deliverProduct(Ship ship, Port port, int product_index, Product p, int portI
                 ship->weight -= quantoPossoScaricare;
             }
         } else {
-            printf("\nOOPS! [%d]Nave: la merce che volevi scaricare ha raggiunto richiesta pari a 0\n", ship->shipID);
+            logShip(ship->shipID ,"OOPS! la merce che volevi scaricare ha raggiunto richiesta pari a 0");
 
         }
     } else {
-        printf("\nOOPS! [%d]Nave: la merce che volevi scaricare è scaduta!!!\n", ship->shipID);
+        logShip(ship->shipID ,"OOPS! la merce che volevi scaricare è scaduta!!!");
         
     }
 
