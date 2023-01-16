@@ -457,9 +457,10 @@ void childExpirePortCode(Port p, int day, int idx) {
 void childExpireShipCode(Ship ship){
     int semShipID;
     semShipID = useSem(SEMSHIPKEY, errorHandler, "childExpireShipCode");
-    
+    printf("EXPIRER PID: %d\n" , getpid());
+    logShip(ship->shipID, "expirer nave FACCIO LOCK semShipID");
     mutexPro(semShipID, ship->shipID, LOCK, errorHandler, "childExpireShipCode LOCK");
-    
+    logShip(ship->shipID, "expirer passo la LOCK");
     if (ship->dead) {
         mutexPro(semShipID, ship->shipID, UNLOCK, errorHandler, "childExpireShipCode UNLOCK");    
         exit(EXIT_SUCCESS);
@@ -467,6 +468,7 @@ void childExpireShipCode(Ship ship){
     
     updateExpTimeShip(ship);
 
+    logShip(ship->shipID, "expirer nave FACCIO UNLOCK semShipID");
     mutexPro(semShipID, ship->shipID, UNLOCK, errorHandler, "childExpireShipCode UNLOCK");    
 }
 
@@ -495,7 +497,6 @@ void expireShipGoods(){
     int i;
     Ship ships;
     int pid;
-    shipShmID = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler,"expireShipGoods");
     for(i=0; i<SO_NAVI; i++) {
         pid = fork();
         if(pid == -1){
@@ -503,9 +504,11 @@ void expireShipGoods(){
             exit(EXIT_FAILURE);
         }
         else if (pid == 0) {
+            shipShmID = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler,"expireShipGoods");
             
             ships = (Ship)getShmAddress(shipShmID, 0, errorHandler, "expireShipGoods");
             childExpireShipCode(ships + i);
+            shmDetach(ships, errorHandler, "expireShipGoods");
             exit(EXIT_SUCCESS);
         }
     }
