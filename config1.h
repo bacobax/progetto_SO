@@ -20,7 +20,7 @@ SO_DAYS 37 SO_FILL 1000000 SO_CAPACITY 50
 */
 
 #define SO_PORTI    4
-#define SO_NAVI     5
+#define SO_NAVI     10
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 

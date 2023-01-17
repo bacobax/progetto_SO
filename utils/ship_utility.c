@@ -741,8 +741,9 @@ void accessPortForDischargeV1(Ship ship, int portID, Product p, int product_inde
         logShip(ship->shipID, "uscita da deliverProduct");
         if(product_index != -1){
             p = productAt(ship->loadship, product_index);
-            i = 1;
+            
         }
+        i++;
     }
     
     shmDetach(port, errorHandler, "accessPortDischarge shmDetach");
@@ -1195,6 +1196,7 @@ int chooseNewProductIndex(Ship s, Port p){
     int i;
     Product aux;
     i=0;
+    printShip(s);
     for (aux = s->loadship->first; aux!=NULL; aux= aux->next){
         if(contain(findIdxs(p->requests,SO_MERCI,f),aux->product_type)){
             return i;
@@ -1265,11 +1267,12 @@ int deliverProduct(Ship ship, Port port, int product_index, Product p, int portI
     }
     else {
         addExpiredGood(p->weight, p->product_type, SHIP);
-
+        removeExpiredGoodsOnShip(ship);
         logShip(ship->shipID ,"OOPS! la merce che volevi scaricare è scaduta!!!");
 
     }
     new_index = chooseNewProductIndex(ship,port);
+    printf("new product index: %d\n", product_index);
     return new_index;
 }
 
