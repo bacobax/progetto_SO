@@ -882,7 +882,7 @@ void travelCharge(Ship ship, int portID, int* day, PortOffer* port_offers) {
     shmDetach(p, errorHandler, "travel");
 
 }
-//TODO_ da fare!!!!
+
 void travelDischarge(Ship ship, int portID, int* day, Product prod, int* portResponses) {
     Port p;
     double dt_x, dt_y, spazio, nanosleep_arg;

@@ -1,7 +1,11 @@
 Quantità primo giorno: 5000
 M: Finito generazione
 ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+<<<<<<< HEAD
 Quantità primo giorno: 5000
+=======
+Quantità primo giorno: 2500
+>>>>>>> a3a11ea2b5ed69235492d4b2d55708572526b285
 M: Finito generazione
 ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
 MASTER: DAY: 0
@@ -46,20 +50,7 @@ M: Finito generazione
 ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
 MASTER: DAY: 0
 Master: dormo
-MASTER: DAY: 1
-Master: dormo
-MASTER: DAY: 2
-Master: dormo
-Quantità primo giorno: 5000
-M: Finito generazione
-✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
-MASTER: DAY: 0
-Master: dormo
-MASTER: DAY: 1
-Master: dormo
-MASTER: DAY: 2
-Master: dormo
-Quantità primo giorno: 5000
+Quantità primo giorno: 2500
 M: Finito generazione
 ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
 MASTER: DAY: 0
@@ -67,13 +58,6 @@ Master: dormo
 MASTER: DAY: 1
 Master: dormo
 MASTER: DAY: 2
-Master: dormo
-Quantità primo giorno: 5000
-M: Finito generazione
-✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
-MASTER: DAY: 0
-Master: dormo
-MASTER: DAY: 1
 Master: dormo
 Quantità primo giorno: 5000
 M: Finito generazione
@@ -100,6 +84,36 @@ MASTER: DAY: 0
 Master: dormo
 MASTER: DAY: 1
 Master: dormo
+Quantità primo giorno: 5000
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+<<<<<<< HEAD
+Quantità primo giorno: 5000
+=======
+Quantità primo giorno: 2500
+>>>>>>> a3a11ea2b5ed69235492d4b2d55708572526b285
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+Quantità primo giorno: 5000
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+<<<<<<< HEAD
 MASTER: DAY: 2
 Master: dormo
 MASTER: DAY: 3
@@ -2859,3 +2873,5 @@ Master: dormo
 Master, faccio la pclose
 ENTRO
 CIAO
+=======
+>>>>>>> a3a11ea2b5ed69235492d4b2d55708572526b285

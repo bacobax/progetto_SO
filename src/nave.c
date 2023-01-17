@@ -158,7 +158,6 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
             consegnare dal carico della nave */
             
             replyToPortsForDischargeV1(ship, portID, quantoPossoScaricare, portResponses, prod);
-            //TODO: SONO ARRIVATO QUI
 
             travelDischarge(ship, portID, day, prod, portResponses);
             accessPortForDischargeV1(ship, portID, prod, product_index, quantoPossoScaricare);

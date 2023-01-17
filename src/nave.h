@@ -51,7 +51,7 @@ Ship initShip(int shipID);
 
 void printShip(Ship ship);
 
-// int addProduct(Ship ship, Product p, Port port);
+/* int addProduct(Ship ship, Product p, Port port); */
 
 
 int chooseQuantityToCharge(Ship ship);
