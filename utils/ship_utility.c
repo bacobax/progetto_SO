@@ -111,7 +111,7 @@ Ship initShip(int shipID)
     ship->x = generateCord();
     ship->y = generateCord();
     ship->loadship->weightLoad = 0;
-    ship->loadship = initLoadShip;
+    ship->loadship = initLoadShip();
     ship->inSea = 1;
 
     return ship;
@@ -247,6 +247,8 @@ void exitNave(Ship s){
     fprintf(fp,"[%d]Nave: uscita\n", getpid());
 
     fclose(fp);
+    
+    freeLoadShip(ship->loadship);
     s->dead = 1;
     exit(0);
 }
@@ -308,8 +310,8 @@ int chooseProductToDelivery(Ship ship) {
     int i;
     int index = -2;      
     int expTime = SO_MAX_VITA + 1;                    
-    // Product* products = ship->products;
     Product aux;
+
     i = 0;
     for (aux = ship->loadship->first; aux != NULL; aux = aux->next) {
        
@@ -329,13 +331,16 @@ int communicatePortsForChargeV1(int quantityToCharge, PortOffer* port_offers) {
     int dayTrovato;
     int dataScadenzaTrovata;
     int aviablePorts;
+    int res;
+
     controlPortsDisponibilitySemID = useSem(PSEMVERIFYKEY, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID");
     aviablePorts = 0;
+
     for (i = 0; i < SO_PORTI; i++) {
-        p = getPort(idx);
-        mutexPro(controlPortsDisponibilitySemID, idx, LOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID LOCK");
+        p = getPort(i);
+        mutexPro(controlPortsDisponibilitySemID, i, LOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID LOCK");
         res = trovaTipoEScadenza(&p->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantityToCharge, i);
-        mutexPro(controlPortsDisponibilitySemID, idx, UNLOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID UNLOCK");
+        mutexPro(controlPortsDisponibilitySemID, i, UNLOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID UNLOCK");
 
         if (res != -1) {
             port_offers[i].distributionDay = dayTrovato;
@@ -445,26 +450,29 @@ void replyToPortsForCharge(Ship ship, int portID){
 int communicatePortsForDischargeV1(Ship ship, Product p, int* quantoPossoScaricare, int* arrayResponses) {
     int i;
     int verifyRequestSemID;
-    
+    Port port;
+    int res;
     int validityArray[SO_PORTI];
     int startIdx;
     int portID = -1;
-    verifyRequestSemID = useSem(P2SEMVERIFYKEY, errorHandler, "recvChargerHandler->verifyRequestSemID");
+
     initValidityArray(validityArray);
     initArrayResponses(arrayResponses);
     
+    verifyRequestSemID = useSem(P2SEMVERIFYKEY, errorHandler, "recvChargerHandler->verifyRequestSemID");
+    
     for (i = 0; i < SO_PORTI; i++) {
-        
-        mutexPro(verifyRequestSemID, idx, LOCK, errorHandler, "recvChargerHandler->verifyRequestSemID LOCK");
-        res = checkRequests(porto, tipoMerceRichiesto, quantity);
-        mutexPro(verifyRequestSemID, idx, UNLOCK, errorHandler, "recvChargerHandler->verifyRequestSemID UNLOCK");
+        port = getPort(i);
+        mutexPro(verifyRequestSemID, i, LOCK, errorHandler, "recvChargerHandler->verifyRequestSemID LOCK");
+        res = checkRequests(port, p->product_type, p->weight);
+        mutexPro(verifyRequestSemID, i, UNLOCK, errorHandler, "recvChargerHandler->verifyRequestSemID UNLOCK");
 
         if (res!= -1) {
             printf("Nave con id:%d: ho trovato porto %d in cui fare scarico\n", ship->shipID, i);
             arrayResponses[i] = res;
             validityArray[i] = 1;
         }
-
+        shmDetach(port, errorHandler, "communicatePortsForDischargeV1");
     }
 
     startIdx = checkIndexes(validityArray);
@@ -522,24 +530,29 @@ int communicatePortsForDischarge(Ship ship, Product p, int* quantoPossoScaricare
 
 }
 
+void restorePortRequest(Port p, int type, int originalPortRequest, int pWeight){
+    /*
+        se quello che ho chiesto era >= della sua richiesta => porto aveva decrementato di res;
+        quello che ho chiesto era < della sua richiesta => porto aveva decrementato di prod.weight;
+        se prod.weight >= res vuol dire che quello che ho chiesto supera la richiesta
+        altrimenti è il contrario
+    */
+    if (pWeight >= originalPortRequest) {
+        porto->requests[type] += originalPortRequest;
+    }
+    else {
+        porto->requests[type] += pWeight;
+    }
+}
+
 void replyToPortsForDischargeV1(Ship ship, int portID, int quantoPossoScaricare, int* portResponses, Product prod) {
     int i;
     Port porto;
     for (i = 0; i < SO_PORTI; i++) {
         if (i != portID && portResponses[i] != -1) {
             porto = getPort();
-            /*
-                quello che ho chiesto era >= della sua richiesta => porto aveva decrementato di res;
-                quello che ho chiesto era < della sua richiesta => porto aveva decrementato di prod.weight;
-                se prod.weight >= res vuol dire che quello che ho chiesto supera la richiesta
-                altrimenti è il contrario
-            */
-            if (prod->weight >= portResponses[i]) {
-                porto->requests[prod->product_type] += portResponses[i];
-            }
-            else {
-                porto->requests[prod->product_type] += prod->weight;
-            }
+            
+            restorePortRequest(porto, prod->product_type, portResponses[i], prod->weight);
             
             shmDetach(porto, errorHandler, "replyToPortsForDischargeV1");
         }
@@ -574,13 +587,14 @@ void accessPortForChargeV1(Ship ship, int portID, PortOffer* port_offers) {
     int stormSwellShmID;
     int* victimIdx;
     Port port;
-    PortOffer p;
+    Product p;
 
-    p.expirationTime = port_offers[portID].expirationTime;
-    p.weight = port_offers[portID].weight;
-    p.product_type = port_offers[portID].product_type;
-    p.distributionDay = port_offers[portID].distributionDay;
-    p.portID = port_offers[portID].portID;
+    p->expirationTime = port_offers[portID].expirationTime;
+    p->weight = port_offers[portID].weight;
+    p->product_type = port_offers[portID].product_type;
+    p->distributionDay = port_offers[portID].distributionDay;
+    p->portID = port_offers[portID].portID;
+    
     pierSemID = getPierSem();
     shipSemID = getShipSem();
 
@@ -595,7 +609,7 @@ void accessPortForChargeV1(Ship ship, int portID, PortOffer* port_offers) {
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler, "accessPortForCharge-> shipSemID LOCK");
 
     printf("[%d]Nave: sono attracata alla banchina del porto per aggiungere la merce\n", ship->shipID);
-    if(!isScaduta(p)){
+    if(!isScadutaProduct(p)){
                 
         port = getPort(portID);
        
@@ -608,9 +622,8 @@ void accessPortForChargeV1(Ship ship, int portID, PortOffer* port_offers) {
             port->swell = 0;
         }
         
-        addProduct(ship->load, p, ship->shipID);
-        //TODO: sono arrivato qui
-        //TODO: finire di sistemare la struttura nave e le funzioni che la manipolano
+        addProduct(ship->loadship, p, ship->shipID);
+       
         printTransaction(ship->shipID, portID, 1, p.weight, p.product_type);
         
         shmDetach(port, errorHandler, "shmDetach Porto");
@@ -693,20 +706,14 @@ void accessPortForCharge(Ship ship, int portID){
     checkShipDead(ship);
 }
 
-void accessPortForDischargeV1(Ship ship, int portID, int product_index, int quantoPossoScaricare) {
+void accessPortForDischargeV1(Ship ship, int portID, Product p, int product_index, int quantoPossoScaricare) {
     int pierSemID;
     int shipSemID;
     int portBufferSemID;
     int stormSwellShmID;
     int* victimIdx;
-    Product p;
     Port port;
     int i;
-
-    
-    p = productAt(ship->loadship, product_index);
-
-    
 
     pierSemID = getPierSem();
     shipSemID = getShipSem();
@@ -723,9 +730,8 @@ void accessPortForDischargeV1(Ship ship, int portID, int product_index, int quan
         
         if(product_index != -1){
             p = productAt(ship->loadship, product_index);
+            i = 1;
         }
-
-
     }
     
     shmDetach(port, errorHandler, "accessPortDischarge shmDetach");
@@ -786,11 +792,21 @@ void accessPortForDischarge(Ship ship, int portID, int product_index, int quanto
     checkShipDead(ship);
 }
 
-int isScaduta(PortOffer offer) {
+int isScadutaOffer(PortOffer offer) {
     Port p;
     int res;
     p = getPort(offer.portID);
     res = getExpirationTime(p->supplies, offer.product_type, offer.distributionDay) == 0;
+    shmDetach(p, errorHandler, "isScaduta");
+    return res;
+}
+
+int isScadutaProduct(Product prod){
+    Port p;
+    int res;
+    p = getPort(prod->portID);
+    res = getExpirationTime(p->supplies, prod->product_type, prod->distributionDay) == 0;
+    shmDetach(p, errorHandler, "isScadutaProduct");
     return res;
 }
 
@@ -854,7 +870,7 @@ void travelCharge(Ship ship, int portID, int* day, PortOffer* port_offers) {
 
 }
 //TODO_ da fare!!!!
-void travelDischarge(Ship ship, int portID, int* day) {
+void travelDischarge(Ship ship, int portID, int* day, Product prod, int* portResponses) {
     Port p;
     double dt_x, dt_y, spazio, nanosleep_arg;
     long tempo;
@@ -882,16 +898,11 @@ void travelDischarge(Ship ship, int portID, int* day) {
     if (tempoInSecondi > tempoRimanente)
     {
         printf("[%d]Nave: non avrei abbastanza giorni per raggiungere il porto: %d, termino...\n", ship->shipID, portID);
-        
         logShip(ship->shipID, " non avrei abbastanza giorni per raggiungere il porto: %d, termino...\n");
-        if(ship->promisedProduct.expirationTime != -1){
-            addNotExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, SHIP, 0, ship->shipID);
-            
-            if(ship->promisedProduct.expirationTime == 0){
-                addExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, SHIP);
-            }
-        }
         
+        
+        restorePortRequest(p, prod->product_type, portResponses[prod->portID] , prod->weight);
+        shmDetach(p, errorHandler, "travelDischarge");
         exitNave(ship);
     }
 
@@ -906,21 +917,12 @@ void travelDischarge(Ship ship, int portID, int* day) {
     }
 
     if (ship->dead) {
-        if (ship->promisedProduct.expirationTime != -1) {
-            if (ship->promisedProduct.expirationTime == 0) {
-                addNotExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, PORT, 0, portID);
-                addExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, PORT);
-            }
-            else {
-                addNotExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, PORT, 0, portID);
-
-
-                mutexPro(portBufferSem, portID, LOCK, errorHandler, "refill->portBufferSem LOCK");
-                p->supplies.magazine[ship->promisedProduct.distributionDay][ship->promisedProduct.product_type] += ship->promisedProduct.weight;
-                mutexPro(portBufferSem, portID, UNLOCK, errorHandler, "refill->portBufferSem UNLOCK");
-            }
-        }
+      
+        restorePortRequest(p, prod->product_type, portResponses[prod->portID] , prod->weight);
+        
         printf("🌊🌊🌊🌊🌊🌊\n[%d]Nave: sono stata uccisa\n🌊🌊🌊🌊🌊🌊\n", ship->shipID);
+
+        shmDetach(p, errorHandler, "travelDischarge");
         exitNave(ship);
     }
     printf("[%d]Nave: viaggio finito...\n", ship->shipID);
@@ -932,7 +934,7 @@ void travelDischarge(Ship ship, int portID, int* day) {
    
     ship->x = p->x;
     ship->y = p->y;
-    shmDetach(p, errorHandler, "travel");
+    shmDetach(p, errorHandler, "travelDischarge");
 
 }
 void travel(Ship ship, int portID, int* day)
@@ -1162,6 +1164,7 @@ int getShipSem(){
 void checkShipDead(Ship ship){
     if (ship->dead) {
         printf("🌊🌊🌊🌊🌊🌊\n[%d]Nave: sono stata uccisa\n🌊🌊🌊🌊🌊🌊\n", ship->shipID);
+        /* SEGNARE TUTTA LA MERCE COME AFFONDATA*/
         exitNave(ship);
     }
 }
@@ -1170,10 +1173,13 @@ int f(int el){
 }
 int chooseNewProductIndex(Ship s, Port p){
     int i;
-    for (i = 0; i < SO_CAPACITY; i++){
-        if(s->products[i].product_type!= -1 && contain(findIdxs(p->requests,SO_MERCI,f),s->products[i].product_type)){
+    Product aux;
+    i=0;
+    for (aux = s->loadship->first; aux!=NULL; aux= aux->next){
+        if(contain(findIdxs(p->requests,SO_MERCI,f),aux.product_type)){
             return i;
         }
+        i++;
     }
     return -1;
 }
@@ -1187,56 +1193,67 @@ int deliverProduct(Ship ship, Port port, int product_index, Product p, int portI
     verifyRequestSemID = useSem(P2SEMVERIFYKEY, errorHandler, "recvChargerHandler->verifyRequestSemID");
 
     /* TODO: SEMAFORO PROTEZIONE RICHIESTE LOCK*/
-    if (ship->products[product_index].expirationTime > 0) {
+    if (p.expirationTime > 0) {
 
         if(!firstProd){
             mutexPro(verifyRequestSemID, portID, LOCK, errorHandler, "recvChargerHandler->verifyRequestSemID LOCK");
 
-        scarico = checkRequests(port, p.product_type, p.weight);
-        mutexPro(verifyRequestSemID, portID, UNLOCK, errorHandler, "recvChargerHandler->verifyRequestSemID UNLOCK");
+            scarico = checkRequests(port, p.product_type, p.weight);
+            mutexPro(verifyRequestSemID, portID, UNLOCK, errorHandler, "recvChargerHandler->verifyRequestSemID UNLOCK");
 
-    }else{
-        scarico = quantoPossoScaricare;
-    }
-
-    /*UNLOCK*/
-    
-    if(quantoPossoScaricare!=-1){
-    
-        if (p.expirationTime > 0) {
-                
-                nanosecsleep((p.weight / SO_LOADSPEED) * NANOS_MULT);
-                if (port->swell) {
-                    port->weatherTarget = 1;
-                    printf("Porto %d colpito da una mareggiata, devo aspettare %d ore in più\n" , portID, SO_SWELL_DURATION);
-                    nanosecsleep((double)(NANOS_MULT  * 0.04166667)*SO_SWELL_DURATION);
-                    port->swell = 0;
-                }
-
-                if (quantoPossoScaricare >= p.weight) {
-                    
-                    addDeliveredGood(p.weight, p.product_type, portID);
-                    printTransaction(ship->shipID, portID, 0, p.weight, p.product_type);
-                    removeProduct(ship, product_index);
-                            
-                }else {
-                    
-                    addDeliveredGood(quantoPossoScaricare, p.product_type, portID);
-                    printTransaction(ship->shipID, portID, 0, quantoPossoScaricare, p.product_type);
-                    
-                    p.weight -= quantoPossoScaricare;
-                    ship->loadShip->weightLoad -= quantoPossoScaricare;
-                }
+        }else{
+            scarico = quantoPossoScaricare;
         }
-        else {
-            //TODO: aggiungerla alla merce scaduta
-                printf("\nOOPS! [%d]Nave: la merce che volevi scaricare è scaduta!!!\n", ship->shipID);
-            }
-    } else {
-        logShip(ship->shipID ,"OOPS! la merce che volevi scaricare è scaduta!!!");
-        
-    }
 
+        /*UNLOCK*/
+    
+        if(scarico!=-1){
+        
+           
+                    
+            nanosecsleep((p.weight / SO_LOADSPEED) * NANOS_MULT);
+            if (port->swell) {
+                port->weatherTarget = 1;
+                printf("Porto %d colpito da una mareggiata, devo aspettare %d ore in più\n" , portID, SO_SWELL_DURATION);
+                nanosecsleep((double)(NANOS_MULT  * 0.04166667)*SO_SWELL_DURATION);
+                port->swell = 0;
+            }
+
+            if (scarico >= p.weight) {
+                
+                addDeliveredGood(p.weight, p.product_type, portID);
+                printTransaction(ship->shipID, portID, 0, p.weight, p.product_type);
+                removeProduct(ship, product_index);
+                        
+            }else {
+                
+                addDeliveredGood(scarico, p.product_type, portID);
+                printTransaction(ship->shipID, portID, 0, scarico, p.product_type);
+                
+                p.weight -= scarico;
+                ship->loadShip->weightLoad -= scarico;
+            }
+    
+        } else {
+            logShip(ship->shipID ,"OOPS! il porto non ha richiesta per questo prodotto");
+            
+        }
+    }else{
+        logShip(ship->shipID ,"OOPS! la merce che volevi scaricare è scaduta!!!");
+
+    }
     new_index = chooseNewProductIndex(ship,port);
     return new_index;
+}
+
+void removeExpiredGoodsOnShip(Ship ship){
+    Product aux;
+    int index = 0;
+    for(aux = ship->loadship->first; aux != NULL; aux = aux->next){
+        if(isScadutaProduct(aux)){
+            addExpiredGood(aux->weight, aux->product_type, SHIP);
+            removeProduct(ship->loadship, index);
+        }
+        index++;
+    }
 }

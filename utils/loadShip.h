@@ -2,10 +2,11 @@
 #define LOAD_SHIP_H
 #include "../src/porto.h"
 struct productNode_ { /* nodo utilizzato nella lista */
-    int id_product;   /* identificativo del nodo nella lista */
     int product_type; /* tipo di merce nella lista */
     int weight;
     int expirationTime;
+    int distributionDay;
+    int portID;
     struct productNode_* next;
 };
 typedef struct productNode_* Product;
@@ -26,7 +27,7 @@ Product findProduct(loadShip list, int product_type);
 
 int getProductId(loadShip list, int product_type);
 
-void removeProduct(loadShip list, int idProduct);
+void removeProduct(loadShip list, int index);
 
 void printLoadShip(loadShip list);
 

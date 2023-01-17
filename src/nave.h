@@ -22,7 +22,6 @@ struct port_offer{
 };
 typedef struct port_offer PortOffer;
 
-
 struct ship {
     int shipID;
     double x;
@@ -50,15 +49,10 @@ int availableCapacity(Ship ship); /* ritorna il numero di ton disponibili sulla 
 
 Ship initShip(int shipID);
 
-void printLoadShip(Product* products);
-
 void printShip(Ship ship);
 
-int addProduct(Ship ship, Product p, Port port);
+// int addProduct(Ship ship, Product p, Port port);
 
-int findProduct(Product* products, Product p); /* ritorna l'indice del vettore in cui il prodotto è contenuto */
-
-int removeProduct(Ship ship, int product_index);
 
 int chooseQuantityToCharge(Ship ship);
 
@@ -83,12 +77,14 @@ void replyToPortsForDischarge(Ship ship, int portID);
 
 void travelCharge(Ship ship, int portID, int* day, PortOffer* port_offers);
 
+void travelDischarge(Ship ship, int portID, int* day, Product prod, int* portResponses);
+
 void travel(Ship ship, int portID, int* day);
 
 void accessPortForChargeV1(Ship ship, int portID, PortOffer* port_offers);
 
 void accessPortForCharge(Ship ship, int portID);
-void accessPortForDischargeV1(Ship ship, int portID, int product_index, int quantoPossoScaricare);
+void accessPortForDischargeV1(Ship ship, int portID, Product p,int product_index, int quantoPossoScaricare);
 void accessPortForDischarge(Ship ship, int portID, int product_index, int quantoPossoScaricare);
 
 void updateExpTimeShip(Ship ship);
@@ -114,6 +110,8 @@ int getPierSem();
 int getShipSem();
 
 void checkShipDead(Ship ship);
-int deliverProduct(Ship ship, Port port, int product_index, Product p, int portID, int firstProd);
+int deliverProduct(Ship ship, Port port, int product_index, Product p, int portID, int firstProd, int quantoPossoScaricare);
+
+void removeExpiredGoodsOnShip(Ship ship);
 
 #endif

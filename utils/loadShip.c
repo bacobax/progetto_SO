@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "./loadShip.h"
 #include "../config1.h"
+#include "../src/dump.h"
 #include "./errorHandler.h"
 loadShip initLoadShip() {
     loadShip ret;
@@ -26,7 +27,9 @@ void addProduct(loadShip list, Product p, int idx, Port port) {
         
         newNode->product_type = p->product_type;
         newNode->weight = p->weight;
-        newNode->expirationTime = p->expirationTime;
+        newNode->expirationTime = p->expirationTime; /* da togliere*/
+        newNode->portID = p->portID;
+        newNode->distributionDay = p->distributionDay;
         newNode->next = NULL;
 
         if (list->length == 0) {
@@ -90,14 +93,14 @@ int getProductId(loadShip list, int product_type){ /* cerca un prodotto per prod
 }
 
 
-void removeProduct(loadShip list, int idProduct) {
+void removeProduct(loadShip list, int index) {
     Product innerAux;
     Product aux;
-    
+    int i = 0;
     aux = list->first;
 
     while (aux != NULL) {
-        if (idProduct == aux->id_product) {
+        if (index == i) {
             innerAux = aux->next->next;
             list->length += -1;
             list->weightLoad = list->weightLoad - aux->weight;
@@ -105,7 +108,7 @@ void removeProduct(loadShip list, int idProduct) {
             aux->next = innerAux;
             return;
         }
-
+        i++;
         aux = aux->next;
     }
 

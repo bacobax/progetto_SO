@@ -49,6 +49,8 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
     intFreeList(tipiDaCaricare);
     initArrayOffers(port_offers);
     
+    /* check merce scaduta*/
+    removeExpiredGoodsOnShip(ship);
 
     if (quantityToCharge == 0) {
         dischargeProducts(ship, day, terminateValue);
@@ -93,9 +95,9 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
     int quantoPossoScaricare;
     int portResponses[SO_PORTI];
     Product prod = NULL;
-    /*
-        Se non può scaricare quello che ha 
-    */
+    
+    removeExpiredGoodsOnShip(ship);
+    
     checkTerminateValue(ship, terminateValue);
     if (ship->loadship->weightLoad == 0)
     {
@@ -129,6 +131,12 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
         printf("[%d]Nave ho scelto per scaricare: %d", ship->shipID,product_index);
 
         prod = productAt(ship->loadship, product_index);
+        /*
+            verificare che prod != NULL, se è == NULL vuol dire che la lista è vuota
+        */
+        if(prod == NULL){
+            return; 
+        }
 
         portID = communicatePortsForDischargeV1(ship, prod, &quantoPossoScaricare, portResponses);
 
@@ -144,16 +152,14 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
         
         } else {
             
-
-
             /* 3) Una volta arrivato al porto accedo alla prima banchina disponibile e rimuovo la merce che intendo
             consegnare dal carico della nave */
             
             replyToPortsForDischargeV1(ship, portID, quantoPossoScaricare, portResponses, prod);
             //TODO: SONO ARRIVATO QUI
 
-            travel(ship, portID, day);
-            accessPortForDischargeV1(ship, portID, product_index, quantoPossoScaricare);
+            travelDischarge(ship, portID, day, prod, portResponses);
+            accessPortForDischargeV1(ship, portID, prod, product_index, quantoPossoScaricare);
             
         }
     }
