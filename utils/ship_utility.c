@@ -603,18 +603,14 @@ void accessPortForChargeV1(Ship ship, int portID, PortOffer* port_offers) {
     shipSemID = getShipSem();
 
     ship->inSea = 0;
-    logShip(ship->shipID, "LOCK Su pierID");
     mutexPro(pierSemID, portID, LOCK, errorHandler, "accessPortForCharge->semBanchine LOCK");
-    logShip(ship->shipID, "passata LOCK Su pierID");
 
     /* in questo momento la nave è attraccata alla banchina del porto*/
 
     /* il porto ha già decrementato */
-    logShip(ship->shipID, "LOCK shipSemID");
 
     mutexPro(shipSemID, ship->shipID, LOCK, errorHandler, "accessPortForCharge-> shipSemID LOCK");
 
-    printf("[%d]Nave: sono attracata alla banchina del porto per aggiungere la merce\n", ship->shipID);
     if(!isScadutaProduct(p)){
                 
         port = getPort(portID);
@@ -628,7 +624,7 @@ void accessPortForChargeV1(Ship ship, int portID, PortOffer* port_offers) {
             port->swell = 0;
         }
         
-        addProduct(ship, p, ship->shipID,port);
+        addProduct(ship, p,port);
         logShip(ship->shipID, "ciao");
        
         printTransaction(ship->shipID, portID, 1, p->weight, p->product_type);

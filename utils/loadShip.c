@@ -26,7 +26,7 @@ Product initProduct(int weight, int type, int expTime, int portID, int dd) {
     return p;
 }
 
-void addProduct(Ship ship, Product p, int idx, Port port) {
+void addProduct(Ship ship, Product p,Port port) {
     if (SO_CAPACITY - ship->weight >= p->weight) {
         
 
@@ -97,12 +97,16 @@ void removeProduct(Ship ship, int index) {
     Product innerAux;
     int i = 0;
     int peso;
+    if (index < 0) {
+        return throwError("Out of bound removeProduct", "removeProduct");
+    }
     if (index == 0) {
         
         aux = ship->loadship->first;
         peso = aux->weight;
         ship->loadship->first = ship->loadship->first->next;
         free(aux);
+        
         ship->loadship->length -= 1;
         ship->weight -= peso;
         return;
@@ -113,6 +117,7 @@ void removeProduct(Ship ship, int index) {
             innerAux = aux->next->next;
             free(aux->next);
             aux->next = innerAux;
+            
             ship->loadship->length -= 1;
             ship->weight -= peso;
             return;

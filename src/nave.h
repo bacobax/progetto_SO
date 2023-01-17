@@ -113,7 +113,7 @@ void checkShipDead(Ship ship);
 int deliverProduct(Ship ship, Port port, int product_index, Product p, int portID, int firstProd, int quantoPossoScaricare);
 
 void removeExpiredGoodsOnShip(Ship ship);
-void addProduct(Ship ship, Product p, int idx, Port port);
+void addProduct(Ship ship, Product p, Port port);
 void removeProduct(Ship ship, int index);
 int isScadutaProduct(Product prod);
 
