@@ -27,23 +27,39 @@ Product initProduct(int weight, int type, int expTime, int portID, int dd) {
 }
 
 void addProduct(Ship ship, Product p,Port port) {
-    if (SO_CAPACITY - ship->weight >= p->weight) {
+    char text[64];
+    if (SO_CAPACITY - ship->weight >= p->weight)
+    {
+
+        if(p == NULL){
+            throwError("Prodotto nullo", "addProduct");
+            logShip(ship->shipID, "PRODOTTO NULL");
+        }
         
 
+
         if (ship->loadship->length == 0) {
+            logShip(ship->shipID, "ramo true in addproduct");
+
             ship->loadship->last = p;
             ship->loadship->first = p;
         }
         else {
-            
+            logShip(ship->shipID, "ramo false in addproduct");
             ship->loadship->last->next = p;
             ship->loadship->last = p;
+            
         }
+        sprintf(text, "ship->loadship->last->weight = %d\n", ship->loadship->last->weight );
+        logShip(ship->shipID, text);
+            
+        logShip(ship->shipID, "dopo add");
+        printShip(ship);
         ship->loadship->length += 1;
         ship->weight+= p->weight;
+        
         addNotExpiredGood(p->weight, p->product_type, SHIP, 0, ship->shipID);
         port->sentGoods += p->weight;
-
     }
     else {
         throwError("capacità insufficente", "loadShip Addproduct");
@@ -95,8 +111,9 @@ void removeProduct(Ship ship, int index) {
 
     Product aux;
     Product innerAux;
-    int i = 0;
+    int i;
     int peso;
+    aux = ship->loadship->first; 
     if (index < 0) {
         return throwError("Out of bound removeProduct", "removeProduct");
     }
@@ -111,7 +128,9 @@ void removeProduct(Ship ship, int index) {
         ship->weight -= peso;
         return;
     }
-    for (aux = ship->loadship->first; aux != NULL; aux = aux->next) {
+    i = 0;
+    while (aux != NULL)
+    {
         if (i == index - 1) {
             peso = aux->next->weight;
             innerAux = aux->next->next;
@@ -123,22 +142,23 @@ void removeProduct(Ship ship, int index) {
             return;
         }
         i++;
+        aux = aux->next;
     }
 
     throwError("Prodotto non trovato, impossibile rimuoverlo dalla lista\n", "removeProduct");
 }
 
-void printLoadShip(loadShip list) {
+void printLoadShip(loadShip list, FILE* stream) {
     
     Product aux;
 
-    printf("[ ");
+    fprintf(stream, "[ ");
     aux = list->first;
     while (aux != NULL) {
-        printf("product_type:%d weight:%d expiration_time:%d , ",aux->product_type, aux->weight, aux->expirationTime);
+        fprintf(stream, "product_type:%d weight:%d expiration_time:%d dd:%d portID: %d, \n",aux->product_type, aux->weight, aux->expirationTime, aux->distributionDay, aux->portID);
         aux = aux->next;
     }
-    printf(" ]\n");
+    fprintf(stream, " ]\n");
 }
 
 void freeLoadShip(loadShip list) {
@@ -151,5 +171,11 @@ void freeLoadShip(loadShip list) {
     free(list);
 }
 
-
-
+int weigthSum(loadShip l){
+    Product aux;
+    int sum = 0;
+    for (aux = l->first; aux != NULL; aux = aux->next){
+        sum += aux->weight;
+    }
+    return sum;
+}

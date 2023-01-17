@@ -27,10 +27,11 @@ Product findProduct(loadShip list, int product_type);
 int getProductId(loadShip list, int product_type);
 
 
-void printLoadShip(loadShip list);
+void printLoadShip(loadShip list, FILE* stream);
 
 void freeLoadShip(loadShip list);
 Product productAt(loadShip l, int idx);
 Product initProduct(int weight, int type, int expTime, int portID, int dd);
+int weigthSum(loadShip l);
 
 #endif

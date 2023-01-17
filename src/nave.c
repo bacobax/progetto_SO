@@ -31,6 +31,7 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
 
     
     printf("[%d]Nave, controllo se ha senso continuare-day: %d\n", ship->shipID,*day);
+    logShip(ship->shipID, "controllo se ha senso continuare\n");
     if(tipiDaCaricare->length == 0){
         if(*day < SO_DAYS -1){
             waitEndDay();
@@ -50,7 +51,12 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
     initArrayOffers(port_offers);
     
     /* check merce scaduta*/
+    logShip(ship->shipID ,"prima di removeExpiredGoodsOnShip");
+    printShip(ship);
     removeExpiredGoodsOnShip(ship);
+    logShip(ship->shipID ,"dopo di removeExpiredGoodsOnShip");
+    printShip(ship);
+
 
     if (quantityToCharge == 0) {
         dischargeProducts(ship, day, terminateValue);
@@ -73,12 +79,14 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
             portID = choosePortForCharge(port_offers, ship->shipID);
             
             replyToPortsForChargeV1(portID, port_offers);
-            
-            
+            logShip(ship->shipID, "avvisato chi non è stato scelto");
+
             printf("[%d]Nave: Sono partita...\n", ship->shipID);
+            logShip(ship->shipID,"Sono partita...\n");
             travelCharge(ship, portID, day, port_offers);
-            
+            logShip(ship->shipID, "fatta travel");
             accessPortForChargeV1(ship, portID, port_offers);
+            logShip(ship->shipID, "finita accessPortToCharge");
             /*
                 TODO: checkMerceScaduta();
             */
@@ -129,7 +137,6 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
 
         product_index = chooseProductToDelivery(ship);
         printf("[%d]Nave ho scelto per scaricare: %d\n", ship->shipID,product_index);
-        printLoadShip(ship->loadship);
         prod = productAt(ship->loadship, product_index);
         
         /*

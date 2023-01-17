@@ -128,29 +128,37 @@ void printLoadShip(Product* products){
     printf("\n");
 }
 */
+
 void printShip(Ship ship)
 {
-
+    FILE *fp;
     int resSemID = useSem(RESPRINTKEY, errorHandler, "printShip");
 
     mutex(resSemID, LOCK, errorHandler, "printShip LOCK");
+    fp = fopen("./logs/logNavi.log", "a+");
 
-    printf("[%d]: Nave id:%d\n", ship->pid, ship->shipID);
+    fprintf(fp,"[%d]: Nave\n", ship->shipID);
 
-    printf("coords: [x:%f, y:%f]\n", (ship->x), (ship->y));
+    fprintf(fp,"coords: [x:%f, y:%f]\n", (ship->x), (ship->y));
 
-    printf("ton trasporati:%d\n", ship->weight);
+    fprintf(fp,"ton trasportati:%d\n", ship->weight);
 
-    printf("valore di storm: %d\n", ship->storm);
+    fprintf(fp,"valore di storm: %d\n", ship->storm);
     /*
 
     printf("promised product type:%d, exp.time:%d, weight;%d", ship->promisedProduct.product_type, ship->promisedProduct.expirationTime, ship->promisedProduct.weight);
     */
 
-    printf("carico trasportato:\n");
-    printLoadShip(ship->loadship);
+    fprintf(fp,"carico trasportato:\n");
+    printLoadShip(ship->loadship, fp);
 
-    printf("______________________________________________\n");
+    fprintf(fp, "______________________________________________\n");
+
+    if(weigthSum(ship->loadship) != ship->weight){
+        fprintf(fp, "❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌\n");
+    } 
+
+    fclose(fp);
 
     mutex(resSemID, UNLOCK, errorHandler, "printShip UNLOCK");
 }
@@ -264,9 +272,9 @@ int chooseQuantityToCharge(Ship ship){
     int k;
     int cap;
     int max;
-
+    char text[64];
     tipiDaCaricare = haSensoContinuare();
-    printf("CHOOSE QUANTITY\n");
+    logShip(ship->shipID, "sto per fare CHOOSE QUANTITY\n");
     max = 0;
     
     for(i=0; i<SO_PORTI; i++){
@@ -286,16 +294,17 @@ int chooseQuantityToCharge(Ship ship){
 
     if (max < availableCapacity(ship))
     {
-        printf("cap = max\n");
+        logShip(ship->shipID, "cap = max\n");
         cap = max;
     }
     else
     {
-        printf("cap = aviableCap\n");
+        logShip(ship->shipID, "cap = aviableCap\n");
         printShip(ship);
         cap = availableCapacity(ship);
     }
-    printf("BEST QUANTITY: %d\n", cap);
+    sprintf(text, "BEST QUANTITY: %d" , cap );
+    logShip(ship->shipID , text);
     return cap;
 }
 /*
@@ -428,6 +437,7 @@ void replyToPortsForChargeV1(int portID, PortOffer* port_offers) {
         }
         
     }
+    
 }
 void replyToPortsForCharge(Ship ship, int portID){
     int i;
@@ -623,10 +633,11 @@ void accessPortForChargeV1(Ship ship, int portID, PortOffer* port_offers) {
             nanosecsleep((double)(NANOS_MULT* 0.04166667) * SO_SWELL_DURATION);
             port->swell = 0;
         }
-        
+        logShip(ship->shipID, "prima add");
+        printShip(ship);
         addProduct(ship, p,port);
-        logShip(ship->shipID, "ciao");
-       
+        
+
         printTransaction(ship->shipID, portID, 1, p->weight, p->product_type);
         
         shmDetach(port, errorHandler, "shmDetach Porto");
@@ -634,6 +645,7 @@ void accessPortForChargeV1(Ship ship, int portID, PortOffer* port_offers) {
     }
     else {
         printf("\nOOPS! [%d]Nave: la merce che volevo caricare è scaduta!!!\n", ship->shipID);
+        logShip( ship->shipID, "OOPS la merce che volevo caricare è scaduta!!!");
         addNotExpiredGood(p->weight,p->product_type,SHIP, 0, ship->shipID);
         addExpiredGood(p->weight, p->product_type, SHIP);
     }
@@ -733,11 +745,19 @@ void accessPortForDischargeV1(Ship ship, int portID, Product p, int product_inde
     i = 0;
     
     while (product_index != -1) {
+        logShip(ship->shipID, "prima di deliverProduct");
+        printShip(ship);
+        
         product_index = deliverProduct(ship, port, product_index, p, portID, i==0, quantoPossoScaricare);
-        logShip(ship->shipID, "uscita da deliverProduct");
+        
+        logShip(ship->shipID, "dopo delierProdut");
+        printShip(ship);
+        
         if(product_index != -1){
             p = productAt(ship->loadship, product_index);
             
+        }else{
+            p = NULL;
         }
         i++;
     }
@@ -1192,7 +1212,6 @@ int chooseNewProductIndex(Ship s, Port p){
     int i;
     Product aux;
     i=0;
-    printShip(s);
     for (aux = s->loadship->first; aux!=NULL; aux= aux->next){
         if(contain(findIdxs(p->requests,SO_MERCI,f),aux->product_type)){
             return i;
@@ -1243,7 +1262,6 @@ int deliverProduct(Ship ship, Port port, int product_index, Product p, int portI
                 addDeliveredGood(p->weight, p->product_type, portID);
                 
                 printTransaction(ship->shipID, portID, 0, p->weight, p->product_type);
-                logShip(ship->shipID, "ciao");
                 
                 removeProduct(ship, product_index);
                 
