@@ -22,6 +22,7 @@ Product initProduct(int weight, int type, int expTime, int portID, int dd) {
     p->next = NULL;
     p->weight = weight;
     p->product_type = type;
+    p->portID = portID;
     return p;
 }
 
@@ -119,7 +120,7 @@ void removeProduct(Ship ship, int index) {
         i++;
     }
 
-    printf("Prodotto non trovato, impossibile rimuoverlo dalla lista\n");
+    throwError("Prodotto non trovato, impossibile rimuoverlo dalla lista\n", "removeProduct");
 }
 
 void printLoadShip(loadShip list) {
