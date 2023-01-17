@@ -24,9 +24,9 @@ SO_DAYS 37 SO_FILL 1000000 SO_CAPACITY 50
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 
-#define SO_DAYS     40
-#define SO_MIN_VITA  41 /* tonn */
-#define SO_MAX_VITA  41/* tonn */
+#define SO_DAYS     20
+#define SO_MIN_VITA  10 /* tonn */
+#define SO_MAX_VITA  10/* tonn */
 #define SO_FILL      100000
 
 

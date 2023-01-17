@@ -7,32 +7,6 @@
 [0]Nave: passata LOCK Su pierID
 [0]Nave: LOCK shipSemID
 [0]Nave: ciao
-[0]Nave: finito di chiamare i porti
-
-[0]Nave:  ho scelto il porto
-[0]Nave: LOCK Su pierID
-[0]Nave: passata LOCK Su pierID
-[0]Nave: LOCK shipSemID
-[0]Nave: ciao
-[0]Nave:  viaggio per %f secondi...
-
-[0]Nave: 🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️
-[%d]Nave: ho beccato una tempesta
-🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️
-
-[0]Nave: viaggio finito...
-
-[0]Nave: ciao
-[0]Nave: uscita da deliverProduct
-[0]Nave: ciao
-[0]Nave: uscita da deliverProduct
-[0]Nave: finito di chiamare i porti
-
-[0]Nave:  ho scelto il porto
-[0]Nave: LOCK Su pierID
-[0]Nave: passata LOCK Su pierID
-[0]Nave: LOCK shipSemID
-[0]Nave: ciao
 [0]Nave:  viaggio per %f secondi...
 
 [0]Nave: 🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️
@@ -50,16 +24,12 @@
 [0]Nave: passata LOCK Su pierID
 [0]Nave: LOCK shipSemID
 [0]Nave: ciao
-[0]Nave:  viaggio per %f secondi...
+[0]Nave: finito di chiamare i porti
 
-[0]Nave: 🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️
-[%d]Nave: ho beccato una tempesta
-🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️
-
-[0]Nave: viaggio finito...
-
-[0]Nave: ciao
-[0]Nave: uscita da deliverProduct
+[0]Nave:  ho scelto il porto
+[0]Nave: LOCK Su pierID
+[0]Nave: passata LOCK Su pierID
+[0]Nave: LOCK shipSemID
 [0]Nave: finito di chiamare i porti
 
 [0]Nave:  ho scelto il porto
@@ -67,32 +37,17 @@
 [0]Nave: passata LOCK Su pierID
 [0]Nave: LOCK shipSemID
 [0]Nave: ciao
-[0]Nave:  viaggio per %f secondi...
-
-[0]Nave: 🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️
-[%d]Nave: ho beccato una tempesta
-🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️
-
-[0]Nave: viaggio finito...
-
-[0]Nave: ciao
-[0]Nave: uscita da deliverProduct
 [0]Nave: finito di chiamare i porti
 
 [0]Nave:  ho scelto il porto
 [0]Nave: LOCK Su pierID
 [0]Nave: passata LOCK Su pierID
 [0]Nave: LOCK shipSemID
-[0]Nave: ciao
-[0]Nave:  viaggio per %f secondi...
+[0]Nave: finito di chiamare i porti
 
-[0]Nave: 🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️
-[%d]Nave: ho beccato una tempesta
-🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️
-
-[0]Nave: viaggio finito...
-
-[0]Nave: ciao
-[0]Nave: uscita da deliverProduct
+[0]Nave:  ho scelto il porto
+[0]Nave: LOCK Su pierID
+[0]Nave: passata LOCK Su pierID
+[0]Nave: LOCK shipSemID
 [0]Nave: il programma è terminato
 
