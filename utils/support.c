@@ -134,6 +134,7 @@ double generateCord()
 Port getPort(int portID){
    int portShmid;
    Port port;
+   /*printf("id del porto:%d per fare useShm in getPort\n", portID);*/
    portShmid = useShm(ftok("./utils/port_utility.c", portID), sizeof(struct port), errorHandler,"get port array");
    port = (Port) getShmAddress(portShmid,0,errorHandler,"get port array"); 
    return port;

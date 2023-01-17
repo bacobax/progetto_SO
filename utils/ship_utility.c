@@ -595,6 +595,7 @@ void accessPortForChargeV1(Ship ship, int portID, PortOffer* port_offers) {
     int stormSwellShmID;
     int* victimIdx;
     Port port;
+    
     Product p = initProduct(port_offers[portID].weight,port_offers[portID].product_type,port_offers[portID].expirationTime,port_offers[portID].portID,port_offers[portID].distributionDay);
 
     
@@ -817,6 +818,7 @@ int isScadutaOffer(PortOffer offer) {
 int isScadutaProduct(Product prod){
     Port p;
     int res;
+    printf("sono dentro isScadutaProduct, sto per gare getPort l'id vale:%d\n", prod->portID);
     p = getPort(prod->portID);
     res = getExpirationTime(p->supplies, prod->product_type, prod->distributionDay) == 0;
     shmDetach(p, errorHandler, "isScadutaProduct");
