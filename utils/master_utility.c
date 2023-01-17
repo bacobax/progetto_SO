@@ -186,6 +186,7 @@ void creaShmPorti(){
     int i;
     for(i=0; i<SO_PORTI; i++){
         shmid = createShm(ftok("./utils/port_utility.c", i), sizeof(struct port), errorHandler, "creaShmPorti");
+        printf("MASTER HO CREATO LA CODA PER IL PORTO:%d\n", i);
     }
     return;
 }

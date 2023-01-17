@@ -1,7 +1,11 @@
 ------------------Day 0 -----------------
 Tipo merce 0:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 888
+=======
+		a) nei porti: 897
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
@@ -9,7 +13,11 @@ Tipo merce 0:
 	- Consegnata: 0
 Tipo merce 1:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 702
+=======
+		a) nei porti: 924
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
@@ -17,7 +25,11 @@ Tipo merce 1:
 	- Consegnata: 0
 Tipo merce 2:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 555
+=======
+		a) nei porti: 784
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
@@ -25,7 +37,11 @@ Tipo merce 2:
 	- Consegnata: 0
 Tipo merce 3:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 879
+=======
+		a) nei porti: 1016
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
@@ -33,13 +49,17 @@ Tipo merce 3:
 	- Consegnata: 0
 Tipo merce 4:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 1976
+=======
+		a) nei porti: 1379
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
-Numero di nave in mare senza carico:5
+Numero di nave in mare senza carico:10
 Numero di navi in mare con carico a bordo:0
 Numero di navi in porto che stanno facendo operazioni di carico/scarico:0
 Numero di navi rallentate a causa delle tempeste: 0
@@ -49,15 +69,28 @@ Porto 0:
 Banchine occupate totali: 0
 Merci ricevute: 0
 Merci spedite: 0
+<<<<<<< HEAD
 [41085]Risorse porto 0:
 DOMANDE:
 0, 
 1847, 
 0, 
 3324, 
+=======
+[17774]Risorse porto 0:
+DOMANDE:
 0, 
+4322, 
+3950, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+0, 
+4610, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 163, 109, 118, 119, 526, ]
+=======
+GIORNO 0: [ 301, 240, 249, 351, 458, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 1: [ -1, -1, -1, -1, -1, ]
 GIORNO 2: [ -1, -1, -1, -1, -1, ]
 GIORNO 3: [ -1, -1, -1, -1, -1, ]
@@ -88,15 +121,29 @@ Porto 1:
 Banchine occupate totali: 0
 Merci ricevute: 0
 Merci spedite: 0
+<<<<<<< HEAD
 [41085]Risorse porto 1:
+=======
+[17774]Risorse porto 1:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
 3120, 
 0, 
+<<<<<<< HEAD
 3375, 
 3146, 
+=======
+3541, 
+3136, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 0, 
+4626, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 336, 168, 184, 225, 607, ]
+=======
+GIORNO 0: [ 154, 217, 155, 210, 219, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 1: [ -1, -1, -1, -1, -1, ]
 GIORNO 2: [ -1, -1, -1, -1, -1, ]
 GIORNO 3: [ -1, -1, -1, -1, -1, ]
@@ -127,15 +174,25 @@ Porto 2:
 Banchine occupate totali: 0
 Merci ricevute: 0
 Merci spedite: 0
+<<<<<<< HEAD
 [41085]Risorse porto 2:
+=======
+[17774]Risorse porto 2:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
+4620, 
+4788, 
 0, 
 6368, 
 3600, 
 0, 
 0, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 179, 311, 145, 280, 510, ]
+=======
+GIORNO 0: [ 171, 87, 169, 215, 227, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 1: [ -1, -1, -1, -1, -1, ]
 GIORNO 2: [ -1, -1, -1, -1, -1, ]
 GIORNO 3: [ -1, -1, -1, -1, -1, ]
@@ -166,6 +223,7 @@ Porto 3:
 Banchine occupate totali: 0
 Merci ricevute: 0
 Merci spedite: 0
+<<<<<<< HEAD
 [41085]Risorse porto 3:
 DOMANDE:
 4187, 
@@ -175,6 +233,17 @@ DOMANDE:
 0, 
 SUPPLIES:
 GIORNO 0: [ 210, 114, 108, 255, 333, ]
+=======
+[17774]Risorse porto 3:
+DOMANDE:
+6027, 
+7497, 
+0, 
+0, 
+9585, 
+SUPPLIES:
+GIORNO 0: [ 271, 380, 211, 240, 475, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 1: [ -1, -1, -1, -1, -1, ]
 GIORNO 2: [ -1, -1, -1, -1, -1, ]
 GIORNO 3: [ -1, -1, -1, -1, -1, ]
@@ -204,15 +273,24 @@ ______________________________________________
 ------------------Day 1 -----------------
 Tipo merce 0:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 546
 		b) in nave: 163
+=======
+		a) nei porti: 442
+		b) in nave: 154
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 1:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 420
+=======
+		a) nei porti: 924
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
@@ -220,15 +298,24 @@ Tipo merce 1:
 	- Consegnata: 0
 Tipo merce 2:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 437
 		b) in nave: 0
+=======
+		a) nei porti: 404
+		b) in nave: 169
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 3:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 599
+=======
+		a) nei porti: 1016
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
@@ -236,21 +323,33 @@ Tipo merce 3:
 	- Consegnata: 0
 Tipo merce 4:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 1976
 		b) in nave: 0
+=======
+		a) nei porti: 1152
+		b) in nave: 227
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
+<<<<<<< HEAD
 Numero di nave in mare senza carico:3
 Numero di navi in mare con carico a bordo:1
 Numero di navi in porto che stanno facendo operazioni di carico/scarico:1
+=======
+Numero di nave in mare senza carico:7
+Numero di navi in mare con carico a bordo:3
+Numero di navi in porto che stanno facendo operazioni di carico/scarico:0
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 Numero di navi rallentate a causa delle tempeste: 0
 Numero di navi affondate:0
 Porti interessati da mareggiata: 0
 Porto 0:
 Banchine occupate totali: 1
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 163
 [41093]Risorse porto 0:
 DOMANDE:
@@ -258,9 +357,22 @@ DOMANDE:
 1847, 
 0, 
 3324, 
+=======
+Merci spedite: 0
+[17786]Risorse porto 0:
+DOMANDE:
 0, 
+4322, 
+3950, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+0, 
+4610, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 109, 0, 119, 526, ]
+=======
+GIORNO 0: [ 0, 240, 249, 351, 458, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 1: [ -1, -1, -1, -1, -1, ]
 GIORNO 2: [ -1, -1, -1, -1, -1, ]
 GIORNO 3: [ -1, -1, -1, -1, -1, ]
@@ -281,7 +393,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -290,16 +402,31 @@ ______________________________________________
 Porto 1:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 0
 [41093]Risorse porto 1:
+=======
+Merci spedite: 154
+[17786]Risorse porto 1:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
 3120, 
 0, 
+<<<<<<< HEAD
 3375, 
 3146, 
+=======
+3541, 
+3136, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 0, 
+4626, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 336, 0, 184, 225, 607, ]
+=======
+GIORNO 0: [ 0, 217, 155, 210, 219, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 1: [ -1, -1, -1, -1, -1, ]
 GIORNO 2: [ -1, -1, -1, -1, -1, ]
 GIORNO 3: [ -1, -1, -1, -1, -1, ]
@@ -320,7 +447,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
@@ -329,16 +456,27 @@ ______________________________________________
 Porto 2:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 0
 [41093]Risorse porto 2:
+=======
+Merci spedite: 396
+[17786]Risorse porto 2:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
+4620, 
+4788, 
 0, 
 6368, 
 3600, 
 0, 
 0, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 311, 145, 0, 510, ]
+=======
+GIORNO 0: [ 171, 87, 0, 215, 0, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 1: [ -1, -1, -1, -1, -1, ]
 GIORNO 2: [ -1, -1, -1, -1, -1, ]
 GIORNO 3: [ -1, -1, -1, -1, -1, ]
@@ -369,6 +507,7 @@ Porto 3:
 Banchine occupate totali: 0
 Merci ricevute: 0
 Merci spedite: 0
+<<<<<<< HEAD
 [41093]Risorse porto 3:
 DOMANDE:
 4187, 
@@ -378,6 +517,17 @@ DOMANDE:
 0, 
 SUPPLIES:
 GIORNO 0: [ 210, 0, 108, 255, 333, ]
+=======
+[17786]Risorse porto 3:
+DOMANDE:
+6027, 
+7497, 
+0, 
+0, 
+9585, 
+SUPPLIES:
+GIORNO 0: [ 271, 380, 0, 240, 475, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 1: [ -1, -1, -1, -1, -1, ]
 GIORNO 2: [ -1, -1, -1, -1, -1, ]
 GIORNO 3: [ -1, -1, -1, -1, -1, ]
@@ -398,7 +548,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -407,31 +557,50 @@ ______________________________________________
 ------------------Day 2 -----------------
 Tipo merce 0:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 1314
 		b) in nave: 342
+=======
+		a) nei porti: 918
+		b) in nave: 334
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 1:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 1198
 		b) in nave: 168
+=======
+		a) nei porti: 1829
+		b) in nave: 0
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 2:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 1043
 		b) in nave: 0
+=======
+		a) nei porti: 901
+		b) in nave: 380
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 3:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 1553
+=======
+		a) nei porti: 1907
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
@@ -439,21 +608,27 @@ Tipo merce 3:
 	- Consegnata: 0
 Tipo merce 4:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 3617
 		b) in nave: 0
+=======
+		a) nei porti: 2305
+		b) in nave: 227
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
-Numero di nave in mare senza carico:0
-Numero di navi in mare con carico a bordo:2
-Numero di navi in porto che stanno facendo operazioni di carico/scarico:3
+Numero di nave in mare senza carico:3
+Numero di navi in mare con carico a bordo:6
+Numero di navi in porto che stanno facendo operazioni di carico/scarico:1
 Numero di navi rallentate a causa delle tempeste: 0
 Numero di navi affondate:0
 Porti interessati da mareggiata: 0
 Porto 0:
 Banchine occupate totali: 1
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 163
 [41107]Risorse porto 0:
 DOMANDE:
@@ -461,10 +636,24 @@ DOMANDE:
 1847, 
 0, 
 3324, 
+=======
+Merci spedite: 1
+[17831]Risorse porto 0:
+DOMANDE:
 0, 
+4322, 
+3950, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+0, 
+4610, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 109, 0, 119, 526, ]
 GIORNO 1: [ 105, 168, 19, 177, 237, ]
+=======
+GIORNO 0: [ 0, 240, 249, 351, 458, ]
+GIORNO 1: [ 0, 255, 297, 310, 410, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 2: [ -1, -1, -1, -1, -1, ]
 GIORNO 3: [ -1, -1, -1, -1, -1, ]
 GIORNO 4: [ -1, -1, -1, -1, -1, ]
@@ -493,17 +682,33 @@ ______________________________________________
 Porto 1:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 168
 [41107]Risorse porto 1:
+=======
+Merci spedite: 333
+[17831]Risorse porto 1:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
 3120, 
 0, 
+<<<<<<< HEAD
 3375, 
 3146, 
+=======
+3541, 
+3136, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 0, 
+4626, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 336, 0, 184, 225, 607, ]
 GIORNO 1: [ 164, 110, 212, 181, 205, ]
+=======
+GIORNO 0: [ 0, 217, 155, 210, 219, ]
+GIORNO 1: [ 0, 121, 200, 234, 257, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 2: [ -1, -1, -1, -1, -1, ]
 GIORNO 3: [ -1, -1, -1, -1, -1, ]
 GIORNO 4: [ -1, -1, -1, -1, -1, ]
@@ -523,7 +728,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
@@ -532,17 +737,29 @@ ______________________________________________
 Porto 2:
 Banchine occupate totali: 1
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 179
 [41107]Risorse porto 2:
+=======
+Merci spedite: 396
+[17831]Risorse porto 2:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
+4620, 
+4788, 
 0, 
 6368, 
 3600, 
 0, 
 0, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 311, 145, 0, 510, ]
 GIORNO 1: [ 318, 169, 159, 242, 675, ]
+=======
+GIORNO 0: [ 171, 87, 0, 215, 0, ]
+GIORNO 1: [ 184, 176, 0, 128, 0, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 2: [ -1, -1, -1, -1, -1, ]
 GIORNO 3: [ -1, -1, -1, -1, -1, ]
 GIORNO 4: [ -1, -1, -1, -1, -1, ]
@@ -562,13 +779,14 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
 y: 10.000000
 ______________________________________________
 Porto 3:
+<<<<<<< HEAD
 Banchine occupate totali: 1
 Merci ricevute: 0
 Merci spedite: 0
@@ -582,6 +800,21 @@ DOMANDE:
 SUPPLIES:
 GIORNO 0: [ 210, 0, 108, 255, 333, ]
 GIORNO 1: [ 181, 331, 216, 354, 524, ]
+=======
+Banchine occupate totali: 0
+Merci ricevute: 0
+Merci spedite: 211
+[17831]Risorse porto 3:
+DOMANDE:
+6027, 
+7497, 
+0, 
+0, 
+9585, 
+SUPPLIES:
+GIORNO 0: [ 271, 380, 0, 240, 475, ]
+GIORNO 1: [ 292, 353, 0, 219, 486, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 2: [ -1, -1, -1, -1, -1, ]
 GIORNO 3: [ -1, -1, -1, -1, -1, ]
 GIORNO 4: [ -1, -1, -1, -1, -1, ]
@@ -601,7 +834,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -610,51 +843,77 @@ ______________________________________________
 ------------------Day 3 -----------------
 Tipo merce 0:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 2066
 		b) in nave: 342
+=======
+		a) nei porti: 1528
+		b) in nave: 355
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 1:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 2136
 		b) in nave: 168
+=======
+		a) nei porti: 2732
+		b) in nave: 0
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 2:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 1940
 		b) in nave: 118
+=======
+		a) nei porti: 1469
+		b) in nave: 380
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 3:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 2654
 		b) in nave: 280
+=======
+		a) nei porti: 2641
+		b) in nave: 0
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 4:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 4747
 		b) in nave: 0
+=======
+		a) nei porti: 4012
+		b) in nave: 486
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Numero di nave in mare senza carico:0
-Numero di navi in mare con carico a bordo:2
-Numero di navi in porto che stanno facendo operazioni di carico/scarico:3
+Numero di navi in mare con carico a bordo:4
+Numero di navi in porto che stanno facendo operazioni di carico/scarico:6
 Numero di navi rallentate a causa delle tempeste: 0
 Numero di navi affondate:0
 Porti interessati da mareggiata: 0
 Porto 0:
+<<<<<<< HEAD
 Banchine occupate totali: 1
 Merci ricevute: 0
 Merci spedite: 281
@@ -664,11 +923,28 @@ DOMANDE:
 1847, 
 0, 
 3324, 
+=======
+Banchine occupate totali: 4
+Merci ricevute: 0
+Merci spedite: 22
+[17890]Risorse porto 0:
+DOMANDE:
 0, 
+4322, 
+3950, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+0, 
+4610, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 109, 0, 119, 526, ]
 GIORNO 1: [ 105, 168, 19, 177, 237, ]
 GIORNO 2: [ 196, 172, 157, 235, 186, ]
+=======
+GIORNO 0: [ 0, 240, 249, 351, 458, ]
+GIORNO 1: [ 0, 255, 297, 310, 410, ]
+GIORNO 2: [ 112, 295, 287, 226, 529, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 3: [ -1, -1, -1, -1, -1, ]
 GIORNO 4: [ -1, -1, -1, -1, -1, ]
 GIORNO 5: [ -1, -1, -1, -1, -1, ]
@@ -687,7 +963,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -696,18 +972,35 @@ ______________________________________________
 Porto 1:
 Banchine occupate totali: 1
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 168
 [41124]Risorse porto 1:
+=======
+Merci spedite: 333
+[17890]Risorse porto 1:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
 3120, 
 0, 
+<<<<<<< HEAD
 3375, 
 3146, 
+=======
+3541, 
+3136, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 0, 
+4626, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 336, 0, 184, 225, 607, ]
 GIORNO 1: [ 164, 110, 212, 181, 205, ]
 GIORNO 2: [ 111, 97, 99, 189, 338, ]
+=======
+GIORNO 0: [ 0, 217, 155, 210, 219, ]
+GIORNO 1: [ 0, 121, 200, 234, 257, ]
+GIORNO 2: [ 130, 124, 179, 159, 241, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 3: [ -1, -1, -1, -1, -1, ]
 GIORNO 4: [ -1, -1, -1, -1, -1, ]
 GIORNO 5: [ -1, -1, -1, -1, -1, ]
@@ -726,7 +1019,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
@@ -735,18 +1028,31 @@ ______________________________________________
 Porto 2:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 459
 [41124]Risorse porto 2:
+=======
+Merci spedite: 655
+[17890]Risorse porto 2:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
+4620, 
+4788, 
 0, 
 6368, 
 3600, 
 0, 
 0, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 311, 145, 0, 510, ]
 GIORNO 1: [ 136, 169, 159, 242, 675, ]
 GIORNO 2: [ 127, 199, 96, 173, 260, ]
+=======
+GIORNO 0: [ 171, 87, 0, 215, 0, ]
+GIORNO 1: [ 184, 176, 0, 128, 0, ]
+GIORNO 2: [ 142, 126, 102, 111, 212, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 3: [ -1, -1, -1, -1, -1, ]
 GIORNO 4: [ -1, -1, -1, -1, -1, ]
 GIORNO 5: [ -1, -1, -1, -1, -1, ]
@@ -765,7 +1071,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
@@ -774,6 +1080,7 @@ ______________________________________________
 Porto 3:
 Banchine occupate totali: 1
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 0
 [41124]Risorse porto 3:
 DOMANDE:
@@ -786,6 +1093,20 @@ SUPPLIES:
 GIORNO 0: [ 210, 0, 108, 255, 333, ]
 GIORNO 1: [ 181, 331, 216, 354, 524, ]
 GIORNO 2: [ 500, 470, 545, 504, 346, ]
+=======
+Merci spedite: 211
+[17890]Risorse porto 3:
+DOMANDE:
+6027, 
+7497, 
+0, 
+0, 
+9585, 
+SUPPLIES:
+GIORNO 0: [ 271, 380, 0, 240, 475, ]
+GIORNO 1: [ 292, 353, 0, 219, 486, ]
+GIORNO 2: [ 226, 358, 0, 238, 725, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 3: [ -1, -1, -1, -1, -1, ]
 GIORNO 4: [ -1, -1, -1, -1, -1, ]
 GIORNO 5: [ -1, -1, -1, -1, -1, ]
@@ -804,7 +1125,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -813,51 +1134,82 @@ ______________________________________________
 ------------------Day 4 -----------------
 Tipo merce 0:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 2864
 		b) in nave: 342
+=======
+		a) nei porti: 2291
+		b) in nave: 728
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 1:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 2911
 		b) in nave: 168
+=======
+		a) nei porti: 3568
+		b) in nave: 0
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 2:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 2740
 		b) in nave: 118
+=======
+		a) nei porti: 2446
+		b) in nave: 649
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 3:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 3507
 		b) in nave: 280
+=======
+		a) nei porti: 3535
+		b) in nave: 0
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 4:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 6501
 		b) in nave: 0
+=======
+		a) nei porti: 5381
+		b) in nave: 486
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Numero di nave in mare senza carico:0
+<<<<<<< HEAD
 Numero di navi in mare con carico a bordo:2
 Numero di navi in porto che stanno facendo operazioni di carico/scarico:3
+=======
+Numero di navi in mare con carico a bordo:5
+Numero di navi in porto che stanno facendo operazioni di carico/scarico:5
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 Numero di navi rallentate a causa delle tempeste: 0
 Numero di navi affondate:0
 Porti interessati da mareggiata: 0
 Porto 0:
+<<<<<<< HEAD
 Banchine occupate totali: 1
 Merci ricevute: 0
 Merci spedite: 281
@@ -867,12 +1219,30 @@ DOMANDE:
 1847, 
 0, 
 3324, 
+=======
+Banchine occupate totali: 4
+Merci ricevute: 0
+Merci spedite: 395
+[17936]Risorse porto 0:
+DOMANDE:
 0, 
+4322, 
+3950, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+0, 
+4610, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 109, 0, 119, 526, ]
 GIORNO 1: [ 105, 168, 19, 177, 237, ]
 GIORNO 2: [ 196, 172, 157, 235, 186, ]
 GIORNO 3: [ 233, 170, 241, 189, 214, ]
+=======
+GIORNO 0: [ 0, 240, 249, 351, 458, ]
+GIORNO 1: [ 0, 255, 297, 310, 410, ]
+GIORNO 2: [ 112, 295, 287, 226, 529, ]
+GIORNO 3: [ 105, 184, 303, 303, 433, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 4: [ -1, -1, -1, -1, -1, ]
 GIORNO 5: [ -1, -1, -1, -1, -1, ]
 GIORNO 6: [ -1, -1, -1, -1, -1, ]
@@ -899,19 +1269,37 @@ ______________________________________________
 Porto 1:
 Banchine occupate totali: 1
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 168
 [41136]Risorse porto 1:
+=======
+Merci spedite: 333
+[17936]Risorse porto 1:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
 3120, 
 0, 
+<<<<<<< HEAD
 3375, 
 3146, 
+=======
+3541, 
+3136, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 0, 
+4626, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 336, 0, 184, 225, 607, ]
 GIORNO 1: [ 164, 110, 212, 181, 205, ]
 GIORNO 2: [ 111, 97, 99, 189, 338, ]
 GIORNO 3: [ 274, 180, 243, 185, 733, ]
+=======
+GIORNO 0: [ 0, 217, 155, 210, 219, ]
+GIORNO 1: [ 0, 121, 200, 234, 257, ]
+GIORNO 2: [ 130, 124, 179, 159, 241, ]
+GIORNO 3: [ 231, 191, 344, 196, 402, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 4: [ -1, -1, -1, -1, -1, ]
 GIORNO 5: [ -1, -1, -1, -1, -1, ]
 GIORNO 6: [ -1, -1, -1, -1, -1, ]
@@ -938,19 +1326,33 @@ ______________________________________________
 Porto 2:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 459
 [41136]Risorse porto 2:
+=======
+Merci spedite: 744
+[17936]Risorse porto 2:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
+4620, 
+4788, 
 0, 
 6368, 
 3600, 
 0, 
 0, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 311, 145, 0, 510, ]
 GIORNO 1: [ 136, 169, 159, 242, 675, ]
 GIORNO 2: [ 127, 199, 96, 173, 260, ]
 GIORNO 3: [ 158, 264, 180, 333, 420, ]
+=======
+GIORNO 0: [ 171, 87, 0, 215, 0, ]
+GIORNO 1: [ 184, 176, 0, 128, 0, ]
+GIORNO 2: [ 142, 126, 102, 111, 212, ]
+GIORNO 3: [ 224, 252, 157, 173, 304, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 4: [ -1, -1, -1, -1, -1, ]
 GIORNO 5: [ -1, -1, -1, -1, -1, ]
 GIORNO 6: [ -1, -1, -1, -1, -1, ]
@@ -968,7 +1370,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
@@ -977,6 +1379,7 @@ ______________________________________________
 Porto 3:
 Banchine occupate totali: 1
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 0
 [41136]Risorse porto 3:
 DOMANDE:
@@ -990,6 +1393,21 @@ GIORNO 0: [ 210, 0, 108, 255, 333, ]
 GIORNO 1: [ 181, 331, 216, 354, 524, ]
 GIORNO 2: [ 500, 470, 525, 504, 346, ]
 GIORNO 3: [ 133, 161, 156, 146, 387, ]
+=======
+Merci spedite: 391
+[17936]Risorse porto 3:
+DOMANDE:
+5727, 
+7497, 
+0, 
+0, 
+9585, 
+SUPPLIES:
+GIORNO 0: [ 271, 380, 0, 240, 475, ]
+GIORNO 1: [ 292, 353, 0, 219, 486, ]
+GIORNO 2: [ 226, 358, 0, 238, 725, ]
+GIORNO 3: [ 203, 209, 173, 222, 230, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 4: [ -1, -1, -1, -1, -1, ]
 GIORNO 5: [ -1, -1, -1, -1, -1, ]
 GIORNO 6: [ -1, -1, -1, -1, -1, ]
@@ -1007,7 +1425,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -1016,53 +1434,84 @@ ______________________________________________
 ------------------Day 5 -----------------
 Tipo merce 0:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 3848
 		b) in nave: 524
+=======
+		a) nei porti: 2870
+		b) in nave: 1135
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 1:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 3590
 		b) in nave: 403
+=======
+		a) nei porti: 4640
+		b) in nave: 0
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 2:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 3602
 		b) in nave: 293
+=======
+		a) nei porti: 3367
+		b) in nave: 649
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 3:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 4303
 		b) in nave: 280
+=======
+		a) nei porti: 4470
+		b) in nave: 0
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 4:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 8157
 		b) in nave: 0
+=======
+		a) nei porti: 6664
+		b) in nave: 486
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Numero di nave in mare senza carico:0
+<<<<<<< HEAD
 Numero di navi in mare con carico a bordo:5
 Numero di navi in porto che stanno facendo operazioni di carico/scarico:0
+=======
+Numero di navi in mare con carico a bordo:7
+Numero di navi in porto che stanno facendo operazioni di carico/scarico:3
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 Numero di navi rallentate a causa delle tempeste: 0
 Numero di navi affondate:0
 Porti interessati da mareggiata: 0
 Porto 0:
-Banchine occupate totali: 0
+Banchine occupate totali: 1
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 413
 [41154]Risorse porto 0:
 DOMANDE:
@@ -1070,13 +1519,30 @@ DOMANDE:
 1847, 
 0, 
 3324, 
+=======
+Merci spedite: 802
+[17997]Risorse porto 0:
+DOMANDE:
 0, 
+4322, 
+3950, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+0, 
+4610, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 109, 0, 119, 526, ]
 GIORNO 1: [ 105, 168, 19, 177, 237, ]
 GIORNO 2: [ 196, 172, 157, 235, 186, ]
 GIORNO 3: [ 233, 170, 241, 189, 214, ]
 GIORNO 4: [ 332, 181, 317, 164, 646, ]
+=======
+GIORNO 0: [ 0, 240, 249, 351, 458, ]
+GIORNO 1: [ 0, 255, 297, 310, 410, ]
+GIORNO 2: [ 112, 295, 287, 226, 529, ]
+GIORNO 3: [ 105, 184, 303, 303, 433, ]
+GIORNO 4: [ 198, 214, 138, 223, 147, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 5: [ -1, -1, -1, -1, -1, ]
 GIORNO 6: [ -1, -1, -1, -1, -1, ]
 GIORNO 7: [ -1, -1, -1, -1, -1, ]
@@ -1093,29 +1559,48 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
 y: 0.000000
 ______________________________________________
 Porto 1:
-Banchine occupate totali: 0
+Banchine occupate totali: 1
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 289
 [41154]Risorse porto 1:
+=======
+Merci spedite: 333
+[17997]Risorse porto 1:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
 3120, 
 0, 
+<<<<<<< HEAD
 3375, 
 3146, 
+=======
+3541, 
+3136, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 0, 
+4626, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 336, 0, 184, 225, 607, ]
 GIORNO 1: [ 164, 110, 212, 181, 205, ]
 GIORNO 2: [ 111, 97, 99, 189, 338, ]
 GIORNO 3: [ 274, 180, 243, 185, 733, ]
 GIORNO 4: [ 342, 223, 197, 317, 456, ]
+=======
+GIORNO 0: [ 0, 217, 155, 210, 219, ]
+GIORNO 1: [ 0, 121, 200, 234, 257, ]
+GIORNO 2: [ 130, 124, 179, 159, 241, ]
+GIORNO 3: [ 21, 191, 344, 196, 402, ]
+GIORNO 4: [ 122, 109, 186, 193, 285, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 5: [ -1, -1, -1, -1, -1, ]
 GIORNO 6: [ -1, -1, -1, -1, -1, ]
 GIORNO 7: [ -1, -1, -1, -1, -1, ]
@@ -1132,7 +1617,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
@@ -1141,20 +1626,35 @@ ______________________________________________
 Porto 2:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 641
 [41154]Risorse porto 2:
+=======
+Merci spedite: 744
+[17997]Risorse porto 2:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
+4620, 
+4788, 
 0, 
 6368, 
 3600, 
 0, 
 0, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 311, 145, 0, 510, ]
 GIORNO 1: [ 136, 169, 159, 242, 675, ]
 GIORNO 2: [ 127, 199, 96, 173, 260, ]
 GIORNO 3: [ 158, 264, 180, 333, 420, ]
 GIORNO 4: [ 218, 178, 286, 187, 413, ]
+=======
+GIORNO 0: [ 171, 87, 0, 215, 0, ]
+GIORNO 1: [ 184, 176, 0, 128, 0, ]
+GIORNO 2: [ 142, 126, 102, 111, 212, ]
+GIORNO 3: [ 224, 252, 157, 173, 304, ]
+GIORNO 4: [ 184, 347, 353, 188, 373, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 5: [ -1, -1, -1, -1, -1, ]
 GIORNO 6: [ -1, -1, -1, -1, -1, ]
 GIORNO 7: [ -1, -1, -1, -1, -1, ]
@@ -1171,15 +1671,16 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
 y: 10.000000
 ______________________________________________
 Porto 3:
-Banchine occupate totali: 0
+Banchine occupate totali: 1
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 157
 [41154]Risorse porto 3:
 DOMANDE:
@@ -1194,6 +1695,22 @@ GIORNO 1: [ 181, 331, 216, 354, 524, ]
 GIORNO 2: [ 500, 470, 502, 504, 346, ]
 GIORNO 3: [ 133, 161, 156, 146, 387, ]
 GIORNO 4: [ 92, 97, 85, 128, 141, ]
+=======
+Merci spedite: 391
+[17997]Risorse porto 3:
+DOMANDE:
+5565, 
+7497, 
+0, 
+0, 
+9585, 
+SUPPLIES:
+GIORNO 0: [ 271, 380, 0, 240, 475, ]
+GIORNO 1: [ 292, 353, 0, 219, 486, ]
+GIORNO 2: [ 226, 358, 0, 238, 725, ]
+GIORNO 3: [ 203, 209, 173, 222, 230, ]
+GIORNO 4: [ 285, 402, 244, 331, 478, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 5: [ -1, -1, -1, -1, -1, ]
 GIORNO 6: [ -1, -1, -1, -1, -1, ]
 GIORNO 7: [ -1, -1, -1, -1, -1, ]
@@ -1210,7 +1727,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -1219,53 +1736,84 @@ ______________________________________________
 ------------------Day 6 -----------------
 Tipo merce 0:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 4658
 		b) in nave: 524
+=======
+		a) nei porti: 3666
+		b) in nave: 1466
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 1:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 4453
 		b) in nave: 403
+=======
+		a) nei porti: 5450
+		b) in nave: 0
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 2:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 4535
 		b) in nave: 293
+=======
+		a) nei porti: 4089
+		b) in nave: 917
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 3:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 4982
 		b) in nave: 280
+=======
+		a) nei porti: 5367
+		b) in nave: 0
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 4:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 9872
 		b) in nave: 0
+=======
+		a) nei porti: 8428
+		b) in nave: 486
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Numero di nave in mare senza carico:0
+<<<<<<< HEAD
 Numero di navi in mare con carico a bordo:4
 Numero di navi in porto che stanno facendo operazioni di carico/scarico:1
+=======
+Numero di navi in mare con carico a bordo:6
+Numero di navi in porto che stanno facendo operazioni di carico/scarico:4
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 Numero di navi rallentate a causa delle tempeste: 0
 Numero di navi affondate:0
 Porti interessati da mareggiata: 0
 Porto 0:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 413
 [41168]Risorse porto 0:
 DOMANDE:
@@ -1273,14 +1821,32 @@ DOMANDE:
 1847, 
 0, 
 3324, 
+=======
+Merci spedite: 923
+[18012]Risorse porto 0:
+DOMANDE:
 0, 
+4322, 
+3950, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+0, 
+4610, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 109, 0, 119, 526, ]
 GIORNO 1: [ 105, 168, 19, 177, 237, ]
 GIORNO 2: [ 196, 172, 157, 235, 186, ]
 GIORNO 3: [ 233, 170, 241, 189, 214, ]
 GIORNO 4: [ 332, 181, 317, 164, 646, ]
 GIORNO 5: [ 240, 258, 284, 209, 426, ]
+=======
+GIORNO 0: [ 0, 240, 249, 351, 458, ]
+GIORNO 1: [ 0, 255, 297, 310, 410, ]
+GIORNO 2: [ 112, 295, 287, 226, 529, ]
+GIORNO 3: [ 105, 184, 303, 303, 433, ]
+GIORNO 4: [ 198, 214, 138, 223, 147, ]
+GIORNO 5: [ 115, 123, 123, 147, 144, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 6: [ -1, -1, -1, -1, -1, ]
 GIORNO 7: [ -1, -1, -1, -1, -1, ]
 GIORNO 8: [ -1, -1, -1, -1, -1, ]
@@ -1303,23 +1869,43 @@ x: 0.000000
 y: 0.000000
 ______________________________________________
 Porto 1:
-Banchine occupate totali: 0
+Banchine occupate totali: 1
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 289
 [41168]Risorse porto 1:
+=======
+Merci spedite: 543
+[18012]Risorse porto 1:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
 3120, 
 0, 
+<<<<<<< HEAD
 3375, 
 3146, 
+=======
+3541, 
+3136, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 0, 
+4626, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 336, 0, 184, 225, 607, ]
 GIORNO 1: [ 164, 110, 212, 181, 205, ]
 GIORNO 2: [ 111, 97, 99, 189, 338, ]
 GIORNO 3: [ 274, 180, 243, 185, 733, ]
 GIORNO 4: [ 342, 223, 197, 317, 456, ]
 GIORNO 5: [ 208, 87, 138, 163, 249, ]
+=======
+GIORNO 0: [ 0, 217, 155, 210, 219, ]
+GIORNO 1: [ 0, 121, 200, 234, 257, ]
+GIORNO 2: [ 119, 124, 179, 159, 241, ]
+GIORNO 3: [ 21, 191, 344, 196, 402, ]
+GIORNO 4: [ 122, 109, 186, 193, 285, ]
+GIORNO 5: [ 173, 258, 142, 215, 384, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 6: [ -1, -1, -1, -1, -1, ]
 GIORNO 7: [ -1, -1, -1, -1, -1, ]
 GIORNO 8: [ -1, -1, -1, -1, -1, ]
@@ -1335,7 +1921,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
@@ -1344,21 +1930,37 @@ ______________________________________________
 Porto 2:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 641
 [41168]Risorse porto 2:
+=======
+Merci spedite: 744
+[18012]Risorse porto 2:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
+4620, 
+4788, 
 0, 
 6247, 
 3425, 
 0, 
 0, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 311, 145, 0, 510, ]
 GIORNO 1: [ 136, 169, 159, 242, 675, ]
 GIORNO 2: [ 127, 199, 96, 173, 260, ]
 GIORNO 3: [ 158, 264, 180, 333, 420, ]
 GIORNO 4: [ 218, 178, 286, 187, 413, ]
 GIORNO 5: [ 102, 244, 157, 100, 392, ]
+=======
+GIORNO 0: [ 171, 87, 0, 215, 0, ]
+GIORNO 1: [ 184, 176, 0, 128, 0, ]
+GIORNO 2: [ 142, 126, 102, 111, 212, ]
+GIORNO 3: [ 224, 252, 157, 173, 304, ]
+GIORNO 4: [ 184, 347, 353, 188, 373, ]
+GIORNO 5: [ 111, 112, 129, 157, 273, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 6: [ -1, -1, -1, -1, -1, ]
 GIORNO 7: [ -1, -1, -1, -1, -1, ]
 GIORNO 8: [ -1, -1, -1, -1, -1, ]
@@ -1381,8 +1983,9 @@ x: 10.000000
 y: 10.000000
 ______________________________________________
 Porto 3:
-Banchine occupate totali: 1
+Banchine occupate totali: 3
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 157
 [41168]Risorse porto 3:
 DOMANDE:
@@ -1398,6 +2001,23 @@ GIORNO 2: [ 500, 470, 502, 504, 346, ]
 GIORNO 3: [ 133, 161, 156, 146, 387, ]
 GIORNO 4: [ 92, 97, 85, 128, 141, ]
 GIORNO 5: [ 260, 274, 354, 207, 648, ]
+=======
+Merci spedite: 659
+[18012]Risorse porto 3:
+DOMANDE:
+4916, 
+7497, 
+0, 
+0, 
+9585, 
+SUPPLIES:
+GIORNO 0: [ 271, 380, 0, 240, 475, ]
+GIORNO 1: [ 292, 353, 0, 219, 486, ]
+GIORNO 2: [ 226, 358, 0, 238, 725, ]
+GIORNO 3: [ 203, 209, 173, 222, 230, ]
+GIORNO 4: [ 285, 402, 244, 331, 478, ]
+GIORNO 5: [ 408, 317, 328, 378, 963, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 6: [ -1, -1, -1, -1, -1, ]
 GIORNO 7: [ -1, -1, -1, -1, -1, ]
 GIORNO 8: [ -1, -1, -1, -1, -1, ]
@@ -1413,7 +2033,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -1422,6 +2042,7 @@ ______________________________________________
 ------------------Day 7 -----------------
 Tipo merce 0:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 5836
 		b) in nave: 342
 	- Scaduta:
@@ -1432,6 +2053,26 @@ Tipo merce 1:
 	- Non scaduta:
 		a) nei porti: 5487
 		b) in nave: 403
+=======
+		a) nei porti: 4557
+		b) in nave: 1083
+	- Scaduta:
+		a) nei porti: 0
+		b) in nave: 0
+	- Consegnata: 503
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 6338
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 0
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 5166
+		b) in nave: 917
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
@@ -1446,14 +2087,20 @@ Tipo merce 2:
 	- Consegnata: 43
 Tipo merce 3:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 5618
 		b) in nave: 280
+=======
+		a) nei porti: 6067
+		b) in nave: 0
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 4:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 10972
 		b) in nave: 0
 	- Scaduta:
@@ -1463,12 +2110,24 @@ Tipo merce 4:
 Numero di nave in mare senza carico:0
 Numero di navi in mare con carico a bordo:2
 Numero di navi in porto che stanno facendo operazioni di carico/scarico:3
+=======
+		a) nei porti: 9872
+		b) in nave: 259
+	- Scaduta:
+		a) nei porti: 0
+		b) in nave: 0
+	- Consegnata: 227
+Numero di nave in mare senza carico:2
+Numero di navi in mare con carico a bordo:4
+Numero di navi in porto che stanno facendo operazioni di carico/scarico:4
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 Numero di navi rallentate a causa delle tempeste: 0
 Numero di navi affondate:0
 Porti interessati da mareggiata: 0
 Porto 0:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 413
 [41183]Risorse porto 0:
 DOMANDE:
@@ -1476,8 +2135,18 @@ DOMANDE:
 1847, 
 0, 
 3324, 
+=======
+Merci spedite: 923
+[18030]Risorse porto 0:
+DOMANDE:
 0, 
+4322, 
+3950, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+0, 
+4610, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 109, 0, 119, 526, ]
 GIORNO 1: [ 105, 168, 19, 177, 237, ]
 GIORNO 2: [ 196, 172, 157, 235, 186, ]
@@ -1485,6 +2154,15 @@ GIORNO 3: [ 233, 170, 241, 189, 214, ]
 GIORNO 4: [ 332, 181, 317, 164, 646, ]
 GIORNO 5: [ 240, 258, 284, 209, 426, ]
 GIORNO 6: [ 388, 322, 222, 330, 345, ]
+=======
+GIORNO 0: [ 0, 240, 249, 351, 458, ]
+GIORNO 1: [ 0, 255, 297, 310, 410, ]
+GIORNO 2: [ 112, 295, 287, 226, 529, ]
+GIORNO 3: [ 105, 184, 303, 303, 433, ]
+GIORNO 4: [ 198, 214, 138, 223, 147, ]
+GIORNO 5: [ 115, 123, 123, 147, 144, ]
+GIORNO 6: [ 147, 114, 157, 146, 167, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 7: [ -1, -1, -1, -1, -1, ]
 GIORNO 8: [ -1, -1, -1, -1, -1, ]
 GIORNO 9: [ -1, -1, -1, -1, -1, ]
@@ -1499,7 +2177,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -1508,15 +2186,27 @@ ______________________________________________
 Porto 1:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 289
 [41183]Risorse porto 1:
+=======
+Merci spedite: 663
+[18030]Risorse porto 1:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
 3120, 
 0, 
+<<<<<<< HEAD
 3375, 
 3146, 
+=======
+3541, 
+3136, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 0, 
+4626, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 336, 0, 184, 225, 607, ]
 GIORNO 1: [ 164, 110, 212, 181, 205, ]
 GIORNO 2: [ 111, 97, 99, 189, 338, ]
@@ -1524,6 +2214,15 @@ GIORNO 3: [ 274, 180, 243, 185, 733, ]
 GIORNO 4: [ 342, 223, 197, 317, 456, ]
 GIORNO 5: [ 208, 87, 138, 163, 249, ]
 GIORNO 6: [ 329, 237, 336, 198, 282, ]
+=======
+GIORNO 0: [ 0, 217, 155, 210, 219, ]
+GIORNO 1: [ 0, 121, 200, 234, 257, ]
+GIORNO 2: [ 119, 124, 179, 159, 241, ]
+GIORNO 3: [ 21, 191, 344, 196, 402, ]
+GIORNO 4: [ 122, 109, 186, 193, 285, ]
+GIORNO 5: [ 173, 258, 142, 215, 384, ]
+GIORNO 6: [ 180, 146, 158, 127, 475, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 7: [ -1, -1, -1, -1, -1, ]
 GIORNO 8: [ -1, -1, -1, -1, -1, ]
 GIORNO 9: [ -1, -1, -1, -1, -1, ]
@@ -1538,24 +2237,34 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
 y: 0.000000
 ______________________________________________
 Porto 2:
+<<<<<<< HEAD
 Banchine occupate totali: 3
 Merci ricevute: 43
 Merci spedite: 641
 [41183]Risorse porto 2:
+=======
+Banchine occupate totali: 0
+Merci ricevute: 0
+Merci spedite: 744
+[18030]Risorse porto 2:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
+4620, 
+4788, 
 0, 
 6133, 
 3425, 
 0, 
 0, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 311, 145, 0, 510, ]
 GIORNO 1: [ 136, 169, 159, 60, 675, ]
 GIORNO 2: [ 127, 199, 96, 173, 260, ]
@@ -1563,6 +2272,15 @@ GIORNO 3: [ 158, 264, 180, 333, 420, ]
 GIORNO 4: [ 218, 178, 286, 187, 413, ]
 GIORNO 5: [ 102, 244, 157, 100, 392, ]
 GIORNO 6: [ 208, 222, 202, 134, 141, ]
+=======
+GIORNO 0: [ 171, 87, 0, 215, 0, ]
+GIORNO 1: [ 184, 176, 0, 128, 0, ]
+GIORNO 2: [ 142, 126, 102, 111, 212, ]
+GIORNO 3: [ 224, 252, 157, 173, 304, ]
+GIORNO 4: [ 184, 347, 353, 188, 373, ]
+GIORNO 5: [ 111, 112, 129, 157, 273, ]
+GIORNO 6: [ 197, 358, 342, 168, 423, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 7: [ -1, -1, -1, -1, -1, ]
 GIORNO 8: [ -1, -1, -1, -1, -1, ]
 GIORNO 9: [ -1, -1, -1, -1, -1, ]
@@ -1577,13 +2295,14 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
 y: 10.000000
 ______________________________________________
 Porto 3:
+<<<<<<< HEAD
 Banchine occupate totali: 0
 Merci ricevute: 182
 Merci spedite: 157
@@ -1602,6 +2321,26 @@ GIORNO 3: [ 133, 161, 156, 146, 387, ]
 GIORNO 4: [ 92, 97, 85, 128, 141, ]
 GIORNO 5: [ 260, 274, 354, 207, 648, ]
 GIORNO 6: [ 253, 253, 110, 156, 332, ]
+=======
+Banchine occupate totali: 4
+Merci ricevute: 730
+Merci spedite: 659
+[18030]Risorse porto 3:
+DOMANDE:
+4916, 
+7497, 
+0, 
+0, 
+9099, 
+SUPPLIES:
+GIORNO 0: [ 271, 380, 0, 240, 475, ]
+GIORNO 1: [ 292, 353, 0, 219, 486, ]
+GIORNO 2: [ 226, 358, 0, 238, 725, ]
+GIORNO 3: [ 203, 209, 173, 222, 230, ]
+GIORNO 4: [ 285, 402, 244, 331, 478, ]
+GIORNO 5: [ 408, 317, 328, 378, 963, ]
+GIORNO 6: [ 367, 270, 420, 259, 379, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 7: [ -1, -1, -1, -1, -1, ]
 GIORNO 8: [ -1, -1, -1, -1, -1, ]
 GIORNO 9: [ -1, -1, -1, -1, -1, ]
@@ -1616,7 +2355,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -1625,6 +2364,7 @@ ______________________________________________
 ------------------Day 8 -----------------
 Tipo merce 0:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 6641
 		b) in nave: 342
 	- Scaduta:
@@ -1635,6 +2375,26 @@ Tipo merce 1:
 	- Non scaduta:
 		a) nei porti: 6405
 		b) in nave: 403
+=======
+		a) nei porti: 5328
+		b) in nave: 883
+	- Scaduta:
+		a) nei porti: 0
+		b) in nave: 0
+	- Consegnata: 714
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 7027
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 0
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 6180
+		b) in nave: 917
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
@@ -1649,22 +2409,37 @@ Tipo merce 2:
 	- Consegnata: 43
 Tipo merce 3:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 6462
 		b) in nave: 462
+=======
+		a) nei porti: 6915
+		b) in nave: 0
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
 Tipo merce 4:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 12612
+=======
+		a) nei porti: 10861
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
+<<<<<<< HEAD
 	- Consegnata: 0
 Numero di nave in mare senza carico:0
 Numero di navi in mare con carico a bordo:2
+=======
+	- Consegnata: 486
+Numero di nave in mare senza carico:3
+Numero di navi in mare con carico a bordo:4
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 Numero di navi in porto che stanno facendo operazioni di carico/scarico:3
 Numero di navi rallentate a causa delle tempeste: 0
 Numero di navi affondate:0
@@ -1672,6 +2447,7 @@ Porti interessati da mareggiata: 0
 Porto 0:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 413
 [41198]Risorse porto 0:
 DOMANDE:
@@ -1679,8 +2455,18 @@ DOMANDE:
 1847, 
 0, 
 3324, 
+=======
+Merci spedite: 923
+[18046]Risorse porto 0:
+DOMANDE:
 0, 
+4322, 
+3950, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+0, 
+4610, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 109, 0, 119, 526, ]
 GIORNO 1: [ 105, 168, 19, 177, 237, ]
 GIORNO 2: [ 196, 172, 157, 235, 186, ]
@@ -1689,6 +2475,16 @@ GIORNO 4: [ 332, 181, 317, 164, 646, ]
 GIORNO 5: [ 240, 258, 284, 209, 426, ]
 GIORNO 6: [ 388, 322, 222, 330, 345, ]
 GIORNO 7: [ 164, 133, 153, 169, 529, ]
+=======
+GIORNO 0: [ 0, 240, 249, 351, 458, ]
+GIORNO 1: [ 0, 255, 297, 310, 410, ]
+GIORNO 2: [ 112, 295, 287, 226, 529, ]
+GIORNO 3: [ 105, 184, 303, 303, 433, ]
+GIORNO 4: [ 198, 214, 138, 223, 147, ]
+GIORNO 5: [ 115, 123, 123, 147, 144, ]
+GIORNO 6: [ 147, 114, 157, 146, 167, ]
+GIORNO 7: [ 236, 147, 307, 303, 307, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 8: [ -1, -1, -1, -1, -1, ]
 GIORNO 9: [ -1, -1, -1, -1, -1, ]
 GIORNO 10: [ -1, -1, -1, -1, -1, ]
@@ -1702,7 +2498,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -1711,15 +2507,27 @@ ______________________________________________
 Porto 1:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 289
 [41198]Risorse porto 1:
+=======
+Merci spedite: 674
+[18046]Risorse porto 1:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
 3120, 
 0, 
+<<<<<<< HEAD
 3375, 
 3146, 
+=======
+3541, 
+3136, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 0, 
+4626, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 336, 0, 184, 225, 607, ]
 GIORNO 1: [ 164, 110, 212, 181, 205, ]
 GIORNO 2: [ 111, 97, 99, 189, 338, ]
@@ -1728,6 +2536,16 @@ GIORNO 4: [ 342, 223, 197, 317, 456, ]
 GIORNO 5: [ 208, 87, 138, 163, 249, ]
 GIORNO 6: [ 329, 237, 336, 198, 282, ]
 GIORNO 7: [ 123, 160, 212, 196, 247, ]
+=======
+GIORNO 0: [ 0, 217, 155, 210, 219, ]
+GIORNO 1: [ 0, 121, 200, 234, 257, ]
+GIORNO 2: [ 30, 124, 179, 159, 241, ]
+GIORNO 3: [ 21, 191, 344, 196, 402, ]
+GIORNO 4: [ 122, 109, 186, 193, 285, ]
+GIORNO 5: [ 173, 258, 142, 215, 384, ]
+GIORNO 6: [ 180, 146, 158, 127, 475, ]
+GIORNO 7: [ 164, 120, 272, 245, 387, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 8: [ -1, -1, -1, -1, -1, ]
 GIORNO 9: [ -1, -1, -1, -1, -1, ]
 GIORNO 10: [ -1, -1, -1, -1, -1, ]
@@ -1741,24 +2559,34 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
 y: 0.000000
 ______________________________________________
 Porto 2:
+<<<<<<< HEAD
 Banchine occupate totali: 3
 Merci ricevute: 43
 Merci spedite: 823
 [41198]Risorse porto 2:
+=======
+Banchine occupate totali: 0
+Merci ricevute: 0
+Merci spedite: 744
+[18046]Risorse porto 2:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
+4620, 
+4788, 
 0, 
 6133, 
 3425, 
 0, 
 0, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 311, 145, 0, 510, ]
 GIORNO 1: [ 136, 169, 159, 60, 675, ]
 GIORNO 2: [ 127, 199, 96, 173, 260, ]
@@ -1767,6 +2595,16 @@ GIORNO 4: [ 218, 178, 286, 187, 413, ]
 GIORNO 5: [ 102, 244, 157, 100, 392, ]
 GIORNO 6: [ 208, 222, 202, 134, 141, ]
 GIORNO 7: [ 212, 303, 237, 333, 410, ]
+=======
+GIORNO 0: [ 171, 87, 0, 215, 0, ]
+GIORNO 1: [ 184, 176, 0, 128, 0, ]
+GIORNO 2: [ 142, 126, 102, 111, 212, ]
+GIORNO 3: [ 224, 252, 157, 173, 4, ]
+GIORNO 4: [ 184, 347, 353, 188, 73, ]
+GIORNO 5: [ 111, 112, 129, 157, 273, ]
+GIORNO 6: [ 197, 358, 342, 168, 423, ]
+GIORNO 7: [ 126, 193, 107, 131, 487, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 8: [ -1, -1, -1, -1, -1, ]
 GIORNO 9: [ -1, -1, -1, -1, -1, ]
 GIORNO 10: [ -1, -1, -1, -1, -1, ]
@@ -1787,6 +2625,7 @@ x: 10.000000
 y: 10.000000
 ______________________________________________
 Porto 3:
+<<<<<<< HEAD
 Banchine occupate totali: 0
 Merci ricevute: 182
 Merci spedite: 157
@@ -1806,6 +2645,27 @@ GIORNO 4: [ 92, 97, 85, 128, 141, ]
 GIORNO 5: [ 260, 274, 354, 207, 648, ]
 GIORNO 6: [ 253, 253, 110, 156, 332, ]
 GIORNO 7: [ 306, 322, 191, 146, 454, ]
+=======
+Banchine occupate totali: 3
+Merci ricevute: 1200
+Merci spedite: 659
+[18046]Risorse porto 3:
+DOMANDE:
+4784, 
+7497, 
+0, 
+0, 
+9099, 
+SUPPLIES:
+GIORNO 0: [ 271, 380, 0, 240, 475, ]
+GIORNO 1: [ 292, 353, 0, 219, 486, ]
+GIORNO 2: [ 226, 358, 0, 238, 725, ]
+GIORNO 3: [ 203, 209, 173, 222, 230, ]
+GIORNO 4: [ 285, 402, 244, 331, 478, ]
+GIORNO 5: [ 408, 317, 328, 378, 963, ]
+GIORNO 6: [ 367, 270, 420, 259, 379, ]
+GIORNO 7: [ 334, 229, 328, 169, 408, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 8: [ -1, -1, -1, -1, -1, ]
 GIORNO 9: [ -1, -1, -1, -1, -1, ]
 GIORNO 10: [ -1, -1, -1, -1, -1, ]
@@ -1819,7 +2679,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -1828,6 +2688,7 @@ ______________________________________________
 ------------------Day 9 -----------------
 Tipo merce 0:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 7577
 		b) in nave: 342
 	- Scaduta:
@@ -1861,20 +2722,62 @@ Tipo merce 3:
 Tipo merce 4:
 	- Non scaduta:
 		a) nei porti: 14377
+=======
+		a) nei porti: 6120
+		b) in nave: 152
+	- Scaduta:
+		a) nei porti: 0
+		b) in nave: 0
+	- Consegnata: 1445
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 7891
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
+<<<<<<< HEAD
 Numero di nave in mare senza carico:1
 Numero di navi in mare con carico a bordo:2
 Numero di navi in porto che stanno facendo operazioni di carico/scarico:2
+=======
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 6757
+		b) in nave: 917
+	- Scaduta:
+		a) nei porti: 0
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 7884
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 0
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 12148
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 0
+		b) in nave: 0
+	- Consegnata: 486
+Numero di nave in mare senza carico:2
+Numero di navi in mare con carico a bordo:3
+Numero di navi in porto che stanno facendo operazioni di carico/scarico:5
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 Numero di navi rallentate a causa delle tempeste: 0
 Numero di navi affondate:0
 Porti interessati da mareggiata: 0
 Porto 0:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 413
 [41214]Risorse porto 0:
 DOMANDE:
@@ -1882,8 +2785,18 @@ DOMANDE:
 1847, 
 0, 
 3324, 
+=======
+Merci spedite: 923
+[18093]Risorse porto 0:
+DOMANDE:
 0, 
+4322, 
+3950, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+0, 
+4610, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 109, 0, 119, 526, ]
 GIORNO 1: [ 105, 168, 19, 177, 237, ]
 GIORNO 2: [ 196, 172, 157, 235, 186, ]
@@ -1893,6 +2806,17 @@ GIORNO 5: [ 240, 258, 284, 209, 426, ]
 GIORNO 6: [ 388, 322, 222, 330, 345, ]
 GIORNO 7: [ 164, 133, 153, 169, 529, ]
 GIORNO 8: [ 117, 135, 186, 77, 264, ]
+=======
+GIORNO 0: [ 0, 240, 249, 351, 458, ]
+GIORNO 1: [ 0, 255, 297, 310, 410, ]
+GIORNO 2: [ 112, 295, 287, 226, 529, ]
+GIORNO 3: [ 105, 184, 303, 303, 433, ]
+GIORNO 4: [ 198, 214, 138, 223, 147, ]
+GIORNO 5: [ 115, 123, 123, 147, 144, ]
+GIORNO 6: [ 147, 114, 157, 146, 167, ]
+GIORNO 7: [ 236, 147, 307, 303, 307, ]
+GIORNO 8: [ 122, 181, 220, 192, 184, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 9: [ -1, -1, -1, -1, -1, ]
 GIORNO 10: [ -1, -1, -1, -1, -1, ]
 GIORNO 11: [ -1, -1, -1, -1, -1, ]
@@ -1912,17 +2836,29 @@ x: 0.000000
 y: 0.000000
 ______________________________________________
 Porto 1:
-Banchine occupate totali: 0
+Banchine occupate totali: 1
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 289
 [41214]Risorse porto 1:
+=======
+Merci spedite: 674
+[18093]Risorse porto 1:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
 3120, 
 0, 
+<<<<<<< HEAD
 3375, 
 3146, 
+=======
+3541, 
+3136, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 0, 
+4626, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 336, 0, 184, 225, 607, ]
 GIORNO 1: [ 164, 110, 212, 181, 205, ]
 GIORNO 2: [ 111, 97, 99, 189, 338, ]
@@ -1932,6 +2868,17 @@ GIORNO 5: [ 208, 87, 138, 163, 249, ]
 GIORNO 6: [ 329, 237, 336, 198, 282, ]
 GIORNO 7: [ 123, 160, 212, 196, 247, ]
 GIORNO 8: [ 174, 161, 137, 93, 205, ]
+=======
+GIORNO 0: [ 0, 217, 155, 210, 219, ]
+GIORNO 1: [ 0, 121, 200, 234, 257, ]
+GIORNO 2: [ 30, 124, 179, 159, 241, ]
+GIORNO 3: [ 21, 191, 344, 196, 402, ]
+GIORNO 4: [ 122, 109, 186, 193, 285, ]
+GIORNO 5: [ 173, 258, 142, 215, 384, ]
+GIORNO 6: [ 180, 146, 158, 127, 475, ]
+GIORNO 7: [ 164, 120, 272, 245, 387, ]
+GIORNO 8: [ 294, 267, 388, 330, 365, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 9: [ -1, -1, -1, -1, -1, ]
 GIORNO 10: [ -1, -1, -1, -1, -1, ]
 GIORNO 11: [ -1, -1, -1, -1, -1, ]
@@ -1944,24 +2891,34 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
 y: 0.000000
 ______________________________________________
 Porto 2:
+<<<<<<< HEAD
 Banchine occupate totali: 1
 Merci ricevute: 578
 Merci spedite: 823
 [41214]Risorse porto 2:
+=======
+Banchine occupate totali: 2
+Merci ricevute: 0
+Merci spedite: 744
+[18093]Risorse porto 2:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
+4620, 
+4788, 
 0, 
 5965, 
 3307, 
 0, 
 0, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 311, 145, 0, 510, ]
 GIORNO 1: [ 136, 169, 159, 60, 675, ]
 GIORNO 2: [ 127, 199, 96, 173, 260, ]
@@ -1971,6 +2928,17 @@ GIORNO 5: [ 102, 244, 157, 100, 392, ]
 GIORNO 6: [ 208, 222, 202, 134, 141, ]
 GIORNO 7: [ 212, 303, 237, 333, 410, ]
 GIORNO 8: [ 154, 168, 183, 135, 504, ]
+=======
+GIORNO 0: [ 171, 87, 0, 215, 0, ]
+GIORNO 1: [ 184, 176, 0, 128, 0, ]
+GIORNO 2: [ 142, 126, 102, 111, 212, ]
+GIORNO 3: [ 224, 252, 157, 173, 4, ]
+GIORNO 4: [ 184, 347, 142, 188, 73, ]
+GIORNO 5: [ 111, 112, 129, 157, 273, ]
+GIORNO 6: [ 197, 358, 342, 168, 423, ]
+GIORNO 7: [ 126, 193, 107, 131, 487, ]
+GIORNO 8: [ 132, 134, 187, 160, 471, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 9: [ -1, -1, -1, -1, -1, ]
 GIORNO 10: [ -1, -1, -1, -1, -1, ]
 GIORNO 11: [ -1, -1, -1, -1, -1, ]
@@ -1983,13 +2951,14 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
 y: 10.000000
 ______________________________________________
 Porto 3:
+<<<<<<< HEAD
 Banchine occupate totali: 1
 Merci ricevute: 182
 Merci spedite: 157
@@ -2010,6 +2979,28 @@ GIORNO 5: [ 260, 274, 354, 207, 648, ]
 GIORNO 6: [ 253, 253, 110, 156, 332, ]
 GIORNO 7: [ 306, 322, 191, 146, 454, ]
 GIORNO 8: [ 491, 402, 263, 359, 792, ]
+=======
+Banchine occupate totali: 2
+Merci ricevute: 1931
+Merci spedite: 659
+[18093]Risorse porto 3:
+DOMANDE:
+4451, 
+7497, 
+0, 
+0, 
+9099, 
+SUPPLIES:
+GIORNO 0: [ 271, 380, 0, 240, 475, ]
+GIORNO 1: [ 292, 353, 0, 219, 486, ]
+GIORNO 2: [ 226, 358, 0, 238, 725, ]
+GIORNO 3: [ 203, 209, 173, 222, 230, ]
+GIORNO 4: [ 285, 402, 244, 331, 478, ]
+GIORNO 5: [ 408, 317, 328, 378, 963, ]
+GIORNO 6: [ 367, 270, 120, 259, 379, ]
+GIORNO 7: [ 334, 229, 328, 169, 408, ]
+GIORNO 8: [ 244, 282, 293, 287, 267, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 9: [ -1, -1, -1, -1, -1, ]
 GIORNO 10: [ -1, -1, -1, -1, -1, ]
 GIORNO 11: [ -1, -1, -1, -1, -1, ]
@@ -2022,7 +3013,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -2031,6 +3022,7 @@ ______________________________________________
 ------------------Day 10 -----------------
 Tipo merce 0:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 8575
 		b) in nave: 342
 	- Scaduta:
@@ -2064,13 +3056,53 @@ Tipo merce 3:
 Tipo merce 4:
 	- Non scaduta:
 		a) nei porti: 15561
+=======
+		a) nei porti: 6937
+		b) in nave: 209
+	- Scaduta:
+		a) nei porti: 0
+		b) in nave: 0
+	- Consegnata: 1477
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 8744
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 		b) in nave: 0
 	- Scaduta:
 		a) nei porti: 0
 		b) in nave: 0
 	- Consegnata: 0
+<<<<<<< HEAD
 Numero di nave in mare senza carico:0
 Numero di navi in mare con carico a bordo:1
+=======
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 7185
+		b) in nave: 1128
+	- Scaduta:
+		a) nei porti: 0
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 8726
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 0
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 13477
+		b) in nave: 300
+	- Scaduta:
+		a) nei porti: 0
+		b) in nave: 0
+	- Consegnata: 486
+Numero di nave in mare senza carico:1
+Numero di navi in mare con carico a bordo:5
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 Numero di navi in porto che stanno facendo operazioni di carico/scarico:4
 Numero di navi rallentate a causa delle tempeste: 0
 Numero di navi affondate:0
@@ -2078,6 +3110,7 @@ Porti interessati da mareggiata: 0
 Porto 0:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 413
 [41227]Risorse porto 0:
 DOMANDE:
@@ -2085,8 +3118,18 @@ DOMANDE:
 1847, 
 0, 
 3324, 
+=======
+Merci spedite: 923
+[18155]Risorse porto 0:
+DOMANDE:
 0, 
+4322, 
+3650, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+0, 
+4610, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 109, 0, 119, 526, ]
 GIORNO 1: [ 105, 168, 19, 177, 237, ]
 GIORNO 2: [ 196, 172, 157, 235, 186, ]
@@ -2097,6 +3140,18 @@ GIORNO 6: [ 388, 322, 222, 330, 345, ]
 GIORNO 7: [ 164, 133, 153, 169, 529, ]
 GIORNO 8: [ 117, 135, 186, 77, 264, ]
 GIORNO 9: [ 263, 122, 286, 177, 300, ]
+=======
+GIORNO 0: [ 0, 240, 249, 351, 458, ]
+GIORNO 1: [ 0, 255, 297, 310, 410, ]
+GIORNO 2: [ 112, 295, 287, 226, 529, ]
+GIORNO 3: [ 105, 184, 303, 303, 433, ]
+GIORNO 4: [ 198, 214, 138, 223, 147, ]
+GIORNO 5: [ 115, 123, 123, 147, 144, ]
+GIORNO 6: [ 147, 114, 157, 146, 167, ]
+GIORNO 7: [ 236, 147, 307, 303, 307, ]
+GIORNO 8: [ 122, 181, 220, 192, 184, ]
+GIORNO 9: [ 171, 151, 210, 196, 588, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 10: [ -1, -1, -1, -1, -1, ]
 GIORNO 11: [ -1, -1, -1, -1, -1, ]
 GIORNO 12: [ -1, -1, -1, -1, -1, ]
@@ -2108,7 +3163,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -2117,15 +3172,27 @@ ______________________________________________
 Porto 1:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 289
 [41227]Risorse porto 1:
+=======
+Merci spedite: 763
+[18155]Risorse porto 1:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
 3120, 
 0, 
+<<<<<<< HEAD
 3375, 
 3146, 
+=======
+3541, 
+3136, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 0, 
+4626, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 336, 0, 184, 225, 607, ]
 GIORNO 1: [ 164, 110, 212, 181, 205, ]
 GIORNO 2: [ 111, 97, 99, 189, 338, ]
@@ -2136,6 +3203,18 @@ GIORNO 6: [ 329, 237, 336, 198, 282, ]
 GIORNO 7: [ 123, 160, 212, 196, 247, ]
 GIORNO 8: [ 174, 161, 137, 93, 205, ]
 GIORNO 9: [ 291, 287, 289, 310, 263, ]
+=======
+GIORNO 0: [ 0, 217, 155, 210, 219, ]
+GIORNO 1: [ 0, 121, 200, 234, 257, ]
+GIORNO 2: [ 30, 124, 179, 159, 241, ]
+GIORNO 3: [ 21, 191, 344, 196, 402, ]
+GIORNO 4: [ 122, 109, 186, 193, 285, ]
+GIORNO 5: [ 173, 258, 142, 215, 384, ]
+GIORNO 6: [ 180, 146, 158, 127, 475, ]
+GIORNO 7: [ 164, 120, 272, 245, 387, ]
+GIORNO 8: [ 294, 267, 388, 330, 365, ]
+GIORNO 9: [ 127, 113, 127, 112, 257, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 10: [ -1, -1, -1, -1, -1, ]
 GIORNO 11: [ -1, -1, -1, -1, -1, ]
 GIORNO 12: [ -1, -1, -1, -1, -1, ]
@@ -2147,7 +3226,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
@@ -2155,16 +3234,25 @@ y: 0.000000
 ______________________________________________
 Porto 2:
 Banchine occupate totali: 1
+<<<<<<< HEAD
 Merci ricevute: 578
 Merci spedite: 823
 [41227]Risorse porto 2:
+=======
+Merci ricevute: 0
+Merci spedite: 1255
+[18155]Risorse porto 2:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
+4620, 
+4788, 
 0, 
 5965, 
 3307, 
 0, 
 0, 
 SUPPLIES:
+<<<<<<< HEAD
 GIORNO 0: [ 0, 311, 145, 0, 510, ]
 GIORNO 1: [ 136, 169, 159, 60, 675, ]
 GIORNO 2: [ 127, 199, 96, 173, 260, ]
@@ -2175,6 +3263,18 @@ GIORNO 6: [ 208, 222, 202, 134, 141, ]
 GIORNO 7: [ 212, 303, 237, 333, 410, ]
 GIORNO 8: [ 154, 168, 183, 135, 504, ]
 GIORNO 9: [ 237, 175, 263, 173, 403, ]
+=======
+GIORNO 0: [ 171, 87, 0, 215, 0, ]
+GIORNO 1: [ 184, 176, 0, 128, 0, ]
+GIORNO 2: [ 142, 126, 102, 111, 81, ]
+GIORNO 3: [ 224, 252, 157, 173, 4, ]
+GIORNO 4: [ 184, 347, 142, 188, 73, ]
+GIORNO 5: [ 111, 112, 129, 157, 273, ]
+GIORNO 6: [ 197, 358, 342, 168, 423, ]
+GIORNO 7: [ 126, 193, 107, 131, 187, ]
+GIORNO 8: [ 132, 134, 187, 160, 471, ]
+GIORNO 9: [ 349, 280, 164, 297, 324, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 10: [ -1, -1, -1, -1, -1, ]
 GIORNO 11: [ -1, -1, -1, -1, -1, ]
 GIORNO 12: [ -1, -1, -1, -1, -1, ]
@@ -2186,7 +3286,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
@@ -2194,6 +3294,7 @@ y: 10.000000
 ______________________________________________
 Porto 3:
 Banchine occupate totali: 3
+<<<<<<< HEAD
 Merci ricevute: 182
 Merci spedite: 177
 [41227]Risorse porto 3:
@@ -2214,6 +3315,28 @@ GIORNO 6: [ 253, 253, 110, 156, 332, ]
 GIORNO 7: [ 306, 322, 191, 146, 454, ]
 GIORNO 8: [ 491, 402, 263, 359, 792, ]
 GIORNO 9: [ 207, 192, 259, 285, 218, ]
+=======
+Merci ricevute: 1963
+Merci spedite: 659
+[18155]Risorse porto 3:
+DOMANDE:
+4430, 
+7497, 
+0, 
+0, 
+9099, 
+SUPPLIES:
+GIORNO 0: [ 271, 380, 0, 240, 475, ]
+GIORNO 1: [ 292, 353, 0, 219, 486, ]
+GIORNO 2: [ 226, 358, 0, 238, 725, ]
+GIORNO 3: [ 203, 209, 173, 222, 230, ]
+GIORNO 4: [ 285, 402, 244, 331, 478, ]
+GIORNO 5: [ 408, 317, 28, 378, 963, ]
+GIORNO 6: [ 367, 270, 120, 259, 379, ]
+GIORNO 7: [ 334, 229, 328, 169, 408, ]
+GIORNO 8: [ 244, 282, 293, 287, 267, ]
+GIORNO 9: [ 170, 309, 227, 237, 591, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 10: [ -1, -1, -1, -1, -1, ]
 GIORNO 11: [ -1, -1, -1, -1, -1, ]
 GIORNO 12: [ -1, -1, -1, -1, -1, ]
@@ -2225,7 +3348,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -2234,6 +3357,7 @@ ______________________________________________
 ------------------Day 11 -----------------
 Tipo merce 0:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 8805
 		b) in nave: 342
 	- Scaduta:
@@ -2275,12 +3399,56 @@ Tipo merce 4:
 Numero di nave in mare senza carico:0
 Numero di navi in mare con carico a bordo:0
 Numero di navi in porto che stanno facendo operazioni di carico/scarico:5
+=======
+		a) nei porti: 7351
+		b) in nave: 89
+	- Scaduta:
+		a) nei porti: 442
+		b) in nave: 0
+	- Consegnata: 1597
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 8799
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 924
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 7363
+		b) in nave: 1306
+	- Scaduta:
+		a) nei porti: 404
+		b) in nave: 422
+	- Consegnata: 0
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 8568
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 1016
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 14018
+		b) in nave: 600
+	- Scaduta:
+		a) nei porti: 1152
+		b) in nave: 0
+	- Consegnata: 486
+Numero di nave in mare senza carico:0
+Numero di navi in mare con carico a bordo:8
+Numero di navi in porto che stanno facendo operazioni di carico/scarico:2
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 Numero di navi rallentate a causa delle tempeste: 0
 Numero di navi affondate:0
 Porti interessati da mareggiata: 0
 Porto 0:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 413
 [41242]Risorse porto 0:
 DOMANDE:
@@ -2288,9 +3456,19 @@ DOMANDE:
 1847, 
 0, 
 3324, 
+=======
+Merci spedite: 923
+[18171]Risorse porto 0:
+DOMANDE:
 0, 
+4322, 
+3650, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+0, 
+4610, 
 SUPPLIES:
 GIORNO 0: [ 0, 0, 0, 0, 0, ]
+<<<<<<< HEAD
 GIORNO 1: [ 105, 168, 19, 177, 237, ]
 GIORNO 2: [ 196, 172, 157, 235, 186, ]
 GIORNO 3: [ 233, 170, 241, 189, 214, ]
@@ -2301,6 +3479,18 @@ GIORNO 7: [ 164, 133, 153, 169, 529, ]
 GIORNO 8: [ 117, 135, 186, 77, 264, ]
 GIORNO 9: [ 263, 122, 286, 177, 300, ]
 GIORNO 10: [ 323, 270, 196, 198, 624, ]
+=======
+GIORNO 1: [ 0, 255, 297, 310, 410, ]
+GIORNO 2: [ 80, 295, 287, 226, 529, ]
+GIORNO 3: [ 105, 184, 303, 303, 433, ]
+GIORNO 4: [ 198, 214, 138, 223, 147, ]
+GIORNO 5: [ 115, 123, 123, 147, 144, ]
+GIORNO 6: [ 147, 114, 157, 146, 167, ]
+GIORNO 7: [ 236, 147, 307, 303, 307, ]
+GIORNO 8: [ 122, 181, 220, 192, 184, ]
+GIORNO 9: [ 171, 151, 210, 196, 588, ]
+GIORNO 10: [ 213, 296, 163, 177, 711, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 11: [ -1, -1, -1, -1, -1, ]
 GIORNO 12: [ -1, -1, -1, -1, -1, ]
 GIORNO 13: [ -1, -1, -1, -1, -1, ]
@@ -2320,16 +3510,28 @@ ______________________________________________
 Porto 1:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 289
 [41242]Risorse porto 1:
+=======
+Merci spedite: 763
+[18171]Risorse porto 1:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
 3120, 
 0, 
+<<<<<<< HEAD
 3375, 
 3146, 
+=======
+3541, 
+3136, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 0, 
+4626, 
 SUPPLIES:
 GIORNO 0: [ 0, 0, 0, 0, 0, ]
+<<<<<<< HEAD
 GIORNO 1: [ 164, 110, 212, 181, 205, ]
 GIORNO 2: [ 111, 97, 99, 189, 338, ]
 GIORNO 3: [ 274, 180, 243, 185, 733, ]
@@ -2340,6 +3542,18 @@ GIORNO 7: [ 123, 160, 212, 196, 247, ]
 GIORNO 8: [ 174, 161, 137, 93, 205, ]
 GIORNO 9: [ 291, 287, 289, 310, 263, ]
 GIORNO 10: [ 151, 176, 138, 194, 598, ]
+=======
+GIORNO 1: [ 0, 121, 200, 234, 257, ]
+GIORNO 2: [ 30, 124, 179, 159, 241, ]
+GIORNO 3: [ 21, 191, 344, 196, 402, ]
+GIORNO 4: [ 122, 109, 186, 193, 285, ]
+GIORNO 5: [ 173, 258, 142, 215, 384, ]
+GIORNO 6: [ 180, 146, 158, 127, 475, ]
+GIORNO 7: [ 164, 120, 272, 245, 387, ]
+GIORNO 8: [ 294, 267, 388, 330, 365, ]
+GIORNO 9: [ 127, 113, 127, 112, 257, ]
+GIORNO 10: [ 100, 178, 85, 156, 210, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 11: [ -1, -1, -1, -1, -1, ]
 GIORNO 12: [ -1, -1, -1, -1, -1, ]
 GIORNO 13: [ -1, -1, -1, -1, -1, ]
@@ -2350,18 +3564,27 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
 y: 0.000000
 ______________________________________________
 Porto 2:
+<<<<<<< HEAD
 Banchine occupate totali: 1
 Merci ricevute: 696
 Merci spedite: 823
 [41242]Risorse porto 2:
+=======
+Banchine occupate totali: 2
+Merci ricevute: 0
+Merci spedite: 1555
+[18171]Risorse porto 2:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
+4620, 
+4788, 
 0, 
 5965, 
 3307, 
@@ -2369,6 +3592,7 @@ DOMANDE:
 0, 
 SUPPLIES:
 GIORNO 0: [ 0, 0, 0, 0, 0, ]
+<<<<<<< HEAD
 GIORNO 1: [ 18, 169, 159, 60, 675, ]
 GIORNO 2: [ 127, 199, 96, 173, 260, ]
 GIORNO 3: [ 158, 264, 180, 333, 420, ]
@@ -2379,6 +3603,18 @@ GIORNO 7: [ 212, 303, 237, 333, 410, ]
 GIORNO 8: [ 154, 168, 183, 135, 504, ]
 GIORNO 9: [ 237, 175, 263, 173, 403, ]
 GIORNO 10: [ 113, 132, 167, 125, 352, ]
+=======
+GIORNO 1: [ 184, 176, 0, 128, 0, ]
+GIORNO 2: [ 142, 126, 102, 111, 81, ]
+GIORNO 3: [ 224, 252, 157, 173, 4, ]
+GIORNO 4: [ 184, 347, 142, 188, 73, ]
+GIORNO 5: [ 111, 112, 129, 157, 273, ]
+GIORNO 6: [ 197, 358, 342, 168, 423, ]
+GIORNO 7: [ 126, 193, 107, 131, 187, ]
+GIORNO 8: [ 132, 134, 187, 160, 471, ]
+GIORNO 9: [ 349, 280, 164, 297, 324, ]
+GIORNO 10: [ 221, 98, 145, 153, 307, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 11: [ -1, -1, -1, -1, -1, ]
 GIORNO 12: [ -1, -1, -1, -1, -1, ]
 GIORNO 13: [ -1, -1, -1, -1, -1, ]
@@ -2389,13 +3625,14 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
 y: 10.000000
 ______________________________________________
 Porto 3:
+<<<<<<< HEAD
 Banchine occupate totali: 4
 Merci ricevute: 182
 Merci spedite: 177
@@ -2418,6 +3655,30 @@ GIORNO 7: [ 306, 322, 191, 146, 454, ]
 GIORNO 8: [ 491, 402, 263, 359, 792, ]
 GIORNO 9: [ 207, 192, 259, 285, 218, ]
 GIORNO 10: [ 307, 201, 298, 218, 219, ]
+=======
+Banchine occupate totali: 0
+Merci ricevute: 2083
+Merci spedite: 1259
+[18171]Risorse porto 3:
+DOMANDE:
+4430, 
+7497, 
+0, 
+0, 
+8799, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 292, 353, 0, 219, 486, ]
+GIORNO 2: [ 226, 358, 0, 238, 725, ]
+GIORNO 3: [ 203, 209, 173, 222, 230, ]
+GIORNO 4: [ 285, 402, 244, 331, 478, ]
+GIORNO 5: [ 408, 317, 28, 378, 963, ]
+GIORNO 6: [ 367, 270, 120, 259, 379, ]
+GIORNO 7: [ 334, 229, 328, 169, 408, ]
+GIORNO 8: [ 244, 282, 293, 287, 267, ]
+GIORNO 9: [ 170, 309, 227, 237, 591, ]
+GIORNO 10: [ 354, 407, 189, 372, 465, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 11: [ -1, -1, -1, -1, -1, ]
 GIORNO 12: [ -1, -1, -1, -1, -1, ]
 GIORNO 13: [ -1, -1, -1, -1, -1, ]
@@ -2428,7 +3689,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -2437,6 +3698,7 @@ ______________________________________________
 ------------------Day 12 -----------------
 Tipo merce 0:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 9382
 		b) in nave: 342
 	- Scaduta:
@@ -2478,12 +3740,56 @@ Tipo merce 4:
 Numero di nave in mare senza carico:0
 Numero di navi in mare con carico a bordo:0
 Numero di navi in porto che stanno facendo operazioni di carico/scarico:5
+=======
+		a) nei porti: 7713
+		b) in nave: 121
+	- Scaduta:
+		a) nei porti: 1028
+		b) in nave: 0
+	- Consegnata: 1597
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 8450
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 2248
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 6679
+		b) in nave: 948
+	- Scaduta:
+		a) nei porti: 1367
+		b) in nave: 780
+	- Consegnata: 0
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 8203
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 2292
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 13562
+		b) in nave: 600
+	- Scaduta:
+		a) nei porti: 3075
+		b) in nave: 0
+	- Consegnata: 486
+Numero di nave in mare senza carico:0
+Numero di navi in mare con carico a bordo:6
+Numero di navi in porto che stanno facendo operazioni di carico/scarico:4
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 Numero di navi rallentate a causa delle tempeste: 0
 Numero di navi affondate:0
 Porti interessati da mareggiata: 0
 Porto 0:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 413
 [41258]Risorse porto 0:
 DOMANDE:
@@ -2491,10 +3797,20 @@ DOMANDE:
 1847, 
 0, 
 3324, 
+=======
+Merci spedite: 955
+[18184]Risorse porto 0:
+DOMANDE:
 0, 
+4322, 
+3050, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+0, 
+4610, 
 SUPPLIES:
 GIORNO 0: [ 0, 0, 0, 0, 0, ]
 GIORNO 1: [ 0, 0, 0, 0, 0, ]
+<<<<<<< HEAD
 GIORNO 2: [ 196, 172, 157, 235, 186, ]
 GIORNO 3: [ 233, 170, 241, 189, 214, ]
 GIORNO 4: [ 332, 181, 317, 164, 646, ]
@@ -2505,6 +3821,18 @@ GIORNO 8: [ 117, 135, 186, 77, 264, ]
 GIORNO 9: [ 263, 122, 286, 177, 300, ]
 GIORNO 10: [ 323, 270, 196, 198, 624, ]
 GIORNO 11: [ 171, 165, 118, 76, 189, ]
+=======
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 105, 184, 303, 303, 433, ]
+GIORNO 4: [ 198, 214, 138, 223, 147, ]
+GIORNO 5: [ 115, 123, 123, 147, 144, ]
+GIORNO 6: [ 147, 114, 157, 146, 167, ]
+GIORNO 7: [ 236, 147, 307, 303, 307, ]
+GIORNO 8: [ 122, 181, 220, 192, 184, ]
+GIORNO 9: [ 171, 151, 210, 196, 588, ]
+GIORNO 10: [ 213, 296, 163, 177, 711, ]
+GIORNO 11: [ 261, 300, 192, 191, 272, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 12: [ -1, -1, -1, -1, -1, ]
 GIORNO 13: [ -1, -1, -1, -1, -1, ]
 GIORNO 14: [ -1, -1, -1, -1, -1, ]
@@ -2514,7 +3842,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -2523,17 +3851,29 @@ ______________________________________________
 Porto 1:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 289
 [41258]Risorse porto 1:
+=======
+Merci spedite: 763
+[18184]Risorse porto 1:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
 3120, 
 0, 
+<<<<<<< HEAD
 3375, 
 3146, 
+=======
+3541, 
+2868, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 0, 
+4626, 
 SUPPLIES:
 GIORNO 0: [ 0, 0, 0, 0, 0, ]
 GIORNO 1: [ 0, 0, 0, 0, 0, ]
+<<<<<<< HEAD
 GIORNO 2: [ 111, 97, 99, 189, 338, ]
 GIORNO 3: [ 274, 180, 243, 185, 733, ]
 GIORNO 4: [ 342, 223, 197, 317, 456, ]
@@ -2544,6 +3884,18 @@ GIORNO 8: [ 174, 161, 137, 93, 205, ]
 GIORNO 9: [ 291, 287, 289, 310, 263, ]
 GIORNO 10: [ 151, 176, 138, 194, 598, ]
 GIORNO 11: [ 219, 215, 238, 309, 402, ]
+=======
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 21, 191, 344, 196, 402, ]
+GIORNO 4: [ 122, 109, 186, 193, 285, ]
+GIORNO 5: [ 173, 258, 142, 215, 384, ]
+GIORNO 6: [ 180, 146, 158, 127, 475, ]
+GIORNO 7: [ 164, 120, 272, 245, 387, ]
+GIORNO 8: [ 294, 267, 388, 330, 365, ]
+GIORNO 9: [ 127, 113, 127, 112, 257, ]
+GIORNO 10: [ 100, 178, 85, 156, 210, ]
+GIORNO 11: [ 126, 141, 124, 126, 390, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 12: [ -1, -1, -1, -1, -1, ]
 GIORNO 13: [ -1, -1, -1, -1, -1, ]
 GIORNO 14: [ -1, -1, -1, -1, -1, ]
@@ -2553,18 +3905,27 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
 y: 0.000000
 ______________________________________________
 Porto 2:
+<<<<<<< HEAD
 Banchine occupate totali: 1
 Merci ricevute: 696
 Merci spedite: 823
 [41258]Risorse porto 2:
+=======
+Banchine occupate totali: 2
+Merci ricevute: 0
+Merci spedite: 1555
+[18184]Risorse porto 2:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
+4620, 
+4788, 
 0, 
 5965, 
 3307, 
@@ -2573,6 +3934,7 @@ DOMANDE:
 SUPPLIES:
 GIORNO 0: [ 0, 0, 0, 0, 0, ]
 GIORNO 1: [ 0, 0, 0, 0, 0, ]
+<<<<<<< HEAD
 GIORNO 2: [ 127, 199, 96, 173, 260, ]
 GIORNO 3: [ 158, 264, 180, 333, 420, ]
 GIORNO 4: [ 218, 178, 286, 187, 413, ]
@@ -2583,6 +3945,18 @@ GIORNO 8: [ 154, 168, 183, 135, 504, ]
 GIORNO 9: [ 237, 175, 263, 173, 403, ]
 GIORNO 10: [ 113, 132, 167, 125, 352, ]
 GIORNO 11: [ 209, 159, 141, 176, 340, ]
+=======
+GIORNO 2: [ 142, 126, 13, 111, 81, ]
+GIORNO 3: [ 224, 252, 157, 173, 4, ]
+GIORNO 4: [ 184, 347, 142, 188, 73, ]
+GIORNO 5: [ 111, 112, 129, 157, 273, ]
+GIORNO 6: [ 197, 358, 342, 168, 423, ]
+GIORNO 7: [ 126, 193, 107, 131, 187, ]
+GIORNO 8: [ 132, 134, 187, 160, 471, ]
+GIORNO 9: [ 349, 280, 164, 297, 324, ]
+GIORNO 10: [ 221, 98, 145, 153, 307, ]
+GIORNO 11: [ 284, 224, 230, 290, 464, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 12: [ -1, -1, -1, -1, -1, ]
 GIORNO 13: [ -1, -1, -1, -1, -1, ]
 GIORNO 14: [ -1, -1, -1, -1, -1, ]
@@ -2599,6 +3973,7 @@ x: 10.000000
 y: 10.000000
 ______________________________________________
 Porto 3:
+<<<<<<< HEAD
 Banchine occupate totali: 4
 Merci ricevute: 182
 Merci spedite: 177
@@ -2622,6 +3997,31 @@ GIORNO 8: [ 491, 402, 263, 359, 792, ]
 GIORNO 9: [ 207, 192, 259, 285, 218, ]
 GIORNO 10: [ 307, 201, 298, 218, 219, ]
 GIORNO 11: [ 446, 461, 308, 259, 399, ]
+=======
+Banchine occupate totali: 2
+Merci ricevute: 2083
+Merci spedite: 1259
+[18184]Risorse porto 3:
+DOMANDE:
+4430, 
+7497, 
+0, 
+0, 
+8499, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 226, 358, 0, 238, 725, ]
+GIORNO 3: [ 203, 209, 53, 222, 230, ]
+GIORNO 4: [ 285, 402, 33, 331, 478, ]
+GIORNO 5: [ 408, 317, 28, 378, 963, ]
+GIORNO 6: [ 367, 270, 120, 259, 379, ]
+GIORNO 7: [ 334, 229, 328, 169, 408, ]
+GIORNO 8: [ 244, 282, 293, 287, 267, ]
+GIORNO 9: [ 170, 309, 227, 237, 591, ]
+GIORNO 10: [ 354, 407, 189, 372, 465, ]
+GIORNO 11: [ 277, 310, 153, 304, 341, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 12: [ -1, -1, -1, -1, -1, ]
 GIORNO 13: [ -1, -1, -1, -1, -1, ]
 GIORNO 14: [ -1, -1, -1, -1, -1, ]
@@ -2640,6 +4040,7 @@ ______________________________________________
 ------------------Day 13 -----------------
 Tipo merce 0:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 9417
 		b) in nave: 118
 	- Scaduta:
@@ -2681,10 +4082,54 @@ Tipo merce 4:
 Numero di nave in mare senza carico:1
 Numero di navi in mare con carico a bordo:3
 Numero di navi in porto che stanno facendo operazioni di carico/scarico:1
+=======
+		a) nei porti: 8156
+		b) in nave: 121
+	- Scaduta:
+		a) nei porti: 1501
+		b) in nave: 0
+	- Consegnata: 1597
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 8483
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 2916
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 7302
+		b) in nave: 454
+	- Scaduta:
+		a) nei porti: 1683
+		b) in nave: 1485
+	- Consegnata: 0
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 8426
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 2944
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 13892
+		b) in nave: 1031
+	- Scaduta:
+		a) nei porti: 4314
+		b) in nave: 0
+	- Consegnata: 486
+Numero di nave in mare senza carico:0
+Numero di navi in mare con carico a bordo:5
+Numero di navi in porto che stanno facendo operazioni di carico/scarico:5
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 Numero di navi rallentate a causa delle tempeste: 0
 Numero di navi affondate:0
 Porti interessati da mareggiata: 0
 Porto 0:
+<<<<<<< HEAD
 Banchine occupate totali: 0
 Merci ricevute: 0
 Merci spedite: 413
@@ -2694,11 +4139,23 @@ DOMANDE:
 1847, 
 0, 
 3324, 
+=======
+Banchine occupate totali: 2
+Merci ricevute: 0
+Merci spedite: 955
+[18199]Risorse porto 0:
+DOMANDE:
 0, 
+4322, 
+3050, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+0, 
+4610, 
 SUPPLIES:
 GIORNO 0: [ 0, 0, 0, 0, 0, ]
 GIORNO 1: [ 0, 0, 0, 0, 0, ]
 GIORNO 2: [ 0, 0, 0, 0, 0, ]
+<<<<<<< HEAD
 GIORNO 3: [ 233, 170, 241, 189, 214, ]
 GIORNO 4: [ 332, 181, 317, 164, 646, ]
 GIORNO 5: [ 240, 258, 284, 209, 426, ]
@@ -2709,6 +4166,18 @@ GIORNO 9: [ 263, 122, 286, 177, 300, ]
 GIORNO 10: [ 323, 270, 196, 198, 624, ]
 GIORNO 11: [ 171, 165, 118, 76, 189, ]
 GIORNO 12: [ 193, 223, 288, 288, 222, ]
+=======
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 198, 214, 138, 223, 147, ]
+GIORNO 5: [ 115, 123, 123, 147, 144, ]
+GIORNO 6: [ 147, 114, 157, 146, 167, ]
+GIORNO 7: [ 236, 147, 307, 303, 307, ]
+GIORNO 8: [ 122, 181, 220, 192, 184, ]
+GIORNO 9: [ 171, 151, 210, 196, 588, ]
+GIORNO 10: [ 213, 296, 163, 177, 711, ]
+GIORNO 11: [ 261, 300, 192, 191, 272, ]
+GIORNO 12: [ 301, 192, 232, 172, 733, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 13: [ -1, -1, -1, -1, -1, ]
 GIORNO 14: [ -1, -1, -1, -1, -1, ]
 GIORNO 15: [ -1, -1, -1, -1, -1, ]
@@ -2726,18 +4195,30 @@ ______________________________________________
 Porto 1:
 Banchine occupate totali: 0
 Merci ricevute: 0
+<<<<<<< HEAD
 Merci spedite: 289
 [41277]Risorse porto 1:
+=======
+Merci spedite: 763
+[18199]Risorse porto 1:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
 3120, 
 0, 
+<<<<<<< HEAD
 3375, 
 3146, 
+=======
+3541, 
+2868, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 0, 
+4626, 
 SUPPLIES:
 GIORNO 0: [ 0, 0, 0, 0, 0, ]
 GIORNO 1: [ 0, 0, 0, 0, 0, ]
 GIORNO 2: [ 0, 0, 0, 0, 0, ]
+<<<<<<< HEAD
 GIORNO 3: [ 274, 180, 243, 185, 733, ]
 GIORNO 4: [ 342, 223, 197, 317, 456, ]
 GIORNO 5: [ 208, 87, 138, 163, 249, ]
@@ -2748,6 +4229,18 @@ GIORNO 9: [ 291, 287, 289, 310, 263, ]
 GIORNO 10: [ 151, 176, 138, 194, 598, ]
 GIORNO 11: [ 219, 215, 238, 309, 402, ]
 GIORNO 12: [ 236, 232, 323, 331, 205, ]
+=======
+GIORNO 3: [ 21, 191, 344, 196, 402, ]
+GIORNO 4: [ 122, 109, 186, 193, 285, ]
+GIORNO 5: [ 173, 258, 142, 215, 384, ]
+GIORNO 6: [ 180, 146, 158, 127, 475, ]
+GIORNO 7: [ 164, 120, 272, 245, 387, ]
+GIORNO 8: [ 294, 267, 388, 330, 365, ]
+GIORNO 9: [ 127, 113, 127, 112, 257, ]
+GIORNO 10: [ 100, 178, 85, 156, 210, ]
+GIORNO 11: [ 126, 141, 124, 126, 390, ]
+GIORNO 12: [ 164, 204, 216, 234, 284, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 13: [ -1, -1, -1, -1, -1, ]
 GIORNO 14: [ -1, -1, -1, -1, -1, ]
 GIORNO 15: [ -1, -1, -1, -1, -1, ]
@@ -2756,7 +4249,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
@@ -2764,10 +4257,18 @@ y: 0.000000
 ______________________________________________
 Porto 2:
 Banchine occupate totali: 0
+<<<<<<< HEAD
 Merci ricevute: 696
 Merci spedite: 941
 [41277]Risorse porto 2:
+=======
+Merci ricevute: 0
+Merci spedite: 1986
+[18199]Risorse porto 2:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 DOMANDE:
+4620, 
+4788, 
 0, 
 5965, 
 3307, 
@@ -2777,6 +4278,7 @@ SUPPLIES:
 GIORNO 0: [ 0, 0, 0, 0, 0, ]
 GIORNO 1: [ 0, 0, 0, 0, 0, ]
 GIORNO 2: [ 0, 0, 0, 0, 0, ]
+<<<<<<< HEAD
 GIORNO 3: [ 158, 264, 180, 333, 420, ]
 GIORNO 4: [ 218, 178, 286, 187, 413, ]
 GIORNO 5: [ 102, 244, 157, 100, 392, ]
@@ -2787,6 +4289,18 @@ GIORNO 9: [ 237, 175, 263, 173, 403, ]
 GIORNO 10: [ 113, 132, 167, 125, 352, ]
 GIORNO 11: [ 209, 159, 141, 176, 340, ]
 GIORNO 12: [ 299, 129, 228, 172, 406, ]
+=======
+GIORNO 3: [ 224, 252, 157, 173, 4, ]
+GIORNO 4: [ 184, 347, 142, 188, 73, ]
+GIORNO 5: [ 111, 112, 129, 157, 273, ]
+GIORNO 6: [ 197, 358, 342, 168, 423, ]
+GIORNO 7: [ 126, 193, 107, 131, 187, ]
+GIORNO 8: [ 132, 134, 187, 160, 471, ]
+GIORNO 9: [ 349, 280, 164, 297, 324, ]
+GIORNO 10: [ 221, 98, 145, 153, 307, ]
+GIORNO 11: [ 284, 224, 230, 290, 464, ]
+GIORNO 12: [ 143, 73, 100, 67, 276, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 13: [ -1, -1, -1, -1, -1, ]
 GIORNO 14: [ -1, -1, -1, -1, -1, ]
 GIORNO 15: [ -1, -1, -1, -1, -1, ]
@@ -2795,13 +4309,14 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
 y: 10.000000
 ______________________________________________
 Porto 3:
+<<<<<<< HEAD
 Banchine occupate totali: 1
 Merci ricevute: 182
 Merci spedite: 735
@@ -2812,10 +4327,23 @@ DOMANDE:
 0, 
 5969, 
 0, 
+=======
+Banchine occupate totali: 3
+Merci ricevute: 2083
+Merci spedite: 1470
+[18199]Risorse porto 3:
+DOMANDE:
+4430, 
+7497, 
+0, 
+0, 
+8199, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 SUPPLIES:
 GIORNO 0: [ 0, 0, 0, 0, 0, ]
 GIORNO 1: [ 0, 0, 0, 0, 0, ]
 GIORNO 2: [ 0, 0, 0, 0, 0, ]
+<<<<<<< HEAD
 GIORNO 3: [ 133, 161, 156, 146, 387, ]
 GIORNO 4: [ 92, 97, 85, 128, 141, ]
 GIORNO 5: [ 260, 274, 354, 207, 648, ]
@@ -2826,6 +4354,18 @@ GIORNO 9: [ 207, 192, 259, 285, 218, ]
 GIORNO 10: [ 307, 201, 298, 218, 219, ]
 GIORNO 11: [ 446, 461, 308, 259, 399, ]
 GIORNO 12: [ 241, 172, 276, 159, 377, ]
+=======
+GIORNO 3: [ 203, 209, 53, 222, 230, ]
+GIORNO 4: [ 285, 402, 33, 331, 478, ]
+GIORNO 5: [ 408, 317, 28, 378, 963, ]
+GIORNO 6: [ 367, 270, 120, 259, 379, ]
+GIORNO 7: [ 334, 229, 328, 169, 408, ]
+GIORNO 8: [ 244, 282, 293, 287, 267, ]
+GIORNO 9: [ 170, 309, 227, 237, 591, ]
+GIORNO 10: [ 354, 407, 189, 372, 465, ]
+GIORNO 11: [ 277, 310, 153, 304, 341, ]
+GIORNO 12: [ 308, 232, 391, 402, 276, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 13: [ -1, -1, -1, -1, -1, ]
 GIORNO 14: [ -1, -1, -1, -1, -1, ]
 GIORNO 15: [ -1, -1, -1, -1, -1, ]
@@ -2834,7 +4374,7 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 0.000000
@@ -2843,6 +4383,7 @@ ______________________________________________
 ------------------Day 14 -----------------
 Tipo merce 0:
 	- Non scaduta:
+<<<<<<< HEAD
 		a) nei porti: 9106
 		b) in nave: 118
 	- Scaduta:
@@ -2884,10 +4425,54 @@ Tipo merce 4:
 Numero di nave in mare senza carico:1
 Numero di navi in mare con carico a bordo:3
 Numero di navi in porto che stanno facendo operazioni di carico/scarico:1
+=======
+		a) nei porti: 8394
+		b) in nave: 121
+	- Scaduta:
+		a) nei porti: 1978
+		b) in nave: 0
+	- Consegnata: 1597
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 8553
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 3782
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 7202
+		b) in nave: -26
+	- Scaduta:
+		a) nei porti: 2375
+		b) in nave: 1574
+	- Consegnata: 600
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 8486
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 3758
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 14313
+		b) in nave: 731
+	- Scaduta:
+		a) nei porti: 4950
+		b) in nave: 0
+	- Consegnata: 786
+Numero di nave in mare senza carico:3
+Numero di navi in mare con carico a bordo:5
+Numero di navi in porto che stanno facendo operazioni di carico/scarico:2
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 Numero di navi rallentate a causa delle tempeste: 0
 Numero di navi affondate:0
 Porti interessati da mareggiata: 0
 Porto 0:
+<<<<<<< HEAD
 Banchine occupate totali: 0
 Merci ricevute: 0
 Merci spedite: 413
@@ -2897,22 +4482,32 @@ DOMANDE:
 1847, 
 0, 
 3324, 
+=======
+Banchine occupate totali: 0
+Merci ricevute: 600
+Merci spedite: 955
+[18245]Risorse porto 0:
+DOMANDE:
 0, 
+4322, 
+3050, 
+0, 
+4610, 
 SUPPLIES:
 GIORNO 0: [ 0, 0, 0, 0, 0, ]
 GIORNO 1: [ 0, 0, 0, 0, 0, ]
 GIORNO 2: [ 0, 0, 0, 0, 0, ]
 GIORNO 3: [ 0, 0, 0, 0, 0, ]
-GIORNO 4: [ 32, 181, 154, 164, 646, ]
-GIORNO 5: [ 240, 258, 284, 209, 426, ]
-GIORNO 6: [ 388, 322, 222, 330, 345, ]
-GIORNO 7: [ 164, 133, 153, 169, 529, ]
-GIORNO 8: [ 117, 135, 186, 77, 264, ]
-GIORNO 9: [ 263, 122, 286, 177, 300, ]
-GIORNO 10: [ 323, 270, 196, 198, 624, ]
-GIORNO 11: [ 171, 165, 118, 76, 189, ]
-GIORNO 12: [ 193, 223, 288, 288, 222, ]
-GIORNO 13: [ 131, 98, 201, 127, 272, ]
+GIORNO 4: [ 0, 0, 0, 0, 147, ]
+GIORNO 5: [ 115, 123, 123, 147, 144, ]
+GIORNO 6: [ 147, 114, 157, 146, 167, ]
+GIORNO 7: [ 236, 147, 307, 303, 307, ]
+GIORNO 8: [ 122, 181, 220, 192, 184, ]
+GIORNO 9: [ 171, 151, 210, 196, 588, ]
+GIORNO 10: [ 213, 296, 163, 177, 711, ]
+GIORNO 11: [ 261, 300, 192, 191, 272, ]
+GIORNO 12: [ 301, 192, 232, 172, 733, ]
+GIORNO 13: [ 92, 68, 91, 132, 273, ]
 GIORNO 14: [ -1, -1, -1, -1, -1, ]
 GIORNO 15: [ -1, -1, -1, -1, -1, ]
 GIORNO 16: [ -1, -1, -1, -1, -1, ]
@@ -2929,29 +4524,43 @@ ______________________________________________
 Porto 1:
 Banchine occupate totali: 0
 Merci ricevute: 0
-Merci spedite: 289
-[41289]Risorse porto 1:
+Merci spedite: 763
+[18245]Risorse porto 1:
 DOMANDE:
-3120, 
 0, 
-3375, 
-3146, 
+3541, 
+2868, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 0, 
+4626, 
 SUPPLIES:
 GIORNO 0: [ 0, 0, 0, 0, 0, ]
 GIORNO 1: [ 0, 0, 0, 0, 0, ]
 GIORNO 2: [ 0, 0, 0, 0, 0, ]
 GIORNO 3: [ 0, 0, 0, 0, 0, ]
-GIORNO 4: [ 342, 44, 197, 317, 456, ]
-GIORNO 5: [ 208, 87, 138, 163, 249, ]
-GIORNO 6: [ 329, 237, 336, 198, 282, ]
-GIORNO 7: [ 123, 160, 212, 196, 247, ]
-GIORNO 8: [ 174, 161, 137, 93, 205, ]
-GIORNO 9: [ 291, 287, 289, 310, 263, ]
-GIORNO 10: [ 151, 176, 138, 194, 598, ]
-GIORNO 11: [ 219, 215, 238, 309, 402, ]
-GIORNO 12: [ 236, 232, 323, 331, 205, ]
-GIORNO 13: [ 188, 294, 357, 363, 358, ]
+<<<<<<< HEAD
+GIORNO 4: [ 32, 181, 154, 164, 646, ]
+GIORNO 5: [ 240, 258, 284, 209, 426, ]
+GIORNO 6: [ 388, 322, 222, 330, 345, ]
+GIORNO 7: [ 164, 133, 153, 169, 529, ]
+GIORNO 8: [ 117, 135, 186, 77, 264, ]
+GIORNO 9: [ 263, 122, 286, 177, 300, ]
+GIORNO 10: [ 323, 270, 196, 198, 624, ]
+GIORNO 11: [ 171, 165, 118, 76, 189, ]
+GIORNO 12: [ 193, 223, 288, 288, 222, ]
+GIORNO 13: [ 131, 98, 201, 127, 272, ]
+=======
+GIORNO 4: [ 33, 109, 186, 193, 285, ]
+GIORNO 5: [ 173, 258, 142, 215, 384, ]
+GIORNO 6: [ 180, 146, 158, 127, 475, ]
+GIORNO 7: [ 164, 120, 272, 245, 387, ]
+GIORNO 8: [ 294, 267, 388, 330, 365, ]
+GIORNO 9: [ 127, 113, 127, 112, 257, ]
+GIORNO 10: [ 100, 178, 85, 156, 210, ]
+GIORNO 11: [ 126, 141, 124, 126, 390, ]
+GIORNO 12: [ 164, 204, 216, 234, 284, ]
+GIORNO 13: [ 125, 157, 103, 137, 484, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
 GIORNO 14: [ -1, -1, -1, -1, -1, ]
 GIORNO 15: [ -1, -1, -1, -1, -1, ]
 GIORNO 16: [ -1, -1, -1, -1, -1, ]
@@ -2959,6 +4568,8 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
+<<<<<<< HEAD
+=======
 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
@@ -2967,13 +4578,13 @@ y: 0.000000
 ______________________________________________
 Porto 2:
 Banchine occupate totali: 0
-Merci ricevute: 696
-Merci spedite: 941
-[41289]Risorse porto 2:
+Merci ricevute: 0
+Merci spedite: 1986
+[18245]Risorse porto 2:
 DOMANDE:
+4620, 
+4788, 
 0, 
-5965, 
-3307, 
 0, 
 0, 
 SUPPLIES:
@@ -2981,16 +4592,16 @@ GIORNO 0: [ 0, 0, 0, 0, 0, ]
 GIORNO 1: [ 0, 0, 0, 0, 0, ]
 GIORNO 2: [ 0, 0, 0, 0, 0, ]
 GIORNO 3: [ 0, 0, 0, 0, 0, ]
-GIORNO 4: [ 218, 178, 286, 187, 413, ]
-GIORNO 5: [ 102, 244, 157, 100, 392, ]
-GIORNO 6: [ 208, 222, 202, 134, 141, ]
-GIORNO 7: [ 212, 303, 237, 333, 410, ]
-GIORNO 8: [ 154, 168, 183, 135, 504, ]
-GIORNO 9: [ 237, 175, 263, 173, 403, ]
-GIORNO 10: [ 113, 132, 167, 125, 352, ]
-GIORNO 11: [ 209, 159, 141, 176, 340, ]
-GIORNO 12: [ 299, 129, 228, 172, 406, ]
-GIORNO 13: [ 368, 356, 192, 214, 520, ]
+GIORNO 4: [ 184, 347, 142, 188, 73, ]
+GIORNO 5: [ 111, 112, 129, 157, 273, ]
+GIORNO 6: [ 197, 358, 42, 168, 155, ]
+GIORNO 7: [ 126, 193, 107, 131, 187, ]
+GIORNO 8: [ 132, 134, 187, 160, 471, ]
+GIORNO 9: [ 349, 280, 164, 297, 324, ]
+GIORNO 10: [ 221, 98, 145, 153, 307, ]
+GIORNO 11: [ 284, 224, 230, 290, 464, ]
+GIORNO 12: [ 143, 73, 100, 67, 276, ]
+GIORNO 13: [ 96, 131, 91, 137, 223, ]
 GIORNO 14: [ -1, -1, -1, -1, -1, ]
 GIORNO 15: [ -1, -1, -1, -1, -1, ]
 GIORNO 16: [ -1, -1, -1, -1, -1, ]
@@ -2998,38 +4609,38 @@ GIORNO 17: [ -1, -1, -1, -1, -1, ]
 GIORNO 18: [ -1, -1, -1, -1, -1, ]
 GIORNO 19: [ -1, -1, -1, -1, -1, ]
 EXP TIMES:
-[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
 --------------------------------------
 coords:
 x: 10.000000
 y: 10.000000
 ______________________________________________
 Porto 3:
-Banchine occupate totali: 1
-Merci ricevute: 182
-Merci spedite: 735
-[41289]Risorse porto 3:
+Banchine occupate totali: 2
+Merci ricevute: 2383
+Merci spedite: 1590
+[18245]Risorse porto 3:
 DOMANDE:
-4005, 
+4430, 
+7497, 
 0, 
 0, 
-5969, 
-0, 
+8199, 
 SUPPLIES:
 GIORNO 0: [ 0, 0, 0, 0, 0, ]
 GIORNO 1: [ 0, 0, 0, 0, 0, ]
 GIORNO 2: [ 0, 0, 0, 0, 0, ]
 GIORNO 3: [ 0, 0, 0, 0, 0, ]
-GIORNO 4: [ 92, 97, 85, 128, 141, ]
-GIORNO 5: [ 260, 274, 354, 207, 648, ]
-GIORNO 6: [ 253, 253, 110, 156, 332, ]
-GIORNO 7: [ 306, 322, 191, 146, 454, ]
-GIORNO 8: [ 491, 402, 263, 359, 792, ]
-GIORNO 9: [ 207, 192, 259, 285, 218, ]
-GIORNO 10: [ 307, 201, 298, 218, 219, ]
-GIORNO 11: [ 446, 461, 308, 259, 399, ]
-GIORNO 12: [ 241, 172, 276, 159, 377, ]
-GIORNO 13: [ 100, 186, 99, 129, 447, ]
+GIORNO 4: [ 285, 402, 33, 331, 478, ]
+GIORNO 5: [ 408, 317, 28, 378, 963, ]
+GIORNO 6: [ 367, 270, 120, 259, 379, ]
+GIORNO 7: [ 334, 229, 328, 169, 408, ]
+GIORNO 8: [ 244, 282, 293, 287, 267, ]
+GIORNO 9: [ 170, 309, 227, 237, 591, ]
+GIORNO 10: [ 354, 407, 189, 372, 465, ]
+GIORNO 11: [ 277, 310, 153, 304, 341, ]
+GIORNO 12: [ 308, 232, 391, 402, 276, ]
+GIORNO 13: [ 660, 580, 607, 468, 345, ]
 GIORNO 14: [ -1, -1, -1, -1, -1, ]
 GIORNO 15: [ -1, -1, -1, -1, -1, ]
 GIORNO 16: [ -1, -1, -1, -1, -1, ]
@@ -3043,3 +4654,1316 @@ coords:
 x: 0.000000
 y: 10.000000
 ______________________________________________
+------------------Day 15 -----------------
+Tipo merce 0:
+	- Non scaduta:
+		a) nei porti: 9062
+		b) in nave: 121
+	- Scaduta:
+		a) nei porti: 2480
+		b) in nave: 258
+	- Consegnata: 1597
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 8381
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 4640
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 7411
+		b) in nave: -146
+	- Scaduta:
+		a) nei porti: 2736
+		b) in nave: 1694
+	- Consegnata: 600
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 8706
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 4470
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 14192
+		b) in nave: 699
+	- Scaduta:
+		a) nei porti: 5933
+		b) in nave: 0
+	- Consegnata: 1086
+Numero di nave in mare senza carico:4
+Numero di navi in mare con carico a bordo:4
+Numero di navi in porto che stanno facendo operazioni di carico/scarico:2
+Numero di navi rallentate a causa delle tempeste: 0
+Numero di navi affondate:0
+Porti interessati da mareggiata: 0
+Porto 0:
+Banchine occupate totali: 0
+Merci ricevute: 600
+Merci spedite: 955
+[18304]Risorse porto 0:
+DOMANDE:
+0, 
+4322, 
+3050, 
+0, 
+4610, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 115, 123, 123, 147, 144, ]
+GIORNO 6: [ 147, 114, 157, 146, 167, ]
+GIORNO 7: [ 236, 147, 307, 303, 307, ]
+GIORNO 8: [ 122, 181, 220, 192, 184, ]
+GIORNO 9: [ 171, 151, 210, 196, 588, ]
+GIORNO 10: [ 213, 296, 163, 177, 711, ]
+GIORNO 11: [ 261, 300, 192, 191, 272, ]
+GIORNO 12: [ 301, 192, 232, 172, 733, ]
+GIORNO 13: [ 92, 68, 91, 132, 273, ]
+GIORNO 14: [ 276, 183, 169, 181, 332, ]
+GIORNO 15: [ -1, -1, -1, -1, -1, ]
+GIORNO 16: [ -1, -1, -1, -1, -1, ]
+GIORNO 17: [ -1, -1, -1, -1, -1, ]
+GIORNO 18: [ -1, -1, -1, -1, -1, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 0.000000
+y: 0.000000
+______________________________________________
+Porto 1:
+Banchine occupate totali: 0
+Merci ricevute: 0
+<<<<<<< HEAD
+Merci spedite: 289
+[41289]Risorse porto 1:
+=======
+Merci spedite: 763
+[18304]Risorse porto 1:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+DOMANDE:
+3120, 
+0, 
+<<<<<<< HEAD
+3375, 
+3146, 
+=======
+3541, 
+2868, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+0, 
+4626, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+<<<<<<< HEAD
+GIORNO 4: [ 342, 44, 197, 317, 456, ]
+GIORNO 5: [ 208, 87, 138, 163, 249, ]
+GIORNO 6: [ 329, 237, 336, 198, 282, ]
+GIORNO 7: [ 123, 160, 212, 196, 247, ]
+GIORNO 8: [ 174, 161, 137, 93, 205, ]
+GIORNO 9: [ 291, 287, 289, 310, 263, ]
+GIORNO 10: [ 151, 176, 138, 194, 598, ]
+GIORNO 11: [ 219, 215, 238, 309, 402, ]
+GIORNO 12: [ 236, 232, 323, 331, 205, ]
+GIORNO 13: [ 188, 294, 357, 363, 358, ]
+GIORNO 14: [ -1, -1, -1, -1, -1, ]
+=======
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 173, 258, 142, 215, 384, ]
+GIORNO 6: [ 180, 146, 158, 127, 475, ]
+GIORNO 7: [ 164, 120, 272, 245, 387, ]
+GIORNO 8: [ 294, 267, 388, 330, 365, ]
+GIORNO 9: [ 127, 113, 127, 112, 257, ]
+GIORNO 10: [ 100, 178, 85, 156, 210, ]
+GIORNO 11: [ 126, 141, 124, 126, 390, ]
+GIORNO 12: [ 164, 204, 216, 234, 284, ]
+GIORNO 13: [ 125, 157, 103, 137, 484, ]
+GIORNO 14: [ 279, 169, 140, 312, 401, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+GIORNO 15: [ -1, -1, -1, -1, -1, ]
+GIORNO 16: [ -1, -1, -1, -1, -1, ]
+GIORNO 17: [ -1, -1, -1, -1, -1, ]
+GIORNO 18: [ -1, -1, -1, -1, -1, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 10.000000
+y: 0.000000
+______________________________________________
+Porto 2:
+<<<<<<< HEAD
+Banchine occupate totali: 0
+Merci ricevute: 696
+Merci spedite: 941
+[41289]Risorse porto 2:
+=======
+Banchine occupate totali: 1
+Merci ricevute: 0
+Merci spedite: 2254
+[18304]Risorse porto 2:
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+DOMANDE:
+4620, 
+4788, 
+0, 
+5965, 
+3307, 
+0, 
+0, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+<<<<<<< HEAD
+GIORNO 4: [ 218, 178, 286, 187, 413, ]
+GIORNO 5: [ 102, 244, 157, 100, 392, ]
+GIORNO 6: [ 208, 222, 202, 134, 141, ]
+GIORNO 7: [ 212, 303, 237, 333, 410, ]
+GIORNO 8: [ 154, 168, 183, 135, 504, ]
+GIORNO 9: [ 237, 175, 263, 173, 403, ]
+GIORNO 10: [ 113, 132, 167, 125, 352, ]
+GIORNO 11: [ 209, 159, 141, 176, 340, ]
+GIORNO 12: [ 299, 129, 228, 172, 406, ]
+GIORNO 13: [ 368, 356, 192, 214, 520, ]
+GIORNO 14: [ -1, -1, -1, -1, -1, ]
+=======
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 111, 112, 129, 157, 93, ]
+GIORNO 6: [ 197, 358, 42, 168, 155, ]
+GIORNO 7: [ 126, 193, 107, 131, 187, ]
+GIORNO 8: [ 132, 134, 187, 160, 171, ]
+GIORNO 9: [ 349, 280, 164, 297, 324, ]
+GIORNO 10: [ 221, 98, 145, 153, 307, ]
+GIORNO 11: [ 284, 224, 230, 290, 464, ]
+GIORNO 12: [ 143, 73, 100, 67, 276, ]
+GIORNO 13: [ 96, 131, 91, 137, 223, ]
+GIORNO 14: [ 228, 162, 183, 141, 234, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+GIORNO 15: [ -1, -1, -1, -1, -1, ]
+GIORNO 16: [ -1, -1, -1, -1, -1, ]
+GIORNO 17: [ -1, -1, -1, -1, -1, ]
+GIORNO 18: [ -1, -1, -1, -1, -1, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+<<<<<<< HEAD
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+=======
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+--------------------------------------
+coords:
+x: 10.000000
+y: 10.000000
+______________________________________________
+Porto 3:
+Banchine occupate totali: 1
+<<<<<<< HEAD
+Merci ricevute: 182
+Merci spedite: 735
+[41289]Risorse porto 3:
+DOMANDE:
+4005, 
+0, 
+0, 
+5969, 
+0, 
+=======
+Merci ricevute: 2683
+Merci spedite: 1590
+[18304]Risorse porto 3:
+DOMANDE:
+4430, 
+7497, 
+0, 
+0, 
+8199, 
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+<<<<<<< HEAD
+GIORNO 4: [ 92, 97, 85, 128, 141, ]
+GIORNO 5: [ 260, 274, 354, 207, 648, ]
+GIORNO 6: [ 253, 253, 110, 156, 332, ]
+GIORNO 7: [ 306, 322, 191, 146, 454, ]
+GIORNO 8: [ 491, 402, 263, 359, 792, ]
+GIORNO 9: [ 207, 192, 259, 285, 218, ]
+GIORNO 10: [ 307, 201, 298, 218, 219, ]
+GIORNO 11: [ 446, 461, 308, 259, 399, ]
+GIORNO 12: [ 241, 172, 276, 159, 377, ]
+GIORNO 13: [ 100, 186, 99, 129, 447, ]
+GIORNO 14: [ -1, -1, -1, -1, -1, ]
+=======
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 408, 317, 28, 378, 963, ]
+GIORNO 6: [ 367, 270, 120, 259, 379, ]
+GIORNO 7: [ 334, 229, 28, 169, 408, ]
+GIORNO 8: [ 244, 282, 293, 287, 267, ]
+GIORNO 9: [ 170, 309, 227, 237, 591, ]
+GIORNO 10: [ 354, 407, 189, 372, 465, ]
+GIORNO 11: [ 277, 310, 153, 304, 341, ]
+GIORNO 12: [ 308, 232, 391, 402, 276, ]
+GIORNO 13: [ 660, 580, 607, 468, 345, ]
+GIORNO 14: [ 387, 172, 378, 298, 375, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+GIORNO 15: [ -1, -1, -1, -1, -1, ]
+GIORNO 16: [ -1, -1, -1, -1, -1, ]
+GIORNO 17: [ -1, -1, -1, -1, -1, ]
+GIORNO 18: [ -1, -1, -1, -1, -1, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+<<<<<<< HEAD
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+=======
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 0.000000
+y: 10.000000
+______________________________________________
+------------------Day 16 -----------------
+Tipo merce 0:
+	- Non scaduta:
+		a) nei porti: 8871
+		b) in nave: 121
+	- Scaduta:
+		a) nei porti: 3287
+		b) in nave: 258
+	- Consegnata: 1597
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 8388
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 5450
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 7896
+		b) in nave: -146
+	- Scaduta:
+		a) nei porti: 3158
+		b) in nave: 1694
+	- Consegnata: 600
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 8871
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 5367
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 13348
+		b) in nave: 399
+	- Scaduta:
+		a) nei porti: 7517
+		b) in nave: 180
+	- Consegnata: 1386
+Numero di nave in mare senza carico:2
+Numero di navi in mare con carico a bordo:4
+Numero di navi in porto che stanno facendo operazioni di carico/scarico:4
+Numero di navi rallentate a causa delle tempeste: 0
+Numero di navi affondate:0
+Porti interessati da mareggiata: 0
+Porto 0:
+Banchine occupate totali: 0
+Merci ricevute: 600
+Merci spedite: 955
+[18317]Risorse porto 0:
+DOMANDE:
+0, 
+4322, 
+3050, 
+0, 
+4610, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 58, 114, 157, 146, 167, ]
+GIORNO 7: [ 236, 147, 307, 303, 307, ]
+GIORNO 8: [ 122, 181, 220, 192, 184, ]
+GIORNO 9: [ 171, 151, 210, 196, 588, ]
+GIORNO 10: [ 213, 296, 163, 177, 711, ]
+GIORNO 11: [ 261, 300, 192, 191, 272, ]
+GIORNO 12: [ 301, 192, 232, 172, 733, ]
+GIORNO 13: [ 92, 68, 91, 132, 273, ]
+GIORNO 14: [ 276, 183, 169, 181, 332, ]
+GIORNO 15: [ 155, 164, 149, 255, 399, ]
+GIORNO 16: [ -1, -1, -1, -1, -1, ]
+GIORNO 17: [ -1, -1, -1, -1, -1, ]
+GIORNO 18: [ -1, -1, -1, -1, -1, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 0.000000
+y: 0.000000
+______________________________________________
+Porto 1:
+Banchine occupate totali: 0
+Merci ricevute: 0
+Merci spedite: 763
+[18317]Risorse porto 1:
+DOMANDE:
+0, 
+3541, 
+2868, 
+0, 
+4626, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 11, 146, 158, 127, 475, ]
+GIORNO 7: [ 164, 120, 272, 245, 387, ]
+GIORNO 8: [ 294, 267, 388, 330, 365, ]
+GIORNO 9: [ 127, 113, 127, 112, 257, ]
+GIORNO 10: [ 100, 178, 85, 156, 210, ]
+GIORNO 11: [ 126, 141, 124, 126, 390, ]
+GIORNO 12: [ 164, 204, 216, 234, 284, ]
+GIORNO 13: [ 125, 157, 103, 137, 484, ]
+GIORNO 14: [ 279, 169, 140, 312, 401, ]
+GIORNO 15: [ 164, 187, 275, 260, 443, ]
+GIORNO 16: [ -1, -1, -1, -1, -1, ]
+GIORNO 17: [ -1, -1, -1, -1, -1, ]
+GIORNO 18: [ -1, -1, -1, -1, -1, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 10.000000
+y: 0.000000
+______________________________________________
+Porto 2:
+Banchine occupate totali: 3
+Merci ricevute: 0
+Merci spedite: 2254
+[18317]Risorse porto 2:
+DOMANDE:
+4620, 
+4788, 
+0, 
+0, 
+0, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 197, 358, 42, 168, 155, ]
+GIORNO 7: [ 126, 193, 107, 131, 187, ]
+GIORNO 8: [ 132, 134, 187, 160, 171, ]
+GIORNO 9: [ 349, 280, 164, 297, 24, ]
+GIORNO 10: [ 221, 98, 145, 153, 307, ]
+GIORNO 11: [ 284, 224, 230, 290, 164, ]
+GIORNO 12: [ 143, 73, 100, 67, 276, ]
+GIORNO 13: [ 96, 131, 91, 137, 223, ]
+GIORNO 14: [ 228, 162, 183, 141, 234, ]
+GIORNO 15: [ 97, 121, 100, 77, 261, ]
+GIORNO 16: [ -1, -1, -1, -1, -1, ]
+GIORNO 17: [ -1, -1, -1, -1, -1, ]
+GIORNO 18: [ -1, -1, -1, -1, -1, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 10.000000
+y: 10.000000
+______________________________________________
+Porto 3:
+Banchine occupate totali: 1
+Merci ricevute: 2983
+Merci spedite: 1590
+[18317]Risorse porto 3:
+DOMANDE:
+4430, 
+7497, 
+0, 
+0, 
+8199, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 367, 270, 120, 259, 379, ]
+GIORNO 7: [ 334, 229, 28, 169, 408, ]
+GIORNO 8: [ 244, 282, 293, 287, 267, ]
+GIORNO 9: [ 170, 309, 227, 237, 591, ]
+GIORNO 10: [ 354, 407, 189, 372, 465, ]
+GIORNO 11: [ 277, 310, 153, 304, 341, ]
+GIORNO 12: [ 308, 232, 391, 402, 276, ]
+GIORNO 13: [ 660, 580, 607, 468, 345, ]
+GIORNO 14: [ 387, 172, 378, 298, 375, ]
+GIORNO 15: [ 458, 345, 383, 470, 237, ]
+GIORNO 16: [ -1, -1, -1, -1, -1, ]
+GIORNO 17: [ -1, -1, -1, -1, -1, ]
+GIORNO 18: [ -1, -1, -1, -1, -1, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+>>>>>>> 248b21d33a9fe61147d3c30606afb69aa1759173
+--------------------------------------
+coords:
+x: 0.000000
+y: 10.000000
+______________________________________________
+------------------Day 17 -----------------
+Tipo merce 0:
+	- Non scaduta:
+		a) nei porti: 8737
+		b) in nave: 121
+	- Scaduta:
+		a) nei porti: 3920
+		b) in nave: 516
+	- Consegnata: 1597
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 8472
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 6338
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 8101
+		b) in nave: 154
+	- Scaduta:
+		a) nei porti: 3635
+		b) in nave: 1694
+	- Consegnata: 600
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 9304
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 6067
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 13328
+		b) in nave: 399
+	- Scaduta:
+		a) nei porti: 8693
+		b) in nave: 180
+	- Consegnata: 1386
+Numero di nave in mare senza carico:1
+Numero di navi in mare con carico a bordo:5
+Numero di navi in porto che stanno facendo operazioni di carico/scarico:4
+Numero di navi rallentate a causa delle tempeste: 0
+Numero di navi affondate:0
+Porti interessati da mareggiata: 0
+Porto 0:
+Banchine occupate totali: 0
+Merci ricevute: 600
+Merci spedite: 955
+[18330]Risorse porto 0:
+DOMANDE:
+0, 
+4322, 
+3050, 
+0, 
+4610, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 0, 0, 0, 0, 0, ]
+GIORNO 7: [ 67, 147, 307, 303, 307, ]
+GIORNO 8: [ 122, 181, 220, 192, 184, ]
+GIORNO 9: [ 171, 151, 210, 196, 588, ]
+GIORNO 10: [ 213, 296, 163, 177, 711, ]
+GIORNO 11: [ 261, 300, 192, 191, 272, ]
+GIORNO 12: [ 301, 192, 232, 172, 733, ]
+GIORNO 13: [ 92, 68, 91, 132, 273, ]
+GIORNO 14: [ 276, 183, 169, 181, 332, ]
+GIORNO 15: [ 155, 164, 149, 255, 399, ]
+GIORNO 16: [ 129, 174, 143, 309, 524, ]
+GIORNO 17: [ -1, -1, -1, -1, -1, ]
+GIORNO 18: [ -1, -1, -1, -1, -1, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 0.000000
+y: 0.000000
+______________________________________________
+Porto 1:
+Banchine occupate totali: 0
+Merci ricevute: 0
+Merci spedite: 763
+[18330]Risorse porto 1:
+DOMANDE:
+0, 
+3541, 
+2868, 
+0, 
+4626, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 0, 0, 0, 0, 0, ]
+GIORNO 7: [ 75, 120, 272, 245, 387, ]
+GIORNO 8: [ 294, 267, 388, 330, 365, ]
+GIORNO 9: [ 127, 113, 127, 112, 257, ]
+GIORNO 10: [ 100, 178, 85, 156, 210, ]
+GIORNO 11: [ 126, 141, 124, 126, 390, ]
+GIORNO 12: [ 164, 204, 216, 234, 284, ]
+GIORNO 13: [ 125, 157, 103, 137, 484, ]
+GIORNO 14: [ 279, 169, 140, 312, 401, ]
+GIORNO 15: [ 164, 187, 275, 260, 443, ]
+GIORNO 16: [ 346, 324, 177, 293, 295, ]
+GIORNO 17: [ -1, -1, -1, -1, -1, ]
+GIORNO 18: [ -1, -1, -1, -1, -1, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 10.000000
+y: 0.000000
+______________________________________________
+Porto 2:
+Banchine occupate totali: 3
+Merci ricevute: 0
+Merci spedite: 2554
+[18330]Risorse porto 2:
+DOMANDE:
+4620, 
+4788, 
+0, 
+0, 
+0, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 0, 0, 0, 0, 0, ]
+GIORNO 7: [ 126, 193, 107, 131, 187, ]
+GIORNO 8: [ 132, 134, 187, 160, 171, ]
+GIORNO 9: [ 349, 280, 164, 297, 24, ]
+GIORNO 10: [ 221, 98, 145, 153, 7, ]
+GIORNO 11: [ 284, 224, 230, 290, 164, ]
+GIORNO 12: [ 143, 73, 100, 67, 276, ]
+GIORNO 13: [ 96, 131, 91, 137, 223, ]
+GIORNO 14: [ 228, 162, 183, 141, 234, ]
+GIORNO 15: [ 97, 121, 100, 77, 261, ]
+GIORNO 16: [ 144, 249, 170, 323, 433, ]
+GIORNO 17: [ -1, -1, -1, -1, -1, ]
+GIORNO 18: [ -1, -1, -1, -1, -1, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 10.000000
+y: 10.000000
+______________________________________________
+Porto 3:
+Banchine occupate totali: 1
+Merci ricevute: 2983
+Merci spedite: 1590
+[18330]Risorse porto 3:
+DOMANDE:
+4430, 
+7497, 
+0, 
+0, 
+8199, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 0, 0, 0, 0, 0, ]
+GIORNO 7: [ 334, 229, 28, 169, 408, ]
+GIORNO 8: [ 244, 282, 293, 287, 267, ]
+GIORNO 9: [ 170, 309, 227, 237, 591, ]
+GIORNO 10: [ 354, 407, 189, 372, 465, ]
+GIORNO 11: [ 277, 310, 153, 304, 341, ]
+GIORNO 12: [ 308, 232, 391, 402, 276, ]
+GIORNO 13: [ 660, 580, 607, 468, 345, ]
+GIORNO 14: [ 387, 172, 378, 298, 375, ]
+GIORNO 15: [ 458, 345, 383, 470, 237, ]
+GIORNO 16: [ 138, 225, 192, 208, 204, ]
+GIORNO 17: [ -1, -1, -1, -1, -1, ]
+GIORNO 18: [ -1, -1, -1, -1, -1, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 0.000000
+y: 10.000000
+______________________________________________
+------------------Day 18 -----------------
+Tipo merce 0:
+	- Non scaduta:
+		a) nei porti: 8326
+		b) in nave: 121
+	- Scaduta:
+		a) nei porti: 4938
+		b) in nave: 774
+	- Consegnata: 1597
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 8116
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 7475
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 7532
+		b) in nave: 154
+	- Scaduta:
+		a) nei porti: 4957
+		b) in nave: 1994
+	- Consegnata: 600
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 8608
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 7437
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 13375
+		b) in nave: 999
+	- Scaduta:
+		a) nei porti: 10531
+		b) in nave: 180
+	- Consegnata: 1386
+Numero di nave in mare senza carico:1
+Numero di navi in mare con carico a bordo:7
+Numero di navi in porto che stanno facendo operazioni di carico/scarico:2
+Numero di navi rallentate a causa delle tempeste: 0
+Numero di navi affondate:0
+Porti interessati da mareggiata: 0
+Porto 0:
+Banchine occupate totali: 0
+Merci ricevute: 600
+Merci spedite: 955
+[18345]Risorse porto 0:
+DOMANDE:
+0, 
+4322, 
+3050, 
+0, 
+4610, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 0, 0, 0, 0, 0, ]
+GIORNO 7: [ 0, 0, 0, 0, 0, ]
+GIORNO 8: [ 0, 0, 0, 0, 0, ]
+GIORNO 9: [ 171, 151, 210, 196, 588, ]
+GIORNO 10: [ 213, 296, 163, 177, 711, ]
+GIORNO 11: [ 261, 300, 192, 191, 272, ]
+GIORNO 12: [ 1, 192, 232, 172, 733, ]
+GIORNO 13: [ 92, 68, 91, 132, 273, ]
+GIORNO 14: [ 276, 183, 169, 181, 332, ]
+GIORNO 15: [ 155, 164, 149, 255, 399, ]
+GIORNO 16: [ 129, 174, 143, 309, 524, ]
+GIORNO 17: [ 244, 173, 126, 159, 398, ]
+GIORNO 18: [ -1, -1, -1, -1, -1, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 0.000000
+y: 0.000000
+______________________________________________
+Porto 1:
+Banchine occupate totali: 0
+Merci ricevute: 0
+Merci spedite: 763
+[18345]Risorse porto 1:
+DOMANDE:
+0, 
+3541, 
+2868, 
+0, 
+4626, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 0, 0, 0, 0, 0, ]
+GIORNO 7: [ 0, 0, 0, 0, 0, ]
+GIORNO 8: [ 0, 0, 0, 0, 0, ]
+GIORNO 9: [ 127, 113, 127, 112, 257, ]
+GIORNO 10: [ 100, 178, 85, 156, 210, ]
+GIORNO 11: [ 126, 141, 124, 126, 390, ]
+GIORNO 12: [ 164, 204, 216, 234, 284, ]
+GIORNO 13: [ 125, 157, 103, 137, 484, ]
+GIORNO 14: [ 279, 169, 140, 312, 401, ]
+GIORNO 15: [ 164, 187, 275, 260, 443, ]
+GIORNO 16: [ 346, 324, 177, 293, 295, ]
+GIORNO 17: [ 230, 226, 240, 164, 410, ]
+GIORNO 18: [ -1, -1, -1, -1, -1, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 10.000000
+y: 0.000000
+______________________________________________
+Porto 2:
+Banchine occupate totali: 2
+Merci ricevute: 0
+Merci spedite: 3154
+[18345]Risorse porto 2:
+DOMANDE:
+4620, 
+4788, 
+0, 
+0, 
+0, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 0, 0, 0, 0, 0, ]
+GIORNO 7: [ 0, 0, 0, 0, 0, ]
+GIORNO 8: [ 132, 134, 187, 160, 171, ]
+GIORNO 9: [ 349, 280, 164, 297, 24, ]
+GIORNO 10: [ 221, 98, 145, 153, 7, ]
+GIORNO 11: [ 284, 224, 230, 290, 164, ]
+GIORNO 12: [ 143, 73, 100, 67, 276, ]
+GIORNO 13: [ 96, 131, 91, 137, 223, ]
+GIORNO 14: [ 228, 162, 183, 141, 234, ]
+GIORNO 15: [ 97, 121, 100, 77, 261, ]
+GIORNO 16: [ 144, 249, 170, 323, 433, ]
+GIORNO 17: [ 161, 88, 129, 154, 308, ]
+GIORNO 18: [ -1, -1, -1, -1, -1, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 10.000000
+y: 10.000000
+______________________________________________
+Porto 3:
+Banchine occupate totali: 0
+Merci ricevute: 2983
+Merci spedite: 1890
+[18345]Risorse porto 3:
+DOMANDE:
+4430, 
+7497, 
+0, 
+0, 
+8199, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 0, 0, 0, 0, 0, ]
+GIORNO 7: [ 0, 0, 0, 0, 0, ]
+GIORNO 8: [ 244, 282, 293, 287, 267, ]
+GIORNO 9: [ 170, 309, 227, 237, 591, ]
+GIORNO 10: [ 354, 407, 189, 372, 465, ]
+GIORNO 11: [ 277, 310, 153, 304, 341, ]
+GIORNO 12: [ 308, 232, 391, 402, 276, ]
+GIORNO 13: [ 660, 580, 607, 468, 345, ]
+GIORNO 14: [ 387, 172, 378, 298, 375, ]
+GIORNO 15: [ 458, 345, 383, 470, 237, ]
+GIORNO 16: [ 138, 225, 192, 208, 204, ]
+GIORNO 17: [ 272, 294, 258, 197, 769, ]
+GIORNO 18: [ -1, -1, -1, -1, -1, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 0.000000
+y: 10.000000
+______________________________________________
+------------------Day 19 -----------------
+Tipo merce 0:
+	- Non scaduta:
+		a) nei porti: 8501
+		b) in nave: 290
+	- Scaduta:
+		a) nei porti: 5354
+		b) in nave: 774
+	- Consegnata: 1597
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 8124
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 8155
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 6871
+		b) in nave: -146
+	- Scaduta:
+		a) nei porti: 5774
+		b) in nave: 2294
+	- Consegnata: 600
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 8778
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 8192
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 13874
+		b) in nave: 999
+	- Scaduta:
+		a) nei porti: 11814
+		b) in nave: 480
+	- Consegnata: 1386
+Numero di nave in mare senza carico:2
+Numero di navi in mare con carico a bordo:5
+Numero di navi in porto che stanno facendo operazioni di carico/scarico:3
+Numero di navi rallentate a causa delle tempeste: 0
+Numero di navi affondate:0
+Porti interessati da mareggiata: 0
+Porto 0:
+Banchine occupate totali: 0
+Merci ricevute: 600
+Merci spedite: 1124
+[18389]Risorse porto 0:
+DOMANDE:
+0, 
+4322, 
+3050, 
+0, 
+4610, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 0, 0, 0, 0, 0, ]
+GIORNO 7: [ 0, 0, 0, 0, 0, ]
+GIORNO 8: [ 0, 0, 0, 0, 0, ]
+GIORNO 9: [ 0, 0, 0, 0, 0, ]
+GIORNO 10: [ 213, 296, 163, 177, 711, ]
+GIORNO 11: [ 261, 300, 192, 191, 272, ]
+GIORNO 12: [ 1, 192, 232, 172, 733, ]
+GIORNO 13: [ 92, 68, 91, 132, 273, ]
+GIORNO 14: [ 276, 183, 169, 181, 332, ]
+GIORNO 15: [ 155, 164, 149, 255, 399, ]
+GIORNO 16: [ 129, 174, 143, 309, 524, ]
+GIORNO 17: [ 244, 173, 126, 159, 398, ]
+GIORNO 18: [ 328, 222, 212, 306, 451, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 0.000000
+y: 0.000000
+______________________________________________
+Porto 1:
+Banchine occupate totali: 1
+Merci ricevute: 0
+Merci spedite: 763
+[18389]Risorse porto 1:
+DOMANDE:
+0, 
+3541, 
+2868, 
+0, 
+4626, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 0, 0, 0, 0, 0, ]
+GIORNO 7: [ 0, 0, 0, 0, 0, ]
+GIORNO 8: [ 0, 0, 0, 0, 0, ]
+GIORNO 9: [ 0, 0, 0, 0, 0, ]
+GIORNO 10: [ 100, 178, 85, 156, 210, ]
+GIORNO 11: [ 126, 141, 124, 126, 390, ]
+GIORNO 12: [ 164, 204, 216, 234, 284, ]
+GIORNO 13: [ 125, 157, 103, 137, 484, ]
+GIORNO 14: [ 279, 169, 140, 312, 401, ]
+GIORNO 15: [ 164, 187, 275, 260, 443, ]
+GIORNO 16: [ 346, 324, 177, 293, 295, ]
+GIORNO 17: [ 230, 226, 240, 164, 410, ]
+GIORNO 18: [ 75, 70, 125, 113, 322, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 10.000000
+y: 0.000000
+______________________________________________
+Porto 2:
+Banchine occupate totali: 1
+Merci ricevute: 0
+Merci spedite: 3454
+[18389]Risorse porto 2:
+DOMANDE:
+4620, 
+4788, 
+0, 
+0, 
+0, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 0, 0, 0, 0, 0, ]
+GIORNO 7: [ 0, 0, 0, 0, 0, ]
+GIORNO 8: [ 0, 0, 0, 0, 0, ]
+GIORNO 9: [ 349, 280, 164, 297, 24, ]
+GIORNO 10: [ 221, 98, 145, 153, 7, ]
+GIORNO 11: [ 284, 224, 230, 290, 164, ]
+GIORNO 12: [ 143, 73, 100, 67, 276, ]
+GIORNO 13: [ 96, 131, 91, 137, 223, ]
+GIORNO 14: [ 228, 162, 183, 141, 234, ]
+GIORNO 15: [ 97, 121, 100, 77, 261, ]
+GIORNO 16: [ 144, 249, 170, 323, 433, ]
+GIORNO 17: [ 161, 88, 129, 154, 308, ]
+GIORNO 18: [ 104, 120, 222, 120, 453, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 10.000000
+y: 10.000000
+______________________________________________
+Porto 3:
+Banchine occupate totali: 1
+Merci ricevute: 2983
+Merci spedite: 1890
+[18389]Risorse porto 3:
+DOMANDE:
+4430, 
+7497, 
+0, 
+0, 
+7599, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 0, 0, 0, 0, 0, ]
+GIORNO 7: [ 0, 0, 0, 0, 0, ]
+GIORNO 8: [ 0, 0, 0, 0, 0, ]
+GIORNO 9: [ 170, 309, 227, 237, 591, ]
+GIORNO 10: [ 354, 407, 189, 372, 465, ]
+GIORNO 11: [ 277, 310, 153, 304, 341, ]
+GIORNO 12: [ 308, 232, 91, 402, 276, ]
+GIORNO 13: [ 660, 580, 307, 468, 345, ]
+GIORNO 14: [ 387, 172, 378, 298, 375, ]
+GIORNO 15: [ 458, 345, 383, 470, 237, ]
+GIORNO 16: [ 138, 225, 192, 208, 204, ]
+GIORNO 17: [ 272, 294, 258, 197, 769, ]
+GIORNO 18: [ 342, 276, 197, 386, 556, ]
+GIORNO 19: [ -1, -1, -1, -1, -1, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 0.000000
+y: 10.000000
+______________________________________________
+------------------STATO FINALE -----------------
+Tipo merce 0:
+	- Non scaduta:
+		a) nei porti: 8965
+		b) in nave: 679
+	- Scaduta:
+		a) nei porti: 5873
+		b) in nave: 774
+	- Consegnata: 1597
+Tipo merce 1:
+	- Non scaduta:
+		a) nei porti: 8329
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 8744
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 2:
+	- Non scaduta:
+		a) nei porti: 7295
+		b) in nave: 454
+	- Scaduta:
+		a) nei porti: 6165
+		b) in nave: 2294
+	- Consegnata: 600
+Tipo merce 3:
+	- Non scaduta:
+		a) nei porti: 8959
+		b) in nave: 0
+	- Scaduta:
+		a) nei porti: 8726
+		b) in nave: 0
+	- Consegnata: 0
+Tipo merce 4:
+	- Non scaduta:
+		a) nei porti: 14952
+		b) in nave: 399
+	- Scaduta:
+		a) nei porti: 12429
+		b) in nave: 1080
+	- Consegnata: 1686
+Numero di nave in mare senza carico:0
+Numero di navi in mare con carico a bordo:0
+Numero di navi in porto che stanno facendo operazioni di carico/scarico:0
+Numero di navi rallentate a causa delle tempeste: 0
+Numero di navi affondate:10
+Porti interessati da mareggiata: 1
+Porto 0:
+Banchine occupate totali: 0
+Merci ricevute: 600
+Merci spedite: 1424
+[17749]Risorse porto 0:
+DOMANDE:
+0, 
+4322, 
+3050, 
+0, 
+4610, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 0, 0, 0, 0, 0, ]
+GIORNO 7: [ 0, 0, 0, 0, 0, ]
+GIORNO 8: [ 0, 0, 0, 0, 0, ]
+GIORNO 9: [ 0, 0, 0, 0, 0, ]
+GIORNO 10: [ 213, 296, 163, 177, 711, ]
+GIORNO 11: [ 261, 300, 192, 191, 272, ]
+GIORNO 12: [ 1, 192, 232, 172, 733, ]
+GIORNO 13: [ 92, 68, 91, 132, 273, ]
+GIORNO 14: [ 276, 183, 169, 181, 332, ]
+GIORNO 15: [ 155, 164, 149, 255, 399, ]
+GIORNO 16: [ 129, 174, 143, 309, 524, ]
+GIORNO 17: [ 244, 173, 126, 159, 398, ]
+GIORNO 18: [ 328, 222, 212, 306, 451, ]
+GIORNO 19: [ 192, 101, 124, 184, 335, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 0.000000
+y: 0.000000
+______________________________________________
+Porto 1:
+Banchine occupate totali: 0
+Merci ricevute: 0
+Merci spedite: 852
+[17749]Risorse porto 1:
+DOMANDE:
+0, 
+3541, 
+2868, 
+0, 
+4626, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 0, 0, 0, 0, 0, ]
+GIORNO 7: [ 0, 0, 0, 0, 0, ]
+GIORNO 8: [ 0, 0, 0, 0, 0, ]
+GIORNO 9: [ 0, 0, 0, 0, 0, ]
+GIORNO 10: [ 100, 178, 85, 156, 210, ]
+GIORNO 11: [ 126, 141, 124, 126, 390, ]
+GIORNO 12: [ 164, 204, 216, 234, 284, ]
+GIORNO 13: [ 125, 157, 103, 137, 484, ]
+GIORNO 14: [ 279, 169, 140, 312, 401, ]
+GIORNO 15: [ 164, 187, 275, 260, 443, ]
+GIORNO 16: [ 346, 324, 177, 293, 295, ]
+GIORNO 17: [ 230, 226, 240, 164, 410, ]
+GIORNO 18: [ 75, 70, 125, 113, 322, ]
+GIORNO 19: [ 261, 255, 229, 160, 491, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 10.000000
+y: 0.000000
+______________________________________________
+Porto 2:
+Banchine occupate totali: 0
+Merci ricevute: 0
+Merci spedite: 3754
+[17749]Risorse porto 2:
+DOMANDE:
+4620, 
+4788, 
+0, 
+0, 
+0, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 0, 0, 0, 0, 0, ]
+GIORNO 7: [ 0, 0, 0, 0, 0, ]
+GIORNO 8: [ 0, 0, 0, 0, 0, ]
+GIORNO 9: [ 0, 0, 0, 0, 0, ]
+GIORNO 10: [ 221, 98, 145, 153, 7, ]
+GIORNO 11: [ 284, 224, 230, 290, 164, ]
+GIORNO 12: [ 143, 73, 100, 67, 276, ]
+GIORNO 13: [ 96, 131, 91, 137, 223, ]
+GIORNO 14: [ 228, 162, 183, 141, 234, ]
+GIORNO 15: [ 97, 121, 100, 77, 261, ]
+GIORNO 16: [ 144, 249, 170, 323, 433, ]
+GIORNO 17: [ 161, 88, 129, 154, 308, ]
+GIORNO 18: [ 104, 120, 222, 120, 453, ]
+GIORNO 19: [ 322, 231, 263, 217, 299, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 10.000000
+y: 10.000000
+______________________________________________
+Porto 3:
+Banchine occupate totali: 0
+Merci ricevute: 3283
+Merci spedite: 2490
+[17749]Risorse porto 3:
+DOMANDE:
+4430, 
+7497, 
+0, 
+0, 
+7298, 
+SUPPLIES:
+GIORNO 0: [ 0, 0, 0, 0, 0, ]
+GIORNO 1: [ 0, 0, 0, 0, 0, ]
+GIORNO 2: [ 0, 0, 0, 0, 0, ]
+GIORNO 3: [ 0, 0, 0, 0, 0, ]
+GIORNO 4: [ 0, 0, 0, 0, 0, ]
+GIORNO 5: [ 0, 0, 0, 0, 0, ]
+GIORNO 6: [ 0, 0, 0, 0, 0, ]
+GIORNO 7: [ 0, 0, 0, 0, 0, ]
+GIORNO 8: [ 0, 0, 0, 0, 0, ]
+GIORNO 9: [ 0, 0, 0, 0, 0, ]
+GIORNO 10: [ 354, 407, 189, 372, 465, ]
+GIORNO 11: [ 277, 310, 153, 304, 341, ]
+GIORNO 12: [ 308, 232, 91, 402, 276, ]
+GIORNO 13: [ 660, 580, 307, 468, 345, ]
+GIORNO 14: [ 387, 172, 378, 298, 375, ]
+GIORNO 15: [ 458, 345, 383, 470, 237, ]
+GIORNO 16: [ 138, 225, 192, 208, 204, ]
+GIORNO 17: [ 272, 294, 258, 197, 769, ]
+GIORNO 18: [ 342, 276, 197, 386, 556, ]
+GIORNO 19: [ 208, 207, 199, 154, 568, ]
+EXP TIMES:
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, ]
+--------------------------------------
+coords:
+x: 0.000000
+y: 10.000000
+______________________________________________
+Tempo di vita medio della merce: 10.000
+Varianza tempo della merce: 0.000
+SO_DAYS: 20
+Merce rimasta in porto: 48500
+Merce rimasta in nave: 1532
+Merce scaduta in porto: 41937
+Merce scaduta in nave: 4148
+Merce consegnata: 3883 (3.8830% di SO_FILL)
+Tempo di viaggio medio viaggio tra porti: 1.138071
+Tempo medio scaricamento di lotti: 4.963300
+TOTALE MERCE: 100000 <==> IN GIOCO: 100000
+✅
