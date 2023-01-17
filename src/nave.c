@@ -59,7 +59,7 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
 
         availablePorts = communicatePortsForChargeV1(quantityToCharge, port_offers); /* mando msg a tutti i porti perchè voglio caricare*/
         logShip(ship->shipID, "finito di chiamare i porti\n");
-        
+        printf("aviable ports: %d\n", availablePorts);
         if (availablePorts == 0) {
             
             replyToPortsForChargeV1(-1, port_offers);
@@ -99,7 +99,7 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
     removeExpiredGoodsOnShip(ship);
     
     checkTerminateValue(ship, terminateValue);
-    if (ship->loadship->weightLoad == 0)
+    if (ship->weight== 0)
     {
         return;
     }
@@ -128,14 +128,16 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
         */
 
         product_index = chooseProductToDelivery(ship);
-        printf("[%d]Nave ho scelto per scaricare: %d", ship->shipID,product_index);
-
+        printf("[%d]Nave ho scelto per scaricare: %d\n", ship->shipID,product_index);
+        printLoadShip(ship->loadship);
         prod = productAt(ship->loadship, product_index);
+        
         /*
             verificare che prod != NULL, se è == NULL vuol dire che la lista è vuota
         */
-        if(prod == NULL){
-            return; 
+        if (prod == NULL) {
+            printf("Prodotto NULL\n");
+            return;
         }
 
         portID = communicatePortsForDischargeV1(ship, prod, &quantoPossoScaricare, portResponses);
@@ -144,9 +146,9 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
         if (portID == -1) {
 
             addExpiredGood(prod->weight, prod->product_type, SHIP);
-            removeProduct(ship->loadship, product_index); 
+            removeProduct(ship, product_index); 
 
-            logShip(" riprovo a scegliere il prodotto da scaricare\n", ship->shipID);
+            logShip( ship->shipID, " riprovo a scegliere il prodotto da scaricare\n");
             replyToPortsForDischargeV1(ship, -1, quantoPossoScaricare, portResponses, prod);
             dischargeProducts(ship, day, terminateValue);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
         

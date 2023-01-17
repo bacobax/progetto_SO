@@ -329,7 +329,7 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
 
 
 }
-
+/*
 void dischargerCode(void (*recvHandler)(long, char*), int idx) {
     int requestPortQueueID;
     mex* res;
@@ -348,7 +348,7 @@ void dischargerCode(void (*recvHandler)(long, char*), int idx) {
 
         /*
             prendo il primo messaggio che arriva
-        */
+        
         res = msgRecv(requestPortQueueID, idx + 1, errorHandler, recvHandler, ASYNC, "dischargerCode");
         
     }
@@ -367,17 +367,18 @@ void chargerCode(void (*recvHandler)(long, char*), int idx) {
         /*
             E' importante che sia sincrona la gestione del messaggio ricevuto
             perchè prima di poterne ricevere un altro il porto deve poter aver aggiornato le sue disponibilità
-        */
+        
 
         /*
             prendo il primo messaggio che arriva
-        */
+        
         res = msgRecv(requestPortQueueID, idx + 1, errorHandler, recvHandler, ASYNC,"chargerCode");
         
     }
 }
-
+*/
 /* per operazioni di carico della nave*/
+/*
 void launchDischarger(void (*recvHandler)(long, char*), int idx) {
     int pid;
     pid = fork();
@@ -391,9 +392,10 @@ void launchDischarger(void (*recvHandler)(long, char*), int idx) {
     }
     
 }
-
+*/
 
 /* per operazioni di scarico della nave*/
+/*
 void launchCharger(void (*recvHandler)(long, char*), int idx) {
     int pid;
     pid = fork();
@@ -406,7 +408,7 @@ void launchCharger(void (*recvHandler)(long, char*), int idx) {
         chargerCode(recvHandler, idx);
         exit(EXIT_FAILURE);
     }
-}
+}*/
 int checkRequests(Port p, int type, int quantity) {
     int diff;
     int n = p->requests[type];

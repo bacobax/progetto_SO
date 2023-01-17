@@ -28,7 +28,7 @@ struct ship {
     double y;
     
     int pid;
-    
+    int weight;
     loadShip loadship;
     unsigned short storm;
     unsigned short dead;
@@ -113,5 +113,8 @@ void checkShipDead(Ship ship);
 int deliverProduct(Ship ship, Port port, int product_index, Product p, int portID, int firstProd, int quantoPossoScaricare);
 
 void removeExpiredGoodsOnShip(Ship ship);
+void addProduct(Ship ship, Product p, int idx, Port port);
+void removeProduct(Ship ship, int index);
+int isScadutaProduct(Product prod);
 
 #endif

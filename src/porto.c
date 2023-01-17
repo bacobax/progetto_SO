@@ -19,7 +19,7 @@
 #include "./porto.h"
 #include "./nave.h"
 #include "../utils/supplies.h"
-
+/*
 void recvDischargeHandler(long type, char *text)
 {
 
@@ -42,11 +42,11 @@ void recvDischargeHandler(long type, char *text)
     int waitResponsesID;
     Port porto;
    
-    /*waitResponsesID = useSem(WAITFIRSTRESPONSES, errorHandler, "recvDischargerHandler->waitResponsesID useSem");*/
+    /*waitResponsesID = useSem(WAITFIRSTRESPONSES, errorHandler, "recvDischargerHandler->waitResponsesID useSem");
     sscanf(text, "%d %d", &quantity, &idNaveMittente);
     idx = type - 1;
 
-    /*mutexPro(waitResponsesID, idNaveMittente, LOCK, errorHandler, "recvDischargerHandler->waitResponsesID LOCK");*/
+    /*mutexPro(waitResponsesID, idNaveMittente, LOCK, errorHandler, "recvDischargerHandler->waitResponsesID LOCK");
 
     printf("PORTO %d, ricevuta richiesta di caricare %d quantità merce dalla nave %d\n", idx, quantity, idNaveMittente);
 
@@ -68,7 +68,7 @@ void recvDischargeHandler(long type, char *text)
     waitToTravelSemID = useSem(WAITTOTRAVELKEY, errorHandler, "RecvDischargerHandler->waitToTravelSemID");
 
 
-    /* Operazione controllata da semaforo, per permettere di controllare le disponibilità per una richiesta solo quando non lo si sta già facendo per un altra*/
+    /* Operazione controllata da semaforo, per permettere di controllare le disponibilità per una richiesta solo quando non lo si sta già facendo per un altra
     mutexPro(controlPortsDisponibilitySemID, idx, LOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID LOCK");
     res = trovaTipoEScadenza(&porto->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantity, idx);
     mutexPro(controlPortsDisponibilitySemID, idx, UNLOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID UNLOCK");
@@ -169,13 +169,14 @@ void recvChargerHandler(long type, char *text)
     shmDetach(porto, errorHandler, "recvChargerHandler");
     return;
 }
-
+*/
 void codicePorto(int endShmId, int idx, int aspettoMortePortiSemID,int aspettoMorteNaviSemID )
 {
     int* endNow;
-    endNow =(int*)getShmAddress(endShmId, 0, errorHandler, "codicePorto");
+    endNow = (int*)getShmAddress(endShmId, 0, errorHandler, "codicePorto");
+    /*
     launchDischarger(recvDischargeHandler, idx);
-    launchCharger(recvChargerHandler, idx);
+    launchCharger(recvChargerHandler, idx);*/
     waitForStart();
   
     

@@ -4,46 +4,43 @@
 #include "../config1.h"
 #include "../src/dump.h"
 #include "./errorHandler.h"
+#include "../src/nave.h"
 loadShip initLoadShip() {
     loadShip ret;
     ret = (struct load*)malloc(sizeof(struct load));
     ret->first = NULL;
     ret->last = NULL;
-    ret->weightLoad = 0;
+    
     ret->length = 0;
     return ret;
 }
 
-void addProduct(loadShip list, Product p, int idx, Port port) {
-    if (SO_CAPACITY - list->weightLoad >= p->weight) {
-       Product newNode;
-        newNode = (struct productNode_*)malloc(sizeof(struct productNode_));
-        
-        if(list->last == NULL){
-            newNode->id_product = 0;
-        } else {
-            newNode->id_product = (list->last->id_product) + 1;
-        }
-        
-        newNode->product_type = p->product_type;
-        newNode->weight = p->weight;
-        newNode->expirationTime = p->expirationTime; /* da togliere*/
-        newNode->portID = p->portID;
-        newNode->distributionDay = p->distributionDay;
-        newNode->next = NULL;
+Product initProduct(int weight, int type, int expTime, int portID, int dd) {
+    Product p = (Product)malloc(sizeof(struct productNode_));
+    p->distributionDay = dd;
+    p->expirationTime = expTime;
+    p->next = NULL;
+    p->weight = weight;
+    p->product_type = type;
+    return p;
+}
 
-        if (list->length == 0) {
-            list->last = newNode;
-            list->first = newNode;
+void addProduct(Ship ship, Product p, int idx, Port port) {
+    if (SO_CAPACITY - ship->weight >= p->weight) {
+        
+
+        if (ship->loadship->length == 0) {
+            ship->loadship->last = p;
+            ship->loadship->first = p;
         }
         else {
             
-            list->last->next = newNode;
-            list->last = newNode;
+            ship->loadship->last->next = p;
+            ship->loadship->last = p;
         }
-        list->length += 1;
-        list->weightLoad += newNode->weight;
-        addNotExpiredGood(p.weight, p.product_type, SHIP, 0, ship->shipID);
+        ship->loadship->length += 1;
+        ship->weight+= p->weight;
+        addNotExpiredGood(p->weight, p->product_type, SHIP, 0, ship->shipID);
         port->sentGoods += p->weight;
 
     }
@@ -56,7 +53,7 @@ void addProduct(loadShip list, Product p, int idx, Port port) {
 Product productAt(loadShip l, int idx) {
     Product aux;
     int i = 0;
-    for (aux == l->first; aux != NULL; aux = aux->next) {
+    for (aux = l->first; aux != NULL; aux = aux->next) {
         if (i == idx)return aux;
         i++;
     }
@@ -77,8 +74,8 @@ Product findProduct(loadShip list, int product_type) { /* cerca un prodotto per 
     
     return NULL;
 }
-
-int getProductId(loadShip list, int product_type){ /* cerca un prodotto per product_type e restituire l'id del primo prodotto che trova nella lista*/
+/*
+int getProductId(loadShip list, int product_type){ /* cerca un prodotto per product_type e restituire l'id del primo prodotto che trova nella lista
     Product aux = list->first;
 
     while(aux != NULL){
@@ -91,25 +88,35 @@ int getProductId(loadShip list, int product_type){ /* cerca un prodotto per prod
     
     return -1;
 }
+*/
 
+void removeProduct(Ship ship, int index) {
 
-void removeProduct(loadShip list, int index) {
-    Product innerAux;
     Product aux;
+    Product innerAux;
     int i = 0;
-    aux = list->first;
-
-    while (aux != NULL) {
-        if (index == i) {
+    int peso;
+    if (index == 0) {
+        
+        aux = ship->loadship->first;
+        peso = aux->weight;
+        ship->loadship->first = ship->loadship->first->next;
+        free(aux);
+        ship->loadship->length -= 1;
+        ship->weight -= peso;
+        return;
+    }
+    for (aux = ship->loadship->first; aux != NULL; aux = aux->next) {
+        if (i == index - 1) {
+            peso = aux->next->weight;
             innerAux = aux->next->next;
-            list->length += -1;
-            list->weightLoad = list->weightLoad - aux->weight;
             free(aux->next);
             aux->next = innerAux;
+            ship->loadship->length -= 1;
+            ship->weight -= peso;
             return;
         }
         i++;
-        aux = aux->next;
     }
 
     printf("Prodotto non trovato, impossibile rimuoverlo dalla lista\n");
@@ -122,7 +129,7 @@ void printLoadShip(loadShip list) {
     printf("[ ");
     aux = list->first;
     while (aux != NULL) {
-        printf("id_product:%d product_type:%d weight:%d expiration_time:%d , ", aux->id_product, aux->product_type, aux->weight, aux->expirationTime);
+        printf("product_type:%d weight:%d expiration_time:%d , ",aux->product_type, aux->weight, aux->expirationTime);
         aux = aux->next;
     }
     printf(" ]\n");

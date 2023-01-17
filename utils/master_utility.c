@@ -119,7 +119,7 @@ void mastersighandler(int s) {
 void aspettaConfigs(int waitConfigSemID) {
     mutex(waitConfigSemID, WAITZERO, errorHandler, "aspettaConfigs");
 }
-
+/*
 
 void creaCodePorti() {
     int i;
@@ -180,7 +180,7 @@ void distruggiCodeNavi() {
         removeQueue(msgQueue, errorHandler, "distruggiCodeNavi");
     }
 }
-
+*/
 void creaShmPorti(){
     int shmid;
     int i;
@@ -300,14 +300,15 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     portDischargeRequestsQueueID = createQueue(PQUEREDCHKEY, errorHandler, "creazione della coda delle richieste di scarico dei porti");
     
     /* TO-DO creare coda porti richieste per fase di scaricamento*/
-
+/*
     creaCodePorti();
     creaCodePortiDischarge();
-    creaCodeNavi();
+    creaCodeNavi();*/
     /* TO-DO creare code porti per fase di scaricamento*/
+/*
+    waitToTravelsemID = createMultipleSem(WAITTOTRAVELKEY, SO_NAVI, SO_PORTI, errorHandler, "creazione waitToTravelSem");
 
-    waitToTravelsemID = createMultipleSem(WAITTOTRAVELKEY, SO_NAVI, SO_PORTI, errorHandler , "creazione waitToTravelSem");
-    getAllVAlues(waitToTravelsemID, SO_NAVI);
+*/
     
     waitResponsesID = createMultipleSem(WAITFIRSTRESPONSES, SO_NAVI, 1, errorHandler, "creazione waitResponsesSem");
 
@@ -343,7 +344,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeSem(controlPortsDisponibilitySemID, errorHandler, "controlPortsDisponibilitySemID");
     removeSem(verifyRequestPortSemID, errorHandler, "verifyRequestPortSemID");
     removeSem(waitToRemoveDump, errorHandler, "waitToRemoveDump");
-    removeSem(waitToTravelsemID, errorHandler, "waitToTravelsemID");
+    /*removeSem(waitToTravelsemID, errorHandler, "waitToTravelsemID");*/
     removeSem(waitResponsesID, errorHandler, "waitResponsesID");
 
     removeSem(waitPortsSemID, errorHandler, "waitPortsSemID");
@@ -369,11 +370,11 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
 
     removeQueue(portDischargeRequestsQueueID, errorHandler , "portDischargeRequestsQueueID");
     removeQueue(portRequestsQueueID, errorHandler, "portRequestsQueueID");
-    distruggiCodePorti();
-    distruggiCodePortiDischarge();
+    /*distruggiCodePorti();
+    distruggiCodePortiDischarge();*/
     printf("coda dei porti rimossa\n");
     
-    distruggiCodeNavi();
+    /*distruggiCodeNavi();*/
     printf("coda delle navi rimossa\n");
 
     printf("master tutte le code sono state rimosse\n");
@@ -453,8 +454,8 @@ void childExpirePortCode(Port p, int day, int idx) {
     
 
 }
-
-void childExpireShipCode(Ship ship){
+/*
+void childExpireShipCode(Ship ship) {
     int semShipID;
     semShipID = useSem(SEMSHIPKEY, errorHandler, "childExpireShipCode");
     printf("EXPIRER PID: %d\n" , getpid());
@@ -471,6 +472,8 @@ void childExpireShipCode(Ship ship){
     logShip(ship->shipID, "expirer nave FACCIO UNLOCK semShipID");
     mutexPro(semShipID, ship->shipID, UNLOCK, errorHandler, "childExpireShipCode UNLOCK");    
 }
+*/
+
 
 void expirePortsGoods(int day) {
     int i;
@@ -491,7 +494,7 @@ void expirePortsGoods(int day) {
         }
     }
 }
-
+/*
 void expireShipGoods(){
     int shipShmID;
     int i;
@@ -513,7 +516,7 @@ void expireShipGoods(){
         }
     }
 }
-
+*/
 
 FILE* genera_meteo() {
     int pid;
