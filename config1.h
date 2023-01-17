@@ -20,7 +20,7 @@ SO_DAYS 37 SO_FILL 1000000 SO_CAPACITY 50
 */
 
 #define SO_PORTI    4
-#define SO_NAVI     40
+#define SO_NAVI     1
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 
@@ -34,7 +34,7 @@ SO_DAYS 37 SO_FILL 1000000 SO_CAPACITY 50
 /* ciao */
 #define SO_SPEED     10
 #define SO_LATO      10
-#define SO_CAPACITY  100
+#define SO_CAPACITY  300
 
 #define SO_BANCHINE  20
 #define SO_LOADSPEED 50
@@ -83,7 +83,7 @@ SO_DAYS 37 SO_FILL 1000000 SO_CAPACITY 50
 
 
 
-#define RESTTIMESHIP 0.2
+#define RESTTIMESHIP 0.5
 #define WITH_MALESTORM 0
 
 #endif

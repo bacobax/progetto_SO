@@ -6,11 +6,6 @@ M: Finito generazione
 ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
 MASTER: DAY: 0
 Master: dormo
-Quantità primo giorno: 2500
-M: Finito generazione
-✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
-MASTER: DAY: 0
-Master: dormo
 MASTER: DAY: 1
 Master: dormo
 Quantità primo giorno: 2500
@@ -26,6 +21,11 @@ M: Finito generazione
 MASTER: DAY: 0
 Master: dormo
 MASTER: DAY: 1
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
 Master: dormo
 Quantità primo giorno: 2500
 M: Finito generazione
@@ -124,6 +124,8 @@ MASTER: DAY: 1
 Master: dormo
 MASTER: DAY: 2
 Master: dormo
+MASTER: DAY: 3
+Master: dormo
 Quantità primo giorno: 2500
 M: Finito generazione
 ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
@@ -134,6 +136,15 @@ Master: dormo
 MASTER: DAY: 2
 Master: dormo
 MASTER: DAY: 3
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
 Master: dormo
 Quantità primo giorno: 2500
 M: Finito generazione
@@ -194,17 +205,6 @@ MASTER: DAY: 2
 Master: dormo
 MASTER: DAY: 3
 Master: dormo
-Quantità primo giorno: 2500
-M: Finito generazione
-✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
-MASTER: DAY: 0
-Master: dormo
-MASTER: DAY: 1
-Master: dormo
-MASTER: DAY: 2
-Master: dormo
-MASTER: DAY: 3
-Master: dormo
 MASTER: DAY: 4
 Master: dormo
 Quantità primo giorno: 2500
@@ -232,6 +232,34 @@ Master: dormo
 MASTER: DAY: 3
 Master: dormo
 MASTER: DAY: 4
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
 Master: dormo
 Quantità primo giorno: 2500
 M: Finito generazione
@@ -291,6 +319,8 @@ MASTER: DAY: 3
 Master: dormo
 MASTER: DAY: 4
 Master: dormo
+MASTER: DAY: 5
+Master: dormo
 Quantità primo giorno: 2500
 M: Finito generazione
 ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
@@ -305,6 +335,8 @@ Master: dormo
 MASTER: DAY: 4
 Master: dormo
 MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
 Master: dormo
 Quantità primo giorno: 2500
 M: Finito generazione
@@ -371,21 +403,6 @@ Master: dormo
 MASTER: DAY: 5
 Master: dormo
 MASTER: DAY: 6
-Master: dormo
-Quantità primo giorno: 2500
-M: Finito generazione
-✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
-MASTER: DAY: 0
-Master: dormo
-MASTER: DAY: 1
-Master: dormo
-MASTER: DAY: 2
-Master: dormo
-MASTER: DAY: 3
-Master: dormo
-MASTER: DAY: 4
-Master: dormo
-MASTER: DAY: 5
 Master: dormo
 Quantità primo giorno: 2500
 M: Finito generazione
@@ -477,23 +494,6 @@ Master: dormo
 MASTER: DAY: 6
 Master: dormo
 MASTER: DAY: 7
-Master: dormo
-Quantità primo giorno: 2500
-M: Finito generazione
-✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
-MASTER: DAY: 0
-Master: dormo
-MASTER: DAY: 1
-Master: dormo
-MASTER: DAY: 2
-Master: dormo
-MASTER: DAY: 3
-Master: dormo
-MASTER: DAY: 4
-Master: dormo
-MASTER: DAY: 5
-Master: dormo
-MASTER: DAY: 6
 Master: dormo
 Quantità primo giorno: 2500
 M: Finito generazione
@@ -701,6 +701,52 @@ MASTER: DAY: 7
 Master: dormo
 MASTER: DAY: 8
 Master: dormo
+MASTER: DAY: 9
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
 Quantità primo giorno: 2500
 M: Finito generazione
 ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
@@ -792,6 +838,33 @@ Master: dormo
 MASTER: DAY: 8
 Master: dormo
 MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
 Master: dormo
 Quantità primo giorno: 2500
 M: Finito generazione
@@ -891,6 +964,91 @@ MASTER: DAY: 8
 Master: dormo
 MASTER: DAY: 9
 Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
 Quantità primo giorno: 2500
 M: Finito generazione
 ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
@@ -941,3 +1099,9443 @@ MASTER: DAY: 9
 Master: dormo
 MASTER: DAY: 10
 Master: dormo
+MASTER: DAY: 11
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+MASTER: DAY: 37
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+MASTER: DAY: 37
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+MASTER: DAY: 37
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+MASTER: DAY: 37
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+MASTER: DAY: 37
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+MASTER: DAY: 37
+Master: dormo
+MASTER: DAY: 38
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+MASTER: DAY: 37
+Master: dormo
+MASTER: DAY: 38
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+MASTER: DAY: 37
+Master: dormo
+MASTER: DAY: 38
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+MASTER: DAY: 37
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+MASTER: DAY: 37
+Master: dormo
+MASTER: DAY: 38
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+MASTER: DAY: 37
+Master: dormo
+MASTER: DAY: 38
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+MASTER: DAY: 37
+Master: dormo
+MASTER: DAY: 38
+Master: dormo
+MASTER: DAY: 39
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+MASTER: DAY: 37
+Master: dormo
+MASTER: DAY: 38
+Master: dormo
+MASTER: DAY: 39
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+MASTER: DAY: 37
+Master: dormo
+MASTER: DAY: 38
+Master: dormo
+MASTER: DAY: 39
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+MASTER: DAY: 37
+Master: dormo
+MASTER: DAY: 38
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+MASTER: DAY: 37
+Master: dormo
+MASTER: DAY: 38
+Master: dormo
+MASTER: DAY: 39
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+MASTER: DAY: 37
+Master: dormo
+MASTER: DAY: 38
+Master: dormo
+MASTER: DAY: 39
+Master: dormo
+Quantità primo giorno: 2500
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
+MASTER: DAY: 9
+Master: dormo
+MASTER: DAY: 10
+Master: dormo
+MASTER: DAY: 11
+Master: dormo
+MASTER: DAY: 12
+Master: dormo
+MASTER: DAY: 13
+Master: dormo
+MASTER: DAY: 14
+Master: dormo
+MASTER: DAY: 15
+Master: dormo
+MASTER: DAY: 16
+Master: dormo
+MASTER: DAY: 17
+Master: dormo
+MASTER: DAY: 18
+Master: dormo
+MASTER: DAY: 19
+Master: dormo
+MASTER: DAY: 20
+Master: dormo
+MASTER: DAY: 21
+Master: dormo
+MASTER: DAY: 22
+Master: dormo
+MASTER: DAY: 23
+Master: dormo
+MASTER: DAY: 24
+Master: dormo
+MASTER: DAY: 25
+Master: dormo
+MASTER: DAY: 26
+Master: dormo
+MASTER: DAY: 27
+Master: dormo
+MASTER: DAY: 28
+Master: dormo
+MASTER: DAY: 29
+Master: dormo
+MASTER: DAY: 30
+Master: dormo
+MASTER: DAY: 31
+Master: dormo
+MASTER: DAY: 32
+Master: dormo
+MASTER: DAY: 33
+Master: dormo
+MASTER: DAY: 34
+Master: dormo
+MASTER: DAY: 35
+Master: dormo
+MASTER: DAY: 36
+Master: dormo
+MASTER: DAY: 37
+Master: dormo
+MASTER: DAY: 38
+Master: dormo
+MASTER: DAY: 39
+Master: dormo
+Master, faccio la pclose
+ENTRO
+CIAO

@@ -292,7 +292,7 @@ int chooseQuantityToCharge(Ship ship){
     else
     {
         printf("cap = aviableCap\n");
-        printLoadShip(ship->loadship);
+        printShip(ship);
         cap = availableCapacity(ship);
     }
     printf("BEST QUANTITY: %d\n", cap);
