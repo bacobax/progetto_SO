@@ -102,7 +102,7 @@ Ship initShip(int shipID)
     
 
     /* inizializziamo la nave in shm*/
-   
+    
     shipShmId = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler, "initShip");
     ship = ((struct ship*)getShmAddress(shipShmId, 0, errorHandler, "initShip")) + shipID;
     ship->pid = getpid();

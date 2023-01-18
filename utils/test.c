@@ -4,8 +4,10 @@
 #include "./errorHandler.h"
 #include "./shm_utility.h"
 #include "./sem_utility.h"
+#include "./loadShip.h"
 #include "../config1.h"
-#include "../src/nave.h"  
+#include "../src/nave.h"
+#include "../src/porto.h"  
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -325,6 +327,125 @@ void testCode() {
     
 }
 
+void printLoadShipTest(loadShip list){
+    Product node;
+    node = list->first;
+    printf("Lenght della lista:%d && Carico trasportato:\n", list->length);
+    int i = 0;
+    while(node!=NULL){
+        if(node->next == NULL){
+            printf("Nodo:%d - address:%d il mio next e'->:NULL\n", i, node);
+        } else {
+            printf("Nodo:%d - address:%d il mio next e'->:%d\n", i, node, node->next);
+        }
+        printf("product_type:%d weight:%d expirationTime:%d distributionDay:%d portId:%d\n\n", node->product_type, node->weight, node->expirationTime, node->distributionDay, node->portID);
+        node = node->next;
+        i++;
+    }
+    printf("--------------------------------------------------\n");
+}
+
+void printShipTest(Ship ship){
+    printf("Nave id:%d e weight:%d\n", ship->shipID, ship->weight);
+    printLoadShipTest(ship->loadship);
+
+}
+
+Ship initShipTest(){
+    Ship ship;
+    ship = (Ship)malloc(sizeof(struct ship));
+    ship->loadship = initLoadShip();
+    printf("ship inizializzata...\n");
+    /*printShipTest(ship);*/
+    return ship;
+}
+
+void testLoadShip(){
+
+    Ship ship = initShipTest();
+
+    Product prod1 = (Product) malloc(sizeof(struct productNode_));
+    prod1->product_type = 1;
+    prod1->weight = 150;
+    prod1->next = NULL;
+
+    Product prod2 = (Product) malloc(sizeof(struct productNode_));
+    prod2->product_type = 2;
+    prod2->weight = 50;
+    prod2->next = NULL;
+
+    Product prod3 = (Product) malloc(sizeof(struct productNode_));
+    prod3->product_type = 3;
+    prod3->weight = 100;
+    prod3->next = NULL;
+
+
+    addProduct(ship, prod1, NULL);
+    printShipTest(ship);
+    
+    addProduct(ship, prod2, NULL);
+    printShipTest(ship);
+    
+    
+    addProduct(ship, prod3, NULL);
+    printShipTest(ship);
+
+    
+    /*removeProduct(ship, 2);            LA RIMOZIONE DI UN PRODOTTO FUNZIONA*/
+    
+    /*
+    removeProduct(ship, 2);              ANCHE IN QUESTO CASO FUNZIONA
+    printShipTest(ship);
+    removeProduct(ship, 0);
+    printShipTest(ship);
+
+    */
+
+   /* QUESTO PRIMA DAVA CORE DUMP POI L'HO RISOLTO CON IL CONTROLLO DELL'INDEX*/
+   removeProduct(ship, 0);
+   printShipTest(ship);
+
+     prod3 = (Product) malloc(sizeof(struct productNode_));
+    prod3->product_type = 3;
+    prod3->weight = 100;
+    prod3->next = NULL;
+
+   addProduct(ship, prod3, NULL);
+   printShipTest(ship);
+   
+
+   /*
+   removeProduct(ship, 0);              RIMOZIONE DI ELEMENTI UNO DOPO L'ALTRO FUNZIONA
+   removeProduct(ship, 1);
+   removeProduct(ship, 0);
+   printShipTest(ship);
+   */
+   
+   /*
+   removeProduct(ship, 1);            
+   removeProduct(ship, 2);
+   removeProduct(ship, 0);
+   printShipTest(ship);
+    */
+
+   /*
+   addProduct(ship, prod2, NULL);
+    printShipTest(ship);*/
+    
+    /*
+    addProduct(ship, prod3, NULL);
+    printShipTest(ship);
+
+    removeProduct(ship, 3);
+    printShipTest(ship);
+    removeProduct(ship, 5);
+    printShipTest(ship);
+    */
+}
+
+
+
+
 int main(int argc, char const* argv[])
 {
 
@@ -352,7 +473,7 @@ int main(int argc, char const* argv[])
         testShm();
         break;
     case 3:
-        
+        testLoadShip();
         break;
     case 4:
         testSemFunc();

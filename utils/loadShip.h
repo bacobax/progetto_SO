@@ -21,7 +21,6 @@ typedef struct load* loadShip;
 
 loadShip initLoadShip();
 
-
 Product findProduct(loadShip list, int product_type);
 
 int getProductId(loadShip list, int product_type);
