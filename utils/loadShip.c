@@ -57,10 +57,10 @@ void addProduct(Ship ship, Product p,Port port) {
         ship->loadship->length += 1;
         ship->weight+= p->weight;
         /*printShip(ship);*/
-        /*
+        
         addNotExpiredGood(p->weight, p->product_type, SHIP, 0, ship->shipID);
         port->sentGoods += p->weight;
-        */
+        
     }
     else {
         /*
@@ -140,12 +140,16 @@ void removeProduct(Ship ship, int index) {
 
     if(index == ship->loadship->length-1){
         printf("vogio rimuovere l'ultimo, i:%d\n", index);
-        while(i < index -1){
+        peso = ship->loadship->last->weight;
+        while (i < index - 1) {
             aux = aux->next;
             i++;
         }
         ship->loadship->last = aux;
         ship->loadship->last->next = NULL;
+
+        ship->loadship->length -= 1;
+        ship->weight -= peso;
         return;
     }
 
