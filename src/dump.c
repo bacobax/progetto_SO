@@ -212,7 +212,9 @@ void printerCode(int day, int last) {
     int notExpiredGoodsOnShips;
     int expiredGoodsOnPorts;
     int expiredGoodsOnShips;
-    DumpArea *dump;
+    double media;
+    double varianza;
+    DumpArea* dump;
     Supplies s;
 
    
@@ -280,9 +282,11 @@ void printerCode(int day, int last) {
     if(last){
         merceDaRefillare = (SO_FILL/SO_DAYS)*(SO_DAYS-day);
         merceRefillata = SO_FILL - merceDaRefillare;
-        
-        fprintf(fp, "Tempo di vita medio della merce: %.3f\n", ((double)(SO_MAX_VITA+SO_MIN_VITA))/2);
-        fprintf(fp, "Varianza tempo della merce: %.3f\n", dump->expTimeVariance / (SO_PORTI * SO_DAYS * SO_MERCI));
+        media = ((double)(SO_MAX_VITA + SO_MIN_VITA)) / 2;
+        varianza = dump->expTimeVariance / (SO_PORTI * SO_DAYS * SO_MERCI);
+        fprintf(fp, "Tempo di vita medio della merce: %.3f\n", media);
+        fprintf(fp, "Varianza tempo della merce: %.3f\n", varianza);
+        fprintf(fp, "Coefficente di variazione tempo della merce: %.3f%%\n", (varianza/media)*100);
         fprintf(fp, "SO_DAYS: %d\n", SO_DAYS);
         fprintf(fp, "Merce rimasta in porto: %d\n", notExpiredGoodsOnPorts);
         fprintf(fp,"Merce rimasta in nave: %d\n" , notExpiredGoodsOnShips);

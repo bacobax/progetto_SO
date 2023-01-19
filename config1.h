@@ -20,13 +20,13 @@ SO_DAYS 37 SO_FILL 1000000 SO_CAPACITY 50
 */
 
 #define SO_PORTI    4
-#define SO_NAVI     1
+#define SO_NAVI     10
 #define SO_MERCI     5
 #define SO_SIZE      20 /* tonn */
 
 #define SO_DAYS     30
-#define SO_MIN_VITA  10 /* tonn */
-#define SO_MAX_VITA  10/* tonn */
+#define SO_MIN_VITA  4 /* tonn */
+#define SO_MAX_VITA  31/* tonn */
 #define SO_FILL      100000
 
 
