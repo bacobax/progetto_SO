@@ -969,116 +969,6 @@ void travelDischarge(Ship ship, int portID, int* day, Product prod, int* portRes
     shmDetach(p, errorHandler, "travelDischarge");
 
 }
-/*
-void travel(Ship ship, int portID, int* day)
-{
-    Port p;
-    double dt_x, dt_y, spazio, nanosleep_arg;
-    long tempo;
-    double tempoInSecondi;
-    int tempoRimanente;
-    int portBufferSem;
-
-    portBufferSem = useSem(RESPORTSBUFFERS, errorHandler , "refill->useSem portBufferSem");
-
-    p = getPort(portID);  /* prelevo la struttura del porto alla portID-esima posizione nella shm*/ 
-
-    /* imposto la formula per il calcolo della distanza 
-
-    dt_x = p->x - ship->x;
-    dt_y = p->y - ship->y;
-    spazio = sqrt(pow(dt_x, 2) + pow(dt_y, 2));
-    tempo = (long)((spazio / SO_SPEED) * NANOS_MULT);
-
-    
-    /* spazio/SO_SPEED è misurato in giorni (secondi), quindi spazio/SO_SPEED*1000000000 sono il numero di nanosecondi per cui fare la sleep 
-    tempoInSecondi = spazio / SO_SPEED;
-    tempoRimanente = SO_DAYS - 1 - (*day);
-
-    logShip(ship->shipID, " viaggio per %f secondi...\n");
-    if (tempoInSecondi > tempoRimanente)
-    {
-        printf("[%d]Nave: non avrei abbastanza giorni per raggiungere il porto: %d, termino...\n", ship->shipID, portID);
-        if(ship->promisedProduct.expirationTime != -1){
-            addNotExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, SHIP, 0, ship->shipID);
-            
-            if(ship->promisedProduct.expirationTime == 0){
-                addExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, SHIP);
-            }
-        }
-        
-        exitNave(ship);
-    }
-
-    ship->inSea = 1;
-    nanosecsleep(tempo);
-
-    if (ship->storm == 1) {
-        ship->weatherTarget = 1;
-        logShip(ship->shipID, "🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️\n[%d]Nave: ho beccato una tempesta\n🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️\n");
-        nanosecsleep((double)(NANOS_MULT * 0.04166667) * SO_STORM_DURATION);
-        ship->storm = 0;
-    }
-
-    if (ship->dead) {
-        if (ship->promisedProduct.expirationTime != -1) {
-            if (ship->promisedProduct.expirationTime == 0) {
-                addNotExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, PORT, 0, portID);
-                addExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, PORT);
-            }
-            else {
-                addNotExpiredGood(ship->promisedProduct.weight, ship->promisedProduct.product_type, PORT, 0, portID);
-
-
-                mutexPro(portBufferSem, portID, LOCK, errorHandler, "refill->portBufferSem LOCK");
-                p->supplies.magazine[ship->promisedProduct.distributionDay][ship->promisedProduct.product_type] += ship->promisedProduct.weight;
-                mutexPro(portBufferSem, portID, UNLOCK, errorHandler, "refill->portBufferSem UNLOCK");
-            }
-        }
-        printf("🌊🌊🌊🌊🌊🌊\n[%d]Nave: sono stata uccisa\n🌊🌊🌊🌊🌊🌊\n", ship->shipID);
-        exitNave(ship);
-    }
-    logShip(ship->shipID, " viaggio finito...\n");
-    
-
-    /* Dopo aver fatto la nanosleep la nave si trova esattamente sulle coordinate del porto
-       quindi aggiorniamo le sue coordinate 
-    
-   
-    ship->x = p->x;
-    ship->y = p->y;
-    shmDetach(p, errorHandler, "travel");
-
-}
-
-*/
-/*
-void updateExpTimeShip(Ship ship) {
-    int i;
-    Product* products = ship->products;
-
-    logShip(ship->shipID, "faccio scadere le mie risorse");
-
-    for(i=0; i<SO_CAPACITY; i++){
-        if(products[i].expirationTime > 0){
-            products[i].expirationTime = products[i].expirationTime -1;  
-        } 
-        
-
-        if (products[i].expirationTime == 0) {
-            
-            addExpiredGood(products[i].weight, products[i].product_type, SHIP);
-            removeProduct(ship, i);
-            printf("IN EXP TIMES:\n");
-            printShip(ship);
-        }
-    }
-
-    if(ship->promisedProduct.expirationTime > 0){
-        ship->promisedProduct.expirationTime -= 1;
-    }
-}
-*/
 
 
 int countShipWhere(Ship arrShip , int(*f)(int,Ship)){
@@ -1281,7 +1171,8 @@ int deliverProduct(Ship ship, Port port, int product_index, Product p, int portI
     }
     else {
         addExpiredGood(p->weight, p->product_type, SHIP);
-        removeExpiredGoodsOnShip(ship);
+        removeProduct(ship, product_index);
+
         logShip(ship->shipID ,"OOPS! la merce che volevi scaricare è scaduta!!!");
 
     }

@@ -69,6 +69,7 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
         if (availablePorts == 0) {
             
             replyToPortsForChargeV1(-1, port_offers);
+            removeExpiredGoodsOnShip(ship);
            
             chargeProducts(ship, chooseQuantityToCharge(ship), day, terminateValue);
             
@@ -87,6 +88,8 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
             logShip(ship->shipID, "fatta travel");
             accessPortForChargeV1(ship, portID, port_offers);
             logShip(ship->shipID, "finita accessPortToCharge");
+            removeExpiredGoodsOnShip(ship);
+            
             /*
                 TODO: checkMerceScaduta();
             */
@@ -109,6 +112,7 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
     checkTerminateValue(ship, terminateValue);
     if (ship->weight== 0)
     {
+        
         return;
     }
     else
@@ -144,6 +148,8 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
         */
         if (prod == NULL) {
             printf("Prodotto NULL\n");
+            removeExpiredGoodsOnShip(ship);
+            
             return;
         }
 
@@ -157,6 +163,7 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
 
             logShip( ship->shipID, " riprovo a scegliere il prodotto da scaricare\n");
             replyToPortsForDischargeV1(ship, -1, quantoPossoScaricare, portResponses, prod);
+            
             dischargeProducts(ship, day, terminateValue);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
         
         } else {
@@ -168,7 +175,9 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
 
             travelDischarge(ship, portID, day, prod, portResponses);
             accessPortForDischargeV1(ship, portID, prod, product_index, quantoPossoScaricare);
+            removeExpiredGoodsOnShip(ship);
             
+
         }
     }
 }

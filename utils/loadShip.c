@@ -125,7 +125,7 @@ void removeProduct(Ship ship, int index) {
         return;
     }
     
-    printf("index del prodotto da rimuovere:%d\n");
+    printf("index del prodotto da rimuovere:%d\n", index);
     if (index == 0) {
         
         aux = ship->loadship->first;
