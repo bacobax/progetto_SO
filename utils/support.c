@@ -28,6 +28,24 @@ int random_int(int min, int max) {
     return min + rand() % (max+1 - min);
 }
 
+intList* distributeV1(int quantity, int parts) {
+    int equo;
+    int scarto;
+    intList* l;
+    int i;
+    equo = quantity / parts;
+    scarto = equo / 5;
+
+    l = intInit();
+    for (i = 0; i < parts - 1; i++) {
+        intPush(l, random_int(equo - scarto, equo + scarto));
+    }
+
+    intPush(l, quantity - sum(l));
+    return l;
+
+
+}
 intList* distribute(int quantity, int parts) {
 
 

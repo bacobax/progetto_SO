@@ -47,8 +47,8 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     /*
         Distribuisco randomicamente domanda e offerta
     */
-    requests = toArray(distribute(requestDisponibility, SO_MERCI), &length);
-    supplies = toArray(distribute(supplyDisponibility, SO_MERCI), &length);
+    requests = toArray(distributeV1(requestDisponibility, SO_MERCI), &length);
+    supplies = toArray(distributeV1(supplyDisponibility, SO_MERCI), &length);
 
     /*
         informo l'area di dump delle risorse nel porto,
@@ -223,7 +223,7 @@ void refill(long type, char* text) {
     /*
         distribuisco le quantità da aggiungere
     */
-    quanties = toArray(distribute(quantity, SO_MERCI), &length);
+    quanties = toArray(distributeV1(quantity, SO_MERCI), &length);
 
     /*
         semaforo per modificare il magazzino dei porti

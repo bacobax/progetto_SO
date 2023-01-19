@@ -405,7 +405,7 @@ void refillPorts(int opt, int msgRefillerID, int quantitaAlGiorno, int giorno) {
     intList* l;
     
     int pid;
-    l = distribute(quantitaAlGiorno, SO_PORTI);
+    l = distributeV1(quantitaAlGiorno, SO_PORTI);
     if (opt == SYNC) {
         refillCode(l, msgRefillerID, giorno);
         intFreeList(l);

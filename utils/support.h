@@ -15,7 +15,7 @@ void quitSignalHandler(int sig);
 
 double generateCord(); /* genere una coordinata double */
 
-
+intList* distributeV1(int quantity, int parts);
 
 /* aspetta che il master metta a zero il semaforo con la key MASTKEY */
 void waitForStart();
