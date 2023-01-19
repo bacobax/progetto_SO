@@ -42,10 +42,10 @@ int scegliPortoPerOffrire(int tipo, int quantita, Porto* porti) {
     Porto* portiConDomandaMinoreOUguale;
     intList* l;
     int i;
-
+    
     l = intInit();
 
-    for (i = 0; i < SO_PORTI; i++) {
+    for (i = 0; i < SO_("PORTI"); i++) {
         if (porti[i].domanda->tipo == tipo && porti[i].domanda->quantita <= quantita) {
             intPush(l, porti[i].domanda->quantita);
         }
@@ -57,7 +57,7 @@ int scegliPortoPerOffrire(int tipo, int quantita, Porto* porti) {
     maxDomanda = max(l);
 
 
-    for (i = 0; i < SO_PORTI; i++) {
+    for (i = 0; i < SO_("PORTI"); i++) {
         if (porti[i].domanda->tipo == tipo && porti[i].domanda->quantita == maxDomanda) {
             idx = i;
             break; /* facoltativo */
@@ -445,7 +445,10 @@ Ship ship = initShipTest();
     */
 }
 
-
+void constants() {
+    int res = SO_("FILL");
+    printf("Variabile: %d\n", res);
+}
 
 
 int main(int argc, char const* argv[])
@@ -494,6 +497,10 @@ int main(int argc, char const* argv[])
         break;
     case 9:
         testCode();
+        break;
+    case 10:
+        constants();
+        break;
     default:
         break;
     }

@@ -46,7 +46,8 @@
     "__memory": "c",
     "optional": "c",
     "system_error": "c",
-    "vector": "c"
+    "vector": "c",
+    "loadship.h": "c"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

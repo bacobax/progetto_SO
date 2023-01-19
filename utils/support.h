@@ -34,7 +34,6 @@ void checkInConfig();
 
 void clearSigMask();
 
-Port getPort(int portID);
 
 int getPortQueueRequest(int key);
 
@@ -51,5 +50,6 @@ int choose(int n, int k);
 
 double mediaTempoViaggioFraPorti();
 double numeroDiCarichiOttimale();
+int SO_(char* name);
 
 #endif

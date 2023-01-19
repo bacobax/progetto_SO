@@ -10,6 +10,7 @@
 #include "../config1.h"
 #include "../utils/vettoriInt.h"
 #include "../utils/supplies.h"
+#include "../utils/support.h"
 
 #define PQUEUEDCHKEY 5000    /* key coda messaggi per azioni di scaricamento*/
 
@@ -22,6 +23,7 @@
 
 
 struct port {
+
 
     int requests[SO_MERCI];
     unsigned short swell;
@@ -72,6 +74,7 @@ intList* getAllTypeSupplies(Port portArr);
 intList* tipiDiMerceOfferti(Port p);
 intList* tipiDiMerceRichiesti(Port p);
 double getValue(int quantity, int scadenza, int tipo, int idx);
+Port getPort(int portID);
 
 /*
     algoritmo che trova la migliore coppia di coordinate della matrice (tipo merce, giorno di distribuzione della merce) che corrisponde
@@ -81,5 +84,6 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
 
 void printStatoPorti(FILE *fp);
 void restorePromisedGoods(Port porto, int dayTrovato, int tipoTrovato, int quantity, int myPortIdx);
+void detachPort(Port port, int portID);
 
 #endif
