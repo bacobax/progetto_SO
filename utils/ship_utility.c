@@ -299,7 +299,7 @@ int chooseQuantityToCharge(Ship ship){
                 }
             }
         }
-        detachPort(port ,i);
+        detachPort(port ,i, "chooseQuantityToCharge");
     }
     
     intFreeList(tipiDaCaricare);
@@ -378,7 +378,7 @@ int communicatePortsForChargeV1(int quantityToCharge, PortOffer* port_offers) {
             aviablePorts++;
         }
         
-        detachPort(p, i);
+        detachPort(p, i, "communicatePortsForChargeV1");
     }
     return aviablePorts;
 }
@@ -452,7 +452,7 @@ void replyToPortsForChargeV1(int portID, PortOffer* port_offers) {
             p = getPort(i);
             
             restorePromisedGoods(p, port_offers[i].distributionDay, port_offers[i].product_type, port_offers[i].weight, i);
-            detachPort(p, i);
+            detachPort(p, i, "replyToPortsForChargeV1");
         }
         
     }
@@ -512,7 +512,7 @@ int communicatePortsForDischargeV1(Ship ship, Product p, int* quantoPossoScarica
             arrayResponses[i] = res;
             validityArray[i] = 1;
         }
-        detachPort(port,i);
+        detachPort(port,i, "communicatePortsForDischargeV1");
     }
 
     startIdx = checkIndexes(validityArray);
@@ -599,7 +599,7 @@ void replyToPortsForDischargeV1(Ship ship, int portID, int quantoPossoScaricare,
             
             restorePortRequest(porto, prod->product_type, portResponses[i], prod->weight);
             
-            detachPort(porto, i);
+            detachPort(porto, i, "replyToPortsForDischargeV1");
         }
     }
 
@@ -673,7 +673,7 @@ void accessPortForChargeV1(Ship ship, int portID, PortOffer* port_offers) {
 
         printTransaction(ship->shipID, portID, 1, p->weight, p->product_type);
         
-        detachPort(port , portID);
+        detachPort(port , portID, "accessPortForChargeV1");
         
     }
     else {
@@ -795,7 +795,7 @@ void accessPortForDischargeV1(Ship ship, int portID, Product p, int product_inde
         i++;
     }
     
-    detachPort(port,portID);
+    detachPort(port,portID, "accessPortForDischargeV1");
 
     mutexPro(shipSemID, ship->shipID, UNLOCK, errorHandler, "accessPortForCharge->shipSemID UNLOCK");
     ship->inSea = 1;
@@ -861,7 +861,7 @@ int isScadutaOffer(PortOffer offer) {
     int res;
     p = getPort(offer.portID);
     res = getExpirationTime(p->supplies, offer.product_type, offer.distributionDay) == 0;
-    detachPort(p, offer.portID);
+    detachPort(p, offer.portID, "isScadutaOffer");
     return res;
 }
 
@@ -871,7 +871,7 @@ int isScadutaProduct(Product prod){
     printf("sono dentro isScadutaProduct, sto per gare getPort l'id vale:%d\n", prod->portID);
     p = getPort(prod->portID);
     res = (getExpirationTime(p->supplies, prod->product_type, prod->distributionDay) == 0);
-    detachPort( p, prod->portID);
+    detachPort( p, prod->portID, "isScadutaProduct");
     return res;
 }
 
@@ -935,7 +935,7 @@ void travelCharge(Ship ship, int portID, int* day, PortOffer* port_offers) {
    
     ship->x = p->x;
     ship->y = p->y;
-    detachPort(p, portID);
+    detachPort(p, portID, "travelCharge");
 
 }
 
@@ -975,7 +975,7 @@ void travelDischarge(Ship ship, int portID, int* day, Product prod, int* portRes
         
         
         restorePortRequest(p, prod->product_type, portResponses[prod->portID] , prod->weight);
-        detachPort(p, portID);
+        detachPort(p, portID, "travelDischarge");
         exitNave(ship);
     }
 
@@ -995,7 +995,7 @@ void travelDischarge(Ship ship, int portID, int* day, Product prod, int* portRes
         
         printf("🌊🌊🌊🌊🌊🌊\n[%d]Nave: sono stata uccisa\n🌊🌊🌊🌊🌊🌊\n", ship->shipID);
 
-        detachPort(p, portID);
+        detachPort(p, portID, "travelDischarge");
        
         exitNave(ship);
     }
@@ -1008,7 +1008,7 @@ void travelDischarge(Ship ship, int portID, int* day, Product prod, int* portRes
    
     ship->x = p->x;
     ship->y = p->y;
-    detachPort(p, portID);
+    detachPort(p, portID, "travelDischarge");
 }
 
 

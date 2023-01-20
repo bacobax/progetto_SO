@@ -246,7 +246,7 @@ void refill(long type, char* text) {
 
     */
     
-    detachPort(p, correctType);
+    detachPort(p, correctType, "refill");
 
     /*
         decremento il semaforo per cui il master sta aspettando lo 0 per iniziare il nuovo giorno   
@@ -316,7 +316,7 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
 
     p = initPort(supplyDisponibility,requestDisponibility, idx);
 
-    detachPort(p, idx);
+    detachPort(p, idx, "mySettedPort");
 
     launchRefiller(idx);
 
@@ -442,7 +442,7 @@ int allRequestsZero(){
                 cond = 0;
             }
         }
-        detachPort(port, i);
+        detachPort(port, i, "allRequestsZero");
     }
 
     return cond;
@@ -498,7 +498,7 @@ intList* getAllOtherTypeRequests(int idx) {
             tipiRichiesti = tipiDiMerceRichiesti(p);
             ret = intUnion(ret, tipiRichiesti);
             intFreeList(tipiRichiesti);
-            detachPort(p, i);
+            detachPort(p, i, "getAllOtherTypeRequests");
         }
     }
     return ret;
@@ -526,7 +526,7 @@ intList* haSensoContinuare() {
         intFreeList(aux0);
         intFreeList(aux1);
         
-        detachPort(port, i);
+        detachPort(port, i ,"haSensoContinuare" );
     }
     
     
@@ -544,12 +544,12 @@ double getValue(int quantity, int scadenza, int tipo, int idx) {
     p = getPort(idx);
     if (scadenza == 0 || contain(tipiDiMerceRichiesti(p), tipo) || !contain(tipiDiMerceRichiestiAltriPorti, tipo))
     {
-        detachPort(p, idx);
+        detachPort(p, idx , "getValue");
         return 0;
     }
     else /*scadenza > 0 && le mie richieste non contengono il tipo di merce di questa offerta && le richieste degli altri porti contengono il tipo di merce di questa offerta*/
     {
-        detachPort(p, idx);
+        detachPort(p, idx , "getValue");
         
         return quantity / (double)scadenza;
     }
@@ -622,7 +622,7 @@ int countPortsWhere(int(*f)(int,Port)){
         if(f(i,p)){
             count++;
         }
-        detachPort(p,i);
+        detachPort(p,i, "countPortsWhere");
     }
     return count;
 }
@@ -650,33 +650,27 @@ void printStatoPorti(FILE *fp){
         fprintf(fp, "Merci ricevute: %d\n", port->deliveredGoods);
         fprintf(fp, "Merci spedite: %d\n", port->sentGoods);
         printPorto(port, i, fp);
-        detachPort(port, i);
+        detachPort(port, i, "printStatoPorti");
     }
 }
 Port getPort(int portID){
-   int portShmid;
-   Port port;
+    int portShmid;
+    int requestsShmID;
+    Port port;
    char text[512];
-   /*
-
-   int ftok_val = ftok("./utils/port_utility.c", portID);
-   if (ftok_val == -1) {
-       throwError("ftok valore -1", "getPort");
-       exit(1);
-   }
-//    sprintf(text, "key generata da ftok:%d per il porto:%d", ftok_val, portID);
-//    throwError(text, "getPort");
-   portShmid = useShm(ftok_val, sizeof(struct port), errorHandler, "get port array");
-   port = (Port) getShmAddress(portShmid,0,errorHandler,"get port array"); 
-   */
+   int so_merci = SO_("MERCI");
    portShmid = useShm(PSHMKEY, 0, errorHandler, "get port array");
-   port = (Port)getShmAddress(portShmid, 0, errorHandler, "get port");
-
-   return port + portID;
+   requestsShmID = useShm(ftok("./utils/supplies.c", portID), sizeof(int) * so_merci, errorHandler, "getPort");
+   
+   port = ((Port)getShmAddress(portShmid, 0, errorHandler, "get port"))+portID;
+   port->requests = ((int*)getShmAddress(requestsShmID, 0, errorHandler, "getPort"));
+   return port;
 }
 
-void detachPort(Port port,int portID) {
-    shmDetach(port-portID, errorHandler, "detachPort");
+void detachPort(Port port, int portID, char* errCtx) {
+    
+    shmDetach(port->requests, errorHandler, "detach port requests");
+    shmDetach(port - portID, errorHandler, "detachPort");
 }
 
 

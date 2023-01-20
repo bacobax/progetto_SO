@@ -8,6 +8,7 @@
 #include "../config1.h"
 #include "../src/nave.h"
 #include "../src/porto.h"  
+#include "../src/master.h"  
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -153,12 +154,13 @@ void test1() {
 }
 
 void testShm() {
-    int shmid = createShm(IPC_PRIVATE, sizeof(int), NULL, "dfs");
-    int* shmAddr = (int*)getShmAddress(shmid, 0, NULL, "fd");
-    *shmAddr = 5;
-    printf("%d\n", *shmAddr);
-    shmDetach(shmAddr, NULL, "dsf");
-    removeShm(shmid, NULL, "dfs");
+    creaShmPorti();
+    Port p = getPort(0);
+    printPorto(p, 0, stdout);
+    detachPort(p, 0, "test");
+    printf("CIAO");
+    
+
 }
 
 

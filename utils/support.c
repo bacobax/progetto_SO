@@ -215,8 +215,8 @@ double mediaTempoViaggioFraPorti() {
             p1 = getPort(i);
             p2 = getPort(j);
             sum += getTempoDiViaggio(p1->x, p1->y, p2->x, p2->y);
-            detachPort(p1, i);
-            detachPort(p2, j);
+            detachPort(p1, i, "mediaTempoViaggioFraPorti");
+            detachPort(p2, j, "mediaTempoViaggioFraPorti");
             c++;
         }
     }

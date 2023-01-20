@@ -124,7 +124,7 @@ void swellRoutine(){
     victimIdx = random_int(0, so_porti - 1);
     port =getPort(victimIdx);
     port->swell = 1;
-    detachPort(port, victimIdx);
+    detachPort(port, victimIdx , "swellRoutine");
 }
 
 void launchSwell(){

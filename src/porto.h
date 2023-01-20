@@ -25,7 +25,7 @@
 struct port {
 
 
-    int requests[SO_MERCI];
+    int* requests;
     unsigned short swell;
     unsigned short weatherTarget;
     Supplies supplies;
@@ -33,6 +33,7 @@ struct port {
     double y;
     int deliveredGoods;
     int sentGoods;
+    
 };
 
 typedef struct port* Port;
@@ -84,6 +85,6 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
 
 void printStatoPorti(FILE *fp);
 void restorePromisedGoods(Port porto, int dayTrovato, int tipoTrovato, int quantity, int myPortIdx);
-void detachPort(Port port, int portID);
+void detachPort(Port port, int portID ,char* errCtx);
 
 #endif

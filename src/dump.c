@@ -177,7 +177,7 @@ void addDeliveredGood(int quantity, int type, int portIdx){
     
     mutexPro(semid, type, UNLOCK, errorHandler, "addDeliveredGood LOCK");
     shmDetach(dump, errorHandler, "dump addDeliveredGood");
-    detachPort(port, portIdx);
+    detachPort(port, portIdx, "addDeliveredGood");
 }
 
 

@@ -127,10 +127,16 @@ void creaShmPorti(){
     int i;
     char text[512];
     int ftok_val;
+    int reqPortShmId;
+    int so_merci;
     int so_porti = SO_("PORTI");
-
+    so_merci = SO_("MERCI");
     shmid = createShm(PSHMKEY, sizeof(struct port) * so_porti, errorHandler, "creaShmPorti");
-/*
+    for (i = 0; i < so_porti; i++) {
+        reqPortShmId = createShm(ftok("./utils/supplies.c", i), sizeof(int) * so_merci, errorHandler, "creaShmPorti request");
+        
+    }
+    /*
     for (i = 0; i < so_porti; i++) {
         ftok_val = ftok("./utils/port_utility.c", i);
         if (ftok_val == -1) {
@@ -149,12 +155,12 @@ void distruggiShmPorti(){
     int shmid;
     int i;
     int so_porti = SO_("PORTI");
-    /*
-for (i = 0; i < SO_("PORTI"); i++) {
+    
+    for (i = 0; i < SO_("PORTI"); i++) {
         shmid = useShm(ftok("./utils/port_utility.c", i), sizeof(struct port), errorHandler, "distruggiShmPorti");
-        removeShm(shmid , errorHandler, "distruggiShmPorti");
+        removeShm(ftok("./utils/supplies.c", i), errorHandler, "distruggiShmPorti supplies");
     }
-    */
+    
     removeShm(useShm(PSHMKEY, sizeof(struct port) * so_porti, errorHandler, "distruggiShmPorti"), errorHandler, "distruggiShmPorti");
     return;
 }
@@ -458,7 +464,7 @@ void expirePortsGoods(int day) {
         if (pid == 0) {
             port = getPort(i);
             childExpirePortCode(port, day, i);
-            detachPort(port, i);
+            detachPort(port, i,"expirePortsGoods");
             exit(EXIT_SUCCESS);
         }
     }
@@ -520,7 +526,7 @@ void resetWeatherTargets(Ship arrShip){
         {
             p->weatherTarget = 0;
         }
-        detachPort(p,i);
+        detachPort(p,i, "resetWeatherTargets");
     }
 }
 
