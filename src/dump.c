@@ -15,16 +15,18 @@
 void lockAllGoodsDump(){
     int semid;
     int i;
+    int so_merci = SO_("MERCI");
     semid = useSem(DUMPSEMKEY, errorHandler, "lockAllGoodsDump");
-    for(i=0; i<SO_MERCI; i++){
+    for(i=0; i<so_merci; i++){
         mutexPro(semid, i, LOCK, errorHandler, "lockAllGoodsDump");
     }
 }
 void unlockAllGoodsDump(){
     int semid;
     int i;
+    int so_merci = SO_("MERCI");
     semid = useSem(DUMPSEMKEY, errorHandler, "lockAllGoodsDump");
-    for(i=0; i<SO_MERCI; i++){
+    for(i=0; i<so_merci; i++){
         mutexPro(semid, i, UNLOCK, errorHandler, "lockAllGoodsDump");
     }
 }
@@ -37,9 +39,10 @@ void createDumpArea(){
     int i;
     int c;
     int k;
+    int so_merci = SO_("MERCI");
     DumpArea *arrGoods;
     shmid = createShm(DUMPSHMKEY, sizeof(DumpArea), errorHandler, "create dump area");
-    semid = createMultipleSem(DUMPSEMKEY, SO_MERCI, 1, errorHandler, "creazione semafori per regolare la zona di dump");
+    semid = createMultipleSem(DUMPSEMKEY, so_merci, 1, errorHandler, "creazione semafori per regolare la zona di dump");
     logFileSemID = createSem(LOGFILESEMKEY, 1, errorHandler, "creazione semaforo per scrivere nel file di log");
     txFileSemID = createSem(TXFILESEMKEY, 1, errorHandler, "creazione semaforo per scrivere nel file di log tx");
 
@@ -173,8 +176,8 @@ void addDeliveredGood(int quantity, int type, int portIdx){
     port->deliveredGoods += quantity;
     
     mutexPro(semid, type, UNLOCK, errorHandler, "addDeliveredGood LOCK");
-    shmDetach(dump,errorHandler, "dump addDeliveredGood");
-    shmDetach(port,errorHandler, "portArr addDeliveredGood");
+    shmDetach(dump, errorHandler, "dump addDeliveredGood");
+    detachPort(port, portIdx);
 }
 
 
@@ -214,6 +217,12 @@ void printerCode(int day, int last) {
     int expiredGoodsOnShips;
     double media;
     double varianza;
+    int so_fill = SO_("FILL");
+    int so_days = SO_("DAYS");
+    int so_max_vita = SO_("MAX_VITA");
+    int so_min_vita = SO_("MIN_VITA");
+    int so_merci = SO_("MERCI");
+    int so_porti = SO_("PORTI");
     DumpArea* dump;
     Supplies s;
 
@@ -233,7 +242,7 @@ void printerCode(int day, int last) {
         throwError("Errore nell'apertura del file log", "printerCode");
         exit(EXIT_FAILURE);
     }
-    if (day < SO_DAYS) {
+    if (day < so_days) {
     fprintf(fp, "------------------Day %d -----------------\n", day);
         
     }
@@ -248,7 +257,7 @@ void printerCode(int day, int last) {
     notExpiredGoodsOnShips = 0;
     expiredGoodsOnPorts = 0;
     expiredGoodsOnShips = 0;
-    for (i = 0; i < SO_MERCI; i++) {
+    for (i = 0; i < so_merci; i++) {
         fprintf(fp, "Tipo merce %d:\n", i);
         fprintf(fp, "\t- Non scaduta:\n");
         fprintf(fp, "\t\ta) nei porti: %d\n", dump->types[i].goods_on_port);
@@ -280,21 +289,21 @@ void printerCode(int day, int last) {
         merceRefillata = 5
     */
     if(last){
-        merceDaRefillare = (SO_FILL/SO_DAYS)*(SO_DAYS-day);
-        merceRefillata = SO_FILL - merceDaRefillare;
-        media = ((double)(SO_MAX_VITA + SO_MIN_VITA)) / 2;
-        varianza = dump->expTimeVariance / (SO_PORTI * SO_DAYS * SO_MERCI);
+        merceDaRefillare = (so_fill/so_days)*(so_days-day);
+        merceRefillata = so_fill - merceDaRefillare;
+        media = ((double)(so_max_vita + so_min_vita)) / 2;
+        varianza = dump->expTimeVariance / (so_porti * so_days * so_merci);
         fprintf(fp, "Tempo di vita medio della merce: %.3f\n", media);
         fprintf(fp, "Varianza tempo della merce: %.3f\n", varianza);
         fprintf(fp, "Coefficente di variazione tempo della merce: %.3f%%\n", (varianza/media)*100);
-        fprintf(fp, "SO_DAYS: %d\n", SO_DAYS);
+        fprintf(fp, "SO_DAYS: %d\n", so_days);
         fprintf(fp, "Merce rimasta in porto: %d\n", notExpiredGoodsOnPorts);
         fprintf(fp,"Merce rimasta in nave: %d\n" , notExpiredGoodsOnShips);
         fprintf(fp, "Merce scaduta in porto: %d\n" , expiredGoodsOnPorts);
         fprintf(fp, "Merce scaduta in nave: %d\n" , expiredGoodsOnShips);
-        fprintf(fp, "Merce consegnata: %d (%.4f%% di SO_FILL)\n" , deliveredGoods,((double)( deliveredGoods* 100))/SO_FILL);
+        fprintf(fp, "Merce consegnata: %d (%.4f%% di SO_FILL)\n" , deliveredGoods,((double)( deliveredGoods* 100))/so_fill);
         fprintf(fp, "Tempo di viaggio medio viaggio tra porti: %f\n", mediaTempoViaggioFraPorti());
-        fprintf(fp, "Tempo medio scaricamento di lotti: %f\n", (dump->tempoScaricamentoTot)/((double)(SO_PORTI * SO_DAYS * SO_MERCI)));
+        fprintf(fp, "Tempo medio scaricamento di lotti: %f\n", (dump->tempoScaricamentoTot)/((double)(so_porti * so_days * so_merci)));
         /*
             SO_FILL/100 = Merce_conse/x
             x = M_C*100

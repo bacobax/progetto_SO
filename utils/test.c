@@ -12,6 +12,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <errno.h>
+#include <time.h>
 #include <sys/shm.h>
 #define SO_MERCI 3
 
@@ -21,9 +22,6 @@
 
 #define SO_PORTI 3
 
-/* void msgRecvHandler(long type, char text[MEXBSIZE]) {
-//     printf("Messaggio di tipo %ld ricevuto: %s\n", type, text);
-// } */
 
 typedef struct trade_ {
     int tipo;
@@ -44,10 +42,10 @@ int scegliPortoPerOffrire(int tipo, int quantita, Porto* porti) {
     Porto* portiConDomandaMinoreOUguale;
     intList* l;
     int i;
-
+    
     l = intInit();
 
-    for (i = 0; i < SO_PORTI; i++) {
+    for (i = 0; i < SO_("PORTI"); i++) {
         if (porti[i].domanda->tipo == tipo && porti[i].domanda->quantita <= quantita) {
             intPush(l, porti[i].domanda->quantita);
         }
@@ -59,7 +57,7 @@ int scegliPortoPerOffrire(int tipo, int quantita, Porto* porti) {
     maxDomanda = max(l);
 
 
-    for (i = 0; i < SO_PORTI; i++) {
+    for (i = 0; i < SO_("PORTI"); i++) {
         if (porti[i].domanda->tipo == tipo && porti[i].domanda->quantita == maxDomanda) {
             idx = i;
             break; /* facoltativo */
@@ -133,16 +131,18 @@ int mapCriterio(int el, int idx) {
 
 void test1() {
 
+    int q;
+    int n;
+    srand(time(NULL));
+    printf("Inserire quantità: ");
+    scanf("%d", &q);
+    printf("Inserire parti: ");
+    scanf("%d", &n);
+    
+    intList* l = distributeV1(q, n);
 
-    intList* l = distribute(30, 3);
-
-    int length;
-    int* a = toArray(l, &length);
-
-    int i;
-    for (i = 0; i < length; i++) {
-        printf("%d,\n ", a[i]);
-    }
+    intStampaLista(l);
+    
     /* l = map(l, mapCriterio); */
 
     /* intStampaLista(l); */
@@ -326,7 +326,7 @@ void testCode() {
     } while (res == 1);
     
 }
-
+/*
 void printLoadShipTest(loadShip list){
     Product node;
     node = list->first;
@@ -349,20 +349,20 @@ void printShipTest(Ship ship){
     printf("Nave id:%d e weight:%d\n", ship->shipID, ship->weight);
     printLoadShipTest(ship->loadship);
 
-}
-
+}*/
+/*
 Ship initShipTest(){
     Ship ship;
     ship = (Ship)malloc(sizeof(struct ship));
     ship->loadship = initLoadShip();
     printf("ship inizializzata...\n");
-    /*printShipTest(ship);*/
+    /*printShipTest(ship);
     return ship;
-}
+}*/
 
 void testLoadShip(){
-
-    Ship ship = initShipTest();
+    /*
+Ship ship = initShipTest();
 
     Product prod1 = (Product) malloc(sizeof(struct productNode_));
     prod1->product_type = 1;
@@ -390,6 +390,8 @@ void testLoadShip(){
     addProduct(ship, prod3, NULL);
     printShipTest(ship);
 
+    */
+    
     
     /*removeProduct(ship, 2);            LA RIMOZIONE DI UN PRODOTTO FUNZIONA*/
     
@@ -401,7 +403,7 @@ void testLoadShip(){
 
     */
 
-   /* QUESTO PRIMA DAVA CORE DUMP POI L'HO RISOLTO CON IL CONTROLLO DELL'INDEX*/
+   /* QUESTO PRIMA DAVA CORE DUMP POI L'HO RISOLTO CON IL CONTROLLO DELL'INDEX
    removeProduct(ship, 0);
    printShipTest(ship);
 
@@ -413,7 +415,7 @@ void testLoadShip(){
    addProduct(ship, prod3, NULL);
    printShipTest(ship);
    
-
+*/
    /*
    removeProduct(ship, 0);              RIMOZIONE DI ELEMENTI UNO DOPO L'ALTRO FUNZIONA
    removeProduct(ship, 1);
@@ -443,7 +445,10 @@ void testLoadShip(){
     */
 }
 
-
+void constants() {
+    int res = SO_("FILL");
+    printf("Variabile: %d\n", res);
+}
 
 
 int main(int argc, char const* argv[])
@@ -492,6 +497,10 @@ int main(int argc, char const* argv[])
         break;
     case 9:
         testCode();
+        break;
+    case 10:
+        constants();
+        break;
     default:
         break;
     }

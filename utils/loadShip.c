@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "./loadShip.h"
+#include "./support.h"
 #include "../config1.h"
 #include "../src/dump.h"
 #include "./errorHandler.h"
@@ -29,7 +30,8 @@ Product initProduct(int weight, int type, int expTime, int portID, int dd) {
 
 void addProduct(Ship ship, Product p,Port port) {
     /*char text[64];*/
-    if (SO_CAPACITY - ship->weight >= p->weight)
+    int so_capacity = SO_("CAPACITY");
+    if (so_capacity - ship->weight >= p->weight)
     {
 
         if(p == NULL){

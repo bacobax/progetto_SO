@@ -3,6 +3,7 @@
 #include "../src/porto.h"
 #include <stdio.h>
 #include <signal.h>
+#include <string.h>
 #include <stdlib.h>
 #include <time.h>
 #include <sys/types.h>
@@ -28,6 +29,24 @@ int random_int(int min, int max) {
     return min + rand() % (max+1 - min);
 }
 
+intList* distributeV1(int quantity, int parts) {
+    int media;
+    int scarto;
+    intList* l;
+    int i;
+    media = quantity / parts;
+    scarto = media / 5; /*per avere un coefficente di variazione massimo del 20% (1/5 della media)*/
+
+    l = intInit();
+    for (i = 0; i < parts - 1; i++) {
+        intPush(l, random_int(media - scarto, media + scarto));
+    }
+    /*la quantità restante viene messa nell'ultimo elemento*/
+    intPush(l, quantity - sum(l));
+    return l;
+
+
+}
 intList* distribute(int quantity, int parts) {
 
 
@@ -125,19 +144,10 @@ void clearSigMask(){
 double generateCord()
 {
     double range, div;
-
-    range = (SO_LATO); /* max-min */
+    int so_lato = SO_("LATO");
+    range = so_lato; /* max-min */
     div = RAND_MAX / range;
     return (rand() / div);
-}
-
-Port getPort(int portID){
-   int portShmid;
-   Port port;
-   /*printf("id del porto:%d per fare useShm in getPort\n", portID);*/
-   portShmid = useShm(ftok("./utils/port_utility.c", portID), sizeof(struct port), errorHandler,"get port array");
-   port = (Port) getShmAddress(portShmid,0,errorHandler,"get port array"); 
-   return port;
 }
 
 
@@ -169,10 +179,10 @@ int getShipQueue(int id){
 /*in secondi*/
 double getTempoDiViaggio(double x, double y, double x1, double y1) {
     double spazio;
-
+    int so_speed = SO_("SPEED");
     spazio = sqrt(pow(x - x1, 2) + pow(y - y1, 2));
 
-    return spazio / SO_SPEED;
+    return spazio / so_speed;
 
 }
 
@@ -196,16 +206,17 @@ double mediaTempoViaggioFraPorti() {
     int i;
     int j;
     double sum = 0;
+    int so_porti = SO_("PORTI");
     Port p1;
     Port p2;
     c = 0;
-    for (i = 0; i < SO_PORTI-1; i++) {
-        for (j = i + 1; j < SO_PORTI; j++) {
+    for (i = 0; i < so_porti-1; i++) {
+        for (j = i + 1; j < so_porti; j++) {
             p1 = getPort(i);
             p2 = getPort(j);
             sum += getTempoDiViaggio(p1->x, p1->y, p2->x, p2->y);
-            shmDetach(p1,errorHandler,"mediaTempoViaggioFraPorti p1");
-            shmDetach(p2, errorHandler, "mediaTempoVIaggioFraPorti p2");
+            detachPort(p1, i);
+            detachPort(p2, j);
             c++;
         }
     }
@@ -218,18 +229,59 @@ double numeroDiCarichiOttimale() {
     double tempoDiScaricoMedio;
     double tempoDiViaggioEffettivo;
     double res;
-    
+    int so_porti;
+    int so_days;
+    int so_merci;
+    int so_loadspeed;
+    int so_fill;
+    so_porti = SO_("PORTI");
+    so_days = SO_("DAYS");
+    so_merci = SO_("MERCI");
+    so_loadspeed = SO_("LOADSPEED");
+    so_fill = SO_("FILL");
     tempoDiViaggioMedio = mediaTempoViaggioFraPorti();
-    probabilitaDiCambiarePorto =(double)(SO_PORTI - 1) / SO_PORTI;
+    probabilitaDiCambiarePorto =(double)(so_porti - 1) / so_porti;
     tempoDiViaggioEffettivo = (double)probabilitaDiCambiarePorto * tempoDiViaggioMedio;
-    tempoDiScaricoMedio = ((double)SO_FILL / SO_LOADSPEED) / (SO_PORTI * SO_DAYS * SO_MERCI);
+    tempoDiScaricoMedio = ((double)so_fill / so_loadspeed) / (so_porti * so_days * so_merci);
     /*
         k = tempoDiViaggioMedio + tempoDiScaricoMedio ~= tempo di una charge/dscharge
         n*k< SO_DAYS-1 - n*k <==> 2nk < SO_DAYS - 1 <==> n < (SO_DAYS - 1)/k*2 <==> n < (SO_DAYS - 1)/((tempoDiViaggioMedio + tempoDiScaricoMedio)*2) 
     
     */
-    res = (double)(SO_DAYS - 1) / ((tempoDiViaggioEffettivo + tempoDiScaricoMedio) * 2);
+    res = (double)(so_days - 1) / ((tempoDiViaggioEffettivo + tempoDiScaricoMedio) * 2);
  
 
     return res;
+}
+
+int SO_(char* name) {
+    FILE* fp;
+    char buff[1024];
+    char* token;
+    fp = fopen("./configs", "r");
+    if (fp == NULL) {
+        throwError("fopen", "SO_");
+        fclose(fp);
+        exit(1);
+    }
+
+    while (fgets(buff, 1024, fp) != NULL) {
+        
+        
+        token = strtok(buff, "=");
+        if (strcmp(token, name) == 0) {
+            token = strtok(NULL, "=");
+            fclose(fp);
+            return atoi(token);
+        }
+    }
+    if (fclose(fp) == -1) {
+        fclose(fp);
+        throwError("fclose", "SO_");
+        exit(1);
+    }
+    throwError("No variables with this name", "SO_");
+    fclose(fp);
+    exit(1);
+    return -1;
 }
