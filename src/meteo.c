@@ -22,30 +22,27 @@ void malestormRoutine() {
     Ship victimShip;
     int shipShmID;
     intList* shipsList;
-    int* a;
+    int a[SO_NAVI];
     int victim;
     int semShipID;
-    int so_malestorm;
-    int so_navi = SO_("NAVI");
-    so_malestorm = SO_("MAELSTROM");
     semShipID = useSem(SEMSHIPKEY, errorHandler, "childExpireShipCode");
-     
     
-    shipShmID = useShm(SSHMKEY, sizeof(struct ship) * so_navi, errorHandler, "shipShmID in malestormRoutine");
-    a = (int*)malloc(sizeof(int) * so_navi);
-    for(i=0; i<so_navi; i++){
+    
+    shipShmID = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler, "shipShmID in malestormRoutine");
+    
+    for(i=0; i<SO_NAVI; i++){
         a[i] = i;
     }
-    shipsList = intInitFromArray(a, so_navi); 
-    free(a);
+    shipsList = intInitFromArray(a, SO_NAVI); 
+    
     while (1) {
         if (shipsList->length > 0) {
             victimIdx = random_int(0, shipsList->length - 1);
             printf("METEO: nave vittima per malestorm:%d\n", victimIdx);
             victim = *(intElementAt(shipsList, victimIdx));
-            printf("Tra %d ore killo la nave %d\n", so_malestorm, victim);
-            printf("ASPETTO %f secondi\n", ((double)(0.04166667 * NANOS_MULT) * so_malestorm));
-            nanosecsleep((double)(0.04166667 * NANOS_MULT) * so_malestorm);
+            printf("Tra %d ore killo la nave %d\n", SO_MAELSTROM, victim);
+            printf("ASPETTO %f secondi\n", ((double)(0.04166667 * NANOS_MULT) * SO_MAELSTROM));
+            nanosecsleep((double)(0.04166667 * NANOS_MULT) * SO_MAELSTROM);
 
             
             victimShip = ((Ship)getShmAddress(shipShmID, 0, errorHandler, "getShmAddress in malestormRoutine di shipsArray")) + victim;
@@ -98,9 +95,8 @@ void stormRoutine(){
     int shmShipID;
     Ship ship;
     int victimIdx;
-    int so_navi = SO_("NAVI");
-    victimIdx = random_int(0, so_navi - 1);
-    shmShipID = useShm(SSHMKEY, sizeof(struct ship) * so_navi, errorHandler, "meteo stormRoutine");
+    victimIdx = random_int(0, SO_NAVI - 1);
+    shmShipID = useShm(SSHMKEY, sizeof(struct ship) * SO_NAVI, errorHandler, "meteo stormRoutine");
     ship = ((Ship) getShmAddress(shmShipID, 0, errorHandler, "getShmAddress meteo stormRoutine")) + victimIdx;
     ship->storm = 1;
     shmDetach(ship - victimIdx,errorHandler,"stormRoutine");
@@ -120,11 +116,10 @@ void launchStorm() {
 void swellRoutine(){
     Port port;
     int victimIdx;
-    int so_porti = SO_("PORTI");
-    victimIdx = random_int(0, so_porti - 1);
+    victimIdx = random_int(0, SO_PORTI - 1);
     port =getPort(victimIdx);
     port->swell = 1;
-    detachPort(port, victimIdx , "swellRoutine");
+    shmDetach(port, errorHandler, "swellRoutine");
 }
 
 void launchSwell(){

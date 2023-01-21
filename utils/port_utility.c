@@ -39,10 +39,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     int* supplies;
     int i;
     int j;
-    int so_lato;
-    int so_merci = SO_("MERCI");
-    int so_days = SO_("DAYS");
-    so_lato = SO_("LATO");
+
     signal(SIGCHLD, SIG_IGN);
 
     p = getPort(pIndex);
@@ -50,8 +47,8 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     /*
         Distribuisco randomicamente domanda e offerta
     */
-    requests = toArray(distributeV1(requestDisponibility, so_merci), &length);
-    supplies = toArray(distributeV1(supplyDisponibility, so_merci), &length);
+    requests = toArray(distribute(requestDisponibility, SO_MERCI), &length);
+    supplies = toArray(distribute(supplyDisponibility, SO_MERCI), &length);
 
     /*
         informo l'area di dump delle risorse nel porto,
@@ -84,7 +81,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
         
     */
 
-    for (i = 0; i < so_merci; i++) {
+    for (i = 0; i < SO_MERCI; i++) {
         int c = rand() % 2;
         if (c == 1) {
             p->requests[i] = 0;
@@ -94,8 +91,8 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     /*
     Azzero tutti tipi delle risorse degli altri giorni
     */
-    for (i = 1; i < so_days; i++) {
-        for (j = 0; j < so_merci; j++) {
+    for (i = 1; i < SO_DAYS; i++) {
+        for (j = 0; j < SO_MERCI; j++) {
             p->supplies.magazine[i][j] = -1;
         }
     }
@@ -106,16 +103,16 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
         p->y = 0;
     }
     else if (pIndex == 1) {
-        p->x = so_lato;
+        p->x = SO_LATO;
         p->y = 0;
     }
     else if (pIndex == 2) {
-        p->x = so_lato;
-        p->y = so_lato;
+        p->x = SO_LATO;
+        p->y = SO_LATO;
     }
     else if (pIndex == 3) {
         p->x = 0;
-        p->y = so_lato;
+        p->y = SO_LATO;
     }
     else {
         p->x = generateCord();
@@ -135,10 +132,9 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
 void printPorto(Port p, int idx, FILE* stream) {
 
     int i;
-    int so_merci = SO_("MERCI");
     fprintf(stream, "[%d]Risorse porto %d:\n", getpid(),idx);
     fprintf(stream,"DOMANDE:\n");
-    for (i = 0; i < so_merci; i++) {
+    for (i = 0; i < SO_MERCI; i++) {
         fprintf(stream,"%d, \n", p->requests[i]);
     }
 
@@ -163,7 +159,7 @@ int filterIdxs(int request) {
 /* TODO: risolvere bug che non fa il parse del day del messaggio */
 void refill(long type, char* text) {
 
-    int so_merci = SO_("MERCI");    
+    
     /*
         correctType varrà l'indice del  porto al quale il type del messaggio riferito farà riferimento,
         correcType = type - 1 perchè quando il master invia una certa quantità ad un certo porto, e vuole usare il type per riferirsi all'indice del porto,
@@ -227,7 +223,7 @@ void refill(long type, char* text) {
     /*
         distribuisco le quantità da aggiungere
     */
-    quanties = toArray(distributeV1(quantity, so_merci), &length);
+    quanties = toArray(distribute(quantity, SO_MERCI), &length);
 
     /*
         semaforo per modificare il magazzino dei porti
@@ -246,7 +242,7 @@ void refill(long type, char* text) {
 
     */
     
-    detachPort(p, correctType, "refill");
+    shmDetach(p, errorHandler, "refill");
 
     /*
         decremento il semaforo per cui il master sta aspettando lo 0 per iniziare il nuovo giorno   
@@ -316,7 +312,7 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
 
     p = initPort(supplyDisponibility,requestDisponibility, idx);
 
-    detachPort(p, idx, "mySettedPort");
+    shmDetach(p, errorHandler, "mySettedPort");
 
     launchRefiller(idx);
 
@@ -432,17 +428,15 @@ int allRequestsZero(){
     int i;
     int j;
     int cond = 1;
-    int so_porti = SO_("PORTI");
-    int so_merci = SO_("MERCI");
 
-    for(i=0; i<so_porti && cond; i++){
+    for(i=0; i<SO_PORTI && cond; i++){
         port = getPort(i);
-        for(j=0;j<so_merci && cond; j++){
+        for(j=0;j<SO_MERCI && cond; j++){
             if(port->requests[j] > 0){
                 cond = 0;
             }
         }
-        detachPort(port, i, "allRequestsZero");
+        shmDetach(port, errorHandler, "shm detach port");
     }
 
     return cond;
@@ -457,9 +451,7 @@ int filterReq(int req){
 intList* validSupplies(Port p){
     int i;
     intList* ret = intInit();
-    int so_merci = SO_("MERCI");
-
-    for (i = 0; i < so_merci; i++) {
+    for (i = 0; i < SO_MERCI; i++) {
         if (validSupply(p->supplies, i)) {
             intPush(ret, i);
         }
@@ -468,8 +460,7 @@ intList* validSupplies(Port p){
 }
 
 intList* tipiDiMerceOfferti(Port p) {
-    int so_merci = SO_("MERCI");
-    intList* tipiMerceSenzaRichiesta = findIdxs(p->requests, so_merci, filterReq);
+    intList* tipiMerceSenzaRichiesta = findIdxs(p->requests, SO_MERCI, filterReq);
     intList* tipiMerceOffertaMaggioreDiZero = validSupplies(p);
     intList* ret;
     ret = intIntersect(tipiMerceSenzaRichiesta, tipiMerceOffertaMaggioreDiZero);
@@ -479,8 +470,7 @@ intList* tipiDiMerceOfferti(Port p) {
 }
 
 intList* tipiDiMerceRichiesti(Port p){
-    int so_merci = SO_("MERCI");
-    return findIdxs(p->requests, so_merci,filterIdxs);
+    return findIdxs(p->requests, SO_MERCI,filterIdxs);
 }
 
 
@@ -489,16 +479,14 @@ intList* getAllOtherTypeRequests(int idx) {
     intList* ret = intInit();
     intList* tipiRichiesti;
     Port p;
-    int so_porti = SO_("PORTI");
-
-    for (i = 0; i < so_porti; i++)
+    for (i = 0; i < SO_PORTI; i++)
     {
         if(i!=idx){
             p = getPort(i);   
             tipiRichiesti = tipiDiMerceRichiesti(p);
             ret = intUnion(ret, tipiRichiesti);
             intFreeList(tipiRichiesti);
-            detachPort(p, i, "getAllOtherTypeRequests");
+            shmDetach(p, errorHandler, "getAllOtherTypeRequests");
         }
     }
     return ret;
@@ -514,9 +502,9 @@ intList* haSensoContinuare() {
     intList* merciTotaliOfferte = intInit();
     intList* aux0;
     intList* aux1;
-    int so_porti = SO_("PORTI");
 
-    for(i=0;i<so_porti; i++){
+
+    for(i=0;i<SO_PORTI; i++){
         port = getPort(i);
 
         aux0 = tipiDiMerceRichiesti(port);
@@ -526,7 +514,7 @@ intList* haSensoContinuare() {
         intFreeList(aux0);
         intFreeList(aux1);
         
-        detachPort(port, i ,"haSensoContinuare" );
+        shmDetach(port,errorHandler, "haSensoContinuare");
     }
     
     
@@ -544,12 +532,12 @@ double getValue(int quantity, int scadenza, int tipo, int idx) {
     p = getPort(idx);
     if (scadenza == 0 || contain(tipiDiMerceRichiesti(p), tipo) || !contain(tipiDiMerceRichiestiAltriPorti, tipo))
     {
-        detachPort(p, idx , "getValue");
+        shmDetach(p, errorHandler, "getValue");
         return 0;
     }
     else /*scadenza > 0 && le mie richieste non contengono il tipo di merce di questa offerta && le richieste degli altri porti contengono il tipo di merce di questa offerta*/
     {
-        detachPort(p, idx , "getValue");
+        shmDetach(p, errorHandler, "getValue");
         
         return quantity / (double)scadenza;
     }
@@ -572,11 +560,8 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
     *tipo = -1;
     *scadenza = -1;
     *dayTrovato = -1;
-    int so_days = SO_("DAYS");
-    int so_merci = SO_("MERCI");
-
-    for (i = 0; i < so_days; i++) {
-        for (j = 0; j < so_merci; j++) {
+    for (i = 0; i < SO_DAYS; i++) {
+        for (j = 0; j < SO_MERCI; j++) {
             
             ton = S->magazine[i][j];
             
@@ -615,14 +600,12 @@ int countPortsWhere(int(*f)(int,Port)){
     int i;
     Port p;
     count = 0;
-    int so_porti = SO_("PORTI"); 
-
-    for (i = 0; i < so_porti; i++){
+    for (i = 0; i < SO_PORTI; i++){
         p = getPort(i);
         if(f(i,p)){
             count++;
         }
-        detachPort(p,i, "countPortsWhere");
+        shmDetach(p, errorHandler, "countPortsWhere");
     }
     return count;
 }
@@ -638,41 +621,19 @@ void printStatoPorti(FILE *fp){
     int k;
     Supplies s;
     Port port;
-    int so_porti = SO_("PORTI");
-    int so_banchine = SO_("BANCHINE");
     semPierID = useSem(BANCHINESEMKY, errorHandler, "printStatoNavi");
     fprintf(fp, "Porti interessati da mareggiata: %d\n" , countPortsWhere(caughtBySwell));
-    for (i = 0; i < so_porti; i++)
+    for (i = 0; i < SO_PORTI; i++)
     {
         port = getPort(i);
         fprintf(fp, "Porto %d:\n", i);
-        fprintf(fp, "Banchine occupate totali: %d\n", so_banchine - getOneValue(semPierID, i));
+        fprintf(fp, "Banchine occupate totali: %d\n", SO_BANCHINE - getOneValue(semPierID, i));
         fprintf(fp, "Merci ricevute: %d\n", port->deliveredGoods);
         fprintf(fp, "Merci spedite: %d\n", port->sentGoods);
         printPorto(port, i, fp);
-        detachPort(port, i, "printStatoPorti");
+        shmDetach(port, errorHandler, "shm detach port");
     }
 }
-Port getPort(int portID){
-    int portShmid;
-    int requestsShmID;
-    Port port;
-   char text[512];
-   int so_merci = SO_("MERCI");
-   portShmid = useShm(PSHMKEY, 0, errorHandler, "get port array");
-   requestsShmID = useShm(ftok("./utils/supplies.c", portID), sizeof(int) * so_merci, errorHandler, "getPort");
-   
-   port = ((Port)getShmAddress(portShmid, 0, errorHandler, "get port"))+portID;
-   port->requests = ((int*)getShmAddress(requestsShmID, 0, errorHandler, "getPort"));
-   return port;
-}
-
-void detachPort(Port port, int portID, char* errCtx) {
-    
-    shmDetach(port->requests, errorHandler, "detach port requests");
-    shmDetach(port - portID, errorHandler, "detachPort");
-}
-
 
 
 void restorePromisedGoods(Port porto, int dayTrovato, int tipoTrovato, int quantity, int myPortIdx){

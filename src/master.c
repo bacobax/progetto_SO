@@ -20,21 +20,11 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     int quantitaPrimoGiorno;
     FILE* meteoPipe;
     char pypeDay[128];
-    int aliveShips;
-    int so_fill;
-    int so_days;
-    int so_porti;
-    int so_navi;
+    int aliveShips=SO_NAVI;
     int c;
     Ship ships;
     FILE* fp;
-    so_fill = SO_("FILL");
-    so_days = SO_("DAYS");
-    so_porti = SO_("PORTI");
-    so_navi = SO_("NAVI");
-    aliveShips = so_navi;
-    
-    fclose(fopen("./logs/masterlog.log", "w"));
+    fclose(fopen("./logs/masterlog.log" , "w"));
     fp = fopen("./logs/masterlog.log" , "a+");
     /*
     quantitaAlGiorno rappresenta la divisione di SO_FILL per SO_DAYS, solo che può darsi che SO_FILL non sia divisbile per SO_DAYS,
@@ -42,14 +32,14 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     mentre alle risorse del primo giorno vengono recuperate tutte le risorse perse prendendo solo la parte intera della divisione
     in altre parole alle risorse del primo giorno vengono aggiunti tutti i resti della divisione intera di "SO_FILL/SO_DAYS" per ogni giorno
     */
-    quantitaAlGiorno = so_fill / so_days;
-    resto = so_fill % so_days;
+    quantitaAlGiorno = SO_FILL / SO_DAYS;
+    resto = SO_FILL % SO_DAYS;
     quantitaPrimoGiorno = quantitaAlGiorno + (resto);
 
     fprintf(fp,"Quantità primo giorno: %d\n" , quantitaPrimoGiorno);
     
     /*  per ora ho usato solo startSimulationSemID */
-    genera_porti(quantitaPrimoGiorno, so_porti); /* da tradurre in inglese */
+    genera_porti(quantitaPrimoGiorno, SO_PORTI); /* da tradurre in inglese */
 
 
     meteoPipe = genera_meteo();
@@ -69,7 +59,7 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
 
     fprintf(fp,"✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅\n");
 
-    for (*day = 0; aliveShips && *day < so_days; *day = *day + 1) {
+    for (*day = 0; aliveShips && *day < SO_DAYS; *day = *day + 1) {
         aliveShips = countAliveShips();
         
         if (aliveShips)
@@ -88,7 +78,7 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
                 refillPorts(ASYNC, msgRefillerID, quantitaAlGiorno, *day);
                 mutex(waitEndDaySemID, WAITZERO, errorHandler, "mesterCode -> waitEndDaySemID WAITZERO");
                 mutex(waitEndDayShipsSemID, WAITZERO, errorHandler, "mesterCode -> waitEndDayShipSemID WAITZERO");
-                mutex(waitEndDaySemID, so_porti, errorHandler, "mesterCode -> waitEndDaySemID +SO_PORTI");
+                mutex(waitEndDaySemID, SO_PORTI, errorHandler, "mesterCode -> waitEndDaySemID +SO_PORTI");
             
             }
              nanosecsleep(NANOS_MULT);

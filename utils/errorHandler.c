@@ -32,10 +32,6 @@ void throwError(char* myerr, char* errCtx) {
     mutex(semid, LOCK, errorHandler, "LOCK throwError");
     printf("❌❌❌❌❌❌❌❌❌❌❌❌❌ HASH %d\n", hash);
     fp = fopen("./logs/errorLog.log", "a+");
-    if (fp == NULL) {
-        perror("fopen throwError");
-        exit(1);
-    }
     fprintf(fp, "💥💥💥💥💥💥💥💥\n");
     fprintf(fp, "ERROR: %s error handler\nERRNO: %s\nCTX: %s\nHASH: %d\n", myerr, strerror(errno), errCtx, hash);
     fprintf(fp, "💥💥💥💥💥💥💥💥\n");
