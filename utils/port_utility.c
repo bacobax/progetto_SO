@@ -657,18 +657,7 @@ Port getPort(int portID){
    int portShmid;
    Port port;
    char text[512];
-   /*
-
-   int ftok_val = ftok("./utils/port_utility.c", portID);
-   if (ftok_val == -1) {
-       throwError("ftok valore -1", "getPort");
-       exit(1);
-   }
-//    sprintf(text, "key generata da ftok:%d per il porto:%d", ftok_val, portID);
-//    throwError(text, "getPort");
-   portShmid = useShm(ftok_val, sizeof(struct port), errorHandler, "get port array");
-   port = (Port) getShmAddress(portShmid,0,errorHandler,"get port array"); 
-   */
+   
    portShmid = useShm(PSHMKEY, 0, errorHandler, "get port array");
    port = (Port)getShmAddress(portShmid, 0, errorHandler, "get port");
 
