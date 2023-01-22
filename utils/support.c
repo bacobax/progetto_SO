@@ -207,19 +207,17 @@ double mediaTempoViaggioFraPorti() {
     int j;
     double sum = 0;
     int so_porti = SO_("PORTI");
-    Port p1;
-    Port p2;
+    
+    Port p = getPort(0);
     c = 0;
     for (i = 0; i < so_porti-1; i++) {
         for (j = i + 1; j < so_porti; j++) {
-            p1 = getPort(i);
-            p2 = getPort(j);
-            sum += getTempoDiViaggio(p1->x, p1->y, p2->x, p2->y);
-            detachPort(p1, i);
-            detachPort(p2, j);
+            
+            sum += getTempoDiViaggio(p[i].x, p[i].y, p[j].x, p[j].y);
             c++;
         }
     }
+    detachPort(p, 0);
     return sum / c;
 }
 

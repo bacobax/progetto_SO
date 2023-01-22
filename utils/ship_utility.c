@@ -289,18 +289,18 @@ int chooseQuantityToCharge(Ship ship){
     logShip(ship->shipID, "sto per fare CHOOSE QUANTITY\n");
     max = 0;
     
+    port = getPort(0);
     for(i=0; i<so_porti; i++){
-        port = getPort(i);
         for (j = 0; j < so_days; j++)
         {
             for(k=0; k<so_merci; k++){
-                if(port->supplies.magazine[j][k] > max && contain(getAllOtherTypeRequests(i), k) && port->requests[k]==0){
-                    max = port->supplies.magazine[j][k];
+                if(port[i].supplies.magazine[j][k] > max && contain(getAllOtherTypeRequests(i), k) && port[i].requests[k]==0){
+                    max = port[i].supplies.magazine[j][k];
                 }
             }
         }
-        detachPort(port ,i);
     }
+    detachPort(port ,0);
     
     intFreeList(tipiDaCaricare);
 
@@ -447,15 +447,15 @@ void replyToPortsForChargeV1(int portID, PortOffer* port_offers) {
     Port p;
     int so_porti = SO_("PORTI");
 
+    p = getPort(0);
     for (i = 0; i < so_porti; i++) {
         if (i != portID && port_offers[i].product_type != -1) {
-            p = getPort(i);
             
-            restorePromisedGoods(p, port_offers[i].distributionDay, port_offers[i].product_type, port_offers[i].weight, i);
-            detachPort(p, i);
+            restorePromisedGoods(p+i, port_offers[i].distributionDay, port_offers[i].product_type, port_offers[i].weight, i);
         }
         
     }
+    detachPort(p, 0);
     
 }
 /*
@@ -501,10 +501,10 @@ int communicatePortsForDischargeV1(Ship ship, Product p, int* quantoPossoScarica
     
     verifyRequestSemID = useSem(P2SEMVERIFYKEY, errorHandler, "recvChargerHandler->verifyRequestSemID");
     
+    port = getPort(0);
     for (i = 0; i < so_porti; i++) {
-        port = getPort(i);
         mutexPro(verifyRequestSemID, i, LOCK, errorHandler, "recvChargerHandler->verifyRequestSemID LOCK");
-        res = checkRequests(port, p->product_type, p->weight);
+        res = checkRequests(port+i, p->product_type, p->weight);
         mutexPro(verifyRequestSemID, i, UNLOCK, errorHandler, "recvChargerHandler->verifyRequestSemID UNLOCK");
 
         if (res!= -1) {
@@ -512,8 +512,8 @@ int communicatePortsForDischargeV1(Ship ship, Product p, int* quantoPossoScarica
             arrayResponses[i] = res;
             validityArray[i] = 1;
         }
-        detachPort(port,i);
     }
+    detachPort(port,0);
 
     startIdx = checkIndexes(validityArray);
     if(startIdx == -1) return -1;
@@ -593,15 +593,15 @@ void replyToPortsForDischargeV1(Ship ship, int portID, int quantoPossoScaricare,
     Port porto;
     int so_porti = SO_("PORTI");
 
+    porto = getPort(0);
     for (i = 0; i < so_porti; i++) {
         if (i != portID && portResponses[i] != -1) {
-            porto = getPort(i);
             
-            restorePortRequest(porto, prod->product_type, portResponses[i], prod->weight);
+            restorePortRequest(porto+i, prod->product_type, portResponses[i], prod->weight);
             
-            detachPort(porto, i);
         }
     }
+    detachPort(porto, 0);
 
 }
 /*

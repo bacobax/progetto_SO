@@ -434,16 +434,16 @@ int allRequestsZero(){
     int cond = 1;
     int so_porti = SO_("PORTI");
     int so_merci = SO_("MERCI");
+    port = getPort(0);
 
     for(i=0; i<so_porti && cond; i++){
-        port = getPort(i);
         for(j=0;j<so_merci && cond; j++){
-            if(port->requests[j] > 0){
+            if(port[i].requests[j] > 0){
                 cond = 0;
             }
         }
-        detachPort(port, i);
     }
+    detachPort(port, 0);
 
     return cond;
 }
@@ -491,16 +491,16 @@ intList* getAllOtherTypeRequests(int idx) {
     Port p;
     int so_porti = SO_("PORTI");
 
+    p = getPort(0);   
     for (i = 0; i < so_porti; i++)
     {
         if(i!=idx){
-            p = getPort(i);   
-            tipiRichiesti = tipiDiMerceRichiesti(p);
+            tipiRichiesti = tipiDiMerceRichiesti(p+i);
             ret = intUnion(ret, tipiRichiesti);
             intFreeList(tipiRichiesti);
-            detachPort(p, i);
         }
     }
+    detachPort(p, 0);
     return ret;
 }
 
@@ -515,20 +515,20 @@ intList* haSensoContinuare() {
     intList* aux0;
     intList* aux1;
     int so_porti = SO_("PORTI");
+    port = getPort(0);
 
     for(i=0;i<so_porti; i++){
-        port = getPort(i);
 
-        aux0 = tipiDiMerceRichiesti(port);
-        aux1 = tipiDiMerceOfferti(port);
+        aux0 = tipiDiMerceRichiesti(port + i);
+        aux1 = tipiDiMerceOfferti(port + i);
         merciTotaliRichieste = intUnion(merciTotaliRichieste,aux0);
         merciTotaliOfferte = intUnion(merciTotaliOfferte, aux1);
         intFreeList(aux0);
         intFreeList(aux1);
         
-        detachPort(port, i);
     }
     
+    detachPort(port, 0);
     
     inter = intIntersect(merciTotaliOfferte, merciTotaliRichieste);
     intFreeList(merciTotaliOfferte);
@@ -617,13 +617,13 @@ int countPortsWhere(int(*f)(int,Port)){
     count = 0;
     int so_porti = SO_("PORTI"); 
 
+    p = getPort(0);
     for (i = 0; i < so_porti; i++){
-        p = getPort(i);
-        if(f(i,p)){
+        if(f(i,p+i)){
             count++;
         }
-        detachPort(p,i);
     }
+    detachPort(p,0);
     return count;
 }
 
@@ -642,16 +642,16 @@ void printStatoPorti(FILE *fp){
     int so_banchine = SO_("BANCHINE");
     semPierID = useSem(BANCHINESEMKY, errorHandler, "printStatoNavi");
     fprintf(fp, "Porti interessati da mareggiata: %d\n" , countPortsWhere(caughtBySwell));
+    port = getPort(0);
     for (i = 0; i < so_porti; i++)
     {
-        port = getPort(i);
         fprintf(fp, "Porto %d:\n", i);
         fprintf(fp, "Banchine occupate totali: %d\n", so_banchine - getOneValue(semPierID, i));
-        fprintf(fp, "Merci ricevute: %d\n", port->deliveredGoods);
-        fprintf(fp, "Merci spedite: %d\n", port->sentGoods);
+        fprintf(fp, "Merci ricevute: %d\n", port[i].deliveredGoods);
+        fprintf(fp, "Merci spedite: %d\n", port[i].sentGoods);
         printPorto(port, i, fp);
-        detachPort(port, i);
     }
+    detachPort(port, 0);
 }
 Port getPort(int portID){
    int portShmid;
