@@ -152,7 +152,7 @@ double generateCord()
 
 
 
-
+/*
 int getPortQueueRequest(int key){
     int queueID;
     queueID = useQueue(key, errorHandler , "communicate ports");
@@ -175,7 +175,7 @@ int getShipQueue(int id){
     int queueID;
     queueID = useQueue(ftok("./src/nave.c", id), errorHandler, "communicate ports");
     return queueID;
-}
+}*/
 /*in secondi*/
 double getTempoDiViaggio(double x, double y, double x1, double y1) {
     double spazio;

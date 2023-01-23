@@ -405,6 +405,7 @@ void refillPorts(int opt, int msgRefillerID, int quantitaAlGiorno, int giorno) {
 
 void childExpirePortCode(Port p, int day, int idx) {
     int rwExpTimesPortSemID;
+    int* magazine;
     int portBufferSemID;
     rwExpTimesPortSemID = useSem(WREXPTIMESSEM, errorHandler, "useSem rwExpTimesPortSemID in childExpirePortCode");
     portBufferSemID = useSem(RESPORTSBUFFERS, errorHandler, "useSem portBufferSemID in childExpirePortCode");
@@ -416,8 +417,9 @@ void childExpirePortCode(Port p, int day, int idx) {
     mutexPro(rwExpTimesPortSemID, idx, UNLOCK, errorHandler, "rwExpTimesPortSemID UNLOCK in childExpirePortCode");
 
     mutexPro(portBufferSemID, idx, LOCK, errorHandler, "portBufferSemID LOCK in childExpirePortCode");
-    
-    removeExpiredGoods(&p->supplies);
+    magazine = getMagazine(p);
+    removeExpiredGoods(&p->supplies, magazine);
+    shmDetach(magazine, errorHandler, "childExpirePortCode magazine");
     mutexPro(portBufferSemID, idx, UNLOCK, errorHandler, "portBufferSemID UNLOCK in childExpirePortCode");
     
 

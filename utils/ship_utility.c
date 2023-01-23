@@ -285,11 +285,13 @@ int chooseQuantityToCharge(Ship ship){
     int so_merci;
     int res;
     int* reqs;
+    int* magazine;
     intList* tipiRichiestiDaAltriPorti;
     so_days = SO_("DAYS");
     so_merci = SO_("MERCI");
     so_porti = SO_("PORTI");
     tipiDaCaricare = haSensoContinuare();
+    
     logShip(ship->shipID, "sto per fare CHOOSE QUANTITY\n");
     max = 0;
     
@@ -297,17 +299,19 @@ int chooseQuantityToCharge(Ship ship){
     for (i = 0; i < so_porti; i++) {
         reqs = getShmAddress(port[i].requestsID, SHM_RDONLY, errorHandler, "chooseQuantityToCharge");
         tipiRichiestiDaAltriPorti = getAllOtherTypeRequests(i, port);
-        
+        magazine = getMagazine(port + i);
         for (j = 0; j < so_days; j++)
         {
             for (k = 0; k < so_merci; k++) {
                 res = reqs[k] == 0;
-                if (port[i].supplies.magazine[j][k] > max && contain(tipiRichiestiDaAltriPorti, k) && res) {
-                    max = port[i].supplies.magazine[j][k];
+                if (getMagazineVal(magazine, j, k) > max && contain(tipiRichiestiDaAltriPorti, k) && res) {
+                    
+                    max = getMagazineVal(magazine, j, k);
                 }
             }
         }
         intFreeList(tipiRichiestiDaAltriPorti);
+        shmDetach(magazine, errorHandler, "chooseQuantityToCharge magazine");
         shmDetach(reqs, errorHandler, "chooseQuantityToCharge");
         printf("CIAO\n");
     }
@@ -377,7 +381,7 @@ int communicatePortsForChargeV1(int quantityToCharge, PortOffer* port_offers) {
     for (i = 0; i < so_porti; i++) {
         p = getPort(i);
         mutexPro(controlPortsDisponibilitySemID, i, LOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID LOCK");
-        res = trovaTipoEScadenza(&p->supplies, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantityToCharge, i);
+        res = trovaTipoEScadenza(p, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantityToCharge, i);
         mutexPro(controlPortsDisponibilitySemID, i, UNLOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID UNLOCK");
 
         if (res != -1) {

@@ -10,8 +10,10 @@
 
 
 typedef struct supplies {
-    int magazine[SO_DAYS][SO_MERCI];
-    int expirationTimes[SO_DAYS*SO_MERCI];
+    
+    int magazineID;
+    int expirationTimes[SO_DAYS * SO_MERCI];
+    int expirationTimesID;
 }Supplies;
 
 /*
@@ -22,7 +24,7 @@ void fillExpirationTime(Supplies* S);
 /*
     riempie di risorse il magazzino alla riga della matrice corrispondente all'indice day
 */
-void fillMagazine(Supplies* S, int day, int* supplies);
+void fillMagazine(int* magazine, int day, int* supplies);
 
 /*
     dato il tipo della merce (indice colonna) e il giorno in cui è stata distribuita (indice riga) viene restituita la propria data di scadenza
@@ -32,7 +34,7 @@ int getExpirationTime(Supplies S, int tipoMerce, int giornoDistribuzione);
 /*
     stampa del magazzino delle scadenze
 */
-void printSupplies(Supplies S, FILE* stream);
+void printSupplies(Supplies S, FILE* stream,int* magazine);
 
 /*
     decrementa i tepi di vita delle merci distribuite in un giorno < di {{day}}
@@ -42,8 +44,12 @@ void decrementExpTimes(Supplies* S, int day);
 /*
     rimuove le risorse scadute
 */
-void removeExpiredGoods(Supplies* S);
+void removeExpiredGoods(Supplies* S, int* magazine);
 
-int validSupply(Supplies p, int type);
+int validSupply(Supplies p, int type, int* magazine);
+void setMagazineVal(int* magazine, int day, int type, int v);
+void addMagazineVal(int* magazine, int day, int type, int v);
+int getMagazineVal(int* magazine, int day, int type);
+
 
 #endif

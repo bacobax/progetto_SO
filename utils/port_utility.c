@@ -44,6 +44,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     int key;
     int reqShmID;
     int* reqs;
+    int* magazine;
     int so_merci = SO_("MERCI");
     int so_days = SO_("DAYS");
     so_lato = SO_("LATO");
@@ -76,6 +77,8 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     p->requestsID = reqShmID;
     reqs = (int*)getShmAddress(p->requestsID, 0, errorHandler, "initPort");
     printf("REQUESTS PORTO %d: %ld initPort\n" , pIndex, reqs);
+
+    p->supplies.magazineID = createShm(ftok("./utils/supplies.c", pIndex), sizeof(int) * so_days * so_merci, errorHandler, "init port magazine");
     
     /*
         assegno la richiesta
@@ -84,7 +87,8 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     /*
         assegno la domanda usando la funzione d'appoggio
     */
-    fillMagazine(&p->supplies, 0, supplies);
+    magazine = getMagazine(p);
+    fillMagazine(magazine, 0, supplies);
 
     free(requests);
     free(supplies);
@@ -112,7 +116,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     */
     for (i = 1; i < so_days; i++) {
         for (j = 0; j < so_merci; j++) {
-            p->supplies.magazine[i][j] = -1;
+            setMagazineVal(magazine, i, j, -1);
         }
     }
 
@@ -142,7 +146,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     
     */
     shmDetach(reqs, errorHandler, "initPort detach requests");
-
+    shmDetach(magazine, errorHandler, "init port magazine");
     return p;
 }
 
@@ -152,16 +156,19 @@ void printPorto(Port p, int idx, FILE* stream) {
 
     int i;
     int* reqs;
+    int* magazine;
     int so_merci = SO_("MERCI");
-    fprintf(stream, "[%d]Risorse porto %d:\n", getpid(),idx);
+    
+    fprintf(stream, "[%d]Risorse porto %d:\n", getpid(), idx);
     fprintf(stream, "DOMANDE:\n");
     reqs = getShmAddress(p->requestsID, 0, errorHandler, "print porto");
     for (i = 0; i < so_merci; i++) {
         fprintf(stream,"%d, \n", reqs[i]);
     }
     shmDetach(reqs, errorHandler, "print porto");
-    printSupplies(p->supplies, stream);
-
+    magazine = getMagazine(p);
+    printSupplies(p->supplies, stream, magazine);
+    shmDetach(magazine, errorHandler, "printPorto magazine");
     fprintf(stream,"coords:\n");
     fprintf(stream, "x: %f\n", p->x);
     fprintf(stream,"y: %f\n",  p->y);
@@ -229,6 +236,7 @@ void refill(long type, char* text) {
         semaforo che verrà decrementato così che il master passi la waitzero del semaforo waitEndDay
     */
     int waitEndDaySemID;
+    int* magazine;
 
     waitEndDaySemID = useSem(WAITENDDAYKEY, errorHandler, "refill->waitEndDaySem");
     
@@ -256,8 +264,10 @@ void refill(long type, char* text) {
     mutexPro(portBufferSem, (int)correctType, LOCK, errorHandler, "refill->portBufferSem LOCK");
     /* fillMagazine(&p->supplies, 0, supplies); */
 
-    fillMagazine(&p->supplies, day, quanties);
-
+    magazine = getMagazine(p);
+    
+    fillMagazine(magazine, day, quanties);
+    shmDetach(magazine, errorHandler, "refill magazine");
     mutexPro(portBufferSem, (int)correctType, UNLOCK, errorHandler, "refill->portBufferSem UNLOCK");
     /*
         reservePrint(printPorto, p, correctType);
@@ -478,14 +488,16 @@ int filterReq(int req){
 }
 intList* validSupplies(Port p){
     int i;
+    int* magazine;
     intList* ret = intInit();
     int so_merci = SO_("MERCI");
-
+    magazine = getMagazine(p);
     for (i = 0; i < so_merci; i++) {
-        if (validSupply(p->supplies, i)) {
+        if (validSupply(p->supplies, i, magazine)) {
             intPush(ret, i);
         }
     }
+    shmDetach(magazine, errorHandler, "validSupplies");
     return ret;
 }
 
@@ -569,25 +581,21 @@ intList* haSensoContinuare() {
 }
 
 
-double getValue(int quantity, int scadenza, int tipo, int idx) {
-    Port p;
-    p = getPort(idx);
+double getValue(int quantity, int scadenza, int tipo, Port p, int idx) {
     intList *tipiDiMerceRichiestiAltriPorti = getAllOtherTypeRequests(idx,p-idx);
     if (scadenza == 0 || contain(tipiDiMerceRichiesti(p), tipo) || !contain(tipiDiMerceRichiestiAltriPorti, tipo))
     {
-        detachPort(p, idx);
         return 0;
     }
     else /*scadenza > 0 && le mie richieste non contengono il tipo di merce di questa offerta && le richieste degli altri porti contengono il tipo di merce di questa offerta*/
     {
-        detachPort(p, idx);
         
         return quantity / (double)scadenza;
     }
 }
 
 
-int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, int quantity, int idx) {
+int trovaTipoEScadenza(Port port, int* tipo, int* dayTrovato, int* scadenza, int quantity, int idx) {
     int i;
     int j;
     /*
@@ -599,7 +607,8 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
     double currentValue;
     int currentScadenza;
     int res;
-
+    int* magazine;
+    magazine = getMagazine(port);
     *tipo = -1;
     *scadenza = -1;
     *dayTrovato = -1;
@@ -609,10 +618,10 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
     for (i = 0; i < so_days; i++) {
         for (j = 0; j < so_merci; j++) {
             
-            ton = S->magazine[i][j];
+            ton = getMagazineVal(magazine,i,j);
             
-            currentScadenza = getExpirationTime(*S, j, i);
-            currentValue = getValue(ton, currentScadenza,j,idx);
+            currentScadenza = getExpirationTime(port->supplies, j, i);
+            currentValue = getValue(ton, currentScadenza,j ,port,idx);
             if (ton >= quantity && currentValue > value) {
                 value = currentValue;
                 *tipo = j;
@@ -631,12 +640,13 @@ int trovaTipoEScadenza(Supplies* S, int* tipo, int* dayTrovato, int* scadenza, i
                 Operazione importante: decremento della quantità richiesta in anticipo, così nel mentre altre navi possono scegliere
                 lo stesso tipo di merce con la quantità aggiornata
             */
-            S->magazine[*dayTrovato][*tipo] -= quantity;
+            addMagazineVal(magazine, *dayTrovato, *tipo, quantity * -1);
             printf("PORTO: tolgo %d\n" ,quantity);
 
             addNotExpiredGood(0 - quantity, *tipo, PORT, 0, idx);
         res = 1;
     }
+    shmDetach(magazine, errorHandler, "trova tipo e scadenza");
     return res;
 
 }
@@ -680,7 +690,7 @@ void printStatoPorti(FILE *fp){
         fprintf(fp, "Banchine occupate totali: %d\n", so_banchine - getOneValue(semPierID, i));
         fprintf(fp, "Merci ricevute: %d\n", port[i].deliveredGoods);
         fprintf(fp, "Merci spedite: %d\n", port[i].sentGoods);
-        printPorto(port, i, fp);
+        printPorto(port+i, i, fp);
     }
     detachPort(port, 0);
 }
@@ -702,7 +712,7 @@ void detachPort(Port port,int portID) {
 
 
 void restorePromisedGoods(Port porto, int dayTrovato, int tipoTrovato, int quantity, int myPortIdx){
-   
+    int* magazine = getMagazine(porto);
     addNotExpiredGood(quantity, tipoTrovato, PORT, 0, myPortIdx);
     /*
         SE LA MERCE E' SCADUTA MENTRE IL PORTO ASPETTAVA DI SAPERE SE E' STATO SCELTO
@@ -713,8 +723,14 @@ void restorePromisedGoods(Port porto, int dayTrovato, int tipoTrovato, int quant
     }
     else {
         printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", myPortIdx);
-        porto->supplies.magazine[dayTrovato][tipoTrovato] += quantity;
+        addMagazineVal(magazine, dayTrovato, tipoTrovato, quantity);
         printf("PORTO %d: riaggiungo %d\n" , myPortIdx, quantity);
     
     }
+    shmDetach(magazine, errorHandler, "restore promised goods");
 }
+
+int* getMagazine(Port port) {
+    return (int*)getShmAddress(port->supplies.magazineID, 0, errorHandler, "get magazine");
+}
+
