@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/signal.h>
+#include <sys/ipc.h>
 
 #include "../utils/errorHandler.h"
 #include "../utils/shm_utility.h"
@@ -40,13 +41,17 @@ void createDumpArea(){
     int c;
     int k;
     int so_merci = SO_("MERCI");
-    DumpArea *arrGoods;
+    DumpArea *dumpArea;
     shmid = createShm(DUMPSHMKEY, sizeof(DumpArea), errorHandler, "create dump area");
     semid = createMultipleSem(DUMPSEMKEY, so_merci, 1, errorHandler, "creazione semafori per regolare la zona di dump");
     logFileSemID = createSem(LOGFILESEMKEY, 1, errorHandler, "creazione semaforo per scrivere nel file di log");
     txFileSemID = createSem(TXFILESEMKEY, 1, errorHandler, "creazione semaforo per scrivere nel file di log tx");
 
-   
+    dumpArea = (DumpArea*)getShmAddress(shmid, 0, errorHandler, "createDumpArea");
+
+    dumpArea->typesInfoID = createShm(ftok("./src/dump.c", 0), sizeof(GoodTypeInfo) * so_merci, errorHandler, "createArrDumpArea");
+
+    shmDetach(dumpArea, errorHandler, "createArrDumpArea");
 
     /*per cancellare il contenuto del logfile*/
     fclose(fopen("./logs/logfile.log", "w"));
@@ -91,22 +96,22 @@ void addExpiredGood(int quantity, int type, ctx where) {
     int semid;
     
     DumpArea* dump;
-   
+    GoodTypeInfo* types;
     shmid = useShm(DUMPSHMKEY, sizeof(DumpArea), errorHandler, "shm del dump");
     semid = useSem(DUMPSEMKEY, errorHandler, "semafori del dump");
     
     dump = ((DumpArea*) getShmAddress(shmid, 0, errorHandler, "attach del tipo di merce del dump"));
 
     mutexPro(semid, type, LOCK, errorHandler, "addExpiredGood LOCK");
-
+    types = (GoodTypeInfo*)getShmAddress(dump->typesInfoID,0,errorHandler, "addExpiredGood types");
     if (where == PORT) {
-        dump->types[type].expired_goods_on_port += quantity;
-        dump->types[type].goods_on_port -= quantity;
+        types[type].expired_goods_on_port += quantity;
+        types[type].goods_on_port -= quantity;
         
     }
     else if (where == SHIP) {
-        dump->types[type].expired_goods_on_ship += quantity;
-        dump->types[type].goods_on_ship -= quantity;
+        types[type].expired_goods_on_ship += quantity;
+        types[type].goods_on_ship -= quantity;
         
     }
     else {
@@ -114,7 +119,7 @@ void addExpiredGood(int quantity, int type, ctx where) {
         throwError("Il contesto può solo essere PORT o SHIP", "addExpiredGood");
         exit(1);
     }
-
+    shmDetach(types, errorHandler, "addExpiredGood types");
     mutexPro(semid, type, UNLOCK, errorHandler, "addExpiredGood UNLOCK");
 
     shmDetach(dump,errorHandler, "addExpiredGood");
@@ -126,6 +131,8 @@ void addNotExpiredGood(int quantity, int type, ctx where, int refilling, int idx
     int semid;
     FILE *fp;
     DumpArea* dump;
+    GoodTypeInfo* types;
+    
     shmid = useShm(DUMPSHMKEY, sizeof(DumpArea), errorHandler, "addNotExpiredGood");
     semid = useSem(DUMPSEMKEY, errorHandler , "addNotExpiredGood");
     fp = fopen("./logs/historyTransictions.log", "a+"); 
@@ -133,15 +140,17 @@ void addNotExpiredGood(int quantity, int type, ctx where, int refilling, int idx
     dump = ((DumpArea*) getShmAddress(shmid, 0, errorHandler, "addNotExpiredGood"));
 
     mutexPro(semid, type, LOCK, errorHandler, "addNotExpiredGood LOCK");
-    if(!refilling){
+    types = (GoodTypeInfo*)getShmAddress(dump->typesInfoID,0,errorHandler, "addNotExpiredGood types");
+    
+    if (!refilling) {
         fprintf(fp, "DUMP: %s IDX: %d, %s %d\n", (where == PORT ? "PORT" : "NAVE"),idx , (quantity <0 ? "tolgo" : "aggiungo") ,(quantity<0 ? -1 * quantity : quantity) );
     }
     if (where == PORT)
     {
-        dump->types[type].goods_on_port += quantity;
+        types[type].goods_on_port += quantity;
     }
     else if (where == SHIP) {
-        dump->types[type].goods_on_ship += quantity;
+        types[type].goods_on_ship += quantity;
     }
     else {
         throwError("Il contesto può solo essere PORT o SHIP", "addNotExpiredGood");
@@ -149,6 +158,8 @@ void addNotExpiredGood(int quantity, int type, ctx where, int refilling, int idx
         exit(1);
     }
     fclose(fp);
+    shmDetach(types, errorHandler, "addNotExpiredGood types");
+    
     mutexPro(semid, type, UNLOCK, errorHandler, "addNotExpiredGood UNLOCK");
     shmDetach(dump,errorHandler, "addNotExpiredGood");
 
@@ -161,6 +172,7 @@ void addDeliveredGood(int quantity, int type, int portIdx){
     Port port;
     FILE* fp;
     DumpArea* dump;
+    GoodTypeInfo* types;
     
     shmid = useShm(DUMPSHMKEY, sizeof(DumpArea), errorHandler, "addDeliveredGood");
     semid = useSem(DUMPSEMKEY, errorHandler, "addDeliveredGood");
@@ -169,13 +181,16 @@ void addDeliveredGood(int quantity, int type, int portIdx){
 
     dump = ((DumpArea*)getShmAddress(shmid, 0, errorHandler, "addDeliveredGood"));
     mutexPro(semid, type, LOCK, errorHandler, "addDeliveredGood LOCK");
+    types = (GoodTypeInfo*)getShmAddress(dump->typesInfoID,0,errorHandler, "addDeliveredGood types");
 
-    dump->types[type].delivered_goods += quantity;
-    dump->types[type].goods_on_ship -= quantity;
+    types[type].goods_on_ship -= quantity;
+    types[type].delivered_goods += quantity;
     
     port->deliveredGoods += quantity;
     
     mutexPro(semid, type, UNLOCK, errorHandler, "addDeliveredGood LOCK");
+    shmDetach(types, errorHandler, "addDeliveredGood types");
+    
     shmDetach(dump, errorHandler, "dump addDeliveredGood");
     detachPort(port, portIdx);
 }
@@ -186,11 +201,16 @@ void removeDumpArea() {
     int logFileSemID;
     int semid;
     int txSemID;
-    shmid = useShm(DUMPSHMKEY, sizeof(DumpArea), errorHandler , "removeDumpArea");
+    DumpArea* area;
+    shmid = useShm(DUMPSHMKEY, sizeof(DumpArea), errorHandler, "removeDumpArea");
     semid = useSem(DUMPSEMKEY, errorHandler, "removeDumpArea");
     logFileSemID = useSem(LOGFILESEMKEY, errorHandler, "removeDumpArea");
     txSemID = useSem(TXFILESEMKEY, errorHandler, "removeDumpArea");
 
+    area = (DumpArea*)getShmAddress(shmid, 0, errorHandler, "removeDumpArea");
+
+    removeShm(area->typesInfoID, errorHandler, "removeDumpArea");
+    shmDetach(area, errorHandler, "removeDumpArea");
     removeSem(txSemID, errorHandler, "removeDumpArea");
     removeSem(semid, errorHandler, "removeDumpArea");
     removeSem(logFileSemID, errorHandler , "removeDumpArea");
@@ -225,6 +245,7 @@ void printerCode(int day, int last) {
     int so_porti = SO_("PORTI");
     DumpArea* dump;
     Supplies s;
+    GoodTypeInfo* types;
 
    
     logFileSemID = useSem(LOGFILESEMKEY, errorHandler, "printerCode");
@@ -236,7 +257,9 @@ void printerCode(int day, int last) {
     
 
     mutex(logFileSemID, LOCK, errorHandler, "printerCode LOCK");
-    printf("Scrivo nel logifle %d\n" ,day);
+    types = (GoodTypeInfo*)getShmAddress(dump->typesInfoID,0,errorHandler, "addDeliveredGood types");
+    
+    printf("Scrivo nel logifle %d\n", day);
     fp = fopen("./logs/logfile.log", "a+");
     if (fp == NULL) {
         throwError("Errore nell'apertura del file log", "printerCode");
@@ -260,17 +283,17 @@ void printerCode(int day, int last) {
     for (i = 0; i < so_merci; i++) {
         fprintf(fp, "Tipo merce %d:\n", i);
         fprintf(fp, "\t- Non scaduta:\n");
-        fprintf(fp, "\t\ta) nei porti: %d\n", dump->types[i].goods_on_port);
-        fprintf(fp, "\t\tb) in nave: %d\n", dump->types[i].goods_on_ship);
+        fprintf(fp, "\t\ta) nei porti: %d\n", types[i].goods_on_port);
+        fprintf(fp, "\t\tb) in nave: %d\n", types[i].goods_on_ship);
         fprintf(fp, "\t- Scaduta:\n");
-        fprintf(fp, "\t\ta) nei porti: %d\n", dump->types[i].expired_goods_on_port);
-        fprintf(fp, "\t\tb) in nave: %d\n", dump->types[i].expired_goods_on_ship);
-        fprintf(fp, "\t- Consegnata: %d\n" ,  dump->types[i].delivered_goods);
-        expiredGoodsOnShips += dump->types[i].expired_goods_on_ship;
-        expiredGoodsOnPorts +=  dump->types[i].expired_goods_on_port;
-        deliveredGoods += dump->types[i].delivered_goods;
-        notExpiredGoodsOnShips +=  dump->types[i].goods_on_ship;
-        notExpiredGoodsOnPorts += dump->types[i].goods_on_port;
+        fprintf(fp, "\t\ta) nei porti: %d\n", types[i].expired_goods_on_port);
+        fprintf(fp, "\t\tb) in nave: %d\n", types[i].expired_goods_on_ship);
+        fprintf(fp, "\t- Consegnata: %d\n" ,  types[i].delivered_goods);
+        expiredGoodsOnShips += types[i].expired_goods_on_ship;
+        expiredGoodsOnPorts +=  types[i].expired_goods_on_port;
+        deliveredGoods += types[i].delivered_goods;
+        notExpiredGoodsOnShips +=  types[i].goods_on_ship;
+        notExpiredGoodsOnPorts += types[i].goods_on_port;
     }
 
     sum = expiredGoodsOnPorts+ expiredGoodsOnShips + notExpiredGoodsOnPorts+notExpiredGoodsOnShips+deliveredGoods;
@@ -320,7 +343,9 @@ void printerCode(int day, int last) {
     
     unlockAllGoodsDump();
     fclose(fp);
-    shmDetach(dump, errorHandler , "printerCode dump");
+    shmDetach(types, errorHandler, "addDeliveredGood types");
+    
+    shmDetach(dump, errorHandler, "printerCode dump");
     mutex(logFileSemID, UNLOCK, errorHandler , "printerCode UNLOCK");
     
     if(last){
