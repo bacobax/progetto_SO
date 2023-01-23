@@ -1,40 +1,120 @@
-[12546]Nave IDX 0: creata
-[12547]Nave IDX 1: creata
-[12548]Nave IDX 2: creata
-[12549]Nave IDX 3: creata
-[12550]Nave IDX 4: creata
-[12551]Nave IDX 5: creata
-[12552]Nave IDX 6: creata
-[12553]Nave IDX 7: creata
-[12554]Nave IDX 8: creata
-[12555]Nave IDX 9: creata
-[12556]Nave IDX 10: creata
-[12557]Nave IDX 11: creata
-[12558]Nave IDX 12: creata
-[12559]Nave IDX 13: creata
-[12560]Nave IDX 14: creata
-[12561]Nave IDX 15: creata
-[12562]Nave IDX 16: creata
-[12564]Nave IDX 18: creata
-[12563]Nave IDX 17: creata
-[12565]Nave IDX 19: creata
-[12566]Nave IDX 20: creata
-[12567]Nave IDX 21: creata
-[12569]Nave IDX 23: creata
-[12568]Nave IDX 22: creata
-[12570]Nave IDX 24: creata
-[12571]Nave IDX 25: creata
-[12572]Nave IDX 26: creata
-[12573]Nave IDX 27: creata
-[12574]Nave IDX 28: creata
-[12575]Nave IDX 29: creata
-[12576]Nave IDX 30: creata
-[12577]Nave IDX 31: creata
-[12578]Nave IDX 32: creata
-[12579]Nave IDX 33: creata
-[12580]Nave IDX 34: creata
-[12581]Nave IDX 35: creata
-[12582]Nave IDX 36: creata
-[12583]Nave IDX 37: creata
-[12584]Nave IDX 38: creata
-[12585]Nave IDX 39: creata
+[37853]Nave IDX 0: creata
+[37856]Nave IDX 3: creata
+[37877]Nave IDX 24: creata
+[37878]Nave IDX 25: creata
+[37869]Nave IDX 16: creata
+[37880]Nave IDX 27: creata
+[37887]Nave IDX 34: creata
+[37870]Nave IDX 17: creata
+[37882]Nave IDX 29: creata
+[37888]Nave IDX 35: creata
+[37871]Nave IDX 18: creata
+[37872]Nave IDX 19: creata
+[37889]Nave IDX 36: creata
+[37873]Nave IDX 20: creata
+[37883]Nave IDX 30: creata
+[37879]Nave IDX 26: creata
+[37868]Nave IDX 15: creata
+[37884]Nave IDX 31: creata
+[37885]Nave IDX 32: creata
+[37874]Nave IDX 21: creata
+[37886]Nave IDX 33: creata
+[37892]Nave IDX 39: creata
+[37876]Nave IDX 23: creata
+[37890]Nave IDX 37: creata
+[37881]Nave IDX 28: creata
+[37891]Nave IDX 38: creata
+[37866]Nave IDX 13: creata
+[37864]Nave IDX 11: creata
+[37867]Nave IDX 14: creata
+[37854]Nave IDX 1: creata
+[37863]Nave IDX 10: creata
+[37857]Nave IDX 4: creata
+[37865]Nave IDX 12: creata
+[37862]Nave IDX 9: creata
+[37859]Nave IDX 6: creata
+[37861]Nave IDX 8: creata
+[37855]Nave IDX 2: creata
+[37858]Nave IDX 5: creata
+[37860]Nave IDX 7: creata
+[37875]Nave IDX 22: creata
+[37890]Nave: faccio la lock
+[37890]Nave: uscita
+[37861]Nave: faccio la lock
+[37861]Nave: uscita
+[37875]Nave: faccio la lock
+[37875]Nave: uscita
+[37868]Nave: faccio la lock
+[37868]Nave: uscita
+[37882]Nave: faccio la lock
+[37882]Nave: uscita
+[37867]Nave: faccio la lock
+[37867]Nave: uscita
+[37886]Nave: faccio la lock
+[37886]Nave: uscita
+[37855]Nave: faccio la lock
+[37855]Nave: uscita
+[37854]Nave: faccio la lock
+[37854]Nave: uscita
+[37859]Nave: faccio la lock
+[37859]Nave: uscita
+[37856]Nave: faccio la lock
+[37856]Nave: uscita
+[37874]Nave: faccio la lock
+[37874]Nave: uscita
+[37860]Nave: faccio la lock
+[37860]Nave: uscita
+[37884]Nave: faccio la lock
+[37884]Nave: uscita
+[37879]Nave: faccio la lock
+[37879]Nave: uscita
+[37883]Nave: faccio la lock
+[37883]Nave: uscita
+[37863]Nave: faccio la lock
+[37863]Nave: uscita
+[37891]Nave: faccio la lock
+[37891]Nave: uscita
+[37870]Nave: faccio la lock
+[37870]Nave: uscita
+[37858]Nave: faccio la lock
+[37858]Nave: uscita
+[37887]Nave: faccio la lock
+[37887]Nave: uscita
+[37889]Nave: faccio la lock
+[37889]Nave: uscita
+[37873]Nave: faccio la lock
+[37873]Nave: uscita
+[37866]Nave: faccio la lock
+[37866]Nave: uscita
+[37865]Nave: faccio la lock
+[37865]Nave: uscita
+[37877]Nave: faccio la lock
+[37877]Nave: uscita
+[37892]Nave: faccio la lock
+[37892]Nave: uscita
+[37864]Nave: faccio la lock
+[37864]Nave: uscita
+[37857]Nave: faccio la lock
+[37857]Nave: uscita
+[37888]Nave: faccio la lock
+[37888]Nave: uscita
+[37880]Nave: faccio la lock
+[37880]Nave: uscita
+[37853]Nave: faccio la lock
+[37853]Nave: uscita
+[37881]Nave: faccio la lock
+[37881]Nave: uscita
+[37872]Nave: faccio la lock
+[37872]Nave: uscita
+[37878]Nave: faccio la lock
+[37878]Nave: uscita
+[37862]Nave: faccio la lock
+[37862]Nave: uscita
+[37885]Nave: faccio la lock
+[37885]Nave: uscita
+[37871]Nave: faccio la lock
+[37871]Nave: uscita
+[37876]Nave: faccio la lock
+[37876]Nave: uscita
+[37869]Nave: faccio la lock
+[37869]Nave: uscita
