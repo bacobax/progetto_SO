@@ -12,7 +12,6 @@
 typedef struct supplies {
     
     int magazineID;
-    int expirationTimes[SO_DAYS * SO_MERCI];
     int expirationTimesID;
 }Supplies;
 

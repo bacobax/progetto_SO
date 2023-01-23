@@ -64,21 +64,13 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
         può offrire perchè c'è già la domanda
 
     */
-    key = ftok("./utils/errorHandler.c", pIndex);
-    if (key == -1) {
-        throwError("errore nella key", "initPort");
-        exit(1);
-    }
-    reqShmID = createShm(key, so_merci * sizeof(int), errorHandler, "initPort");
-    if (reqShmID == EEXIST) {
-        throwError("shm già esistente", "initPort");
-        exit(1);
-    }
-    p->requestsID = reqShmID;
-    reqs = (int*)getShmAddress(p->requestsID, 0, errorHandler, "initPort");
-    printf("REQUESTS PORTO %d: %ld initPort\n" , pIndex, reqs);
-
+   
+    p->requestsID = createShm(ftok("./utils/errorHandler.c", pIndex), so_merci * sizeof(int), errorHandler, "initPort");
     p->supplies.magazineID = createShm(ftok("./utils/supplies.c", pIndex), sizeof(int) * so_days * so_merci, errorHandler, "init port magazine");
+    p->supplies.expirationTimesID = createShm(ftok("./utils/supplies.h", pIndex), sizeof(int) * so_days * so_merci, errorHandler, "init port expTimes");
+    reqs = (int*)getShmAddress(p->requestsID, 0, errorHandler, "initPort");
+    magazine = getMagazine(p);
+
     
     /*
         assegno la richiesta
@@ -87,7 +79,6 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     /*
         assegno la domanda usando la funzione d'appoggio
     */
-    magazine = getMagazine(p);
     fillMagazine(magazine, 0, supplies);
 
     free(requests);

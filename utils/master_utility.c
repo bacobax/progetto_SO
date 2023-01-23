@@ -153,6 +153,7 @@ void distruggiShmPorti(){
     for(i=0; i<so_porti; i++){
         removeShm(portArr[i].requestsID, errorHandler, "distruggi shmd porti request");
         removeShm(portArr[i].supplies.magazineID, errorHandler, "distruggi shmd porti magazine");
+        removeShm(portArr[i].supplies.expirationTimesID, errorHandler, "distruggi shmd porti expTimes");
     }
     detachPort(portArr,0);
     removeShm(useShm(PSHMKEY, sizeof(struct port) * so_porti, errorHandler, "distruggiShmPorti"), errorHandler, "distruggiShmPorti");

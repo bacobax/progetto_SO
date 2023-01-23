@@ -59,13 +59,6 @@ MASTER: DAY: 0
 Master: dormo
 MASTER: DAY: 1
 Master: dormo
-Quantità primo giorno: 5000
-M: Finito generazione
-✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
-MASTER: DAY: 0
-Master: dormo
-MASTER: DAY: 1
-Master: dormo
 MASTER: DAY: 2
 Master: dormo
 Quantità primo giorno: 5000
@@ -83,30 +76,6 @@ M: Finito generazione
 MASTER: DAY: 0
 Master: dormo
 MASTER: DAY: 1
-Master: dormo
-MASTER: DAY: 2
-Master: dormo
-MASTER: DAY: 3
-Master: dormo
-Quantità primo giorno: 5000
-M: Finito generazione
-✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
-MASTER: DAY: 0
-Master: dormo
-MASTER: DAY: 1
-Master: dormo
-MASTER: DAY: 2
-Master: dormo
-MASTER: DAY: 3
-Master: dormo
-Quantità primo giorno: 5000
-M: Finito generazione
-✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
-MASTER: DAY: 0
-Master: dormo
-MASTER: DAY: 1
-Master: dormo
-MASTER: DAY: 2
 Master: dormo
 Quantità primo giorno: 5000
 M: Finito generazione
@@ -141,8 +110,6 @@ MASTER: DAY: 2
 Master: dormo
 MASTER: DAY: 3
 Master: dormo
-MASTER: DAY: 4
-Master: dormo
 Quantità primo giorno: 5000
 M: Finito generazione
 ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
@@ -153,6 +120,15 @@ Master: dormo
 MASTER: DAY: 2
 Master: dormo
 MASTER: DAY: 3
+Master: dormo
+Quantità primo giorno: 5000
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
 Master: dormo
 Quantità primo giorno: 5000
 M: Finito generazione
@@ -206,8 +182,6 @@ MASTER: DAY: 3
 Master: dormo
 MASTER: DAY: 4
 Master: dormo
-MASTER: DAY: 5
-Master: dormo
 Quantità primo giorno: 5000
 M: Finito generazione
 ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
@@ -218,23 +192,6 @@ Master: dormo
 MASTER: DAY: 2
 Master: dormo
 MASTER: DAY: 3
-Master: dormo
-MASTER: DAY: 4
-Master: dormo
-MASTER: DAY: 5
-Master: dormo
-Quantità primo giorno: 5000
-M: Finito generazione
-✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
-MASTER: DAY: 0
-Master: dormo
-MASTER: DAY: 1
-Master: dormo
-MASTER: DAY: 2
-Master: dormo
-MASTER: DAY: 3
-Master: dormo
-MASTER: DAY: 4
 Master: dormo
 Quantità primo giorno: 5000
 M: Finito generazione
@@ -281,7 +238,33 @@ MASTER: DAY: 4
 Master: dormo
 MASTER: DAY: 5
 Master: dormo
-MASTER: DAY: 6
+Quantità primo giorno: 5000
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+Quantità primo giorno: 5000
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
 Master: dormo
 Quantità primo giorno: 5000
 M: Finito generazione
@@ -349,6 +332,8 @@ MASTER: DAY: 4
 Master: dormo
 MASTER: DAY: 5
 Master: dormo
+MASTER: DAY: 6
+Master: dormo
 Quantità primo giorno: 5000
 M: Finito generazione
 ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
@@ -363,10 +348,6 @@ Master: dormo
 MASTER: DAY: 4
 Master: dormo
 MASTER: DAY: 5
-Master: dormo
-MASTER: DAY: 6
-Master: dormo
-MASTER: DAY: 7
 Master: dormo
 Quantità primo giorno: 5000
 M: Finito generazione
@@ -442,6 +423,8 @@ MASTER: DAY: 5
 Master: dormo
 MASTER: DAY: 6
 Master: dormo
+MASTER: DAY: 7
+Master: dormo
 Quantità primo giorno: 5000
 M: Finito generazione
 ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
@@ -458,10 +441,6 @@ Master: dormo
 MASTER: DAY: 5
 Master: dormo
 MASTER: DAY: 6
-Master: dormo
-MASTER: DAY: 7
-Master: dormo
-MASTER: DAY: 8
 Master: dormo
 Quantità primo giorno: 5000
 M: Finito generazione
@@ -524,25 +503,6 @@ MASTER: DAY: 6
 Master: dormo
 MASTER: DAY: 7
 Master: dormo
-Quantità primo giorno: 5000
-M: Finito generazione
-✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
-MASTER: DAY: 0
-Master: dormo
-MASTER: DAY: 1
-Master: dormo
-MASTER: DAY: 2
-Master: dormo
-MASTER: DAY: 3
-Master: dormo
-MASTER: DAY: 4
-Master: dormo
-MASTER: DAY: 5
-Master: dormo
-MASTER: DAY: 6
-Master: dormo
-MASTER: DAY: 7
-Master: dormo
 MASTER: DAY: 8
 Master: dormo
 Quantità primo giorno: 5000
@@ -566,7 +526,24 @@ MASTER: DAY: 7
 Master: dormo
 MASTER: DAY: 8
 Master: dormo
-MASTER: DAY: 9
+Quantità primo giorno: 5000
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
 Master: dormo
 Quantità primo giorno: 5000
 M: Finito generazione
@@ -635,27 +612,6 @@ MASTER: DAY: 7
 Master: dormo
 MASTER: DAY: 8
 Master: dormo
-Quantità primo giorno: 5000
-M: Finito generazione
-✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
-MASTER: DAY: 0
-Master: dormo
-MASTER: DAY: 1
-Master: dormo
-MASTER: DAY: 2
-Master: dormo
-MASTER: DAY: 3
-Master: dormo
-MASTER: DAY: 4
-Master: dormo
-MASTER: DAY: 5
-Master: dormo
-MASTER: DAY: 6
-Master: dormo
-MASTER: DAY: 7
-Master: dormo
-MASTER: DAY: 8
-Master: dormo
 MASTER: DAY: 9
 Master: dormo
 Quantità primo giorno: 5000
@@ -681,6 +637,24 @@ MASTER: DAY: 8
 Master: dormo
 MASTER: DAY: 9
 Master: dormo
-Master, faccio la pclose
-ENTRO
-CIAO
+Quantità primo giorno: 5000
+M: Finito generazione
+✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅
+MASTER: DAY: 0
+Master: dormo
+MASTER: DAY: 1
+Master: dormo
+MASTER: DAY: 2
+Master: dormo
+MASTER: DAY: 3
+Master: dormo
+MASTER: DAY: 4
+Master: dormo
+MASTER: DAY: 5
+Master: dormo
+MASTER: DAY: 6
+Master: dormo
+MASTER: DAY: 7
+Master: dormo
+MASTER: DAY: 8
+Master: dormo
