@@ -313,7 +313,6 @@ int chooseQuantityToCharge(Ship ship){
         intFreeList(tipiRichiestiDaAltriPorti);
         shmDetach(magazine, errorHandler, "chooseQuantityToCharge magazine");
         shmDetach(reqs, errorHandler, "chooseQuantityToCharge");
-        printf("CIAO\n");
     }
     detachPort(port, 0);
     

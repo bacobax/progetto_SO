@@ -149,12 +149,12 @@ void distruggiShmPorti(){
     int shmid;
     int i;
     int so_porti = SO_("PORTI");
-    /*
-for (i = 0; i < SO_("PORTI"); i++) {
-        shmid = useShm(ftok("./utils/port_utility.c", i), sizeof(struct port), errorHandler, "distruggiShmPorti");
-        removeShm(shmid , errorHandler, "distruggiShmPorti");
+    Port portArr = getPort(0);
+    for(i=0; i<so_porti; i++){
+        removeShm(portArr[i].requestsID, errorHandler, "distruggi shmd porti request");
+        removeShm(portArr[i].supplies.magazineID, errorHandler, "distruggi shmd porti magazine");
     }
-    */
+    detachPort(portArr,0);
     removeShm(useShm(PSHMKEY, sizeof(struct port) * so_porti, errorHandler, "distruggiShmPorti"), errorHandler, "distruggiShmPorti");
     return;
 }

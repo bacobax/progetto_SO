@@ -1,140 +1,3160 @@
 [0]Nave: config finita, aspetto ok partenza dal master
+[4]Nave: config finita, aspetto ok partenza dal master
+[1]Nave: config finita, aspetto ok partenza dal master
+[3]Nave: config finita, aspetto ok partenza dal master
+[5]Nave: config finita, aspetto ok partenza dal master
+[7]Nave: config finita, aspetto ok partenza dal master
+[8]Nave: config finita, aspetto ok partenza dal master
+[11]Nave: config finita, aspetto ok partenza dal master
+[9]Nave: config finita, aspetto ok partenza dal master
+[12]Nave: config finita, aspetto ok partenza dal master
+[19]Nave: config finita, aspetto ok partenza dal master
+[10]Nave: config finita, aspetto ok partenza dal master
+[13]Nave: config finita, aspetto ok partenza dal master
+[6]Nave: config finita, aspetto ok partenza dal master
+[17]Nave: config finita, aspetto ok partenza dal master
+[16]Nave: config finita, aspetto ok partenza dal master
+[14]Nave: config finita, aspetto ok partenza dal master
+[15]Nave: config finita, aspetto ok partenza dal master
+[2]Nave: config finita, aspetto ok partenza dal master
+[18]Nave: config finita, aspetto ok partenza dal master
+[8]Nave: partita...
+[5]Nave: partita...
+[13]Nave: partita...
+[3]Nave: partita...
+[5]Nave: sto per fare CHOOSE QUANTITY
+
+[8]Nave: sto per fare CHOOSE QUANTITY
+
+[13]Nave: sto per fare CHOOSE QUANTITY
+
+[3]Nave: sto per fare CHOOSE QUANTITY
+
+[5]Nave: cap = aviableCap
+
+[5]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[5]Nave: BEST QUANTITY: 300
+[8]Nave: cap = aviableCap
+
+[8]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[8]Nave: BEST QUANTITY: 300
+[3]Nave: cap = aviableCap
+
+[3]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[3]Nave: BEST QUANTITY: 300
+[5]Nave: controllo se ha senso continuare
+
+[13]Nave: cap = aviableCap
+
+[5]Nave: prima di removeExpiredGoodsOnShip
+[8]Nave: controllo se ha senso continuare
+
+[13]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[8]Nave: prima di removeExpiredGoodsOnShip
+[13]Nave: BEST QUANTITY: 300
+[5]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[5]Nave: dopo di removeExpiredGoodsOnShip
+[8]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[8]Nave: dopo di removeExpiredGoodsOnShip
 [0]Nave: partita...
-[0]Nave: sto per fare CHOOSE QUANTITY
-
-[0]Nave: cap = max
-
-[0]Nave: BEST QUANTITY: 136
-[0]Nave: controllo se ha senso continuare
-
-[0]Nave: prima di removeExpiredGoodsOnShip
-[0]: Nave
-coords: [x:0.000078, y:1.315378]
+[5]: Nave
+coords: [x:8.401877, y:3.943829]
 ton trasportati:0
-valore di storm: 1
-carico trasportato:
-[  ]
-______________________________________________
-[0]Nave: dopo di removeExpiredGoodsOnShip
-[0]: Nave
-coords: [x:0.000078, y:1.315378]
-ton trasportati:0
-valore di storm: 1
-carico trasportato:
-[  ]
-______________________________________________
-[0]Nave: finito di chiamare i porti
-
-[0]Nave:  ho scelto il porto
-[0]Nave: avvisato chi non è stato scelto
-[0]Nave: Sono partita...
-
-[0]Nave: fatta travel
-[0]Nave: prima add
-[0]: Nave
-coords: [x:0.000000, y:0.000000]
-ton trasportati:0
-valore di storm: 1
-carico trasportato:
-[  ]
-______________________________________________
-[0]Nave: finita accessPortToCharge
-[0]Nave: sto per fare CHOOSE QUANTITY
-
-[0]Nave: cap = max
-
-[0]Nave: BEST QUANTITY: 159
-[0]Nave: controllo se ha senso continuare
-
-[0]Nave: prima di removeExpiredGoodsOnShip
-[0]: Nave
-coords: [x:0.000000, y:0.000000]
-ton trasportati:136
-valore di storm: 1
-carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
- ]
-______________________________________________
-[0]Nave: dopo di removeExpiredGoodsOnShip
-[0]: Nave
-coords: [x:0.000000, y:0.000000]
-ton trasportati:136
-valore di storm: 1
-carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
- ]
-______________________________________________
-[0]Nave: finito di chiamare i porti
-
-[0]Nave:  ho scelto il porto
-[0]Nave: avvisato chi non è stato scelto
-[0]Nave: Sono partita...
-
-[0]Nave: fatta travel
-[0]Nave: prima add
-[0]: Nave
-coords: [x:0.000000, y:0.000000]
-ton trasportati:136
 valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
- ]
+[  ]
 ______________________________________________
-[0]Nave: finita accessPortToCharge
+[11]Nave: partita...
+[3]Nave: controllo se ha senso continuare
+
+[3]Nave: prima di removeExpiredGoodsOnShip
+[7]Nave: partita...
+[13]Nave: controllo se ha senso continuare
+
+[13]Nave: prima di removeExpiredGoodsOnShip
 [0]Nave: sto per fare CHOOSE QUANTITY
+
+[11]Nave: sto per fare CHOOSE QUANTITY
+
+[6]Nave: partita...
+[7]Nave: sto per fare CHOOSE QUANTITY
+
+[6]Nave: sto per fare CHOOSE QUANTITY
+
+[11]Nave: cap = aviableCap
 
 [0]Nave: cap = aviableCap
 
-[0]: Nave
-coords: [x:0.000000, y:0.000000]
-ton trasportati:295
+[9]Nave: partita...
+[7]Nave: cap = aviableCap
+
+[4]Nave: partita...
+[9]Nave: sto per fare CHOOSE QUANTITY
+
+[6]Nave: cap = aviableCap
+
+[4]Nave: sto per fare CHOOSE QUANTITY
+
+[17]Nave: partita...
+[17]Nave: sto per fare CHOOSE QUANTITY
+
+[9]Nave: cap = aviableCap
+
+[12]Nave: partita...
+[4]Nave: cap = aviableCap
+
+[2]Nave: partita...
+[12]Nave: sto per fare CHOOSE QUANTITY
+
+[2]Nave: sto per fare CHOOSE QUANTITY
+
+[17]Nave: cap = aviableCap
+
+[16]Nave: partita...
+[12]Nave: cap = aviableCap
+
+[16]Nave: sto per fare CHOOSE QUANTITY
+
+[19]Nave: partita...
+[2]Nave: cap = aviableCap
+
+[14]Nave: partita...
+[19]Nave: sto per fare CHOOSE QUANTITY
+
+[14]Nave: sto per fare CHOOSE QUANTITY
+
+[16]Nave: cap = aviableCap
+
+[19]Nave: cap = aviableCap
+
+[10]Nave: partita...
+[14]Nave: cap = aviableCap
+
+[15]Nave: partita...
+[10]Nave: sto per fare CHOOSE QUANTITY
+
+[15]Nave: sto per fare CHOOSE QUANTITY
+
+[8]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
 valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
- ]
+[  ]
 ______________________________________________
-[0]Nave: BEST QUANTITY: 5
+[10]Nave: cap = aviableCap
+
+[15]Nave: cap = aviableCap
+
+[1]Nave: partita...
+[3]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 1
+carico trasportato:
+[  ]
+______________________________________________
+[3]Nave: dopo di removeExpiredGoodsOnShip
+[1]Nave: sto per fare CHOOSE QUANTITY
+
+[13]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[13]Nave: dopo di removeExpiredGoodsOnShip
+[11]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[11]Nave: BEST QUANTITY: 300
+[1]Nave: cap = aviableCap
+
+[0]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[0]Nave: BEST QUANTITY: 300
+[18]Nave: partita...
+[5]Nave: finito di chiamare i porti
+
+[7]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[7]Nave: BEST QUANTITY: 300
+[18]Nave: sto per fare CHOOSE QUANTITY
+
+[11]Nave: controllo se ha senso continuare
+
+[11]Nave: prima di removeExpiredGoodsOnShip
+[5]Nave:  ho scelto il porto
 [0]Nave: controllo se ha senso continuare
 
 [0]Nave: prima di removeExpiredGoodsOnShip
-[0]: Nave
-coords: [x:0.000000, y:0.000000]
-ton trasportati:295
+[5]Nave: avvisato chi non è stato scelto
+[5]Nave: Sono partita...
+
+[7]Nave: controllo se ha senso continuare
+
+[7]Nave: prima di removeExpiredGoodsOnShip
+[18]Nave: cap = aviableCap
+
+[6]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
 valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
- ]
+[  ]
+______________________________________________
+[6]Nave: BEST QUANTITY: 300
+[9]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[9]Nave: BEST QUANTITY: 300
+[6]Nave: controllo se ha senso continuare
+
+[6]Nave: prima di removeExpiredGoodsOnShip
+[9]Nave: controllo se ha senso continuare
+
+[9]Nave: prima di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]Nave: BEST QUANTITY: 300
+[4]Nave: controllo se ha senso continuare
+
+[4]Nave: prima di removeExpiredGoodsOnShip
+[8]Nave: finito di chiamare i porti
+
+[8]Nave:  ho scelto il porto
+[8]Nave: avvisato chi non è stato scelto
+[8]Nave: Sono partita...
+
+[17]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[17]Nave: BEST QUANTITY: 300
+[12]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[12]Nave: BEST QUANTITY: 300
+[2]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]Nave: BEST QUANTITY: 300
+[17]Nave: controllo se ha senso continuare
+
+[17]Nave: prima di removeExpiredGoodsOnShip
+[16]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[16]Nave: BEST QUANTITY: 300
+[12]Nave: controllo se ha senso continuare
+
+[12]Nave: prima di removeExpiredGoodsOnShip
+[2]Nave: controllo se ha senso continuare
+
+[2]Nave: prima di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: BEST QUANTITY: 300
+[14]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: BEST QUANTITY: 300
+[16]Nave: controllo se ha senso continuare
+
+[16]Nave: prima di removeExpiredGoodsOnShip
+[19]Nave: controllo se ha senso continuare
+
+[19]Nave: prima di removeExpiredGoodsOnShip
+[14]Nave: controllo se ha senso continuare
+
+[14]Nave: prima di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[10]Nave: BEST QUANTITY: 300
+[15]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[3]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 1
+carico trasportato:
+[  ]
+______________________________________________
+[13]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[10]Nave: controllo se ha senso continuare
+
+[10]Nave: prima di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: BEST QUANTITY: 300
+[1]Nave: controllo se ha senso continuare
+
+[1]Nave: prima di removeExpiredGoodsOnShip
+[11]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[11]Nave: dopo di removeExpiredGoodsOnShip
+[0]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
 ______________________________________________
 [0]Nave: dopo di removeExpiredGoodsOnShip
-[0]: Nave
-coords: [x:0.000000, y:0.000000]
-ton trasportati:295
+[7]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
 valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
- ]
+[  ]
 ______________________________________________
+[7]Nave: dopo di removeExpiredGoodsOnShip
+[15]Nave: BEST QUANTITY: 300
+[15]Nave: controllo se ha senso continuare
+
+[15]Nave: prima di removeExpiredGoodsOnShip
+[3]Nave: finito di chiamare i porti
+
+[13]Nave: finito di chiamare i porti
+
+[3]Nave:  ho scelto il porto
+[3]Nave: avvisato chi non è stato scelto
+[3]Nave: Sono partita...
+
+[13]Nave:  ho scelto il porto
+[13]Nave: avvisato chi non è stato scelto
+[13]Nave: Sono partita...
+
+[18]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: BEST QUANTITY: 300
+[6]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[6]Nave: dopo di removeExpiredGoodsOnShip
+[9]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[9]Nave: dopo di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]Nave: dopo di removeExpiredGoodsOnShip
+[17]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[17]Nave: dopo di removeExpiredGoodsOnShip
+[18]Nave: controllo se ha senso continuare
+
+[12]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: prima di removeExpiredGoodsOnShip
+[12]Nave: dopo di removeExpiredGoodsOnShip
+[2]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]Nave: dopo di removeExpiredGoodsOnShip
+[16]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[16]Nave: dopo di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: dopo di removeExpiredGoodsOnShip
+[14]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: dopo di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[10]Nave: dopo di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: dopo di removeExpiredGoodsOnShip
+[11]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[0]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[7]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[15]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[15]Nave: dopo di removeExpiredGoodsOnShip
+[9]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[6]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[17]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: dopo di removeExpiredGoodsOnShip
+[12]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[11]Nave: finito di chiamare i porti
+
+[11]Nave:  ho scelto il porto
+[11]Nave: avvisato chi non è stato scelto
+[11]Nave: Sono partita...
+
 [0]Nave: finito di chiamare i porti
 
 [0]Nave:  ho scelto il porto
 [0]Nave: avvisato chi non è stato scelto
 [0]Nave: Sono partita...
 
+[2]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[16]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[10]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[15]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[7]Nave: finito di chiamare i porti
+
+[7]Nave: sto per fare CHOOSE QUANTITY
+
+[7]Nave: cap = max
+
+[7]Nave: BEST QUANTITY: 289
+[7]Nave: controllo se ha senso continuare
+
+[7]Nave: prima di removeExpiredGoodsOnShip
+[7]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[7]Nave: dopo di removeExpiredGoodsOnShip
+[7]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[9]Nave: finito di chiamare i porti
+
+[9]Nave: sto per fare CHOOSE QUANTITY
+
+[9]Nave: cap = max
+
+[9]Nave: BEST QUANTITY: 289
+[9]Nave: controllo se ha senso continuare
+
+[9]Nave: prima di removeExpiredGoodsOnShip
+[9]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[9]Nave: dopo di removeExpiredGoodsOnShip
+[9]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[6]Nave: finito di chiamare i porti
+
+[6]Nave: sto per fare CHOOSE QUANTITY
+
+[6]Nave: cap = max
+
+[6]Nave: BEST QUANTITY: 289
+[6]Nave: controllo se ha senso continuare
+
+[6]Nave: prima di removeExpiredGoodsOnShip
+[6]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[6]Nave: dopo di removeExpiredGoodsOnShip
+[6]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]Nave: finito di chiamare i porti
+
+[4]Nave: sto per fare CHOOSE QUANTITY
+
+[4]Nave: cap = max
+
+[4]Nave: BEST QUANTITY: 289
+[4]Nave: controllo se ha senso continuare
+
+[4]Nave: prima di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]Nave: dopo di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[17]Nave: finito di chiamare i porti
+
+[17]Nave: sto per fare CHOOSE QUANTITY
+
+[17]Nave: cap = max
+
+[17]Nave: BEST QUANTITY: 289
+[17]Nave: controllo se ha senso continuare
+
+[17]Nave: prima di removeExpiredGoodsOnShip
+[17]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[17]Nave: dopo di removeExpiredGoodsOnShip
+[17]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[12]Nave: finito di chiamare i porti
+
+[12]Nave: sto per fare CHOOSE QUANTITY
+
+[12]Nave: cap = max
+
+[12]Nave: BEST QUANTITY: 289
+[12]Nave: controllo se ha senso continuare
+
+[12]Nave: prima di removeExpiredGoodsOnShip
+[12]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[12]Nave: dopo di removeExpiredGoodsOnShip
+[12]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]Nave: finito di chiamare i porti
+
+[2]Nave: sto per fare CHOOSE QUANTITY
+
+[2]Nave: cap = max
+
+[2]Nave: BEST QUANTITY: 289
+[2]Nave: controllo se ha senso continuare
+
+[2]Nave: prima di removeExpiredGoodsOnShip
+[2]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]Nave: dopo di removeExpiredGoodsOnShip
+[2]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: finito di chiamare i porti
+
+[14]Nave: finito di chiamare i porti
+
+[10]Nave: finito di chiamare i porti
+
+[19]Nave: sto per fare CHOOSE QUANTITY
+
+[19]Nave: cap = max
+
+[19]Nave: BEST QUANTITY: 289
+[1]Nave: finito di chiamare i porti
+
+[19]Nave: controllo se ha senso continuare
+
+[19]Nave: prima di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: dopo di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[16]Nave: finito di chiamare i porti
+
+[10]Nave: sto per fare CHOOSE QUANTITY
+
+[15]Nave: finito di chiamare i porti
+
+[16]Nave: sto per fare CHOOSE QUANTITY
+
+[15]Nave: sto per fare CHOOSE QUANTITY
+
+[10]Nave: cap = max
+
+[10]Nave: BEST QUANTITY: 289
+[16]Nave: cap = max
+
+[16]Nave: BEST QUANTITY: 289
+[10]Nave: controllo se ha senso continuare
+
+[10]Nave: prima di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[10]Nave: dopo di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[16]Nave: controllo se ha senso continuare
+
+[16]Nave: prima di removeExpiredGoodsOnShip
+[16]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[16]Nave: dopo di removeExpiredGoodsOnShip
+[16]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[15]Nave: cap = max
+
+[15]Nave: BEST QUANTITY: 289
+[15]Nave: controllo se ha senso continuare
+
+[15]Nave: prima di removeExpiredGoodsOnShip
+[15]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[15]Nave: dopo di removeExpiredGoodsOnShip
+[15]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: sto per fare CHOOSE QUANTITY
+
+[14]Nave: sto per fare CHOOSE QUANTITY
+
+[1]Nave: cap = max
+
+[1]Nave: BEST QUANTITY: 289
+[1]Nave: controllo se ha senso continuare
+
+[1]Nave: prima di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: dopo di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: finito di chiamare i porti
+
+[14]Nave: cap = max
+
+[14]Nave: BEST QUANTITY: 289
+[14]Nave: controllo se ha senso continuare
+
+[14]Nave: prima di removeExpiredGoodsOnShip
+[14]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: dopo di removeExpiredGoodsOnShip
+[18]Nave: sto per fare CHOOSE QUANTITY
+
+[14]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: cap = max
+
+[18]Nave: BEST QUANTITY: 289
+[18]Nave: controllo se ha senso continuare
+
+[18]Nave: prima di removeExpiredGoodsOnShip
+[18]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: dopo di removeExpiredGoodsOnShip
+[18]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[7]Nave: finito di chiamare i porti
+
+[7]Nave:  ho scelto il porto
+[7]Nave: avvisato chi non è stato scelto
+[7]Nave: Sono partita...
+
+[9]Nave: finito di chiamare i porti
+
+[9]Nave: sto per fare CHOOSE QUANTITY
+
+[9]Nave: cap = max
+
+[9]Nave: BEST QUANTITY: 275
+[9]Nave: controllo se ha senso continuare
+
+[9]Nave: prima di removeExpiredGoodsOnShip
+[9]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[9]Nave: dopo di removeExpiredGoodsOnShip
+[9]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[6]Nave: finito di chiamare i porti
+
+[6]Nave: sto per fare CHOOSE QUANTITY
+
+[6]Nave: cap = max
+
+[6]Nave: BEST QUANTITY: 275
+[6]Nave: controllo se ha senso continuare
+
+[6]Nave: prima di removeExpiredGoodsOnShip
+[6]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[6]Nave: dopo di removeExpiredGoodsOnShip
+[6]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]Nave: finito di chiamare i porti
+
+[17]Nave: finito di chiamare i porti
+
+[4]Nave: sto per fare CHOOSE QUANTITY
+
+[4]Nave: cap = max
+
+[4]Nave: BEST QUANTITY: 275
+[4]Nave: controllo se ha senso continuare
+
+[4]Nave: prima di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]Nave: dopo di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[17]Nave: sto per fare CHOOSE QUANTITY
+
+[12]Nave: finito di chiamare i porti
+
+[12]Nave: sto per fare CHOOSE QUANTITY
+
+[12]Nave: cap = max
+
+[12]Nave: BEST QUANTITY: 275
+[12]Nave: controllo se ha senso continuare
+
+[12]Nave: prima di removeExpiredGoodsOnShip
+[12]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[12]Nave: dopo di removeExpiredGoodsOnShip
+[12]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[17]Nave: cap = max
+
+[17]Nave: BEST QUANTITY: 275
+[17]Nave: controllo se ha senso continuare
+
+[17]Nave: prima di removeExpiredGoodsOnShip
+[17]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[17]Nave: dopo di removeExpiredGoodsOnShip
+[17]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]Nave: finito di chiamare i porti
+
+[2]Nave: sto per fare CHOOSE QUANTITY
+
+[2]Nave: cap = max
+
+[2]Nave: BEST QUANTITY: 275
+[2]Nave: controllo se ha senso continuare
+
+[2]Nave: prima di removeExpiredGoodsOnShip
+[2]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]Nave: dopo di removeExpiredGoodsOnShip
+[2]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: finito di chiamare i porti
+
+[19]Nave: sto per fare CHOOSE QUANTITY
+
+[19]Nave: cap = max
+
+[19]Nave: BEST QUANTITY: 275
+[19]Nave: controllo se ha senso continuare
+
+[19]Nave: prima di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: dopo di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[10]Nave: finito di chiamare i porti
+
+[10]Nave: sto per fare CHOOSE QUANTITY
+
+[10]Nave: cap = max
+
+[10]Nave: BEST QUANTITY: 275
+[10]Nave: controllo se ha senso continuare
+
+[10]Nave: prima di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[10]Nave: dopo di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[16]Nave: finito di chiamare i porti
+
+[16]Nave: sto per fare CHOOSE QUANTITY
+
+[16]Nave: cap = max
+
+[16]Nave: BEST QUANTITY: 275
+[16]Nave: controllo se ha senso continuare
+
+[16]Nave: prima di removeExpiredGoodsOnShip
+[16]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[16]Nave: dopo di removeExpiredGoodsOnShip
+[16]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[15]Nave: finito di chiamare i porti
+
+[15]Nave: sto per fare CHOOSE QUANTITY
+
+[15]Nave: cap = max
+
+[15]Nave: BEST QUANTITY: 275
+[15]Nave: controllo se ha senso continuare
+
+[15]Nave: prima di removeExpiredGoodsOnShip
+[15]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[15]Nave: dopo di removeExpiredGoodsOnShip
+[15]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: finito di chiamare i porti
+
+[1]Nave: sto per fare CHOOSE QUANTITY
+
+[1]Nave: cap = max
+
+[1]Nave: BEST QUANTITY: 275
+[1]Nave: controllo se ha senso continuare
+
+[1]Nave: prima di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: dopo di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: finito di chiamare i porti
+
+[14]Nave: sto per fare CHOOSE QUANTITY
+
+[14]Nave: cap = max
+
+[14]Nave: BEST QUANTITY: 275
+[14]Nave: controllo se ha senso continuare
+
+[14]Nave: prima di removeExpiredGoodsOnShip
+[14]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: dopo di removeExpiredGoodsOnShip
+[14]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: finito di chiamare i porti
+
+[18]Nave: sto per fare CHOOSE QUANTITY
+
+[18]Nave: cap = max
+
+[18]Nave: BEST QUANTITY: 275
+[18]Nave: controllo se ha senso continuare
+
+[18]Nave: prima di removeExpiredGoodsOnShip
+[18]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: dopo di removeExpiredGoodsOnShip
+[18]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[9]Nave: finito di chiamare i porti
+
+[9]Nave:  ho scelto il porto
+[9]Nave: avvisato chi non è stato scelto
+[9]Nave: Sono partita...
+
+[6]Nave: finito di chiamare i porti
+
+[6]Nave: sto per fare CHOOSE QUANTITY
+
+[6]Nave: cap = max
+
+[6]Nave: BEST QUANTITY: 153
+[4]Nave: finito di chiamare i porti
+
+[6]Nave: controllo se ha senso continuare
+
+[6]Nave: prima di removeExpiredGoodsOnShip
+[6]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[6]Nave: dopo di removeExpiredGoodsOnShip
+[6]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]Nave: sto per fare CHOOSE QUANTITY
+
+[4]Nave: cap = max
+
+[4]Nave: BEST QUANTITY: 153
+[4]Nave: controllo se ha senso continuare
+
+[4]Nave: prima di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]Nave: dopo di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[12]Nave: finito di chiamare i porti
+
+[12]Nave: sto per fare CHOOSE QUANTITY
+
+[12]Nave: cap = max
+
+[12]Nave: BEST QUANTITY: 99
+[12]Nave: controllo se ha senso continuare
+
+[12]Nave: prima di removeExpiredGoodsOnShip
+[12]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[12]Nave: dopo di removeExpiredGoodsOnShip
+[12]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[17]Nave: finito di chiamare i porti
+
+[17]Nave: sto per fare CHOOSE QUANTITY
+
+[17]Nave: cap = max
+
+[17]Nave: BEST QUANTITY: 99
+[17]Nave: controllo se ha senso continuare
+
+[17]Nave: prima di removeExpiredGoodsOnShip
+[17]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[17]Nave: dopo di removeExpiredGoodsOnShip
+[17]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: finito di chiamare i porti
+
+[19]Nave: sto per fare CHOOSE QUANTITY
+
+[19]Nave: cap = max
+
+[19]Nave: BEST QUANTITY: 99
+[19]Nave: controllo se ha senso continuare
+
+[19]Nave: prima di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: dopo di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[10]Nave: finito di chiamare i porti
+
+[10]Nave: sto per fare CHOOSE QUANTITY
+
+[10]Nave: cap = max
+
+[10]Nave: BEST QUANTITY: 56
+[10]Nave: controllo se ha senso continuare
+
+[10]Nave: prima di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[10]Nave: dopo di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[15]Nave: finito di chiamare i porti
+
+[15]Nave: sto per fare CHOOSE QUANTITY
+
+[15]Nave: cap = max
+
+[15]Nave: BEST QUANTITY: 56
+[15]Nave: controllo se ha senso continuare
+
+[15]Nave: prima di removeExpiredGoodsOnShip
+[15]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[15]Nave: dopo di removeExpiredGoodsOnShip
+[15]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]Nave: finito di chiamare i porti
+
+[2]Nave: sto per fare CHOOSE QUANTITY
+
+[2]Nave: cap = max
+
+[2]Nave: BEST QUANTITY: 56
+[1]Nave: finito di chiamare i porti
+
+[1]Nave: sto per fare CHOOSE QUANTITY
+
+[1]Nave: cap = max
+
+[1]Nave: BEST QUANTITY: 56
+[1]Nave: controllo se ha senso continuare
+
+[1]Nave: prima di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: dopo di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]Nave: controllo se ha senso continuare
+
+[2]Nave: prima di removeExpiredGoodsOnShip
+[2]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]Nave: dopo di removeExpiredGoodsOnShip
+[2]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[16]Nave: finito di chiamare i porti
+
+[16]Nave: sto per fare CHOOSE QUANTITY
+
+[16]Nave: cap = max
+
+[16]Nave: BEST QUANTITY: 32
+[16]Nave: controllo se ha senso continuare
+
+[16]Nave: prima di removeExpiredGoodsOnShip
+[16]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[16]Nave: dopo di removeExpiredGoodsOnShip
+[16]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: finito di chiamare i porti
+
+[14]Nave: sto per fare CHOOSE QUANTITY
+
+[14]Nave: cap = max
+
+[14]Nave: BEST QUANTITY: 32
+[14]Nave: controllo se ha senso continuare
+
+[14]Nave: prima di removeExpiredGoodsOnShip
+[14]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: dopo di removeExpiredGoodsOnShip
+[14]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: finito di chiamare i porti
+
+[18]Nave: sto per fare CHOOSE QUANTITY
+
+[18]Nave: cap = max
+
+[18]Nave: BEST QUANTITY: 32
+[6]Nave: finito di chiamare i porti
+
+[6]Nave:  ho scelto il porto
+[6]Nave: avvisato chi non è stato scelto
+[6]Nave: Sono partita...
+
+[18]Nave: controllo se ha senso continuare
+
+[18]Nave: prima di removeExpiredGoodsOnShip
+[18]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: dopo di removeExpiredGoodsOnShip
+[18]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]Nave: finito di chiamare i porti
+
+[4]Nave: sto per fare CHOOSE QUANTITY
+
+[4]Nave: cap = max
+
+[4]Nave: BEST QUANTITY: 32
+[4]Nave: controllo se ha senso continuare
+
+[4]Nave: prima di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]Nave: dopo di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[12]Nave: finito di chiamare i porti
+
+[12]Nave:  ho scelto il porto
+[12]Nave: avvisato chi non è stato scelto
+[12]Nave: Sono partita...
+
+[17]Nave: finito di chiamare i porti
+
+[17]Nave: sto per fare CHOOSE QUANTITY
+
+[17]Nave: cap = max
+
+[17]Nave: BEST QUANTITY: 28
+[17]Nave: controllo se ha senso continuare
+
+[17]Nave: prima di removeExpiredGoodsOnShip
+[17]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[17]Nave: dopo di removeExpiredGoodsOnShip
+[17]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: finito di chiamare i porti
+
+[19]Nave: sto per fare CHOOSE QUANTITY
+
+[19]Nave: cap = max
+
+[19]Nave: BEST QUANTITY: 28
+[19]Nave: controllo se ha senso continuare
+
+[19]Nave: prima di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: dopo di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[10]Nave: finito di chiamare i porti
+
+[15]Nave: finito di chiamare i porti
+
+[10]Nave:  ho scelto il porto
+[10]Nave: avvisato chi non è stato scelto
+[10]Nave: Sono partita...
+
+[1]Nave: finito di chiamare i porti
+
+[15]Nave: sto per fare CHOOSE QUANTITY
+
+[1]Nave: sto per fare CHOOSE QUANTITY
+
+[15]Nave: cap = max
+
+[15]Nave: BEST QUANTITY: 12
+[15]Nave: controllo se ha senso continuare
+
+[15]Nave: prima di removeExpiredGoodsOnShip
+[15]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[15]Nave: dopo di removeExpiredGoodsOnShip
+[15]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]Nave: finito di chiamare i porti
+
+[1]Nave: cap = max
+
+[1]Nave: BEST QUANTITY: 12
+[2]Nave: sto per fare CHOOSE QUANTITY
+
+[1]Nave: controllo se ha senso continuare
+
+[1]Nave: prima di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: dopo di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: finito di chiamare i porti
+
+[14]Nave:  ho scelto il porto
+[14]Nave: avvisato chi non è stato scelto
+[14]Nave: Sono partita...
+
+[2]Nave: cap = max
+
+[2]Nave: BEST QUANTITY: 12
+[2]Nave: controllo se ha senso continuare
+
+[16]Nave: finito di chiamare i porti
+
+[16]Nave: sto per fare CHOOSE QUANTITY
+
+[16]Nave: cap = max
+
+[16]Nave: BEST QUANTITY: 0
+[16]Nave: controllo se ha senso continuare
+
+[4]Nave: finito di chiamare i porti
+
+[4]Nave: sto per fare CHOOSE QUANTITY
+
+[4]Nave: cap = max
+
+[4]Nave: BEST QUANTITY: 0
+[4]Nave: controllo se ha senso continuare
+
+[18]Nave: finito di chiamare i porti
+
+[18]Nave: sto per fare CHOOSE QUANTITY
+
+[18]Nave: cap = max
+
+[18]Nave: BEST QUANTITY: 0
+[18]Nave: controllo se ha senso continuare
+
+[17]Nave: finito di chiamare i porti
+
+[17]Nave:  ho scelto il porto
+[17]Nave: avvisato chi non è stato scelto
+[17]Nave: Sono partita...
+
+[19]Nave: finito di chiamare i porti
+
+[19]Nave: sto per fare CHOOSE QUANTITY
+
+[19]Nave: cap = max
+
+[19]Nave: BEST QUANTITY: 0
+[19]Nave: controllo se ha senso continuare
+
+[15]Nave: finito di chiamare i porti
+
+[15]Nave:  ho scelto il porto
+[15]Nave: avvisato chi non è stato scelto
+[1]Nave: finito di chiamare i porti
+
+[1]Nave: sto per fare CHOOSE QUANTITY
+
+[1]Nave: cap = max
+
+[1]Nave: BEST QUANTITY: 0
+[15]Nave: Sono partita...
+
+[1]Nave: controllo se ha senso continuare
+
+[13]Nave: fatta travel
+[11]Nave: fatta travel
 [0]Nave: fatta travel
+[12]Nave: fatta travel
+[10]Nave: fatta travel
+[14]Nave: fatta travel
+[17]Nave: fatta travel
+[7]Nave: fatta travel
+[9]Nave: fatta travel
+[5]Nave: fatta travel
+[8]Nave: fatta travel
+[3]Nave: fatta travel
+[16]Nave: sto per fare CHOOSE QUANTITY
+
+[18]Nave: sto per fare CHOOSE QUANTITY
+
+[16]Nave: cap = aviableCap
+
+[16]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: cap = aviableCap
+
+[16]Nave: BEST QUANTITY: 300
+[18]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: BEST QUANTITY: 300
+[18]Nave: controllo se ha senso continuare
+
+[16]Nave: controllo se ha senso continuare
+
+[16]Nave: prima di removeExpiredGoodsOnShip
+[16]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[16]Nave: dopo di removeExpiredGoodsOnShip
+[16]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: prima di removeExpiredGoodsOnShip
+[18]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: dopo di removeExpiredGoodsOnShip
+[18]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]Nave: sto per fare CHOOSE QUANTITY
+
+[4]Nave: cap = aviableCap
+
+[4]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]Nave: BEST QUANTITY: 300
+[4]Nave: controllo se ha senso continuare
+
+[4]Nave: prima di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]Nave: dopo di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]Nave: sto per fare CHOOSE QUANTITY
+
+[2]Nave: cap = aviableCap
+
+[2]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]Nave: BEST QUANTITY: 300
+[2]Nave: controllo se ha senso continuare
+
+[2]Nave: prima di removeExpiredGoodsOnShip
+[2]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]Nave: dopo di removeExpiredGoodsOnShip
+[2]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: sto per fare CHOOSE QUANTITY
+
+[19]Nave: cap = aviableCap
+
+[19]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: BEST QUANTITY: 300
+[1]Nave: sto per fare CHOOSE QUANTITY
+
+[1]Nave: cap = aviableCap
+
+[1]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: BEST QUANTITY: 300
+[19]Nave: controllo se ha senso continuare
+
+[19]Nave: prima di removeExpiredGoodsOnShip
+[16]Nave: finito di chiamare i porti
+
+[19]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[16]Nave:  ho scelto il porto
+[19]Nave: dopo di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[16]Nave: avvisato chi non è stato scelto
+[16]Nave: Sono partita...
+
+[1]Nave: controllo se ha senso continuare
+
+[1]Nave: prima di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: dopo di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: finito di chiamare i porti
+
+[18]Nave:  ho scelto il porto
+[18]Nave: avvisato chi non è stato scelto
+[18]Nave: Sono partita...
+
+[4]Nave: finito di chiamare i porti
+
+[4]Nave:  ho scelto il porto
+[4]Nave: avvisato chi non è stato scelto
+[4]Nave: Sono partita...
+
+[2]Nave: finito di chiamare i porti
+
+[2]Nave:  ho scelto il porto
+[2]Nave: avvisato chi non è stato scelto
+[2]Nave: Sono partita...
+
+[19]Nave: finito di chiamare i porti
+
+[19]Nave: sto per fare CHOOSE QUANTITY
+
+[19]Nave: cap = max
+
+[19]Nave: BEST QUANTITY: 280
+[19]Nave: controllo se ha senso continuare
+
+[19]Nave: prima di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: dopo di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: finito di chiamare i porti
+
+[1]Nave: sto per fare CHOOSE QUANTITY
+
+[1]Nave: cap = max
+
+[1]Nave: BEST QUANTITY: 280
+[1]Nave: controllo se ha senso continuare
+
+[1]Nave: prima di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: dopo di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: finito di chiamare i porti
+
+[19]Nave:  ho scelto il porto
+[19]Nave: avvisato chi non è stato scelto
+[19]Nave: Sono partita...
+
+[1]Nave: finito di chiamare i porti
+
+[1]Nave: sto per fare CHOOSE QUANTITY
+
+[1]Nave: cap = max
+
+[1]Nave: BEST QUANTITY: 275
+[1]Nave: controllo se ha senso continuare
+
+[1]Nave: prima di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: dopo di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:8.401877, y:3.943829]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: finito di chiamare i porti
+
+[1]Nave:  ho scelto il porto
+[1]Nave: avvisato chi non è stato scelto
+[1]Nave: Sono partita...
+
+[6]Nave: fatta travel
+[6]Nave: prima add
+[6]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[6]Nave: finita accessPortToCharge
+[6]Nave: sto per fare CHOOSE QUANTITY
+
+[6]Nave: cap = aviableCap
+
+[6]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:153
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:153 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[6]Nave: BEST QUANTITY: 147
+[6]Nave: controllo se ha senso continuare
+
+[6]Nave: prima di removeExpiredGoodsOnShip
+[6]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:153
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:153 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[6]Nave: dopo di removeExpiredGoodsOnShip
+[6]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:153
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:153 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[6]Nave: finito di chiamare i porti
+
+[6]Nave:  ho scelto il porto
+[6]Nave: avvisato chi non è stato scelto
+[6]Nave: Sono partita...
+
+[14]Nave: prima add
+[14]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: finita accessPortToCharge
+[14]Nave: sto per fare CHOOSE QUANTITY
+
+[14]Nave: cap = max
+
+[14]Nave: BEST QUANTITY: 228
+[14]Nave: controllo se ha senso continuare
+
+[14]Nave: prima di removeExpiredGoodsOnShip
+[14]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:32
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:32 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[14]Nave: dopo di removeExpiredGoodsOnShip
+[14]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:32
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:32 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[14]Nave: finito di chiamare i porti
+
+[14]Nave:  ho scelto il porto
+[14]Nave: avvisato chi non è stato scelto
+[14]Nave: Sono partita...
+
+[14]Nave: fatta travel
+[14]Nave: prima add
+[14]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:32
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:32 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[14]Nave: finita accessPortToCharge
+[14]Nave: sto per fare CHOOSE QUANTITY
+
+[14]Nave: cap = aviableCap
+
+[14]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:260
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:32 expiration_time:30 dd:0 portID: 1, 
+product_type:0 weight:228 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[14]Nave: BEST QUANTITY: 40
+[14]Nave: controllo se ha senso continuare
+
+[14]Nave: prima di removeExpiredGoodsOnShip
+[14]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:260
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:32 expiration_time:30 dd:0 portID: 1, 
+product_type:0 weight:228 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[14]Nave: dopo di removeExpiredGoodsOnShip
+[14]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:260
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:32 expiration_time:30 dd:0 portID: 1, 
+product_type:0 weight:228 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[17]Nave: prima add
+[17]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[17]Nave: finita accessPortToCharge
+[14]Nave: finito di chiamare i porti
+
+[14]Nave:  ho scelto il porto
+[17]Nave: sto per fare CHOOSE QUANTITY
+
+[14]Nave: avvisato chi non è stato scelto
+[14]Nave: Sono partita...
+
+[14]Nave: fatta travel
+[17]Nave: cap = max
+
+[17]Nave: BEST QUANTITY: 160
+[17]Nave: controllo se ha senso continuare
+
+[14]Nave: prima add
+[14]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:260
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:32 expiration_time:30 dd:0 portID: 1, 
+product_type:0 weight:228 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[14]Nave: finita accessPortToCharge
+[15]Nave: fatta travel
+[14]Nave: sto per fare CHOOSE QUANTITY
+
+[15]Nave: prima add
+[15]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[15]Nave: finita accessPortToCharge
+[14]Nave: cap = aviableCap
+
+[14]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:32 expiration_time:30 dd:0 portID: 1, 
+product_type:0 weight:228 expiration_time:30 dd:1 portID: 1, 
+product_type:3 weight:40 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[14]Nave: BEST QUANTITY: 0
+[17]Nave: prima di removeExpiredGoodsOnShip
+[17]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:28
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:28 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[17]Nave: dopo di removeExpiredGoodsOnShip
+[17]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:28
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:28 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[15]Nave: sto per fare CHOOSE QUANTITY
+
+[14]Nave: controllo se ha senso continuare
+
+[14]Nave: prima di removeExpiredGoodsOnShip
+[14]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:32 expiration_time:30 dd:0 portID: 1, 
+product_type:0 weight:228 expiration_time:30 dd:1 portID: 1, 
+product_type:3 weight:40 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[14]Nave: dopo di removeExpiredGoodsOnShip
+[14]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:32 expiration_time:30 dd:0 portID: 1, 
+product_type:0 weight:228 expiration_time:30 dd:1 portID: 1, 
+product_type:3 weight:40 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[14]Nave:  viaggio per %f secondi...
+
+[15]Nave: cap = max
+
+[15]Nave: BEST QUANTITY: 160
+[15]Nave: controllo se ha senso continuare
+
+[15]Nave: prima di removeExpiredGoodsOnShip
+[15]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:12
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[15]Nave: dopo di removeExpiredGoodsOnShip
+[15]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:12
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[15]Nave: finito di chiamare i porti
+
+[15]Nave: sto per fare CHOOSE QUANTITY
+
+[15]Nave: cap = max
+
+[15]Nave: BEST QUANTITY: 155
+[15]Nave: controllo se ha senso continuare
+
+[15]Nave: prima di removeExpiredGoodsOnShip
+[15]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:12
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[15]Nave: dopo di removeExpiredGoodsOnShip
+[15]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:12
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[15]Nave: finito di chiamare i porti
+
+[15]Nave:  ho scelto il porto
+[15]Nave: avvisato chi non è stato scelto
+[15]Nave: Sono partita...
+
+[17]Nave: finito di chiamare i porti
+
+[17]Nave:  ho scelto il porto
+[17]Nave: avvisato chi non è stato scelto
+[17]Nave: Sono partita...
+
+[7]Nave: prima add
+[7]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[7]Nave: finita accessPortToCharge
+[7]Nave: sto per fare CHOOSE QUANTITY
+
+[7]Nave: cap = aviableCap
+
+[7]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[7]Nave: BEST QUANTITY: 11
+[7]Nave: controllo se ha senso continuare
+
+[7]Nave: prima di removeExpiredGoodsOnShip
+[7]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[7]Nave: dopo di removeExpiredGoodsOnShip
+[7]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[7]Nave: finito di chiamare i porti
+
+[7]Nave:  ho scelto il porto
+[7]Nave: avvisato chi non è stato scelto
+[7]Nave: Sono partita...
+
+[18]Nave: fatta travel
+[19]Nave: fatta travel
+[9]Nave: prima add
+[9]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[9]Nave: finita accessPortToCharge
+[9]Nave: sto per fare CHOOSE QUANTITY
+
+[9]Nave: cap = aviableCap
+
+[9]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:275
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:275 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[9]Nave: BEST QUANTITY: 25
+[9]Nave: controllo se ha senso continuare
+
+[9]Nave: prima di removeExpiredGoodsOnShip
+[9]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:275
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:275 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[9]Nave: dopo di removeExpiredGoodsOnShip
+[9]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:275
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:275 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[9]Nave: finito di chiamare i porti
+
+[9]Nave:  ho scelto il porto
+[9]Nave: avvisato chi non è stato scelto
+[9]Nave: Sono partita...
+
+[12]Nave: prima add
+[12]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[12]Nave: finita accessPortToCharge
+[12]Nave: sto per fare CHOOSE QUANTITY
+
+[12]Nave: cap = max
+
+[12]Nave: BEST QUANTITY: 61
+[12]Nave: controllo se ha senso continuare
+
+[12]Nave: prima di removeExpiredGoodsOnShip
+[12]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:99
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:99 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[12]Nave: dopo di removeExpiredGoodsOnShip
+[12]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:99
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:99 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[12]Nave: finito di chiamare i porti
+
+[12]Nave:  ho scelto il porto
+[12]Nave: avvisato chi non è stato scelto
+[12]Nave: Sono partita...
+
+[12]Nave: fatta travel
+[10]Nave: prima add
+[10]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[10]Nave: finita accessPortToCharge
+[10]Nave: sto per fare CHOOSE QUANTITY
+
+[10]Nave: cap = max
+
+[10]Nave: BEST QUANTITY: 26
+[10]Nave: controllo se ha senso continuare
+
+[10]Nave: prima di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:56
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:56 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[10]Nave: dopo di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:56
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:56 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[10]Nave: finito di chiamare i porti
+
+[10]Nave:  ho scelto il porto
+[10]Nave: avvisato chi non è stato scelto
+[10]Nave: Sono partita...
+
+[10]Nave: fatta travel
+[10]Nave: prima add
+[10]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:56
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:56 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[10]Nave: finita accessPortToCharge
+[10]Nave: sto per fare CHOOSE QUANTITY
+
+[10]Nave: cap = max
+
+[10]Nave: BEST QUANTITY: 20
+[10]Nave: controllo se ha senso continuare
+
+[10]Nave: prima di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:82
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:56 expiration_time:30 dd:0 portID: 1, 
+product_type:2 weight:26 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[10]Nave: dopo di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:82
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:56 expiration_time:30 dd:0 portID: 1, 
+product_type:2 weight:26 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[10]Nave: finito di chiamare i porti
+
+[10]Nave:  ho scelto il porto
+[10]Nave: avvisato chi non è stato scelto
+[10]Nave: Sono partita...
+
+[4]Nave: fatta travel
+[2]Nave: fatta travel
+[16]Nave: fatta travel
+[1]Nave: fatta travel
+[6]Nave: fatta travel
+[14]Nave: viaggio finito...
+
+[14]Nave: prima di deliverProduct
+[14]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:32 expiration_time:30 dd:0 portID: 1, 
+product_type:0 weight:228 expiration_time:30 dd:1 portID: 1, 
+product_type:3 weight:40 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[14]Nave: dopo delierProdut
+[14]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:260
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:32 expiration_time:30 dd:0 portID: 1, 
+product_type:0 weight:228 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[14]Nave: prima di deliverProduct
+[14]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:260
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:32 expiration_time:30 dd:0 portID: 1, 
+product_type:0 weight:228 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[14]Nave: dopo delierProdut
+[14]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:228
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:228 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[14]Nave: prima di deliverProduct
+[14]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:228
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:228 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[14]Nave: dopo delierProdut
+[14]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: sto per fare CHOOSE QUANTITY
+
+[14]Nave: cap = aviableCap
+
+[14]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: BEST QUANTITY: 300
+[14]Nave: controllo se ha senso continuare
+
+[14]Nave: prima di removeExpiredGoodsOnShip
+[14]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: dopo di removeExpiredGoodsOnShip
+[14]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: finito di chiamare i porti
+
+[14]Nave:  ho scelto il porto
+[14]Nave: avvisato chi non è stato scelto
+[14]Nave: Sono partita...
+
+[14]Nave: fatta travel
+[17]Nave: fatta travel
+[17]Nave: prima add
+[17]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:28
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:28 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[17]Nave: finita accessPortToCharge
+[17]Nave: sto per fare CHOOSE QUANTITY
+
+[17]Nave: cap = aviableCap
+
+[17]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:188
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:28 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:160 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[17]Nave: BEST QUANTITY: 112
+[17]Nave: controllo se ha senso continuare
+
+[17]Nave: prima di removeExpiredGoodsOnShip
+[17]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:188
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:28 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:160 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[17]Nave: dopo di removeExpiredGoodsOnShip
+[17]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:188
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:28 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:160 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[17]Nave: finito di chiamare i porti
+
+[17]Nave:  ho scelto il porto
+[17]Nave: avvisato chi non è stato scelto
+[17]Nave: Sono partita...
+
+[9]Nave: fatta travel
+[15]Nave: fatta travel
+[15]Nave: prima add
+[15]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:12
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[15]Nave: finita accessPortToCharge
+[15]Nave: sto per fare CHOOSE QUANTITY
+
+[15]Nave: cap = aviableCap
+
+[15]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:167
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+product_type:2 weight:155 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[15]Nave: BEST QUANTITY: 133
+[15]Nave: controllo se ha senso continuare
+
+[15]Nave: prima di removeExpiredGoodsOnShip
+[15]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:167
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+product_type:2 weight:155 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[15]Nave: dopo di removeExpiredGoodsOnShip
+[15]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:167
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+product_type:2 weight:155 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[15]Nave: finito di chiamare i porti
+
+[15]Nave:  ho scelto il porto
+[15]Nave: avvisato chi non è stato scelto
+[15]Nave: Sono partita...
+
+[10]Nave: fatta travel
+[10]Nave: prima add
+[10]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:82
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:56 expiration_time:30 dd:0 portID: 1, 
+product_type:2 weight:26 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[10]Nave: finita accessPortToCharge
+[10]Nave: sto per fare CHOOSE QUANTITY
+
+[10]Nave: cap = aviableCap
+
+[10]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:102
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:56 expiration_time:30 dd:0 portID: 1, 
+product_type:2 weight:26 expiration_time:30 dd:1 portID: 1, 
+product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[10]Nave: BEST QUANTITY: 198
+[10]Nave: controllo se ha senso continuare
+
+[10]Nave: prima di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:102
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:56 expiration_time:30 dd:0 portID: 1, 
+product_type:2 weight:26 expiration_time:30 dd:1 portID: 1, 
+product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[10]Nave: dopo di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:102
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:56 expiration_time:30 dd:0 portID: 1, 
+product_type:2 weight:26 expiration_time:30 dd:1 portID: 1, 
+product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[10]Nave: finito di chiamare i porti
+
+[10]Nave:  ho scelto il porto
+[10]Nave: avvisato chi non è stato scelto
+[10]Nave: Sono partita...
+
+[8]Nave: prima add
+[8]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[8]Nave: finita accessPortToCharge
+[5]Nave: prima add
+[5]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[5]Nave: finita accessPortToCharge
+[8]Nave: sto per fare CHOOSE QUANTITY
+
+[5]Nave: sto per fare CHOOSE QUANTITY
+
+[8]Nave: cap = aviableCap
+
+[8]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:300 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[8]Nave: BEST QUANTITY: 0
+[8]Nave: controllo se ha senso continuare
+
+[8]Nave: prima di removeExpiredGoodsOnShip
+[8]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:300 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[8]Nave: dopo di removeExpiredGoodsOnShip
+[8]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:300 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[8]Nave:  viaggio per %f secondi...
+
+[5]Nave: cap = aviableCap
+
+[5]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[5]Nave: BEST QUANTITY: 0
+[5]Nave: controllo se ha senso continuare
+
+[5]Nave: prima di removeExpiredGoodsOnShip
+[5]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[5]Nave: dopo di removeExpiredGoodsOnShip
+[5]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[5]Nave:  viaggio per %f secondi...
+
+[13]Nave: prima add
+[13]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[13]Nave: finita accessPortToCharge
+[13]Nave: sto per fare CHOOSE QUANTITY
+
+[13]Nave: cap = aviableCap
+
+[11]Nave: prima add
+[11]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[13]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[13]Nave: BEST QUANTITY: 0
+[11]Nave: finita accessPortToCharge
 [0]Nave: prima add
 [0]: Nave
 coords: [x:10.000000, y:0.000000]
-ton trasportati:295
-valore di storm: 1
+ton trasportati:0
+valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
- ]
+[  ]
 ______________________________________________
 [0]Nave: finita accessPortToCharge
+[11]Nave: sto per fare CHOOSE QUANTITY
+
+[13]Nave: controllo se ha senso continuare
+
+[13]Nave: prima di removeExpiredGoodsOnShip
+[13]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[13]Nave: dopo di removeExpiredGoodsOnShip
+[13]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[11]Nave: cap = aviableCap
+
+[11]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:300 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[11]Nave: BEST QUANTITY: 0
+[13]Nave:  viaggio per %f secondi...
+
+[11]Nave: controllo se ha senso continuare
+
+[11]Nave: prima di removeExpiredGoodsOnShip
+[11]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:300 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[11]Nave: dopo di removeExpiredGoodsOnShip
+[11]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:300 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[11]Nave:  viaggio per %f secondi...
+
 [0]Nave: sto per fare CHOOSE QUANTITY
 
 [0]Nave: cap = aviableCap
@@ -142,11 +3162,9 @@ ______________________________________________
 [0]: Nave
 coords: [x:10.000000, y:0.000000]
 ton trasportati:300
-valore di storm: 1
+valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
-product_type:4 weight:5 expiration_time:29 dd:2 portID: 1, 
+[ product_type:2 weight:300 expiration_time:30 dd:0 portID: 1, 
  ]
 ______________________________________________
 [0]Nave: BEST QUANTITY: 0
@@ -156,89 +3174,1265 @@ ______________________________________________
 [0]: Nave
 coords: [x:10.000000, y:0.000000]
 ton trasportati:300
-valore di storm: 1
+valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
-product_type:4 weight:5 expiration_time:29 dd:2 portID: 1, 
+[ product_type:2 weight:300 expiration_time:30 dd:0 portID: 1, 
  ]
 ______________________________________________
 [0]Nave: dopo di removeExpiredGoodsOnShip
 [0]: Nave
 coords: [x:10.000000, y:0.000000]
 ton trasportati:300
-valore di storm: 1
+valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
-product_type:4 weight:5 expiration_time:29 dd:2 portID: 1, 
+[ product_type:2 weight:300 expiration_time:30 dd:0 portID: 1, 
  ]
 ______________________________________________
 [0]Nave:  viaggio per %f secondi...
 
-[0]Nave: 🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️
-[%d]Nave: ho beccato una tempesta
-🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️
+[19]Nave: prima add
+[19]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: finita accessPortToCharge
+[19]Nave: sto per fare CHOOSE QUANTITY
 
+[19]Nave: cap = aviableCap
+
+[19]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:280
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:280 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[19]Nave: BEST QUANTITY: 20
+[19]Nave: controllo se ha senso continuare
+
+[19]Nave: prima di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:280
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:280 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[19]Nave: dopo di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:280
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:280 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[19]Nave: finito di chiamare i porti
+
+[19]Nave:  ho scelto il porto
+[19]Nave: avvisato chi non è stato scelto
+[19]Nave: Sono partita...
+
+[1]Nave: prima add
+[1]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: finita accessPortToCharge
+[1]Nave: sto per fare CHOOSE QUANTITY
+
+[1]Nave: cap = aviableCap
+
+[1]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:275
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:275 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[1]Nave: BEST QUANTITY: 25
+[1]Nave: controllo se ha senso continuare
+
+[1]Nave: prima di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:275
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:275 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[1]Nave: dopo di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:275
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:275 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[1]Nave: finito di chiamare i porti
+
+[1]Nave:  ho scelto il porto
+[1]Nave: avvisato chi non è stato scelto
+[1]Nave: Sono partita...
+
+[1]Nave: fatta travel
+[1]Nave: prima add
+[1]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:275
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:275 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[1]Nave: finita accessPortToCharge
+[1]Nave: sto per fare CHOOSE QUANTITY
+
+[1]Nave: cap = aviableCap
+
+[1]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:275 expiration_time:30 dd:1 portID: 0, 
+product_type:1 weight:25 expiration_time:30 dd:2 portID: 0, 
+ ]
+______________________________________________
+[1]Nave: BEST QUANTITY: 0
+[1]Nave: controllo se ha senso continuare
+
+[1]Nave: prima di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:275 expiration_time:30 dd:1 portID: 0, 
+product_type:1 weight:25 expiration_time:30 dd:2 portID: 0, 
+ ]
+______________________________________________
+[1]Nave: dopo di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:275 expiration_time:30 dd:1 portID: 0, 
+product_type:1 weight:25 expiration_time:30 dd:2 portID: 0, 
+ ]
+______________________________________________
+[1]Nave:  viaggio per %f secondi...
+
+[7]Nave: fatta travel
+[7]Nave: prima add
+[7]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[7]Nave: finita accessPortToCharge
+[7]Nave: sto per fare CHOOSE QUANTITY
+
+[7]Nave: cap = aviableCap
+
+[7]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+product_type:4 weight:11 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[7]Nave: BEST QUANTITY: 0
+[7]Nave: controllo se ha senso continuare
+
+[7]Nave: prima di removeExpiredGoodsOnShip
+[7]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+product_type:4 weight:11 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[7]Nave: dopo di removeExpiredGoodsOnShip
+[7]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+product_type:4 weight:11 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[7]Nave:  viaggio per %f secondi...
+
+[9]Nave: prima add
+[9]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:275
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:275 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[9]Nave: finita accessPortToCharge
+[9]Nave: sto per fare CHOOSE QUANTITY
+
+[9]Nave: cap = aviableCap
+
+[9]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:275 expiration_time:30 dd:0 portID: 2, 
+product_type:3 weight:25 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[9]Nave: BEST QUANTITY: 0
+[9]Nave: controllo se ha senso continuare
+
+[9]Nave: prima di removeExpiredGoodsOnShip
+[9]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:275 expiration_time:30 dd:0 portID: 2, 
+product_type:3 weight:25 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[9]Nave: dopo di removeExpiredGoodsOnShip
+[9]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:275 expiration_time:30 dd:0 portID: 2, 
+product_type:3 weight:25 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[9]Nave:  viaggio per %f secondi...
+
+[12]Nave: prima add
+[12]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:99
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:99 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[12]Nave: finita accessPortToCharge
+[12]Nave: sto per fare CHOOSE QUANTITY
+
+[12]Nave: cap = aviableCap
+
+[12]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:160
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:99 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:61 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[12]Nave: BEST QUANTITY: 140
+[12]Nave: controllo se ha senso continuare
+
+[12]Nave: prima di removeExpiredGoodsOnShip
+[12]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:160
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:99 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:61 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[12]Nave: dopo di removeExpiredGoodsOnShip
+[12]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:160
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:99 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:61 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[12]Nave: finito di chiamare i porti
+
+[12]Nave:  ho scelto il porto
+[12]Nave: avvisato chi non è stato scelto
+[12]Nave: Sono partita...
+
+[18]Nave: prima add
+[18]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: finita accessPortToCharge
+[18]Nave: sto per fare CHOOSE QUANTITY
+
+[18]Nave: cap = aviableCap
+
+[18]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:300 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[18]Nave: BEST QUANTITY: 0
+[18]Nave: controllo se ha senso continuare
+
+[18]Nave: prima di removeExpiredGoodsOnShip
+[18]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:300 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[18]Nave: dopo di removeExpiredGoodsOnShip
+[18]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:300 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[18]Nave:  viaggio per %f secondi...
+
+[3]Nave: prima add
+[3]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 1
+carico trasportato:
+[  ]
+______________________________________________
+[3]Nave: finita accessPortToCharge
+[3]Nave: sto per fare CHOOSE QUANTITY
+
+[3]Nave: cap = aviableCap
+
+[3]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 1
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[3]Nave: BEST QUANTITY: 0
+[3]Nave: controllo se ha senso continuare
+
+[3]Nave: prima di removeExpiredGoodsOnShip
+[3]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 1
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[3]Nave: dopo di removeExpiredGoodsOnShip
+[3]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 1
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[3]Nave:  viaggio per %f secondi...
+
+[2]Nave: prima add
+[4]Nave: prima add
+[4]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]Nave: finita accessPortToCharge
+[2]Nave: finita accessPortToCharge
+[4]Nave: sto per fare CHOOSE QUANTITY
+
+[2]Nave: sto per fare CHOOSE QUANTITY
+
+[4]Nave: cap = aviableCap
+
+[4]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[4]Nave: BEST QUANTITY: 0
+[2]Nave: cap = aviableCap
+
+[2]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:300 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[2]Nave: BEST QUANTITY: 0
+[4]Nave: controllo se ha senso continuare
+
+[4]Nave: prima di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[4]Nave: dopo di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[4]Nave:  viaggio per %f secondi...
+
+[2]Nave: controllo se ha senso continuare
+
+[2]Nave: prima di removeExpiredGoodsOnShip
+[2]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:300 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[2]Nave: dopo di removeExpiredGoodsOnShip
+[2]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:300 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[2]Nave:  viaggio per %f secondi...
+
+[15]Nave: fatta travel
+[17]Nave: fatta travel
+[10]Nave: fatta travel
+[10]Nave: prima add
+[10]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:102
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:56 expiration_time:30 dd:0 portID: 1, 
+product_type:2 weight:26 expiration_time:30 dd:1 portID: 1, 
+product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[10]Nave: finita accessPortToCharge
+[10]Nave: sto per fare CHOOSE QUANTITY
+
+[10]Nave: cap = aviableCap
+
+[10]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:56 expiration_time:30 dd:0 portID: 1, 
+product_type:2 weight:26 expiration_time:30 dd:1 portID: 1, 
+product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+product_type:2 weight:198 expiration_time:30 dd:2 portID: 1, 
+ ]
+______________________________________________
+[10]Nave: BEST QUANTITY: 0
+[10]Nave: controllo se ha senso continuare
+
+[10]Nave: prima di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:56 expiration_time:30 dd:0 portID: 1, 
+product_type:2 weight:26 expiration_time:30 dd:1 portID: 1, 
+product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+product_type:2 weight:198 expiration_time:30 dd:2 portID: 1, 
+ ]
+______________________________________________
+[10]Nave: dopo di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:56 expiration_time:30 dd:0 portID: 1, 
+product_type:2 weight:26 expiration_time:30 dd:1 portID: 1, 
+product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+product_type:2 weight:198 expiration_time:30 dd:2 portID: 1, 
+ ]
+______________________________________________
+[10]Nave:  viaggio per %f secondi...
+
+[16]Nave: prima add
+[16]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[16]Nave: finita accessPortToCharge
+[16]Nave: sto per fare CHOOSE QUANTITY
+
+[16]Nave: cap = aviableCap
+
+[16]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[16]Nave: BEST QUANTITY: 0
+[16]Nave: controllo se ha senso continuare
+
+[16]Nave: prima di removeExpiredGoodsOnShip
+[16]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[16]Nave: dopo di removeExpiredGoodsOnShip
+[16]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[16]Nave:  viaggio per %f secondi...
+
+[11]Nave: viaggio finito...
+
+[13]Nave: viaggio finito...
+
+[11]Nave: prima di deliverProduct
+[13]Nave: prima di deliverProduct
+[11]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:0 weight:300 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
 [0]Nave: viaggio finito...
 
 [0]Nave: prima di deliverProduct
+[13]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
 [0]: Nave
 coords: [x:0.000000, y:0.000000]
 ton trasportati:300
 valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
-product_type:4 weight:5 expiration_time:29 dd:2 portID: 1, 
+[ product_type:2 weight:300 expiration_time:30 dd:0 portID: 1, 
  ]
+______________________________________________
+[19]Nave: fatta travel
+[19]Nave: prima add
+[19]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:280
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:280 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[19]Nave: finita accessPortToCharge
+[19]Nave: sto per fare CHOOSE QUANTITY
+
+[19]Nave: cap = aviableCap
+
+[19]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:280 expiration_time:30 dd:1 portID: 1, 
+product_type:1 weight:20 expiration_time:30 dd:2 portID: 0, 
+ ]
+______________________________________________
+[19]Nave: BEST QUANTITY: 0
+[19]Nave: controllo se ha senso continuare
+
+[19]Nave: prima di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:280 expiration_time:30 dd:1 portID: 1, 
+product_type:1 weight:20 expiration_time:30 dd:2 portID: 0, 
+ ]
+______________________________________________
+[19]Nave: dopo di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:280 expiration_time:30 dd:1 portID: 1, 
+product_type:1 weight:20 expiration_time:30 dd:2 portID: 0, 
+ ]
+______________________________________________
+[19]Nave:  viaggio per %f secondi...
+
+[14]Nave: prima add
+[14]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: finita accessPortToCharge
+[14]Nave: sto per fare CHOOSE QUANTITY
+
+[14]Nave: cap = aviableCap
+
+[14]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:30 dd:2 portID: 0, 
+ ]
+______________________________________________
+[14]Nave: BEST QUANTITY: 0
+[14]Nave: controllo se ha senso continuare
+
+[14]Nave: prima di removeExpiredGoodsOnShip
+[14]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:30 dd:2 portID: 0, 
+ ]
+______________________________________________
+[14]Nave: dopo di removeExpiredGoodsOnShip
+[14]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:30 dd:2 portID: 0, 
+ ]
+______________________________________________
+[14]Nave:  viaggio per %f secondi...
+
+[9]Nave: viaggio finito...
+
+[9]Nave: prima di deliverProduct
+[9]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:275 expiration_time:30 dd:0 portID: 2, 
+product_type:3 weight:25 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[9]Nave: dopo delierProdut
+[9]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:275
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:275 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[9]Nave: prima di deliverProduct
+[9]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:275
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:275 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[8]Nave: viaggio finito...
+
+[8]Nave: prima di deliverProduct
+[8]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:300 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[5]Nave: viaggio finito...
+
+[5]Nave: prima di deliverProduct
+[5]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[1]Nave: viaggio finito...
+
+[1]Nave: prima di deliverProduct
+[1]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:275 expiration_time:30 dd:1 portID: 0, 
+product_type:1 weight:25 expiration_time:30 dd:2 portID: 0, 
+ ]
+______________________________________________
+[1]Nave: dopo delierProdut
+[1]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:275
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:275 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[1]Nave: prima di deliverProduct
+[1]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:275
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:275 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[12]Nave: fatta travel
+[18]Nave: viaggio finito...
+
+[18]Nave: prima di deliverProduct
+[18]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:300 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[3]Nave: 🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️
+[%d]Nave: ho beccato una tempesta
+🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️
+
+[7]Nave: viaggio finito...
+
+[7]Nave: prima di deliverProduct
+[7]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+product_type:4 weight:11 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[7]Nave: dopo delierProdut
+[7]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[7]Nave: sto per fare CHOOSE QUANTITY
+
+[7]Nave: cap = aviableCap
+
+[7]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[7]Nave: BEST QUANTITY: 11
+[7]Nave: controllo se ha senso continuare
+
+[7]Nave: prima di removeExpiredGoodsOnShip
+[7]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[7]Nave: dopo di removeExpiredGoodsOnShip
+[7]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[7]Nave: finito di chiamare i porti
+
+[7]Nave:  ho scelto il porto
+[7]Nave: avvisato chi non è stato scelto
+[7]Nave: Sono partita...
+
+[6]Nave: prima add
+[6]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:153
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:153 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[6]Nave: finita accessPortToCharge
+[6]Nave: sto per fare CHOOSE QUANTITY
+
+[6]Nave: cap = aviableCap
+
+[6]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:153 expiration_time:30 dd:0 portID: 0, 
+product_type:3 weight:147 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[6]Nave: BEST QUANTITY: 0
+[6]Nave: controllo se ha senso continuare
+
+[6]Nave: prima di removeExpiredGoodsOnShip
+[6]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:153 expiration_time:30 dd:0 portID: 0, 
+product_type:3 weight:147 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[6]Nave: dopo di removeExpiredGoodsOnShip
+[6]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:153 expiration_time:30 dd:0 portID: 0, 
+product_type:3 weight:147 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[6]Nave:  viaggio per %f secondi...
+
+[10]Nave: viaggio finito...
+
+[10]Nave: prima di deliverProduct
+[10]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:56 expiration_time:30 dd:0 portID: 1, 
+product_type:2 weight:26 expiration_time:30 dd:1 portID: 1, 
+product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+product_type:2 weight:198 expiration_time:30 dd:2 portID: 1, 
+ ]
+______________________________________________
+[10]Nave: dopo delierProdut
+[10]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:102
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:56 expiration_time:30 dd:0 portID: 1, 
+product_type:2 weight:26 expiration_time:30 dd:1 portID: 1, 
+product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[10]Nave: prima di deliverProduct
+[10]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:102
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:56 expiration_time:30 dd:0 portID: 1, 
+product_type:2 weight:26 expiration_time:30 dd:1 portID: 1, 
+product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[3]Nave: viaggio finito...
+
+[3]Nave: prima di deliverProduct
+[3]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[9]Nave: dopo delierProdut
+[9]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[9]Nave: sto per fare CHOOSE QUANTITY
+
+[9]Nave: cap = aviableCap
+
+[9]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[9]Nave: BEST QUANTITY: 300
+[9]Nave: controllo se ha senso continuare
+
+[9]Nave: prima di removeExpiredGoodsOnShip
+[9]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[9]Nave: dopo di removeExpiredGoodsOnShip
+[9]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[9]Nave: finito di chiamare i porti
+
+[9]Nave:  ho scelto il porto
+[9]Nave: avvisato chi non è stato scelto
+[9]Nave: Sono partita...
+
+[2]Nave: viaggio finito...
+
+[4]Nave: viaggio finito...
+
+[4]Nave: prima di deliverProduct
+[4]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[2]Nave: prima di deliverProduct
+[2]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:300 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[1]Nave: dopo delierProdut
+[1]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: sto per fare CHOOSE QUANTITY
+
+[1]Nave: cap = aviableCap
+
+[1]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: BEST QUANTITY: 300
+[1]Nave: controllo se ha senso continuare
+
+[1]Nave: prima di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: dopo di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: finito di chiamare i porti
+
+[1]Nave:  ho scelto il porto
+[1]Nave: avvisato chi non è stato scelto
+[1]Nave: Sono partita...
+
+[1]Nave: fatta travel
+[16]Nave: viaggio finito...
+
+[16]Nave: prima di deliverProduct
+[16]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[19]Nave: viaggio finito...
+
+[19]Nave: prima di deliverProduct
+[19]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:280 expiration_time:30 dd:1 portID: 1, 
+product_type:1 weight:20 expiration_time:30 dd:2 portID: 0, 
+ ]
+______________________________________________
+[19]Nave: dopo delierProdut
+[19]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:280
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:280 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[19]Nave: prima di deliverProduct
+[19]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:280
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:280 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[14]Nave: viaggio finito...
+
+[14]Nave: prima di deliverProduct
+[14]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:30 dd:2 portID: 0, 
+ ]
+______________________________________________
+[7]Nave: fatta travel
+[11]Nave: dopo delierProdut
+[11]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[13]Nave: dopo delierProdut
+[13]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
 ______________________________________________
 [0]Nave: dopo delierProdut
 [0]: Nave
 coords: [x:0.000000, y:0.000000]
-ton trasportati:295
+ton trasportati:0
 valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
- ]
+[  ]
 ______________________________________________
+[11]Nave: sto per fare CHOOSE QUANTITY
+
+[13]Nave: sto per fare CHOOSE QUANTITY
+
 [0]Nave: sto per fare CHOOSE QUANTITY
 
+[11]Nave: cap = aviableCap
+
+[11]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[11]Nave: BEST QUANTITY: 300
+[13]Nave: cap = aviableCap
+
+[13]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[13]Nave: BEST QUANTITY: 300
 [0]Nave: cap = aviableCap
 
 [0]: Nave
 coords: [x:0.000000, y:0.000000]
-ton trasportati:295
+ton trasportati:0
 valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
- ]
+[  ]
 ______________________________________________
-[0]Nave: BEST QUANTITY: 5
+[0]Nave: BEST QUANTITY: 300
+[11]Nave: controllo se ha senso continuare
+
+[11]Nave: prima di removeExpiredGoodsOnShip
+[11]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[11]Nave: dopo di removeExpiredGoodsOnShip
+[11]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[13]Nave: controllo se ha senso continuare
+
+[13]Nave: prima di removeExpiredGoodsOnShip
+[13]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[13]Nave: dopo di removeExpiredGoodsOnShip
+[13]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
 [0]Nave: controllo se ha senso continuare
 
 [0]Nave: prima di removeExpiredGoodsOnShip
 [0]: Nave
 coords: [x:0.000000, y:0.000000]
-ton trasportati:295
+ton trasportati:0
 valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
- ]
+[  ]
 ______________________________________________
 [0]Nave: dopo di removeExpiredGoodsOnShip
 [0]: Nave
 coords: [x:0.000000, y:0.000000]
-ton trasportati:295
+ton trasportati:0
 valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
- ]
+[  ]
 ______________________________________________
+[11]Nave: finito di chiamare i porti
+
+[11]Nave:  ho scelto il porto
+[11]Nave: avvisato chi non è stato scelto
+[11]Nave: Sono partita...
+
+[11]Nave: fatta travel
+[13]Nave: finito di chiamare i porti
+
+[13]Nave:  ho scelto il porto
+[13]Nave: avvisato chi non è stato scelto
+[13]Nave: Sono partita...
+
 [0]Nave: finito di chiamare i porti
 
 [0]Nave:  ho scelto il porto
@@ -246,15 +4440,922 @@ ______________________________________________
 [0]Nave: Sono partita...
 
 [0]Nave: fatta travel
+[17]Nave: prima add
+[17]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:188
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:28 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:160 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[17]Nave: finita accessPortToCharge
+[17]Nave: sto per fare CHOOSE QUANTITY
+
+[17]Nave: cap = aviableCap
+
+[17]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:28 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:160 expiration_time:30 dd:1 portID: 2, 
+product_type:1 weight:112 expiration_time:30 dd:2 portID: 0, 
+ ]
+______________________________________________
+[17]Nave: BEST QUANTITY: 0
+[17]Nave: controllo se ha senso continuare
+
+[17]Nave: prima di removeExpiredGoodsOnShip
+[17]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:28 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:160 expiration_time:30 dd:1 portID: 2, 
+product_type:1 weight:112 expiration_time:30 dd:2 portID: 0, 
+ ]
+______________________________________________
+[17]Nave: dopo di removeExpiredGoodsOnShip
+[17]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:28 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:160 expiration_time:30 dd:1 portID: 2, 
+product_type:1 weight:112 expiration_time:30 dd:2 portID: 0, 
+ ]
+______________________________________________
+[17]Nave:  viaggio per %f secondi...
+
+[6]Nave: viaggio finito...
+
+[6]Nave: prima di deliverProduct
+[6]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:153 expiration_time:30 dd:0 portID: 0, 
+product_type:3 weight:147 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[10]Nave: dopo delierProdut
+[10]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:46
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:26 expiration_time:30 dd:1 portID: 1, 
+product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[10]Nave: prima di deliverProduct
+[10]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:46
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:26 expiration_time:30 dd:1 portID: 1, 
+product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[10]Nave: dopo delierProdut
+[10]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:20
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[10]Nave: sto per fare CHOOSE QUANTITY
+
+[10]Nave: cap = aviableCap
+
+[10]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:20
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[10]Nave: BEST QUANTITY: 280
+[10]Nave: controllo se ha senso continuare
+
+[10]Nave: prima di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:20
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[10]Nave: dopo di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:20
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[10]Nave: finito di chiamare i porti
+
+[10]Nave:  ho scelto il porto
+[10]Nave: avvisato chi non è stato scelto
+[10]Nave: Sono partita...
+
+[10]Nave: fatta travel
+[5]Nave: dopo delierProdut
+[8]Nave: dopo delierProdut
+[5]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[8]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[5]Nave: sto per fare CHOOSE QUANTITY
+
+[7]Nave: prima add
+[8]Nave: sto per fare CHOOSE QUANTITY
+
+[7]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[7]Nave: finita accessPortToCharge
+[7]Nave: sto per fare CHOOSE QUANTITY
+
+[5]Nave: cap = aviableCap
+
+[5]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[5]Nave: BEST QUANTITY: 300
+[8]Nave: cap = aviableCap
+
+[8]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[8]Nave: BEST QUANTITY: 300
+[5]Nave: controllo se ha senso continuare
+
+[5]Nave: prima di removeExpiredGoodsOnShip
+[5]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[5]Nave: dopo di removeExpiredGoodsOnShip
+[5]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[8]Nave: controllo se ha senso continuare
+
+[8]Nave: prima di removeExpiredGoodsOnShip
+[8]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[8]Nave: dopo di removeExpiredGoodsOnShip
+[8]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[7]Nave: cap = aviableCap
+
+[7]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+product_type:4 weight:11 expiration_time:29 dd:3 portID: 1, 
+ ]
+______________________________________________
+[7]Nave: BEST QUANTITY: 0
+[7]Nave: controllo se ha senso continuare
+
+[7]Nave: prima di removeExpiredGoodsOnShip
+[7]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+product_type:4 weight:11 expiration_time:29 dd:3 portID: 1, 
+ ]
+______________________________________________
+[7]Nave: dopo di removeExpiredGoodsOnShip
+[7]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+product_type:4 weight:11 expiration_time:29 dd:3 portID: 1, 
+ ]
+______________________________________________
+[7]Nave:  viaggio per %f secondi...
+
+[5]Nave: finito di chiamare i porti
+
+[5]Nave:  ho scelto il porto
+[5]Nave: avvisato chi non è stato scelto
+[5]Nave: Sono partita...
+
+[8]Nave: finito di chiamare i porti
+
+[8]Nave:  ho scelto il porto
+[8]Nave: avvisato chi non è stato scelto
+[8]Nave: Sono partita...
+
+[19]Nave: dopo delierProdut
+[19]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: sto per fare CHOOSE QUANTITY
+
+[19]Nave: cap = aviableCap
+
+[19]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: BEST QUANTITY: 300
+[19]Nave: controllo se ha senso continuare
+
+[19]Nave: prima di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: dopo di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: finito di chiamare i porti
+
+[19]Nave:  ho scelto il porto
+[19]Nave: avvisato chi non è stato scelto
+[19]Nave: Sono partita...
+
+[18]Nave: dopo delierProdut
+[18]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: sto per fare CHOOSE QUANTITY
+
+[18]Nave: cap = aviableCap
+
+[18]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: BEST QUANTITY: 300
+[18]Nave: controllo se ha senso continuare
+
+[18]Nave: prima di removeExpiredGoodsOnShip
+[18]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: dopo di removeExpiredGoodsOnShip
+[18]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: finito di chiamare i porti
+
+[18]Nave:  ho scelto il porto
+[18]Nave: avvisato chi non è stato scelto
+[18]Nave: Sono partita...
+
+[18]Nave: fatta travel
+[15]Nave: prima add
+[15]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:167
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+product_type:2 weight:155 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[15]Nave: finita accessPortToCharge
+[15]Nave: sto per fare CHOOSE QUANTITY
+
+[15]Nave: cap = aviableCap
+
+[15]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+product_type:2 weight:155 expiration_time:30 dd:1 portID: 2, 
+product_type:3 weight:133 expiration_time:30 dd:2 portID: 1, 
+ ]
+______________________________________________
+[15]Nave: BEST QUANTITY: 0
+[15]Nave: controllo se ha senso continuare
+
+[15]Nave: prima di removeExpiredGoodsOnShip
+[15]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+product_type:2 weight:155 expiration_time:30 dd:1 portID: 2, 
+product_type:3 weight:133 expiration_time:30 dd:2 portID: 1, 
+ ]
+______________________________________________
+[15]Nave: dopo di removeExpiredGoodsOnShip
+[15]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+product_type:2 weight:155 expiration_time:30 dd:1 portID: 2, 
+product_type:3 weight:133 expiration_time:30 dd:2 portID: 1, 
+ ]
+______________________________________________
+[15]Nave:  viaggio per %f secondi...
+
+[9]Nave: fatta travel
+[12]Nave: prima add
+[12]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:160
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:99 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:61 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[12]Nave: finita accessPortToCharge
+[12]Nave: sto per fare CHOOSE QUANTITY
+
+[12]Nave: cap = aviableCap
+
+[12]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:99 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:61 expiration_time:30 dd:1 portID: 1, 
+product_type:2 weight:140 expiration_time:29 dd:2 portID: 2, 
+ ]
+______________________________________________
+[12]Nave: BEST QUANTITY: 0
+[12]Nave: controllo se ha senso continuare
+
+[12]Nave: prima di removeExpiredGoodsOnShip
+[12]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:99 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:61 expiration_time:30 dd:1 portID: 1, 
+product_type:2 weight:140 expiration_time:29 dd:2 portID: 2, 
+ ]
+______________________________________________
+[12]Nave: dopo di removeExpiredGoodsOnShip
+[12]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:99 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:61 expiration_time:30 dd:1 portID: 1, 
+product_type:2 weight:140 expiration_time:29 dd:2 portID: 2, 
+ ]
+______________________________________________
+[12]Nave:  viaggio per %f secondi...
+
+[10]Nave: prima add
+[10]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:20
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[10]Nave: finita accessPortToCharge
+[10]Nave: sto per fare CHOOSE QUANTITY
+
+[10]Nave: cap = aviableCap
+
+[10]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+product_type:4 weight:280 expiration_time:29 dd:4 portID: 0, 
+ ]
+______________________________________________
+[10]Nave: BEST QUANTITY: 0
+[10]Nave: controllo se ha senso continuare
+
+[10]Nave: prima di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+product_type:4 weight:280 expiration_time:29 dd:4 portID: 0, 
+ ]
+______________________________________________
+[10]Nave: dopo di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+product_type:4 weight:280 expiration_time:29 dd:4 portID: 0, 
+ ]
+______________________________________________
+[10]Nave:  viaggio per %f secondi...
+
+[3]Nave: dopo delierProdut
+[3]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 1
+carico trasportato:
+[  ]
+______________________________________________
+[3]Nave: sto per fare CHOOSE QUANTITY
+
+[3]Nave: cap = aviableCap
+
+[3]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 1
+carico trasportato:
+[  ]
+______________________________________________
+[3]Nave: BEST QUANTITY: 300
+[3]Nave: controllo se ha senso continuare
+
+[3]Nave: prima di removeExpiredGoodsOnShip
+[3]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 1
+carico trasportato:
+[  ]
+______________________________________________
+[3]Nave: dopo di removeExpiredGoodsOnShip
+[3]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 1
+carico trasportato:
+[  ]
+______________________________________________
+[3]Nave: finito di chiamare i porti
+
+[3]Nave:  ho scelto il porto
+[3]Nave: avvisato chi non è stato scelto
+[3]Nave: Sono partita...
+
+[2]Nave: dopo delierProdut
+[4]Nave: dopo delierProdut
+[2]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]Nave: sto per fare CHOOSE QUANTITY
+
+[4]Nave: sto per fare CHOOSE QUANTITY
+
+[2]Nave: cap = aviableCap
+
+[2]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]Nave: BEST QUANTITY: 300
+[2]Nave: controllo se ha senso continuare
+
+[2]Nave: prima di removeExpiredGoodsOnShip
+[4]Nave: cap = aviableCap
+
+[2]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]Nave: dopo di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]Nave: BEST QUANTITY: 300
+[2]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]Nave: controllo se ha senso continuare
+
+[4]Nave: prima di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]Nave: dopo di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]Nave: finito di chiamare i porti
+
+[2]Nave:  ho scelto il porto
+[2]Nave: avvisato chi non è stato scelto
+[2]Nave: Sono partita...
+
+[4]Nave: finito di chiamare i porti
+
+[4]Nave:  ho scelto il porto
+[4]Nave: avvisato chi non è stato scelto
+[4]Nave: Sono partita...
+
+[1]Nave: prima add
+[1]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: finita accessPortToCharge
+[1]Nave: sto per fare CHOOSE QUANTITY
+
+[1]Nave: cap = aviableCap
+
+[1]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:28 dd:2 portID: 2, 
+ ]
+______________________________________________
+[1]Nave: BEST QUANTITY: 0
+[1]Nave: controllo se ha senso continuare
+
+[1]Nave: prima di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:28 dd:2 portID: 2, 
+ ]
+______________________________________________
+[1]Nave: dopo di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:28 dd:2 portID: 2, 
+ ]
+______________________________________________
+[1]Nave:  viaggio per %f secondi...
+
+[7]Nave: viaggio finito...
+
+[7]Nave: prima di deliverProduct
+[7]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+product_type:4 weight:11 expiration_time:29 dd:3 portID: 1, 
+ ]
+______________________________________________
+[16]Nave: dopo delierProdut
+[16]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[5]Nave: fatta travel
+[7]Nave: dopo delierProdut
+[7]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[16]Nave: sto per fare CHOOSE QUANTITY
+
+[7]Nave: sto per fare CHOOSE QUANTITY
+
+[16]Nave: cap = aviableCap
+
+[16]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[16]Nave: BEST QUANTITY: 300
+[7]Nave: cap = aviableCap
+
+[7]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[7]Nave: BEST QUANTITY: 11
+[16]Nave: controllo se ha senso continuare
+
+[16]Nave: prima di removeExpiredGoodsOnShip
+[16]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[16]Nave: dopo di removeExpiredGoodsOnShip
+[16]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[7]Nave: controllo se ha senso continuare
+
+[7]Nave: prima di removeExpiredGoodsOnShip
+[7]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[7]Nave: dopo di removeExpiredGoodsOnShip
+[7]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[16]Nave: finito di chiamare i porti
+
+[16]Nave:  ho scelto il porto
+[16]Nave: avvisato chi non è stato scelto
+[16]Nave: Sono partita...
+
+[7]Nave: finito di chiamare i porti
+
+[7]Nave:  ho scelto il porto
+[7]Nave: avvisato chi non è stato scelto
+[7]Nave: Sono partita...
+
+[16]Nave: fatta travel
+[13]Nave: fatta travel
+[19]Nave: fatta travel
+[14]Nave: dopo delierProdut
+[14]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: sto per fare CHOOSE QUANTITY
+
+[14]Nave: cap = aviableCap
+
+[14]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: BEST QUANTITY: 300
+[14]Nave: controllo se ha senso continuare
+
+[14]Nave: prima di removeExpiredGoodsOnShip
+[14]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: dopo di removeExpiredGoodsOnShip
+[14]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: finito di chiamare i porti
+
+[14]Nave:  ho scelto il porto
+[14]Nave: avvisato chi non è stato scelto
+[14]Nave: Sono partita...
+
+[17]Nave: viaggio finito...
+
+[17]Nave: prima di deliverProduct
+[17]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:28 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:160 expiration_time:30 dd:1 portID: 2, 
+product_type:1 weight:112 expiration_time:30 dd:2 portID: 0, 
+ ]
+______________________________________________
+[15]Nave: viaggio finito...
+
+[15]Nave: prima di deliverProduct
+[15]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+product_type:2 weight:155 expiration_time:30 dd:1 portID: 2, 
+product_type:3 weight:133 expiration_time:30 dd:2 portID: 1, 
+ ]
+______________________________________________
+[11]Nave: prima add
+[11]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[11]Nave: finita accessPortToCharge
+[11]Nave: sto per fare CHOOSE QUANTITY
+
+[11]Nave: cap = aviableCap
+
+[11]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:28 dd:3 portID: 2, 
+ ]
+______________________________________________
+[11]Nave: BEST QUANTITY: 0
+[11]Nave: controllo se ha senso continuare
+
+[11]Nave: prima di removeExpiredGoodsOnShip
+[11]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:28 dd:3 portID: 2, 
+ ]
+______________________________________________
+[11]Nave: dopo di removeExpiredGoodsOnShip
+[11]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:28 dd:3 portID: 2, 
+ ]
+______________________________________________
+[11]Nave:  viaggio per %f secondi...
+
 [0]Nave: prima add
 [0]: Nave
 coords: [x:0.000000, y:0.000000]
-ton trasportati:295
+ton trasportati:0
 valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
- ]
+[  ]
 ______________________________________________
 [0]Nave: finita accessPortToCharge
 [0]Nave: sto per fare CHOOSE QUANTITY
@@ -266,9 +5367,7 @@ coords: [x:0.000000, y:0.000000]
 ton trasportati:300
 valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
-product_type:3 weight:5 expiration_time:29 dd:5 portID: 0, 
+[ product_type:1 weight:300 expiration_time:29 dd:4 portID: 0, 
  ]
 ______________________________________________
 [0]Nave: BEST QUANTITY: 0
@@ -280,9 +5379,7 @@ coords: [x:0.000000, y:0.000000]
 ton trasportati:300
 valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
-product_type:3 weight:5 expiration_time:29 dd:5 portID: 0, 
+[ product_type:1 weight:300 expiration_time:29 dd:4 portID: 0, 
  ]
 ______________________________________________
 [0]Nave: dopo di removeExpiredGoodsOnShip
@@ -291,17 +5388,186 @@ coords: [x:0.000000, y:0.000000]
 ton trasportati:300
 valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
-product_type:3 weight:5 expiration_time:29 dd:5 portID: 0, 
+[ product_type:1 weight:300 expiration_time:29 dd:4 portID: 0, 
  ]
 ______________________________________________
 [0]Nave:  viaggio per %f secondi...
 
-[0]Nave: 🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️
-[%d]Nave: ho beccato una tempesta
-🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️🌪️
+[8]Nave: fatta travel
+[4]Nave: fatta travel
+[12]Nave: viaggio finito...
 
+[12]Nave: prima di deliverProduct
+[12]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:99 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:61 expiration_time:30 dd:1 portID: 1, 
+product_type:2 weight:140 expiration_time:29 dd:2 portID: 2, 
+ ]
+______________________________________________
+[18]Nave: prima add
+[18]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: finita accessPortToCharge
+[18]Nave: sto per fare CHOOSE QUANTITY
+
+[18]Nave: cap = aviableCap
+
+[18]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:300 expiration_time:30 dd:5 portID: 0, 
+ ]
+______________________________________________
+[18]Nave: BEST QUANTITY: 0
+[18]Nave: controllo se ha senso continuare
+
+[18]Nave: prima di removeExpiredGoodsOnShip
+[18]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:300 expiration_time:30 dd:5 portID: 0, 
+ ]
+______________________________________________
+[18]Nave: dopo di removeExpiredGoodsOnShip
+[18]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:300 expiration_time:30 dd:5 portID: 0, 
+ ]
+______________________________________________
+[18]Nave:  viaggio per %f secondi...
+
+[6]Nave: dopo delierProdut
+[6]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:153
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:153 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[6]Nave: sto per fare CHOOSE QUANTITY
+
+[6]Nave: cap = aviableCap
+
+[6]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:153
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:153 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[6]Nave: BEST QUANTITY: 147
+[6]Nave: controllo se ha senso continuare
+
+[6]Nave: prima di removeExpiredGoodsOnShip
+[6]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:153
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:153 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[6]Nave: dopo di removeExpiredGoodsOnShip
+[6]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:153
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:153 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[6]Nave: finito di chiamare i porti
+
+[6]Nave:  ho scelto il porto
+[6]Nave: avvisato chi non è stato scelto
+[6]Nave: Sono partita...
+
+[10]Nave: viaggio finito...
+
+[10]Nave: prima di deliverProduct
+[10]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+product_type:4 weight:280 expiration_time:29 dd:4 portID: 0, 
+ ]
+______________________________________________
+[9]Nave: prima add
+[9]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[9]Nave: finita accessPortToCharge
+[9]Nave: sto per fare CHOOSE QUANTITY
+
+[9]Nave: cap = aviableCap
+
+[9]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:300 expiration_time:29 dd:3 portID: 2, 
+ ]
+______________________________________________
+[9]Nave: BEST QUANTITY: 0
+[9]Nave: controllo se ha senso continuare
+
+[9]Nave: prima di removeExpiredGoodsOnShip
+[9]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:300 expiration_time:29 dd:3 portID: 2, 
+ ]
+______________________________________________
+[9]Nave: dopo di removeExpiredGoodsOnShip
+[9]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:300 expiration_time:29 dd:3 portID: 2, 
+ ]
+______________________________________________
+[9]Nave:  viaggio per %f secondi...
+
+[2]Nave: fatta travel
+[1]Nave: viaggio finito...
+
+[1]Nave: prima di deliverProduct
+[1]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:28 dd:2 portID: 2, 
+ ]
+______________________________________________
 [0]Nave: viaggio finito...
 
 [0]Nave: prima di deliverProduct
@@ -310,28 +5576,1000 @@ coords: [x:10.000000, y:0.000000]
 ton trasportati:300
 valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
-product_type:3 weight:5 expiration_time:29 dd:5 portID: 0, 
+[ product_type:1 weight:300 expiration_time:29 dd:4 portID: 0, 
  ]
 ______________________________________________
+[7]Nave: fatta travel
+[7]Nave: prima add
+[7]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[7]Nave: finita accessPortToCharge
+[7]Nave: sto per fare CHOOSE QUANTITY
+
+[7]Nave: cap = aviableCap
+
+[7]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+product_type:1 weight:11 expiration_time:27 dd:3 portID: 0, 
+ ]
+______________________________________________
+[7]Nave: BEST QUANTITY: 0
+[7]Nave: controllo se ha senso continuare
+
+[7]Nave: prima di removeExpiredGoodsOnShip
+[7]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+product_type:1 weight:11 expiration_time:27 dd:3 portID: 0, 
+ ]
+______________________________________________
+[7]Nave: dopo di removeExpiredGoodsOnShip
+[7]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+product_type:1 weight:11 expiration_time:27 dd:3 portID: 0, 
+ ]
+______________________________________________
+[7]Nave:  viaggio per %f secondi...
+
+[3]Nave: fatta travel
+[14]Nave: fatta travel
+[10]Nave: dopo delierProdut
+[10]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:20
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[10]Nave: prima di deliverProduct
+[10]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:20
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:20 expiration_time:30 dd:1 portID: 0, 
+ ]
+______________________________________________
+[10]Nave: dopo delierProdut
+[10]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[10]Nave: sto per fare CHOOSE QUANTITY
+
+[10]Nave: cap = aviableCap
+
+[10]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[10]Nave: BEST QUANTITY: 300
+[10]Nave: controllo se ha senso continuare
+
+[10]Nave: prima di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[10]Nave: dopo di removeExpiredGoodsOnShip
+[10]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[10]Nave: finito di chiamare i porti
+
+[10]Nave:  ho scelto il porto
+[10]Nave: avvisato chi non è stato scelto
+[10]Nave: Sono partita...
+
+[16]Nave: prima add
+[16]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[11]Nave: viaggio finito...
+
+[11]Nave: prima di deliverProduct
+[11]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:28 dd:3 portID: 2, 
+ ]
+______________________________________________
+[16]Nave: finita accessPortToCharge
+[16]Nave: sto per fare CHOOSE QUANTITY
+
+[16]Nave: cap = aviableCap
+
+[16]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:300 expiration_time:29 dd:5 portID: 2, 
+ ]
+______________________________________________
+[16]Nave: BEST QUANTITY: 0
+[16]Nave: controllo se ha senso continuare
+
+[16]Nave: prima di removeExpiredGoodsOnShip
+[16]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:300 expiration_time:29 dd:5 portID: 2, 
+ ]
+______________________________________________
+[16]Nave: dopo di removeExpiredGoodsOnShip
+[16]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:300 expiration_time:29 dd:5 portID: 2, 
+ ]
+______________________________________________
+[13]Nave: prima add
+[13]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[16]Nave:  viaggio per %f secondi...
+
+[16]Nave:  non avrei abbastanza giorni per raggiungere il porto: %d, termino...
+
+[13]Nave: finita accessPortToCharge
+[13]Nave: sto per fare CHOOSE QUANTITY
+
+[13]Nave: cap = aviableCap
+
+[13]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:300 expiration_time:27 dd:2 portID: 2, 
+ ]
+______________________________________________
+[13]Nave: BEST QUANTITY: 0
+[13]Nave: controllo se ha senso continuare
+
+[13]Nave: prima di removeExpiredGoodsOnShip
+[13]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:300 expiration_time:27 dd:2 portID: 2, 
+ ]
+______________________________________________
+[13]Nave: dopo di removeExpiredGoodsOnShip
+[13]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:300 expiration_time:27 dd:2 portID: 2, 
+ ]
+______________________________________________
+[13]Nave:  viaggio per %f secondi...
+
+[13]Nave:  non avrei abbastanza giorni per raggiungere il porto: %d, termino...
+
+[6]Nave: fatta travel
+[8]Nave: prima add
+[8]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[8]Nave: finita accessPortToCharge
+[8]Nave: sto per fare CHOOSE QUANTITY
+
+[8]Nave: cap = aviableCap
+
+[8]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:28 dd:3 portID: 0, 
+ ]
+______________________________________________
+[8]Nave: BEST QUANTITY: 0
+[8]Nave: controllo se ha senso continuare
+
+[8]Nave: prima di removeExpiredGoodsOnShip
+[8]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:28 dd:3 portID: 0, 
+ ]
+______________________________________________
+[8]Nave: dopo di removeExpiredGoodsOnShip
+[8]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:28 dd:3 portID: 0, 
+ ]
+______________________________________________
+[8]Nave:  viaggio per %f secondi...
+
+[8]Nave:  non avrei abbastanza giorni per raggiungere il porto: %d, termino...
+
+[5]Nave: prima add
+[5]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[5]Nave: finita accessPortToCharge
+[17]Nave: dopo delierProdut
+[17]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:188
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:28 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:160 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[17]Nave: sto per fare CHOOSE QUANTITY
+
+[5]Nave: sto per fare CHOOSE QUANTITY
+
+[17]Nave: cap = aviableCap
+
+[17]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:188
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:28 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:160 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[17]Nave: BEST QUANTITY: 112
+[5]Nave: cap = aviableCap
+
+[5]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:29 dd:4 portID: 1, 
+ ]
+______________________________________________
+[5]Nave: BEST QUANTITY: 0
+[17]Nave: controllo se ha senso continuare
+
+[17]Nave: prima di removeExpiredGoodsOnShip
+[17]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:188
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:28 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:160 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[5]Nave: controllo se ha senso continuare
+
+[17]Nave: dopo di removeExpiredGoodsOnShip
+[17]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:188
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:28 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:160 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[5]Nave: prima di removeExpiredGoodsOnShip
+[5]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:29 dd:4 portID: 1, 
+ ]
+______________________________________________
+[5]Nave: dopo di removeExpiredGoodsOnShip
+[5]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:29 dd:4 portID: 1, 
+ ]
+______________________________________________
+[5]Nave:  viaggio per %f secondi...
+
+[18]Nave: viaggio finito...
+
+[18]Nave: prima di deliverProduct
+[18]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:300 expiration_time:30 dd:5 portID: 0, 
+ ]
+______________________________________________
+[17]Nave: finito di chiamare i porti
+
+[17]Nave:  ho scelto il porto
+[17]Nave: avvisato chi non è stato scelto
+[17]Nave: Sono partita...
+
+[19]Nave: prima add
+[19]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: finita accessPortToCharge
+[19]Nave: sto per fare CHOOSE QUANTITY
+
+[19]Nave: cap = aviableCap
+
+[19]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:28 dd:3 portID: 1, 
+ ]
+______________________________________________
+[19]Nave: BEST QUANTITY: 0
+[19]Nave: controllo se ha senso continuare
+
+[19]Nave: prima di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:28 dd:3 portID: 1, 
+ ]
+______________________________________________
+[19]Nave: dopo di removeExpiredGoodsOnShip
+[19]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:28 dd:3 portID: 1, 
+ ]
+______________________________________________
+[19]Nave:  viaggio per %f secondi...
+
+[15]Nave: dopo delierProdut
+[15]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:167
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+product_type:2 weight:155 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[15]Nave: prima di deliverProduct
+[15]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:167
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+product_type:2 weight:155 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[15]Nave: dopo delierProdut
+[15]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:12
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[15]Nave: sto per fare CHOOSE QUANTITY
+
+[15]Nave: cap = aviableCap
+
+[15]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:12
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[15]Nave: BEST QUANTITY: 288
+[15]Nave: controllo se ha senso continuare
+
+[15]Nave: prima di removeExpiredGoodsOnShip
+[15]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:12
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[15]Nave: dopo di removeExpiredGoodsOnShip
+[15]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:12
+valore di storm: 0
+carico trasportato:
+[ product_type:1 weight:12 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[15]Nave: finito di chiamare i porti
+
+[15]Nave:  ho scelto il porto
+[15]Nave: avvisato chi non è stato scelto
+[15]Nave: Sono partita...
+
+[7]Nave: viaggio finito...
+
+[7]Nave: prima di deliverProduct
+[7]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+product_type:1 weight:11 expiration_time:27 dd:3 portID: 0, 
+ ]
+______________________________________________
+[9]Nave: viaggio finito...
+
+[9]Nave: prima di deliverProduct
+[9]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:300 expiration_time:29 dd:3 portID: 2, 
+ ]
+______________________________________________
+[10]Nave: fatta travel
+[12]Nave: dopo delierProdut
+[12]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:160
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:99 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:61 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[12]Nave: prima di deliverProduct
+[12]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:160
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:99 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:61 expiration_time:30 dd:1 portID: 1, 
+ ]
+______________________________________________
+[2]Nave: prima add
+[2]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[2]Nave: finita accessPortToCharge
+[2]Nave: sto per fare CHOOSE QUANTITY
+
+[2]Nave: cap = aviableCap
+
+[2]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:29 dd:5 portID: 2, 
+ ]
+______________________________________________
+[2]Nave: BEST QUANTITY: 0
+[2]Nave: controllo se ha senso continuare
+
+[2]Nave: prima di removeExpiredGoodsOnShip
+[2]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:29 dd:5 portID: 2, 
+ ]
+______________________________________________
+[2]Nave: dopo di removeExpiredGoodsOnShip
+[2]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:300 expiration_time:29 dd:5 portID: 2, 
+ ]
+______________________________________________
+[2]Nave:  viaggio per %f secondi...
+
+[2]Nave:  non avrei abbastanza giorni per raggiungere il porto: %d, termino...
+
+[1]Nave: dopo delierProdut
+[1]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: sto per fare CHOOSE QUANTITY
+
+[1]Nave: cap = aviableCap
+
+[1]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: BEST QUANTITY: 300
+[1]Nave: controllo se ha senso continuare
+
+[1]Nave: prima di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: dopo di removeExpiredGoodsOnShip
+[1]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[1]Nave: finito di chiamare i porti
+
+[1]Nave:  ho scelto il porto
+[1]Nave: avvisato chi non è stato scelto
+[1]Nave: Sono partita...
+
+[4]Nave: prima add
+[4]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[4]Nave: finita accessPortToCharge
+[4]Nave: sto per fare CHOOSE QUANTITY
+
+[4]Nave: cap = aviableCap
+
+[4]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:29 dd:5 portID: 1, 
+ ]
+______________________________________________
+[4]Nave: BEST QUANTITY: 0
+[4]Nave: controllo se ha senso continuare
+
+[4]Nave: prima di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:29 dd:5 portID: 1, 
+ ]
+______________________________________________
+[4]Nave: dopo di removeExpiredGoodsOnShip
+[4]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:29 dd:5 portID: 1, 
+ ]
+______________________________________________
+[4]Nave:  viaggio per %f secondi...
+
+[4]Nave:  non avrei abbastanza giorni per raggiungere il porto: %d, termino...
+
+[7]Nave: dopo delierProdut
+[7]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[7]Nave: sto per fare CHOOSE QUANTITY
+
+[7]Nave: cap = aviableCap
+
+[7]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[7]Nave: BEST QUANTITY: 11
+[7]Nave: controllo se ha senso continuare
+
+[7]Nave: prima di removeExpiredGoodsOnShip
+[7]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[7]Nave: dopo di removeExpiredGoodsOnShip
+[7]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[7]Nave: finito di chiamare i porti
+
+[7]Nave:  ho scelto il porto
+[7]Nave: avvisato chi non è stato scelto
+[7]Nave: Sono partita...
+
+[7]Nave: fatta travel
+[7]Nave: prima add
+[7]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:289
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+ ]
+______________________________________________
+[7]Nave: finita accessPortToCharge
+[7]Nave: sto per fare CHOOSE QUANTITY
+
+[7]Nave: cap = aviableCap
+
+[7]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+product_type:0 weight:11 expiration_time:24 dd:3 portID: 1, 
+ ]
+______________________________________________
+[7]Nave: BEST QUANTITY: 0
+[7]Nave: controllo se ha senso continuare
+
+[7]Nave: prima di removeExpiredGoodsOnShip
+[7]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+product_type:0 weight:11 expiration_time:24 dd:3 portID: 1, 
+ ]
+______________________________________________
+[7]Nave: dopo di removeExpiredGoodsOnShip
+[7]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:3 weight:289 expiration_time:30 dd:0 portID: 2, 
+product_type:0 weight:11 expiration_time:24 dd:3 portID: 1, 
+ ]
+______________________________________________
+[7]Nave:  viaggio per %f secondi...
+
+[7]Nave:  non avrei abbastanza giorni per raggiungere il porto: %d, termino...
+
 [0]Nave: dopo delierProdut
 [0]: Nave
 coords: [x:10.000000, y:0.000000]
-ton trasportati:295
+ton trasportati:0
 valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
- ]
+[  ]
 ______________________________________________
-[0]Nave: prima di deliverProduct
+[0]Nave: sto per fare CHOOSE QUANTITY
+
+[0]Nave: cap = aviableCap
+
 [0]: Nave
 coords: [x:10.000000, y:0.000000]
-ton trasportati:295
+ton trasportati:0
 valore di storm: 0
 carico trasportato:
-[ product_type:3 weight:136 expiration_time:30 dd:0 portID: 0, 
-product_type:3 weight:159 expiration_time:29 dd:1 portID: 0, 
+[  ]
+______________________________________________
+[0]Nave: BEST QUANTITY: 300
+[0]Nave: controllo se ha senso continuare
+
+[0]Nave: prima di removeExpiredGoodsOnShip
+[0]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[0]Nave: dopo di removeExpiredGoodsOnShip
+[0]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[0]Nave: finito di chiamare i porti
+
+[0]Nave:  ho scelto il porto
+[0]Nave: avvisato chi non è stato scelto
+[0]Nave: Sono partita...
+
+[0]Nave: fatta travel
+[5]Nave: viaggio finito...
+
+[3]Nave: prima add
+[3]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 1
+carico trasportato:
+[  ]
+______________________________________________
+[5]Nave: prima di deliverProduct
+[5]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:29 dd:4 portID: 1, 
  ]
 ______________________________________________
+[3]Nave: finita accessPortToCharge
+[17]Nave: fatta travel
+[3]Nave: sto per fare CHOOSE QUANTITY
+
+[3]Nave: cap = aviableCap
+
+[3]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 1
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:29 dd:5 portID: 0, 
+ ]
+______________________________________________
+[3]Nave: BEST QUANTITY: 0
+[3]Nave: controllo se ha senso continuare
+
+[3]Nave: prima di removeExpiredGoodsOnShip
+[3]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 1
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:29 dd:5 portID: 0, 
+ ]
+______________________________________________
+[3]Nave: dopo di removeExpiredGoodsOnShip
+[3]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:300
+valore di storm: 1
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:29 dd:5 portID: 0, 
+ ]
+______________________________________________
+[3]Nave:  viaggio per %f secondi...
+
+[3]Nave:  non avrei abbastanza giorni per raggiungere il porto: %d, termino...
+
+[19]Nave: viaggio finito...
+
+[19]Nave: prima di deliverProduct
+[19]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:300
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:300 expiration_time:28 dd:3 portID: 1, 
+ ]
+______________________________________________
+[14]Nave: prima add
+[14]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[14]Nave: finita accessPortToCharge
+[14]Nave: il programma è terminato
+
+[11]Nave: dopo delierProdut
+[11]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[11]Nave: il programma è terminato
+
+[12]Nave: dopo delierProdut
+[12]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:99
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:99 expiration_time:30 dd:0 portID: 1, 
+ ]
+______________________________________________
+[12]Nave: il programma è terminato
+
+[6]Nave: prima add
+[6]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:153
+valore di storm: 0
+carico trasportato:
+[ product_type:4 weight:153 expiration_time:30 dd:0 portID: 0, 
+ ]
+______________________________________________
+[6]Nave: finita accessPortToCharge
+[6]Nave: il programma è terminato
+
+[18]Nave: dopo delierProdut
+[18]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[18]Nave: il programma è terminato
+
+[9]Nave: dopo delierProdut
+[9]: Nave
+coords: [x:0.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[9]Nave: il programma è terminato
+
+[10]Nave: prima add
+[10]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[10]Nave: finita accessPortToCharge
+[10]Nave: il programma è terminato
+
+[0]Nave: prima add
+[0]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[0]Nave: finita accessPortToCharge
+[0]Nave: il programma è terminato
+
+[5]Nave: dopo delierProdut
+[5]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[5]Nave: il programma è terminato
+
+[19]Nave: dopo delierProdut
+[19]: Nave
+coords: [x:10.000000, y:10.000000]
+ton trasportati:0
+valore di storm: 0
+carico trasportato:
+[  ]
+______________________________________________
+[19]Nave: il programma è terminato
+
+[17]Nave: prima add
+[17]: Nave
+coords: [x:10.000000, y:0.000000]
+ton trasportati:188
+valore di storm: 0
+carico trasportato:
+[ product_type:2 weight:28 expiration_time:30 dd:0 portID: 1, 
+product_type:3 weight:160 expiration_time:30 dd:1 portID: 2, 
+ ]
+______________________________________________
+[17]Nave: finita accessPortToCharge
+[17]Nave: il programma è terminato
+
