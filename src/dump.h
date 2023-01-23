@@ -20,6 +20,7 @@ typedef struct goodTypeInfo {                       /* struttura che contiene le
 
 typedef struct dumpArea {
   GoodTypeInfo types[SO_MERCI];
+  
   double expTimeVariance;
   double tempoScaricamentoTot;
 } DumpArea;
