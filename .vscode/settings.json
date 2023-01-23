@@ -47,7 +47,8 @@
     "optional": "c",
     "system_error": "c",
     "vector": "c",
-    "loadship.h": "c"
+    "loadship.h": "c",
+    "shm.h": "c"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

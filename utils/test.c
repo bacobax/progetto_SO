@@ -450,6 +450,15 @@ void constants() {
     printf("Variabile: %d\n", res);
 }
 
+void mallocTest() {
+    int* matrix = malloc(2 * 4 * sizeof(int));
+    for (int i = 0; i < 2;i++) {
+        for (int j = 0; j < 4; j++) {
+            matrix[i][j] = 2;
+        }
+    }
+    
+}
 
 int main(int argc, char const* argv[])
 {
@@ -500,6 +509,9 @@ int main(int argc, char const* argv[])
         break;
     case 10:
         constants();
+        break;
+    case 11:
+        mallocTest();
         break;
     default:
         break;

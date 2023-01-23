@@ -18,22 +18,28 @@ void fillExpirationTime(Supplies* S) {
     int so_min_vita;
     int so_days;
     int so_merci;
+    int* expTimes;
+    
     so_max_vita = SO_("MAX_VITA");
     so_min_vita = SO_("MIN_VITA");
     so_days = SO_("DAYS");
     so_merci = SO_("MERCI");
+
+    expTimes = (int*)getShmAddress(S->expirationTimesID, 0, errorHandler, "fillExpirationTime expTimes");
+    
     dumpShmID = useShm(DUMPSHMKEY, sizeof(DumpArea), errorHandler, "fillExpirationTime");
     dump = (DumpArea*)getShmAddress(dumpShmID, 0, errorHandler, "fillExpirationTime");
 
     media = ((double)(so_min_vita + so_max_vita)) / 2;
     for (i = 0; i < so_merci * so_days; i++) {
-        S->expirationTimes[i] = random_int(so_min_vita, so_max_vita);
-        dump->expTimeVariance += mod(((double)S->expirationTimes[i]) - media);
+        expTimes[i] = random_int(so_min_vita, so_max_vita);
+        dump->expTimeVariance += mod(((double)expTimes[i]) - media);
     }
+    shmDetach(expTimes, errorHandler, "fillExpirationTime expTimes");
     shmDetach(dump, errorHandler, "fillExpirationTime");
 }
 
-void fillMagazine(Supplies* S, int day, int* supplies) {
+void fillMagazine(int* magazine, int day, int* supplies) {
     int i;
     int dumpShmid;
     DumpArea* dump;
@@ -42,8 +48,8 @@ void fillMagazine(Supplies* S, int day, int* supplies) {
     int so_merci = SO_("MERCI");
     int so_loadspeed = SO_("LOADSPEED");
     for (i = 0; i < so_merci; i++) {
-        S->magazine[day][i] = supplies[i];
-        dump->tempoScaricamentoTot += ((double)(S->magazine[day][i])) / so_loadspeed;
+        setMagazineVal(magazine, day, i, supplies[i]);
+        dump->tempoScaricamentoTot += ((double)(supplies[i])) / so_loadspeed;
         addNotExpiredGood(supplies[i], i, PORT, 1, 0);
     }
     shmDetach(dump, errorHandler, "fillMagazine");
@@ -52,16 +58,22 @@ void fillMagazine(Supplies* S, int day, int* supplies) {
 
 
 int getExpirationTime(Supplies S, int tipoMerce, int giornoDistribuzione) {
+    int* expTimes;
+    int ret;
     int so_merci = SO_("MERCI");
-    return S.expirationTimes[(giornoDistribuzione * so_merci) + tipoMerce];
+    expTimes = (int*)getShmAddress(S.expirationTimesID, 0, errorHandler, "getExpirationTime");
+    ret = expTimes[(giornoDistribuzione * so_merci) + tipoMerce];
+    shmDetach(expTimes, errorHandler, "getExpirationTime");
+    return ret;
 }
 
 
-void printSupplies(Supplies s, FILE* stream) {
+void printSupplies(Supplies s, FILE* stream, int* magazine) {
     int i;
     int j;
     int so_days;
     int so_merci;
+    int* expTimes;
     so_days = SO_("DAYS");
     so_merci = SO_("MERCI");
     fprintf(stream, "SUPPLIES:\n");
@@ -69,17 +81,20 @@ void printSupplies(Supplies s, FILE* stream) {
         
         fprintf(stream,"GIORNO %d: [ ", i);
         for (j = 0; j < so_merci; j++) {
-            fprintf(stream,"%d, ", s.magazine[i][j]);
+            fprintf(stream,"%d, ", getMagazineVal(magazine,i,j));
         }
         fprintf(stream,"]\n");
     }
 
     fprintf(stream,"EXP TIMES:\n[");
-    
+
+
+    expTimes = (int*)getShmAddress(s.expirationTimesID, 0, errorHandler, "printSupplies");
     for (i = 0; i < so_days * so_merci; i++) {
-        fprintf(stream,"%d, ", s.expirationTimes[i]);
+        fprintf(stream,"%d, ", expTimes[i]);
     }
-    fprintf(stream,"]\n");
+    shmDetach(expTimes, errorHandler, "printSupplies expTimes");
+    fprintf(stream, "]\n");
     fprintf(stream,"--------------------------------------\n");
 
 }
@@ -89,28 +104,35 @@ void decrementExpTimes(Supplies* S, int day) {
     int i;
     int so_days;
     int so_merci;
+    int* expTimes = (int*)getShmAddress(S->expirationTimesID,0,errorHandler, "decrementExpTimes");
     so_days = SO_("DAYS");
     so_merci = SO_("MERCI");
     for (i = 0; i < so_merci * so_days; i++) {
-        if (i < so_merci * day && S->expirationTimes[i] > 0 ) {
-            S->expirationTimes[i] --;
+        if (i < so_merci * day && expTimes[i] > 0 ) {
+            expTimes[i] --;
         }
     }
+    shmDetach(expTimes, errorHandler, "decrementExpTimes");
 }
 
 
-void removeExpiredGoods(Supplies* S) {
+void removeExpiredGoods(Supplies* S, int* magazine) {
     int i;
     int so_merci;
     int so_days;
+    int* expTimes;
+    expTimes = (int*)getShmAddress(S->expirationTimesID, 0, errorHandler, "removeExpiredGoods");
+
     so_merci = SO_("MERCI");
     so_days = SO_("DAYS");
     for (i = 0; i < so_merci * so_days; i++) {
-        if (S->expirationTimes[i] == 0 && S->magazine[i / so_merci][i % so_merci] > 0) {
-            addExpiredGood(S->magazine[i / so_merci][i % so_merci], i % so_merci, PORT);
-            S->magazine[i / so_merci][i % so_merci] = 0;
+        
+        if (expTimes== 0 && getMagazineVal(magazine,i/so_merci,i%so_merci) > 0) {
+            addExpiredGood(getMagazineVal(magazine, i / so_merci, i % so_merci), i % so_merci, PORT);
+            setMagazineVal(magazine, i / so_merci, i % so_merci, 0);
         }
     }
+    shmDetach(expTimes, errorHandler, "removeExpiredGoods");
 }
 
 /*
@@ -120,7 +142,7 @@ void removeExpiredGoods(Supplies* S) {
     
 */
 
-int validSupply(Supplies s, int type){
+int validSupply(Supplies s, int type, int* magazine){
     /* ritorna true se c'è almeno un elemento maggiore di 0 in p.megazine[tutti i giorni][type]
         int magazine[SO_DAYS][SO_MERCI];
     */
@@ -128,9 +150,23 @@ int validSupply(Supplies s, int type){
     int j;
     int so_days = SO_("DAYS");
     for (i = 0; i < so_days; i++) {
-        if (s.magazine[i][type] > 0) {
+        if (getMagazineVal(magazine, i, type) > 0) {
             return 1;
         }
     }
     return 0;
+}
+
+
+int getMagazineVal(int* magazine, int day, int type) {
+    
+    return magazine[SO_("MERCI") * day + type];
+}
+
+void setMagazineVal(int* magazine, int day, int type, int v) {
+    magazine[SO_("MERCI") * day + type] = v;
+}
+
+void addMagazineVal(int* magazine, int day, int type, int v) {
+    magazine[SO_("MERCI") * day + type] += v;
 }

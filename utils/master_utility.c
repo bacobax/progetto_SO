@@ -149,12 +149,13 @@ void distruggiShmPorti(){
     int shmid;
     int i;
     int so_porti = SO_("PORTI");
-    /*
-for (i = 0; i < SO_("PORTI"); i++) {
-        shmid = useShm(ftok("./utils/port_utility.c", i), sizeof(struct port), errorHandler, "distruggiShmPorti");
-        removeShm(shmid , errorHandler, "distruggiShmPorti");
+    Port portArr = getPort(0);
+    for(i=0; i<so_porti; i++){
+        removeShm(portArr[i].requestsID, errorHandler, "distruggi shmd porti request");
+        removeShm(portArr[i].supplies.magazineID, errorHandler, "distruggi shmd porti magazine");
+        removeShm(portArr[i].supplies.expirationTimesID, errorHandler, "distruggi shmd porti expTimes");
     }
-    */
+    detachPort(portArr,0);
     removeShm(useShm(PSHMKEY, sizeof(struct port) * so_porti, errorHandler, "distruggiShmPorti"), errorHandler, "distruggiShmPorti");
     return;
 }
@@ -406,6 +407,7 @@ void refillPorts(int opt, int msgRefillerID, int quantitaAlGiorno, int giorno) {
 
 void childExpirePortCode(Port p, int day, int idx) {
     int rwExpTimesPortSemID;
+    int* magazine;
     int portBufferSemID;
     rwExpTimesPortSemID = useSem(WREXPTIMESSEM, errorHandler, "useSem rwExpTimesPortSemID in childExpirePortCode");
     portBufferSemID = useSem(RESPORTSBUFFERS, errorHandler, "useSem portBufferSemID in childExpirePortCode");
@@ -417,8 +419,9 @@ void childExpirePortCode(Port p, int day, int idx) {
     mutexPro(rwExpTimesPortSemID, idx, UNLOCK, errorHandler, "rwExpTimesPortSemID UNLOCK in childExpirePortCode");
 
     mutexPro(portBufferSemID, idx, LOCK, errorHandler, "portBufferSemID LOCK in childExpirePortCode");
-    
-    removeExpiredGoods(&p->supplies);
+    magazine = getMagazine(p);
+    removeExpiredGoods(&p->supplies, magazine);
+    shmDetach(magazine, errorHandler, "childExpirePortCode magazine");
     mutexPro(portBufferSemID, idx, UNLOCK, errorHandler, "portBufferSemID UNLOCK in childExpirePortCode");
     
 
