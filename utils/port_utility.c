@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <signal.h>
+#include <errno.h>
 #include <sys/ipc.h>
 #include <sys/wait.h>
 #include <time.h>
@@ -40,6 +41,9 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     int i;
     int j;
     int so_lato;
+    int key;
+    int reqShmID;
+    int* reqs;
     int so_merci = SO_("MERCI");
     int so_days = SO_("DAYS");
     so_lato = SO_("LATO");
@@ -59,12 +63,24 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
         può offrire perchè c'è già la domanda
 
     */
-
+    key = ftok("./utils/errorHandler.c", pIndex);
+    if (key == -1) {
+        throwError("errore nella key", "initPort");
+        exit(1);
+    }
+    reqShmID = createShm(key, so_merci * sizeof(int), errorHandler, "initPort");
+    if (reqShmID == EEXIST) {
+        throwError("shm già esistente", "initPort");
+        exit(1);
+    }
+    p->requestsID = reqShmID;
+    reqs = (int*)getShmAddress(p->requestsID, 0, errorHandler, "initPort");
+    printf("REQUESTS PORTO %d: %ld initPort\n" , pIndex, reqs);
     
     /*
         assegno la richiesta
     */
-    copyArray(p->requests, requests, length);
+    copyArray(reqs, requests, length);
     /*
         assegno la domanda usando la funzione d'appoggio
     */
@@ -87,7 +103,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     for (i = 0; i < so_merci; i++) {
         int c = rand() % 2;
         if (c == 1) {
-            p->requests[i] = 0;
+            reqs[i] = 0;
         }
     }
 
@@ -125,7 +141,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
     reservePrint(printPorto, p, pIndex);
     
     */
-
+    shmDetach(reqs, errorHandler, "initPort detach requests");
 
     return p;
 }
@@ -135,13 +151,15 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
 void printPorto(Port p, int idx, FILE* stream) {
 
     int i;
+    int* reqs;
     int so_merci = SO_("MERCI");
     fprintf(stream, "[%d]Risorse porto %d:\n", getpid(),idx);
-    fprintf(stream,"DOMANDE:\n");
+    fprintf(stream, "DOMANDE:\n");
+    reqs = getShmAddress(p->requestsID, 0, errorHandler, "print porto");
     for (i = 0; i < so_merci; i++) {
-        fprintf(stream,"%d, \n", p->requests[i]);
+        fprintf(stream,"%d, \n", reqs[i]);
     }
-
+    shmDetach(reqs, errorHandler, "print porto");
     printSupplies(p->supplies, stream);
 
     fprintf(stream,"coords:\n");
@@ -415,17 +433,20 @@ void launchCharger(void (*recvHandler)(long, char*), int idx) {
 }*/
 int checkRequests(Port p, int type, int quantity) {
     int diff;
-    int n = p->requests[type];
+    int* reqs;
+    reqs = getShmAddress(p->requestsID, 0, errorHandler, "chackrequets");
+    int n = reqs[type];
     if (n == 0) return -1;
-    if (quantity >= p->requests[type]) {
-        p->requests[type] = 0;
+    if (quantity >= reqs[type]) {
+        reqs[type] = 0;
     }
     else {
-        p->requests[type] -= quantity;
+        reqs[type] -= quantity;
     }
+    shmDetach(reqs, errorHandler, "chackrequets");
     return n;
 }
-
+/*
 int allRequestsZero(){
     int portShmid;
     Port port;
@@ -447,6 +468,7 @@ int allRequestsZero(){
 
     return cond;
 }
+*/
 int filter(int el){
     return el!=-2 ;
 }
@@ -469,38 +491,47 @@ intList* validSupplies(Port p){
 
 intList* tipiDiMerceOfferti(Port p) {
     int so_merci = SO_("MERCI");
-    intList* tipiMerceSenzaRichiesta = findIdxs(p->requests, so_merci, filterReq);
+    intList* tipiMerceSenzaRichiesta;
+    int* reqs;
     intList* tipiMerceOffertaMaggioreDiZero = validSupplies(p);
     intList* ret;
+    reqs = getShmAddress(p->requestsID, 0, errorHandler, "tipiDiMerceRichiesti");
+
+    tipiMerceSenzaRichiesta = findIdxs(reqs, so_merci, filterReq);
+    shmDetach(reqs, errorHandler, "tipiDiMerceRichiesti");
+    
     ret = intIntersect(tipiMerceSenzaRichiesta, tipiMerceOffertaMaggioreDiZero);
     intFreeList(tipiMerceSenzaRichiesta);
     intFreeList(tipiMerceOffertaMaggioreDiZero);
     return ret;
 }
 
-intList* tipiDiMerceRichiesti(Port p){
+intList* tipiDiMerceRichiesti(Port p) {
+    intList* ret;
+    int* reqs;
     int so_merci = SO_("MERCI");
-    return findIdxs(p->requests, so_merci,filterIdxs);
+    reqs = getShmAddress(p->requestsID, 0, errorHandler, "tipiDiMerceRichiesti");
+    ret = findIdxs(reqs, so_merci, filterIdxs);
+    shmDetach(reqs, errorHandler, "tipiDiMerceRichiesti");
+    return ret;
 }
 
 
-intList* getAllOtherTypeRequests(int idx) {
+intList* getAllOtherTypeRequests(int idx, Port portArr) {
     int i;
     intList* ret = intInit();
     intList* tipiRichiesti;
-    Port p;
     int so_porti = SO_("PORTI");
 
-    p = getPort(0);   
     for (i = 0; i < so_porti; i++)
     {
-        if(i!=idx){
-            tipiRichiesti = tipiDiMerceRichiesti(p+i);
+        if (i != idx) {
+            tipiRichiesti = tipiDiMerceRichiesti(portArr + i);
             ret = intUnion(ret, tipiRichiesti);
             intFreeList(tipiRichiesti);
         }
     }
-    detachPort(p, 0);
+    
     return ret;
 }
 
@@ -516,12 +547,12 @@ intList* haSensoContinuare() {
     intList* aux1;
     int so_porti = SO_("PORTI");
     port = getPort(0);
-
     for(i=0;i<so_porti; i++){
-
         aux0 = tipiDiMerceRichiesti(port + i);
+        
         aux1 = tipiDiMerceOfferti(port + i);
-        merciTotaliRichieste = intUnion(merciTotaliRichieste,aux0);
+        
+        merciTotaliRichieste = intUnion(merciTotaliRichieste, aux0);
         merciTotaliOfferte = intUnion(merciTotaliOfferte, aux1);
         intFreeList(aux0);
         intFreeList(aux1);
@@ -540,8 +571,8 @@ intList* haSensoContinuare() {
 
 double getValue(int quantity, int scadenza, int tipo, int idx) {
     Port p;
-    intList *tipiDiMerceRichiestiAltriPorti = getAllOtherTypeRequests(idx);
     p = getPort(idx);
+    intList *tipiDiMerceRichiestiAltriPorti = getAllOtherTypeRequests(idx,p-idx);
     if (scadenza == 0 || contain(tipiDiMerceRichiesti(p), tipo) || !contain(tipiDiMerceRichiestiAltriPorti, tipo))
     {
         detachPort(p, idx);

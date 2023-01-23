@@ -25,7 +25,7 @@
 struct port {
 
 
-    int requests[SO_MERCI];
+    int requestsID;
     unsigned short swell;
     unsigned short weatherTarget;
     Supplies supplies;
@@ -68,7 +68,7 @@ int checkRequests(Port p, int type, int quantity);
 int allRequestsZero();
 intList *haSensoContinuare();
 
-intList *getAllOtherTypeRequests(int idx);
+intList *getAllOtherTypeRequests(int idx, Port portArr);
 
 intList* getAllTypeSupplies(Port portArr);
 intList* tipiDiMerceOfferti(Port p);

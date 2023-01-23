@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/ipc.h>
+#include <sys/shm.h>
 #include "../src/nave.h"
 #include "../src/porto.h"
 #include "../config1.h"
@@ -282,6 +283,9 @@ int chooseQuantityToCharge(Ship ship){
     int so_porti;
     int so_days;
     int so_merci;
+    int res;
+    int* reqs;
+    intList* tipiRichiestiDaAltriPorti;
     so_days = SO_("DAYS");
     so_merci = SO_("MERCI");
     so_porti = SO_("PORTI");
@@ -290,17 +294,24 @@ int chooseQuantityToCharge(Ship ship){
     max = 0;
     
     port = getPort(0);
-    for(i=0; i<so_porti; i++){
+    for (i = 0; i < so_porti; i++) {
+        reqs = getShmAddress(port[i].requestsID, SHM_RDONLY, errorHandler, "chooseQuantityToCharge");
+        tipiRichiestiDaAltriPorti = getAllOtherTypeRequests(i, port);
+        
         for (j = 0; j < so_days; j++)
         {
-            for(k=0; k<so_merci; k++){
-                if(port[i].supplies.magazine[j][k] > max && contain(getAllOtherTypeRequests(i), k) && port[i].requests[k]==0){
+            for (k = 0; k < so_merci; k++) {
+                res = reqs[k] == 0;
+                if (port[i].supplies.magazine[j][k] > max && contain(tipiRichiestiDaAltriPorti, k) && res) {
                     max = port[i].supplies.magazine[j][k];
                 }
             }
         }
+        intFreeList(tipiRichiestiDaAltriPorti);
+        shmDetach(reqs, errorHandler, "chooseQuantityToCharge");
+        printf("CIAO\n");
     }
-    detachPort(port ,0);
+    detachPort(port, 0);
     
     intFreeList(tipiDaCaricare);
 
@@ -580,12 +591,15 @@ void restorePortRequest(Port p, int type, int originalPortRequest, int pWeight){
         se prod.weight >= res vuol dire che quello che ho chiesto supera la richiesta
         altrimenti è il contrario
     */
+    int* reqs;
+    reqs = getShmAddress(p->requestsID, 0, errorHandler, "restorePortRequest");
     if (pWeight >= originalPortRequest) {
-        p->requests[type] += originalPortRequest;
+        reqs[type] += originalPortRequest;
     }
     else {
-        p->requests[type] += pWeight;
+        reqs[type] += pWeight;
     }
+    shmDetach(reqs, errorHandler, "restorePortRequest");
 }
 
 void replyToPortsForDischargeV1(Ship ship, int portID, int quantoPossoScaricare, int* portResponses, Product prod) {
@@ -1148,14 +1162,17 @@ int f(int el){
 int chooseNewProductIndex(Ship s, Port p){
     int i;
     Product aux;
+    int* reqs;
     int so_merci = SO_("MERCI");
-    i=0;
-    for (aux = s->loadship->first; aux!=NULL; aux= aux->next){
-        if(contain(findIdxs(p->requests,so_merci,f),aux->product_type)){
+    i = 0;
+    reqs = getShmAddress(p->requestsID, 0, errorHandler, "chooseNewProductIndex");
+    for (aux = s->loadship->first; aux != NULL; aux = aux->next) {
+        if(contain(findIdxs(reqs,so_merci,f),aux->product_type)){
             return i;
         }
         i++;
     }
+    shmDetach(reqs, errorHandler, "chooseNewProductIndex");
     return -1;
 }
 

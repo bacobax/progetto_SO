@@ -1,21 +1,21 @@
 
-failL : all
+failL : 
 	make all
 	ipcrm -a
 	make start
-failM : all
+failM : 
 	make all
 	./removeIPCS
 	make start
 
-success : all
+success : 
 	make all
 	make start
 
-start : all 
+start :  
 	bin/master
 
-all : master nave porto meteo
+all : 
 	make master
 	make nave
 	make porto
