@@ -96,21 +96,7 @@ Product findProduct(loadShip list, int product_type) { /* cerca un prodotto per 
     
     return NULL;
 }
-/*
-int getProductId(loadShip list, int product_type){ /* cerca un prodotto per product_type e restituire l'id del primo prodotto che trova nella lista
-    Product aux = list->first;
 
-    while(aux != NULL){
-
-        if(aux->product_type == product_type){
-            return aux->id_product;
-        }
-        aux = aux->next;
-    }
-    
-    return -1;
-}
-*/
 
 void removeProduct(Ship ship, int index) {
 

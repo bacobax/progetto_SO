@@ -14,7 +14,7 @@
 
 
 
-void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID, int* day, int waitEndDayShipsSemID) {
+void masterCode(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID, int* day, int waitEndDayShipsSemID) {
     int quantitaAlGiorno;
     int resto;
     int quantitaPrimoGiorno;
@@ -49,11 +49,11 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
     fprintf(fp,"Quantità primo giorno: %d\n" , quantitaPrimoGiorno);
     
     /*  per ora ho usato solo startSimulationSemID */
-    genera_porti(quantitaPrimoGiorno, so_porti); /* da tradurre in inglese */
+    create_ports(quantitaPrimoGiorno, so_porti); /* da tradurre in inglese */
 
 
-    meteoPipe = genera_meteo();
-    genera_navi();
+    meteoPipe = create_weather();
+    create_ships();
 
     fprintf(fp,"M: Finito generazione\n");
     aspettaConfigs(waitconfigSemID);
@@ -117,6 +117,6 @@ void codiceMaster(int startSimulationSemID, int portsShmid, int shipsShmid, int 
 }
 
 int main(int argc, char const* argv[]) {
-    mySettedMain(codiceMaster);
+    mySettedMain(masterCode);
     return 0;
 }

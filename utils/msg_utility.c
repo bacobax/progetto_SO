@@ -44,7 +44,7 @@ mex* msgRecv(int msgqID, long type, void (*errorHandler)(int err, char* errCtx),
             exit(EXIT_FAILURE);
         }
         else {
-            throwError("msgRecv -> msgrcv", msgRecv);
+            throwError("msgRecv -> msgrcv", "msgRecv");
             exit(EXIT_FAILURE);
         }
     }

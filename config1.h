@@ -1,24 +1,6 @@
 #ifndef CONFIG_1
 
 #define CONFIG_1
-/*
-
-
-Dove n è < (SO_DAYs -1)/((T_V_M + T_C_M) * 2)
-n<36/((1.138 + 0.27)*2)
-
-SO_DAYS 37 SO_FILL 1000000 SO_CAPACITY 50
-
-50/50 non crasha
-80/80 non crasha
-
-100/100 CRASH
-90/90 CRASH
-80/100 CRASH
-85/85 CRASH
-
-*/
-
 
 /*chiavi dei semafori*/
 /* chiave del semaforo del master */
