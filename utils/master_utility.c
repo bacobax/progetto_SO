@@ -265,8 +265,9 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
         in sintesi il master aspetta a passare il giorno finchè tutti i porti non hanno ricevuto la loro merce
     */
     waitEndDaySemID = createSem(WAITENDDAYKEY, so_porti, errorHandler, "creazione sem waitEndDaySem");
+    /*
     portRequestsQueueID = createQueue(PQUERECHKEY, errorHandler, "creazione della coda delle richieste di carico dei porti");
-    portDischargeRequestsQueueID = createQueue(PQUEREDCHKEY, errorHandler, "creazione della coda delle richieste di scarico dei porti");
+    portDischargeRequestsQueueID = createQueue(PQUEREDCHKEY, errorHandler, "creazione della coda delle richieste di scarico dei porti");*/
     
     /* TO-DO creare coda porti richieste per fase di scaricamento*/
 /*
