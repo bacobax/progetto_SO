@@ -349,25 +349,35 @@ int communicatePortsForCharge(Ship ship, int quantityToCharge, PortOffer* port_o
 */
 int choosePortForCharge(PortOffer* port_offers, int idx){
     int i;
-    int portID = 0;
-    int expTime = 0;
+    int portID = -1;
+    int expTime;
     int so_porti = SO_("PORTI");
 
-    for(i=0; i<so_porti; i++){
+    if(NAVESCEGLIEMASSIMO){
+        expTime = 0;
+        for(i=0; i<so_porti; i++){
 
-        if(expTime == 0 && port_offers[i].expirationTime != -1){
+                
+            if(port_offers[i].expirationTime != -1 && port_offers[i].expirationTime > expTime){
+                expTime = port_offers[i].expirationTime;
+                portID = i;
+            }
             
-            expTime = port_offers[i].expirationTime;
-            portID = i;
+        }
+    }else{
+        expTime = SO_("MAX_VITA");
+        for(i=0; i<so_porti; i++){
 
-        } else {
-            
+                
             if(port_offers[i].expirationTime != -1 && port_offers[i].expirationTime < expTime){
                 expTime = port_offers[i].expirationTime;
                 portID = i;
             }
+            
         }
     }
+
+    
     logShip(idx, " ho scelto il porto");
     return portID;
 }

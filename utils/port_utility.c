@@ -502,8 +502,12 @@ double getValue(int quantity, int scadenza, int tipo, Port p, int idx) {
     }
     else /*scadenza > 0 && le mie richieste non contengono il tipo di merce di questa offerta && le richieste degli altri porti contengono il tipo di merce di questa offerta*/
     {
-        
-        return quantity / (double)scadenza;
+        if(PORTOSCEGLIEMASSIMO){
+            return quantity * (double)scadenza;
+        }else{
+            return quantity / (double)scadenza;
+
+        }
     }
 }
 
