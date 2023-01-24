@@ -34,7 +34,6 @@ struct ship {
     unsigned short dead;
     unsigned short weatherTarget;
     unsigned short inSea;
-    int nChargesOptimal;  /* da rimuovere*/
 };
 typedef struct ship* Ship;
 
