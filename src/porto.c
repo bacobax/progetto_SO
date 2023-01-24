@@ -170,10 +170,10 @@ void recvChargerHandler(long type, char *text)
     return;
 }
 */
-void codicePorto(int endShmId, int idx, int aspettoMortePortiSemID,int aspettoMorteNaviSemID )
+void portCode(int endShmId, int idx, int aspettoMortePortiSemID,int aspettoMorteNaviSemID )
 {
     int* endNow;
-    endNow = (int*)getShmAddress(endShmId, 0, errorHandler, "codicePorto");
+    endNow = (int*)getShmAddress(endShmId, 0, errorHandler, "portCode");
     /*
     launchDischarger(recvDischargeHandler, idx);
     launchCharger(recvChargerHandler, idx);*/
@@ -211,6 +211,6 @@ int main(int argc, char const *argv[])
     requestDisponibility = atoi(argv[2]);
     idx = atoi(argv[3]);
 
-    mySettedPort(supplyDisponibility, requestDisponibility, idx, codicePorto);
+    mySettedPort(supplyDisponibility, requestDisponibility, idx, portCode);
 }
 

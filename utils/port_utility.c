@@ -310,15 +310,15 @@ void launchRefiller(int idx) {
 }
 
 
-void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*codicePorto)(int endShmId, int idx,int aspettoMortePortiSemID, int aspettoMorteNaviSemID)) {
+void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*portCode)(int endShmId, int idx,int aspettoMortePortiSemID, int aspettoMorteNaviSemID)) {
      
     void (*oldHandler)(int);
     int endShmId;
     int aspettoMortePortiSemID;
     int aspettoMorteNaviSemID;
     Port p;
-    aspettoMortePortiSemID = useSem(WAITPORTSSEM, errorHandler, "aspettoMortePortiSemID in codicePorto");
-    aspettoMorteNaviSemID = useSem(WAITSHIPSSEM, errorHandler, "aspettoMortePortiSemID in codicePorto");
+    aspettoMortePortiSemID = useSem(WAITPORTSSEM, errorHandler, "aspettoMortePortiSemID in portCode");
+    aspettoMorteNaviSemID = useSem(WAITSHIPSSEM, errorHandler, "aspettoMortePortiSemID in portCode");
   
     /*
         questo perchè per qualche motivo srand(time(NULL)) non generava unici seed tra un processo unico e l'altro
@@ -348,7 +348,7 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
         da aggiungere le due useQueue per le code di scaricamento
     */
 
-    codicePorto(endShmId, idx, aspettoMortePortiSemID, aspettoMorteNaviSemID);
+    portCode(endShmId, idx, aspettoMortePortiSemID, aspettoMorteNaviSemID);
 
 
 }

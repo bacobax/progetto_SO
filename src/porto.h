@@ -54,7 +54,7 @@ void launchRefiller(int idx);
 /*
 funzione per separare la logica della configurazione del porto da quella della sua routine
 */
-void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*codicePorto)(int idx, int endShmId,int aspettoMortePortiSemID, int aspettoMorteNaviSemID));
+void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*portCode)(int idx, int endShmId,int aspettoMortePortiSemID, int aspettoMorteNaviSemID));
 
 /*
     forka il figlio che gestisce le navi che vogliono caricare dal porto

@@ -12,6 +12,8 @@
 typedef struct supplies {
     
     int magazineID;
+    
+    
     int expirationTimesID;
 }Supplies;
 
