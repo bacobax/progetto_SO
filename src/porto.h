@@ -66,7 +66,7 @@ void launchCharger(void (*recvHandler)(long, char*), int idx);
 int checkRequests(Port p, int type, int quantity);
 
 int allRequestsZero();
-intList *haSensoContinuare();
+intList *getTypeToCharge();
 
 intList *getAllOtherTypeRequests(int idx, Port portArr);
 

@@ -1,163 +1,40 @@
-<<<<<<< HEAD
-[17193]Nave IDX 0: creata
-[17195]Nave IDX 2: creata
-[17194]Nave IDX 1: creata
-[17196]Nave IDX 3: creata
-[17197]Nave IDX 4: creata
-[17198]Nave IDX 5: creata
-[17199]Nave IDX 6: creata
-[17200]Nave IDX 7: creata
-[17201]Nave IDX 8: creata
-[17202]Nave IDX 9: creata
-[17204]Nave IDX 11: creata
-[17203]Nave IDX 10: creata
-[17205]Nave IDX 12: creata
-[17206]Nave IDX 13: creata
-[17207]Nave IDX 14: creata
-[17208]Nave IDX 15: creata
-[17209]Nave IDX 16: creata
-[17210]Nave IDX 17: creata
-[17212]Nave IDX 19: creata
-[17211]Nave IDX 18: creata
-[17213]Nave IDX 20: creata
-[17215]Nave IDX 22: creata
-[17214]Nave IDX 21: creata
-[17217]Nave IDX 24: creata
-[17216]Nave IDX 23: creata
-[17218]Nave IDX 25: creata
-[17219]Nave IDX 26: creata
-[17220]Nave IDX 27: creata
-[17221]Nave IDX 28: creata
-[17222]Nave IDX 29: creata
-[17223]Nave IDX 30: creata
-[17224]Nave IDX 31: creata
-[17225]Nave IDX 32: creata
-[17226]Nave IDX 33: creata
-[17227]Nave IDX 34: creata
-[17228]Nave IDX 35: creata
-[17229]Nave IDX 36: creata
-[17230]Nave IDX 37: creata
-[17231]Nave IDX 38: creata
-[17232]Nave IDX 39: creata
-=======
-[37853]Nave IDX 0: creata
-[37856]Nave IDX 3: creata
-[37877]Nave IDX 24: creata
-[37878]Nave IDX 25: creata
-[37869]Nave IDX 16: creata
-[37880]Nave IDX 27: creata
-[37887]Nave IDX 34: creata
-[37870]Nave IDX 17: creata
-[37882]Nave IDX 29: creata
-[37888]Nave IDX 35: creata
-[37871]Nave IDX 18: creata
-[37872]Nave IDX 19: creata
-[37889]Nave IDX 36: creata
-[37873]Nave IDX 20: creata
-[37883]Nave IDX 30: creata
-[37879]Nave IDX 26: creata
-[37868]Nave IDX 15: creata
-[37884]Nave IDX 31: creata
-[37885]Nave IDX 32: creata
-[37874]Nave IDX 21: creata
-[37886]Nave IDX 33: creata
-[37892]Nave IDX 39: creata
-[37876]Nave IDX 23: creata
-[37890]Nave IDX 37: creata
-[37881]Nave IDX 28: creata
-[37891]Nave IDX 38: creata
-[37866]Nave IDX 13: creata
-[37864]Nave IDX 11: creata
-[37867]Nave IDX 14: creata
-[37854]Nave IDX 1: creata
-[37863]Nave IDX 10: creata
-[37857]Nave IDX 4: creata
-[37865]Nave IDX 12: creata
-[37862]Nave IDX 9: creata
-[37859]Nave IDX 6: creata
-[37861]Nave IDX 8: creata
-[37855]Nave IDX 2: creata
-[37858]Nave IDX 5: creata
-[37860]Nave IDX 7: creata
-[37875]Nave IDX 22: creata
-[37890]Nave: faccio la lock
-[37890]Nave: uscita
-[37861]Nave: faccio la lock
-[37861]Nave: uscita
-[37875]Nave: faccio la lock
-[37875]Nave: uscita
-[37868]Nave: faccio la lock
-[37868]Nave: uscita
-[37882]Nave: faccio la lock
-[37882]Nave: uscita
-[37867]Nave: faccio la lock
-[37867]Nave: uscita
-[37886]Nave: faccio la lock
-[37886]Nave: uscita
-[37855]Nave: faccio la lock
-[37855]Nave: uscita
-[37854]Nave: faccio la lock
-[37854]Nave: uscita
-[37859]Nave: faccio la lock
-[37859]Nave: uscita
-[37856]Nave: faccio la lock
-[37856]Nave: uscita
-[37874]Nave: faccio la lock
-[37874]Nave: uscita
-[37860]Nave: faccio la lock
-[37860]Nave: uscita
-[37884]Nave: faccio la lock
-[37884]Nave: uscita
-[37879]Nave: faccio la lock
-[37879]Nave: uscita
-[37883]Nave: faccio la lock
-[37883]Nave: uscita
-[37863]Nave: faccio la lock
-[37863]Nave: uscita
-[37891]Nave: faccio la lock
-[37891]Nave: uscita
-[37870]Nave: faccio la lock
-[37870]Nave: uscita
-[37858]Nave: faccio la lock
-[37858]Nave: uscita
-[37887]Nave: faccio la lock
-[37887]Nave: uscita
-[37889]Nave: faccio la lock
-[37889]Nave: uscita
-[37873]Nave: faccio la lock
-[37873]Nave: uscita
-[37866]Nave: faccio la lock
-[37866]Nave: uscita
-[37865]Nave: faccio la lock
-[37865]Nave: uscita
-[37877]Nave: faccio la lock
-[37877]Nave: uscita
-[37892]Nave: faccio la lock
-[37892]Nave: uscita
-[37864]Nave: faccio la lock
-[37864]Nave: uscita
-[37857]Nave: faccio la lock
-[37857]Nave: uscita
-[37888]Nave: faccio la lock
-[37888]Nave: uscita
-[37880]Nave: faccio la lock
-[37880]Nave: uscita
-[37853]Nave: faccio la lock
-[37853]Nave: uscita
-[37881]Nave: faccio la lock
-[37881]Nave: uscita
-[37872]Nave: faccio la lock
-[37872]Nave: uscita
-[37878]Nave: faccio la lock
-[37878]Nave: uscita
-[37862]Nave: faccio la lock
-[37862]Nave: uscita
-[37885]Nave: faccio la lock
-[37885]Nave: uscita
-[37871]Nave: faccio la lock
-[37871]Nave: uscita
-[37876]Nave: faccio la lock
-[37876]Nave: uscita
-[37869]Nave: faccio la lock
-[37869]Nave: uscita
->>>>>>> d00d8b812921b81b2f7a2be393295688496ac6a7
+[27582]Nave IDX 0: creata
+[27583]Nave IDX 1: creata
+[27584]Nave IDX 2: creata
+[27585]Nave IDX 3: creata
+[27586]Nave IDX 4: creata
+[27587]Nave IDX 5: creata
+[27588]Nave IDX 6: creata
+[27589]Nave IDX 7: creata
+[27590]Nave IDX 8: creata
+[27591]Nave IDX 9: creata
+[27592]Nave IDX 10: creata
+[27593]Nave IDX 11: creata
+[27594]Nave IDX 12: creata
+[27595]Nave IDX 13: creata
+[27596]Nave IDX 14: creata
+[27597]Nave IDX 15: creata
+[27598]Nave IDX 16: creata
+[27599]Nave IDX 17: creata
+[27600]Nave IDX 18: creata
+[27601]Nave IDX 19: creata
+[27602]Nave IDX 20: creata
+[27603]Nave IDX 21: creata
+[27604]Nave IDX 22: creata
+[27605]Nave IDX 23: creata
+[27606]Nave IDX 24: creata
+[27607]Nave IDX 25: creata
+[27608]Nave IDX 26: creata
+[27609]Nave IDX 27: creata
+[27610]Nave IDX 28: creata
+[27611]Nave IDX 29: creata
+[27612]Nave IDX 30: creata
+[27613]Nave IDX 31: creata
+[27614]Nave IDX 32: creata
+[27615]Nave IDX 33: creata
+[27616]Nave IDX 34: creata
+[27617]Nave IDX 35: creata
+[27618]Nave IDX 36: creata
+[27619]Nave IDX 37: creata
+[27620]Nave IDX 38: creata
+[27621]Nave IDX 39: creata

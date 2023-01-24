@@ -352,91 +352,13 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
 
 
 }
-/*
-void dischargerCode(void (*recvHandler)(long, char*), int idx) {
-    int requestPortQueueID;
-    mex* res;
-    signal(SIGCHLD, SIG_IGN);
-    int pid;
-    requestPortQueueID = useQueue(PQUERECHKEY, errorHandler, "dischargerCode");
 
-    clearSigMask();
-
-    while (1) {
-
-        /*
-            E' importante che sia sincrona la gestione del messaggio ricevuto
-            perchè prima di poterne ricevere un altro il porto deve poter aver aggiornato le sue disponibilità
-        */
-
-        /*
-            prendo il primo messaggio che arriva
-        
-        res = msgRecv(requestPortQueueID, idx + 1, errorHandler, recvHandler, ASYNC, "dischargerCode");
-        
-    }
-}
-
-void chargerCode(void (*recvHandler)(long, char*), int idx) {
-    int requestPortQueueID;
-    mex* res;
-    int pid;
-    requestPortQueueID = useQueue(PQUEREDCHKEY, errorHandler, "dischargerCode");
-    clearSigMask();
-    signal(SIGCHLD, SIG_IGN);
-   
-    while (1) {
-
-        /*
-            E' importante che sia sincrona la gestione del messaggio ricevuto
-            perchè prima di poterne ricevere un altro il porto deve poter aver aggiornato le sue disponibilità
-        
-
-        /*
-            prendo il primo messaggio che arriva
-        
-        res = msgRecv(requestPortQueueID, idx + 1, errorHandler, recvHandler, ASYNC,"chargerCode");
-        
-    }
-}
-*/
-/* per operazioni di carico della nave*/
-/*
-void launchDischarger(void (*recvHandler)(long, char*), int idx) {
-    int pid;
-    pid = fork();
-    if (pid == -1) {
-        throwError("Errore nel lanciare il discharger","launchDischarger");
-        exit(1);
-    }
-    if (pid == 0) {
-        dischargerCode(recvHandler, idx);
-        exit(EXIT_FAILURE);
-    }
-    
-}
-*/
-
-/* per operazioni di scarico della nave*/
-/*
-void launchCharger(void (*recvHandler)(long, char*), int idx) {
-    int pid;
-    pid = fork();
-    
-    if (pid == -1) {
-        throwError("Errore nel lanciare il charger","launchCharger");
-        exit(1);
-    }
-    if (pid == 0) {
-        chargerCode(recvHandler, idx);
-        exit(EXIT_FAILURE);
-    }
-}*/
 int checkRequests(Port p, int type, int quantity) {
     int diff;
     int* reqs;
+    int n;
     reqs = getShmAddress(p->requestsID, 0, errorHandler, "chackrequets");
-    int n = reqs[type];
+    n = reqs[type];
     if (n == 0) return -1;
     if (quantity >= reqs[type]) {
         reqs[type] = 0;
@@ -539,7 +461,7 @@ intList* getAllOtherTypeRequests(int idx, Port portArr) {
 }
 
 
-intList* haSensoContinuare() {
+intList* getTypeToCharge() {
     Port port;
     int i;
     int j;
@@ -599,12 +521,14 @@ int trovaTipoEScadenza(Port port, int* tipo, int* dayTrovato, int* scadenza, int
     int currentScadenza;
     int res;
     int* magazine;
+    int so_days;
+    int so_merci;
     magazine = getMagazine(port);
     *tipo = -1;
     *scadenza = -1;
     *dayTrovato = -1;
-    int so_days = SO_("DAYS");
-    int so_merci = SO_("MERCI");
+    so_days = SO_("DAYS");
+    so_merci = SO_("MERCI");
 
     for (i = 0; i < so_days; i++) {
         for (j = 0; j < so_merci; j++) {
@@ -646,8 +570,9 @@ int countPortsWhere(int(*f)(int,Port)){
     int count;
     int i;
     Port p;
+    int so_porti;
     count = 0;
-    int so_porti = SO_("PORTI"); 
+    so_porti = SO_("PORTI"); 
 
     p = getPort(0);
     for (i = 0; i < so_porti; i++){

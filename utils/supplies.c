@@ -43,10 +43,11 @@ void fillMagazine(int* magazine, int day, int* supplies) {
     int i;
     int dumpShmid;
     DumpArea* dump;
+    int so_loadspeed;
+    int so_merci = SO_("MERCI");
+    so_loadspeed = SO_("LOADSPEED");
     dumpShmid = useShm(DUMPSHMKEY, sizeof(DumpArea), errorHandler, "fillMagazine");
     dump = (DumpArea*)getShmAddress(dumpShmid, 0, errorHandler, "fillMagazine");
-    int so_merci = SO_("MERCI");
-    int so_loadspeed = SO_("LOADSPEED");
     for (i = 0; i < so_merci; i++) {
         setMagazineVal(magazine, day, i, supplies[i]);
         dump->tempoScaricamentoTot += ((double)(supplies[i])) / so_loadspeed;

@@ -22,21 +22,21 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
     int portID;
     int waitResponsesID;
     int waitToTravelSemID;
-    intList* tipiDaCaricare;
+    intList* typeToCharge;
     int so_porti;
     int so_days;
     PortOffer* port_offers;
     so_days = SO_("DAYS");
     so_porti = SO_("PORTI");
     port_offers = (PortOffer*)malloc(sizeof(PortOffer) * so_porti);
-    tipiDaCaricare = haSensoContinuare();
+    typeToCharge = getTypeToCharge();
     printf("[%d]Nave tipi da caricare: \n", ship->shipID);
-    intStampaLista(tipiDaCaricare);
+    intStampaLista(typeToCharge);
 
     
     printf("[%d]Nave, controllo se ha senso continuare-day: %d\n", ship->shipID,*day);
     logShip(ship->shipID, "controllo se ha senso continuare\n");
-    if(tipiDaCaricare->length == 0){
+    if(typeToCharge->length == 0){
         if(*day < so_days -1){
             waitEndDay();
             free(port_offers);
@@ -46,14 +46,14 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
             printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
             printf("Nave con id:%d NON HA PIÙ SENSO CONTINUARE\n", ship->shipID);
             printf("💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀\n");
-            intFreeList(tipiDaCaricare);
+            intFreeList(typeToCharge);
             free(port_offers);
             exitNave(ship);
         }
         
     }
 
-    intFreeList(tipiDaCaricare);
+    intFreeList(typeToCharge);
     initArrayOffers(port_offers);
     
     /* check merce scaduta*/

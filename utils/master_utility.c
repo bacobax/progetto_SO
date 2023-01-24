@@ -19,7 +19,7 @@
 #include "./supplies.h"
 
 
-void genera_navi() {
+void create_ships() {
     int i;
     int pid;
     char* argv[3];
@@ -49,7 +49,7 @@ void genera_navi() {
     }
 }
 
-void genera_porti(int risorse, int n_porti) {
+void create_ports(int risorse, int n_porti) {
 
     intList* quantiesSupplies;
     intList* quantiesRequests;
@@ -160,7 +160,7 @@ void distruggiShmPorti(){
     return;
 }
 
-void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID, int* day, int waitEndDayShipsSemID)) {
+void mySettedMain(void (*masterCode)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID, int* day, int waitEndDayShipsSemID)) {
     int startSimulationSemID;
     int reservePrintSem;
     int reservePortsResourceSem;
@@ -287,7 +287,7 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     waitToRemoveDump = createSem(WAITRMVDUMPKEY, 1, errorHandler, "craezione semaforo remove dump");
 
 
-    codiceMaster(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID, day, waitEndDayShipSemID);
+    masterCode(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID, day, waitEndDayShipSemID);
     /* kill(0, SIGUSR1);  uccide tutti i figli */
     printf("SETTATO A 1 TERMINATE VALUE, ASPETTO FIGLI...\n");
 
@@ -491,7 +491,7 @@ void expireShipGoods(){
 }
 */
 
-FILE* genera_meteo() {
+FILE* create_weather() {
     int pid;
     FILE* fp;
 
