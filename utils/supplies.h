@@ -8,7 +8,6 @@
 */
 
 
-
 typedef struct supplies {
     
     int magazineID;
@@ -48,6 +47,7 @@ void decrementExpTimes(Supplies* S, int day);
 void removeExpiredGoods(Supplies* S, int* magazine);
 
 int validSupply(Supplies p, int type, int* magazine);
+
 void setMagazineVal(int* magazine, int day, int type, int v);
 void addMagazineVal(int* magazine, int day, int type, int v);
 int getMagazineVal(int* magazine, int day, int type);
