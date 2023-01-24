@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <sys/signal.h>
 #include <sys/ipc.h>
+#include <sys/stat.h>
 
 #include "../utils/errorHandler.h"
 #include "../utils/shm_utility.h"
@@ -13,6 +14,7 @@
 #include "./dump.h"
 #include "./porto.h"
 #include "./nave.h"
+
 void lockAllGoodsDump(){
     int semid;
     int i;
@@ -155,7 +157,7 @@ void addNotExpiredGood(int quantity, int type, ctx where, int refilling, int idx
     else {
         throwError("Il contesto può solo essere PORT o SHIP", "addNotExpiredGood");
         
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     fclose(fp);
     shmDetach(types, errorHandler, "addNotExpiredGood types");
@@ -254,8 +256,6 @@ void printerCode(int day, int last) {
     
     waitToRemoveDumpKey = useSem(WAITRMVDUMPKEY, errorHandler, "waitToRemoveDumpKey in printerCode");
     
-    
-
     mutex(logFileSemID, LOCK, errorHandler, "printerCode LOCK");
     types = (GoodTypeInfo*)getShmAddress(dump->typesInfoID,0,errorHandler, "addDeliveredGood types");
     
@@ -302,15 +302,6 @@ void printerCode(int day, int last) {
 
     printStatoPorti(fp);
     
-
-    /*
-        SO_FILL = 10
-        se SO_DAYS = 2
-        Q.TA GG = 5
-        Se day = 1
-        merceDaRefillare = 5
-        merceRefillata = 5
-    */
     if(last){
         merceDaRefillare = (so_fill/so_days)*(so_days-day);
         merceRefillata = so_fill - merceDaRefillare;
@@ -327,10 +318,6 @@ void printerCode(int day, int last) {
         fprintf(fp, "Merce consegnata: %d (%.4f%% di SO_FILL)\n" , deliveredGoods,((double)( deliveredGoods* 100))/so_fill);
         fprintf(fp, "Tempo di viaggio medio viaggio tra porti: %f\n", mediaTempoViaggioFraPorti());
         fprintf(fp, "Tempo medio scaricamento di lotti: %f\n", (dump->tempoScaricamentoTot)/((double)(so_porti * so_days * so_merci)));
-        /*
-            SO_FILL/100 = Merce_conse/x
-            x = M_C*100
-        */
 
         fprintf(fp, "TOTALE MERCE: %d <==> IN GIOCO: %d\n", sum, merceRefillata);
         if (sum ==  merceRefillata) {
@@ -348,8 +335,7 @@ void printerCode(int day, int last) {
     shmDetach(dump, errorHandler, "printerCode dump");
     mutex(logFileSemID, UNLOCK, errorHandler , "printerCode UNLOCK");
     
-    if(last){
-        printf("Faccio la lock\n");
+    if(last){  
         mutex(waitToRemoveDumpKey, LOCK, errorHandler, "LOCK in waitToRemoveDumpID");
     }
 }

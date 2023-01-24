@@ -152,30 +152,6 @@ double generateCord()
 
 
 
-/*
-int getPortQueueRequest(int key){
-    int queueID;
-    queueID = useQueue(key, errorHandler , "communicate ports");
-    return queueID;
-}
-
-int getPortQueueCharge(int id){
-    int queueID;
-    queueID = useQueue(ftok("./src/porto.c" , id), errorHandler, "reply to ports");
-    return queueID;
-}
-
-int getPortQueueDischarge(int id){
-    int queueID;
-    queueID = useQueue(ftok("./src/porto.h", id), errorHandler, "reply to ports");
-    return queueID;
-}
-
-int getShipQueue(int id){
-    int queueID;
-    queueID = useQueue(ftok("./src/nave.c", id), errorHandler, "communicate ports");
-    return queueID;
-}*/
 /*in secondi*/
 double getTempoDiViaggio(double x, double y, double x1, double y1) {
     double spazio;
@@ -221,37 +197,6 @@ double mediaTempoViaggioFraPorti() {
     return sum / c;
 }
 
-double numeroDiCarichiOttimale() {
-    double probabilitaDiCambiarePorto;
-    double tempoDiViaggioMedio;
-    double tempoDiScaricoMedio;
-    double tempoDiViaggioEffettivo;
-    double res;
-    int so_porti;
-    int so_days;
-    int so_merci;
-    int so_loadspeed;
-    int so_fill;
-    so_porti = SO_("PORTI");
-    so_days = SO_("DAYS");
-    so_merci = SO_("MERCI");
-    so_loadspeed = SO_("LOADSPEED");
-    so_fill = SO_("FILL");
-    tempoDiViaggioMedio = mediaTempoViaggioFraPorti();
-    probabilitaDiCambiarePorto =(double)(so_porti - 1) / so_porti;
-    tempoDiViaggioEffettivo = (double)probabilitaDiCambiarePorto * tempoDiViaggioMedio;
-    tempoDiScaricoMedio = ((double)so_fill / so_loadspeed) / (so_porti * so_days * so_merci);
-    /*
-        k = tempoDiViaggioMedio + tempoDiScaricoMedio ~= tempo di una charge/dscharge
-        n*k< SO_DAYS-1 - n*k <==> 2nk < SO_DAYS - 1 <==> n < (SO_DAYS - 1)/k*2 <==> n < (SO_DAYS - 1)/((tempoDiViaggioMedio + tempoDiScaricoMedio)*2) 
-    
-    */
-    res = (double)(so_days - 1) / ((tempoDiViaggioEffettivo + tempoDiScaricoMedio) * 2);
- 
-
-    return res;
-}
-
 int SO_(char* name) {
     FILE* fp;
     char buff[1024];
@@ -276,10 +221,10 @@ int SO_(char* name) {
     if (fclose(fp) == -1) {
         fclose(fp);
         throwError("fclose", "SO_");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     throwError("No variables with this name", "SO_");
     fclose(fp);
-    exit(1);
-    return -1;
+    exit(EXIT_FAILURE);
+    return -1;  
 }

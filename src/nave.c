@@ -30,11 +30,8 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
     so_porti = SO_("PORTI");
     port_offers = (PortOffer*)malloc(sizeof(PortOffer) * so_porti);
     typeToCharge = getTypeToCharge();
-    printf("[%d]Nave tipi da caricare: \n", ship->shipID);
-    intStampaLista(typeToCharge);
 
-    
-    printf("[%d]Nave, controllo se ha senso continuare-day: %d\n", ship->shipID,*day);
+
     logShip(ship->shipID, "controllo se ha senso continuare\n");
     if(typeToCharge->length == 0){
         if(*day < so_days -1){
@@ -57,10 +54,8 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
     initArrayOffers(port_offers);
     
     /* check merce scaduta*/
-    logShip(ship->shipID ,"prima di removeExpiredGoodsOnShip");
     printShip(ship);
     removeExpiredGoodsOnShip(ship);
-    logShip(ship->shipID ,"dopo di removeExpiredGoodsOnShip");
     printShip(ship);
 
 
@@ -71,9 +66,8 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
     }
     else {
 
-        availablePorts = communicatePortsForChargeV1(quantityToCharge, port_offers); /* mando msg a tutti i porti perchè voglio caricare*/
+        availablePorts = communicatePortsForChargeV1(quantityToCharge, port_offers); 
         logShip(ship->shipID, "finito di chiamare i porti\n");
-        printf("aviable ports: %d\n", availablePorts);
         if (availablePorts == 0) {
             
             replyToPortsForChargeV1(-1, port_offers);
@@ -89,9 +83,7 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
             portID = choosePortForCharge(port_offers, ship->shipID);
             
             replyToPortsForChargeV1(portID, port_offers);
-            logShip(ship->shipID, "avvisato chi non è stato scelto");
 
-            printf("[%d]Nave: Sono partita...\n", ship->shipID);
             logShip(ship->shipID,"Sono partita...\n");
             travelCharge(ship, portID, day, port_offers);
             logShip(ship->shipID, "fatta travel");
@@ -128,27 +120,6 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
     else
     {
 
-        /*
-
-            1 - Nave) Mando un msg a tutti i porti indicano il tipo di merce che voglio scaricare e la quantità che possiedo
-                  (scelgo la merce con tempo di scadenza minore di tutte le altre merci che posseggo).
-
-           2 - Porto) il porto riceve il messaggio è valuta guardando il suo magazzino se la merce si può consegnare
-                      oppure no perchè la domanda è arrivata a 0.
-
-                        - Se si può consegnare decrementa la domanda e manda una conferma positiva al porto
-                        - Altrimenti manda una conferma negativa
-
-                        OVVIAMENTE POICHÈ LA PRIORITÀ È CONSEGNARE LE MERCI IN "FIN DI VITA", ALLA PRIMA NAVE
-                        CHE MANDA UN MESSAGGIO POSITIVO DI CONFERMA IL PORTO SI DISINTERESSA DELLE RICHIESTE SUCCESSIVE
-                        SE LA SUA DOMANDA È ARRIVATA A 0.
-                        ALTRIMENTI CONTINUA FINO A QUANDO LA DOMANDA PER QUEL TIPO DI MERCE SCENDE A 0
-
-                        POLITICA FIFO
-
-
-        */
-
         product_index = chooseProductToDelivery(ship);
         printf("[%d]Nave ho scelto per scaricare: %d\n", ship->shipID,product_index);
         prod = productAt(ship->loadship, product_index);
@@ -157,7 +128,6 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
             verificare che prod != NULL, se è == NULL vuol dire che la lista è vuota
         */
         if (prod == NULL) {
-            printf("Prodotto NULL\n");
             removeExpiredGoodsOnShip(ship);
             free(portResponses);
             return;
@@ -177,10 +147,7 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
             dischargeProducts(ship, day, terminateValue);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
         
         } else {
-            
-            /* 3) Una volta arrivato al porto accedo alla prima banchina disponibile e rimuovo la merce che intendo
-            consegnare dal carico della nave */
-            
+             
             replyToPortsForDischargeV1(ship, portID, quantoPossoScaricare, portResponses, prod);
 
             travelDischarge(ship, portID, day, prod, portResponses);
@@ -188,25 +155,14 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
             free(portResponses);
             removeExpiredGoodsOnShip(ship);
             
-
         }
     }
 }
 
-void shipRoutine(Ship ship, unsigned int* terminateValue, double restTime, int* day){
+void shipRoutine(Ship ship, unsigned int* terminateValue, int* day){
 
     checkTerminateValue(ship, terminateValue);
     chargeProducts(ship, chooseQuantityToCharge(ship), day, terminateValue);
-    nanosecsleep((long)(restTime * NANOS_MULT));
-    
-    /*
-    checkTerminateValue(ship, terminateValue);
-    dischargeProducts(ship, day);
-    nanosecsleep((long)(restTime * NANOS_MULT)); 
-    */
-    
-    
-    
     
 }
 
@@ -215,7 +171,6 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     int dayShmID;
     int *day;
     unsigned int *terminateValue;
-    double restTime = RESTTIMESHIP;
     Ship ship;
     signal(SIGCHLD, SIG_IGN);
     endShmID = useShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "Nave: use end shm");
@@ -229,11 +184,10 @@ int main(int argc, char* argv[]) { /* mi aspetto che nell'argv avrò l'identific
     checkInConfig();
     logShip(ship->shipID, "config finita, aspetto ok partenza dal master");
     waitForStart();
-    ship->nChargesOptimal = (int)numeroDiCarichiOttimale();
     logShip(ship->shipID, "partita...");
     
        while (1) {      
-        shipRoutine(ship, terminateValue, restTime, day);
+        shipRoutine(ship, terminateValue, day);
     }
 }
 
