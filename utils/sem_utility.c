@@ -192,7 +192,6 @@ void getAllVAlues(int semid, int length){
 
         arg.array[i] = -2;
     }
-    printf("FACCIO LA CTL\n");
     if(semctl(semid, 0,GETALL, arg) == -1){
         throwError("SEMCTL", "getAllValues");
     }

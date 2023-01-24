@@ -24,22 +24,15 @@ void portCode(int endShmId, int idx, int aspettoMortePortiSemID,int aspettoMorte
 {
     int* endNow;
     endNow = (int*)getShmAddress(endShmId, 0, errorHandler, "portCode");
-    /*
-    launchDischarger(recvDischargeHandler, idx);
-    launchCharger(recvChargerHandler, idx);*/
+
     waitForStart();
   
-    
-
     /* START */
     while(1){
-
-
 
         sleep(1);
         if(*endNow){
             mutex(aspettoMorteNaviSemID, WAITZERO, errorHandler, "waitzero su aspettoMorteNaviSemID");
-            printf("[%d] PORTO UCCIDO TUTTI I FIGLI\n", idx);
             kill(0, SIGUSR1);
             mutex(aspettoMortePortiSemID, LOCK, errorHandler, "LOCK su aspettoMortePortiSemID");
             printf("[%d]PORTO TERMINO\n", idx);
@@ -48,7 +41,6 @@ void portCode(int endShmId, int idx, int aspettoMortePortiSemID,int aspettoMorte
         }
 
     }
-    /* launchGoodsDispatcher(myQueueID, porto, idx, shipsQueueID); */
 }
 
 int main(int argc, char const *argv[])

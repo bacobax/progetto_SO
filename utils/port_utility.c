@@ -17,13 +17,7 @@
 #include "./support.h"
 #include "./vettoriInt.h"
 
-void refillerQuitHandler(int sig) {
-    
-    kill(0, SIGUSR1);
-    
-    printf("refiller: ricevuto segnale di terminazione\n");
-    exit(EXIT_SUCCESS);
-}
+
 
 
 Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
@@ -340,9 +334,7 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
     launchRefiller(idx);
 
     checkInConfig();
-    printf("P: finito configurazione\n");
 
-    
     
     /*
         da aggiungere le due useQueue per le code di scaricamento
@@ -369,29 +361,7 @@ int checkRequests(Port p, int type, int quantity) {
     shmDetach(reqs, errorHandler, "chackrequets");
     return n;
 }
-/*
-int allRequestsZero(){
-    int portShmid;
-    Port port;
-    int i;
-    int j;
-    int cond = 1;
-    int so_porti = SO_("PORTI");
-    int so_merci = SO_("MERCI");
-    port = getPort(0);
 
-    for(i=0; i<so_porti && cond; i++){
-        for(j=0;j<so_merci && cond; j++){
-            if(port[i].requests[j] > 0){
-                cond = 0;
-            }
-        }
-    }
-    detachPort(port, 0);
-
-    return cond;
-}
-*/
 int filter(int el){
     return el!=-2 ;
 }
@@ -502,8 +472,12 @@ double getValue(int quantity, int scadenza, int tipo, Port p, int idx) {
     }
     else /*scadenza > 0 && le mie richieste non contengono il tipo di merce di questa offerta && le richieste degli altri porti contengono il tipo di merce di questa offerta*/
     {
-        
-        return quantity / (double)scadenza;
+        if(PORTOSCEGLIEMASSIMO){
+            return quantity * (double)scadenza;
+        }else{
+            return quantity / (double)scadenza;
+
+        }
     }
 }
 
@@ -554,11 +528,10 @@ int trovaTipoEScadenza(Port port, int* tipo, int* dayTrovato, int* scadenza, int
         /*
                 Operazione importante: decremento della quantità richiesta in anticipo, così nel mentre altre navi possono scegliere
                 lo stesso tipo di merce con la quantità aggiornata
-            */
-            addMagazineVal(magazine, *dayTrovato, *tipo, quantity * -1);
-            printf("PORTO: tolgo %d\n" ,quantity);
+        */
+        addMagazineVal(magazine, *dayTrovato, *tipo, quantity * -1);
 
-            addNotExpiredGood(0 - quantity, *tipo, PORT, 0, idx);
+        addNotExpiredGood(0 - quantity, *tipo, PORT, 0, idx);
         res = 1;
     }
     shmDetach(magazine, errorHandler, "trova tipo e scadenza");
@@ -613,7 +586,6 @@ void printStatoPorti(FILE *fp){
 Port getPort(int portID){
    int portShmid;
    Port port;
-   char text[512];
    
    portShmid = useShm(PSHMKEY, 0, errorHandler, "get port array");
    port = (Port)getShmAddress(portShmid, 0, errorHandler, "get port");
@@ -638,9 +610,7 @@ void restorePromisedGoods(Port porto, int dayTrovato, int tipoTrovato, int quant
         addExpiredGood(quantity, tipoTrovato, PORT);
     }
     else {
-        printf("Porto %d, non sono stato scelto anche se avevo trovato della rob\n", myPortIdx);
         addMagazineVal(magazine, dayTrovato, tipoTrovato, quantity);
-        printf("PORTO %d: riaggiungo %d\n" , myPortIdx, quantity);
     
     }
     shmDetach(magazine, errorHandler, "restore promised goods");

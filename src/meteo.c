@@ -11,11 +11,6 @@
 #include "../utils/shm_utility.h"
 #include "../utils/sem_utility.h"
 
-/*
-    TODO: testare + aggiornare il dump con merce affondata
-
-
-*/
 void malestormRoutine() {
     int victimIdx;
     int i;
@@ -44,17 +39,12 @@ void malestormRoutine() {
             printf("METEO: nave vittima per malestorm:%d\n", victimIdx);
             victim = *(intElementAt(shipsList, victimIdx));
             printf("Tra %d ore killo la nave %d\n", so_malestorm, victim);
-            printf("ASPETTO %f secondi\n", ((double)(0.04166667 * NANOS_MULT) * so_malestorm));
             nanosecsleep((double)(0.04166667 * NANOS_MULT) * so_malestorm);
 
             
             victimShip = ((Ship)getShmAddress(shipShmID, 0, errorHandler, "getShmAddress in malestormRoutine di shipsArray")) + victim;
 
 
-            
-
-            printf("PID VITTIMA %d\n", victimShip->pid);
-            
             mutexPro(semShipID, victim, LOCK, errorHandler, "semShipID LOCK");
         
             victimShip->dead = 1;
@@ -87,12 +77,6 @@ void malestormHandler() {
     }
 }
 
-/*
-    TODO: utilizzare nella struct della nave un array [storm,swell] e se uno dei due campi viene settato ad 1
-          allora quella nave è stata scelta dal meteo come target
-
-          RICORDARSI DI RISETTRE IL VALORA A 0 DOPO
-*/
 
 void stormRoutine(){
     int shmShipID;
@@ -135,8 +119,7 @@ void launchSwell(){
     } else if(pid == 0){
         swellRoutine();
         exit(EXIT_SUCCESS);
-    }
-    
+    } 
 }
 
 int main(int argc, char* argv[]) {
@@ -147,23 +130,16 @@ int main(int argc, char* argv[]) {
     signal(SIGCHLD, SIG_IGN);
     
     endShmID = useShm(ENDPROGRAMSHM, sizeof(unsigned int), errorHandler, "getEndDayShmID meteo");
-
-    
     aspettoMortePortiSemID = useSem(WAITPORTSSEM, errorHandler, "aspettoMortePortiSemID in portCode");
     
 
     checkInConfig();
-    printf("Meteo chekInConfig finita...\n");
     waitForStart();
 
     if (WITH_MALESTORM) {
         malestormHandler();     
     }
 
-    
-    
-    
-    
     printf("Meteo partito...\n");
 
     while (fgets(str, 128, stdin) != NULL) {
@@ -171,7 +147,6 @@ int main(int argc, char* argv[]) {
         if (day == -1) {
             break;
         }
-        printf("Giorno %d\n", day);
         
         launchStorm();
         launchSwell();
@@ -181,6 +156,5 @@ int main(int argc, char* argv[]) {
     printf("Meteo: termino\n");
     exit(EXIT_SUCCESS);
         
-
 }
 

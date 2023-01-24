@@ -37,10 +37,10 @@ void masterCode(int startSimulationSemID, int portsShmid, int shipsShmid, int re
     fclose(fopen("./logs/masterlog.log", "w"));
     fp = fopen("./logs/masterlog.log" , "a+");
     /*
-    quantitaAlGiorno rappresenta la divisione di SO_FILL per SO_DAYS, solo che può darsi che SO_FILL non sia divisbile per SO_DAYS,
-    la soluzione che ho pensato è che per tutti i giorni diversi dal primo si tiene in considerazione soltanto la parte intera della divisione
-    mentre alle risorse del primo giorno vengono recuperate tutte le risorse perse prendendo solo la parte intera della divisione
-    in altre parole alle risorse del primo giorno vengono aggiunti tutti i resti della divisione intera di "SO_FILL/SO_DAYS" per ogni giorno
+        quantitaAlGiorno rappresenta la divisione di SO_FILL per SO_DAYS, solo che può darsi che SO_FILL non sia divisbile per SO_DAYS,
+        la soluzione che ho pensato è che per tutti i giorni diversi dal primo si tiene in considerazione soltanto la parte intera della divisione
+        mentre alle risorse del primo giorno vengono recuperate tutte le risorse perse prendendo solo la parte intera della divisione
+        in altre parole alle risorse del primo giorno vengono aggiunti tutti i resti della divisione intera di "SO_FILL/SO_DAYS" per ogni giorno
     */
     quantitaAlGiorno = so_fill / so_days;
     resto = so_fill % so_days;
@@ -61,9 +61,6 @@ void masterCode(int startSimulationSemID, int portsShmid, int shipsShmid, int re
    
     ships = (Ship)getShmAddress(shipsShmid, 0, errorHandler, "master");
 
-    printf("PID MASTER: %d, press any number to continue\n", getpid());
-    scanf("%d", &c);
-
     mutex(startSimulationSemID, LOCK, errorHandler,  "mesterCode -> startSimulationSemID LOCK");
     
 
@@ -81,10 +78,7 @@ void masterCode(int startSimulationSemID, int portsShmid, int shipsShmid, int re
             fprintf(fp,"Master: dormo\n");
             if (*day > 0) {
                 expirePortsGoods(*day);
-                /*
-                expireShipGoods();
-
-                */
+               
                 refillPorts(ASYNC, msgRefillerID, quantitaAlGiorno, *day);
                 mutex(waitEndDaySemID, WAITZERO, errorHandler, "mesterCode -> waitEndDaySemID WAITZERO");
                 mutex(waitEndDayShipsSemID, WAITZERO, errorHandler, "mesterCode -> waitEndDayShipSemID WAITZERO");
@@ -101,18 +95,12 @@ void masterCode(int startSimulationSemID, int portsShmid, int shipsShmid, int re
 
     fprintf(meteoPipe, "%d\n", EOF);
     fflush(meteoPipe);
-    fprintf(fp,"Master, faccio la pclose\n");
-    /*
-    pclose(meteoPipe);
-
-    */
-    fprintf(fp,"ENTRO\n");
+        
     if (!aliveShips) {
-    fprintf(fp,"SPACCO\n");
         
         *day = *day - 1;
     }
-    fprintf(fp,"CIAO\n");
+    
     fclose(fp);
 }
 

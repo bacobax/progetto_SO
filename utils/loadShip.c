@@ -29,20 +29,16 @@ Product initProduct(int weight, int type, int expTime, int portID, int dd) {
 }
 
 void addProduct(Ship ship, Product p,Port port) {
-    /*char text[64];*/
     int so_capacity = SO_("CAPACITY");
     if (so_capacity - ship->weight >= p->weight)
     {
 
         if(p == NULL){
-            printf("PRODOTTO NULLO\n");
-            /*throwError("Prodotto nullo", "addProduct");*/
-            /*logShip(ship->shipID, "PRODOTTO NULL");*/
+            throwError("Prodotto nullo", "addProduct");
         }
         
 
         if (ship->loadship->length == 0) {
-            /*logShip(ship->shipID, "ramo true in addproduct");*/
 
             ship->loadship->last = p;
             ship->loadship->first = p;
@@ -52,22 +48,17 @@ void addProduct(Ship ship, Product p,Port port) {
             ship->loadship->last->next = p;
             ship->loadship->last = ship->loadship->last->next;
         }
-        /*sprintf(text, "ship->loadship->last->weight = %d\n", ship->loadship->last->weight );*/
-        /*logShip(ship->shipID, text);*/
-            
-        /*logShip(ship->shipID, "dopo add");*/
+       
         ship->loadship->length += 1;
         ship->weight+= p->weight;
-        /*printShip(ship);*/
         
         addNotExpiredGood(p->weight, p->product_type, SHIP, 0, ship->shipID);
         port->sentGoods += p->weight;
         
     }
     else {
-        /*
-        throwError("capacità insufficente", "loadShip Addproduct");*/
-        printf("IMPOSSIBILE AGGIUNGERE PRODOTTO SO_CAPACITY MASSIMA!\n");
+        
+        throwError("capacità insufficente", "loadShip Addproduct");
     }
     
 }
@@ -108,12 +99,10 @@ void removeProduct(Ship ship, int index) {
     aux = ship->loadship->first; 
 
     if (index < 0 || index >= ship->loadship->length) {
-        /*return throwError("Out of bound removeProduct", "removeProduct");*/
-        printf("INDEX NON VALIDO PER RIMUOVERE IL PRODOTTO\n");
+        throwError("INDEX NON VALIDO PER RIMUOVERE IL PRODOTTO" , "removeProduct");
         return;
     }
     
-    printf("index del prodotto da rimuovere:%d\n", index);
     if (index == 0) {
         
         aux = ship->loadship->first;
@@ -127,7 +116,6 @@ void removeProduct(Ship ship, int index) {
     }
 
     if(index == ship->loadship->length-1){
-        printf("vogio rimuovere l'ultimo, i:%d\n", index);
         peso = ship->loadship->last->weight;
         while (i < index - 1) {
             aux = aux->next;
@@ -158,7 +146,6 @@ void removeProduct(Ship ship, int index) {
         aux = aux->next;
     }
 
-    printf("PRODOTTO NON TROVATO NELLA LISTA PER ESSERE RIMOSSO\n");
 }
 
 void printLoadShip(loadShip list, FILE* stream) {

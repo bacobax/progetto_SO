@@ -136,13 +136,6 @@ void removeExpiredGoods(Supplies* S, int* magazine) {
     shmDetach(expTimes, errorHandler, "removeExpiredGoods");
 }
 
-/*
-    in sintesi maggiore è la quantità, maggiore è il valore assegnato
-    maggiore è il tempo di vita rimanente, minore è il valore,
-    l'ho aggiustata con una divisione
-    
-*/
-
 int validSupply(Supplies s, int type, int* magazine){
     /* ritorna true se c'è almeno un elemento maggiore di 0 in p.megazine[tutti i giorni][type]
         int magazine[SO_DAYS][SO_MERCI];
