@@ -860,18 +860,7 @@ void printStatoNavi(FILE* fp){
     shmShip = useShm(SSHMKEY, sizeof(struct ship) * so_navi, errorHandler, "printStatoNavi");
     ships = (Ship)getShmAddress(shmShip, 0, errorHandler, "printStatoNavi");
 
-    /*
-    for(i=0; i<SO_NAVI; i++){
-        if(ship[i].inSea){
-            if(ship[i].weight>0){            nave in mare con carico a bordo
-                shipsInSeaWithProducts++;
-            } else {                         nave in mare senza carico a bordo
-                shipsInSeaWithoutProducts++;
-            }
-        }
-    } 
-    */
-
+   
     for (i = 0; i < so_porti; i++)
     { /* navi in porto che fanno operazioni di carico/scarico*/
 
