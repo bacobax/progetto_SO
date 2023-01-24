@@ -180,7 +180,6 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     int waitResponsesID;
     int portsDischargeQueue;
     int verifyRequestPortSemID;
-    int portDischargeRequestsQueueID;
     int waitToRemoveDump;
     int i;
     unsigned int* terminateValue;
@@ -338,8 +337,6 @@ void mySettedMain(void (*codiceMaster)(int startSimulationSemID, int portsShmid,
     removeQueue(msgRefillerID, errorHandler, "msgRefillerID");
     printf("coda di refiller rimossa\n");
 
-    removeQueue(portDischargeRequestsQueueID, errorHandler , "portDischargeRequestsQueueID");
-    removeQueue(portRequestsQueueID, errorHandler, "portRequestsQueueID");
     /*distruggiCodePorti();
     distruggiCodePortiDischarge();*/
     printf("coda dei porti rimossa\n");

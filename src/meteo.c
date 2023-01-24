@@ -135,8 +135,7 @@ void launchSwell(){
     } else if(pid == 0){
         swellRoutine();
         exit(EXIT_SUCCESS);
-    }
-    
+    } 
 }
 
 int main(int argc, char* argv[]) {
