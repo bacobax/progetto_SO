@@ -225,10 +225,6 @@ void mySettedMain(void (*masterCode)(int startSimulationSemID, int portsShmid, i
     /*il codice del master manco la usa*/
     msgRefillerID = createQueue(REFILLERQUEUE, errorHandler, "creazione coda del refiller");
 
-    /* msgShipQueueID = createQueue(SCHQUEUEKEY, errorHandler); */
-
-    /* creare queue navi per fase di scaricamento TO-DO*/
-
     reservePortsResourceSem = createMultipleSem(RESPORTSBUFFERS, so_porti, 1, errorHandler, "creazione sem per scrivere nei supplies di un porto");
 
     rwExpTimesPortSemID = createMultipleSem(WREXPTIMESSEM, so_porti, 1, errorHandler, "sem per leggere e scrivere negli exp time di un porto");
@@ -305,11 +301,11 @@ void refillCode(intList* l, int msgRefillerID, int giorno) {
 
 }
 
-void refillPorts(int opt, int msgRefillerID, int quantitaAlGiorno, int giorno) {
+void refillPorts(int opt, int msgRefillerID, int quantityPerDay, int giorno) {
     intList* l;
     int so_porti = SO_("PORTI");
     int pid;
-    l = distributeV1(quantitaAlGiorno, so_porti);
+    l = distributeV1(quantityPerDay, so_porti);
     if (opt == SYNC) {
         refillCode(l, msgRefillerID, giorno);
         intFreeList(l);

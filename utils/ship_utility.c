@@ -800,7 +800,6 @@ int deliverProduct(Ship ship, Port port, int product_index, Product p, int portI
 
     verifyRequestSemID = useSem(P2SEMVERIFYKEY, errorHandler, "recvChargerHandler->verifyRequestSemID");
 
-    /* TODO: SEMAFORO PROTEZIONE RICHIESTE LOCK*/
     if (!isScadutaProduct(p)) {
 
         if(!firstProd){

@@ -32,7 +32,7 @@ void mySettedMain(void (*masterCode)(int startSimulationSemID, int portsShmid, i
 void aspettaConfigs(int waitConfigSemID);
 
 
-void refillPorts(int opt, int msgRefillerID, int quantitaAlGiorno, int giorno);
+void refillPorts(int opt, int msgRefillerID, int quantityPerDay, int giorno);
 
 void expirePortsGoods(int day);
 

@@ -170,7 +170,6 @@ int filterIdxs(int request) {
 }
 
 
-/* TODO: risolvere bug che non fa il parse del day del messaggio */
 void refill(long type, char* text) {
 
     int so_merci = SO_("MERCI");    
