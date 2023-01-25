@@ -41,8 +41,6 @@ int useSem(int key, void (*errorHandler)(int err, char* errCtx), char* errCtx) {
 
     }
     return semid;
-
-
 }
 
 int createSem(int key, int initValue, void (*errorHandler)(int err, char* errCtx), char* errCtx) {

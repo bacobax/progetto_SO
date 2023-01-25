@@ -300,7 +300,7 @@ void printerCode(int day, int last) {
 
     printStatoNavi(fp);
 
-    printStatoPorti(fp);
+    printPortsState(fp);
     
     if(last){
         merceDaRefillare = (so_fill/so_days)*(so_days-day);

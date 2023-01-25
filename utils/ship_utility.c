@@ -259,7 +259,7 @@ int communicatePortsForChargeV1(int quantityToCharge, PortOffer* port_offers) {
     for (i = 0; i < so_porti; i++) {
         p = getPort(i);
         mutexPro(controlPortsDisponibilitySemID, i, LOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID LOCK");
-        res = trovaTipoEScadenza(p, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantityToCharge, i);
+        res = findTypeAndExpTime(p, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantityToCharge, i);
         mutexPro(controlPortsDisponibilitySemID, i, UNLOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID UNLOCK");
 
         if (res != -1) {
@@ -863,11 +863,13 @@ int deliverProduct(Ship ship, Port port, int product_index, Product p, int portI
 void removeExpiredGoodsOnShip(Ship ship){
     Product aux;
     int index = 0;
-    for(aux = ship->loadship->first; aux != NULL; aux = aux->next){
+    removePWhere(ship, isScadutaProduct);
+    /*
+    for (aux = ship->loadship->first; aux != NULL; aux = aux->next) {
         if(isScadutaProduct(aux)){
             addExpiredGood(aux->weight, aux->product_type, SHIP);
             removeProduct(ship, index);
         }
         index++;
-    }
+    }*/
 }

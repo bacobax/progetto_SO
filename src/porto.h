@@ -43,7 +43,7 @@ typedef struct port* Port;
 Port initPort(int supplyDisponibility, int requestDisponibility, int pIndex);
 
 
-void printPorto(Port p, int idx, FILE* stream);
+void printPort(Port p, int idx, FILE* stream);
 
 void launchRefiller(int idx);
 /*
@@ -71,8 +71,8 @@ intList *getTypeToCharge();
 intList *getAllOtherTypeRequests(int idx, Port portArr);
 
 intList* getAllTypeSupplies(Port portArr);
-intList* tipiDiMerceOfferti(Port p);
-intList* tipiDiMerceRichiesti(Port p);
+intList* suppliesTypes(Port p);
+intList* requestsTypes(Port p);
 double getValue(int quantity, int scadenza, int tipo, Port p, int idx);
 Port getPort(int portID);
 
@@ -80,9 +80,9 @@ Port getPort(int portID);
     algoritmo che trova la migliore coppia di coordinate della matrice (tipo merce, giorno di distribuzione della merce) che corrisponde
     alla migliore quantità disponibile da offrire di fronte alla richiesta di merce pari a {{quantity}}
 */
-int trovaTipoEScadenza(Port port, int* tipo, int* dayTrovato, int* scadenza, int quantity, int idx);
+int findTypeAndExpTime(Port port, int* tipo, int* dayTrovato, int* scadenza, int quantity, int idx);
 
-void printStatoPorti(FILE *fp);
+void printPortsState(FILE *fp);
 void restorePromisedGoods(Port porto, int dayTrovato, int tipoTrovato, int quantity, int myPortIdx);
 void detachPort(Port port, int portID);
 int* getMagazine(Port port);

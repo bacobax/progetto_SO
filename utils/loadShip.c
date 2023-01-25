@@ -148,6 +148,18 @@ void removeProduct(Ship ship, int index) {
 
 }
 
+void removePWhere(Ship s, int(*f)(Product p)) {
+    Product aux;
+    int i;
+    i = 0;
+    for (aux = s->loadship->first; aux != NULL; aux = aux->next) {
+        if (f(aux)) {
+            removeProduct(s, i);
+        }
+        i++;
+    }
+}
+
 void printLoadShip(loadShip list, FILE* stream) {
     
     Product aux;

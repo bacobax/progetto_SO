@@ -100,6 +100,7 @@ int deliverProduct(Ship ship, Port port, int product_index, Product p, int portI
 
 void addProduct(Ship ship, Product p, Port port);
 void removeProduct(Ship ship, int index);
+void removePWhere(Ship s, int(*f)(Product p));
 
 void removeExpiredGoodsOnShip(Ship ship);
 

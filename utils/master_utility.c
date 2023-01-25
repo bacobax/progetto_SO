@@ -143,36 +143,12 @@ void distruggiShmPorti(){
 }
 
 void mySettedMain(void (*masterCode)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID, int* day, int waitEndDayShipsSemID)) {
-    int startSimulationSemID;
-    int reservePrintSem;
-    int reservePortsResourceSem;
-    int portsShmid;
-    int shipsShmid;
-    int endShmID;
-    int dayShmID;
-    int semBanchineID;
-    int semShipsID;
-    int msgRefillerID;
-    int waitconfigSemID;
-    int rwExpTimesPortSemID;
-    int waitEndDaySemID;
-    int controlPortsDisponibilitySemID;
-    int waitToTravelsemID;
-    int waitResponsesID;
-    
-    int verifyRequestPortSemID;
-    int waitToRemoveDump;
-    int i;
+    int startSimulationSemID, reservePrintSem, reservePortsResourceSem, portsShmid, shipsShmid, endShmID, dayShmID, pierSemID, semShipsID;
+    int msgRefillerID, waitconfigSemID, rwExpTimesPortSemID, waitEndDaySemID, controlPortsDisponibilitySemID, waitToTravelsemID, waitResponsesID;   
+    int verifyRequestPortSemID, waitToRemoveDump, i, waitPortsSemID, waitShipsSemID, waitEndDayShipSemID, so_porti, so_navi, so_banchine, so_merci;
     unsigned int* terminateValue;
+
     int* day;
-    int waitPortsSemID;
-    int waitShipsSemID;
-    int waitEndDayShipSemID;
-    int so_porti;
-    int so_navi;
-    int so_banchine;
-    int so_merci;
-    int so_days;
     struct sigaction new_sig_action;
     sigset_t new_sig_set;
 
@@ -180,7 +156,6 @@ void mySettedMain(void (*masterCode)(int startSimulationSemID, int portsShmid, i
     so_navi = SO_("NAVI");
     so_banchine = SO_("BANCHINE");
     so_merci = SO_("MERCI");
-    so_days = SO_("DAYS");
     signal(SIGCHLD, SIG_IGN);
     sigemptyset(&new_sig_set);
     sigaddset(&new_sig_set, SIGUSR1);
@@ -216,7 +191,7 @@ void mySettedMain(void (*masterCode)(int startSimulationSemID, int portsShmid, i
 
 
     /*creazione banchine*/
-    semBanchineID = createMultipleSem(BANCHINESEMKY, so_porti, so_banchine, errorHandler, "creazione semaforo banchine");
+    pierSemID = createMultipleSem(BANCHINESEMKY, so_porti, so_banchine, errorHandler, "creazione semaforo banchine");
 
     if (portsShmid == EEXIST || shipsShmid == EEXIST) {
         throwError("Le shm esistono già\n" , "mySettedMain");
@@ -259,7 +234,7 @@ void mySettedMain(void (*masterCode)(int startSimulationSemID, int portsShmid, i
 
     removeSem(startSimulationSemID, errorHandler, "startSimulationSemID");
     removeSem(reservePrintSem, errorHandler, "reservePrintSem");
-    removeSem(semBanchineID, errorHandler, "semBanchineID");
+    removeSem(pierSemID, errorHandler, "pierSemID");
     removeSem(reservePortsResourceSem, errorHandler, "reservePortsResourceSem");
     removeSem(waitconfigSemID, errorHandler, "waitconfigSemID");
     removeSem(rwExpTimesPortSemID, errorHandler , "rwExpTimesPortSemID");

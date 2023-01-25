@@ -11,7 +11,7 @@
 
 void fillExpirationTime(Supplies* S) {
     int i;
-    double media;
+    double mean;
     int dumpShmID;
     DumpArea* dump;
     int so_max_vita;
@@ -30,10 +30,10 @@ void fillExpirationTime(Supplies* S) {
     dumpShmID = useShm(DUMPSHMKEY, sizeof(DumpArea), errorHandler, "fillExpirationTime");
     dump = (DumpArea*)getShmAddress(dumpShmID, 0, errorHandler, "fillExpirationTime");
 
-    media = ((double)(so_min_vita + so_max_vita)) / 2;
+    mean = ((double)(so_min_vita + so_max_vita)) / 2;
     for (i = 0; i < so_merci * so_days; i++) {
         expTimes[i] = random_int(so_min_vita, so_max_vita);
-        dump->expTimeVariance += mod(((double)expTimes[i]) - media);
+        dump->expTimeVariance += mod(((double)expTimes[i]) - mean);
     }
     shmDetach(expTimes, errorHandler, "fillExpirationTime expTimes");
     shmDetach(dump, errorHandler, "fillExpirationTime");

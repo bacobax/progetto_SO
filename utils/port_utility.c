@@ -82,9 +82,9 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
 
     /*
         Questa è una parte importante, viso che avevo un certo grado di libertà su come affrontare il fatto
-        che non ci potesse essere domanda e offerta dello stesso tipo di merce in un porto, ho deciso di azzerare le ton del tipo di
-        merce che non viene offerta, e azzerare le ton del tipo di merce che non viene richiesta, tanto quella merce è solo destinata a scadere.
-        Per decidere quale tipo di merce offrire e richiedere lascio anche questo al caso con questo ciclo for:
+        che non ci potesse essere domanda e offerta dello stesso type di merce in un porto, ho deciso di azzerare le ton del type di
+        merce che non viene offerta, e azzerare le ton del type di merce che non viene richiesta, tanto quella merce è solo destinata a scadere.
+        Per decidere quale type di merce offrire e richiedere lascio anche questo al caso con questo ciclo for:
         scorre tutti i tipi di merce e decide di azzerare l'offerta o la domanda, 
         
     */
@@ -127,7 +127,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
         p->y = generateCord();
     }
     /*
-    reservePrint(printPorto, p, pIndex);
+    reservePrint(printPort, p, pIndex);
     
     */
     shmDetach(reqs, errorHandler, "initPort detach requests");
@@ -137,7 +137,7 @@ Port initPort(int supplyDisponibility,int requestDisponibility, int pIndex) {
 
 
 
-void printPorto(Port p, int idx, FILE* stream) {
+void printPort(Port p, int idx, FILE* stream) {
 
     int i;
     int* reqs;
@@ -153,7 +153,7 @@ void printPorto(Port p, int idx, FILE* stream) {
     shmDetach(reqs, errorHandler, "print porto");
     magazine = getMagazine(p);
     printSupplies(p->supplies, stream, magazine);
-    shmDetach(magazine, errorHandler, "printPorto magazine");
+    shmDetach(magazine, errorHandler, "printPort magazine");
     fprintf(stream,"coords:\n");
     fprintf(stream, "x: %f\n", p->x);
     fprintf(stream,"y: %f\n",  p->y);
@@ -254,7 +254,7 @@ void refill(long type, char* text) {
     shmDetach(magazine, errorHandler, "refill magazine");
     mutexPro(portBufferSem, (int)correctType, UNLOCK, errorHandler, "refill->portBufferSem UNLOCK");
     /*
-        reservePrint(printPorto, p, correctType);
+        reservePrint(printPort, p, correctType);
 
     */
     
@@ -303,15 +303,15 @@ void launchRefiller(int idx) {
 }
 
 
-void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*portCode)(int endShmId, int idx,int aspettoMortePortiSemID, int aspettoMorteNaviSemID)) {
+void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, void(*portCode)(int endShmId, int idx,int waitPortsDeathSemID, int waitShipsDeathSemID)) {
      
     void (*oldHandler)(int);
     int endShmId;
-    int aspettoMortePortiSemID;
-    int aspettoMorteNaviSemID;
+    int waitPortsDeathSemID;
+    int waitShipsDeathSemID;
     Port p;
-    aspettoMortePortiSemID = useSem(WAITPORTSSEM, errorHandler, "aspettoMortePortiSemID in portCode");
-    aspettoMorteNaviSemID = useSem(WAITSHIPSSEM, errorHandler, "aspettoMortePortiSemID in portCode");
+    waitPortsDeathSemID = useSem(WAITPORTSSEM, errorHandler, "waitPortsDeathSemID in portCode");
+    waitShipsDeathSemID = useSem(WAITSHIPSSEM, errorHandler, "waitPortsDeathSemID in portCode");
   
     /*
         questo perchè per qualche motivo srand(time(NULL)) non generava unici seed tra un processo unico e l'altro
@@ -339,7 +339,7 @@ void mySettedPort(int supplyDisponibility, int requestDisponibility, int idx, vo
         da aggiungere le due useQueue per le code di scaricamento
     */
 
-    portCode(endShmId, idx, aspettoMortePortiSemID, aspettoMorteNaviSemID);
+    portCode(endShmId, idx, waitPortsDeathSemID, waitShipsDeathSemID);
 
 
 }
@@ -383,16 +383,16 @@ intList* validSupplies(Port p){
     return ret;
 }
 
-intList* tipiDiMerceOfferti(Port p) {
+intList* suppliesTypes(Port p) {
     int so_merci = SO_("MERCI");
     intList* tipiMerceSenzaRichiesta;
     int* reqs;
     intList* tipiMerceOffertaMaggioreDiZero = validSupplies(p);
     intList* ret;
-    reqs = getShmAddress(p->requestsID, 0, errorHandler, "tipiDiMerceRichiesti");
+    reqs = getShmAddress(p->requestsID, 0, errorHandler, "requestsTypes");
 
     tipiMerceSenzaRichiesta = findIdxs(reqs, so_merci, filterReq);
-    shmDetach(reqs, errorHandler, "tipiDiMerceRichiesti");
+    shmDetach(reqs, errorHandler, "requestsTypes");
     
     ret = intIntersect(tipiMerceSenzaRichiesta, tipiMerceOffertaMaggioreDiZero);
     intFreeList(tipiMerceSenzaRichiesta);
@@ -400,13 +400,13 @@ intList* tipiDiMerceOfferti(Port p) {
     return ret;
 }
 
-intList* tipiDiMerceRichiesti(Port p) {
+intList* requestsTypes(Port p) {
     intList* ret;
     int* reqs;
     int so_merci = SO_("MERCI");
-    reqs = getShmAddress(p->requestsID, 0, errorHandler, "tipiDiMerceRichiesti");
+    reqs = getShmAddress(p->requestsID, 0, errorHandler, "requestsTypes");
     ret = findIdxs(reqs, so_merci, filterIdxs);
-    shmDetach(reqs, errorHandler, "tipiDiMerceRichiesti");
+    shmDetach(reqs, errorHandler, "requestsTypes");
     return ret;
 }
 
@@ -414,15 +414,15 @@ intList* tipiDiMerceRichiesti(Port p) {
 intList* getAllOtherTypeRequests(int idx, Port portArr) {
     int i;
     intList* ret = intInit();
-    intList* tipiRichiesti;
+    intList* requestsType;
     int so_porti = SO_("PORTI");
 
     for (i = 0; i < so_porti; i++)
     {
         if (i != idx) {
-            tipiRichiesti = tipiDiMerceRichiesti(portArr + i);
-            ret = intUnion(ret, tipiRichiesti);
-            intFreeList(tipiRichiesti);
+            requestsType = requestsTypes(portArr + i);
+            ret = intUnion(ret, requestsType);
+            intFreeList(requestsType);
         }
     }
     
@@ -442,9 +442,9 @@ intList* getTypeToCharge() {
     int so_porti = SO_("PORTI");
     port = getPort(0);
     for(i=0;i<so_porti; i++){
-        aux0 = tipiDiMerceRichiesti(port + i);
+        aux0 = requestsTypes(port + i);
         
-        aux1 = tipiDiMerceOfferti(port + i);
+        aux1 = suppliesTypes(port + i);
         
         merciTotaliRichieste = intUnion(merciTotaliRichieste, aux0);
         merciTotaliOfferte = intUnion(merciTotaliOfferte, aux1);
@@ -463,29 +463,29 @@ intList* getTypeToCharge() {
 }
 
 
-double getValue(int quantity, int scadenza, int tipo, Port p, int idx) {
+double getValue(int quantity, int expTime, int type, Port p, int idx) {
     intList *tipiDiMerceRichiestiAltriPorti = getAllOtherTypeRequests(idx,p-idx);
-    if (scadenza == 0 || contain(tipiDiMerceRichiesti(p), tipo) || !contain(tipiDiMerceRichiestiAltriPorti, tipo))
+    if (expTime == 0 || contain(requestsTypes(p), type) || !contain(tipiDiMerceRichiestiAltriPorti, type))
     {
         return 0;
     }
-    else /*scadenza > 0 && le mie richieste non contengono il tipo di merce di questa offerta && le richieste degli altri porti contengono il tipo di merce di questa offerta*/
+    else /*expTime > 0 && le mie richieste non contengono il type di merce di questa offerta && le richieste degli altri porti contengono il type di merce di questa offerta*/
     {
         if(PORTOSCEGLIEMASSIMO){
-            return quantity * (double)scadenza;
+            return quantity * (double)expTime;
         }else{
-            return quantity / (double)scadenza;
+            return quantity / (double)expTime;
 
         }
     }
 }
 
 
-int trovaTipoEScadenza(Port port, int* tipo, int* dayTrovato, int* scadenza, int quantity, int idx) {
+int findTypeAndExpTime(Port port, int* type, int* foundDay, int* expTime, int quantity, int idx) {
     int i;
     int j;
     /*
-    il valore dev'essere di tipo double perchè sennò le volte che 0 < quantity/scadenza < 1,
+    il valore dev'essere di type double perchè sennò le volte che 0 < quantity/expTime < 1,
     cioè quando il tempo di vita rimanente è maggiore della quantità, value diventa 0
     */
     double value = 0;
@@ -497,9 +497,9 @@ int trovaTipoEScadenza(Port port, int* tipo, int* dayTrovato, int* scadenza, int
     int so_days;
     int so_merci;
     magazine = getMagazine(port);
-    *tipo = -1;
-    *scadenza = -1;
-    *dayTrovato = -1;
+    *type = -1;
+    *expTime = -1;
+    *foundDay = -1;
     so_days = SO_("DAYS");
     so_merci = SO_("MERCI");
 
@@ -512,28 +512,28 @@ int trovaTipoEScadenza(Port port, int* tipo, int* dayTrovato, int* scadenza, int
             currentValue = getValue(ton, currentScadenza,j ,port,idx);
             if (ton >= quantity && currentValue > value) {
                 value = currentValue;
-                *tipo = j;
-                *dayTrovato = i;
-                *scadenza = currentScadenza;
+                *type = j;
+                *foundDay = i;
+                *expTime = currentScadenza;
             }
         }
         
     }
     
-    if (*tipo == -1 && *scadenza == -1 && *dayTrovato == -1) {
+    if (*type == -1 && *expTime == -1 && *foundDay == -1) {
         res = -1;
     }
     else {
         /*
                 Operazione importante: decremento della quantità richiesta in anticipo, così nel mentre altre navi possono scegliere
-                lo stesso tipo di merce con la quantità aggiornata
+                lo stesso type di merce con la quantità aggiornata
         */
-        addMagazineVal(magazine, *dayTrovato, *tipo, quantity * -1);
+        addMagazineVal(magazine, *foundDay, *type, quantity * -1);
 
-        addNotExpiredGood(0 - quantity, *tipo, PORT, 0, idx);
+        addNotExpiredGood(0 - quantity, *type, PORT, 0, idx);
         res = 1;
     }
-    shmDetach(magazine, errorHandler, "trova tipo e scadenza");
+    shmDetach(magazine, errorHandler, "trova type e expTime");
     return res;
 
 }
@@ -560,7 +560,7 @@ int caughtBySwell(int idx, Port p){
     return p->weatherTarget;
 }
 
-void printStatoPorti(FILE *fp){
+void printPortsState(FILE *fp){
     int semPierID;
     int i;
     int c;
@@ -578,7 +578,7 @@ void printStatoPorti(FILE *fp){
         fprintf(fp, "Banchine occupate totali: %d\n", so_banchine - getOneValue(semPierID, i));
         fprintf(fp, "Merci ricevute: %d\n", port[i].deliveredGoods);
         fprintf(fp, "Merci spedite: %d\n", port[i].sentGoods);
-        printPorto(port+i, i, fp);
+        printPort(port+i, i, fp);
     }
     detachPort(port, 0);
 }
@@ -598,18 +598,18 @@ void detachPort(Port port,int portID) {
 
 
 
-void restorePromisedGoods(Port porto, int dayTrovato, int tipoTrovato, int quantity, int myPortIdx){
+void restorePromisedGoods(Port porto, int foundDay, int foundType, int quantity, int myPortIdx){
     int* magazine = getMagazine(porto);
-    addNotExpiredGood(quantity, tipoTrovato, PORT, 0, myPortIdx);
+    addNotExpiredGood(quantity, foundType, PORT, 0, myPortIdx);
     /*
         SE LA MERCE E' SCADUTA MENTRE IL PORTO ASPETTAVA DI SAPERE SE E' STATO SCELTO
         SE LA MERCE FOSSE SCADUTA PRIMA IL PROBLEMA NON ESISTEREBBE
     */
-    if(getExpirationTime(porto->supplies,tipoTrovato, dayTrovato)== 0){
-        addExpiredGood(quantity, tipoTrovato, PORT);
+    if(getExpirationTime(porto->supplies,foundType, foundDay)== 0){
+        addExpiredGood(quantity, foundType, PORT);
     }
     else {
-        addMagazineVal(magazine, dayTrovato, tipoTrovato, quantity);
+        addMagazineVal(magazine, foundDay, foundType, quantity);
     
     }
     shmDetach(magazine, errorHandler, "restore promised goods");
