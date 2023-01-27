@@ -41,40 +41,18 @@ int availableCapacity(Ship ship); /* ritorna il numero di ton disponibili sulla 
 /* inizializza la nave in shm e aggancia il segmento di memoria al processo chiamante*/
 Ship initShip(int shipID);
 
-<<<<<<< HEAD
 /* stampa le informazioni relative alla struttura dati della nave*/
-=======
-/*stampa la nave nel file di log*/
->>>>>>> 65356000b2f9f2813d00089f6d09a0a55cddf13e
 void printShip(Ship ship);
 
 
 /*
-<<<<<<< HEAD
-
-=======
     funzione che sceglie la quantità da caricare prendendo il minimo tra:
         1) massima offerta dei porti di cui esiste una domanda
         2) propria capacità disponibile in ton
->>>>>>> 65356000b2f9f2813d00089f6d09a0a55cddf13e
 */
 int chooseQuantityToCharge(Ship ship);
 
 /*
-<<<<<<< HEAD
-    scorre la lista della nave e ritorna ...
-*/
-int chooseProductToDelivery(Ship ship);
-/*
-    inizializza l'array delle offerte impostando tutti i campi a -1
-*/
-void initArrayOffers(PortOffer* offers);
-/*
-
-*/
-int communicatePortsForChargeV1(Ship ship, int quantityToCharge, PortOffer* port_offers);
-/*
-=======
     ritorna l'indice del prodotto da consegnare (scelto in base alla data di scadenza)
 */
 int chooseProductToDelivery(Ship ship);
@@ -100,7 +78,6 @@ int communicatePortsForChargeV1(Ship ship, int quantityToCharge, PortOffer* port
     quantoPossoScaricare viene settato alla domanda originaria del porto, se ques'ultima è stata decrementata fino a 0, ovviamente,
     conseguenza logica di ciò, in questo caso quantoPossoScaricare <= p->weight.
     In sintesi quantoPossoScaricare = min{richiesta del porto, p->weight}
->>>>>>> 65356000b2f9f2813d00089f6d09a0a55cddf13e
 
 */
 int communicatePortsForDischargeV1(Ship ship, Product p, int* quantoPossoScaricare, int* arrayResponses);
