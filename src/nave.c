@@ -21,7 +21,6 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
     int availablePorts;
     int portID;
     int waitResponsesID;
-    int waitToTravelSemID;
     intList* typeToCharge;
     int so_porti;
     int so_days;
@@ -101,7 +100,6 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
 
     int portID;
     int product_index;
-    int waitToTravelSemID;
     int quantoPossoScaricare;
     int so_porti;
     

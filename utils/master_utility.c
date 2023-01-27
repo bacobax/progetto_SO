@@ -144,7 +144,7 @@ void distruggiShmPorti(){
 
 void mySettedMain(void (*masterCode)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID, int* day, int waitEndDayShipsSemID)) {
     int startSimulationSemID, reservePrintSem, reservePortsResourceSem, portsShmid, shipsShmid, endShmID, dayShmID, pierSemID, semShipsID, verifyAllPortsSemID;
-    int msgRefillerID, waitconfigSemID, rwExpTimesPortSemID, waitEndDaySemID, controlPortsDisponibilitySemID, waitToTravelsemID, waitResponsesID;   
+    int msgRefillerID, waitconfigSemID, rwExpTimesPortSemID, waitEndDaySemID, controlPortsDisponibilitySemID, waitResponsesID;   
     int verifyRequestPortSemID, waitToRemoveDump, i, waitPortsSemID, waitShipsSemID, waitEndDayShipSemID, so_porti, so_navi, so_banchine, so_merci;
     unsigned int* terminateValue;
 

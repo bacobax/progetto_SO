@@ -39,21 +39,33 @@ int checkCapacity(); /* ritorna il numero di ton presenti sulla nave */
 
 int availableCapacity(Ship ship); /* ritorna il numero di ton disponibili sulla nave */
 
-
+/* inizializza la nave in shm e aggancia il segmento di memoria al processo chiamante*/
 Ship initShip(int shipID);
 
+/* stampa le informazioni relative alla struttura dati della nave*/
 void printShip(Ship ship);
 
-/* int addProduct(Ship ship, Product p, Port port); */
 
+/*
 
+*/
 int chooseQuantityToCharge(Ship ship);
 
+/*
+    scorre la lista della nave e ritorna ...
+*/
 int chooseProductToDelivery(Ship ship);
-
+/*
+    inizializza l'array delle offerte impostando tutti i campi a -1
+*/
 void initArrayOffers(PortOffer* offers);
-int communicatePortsForChargeV1(Ship ship, int quantityToCharge, PortOffer* port_offers);
+/*
 
+*/
+int communicatePortsForChargeV1(Ship ship, int quantityToCharge, PortOffer* port_offers);
+/*
+
+*/
 int communicatePortsForDischargeV1(Ship ship, Product p, int* quantoPossoScaricare, int* arrayResponses);
 
 
@@ -63,9 +75,11 @@ void replyToPortsForChargeV1(int portID, PortOffer* port_offers);
 
 void replyToPortsForDischargeV1(Ship ship, int portID, int quantoPossoScaricare, int* portResponses, Product prod);
 
-
+/*
+    funzioni per la simulazione del viaggio della nave, in base all'azione in corso (carico/scarico)
+    è presente una apposita travel
+*/
 void travelCharge(Ship ship, int portID, int* day, PortOffer* port_offers);
-
 void travelDischarge(Ship ship, int portID, int* day, Product prod, int* portResponses);
 
 
@@ -78,32 +92,63 @@ void updateExpTimeShip(Ship ship);
 void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* terminateValue);
 void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue);
 
+/*
+    funzione che gestisce la terminazione della nave 
+*/
 void exitNave(Ship s);
-
+/*
+    stampa su file lo stato delle navi (quante sono in mare con merci a bordo, quante senza, ecc...)
+*/
 void printStatoNavi(FILE* fp);
-
+/*
+    funzione che fa attendere alla nave la fine del giorno
+*/
 void waitEndDay();
 
-void waitToTravel(Ship ship);
-
-void initPromisedProduct(Ship ship, PortOffer port_offer, int quantityToCharge);
-
+/*
+ funzione che legge dalla shared memory utilizzata dal master,
+ se il programma è finito perchè è arrivato al termine della
+ simulazione
+*/
 void checkTerminateValue(Ship ship, unsigned int* terminateValue);
 
-
+/*
+ funzioni che ritornano l'id delle strutture IPC:
+ la prima del semaforo delle banchine,
+ la seconda del semaforo delle navi
+*/
 int getPierSem();
-
 int getShipSem();
 
+/*
+ funzione che controlla se la nave è stata affondata da
+ un malestorm
+*/
 void checkShipDead(Ship ship);
-int deliverProduct(Ship ship, Port port, int product_index, Product p, int portID, int firstProd, int quantoPossoScaricare);
+/*
 
+*/
+int deliverProduct(Ship ship, Port port, int product_index, Product p, int portID, int firstProd, int quantoPossoScaricare);
+/*
+ funzioni che aggiungono e rimuovono un prodotto al carico della nave,
+ quindi aggiungono o tolgono nodi dalla lista
+*/
 void addProduct(Ship ship, Product p, Port port);
 void removeProduct(Ship ship, int index);
+/*
+
+*/
 void removePWhere(Ship s, int(*f)(Product p));
 
+/*
+    pulisce il carico delle navi dai prodotti scaduti
+*/
 void removeExpiredGoodsOnShip(Ship ship);
 
+/*
+ controlla che un determinato prodotto è scaduto o no,
+ leggendo dalla shared memory del porto in cui è stato caricato
+*/
 int isScadutaProduct(Product prod);
 
 #endif
