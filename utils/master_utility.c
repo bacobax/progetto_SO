@@ -143,7 +143,7 @@ void distruggiShmPorti(){
 }
 
 void mySettedMain(void (*masterCode)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID, int* day, int waitEndDayShipsSemID)) {
-    int startSimulationSemID, reservePrintSem, reservePortsResourceSem, portsShmid, shipsShmid, endShmID, dayShmID, pierSemID, semShipsID;
+    int startSimulationSemID, reservePrintSem, reservePortsResourceSem, portsShmid, shipsShmid, endShmID, dayShmID, pierSemID, semShipsID, verifyAllPortsSemID;
     int msgRefillerID, waitconfigSemID, rwExpTimesPortSemID, waitEndDaySemID, controlPortsDisponibilitySemID, waitToTravelsemID, waitResponsesID;   
     int verifyRequestPortSemID, waitToRemoveDump, i, waitPortsSemID, waitShipsSemID, waitEndDayShipSemID, so_porti, so_navi, so_banchine, so_merci;
     unsigned int* terminateValue;
@@ -219,6 +219,7 @@ void mySettedMain(void (*masterCode)(int startSimulationSemID, int portsShmid, i
     
     waitToRemoveDump = createSem(WAITRMVDUMPKEY, 1, errorHandler, "craezione semaforo remove dump");
 
+    verifyAllPortsSemID = createSem(VERIFYALLPORTS,1,errorHandler,"creazioen verifyAllPortsSemID");
 
     masterCode(startSimulationSemID, portsShmid, shipsShmid, reservePrintSem, waitconfigSemID, msgRefillerID, waitEndDaySemID, day, waitEndDayShipSemID);
 
@@ -248,7 +249,7 @@ void mySettedMain(void (*masterCode)(int startSimulationSemID, int portsShmid, i
     removeSem(waitPortsSemID, errorHandler, "waitPortsSemID");
     removeSem(waitShipsSemID, errorHandler, "waitShipsSemID");
     removeSem(waitEndDayShipSemID, errorHandler, "waitEndDayShipSemID");
-
+    removeSem(verifyAllPortsSemID, errorHandler, "verifyAllPortsSemID");
     removeShm(shipsShmid, errorHandler, "shipsShmid");
     distruggiShmPorti();
     

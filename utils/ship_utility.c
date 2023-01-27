@@ -234,7 +234,7 @@ int chooseProductToDelivery(Ship ship) {
     i = 0;
     for (aux = ship->loadship->first; aux != NULL; aux = aux->next) {
        
-        if(aux->expirationTime > 0 && aux->expirationTime < expTime){
+        if(getProductExpTime(aux) > 0 && getProductExpTime(aux) < expTime){
             index = i;        
         }
         i++;
@@ -242,7 +242,7 @@ int chooseProductToDelivery(Ship ship) {
     return index;
 }
 
-int communicatePortsForChargeV1(int quantityToCharge, PortOffer* port_offers) {
+int communicatePortsForChargeV1(Ship ship, int quantityToCharge, PortOffer* port_offers) {
     int i;
     Port p;
     int controlPortsDisponibilitySemID;
@@ -252,15 +252,22 @@ int communicatePortsForChargeV1(int quantityToCharge, PortOffer* port_offers) {
     int aviablePorts;
     int res;
     int so_porti = SO_("PORTI");
-
+    int verifyAllPortsSemID;
     controlPortsDisponibilitySemID = useSem(PSEMVERIFYKEY, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID");
+    verifyAllPortsSemID = useSem(VERIFYALLPORTS, errorHandler, "verifyAllPortsSemID comunicate prt forc charge");
     aviablePorts = 0;
 
+    mutex(verifyAllPortsSemID,LOCK, errorHandler, "verifyAllPortsSemID LOCK");
+    quantityToCharge = chooseQuantityToCharge(ship);
     for (i = 0; i < so_porti; i++) {
         p = getPort(i);
+        /*
         mutexPro(controlPortsDisponibilitySemID, i, LOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID LOCK");
-        res = findTypeAndExpTime(p, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantityToCharge, i);
+
         mutexPro(controlPortsDisponibilitySemID, i, UNLOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID UNLOCK");
+        
+        */
+        res = findTypeAndExpTime(p, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantityToCharge, i);
 
         if (res != -1) {
             port_offers[i].distributionDay = dayTrovato;
@@ -273,6 +280,8 @@ int communicatePortsForChargeV1(int quantityToCharge, PortOffer* port_offers) {
         
         detachPort(p, i);
     }
+    mutex(verifyAllPortsSemID,UNLOCK, errorHandler, "verifyAllPortsSemID LOCK");
+
     return aviablePorts;
 }
 
@@ -445,13 +454,15 @@ void accessPortForChargeV1(Ship ship, int portID, PortOffer* port_offers) {
         printShip(ship);
         addProduct(ship, p,port);
         
-        printTransaction(ship->shipID, portID, 1, p->weight, p->product_type);
+        printTransaction(ship->shipID, portID, 1, p->weight, p->product_type,0);
         
         detachPort(port , portID);
         
     }
     else {
         logShip( ship->shipID, "OOPS la merce che volevo caricare è scaduta!!!");
+        printTransaction(ship->shipID, portID, 1, p->weight, p->product_type,1);
+
         addNotExpiredGood(p->weight,p->product_type,SHIP, 0, ship->shipID);
         addExpiredGood(p->weight, p->product_type, SHIP);
     }
@@ -831,7 +842,7 @@ int deliverProduct(Ship ship, Port port, int product_index, Product p, int portI
                 
                 addDeliveredGood(p->weight, p->product_type, portID);
                 
-                printTransaction(ship->shipID, portID, 0, p->weight, p->product_type);
+                printTransaction(ship->shipID, portID, 0, p->weight, p->product_type,0);
                 
                 removeProduct(ship, product_index);
                 
@@ -839,7 +850,7 @@ int deliverProduct(Ship ship, Port port, int product_index, Product p, int portI
             }else {
                 
                 addDeliveredGood(scarico, p->product_type, portID);
-                printTransaction(ship->shipID, portID, 0, scarico, p->product_type);
+                printTransaction(ship->shipID, portID, 0, scarico, p->product_type,0);
                 
                 p->weight -= scarico;
                 ship->weight-= scarico;
@@ -851,6 +862,7 @@ int deliverProduct(Ship ship, Port port, int product_index, Product p, int portI
     }
     else {
         addExpiredGood(p->weight, p->product_type, SHIP);
+        printTransaction(ship->shipID, portID, 0, scarico, p->product_type,1);
         removeProduct(ship, product_index);
 
         logShip(ship->shipID ,"OOPS! la merce che volevi scaricare è scaduta!!!");

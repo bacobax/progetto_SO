@@ -32,5 +32,6 @@ void freeLoadShip(loadShip list);
 Product productAt(loadShip l, int idx);
 Product initProduct(int weight, int type, int expTime, int portID, int dd);
 int weigthSum(loadShip l);
+int getProductExpTime(Product p);
 
 #endif

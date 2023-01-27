@@ -66,7 +66,7 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
     }
     else {
 
-        availablePorts = communicatePortsForChargeV1(quantityToCharge, port_offers); 
+        availablePorts = communicatePortsForChargeV1(ship, quantityToCharge, port_offers); 
         logShip(ship->shipID, "finito di chiamare i porti\n");
         if (availablePorts == 0) {
             
@@ -128,6 +128,7 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
             verificare che prod != NULL, se è == NULL vuol dire che la lista è vuota
         */
         if (prod == NULL) {
+
             removeExpiredGoodsOnShip(ship);
             free(portResponses);
             return;
@@ -139,6 +140,7 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
         if (portID == -1) {
 
             addExpiredGood(prod->weight, prod->product_type, SHIP);
+            printf("BUTTO VIA PRODOTTO a p_idx: %d\n", product_index);
             removeProduct(ship, product_index); 
 
             logShip( ship->shipID, " riprovo a scegliere il prodotto da scaricare\n");

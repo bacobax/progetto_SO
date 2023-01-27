@@ -63,7 +63,7 @@ void createDumpArea(){
     fclose(fopen("./logs/logNavi.log", "w"));
 }
 
-void transactionPrinterCode(int idxNave, int idxPorto, int carico, int ton, int tipoMerce) {
+void transactionPrinterCode(int idxNave, int idxPorto, int carico, int ton, int tipoMerce, int fail) {
     FILE* fp;
     int txSemID;
     int* day;
@@ -74,21 +74,21 @@ void transactionPrinterCode(int idxNave, int idxPorto, int carico, int ton, int 
     fp = fopen("./logs/cronologia.log", "a+");
     mutex(txSemID, LOCK, errorHandler, "mutex(txSemID, LOCK");
     
-    fprintf(fp, "DAY: %d:🚢 %d %s %d|%d %s Porto %d\n", *day, idxNave, (carico ? "⏪️" : "⏩️"), ton, tipoMerce, (carico ? "⏪️" : "⏩️"), idxPorto);
+    fprintf(fp, "DAY: %d:🚢 %d %s %s %d|%d %s Porto %d\n", *day, idxNave,(fail? "❌":"") , (carico ? "⏪️" : "⏩️"), ton, tipoMerce, (carico ? "⏪️" : "⏩️"), idxPorto);
 
     mutex(txSemID, UNLOCK, errorHandler, "mutex(txSemID, UNLOCK");
     fclose(fp);
     shmDetach(day, errorHandler, "DAYWORLDSHM transactionPrinterCode");
 }
 
-void printTransaction(int idxNave, int idxPorto, int carico, int ton, int tipoMerce) {
+void printTransaction(int idxNave, int idxPorto, int carico, int ton, int tipoMerce, int fail) {
     int pid;
     pid = fork();
     if (pid == -1) {
         throwError("errore nella fork", "printTransaction");
     }
     if (pid == 0) {
-        transactionPrinterCode(idxNave, idxPorto, carico, ton, tipoMerce);
+        transactionPrinterCode(idxNave, idxPorto, carico, ton, tipoMerce, fail);
         exit(0);
     }
 }

@@ -37,7 +37,7 @@ void throwError(char* myerr, char* errCtx) {
         exit(1);
     }
     fprintf(fp, "💥💥💥💥💥💥💥💥\n");
-    fprintf(fp, "ERROR: %s error handler\nERRNO: %s\nCTX: %s\nHASH: %d\n", myerr, strerror(errno), errCtx, hash);
+    fprintf(fp, "ERROR: %s error handler\nERRNO: %s\nCTX: %s\nHASH: %d\nPID: %d\n", myerr, strerror(errno), errCtx, hash,getpid());
     fprintf(fp, "💥💥💥💥💥💥💥💥\n");
     fclose(fp);
     mutex(semid, UNLOCK, errorHandler, "UNLOCK throwError");

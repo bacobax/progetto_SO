@@ -95,11 +95,14 @@ void removeProduct(Ship ship, int index) {
     Product innerAux;
     int i;
     int peso;
+    char text[64] ;
     i = 0;
     aux = ship->loadship->first; 
 
     if (index < 0 || index >= ship->loadship->length) {
-        throwError("INDEX NON VALIDO PER RIMUOVERE IL PRODOTTO" , "removeProduct");
+        sprintf(text, "❌❌❌INDEX NON VALIDO PER RIMUOVERE IL PRODOTTO: %d" , index);
+        logShip(ship->shipID, text);
+        throwError(text , "removeProduct");
         return;
     }
     
@@ -190,4 +193,14 @@ int weigthSum(loadShip l){
         sum += aux->weight;
     }
     return sum;
+}
+
+int getProductExpTime(Product p){
+    Port port;
+    int ret;
+    port = getPort(p->portID);
+    ret = getExpirationTime(port->supplies, p->product_type, p->distributionDay);
+    detachPort(port, p->portID);
+    return ret;
+
 }
