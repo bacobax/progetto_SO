@@ -100,8 +100,7 @@ void waitForStart() {
     mutex(semid, WAITZERO, errorHandler, "waitForStart");
 }
 
-/*copia il contenuto di un array in un altro array
-  assumendo ovviamente che a.length >= a1.length */
+
 void copyArray(int a[], int* a1, int length) {
     int i;
     for (i = 0; i < length; i++) {
@@ -172,9 +171,6 @@ int fact(int n) {
     else {
         return fact(n - 1) * n;
     }
-}
-int choose(int n, int k) {
-    return fact(n) / (fact(k) * fact(n - k));
 }
 
 double mediaTempoViaggioFraPorti() {

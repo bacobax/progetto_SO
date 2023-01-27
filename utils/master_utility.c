@@ -168,7 +168,6 @@ void mySettedMain(void (*masterCode)(int startSimulationSemID, int portsShmid, i
 
     startSimulationSemID = createSem(MASTKEY, 1, errorHandler, "creazione sem startSimulationSemID");
     reservePrintSem = createSem(RESPRINTKEY, 1, errorHandler, "creazione sem reservePrintSem");
-    controlPortsDisponibilitySemID = createMultipleSem(PSEMVERIFYKEY, so_porti, 1, errorHandler, "creazione sem per controllare i supplies in ordine");
     
 
     waitPortsSemID = createSem(WAITPORTSSEM, so_porti + 1, errorHandler, "master crazione waitPortsSemID");

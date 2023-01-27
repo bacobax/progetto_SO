@@ -431,6 +431,7 @@ intList* getAllOtherTypeRequests(int idx, Port portArr) {
 
 
 intList* getTypeToCharge() {
+  
     Port port;
     int i;
     int j;
@@ -502,13 +503,24 @@ int findTypeAndExpTime(Port port, int* type, int* foundDay, int* expTime, int qu
     *foundDay = -1;
     so_days = SO_("DAYS");
     so_merci = SO_("MERCI");
+/*
+    Ad ogni lotto offerto del magazzino attribuisco un valore il cui modo per calcolarlo varia a seconda del pattern:
+    1) il porto offre il prodotto con peso maggiore e tempo di vita rimanente maggiore => (peso del lotto * expTime)
+    2) il porto offre il prodotto con peso maggiore e tempo di vita rimanente minore => (peso del lotto / expTime)
+    Il valore è = 0 se la merce è scaduta o se gli altri porti non contengono richiesta per quel tipo di merce
 
+    Viene scelto il prodotto con valore maggiore
+
+*/
     for (i = 0; i < so_days; i++) {
         for (j = 0; j < so_merci; j++) {
             
             ton = getMagazineVal(magazine,i,j);
             
             currentScadenza = getExpirationTime(port->supplies, j, i);
+            /*
+                assegno il valore
+            */
             currentValue = getValue(ton, currentScadenza,j ,port,idx);
             if (ton >= quantity && currentValue > value) {
                 value = currentValue;

@@ -20,11 +20,18 @@ intList* distributeV1(int quantity, int parts);
 /* aspetta che il master metta a zero il semaforo con la key MASTKEY */
 void waitForStart();
 
-int random_int(int min, int max);
+int random_int(int min, int max); /* ritorna un intero generato casualmente*/
 
+/*
+  copia il contenuto di un array in un altro array
+  assumendo ovviamente che a.length >= a1.length
+*/
 void copyArray(int a[], int* a1, int length);
 
-
+/*
+  funzione che effettua una nanosleep in base 
+  ad un numero di nanosecondi passati per parametro
+*/
 int nanosecsleep(long nanosec);
 
 /*
@@ -32,24 +39,24 @@ int nanosecsleep(long nanosec);
 */
 void checkInConfig();
 
+/*
+
+*/
 void clearSigMask();
 
 
-int getPortQueueRequest(int key);
-
-int getPortQueueCharge(int id);
-
-int getPortQueueDischarge(int id);
-
-int getShipQueue(int id);
-
+/* ritorna il valorea assoluto di un numero double*/
 double mod(double z);
 
 
-int choose(int n, int k);
 
 double mediaTempoViaggioFraPorti();
+
 double numeroDiCarichiOttimale();
+
+/* ritorna il valore intero letto dal file configs, corrispondente
+   alla stringa SO_name dove name può essere FILL, DAYS, NAVI ecc...
+*/
 int SO_(char* name);
 
 #endif

@@ -137,9 +137,7 @@ void removeExpiredGoods(Supplies* S, int* magazine) {
 }
 
 int validSupply(Supplies s, int type, int* magazine){
-    /* ritorna true se c'è almeno un elemento maggiore di 0 in p.megazine[tutti i giorni][type]
-        int magazine[SO_DAYS][SO_MERCI];
-    */
+    
     int i;
     int j;
     int so_days = SO_("DAYS");

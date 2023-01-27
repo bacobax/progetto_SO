@@ -245,7 +245,6 @@ int chooseProductToDelivery(Ship ship) {
 int communicatePortsForChargeV1(Ship ship, int quantityToCharge, PortOffer* port_offers) {
     int i;
     Port p;
-    int controlPortsDisponibilitySemID;
     int tipoTrovato;
     int dayTrovato;
     int dataScadenzaTrovata;
@@ -253,20 +252,15 @@ int communicatePortsForChargeV1(Ship ship, int quantityToCharge, PortOffer* port
     int res;
     int so_porti = SO_("PORTI");
     int verifyAllPortsSemID;
-    controlPortsDisponibilitySemID = useSem(PSEMVERIFYKEY, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID");
     verifyAllPortsSemID = useSem(VERIFYALLPORTS, errorHandler, "verifyAllPortsSemID comunicate prt forc charge");
     aviablePorts = 0;
 
     mutex(verifyAllPortsSemID,LOCK, errorHandler, "verifyAllPortsSemID LOCK");
+    
     quantityToCharge = chooseQuantityToCharge(ship);
     for (i = 0; i < so_porti; i++) {
         p = getPort(i);
-        /*
-        mutexPro(controlPortsDisponibilitySemID, i, LOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID LOCK");
-
-        mutexPro(controlPortsDisponibilitySemID, i, UNLOCK, errorHandler, "RecvDischargerHandler->controlPortsDisponibilitySemID UNLOCK");
         
-        */
         res = findTypeAndExpTime(p, &tipoTrovato, &dayTrovato, &dataScadenzaTrovata, quantityToCharge, i);
 
         if (res != -1) {
@@ -862,13 +856,14 @@ int deliverProduct(Ship ship, Port port, int product_index, Product p, int portI
     }
     else {
         addExpiredGood(p->weight, p->product_type, SHIP);
-        printTransaction(ship->shipID, portID, 0, scarico, p->product_type,1);
+        printTransaction(ship->shipID, portID, 0, p->weight, p->product_type,1);
         removeProduct(ship, product_index);
 
         logShip(ship->shipID ,"OOPS! la merce che volevi scaricare è scaduta!!!");
 
     }
     new_index = chooseNewProductIndex(ship,port);
+    
     return new_index;
 }
 

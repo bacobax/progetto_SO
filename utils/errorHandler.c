@@ -42,7 +42,6 @@ void throwError(char* myerr, char* errCtx) {
     fclose(fp);
     mutex(semid, UNLOCK, errorHandler, "UNLOCK throwError");
 
-    
 }
 
 void errorHandler(int err, char* errCtx) {

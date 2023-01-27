@@ -10,7 +10,9 @@ void create_ships();
 
 /* funzione che genera porti */
 void create_ports(int risorse, int n_porti);
-
+/*
+    crea il processo meteo lanciandolo con una pipe connessa al master
+*/
 FILE* create_weather();
 
 /* codice che verrà eseguito dal processo master (configurazione esclusa)*/
@@ -31,12 +33,21 @@ void mySettedMain(void (*masterCode)(int startSimulationSemID, int portsShmid, i
 */
 void aspettaConfigs(int waitConfigSemID);
 
-
+/*
+    funzione che incarica un processo di inviare nella coda dei porti per il refill il messaggio contenente la quantità da refillare e il giorno
+*/
 void refillPorts(int opt, int msgRefillerID, int quantityPerDay, int giorno);
-
+/*
+    funzione che incarica un processo per ogni porto di eseguire il decremento dei tempi di vita della merce e di eliminare quella scaduta eventualmente
+*/
 void expirePortsGoods(int day);
 
+/*
+    prende il valore del semaforo che conta le navi vive
+*/
 int countAliveShips();
-
-void resetWeatherTargets( Ship ships);
+/*
+    resetta a 0 il valore del campo che ci dice se una nave/porto è stato/a colpito/a da una tempesta/mareggiata (per il dump giornaliero)
+*/
+void resetWeatherTargets(Ship ships);
 #endif

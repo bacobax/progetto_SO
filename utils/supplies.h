@@ -44,9 +44,15 @@ void decrementExpTimes(Supplies* S, int day);
     rimuove le risorse scadute
 */
 void removeExpiredGoods(Supplies* S, int* magazine);
-
+/* 
+    ritorna true se c'è almeno un elemento maggiore di 0 in p.megazine[tutti i giorni][type]
+    int magazine[SO_DAYS][SO_MERCI];
+*/
 int validSupply(Supplies p, int type, int* magazine);
-
+/*
+    funzioni che permettono di impostare, aggiungere o prelevare un valore
+    del magazzino del porto
+*/
 void setMagazineVal(int* magazine, int day, int type, int v);
 void addMagazineVal(int* magazine, int day, int type, int v);
 int getMagazineVal(int* magazine, int day, int type);
