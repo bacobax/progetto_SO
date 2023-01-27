@@ -184,6 +184,9 @@ int chooseQuantityToCharge(Ship ship){
     typeToCharge = getTypeToCharge();
     
     logShip(ship->shipID, "sto per fare CHOOSE QUANTITY\n");
+    /*
+    così esclude tutti i casi -1
+    */
     max = 0;
     
     port = getPort(0);
@@ -191,11 +194,15 @@ int chooseQuantityToCharge(Ship ship){
         reqs = getShmAddress(port[i].requestsID, SHM_RDONLY, errorHandler, "chooseQuantityToCharge");
         tipiRichiestiDaAltriPorti = getAllOtherTypeRequests(i, port);
         magazine = getMagazine(port + i);
-        for (j = 0; j < so_days; j++)
-        {
+        for (j = 0; j < so_days; j++) {
             for (k = 0; k < so_merci; k++) {
-                res = reqs[k] == 0;
-                if (getMagazineVal(magazine, j, k) > max && contain(tipiRichiestiDaAltriPorti, k) && res) {
+                /*
+                    nel conteggio del massimo un lotto è escluso se
+                    1) il suo peso è <= 0 (perchè max parte da 0)
+                    2) è presente la domanda per quel tipo in quel porto (vuol dire che non è offerta)
+                    3) non è presente la domanda per quel tipo di merce negli altri porti
+                */
+                if (getMagazineVal(magazine, j, k) > max && contain(tipiRichiestiDaAltriPorti, k) && reqs[k] == 0) {
                     
                     max = getMagazineVal(magazine, j, k);
                 }

@@ -455,7 +455,11 @@ intList* getTypeToCharge() {
     }
     
     detachPort(port, 0);
-    
+    /*
+        {tipi di merce offerti in gioco} = ∪ (i = 0 -> SO_PORTI)(tipi di merce offerta dal porto[i])
+        {tipi di merce richiesti in gioco} = ∪ (i = 0 -> SO_PORTI)(tipi di merce richiesta dal porto[i])
+        Merce che ha senso caricare = {tipi di merce offerti in gioco} ∩ {tipi di merce richiesti nel gioco}
+    */
     inter = intIntersect(merciTotaliOfferte, merciTotaliRichieste);
     intFreeList(merciTotaliOfferte);
     intFreeList(merciTotaliRichieste);
@@ -466,13 +470,16 @@ intList* getTypeToCharge() {
 
 double getValue(int quantity, int expTime, int type, Port p, int idx) {
     intList *tipiDiMerceRichiestiAltriPorti = getAllOtherTypeRequests(idx,p-idx);
-    if (expTime == 0 || contain(requestsTypes(p), type) || !contain(tipiDiMerceRichiestiAltriPorti, type))
-    {
+    if (expTime <= 0 || contain(requestsTypes(p), type) || !contain(tipiDiMerceRichiestiAltriPorti, type)){
         return 0;
-    }
-    else /*expTime > 0 && le mie richieste non contengono il type di merce di questa offerta && le richieste degli altri porti contengono il type di merce di questa offerta*/
-    {
-        if(PORTOSCEGLIEMASSIMO){
+    }else {
+        /*
+            se:
+            expTime > 0 &&
+            le mie richieste non contengono il type di merce di questa offerta &&
+            le richieste degli altri porti contengono il type di merce di questa offerta
+        */
+        if (PORTOSCEGLIEMASSIMO) {
             return quantity * (double)expTime;
         }else{
             return quantity / (double)expTime;
