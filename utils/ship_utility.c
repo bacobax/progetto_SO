@@ -249,7 +249,7 @@ int chooseProductToDelivery(Ship ship) {
     return index;
 }
 
-int communicatePortsForChargeV1(Ship ship, int quantityToCharge, PortOffer* port_offers) {
+int communicatePortsForCharge(Ship ship, int quantityToCharge, PortOffer* port_offers) {
     int i;
     Port p;
     int tipoTrovato;
@@ -323,7 +323,7 @@ int choosePortForCharge(PortOffer* port_offers, int idx){
 
 
 
-void replyToPortsForChargeV1(int portID, PortOffer* port_offers) {
+void replyToPortsForCharge(int portID, PortOffer* port_offers) {
     int i;
     Port p;
     int so_porti = SO_("PORTI");
@@ -341,7 +341,7 @@ void replyToPortsForChargeV1(int portID, PortOffer* port_offers) {
 }
 
 
-int communicatePortsForDischargeV1(Ship ship, Product p, int* quantoPossoScaricare, int* arrayResponses) {
+int communicatePortsForDischarge(Ship ship, Product p, int* quantoPossoScaricare, int* arrayResponses) {
     int i;
     int verifyRequestSemID;
     Port port;
@@ -401,7 +401,7 @@ void restorePortRequest(Port p, int type, int originalPortRequest, int pWeight){
     shmDetach(reqs, errorHandler, "restorePortRequest");
 }
 
-void replyToPortsForDischargeV1(Ship ship, int portID, int quantoPossoScaricare, int* portResponses, Product prod) {
+void replyToPortsForDischarge(Ship ship, int portID, int quantoPossoScaricare, int* portResponses, Product prod) {
     int i;
     Port porto;
     int so_porti = SO_("PORTI");
@@ -418,7 +418,7 @@ void replyToPortsForDischargeV1(Ship ship, int portID, int quantoPossoScaricare,
 
 }
 
-void accessPortForChargeV1(Ship ship, int portID, PortOffer* port_offers) {
+void accessPortForCharge(Ship ship, int portID, PortOffer* port_offers) {
     int pierSemID;
     int shipSemID;
     int stormSwellShmID;
@@ -476,7 +476,7 @@ void accessPortForChargeV1(Ship ship, int portID, PortOffer* port_offers) {
     
 }
 
-void accessPortForDischargeV1(Ship ship, int portID, Product p, int product_index, int quantoPossoScaricare) {
+void accessPortForDischarge(Ship ship, int portID, Product p, int product_index, int quantoPossoScaricare) {
     int pierSemID;
     int shipSemID;
     int portBufferSemID;

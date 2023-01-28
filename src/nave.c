@@ -65,11 +65,11 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
     }
     else {
 
-        availablePorts = communicatePortsForChargeV1(ship, quantityToCharge, port_offers); 
+        availablePorts = communicatePortsForCharge(ship, quantityToCharge, port_offers); 
         logShip(ship->shipID, "finito di chiamare i porti\n");
         if (availablePorts == 0) {
             
-            replyToPortsForChargeV1(-1, port_offers);
+            replyToPortsForCharge(-1, port_offers);
             removeExpiredGoodsOnShip(ship);
             free(port_offers);
            
@@ -81,12 +81,12 @@ void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* ter
             
             portID = choosePortForCharge(port_offers, ship->shipID);
             
-            replyToPortsForChargeV1(portID, port_offers);
+            replyToPortsForCharge(portID, port_offers);
 
             logShip(ship->shipID,"Sono partita...\n");
             travelCharge(ship, portID, day, port_offers);
             logShip(ship->shipID, "fatta travel");
-            accessPortForChargeV1(ship, portID, port_offers);
+            accessPortForCharge(ship, portID, port_offers);
             logShip(ship->shipID, "finita accessPortToCharge");
             removeExpiredGoodsOnShip(ship);
             free(port_offers);
@@ -132,7 +132,7 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
             return;
         }
 
-        portID = communicatePortsForDischargeV1(ship, prod, &quantoPossoScaricare, portResponses);
+        portID = communicatePortsForDischarge(ship, prod, &quantoPossoScaricare, portResponses);
 
         
         if (portID == -1) {
@@ -142,16 +142,16 @@ void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue) {
             removeProduct(ship, product_index); 
 
             logShip( ship->shipID, " riprovo a scegliere il prodotto da scaricare\n");
-            replyToPortsForDischargeV1(ship, -1, quantoPossoScaricare, portResponses, prod);
+            replyToPortsForDischarge(ship, -1, quantoPossoScaricare, portResponses, prod);
             free(portResponses);
             dischargeProducts(ship, day, terminateValue);            /* chiamo la dischargeProducts cercando un nuovo prodotto da consegnare */
         
         } else {
              
-            replyToPortsForDischargeV1(ship, portID, quantoPossoScaricare, portResponses, prod);
+            replyToPortsForDischarge(ship, portID, quantoPossoScaricare, portResponses, prod);
 
             travelDischarge(ship, portID, day, prod, portResponses);
-            accessPortForDischargeV1(ship, portID, prod, product_index, quantoPossoScaricare);
+            accessPortForDischarge(ship, portID, prod, product_index, quantoPossoScaricare);
             free(portResponses);
             removeExpiredGoodsOnShip(ship);
             

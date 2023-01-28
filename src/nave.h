@@ -68,7 +68,7 @@ void initArrayOffers(PortOffer* offers);
     3) tempo di vita rimanente
     4) il peso in tonnellate
 */
-int communicatePortsForChargeV1(Ship ship, int quantityToCharge, PortOffer* port_offers);
+int communicatePortsForCharge(Ship ship, int quantityToCharge, PortOffer* port_offers);
 
 
 /*
@@ -80,16 +80,21 @@ int communicatePortsForChargeV1(Ship ship, int quantityToCharge, PortOffer* port
     In sintesi quantoPossoScaricare = min{richiesta del porto, p->weight}
 
 */
-int communicatePortsForDischargeV1(Ship ship, Product p, int* quantoPossoScaricare, int* arrayResponses);
+int communicatePortsForDischarge(Ship ship, Product p, int* quantoPossoScaricare, int* arrayResponses);
 
 /*
     tramite l'array delle offerte di tutti i porti, la nave sceglie in quale andare a caricare,
     sceglie il porto con offerta con massima/minima expTime
 */
 int choosePortForCharge(PortOffer* port_offers, int idx);
-void replyToPortsForChargeV1(int portID, PortOffer* port_offers);
-
-void replyToPortsForDischargeV1(Ship ship, int portID, int quantoPossoScaricare, int* portResponses, Product prod);
+/*
+    funzione che reincrementa le offerte dei porti non scelti dalla nave
+*/
+void replyToPortsForCharge(int portID, PortOffer* port_offers);
+/*
+    funzione che reincrementa le domande dei porti non scelti dalla nave
+*/
+void replyToPortsForDischarge(Ship ship, int portID, int quantoPossoScaricare, int* portResponses, Product prod);
 
 /*
     funzioni per la simulazione del viaggio della nave, in base all'azione in corso (carico/scarico)
@@ -98,14 +103,25 @@ void replyToPortsForDischargeV1(Ship ship, int portID, int quantoPossoScaricare,
 void travelCharge(Ship ship, int portID, int* day, PortOffer* port_offers);
 void travelDischarge(Ship ship, int portID, int* day, Product prod, int* portResponses);
 
+/*
+    funzione chiamata dalla nave quando è appresso ad un porto ed è pronta
+    a caricare un nuovo prodotto
+*/
+void accessPortForCharge(Ship ship, int portID, PortOffer* port_offers);
+/*
+    funzione chiamata dalla nave quando è appresso ad un porto ed è pronta
+    a scaricare un nuovo prodotto
+*/
+void accessPortForDischarge(Ship ship, int portID, Product p,int product_index, int quantoPossoScaricare);
 
-void accessPortForChargeV1(Ship ship, int portID, PortOffer* port_offers);
-
-void accessPortForDischargeV1(Ship ship, int portID, Product p,int product_index, int quantoPossoScaricare);
-
-void updateExpTimeShip(Ship ship);
-
+/*
+    funzione di routine per le fasi di caricamento della nave
+*/
 void chargeProducts(Ship ship, int quantityToCharge, int* day, unsigned int* terminateValue);
+
+/*
+    funzione di routine per le fasi di scaricamento della nave
+*/
 void dischargeProducts(Ship ship, int* day, unsigned int* terminateValue);
 
 /*
@@ -142,7 +158,8 @@ int getShipSem();
 */
 void checkShipDead(Ship ship);
 /*
-
+    funzione utilizzata nella fase di scarico della nave per consegnare
+    un prodotto al porto
 */
 int deliverProduct(Ship ship, Port port, int product_index, Product p, int portID, int firstProd, int quantoPossoScaricare);
 /*
@@ -152,7 +169,7 @@ int deliverProduct(Ship ship, Port port, int product_index, Product p, int portI
 void addProduct(Ship ship, Product p, Port port);
 void removeProduct(Ship ship, int index);
 /*
-
+    rimuove un prodotto dal carico della nave in base al valore restituito dalla funzione f
 */
 void removePWhere(Ship s, int(*f)(Product p));
 
