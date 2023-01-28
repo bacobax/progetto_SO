@@ -2,3 +2,4 @@ bin/*
 !./logs
 *.log
 ./.vscode
+./relazione.pdf
