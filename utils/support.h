@@ -40,7 +40,7 @@ int nanosecsleep(long nanosec);
 void checkInConfig();
 
 /*
-
+    cancella la maschera dei segnali del processo chiamante
 */
 void clearSigMask();
 
@@ -49,12 +49,14 @@ void clearSigMask();
 double mod(double z);
 
 
-
+/*
+  calcola il tempo medio di viaggio tra tutti i porti
+*/
 double mediaTempoViaggioFraPorti();
 
-double numeroDiCarichiOttimale();
 
-/* ritorna il valore intero letto dal file configs, corrispondente
+/* 
+   ritorna il valore intero letto dal file configs, corrispondente
    alla stringa SO_name dove name può essere FILL, DAYS, NAVI ecc...
 */
 int SO_(char* name);
