@@ -17,9 +17,9 @@ int createSem(int key, int initValue, void (*errorHandler)(int, char*) , char* e
 void removeSem(int semid, void (*errorHandler)(int, char*) , char* errCtx);
 
 /* esegue operazioni sul singolo semaforo con flag a 0
-// LOCK decrementa
-// UNLOCK incrementa
-// WAITZERO aspetta lo 0 */
+ LOCK decrementa
+ UNLOCK incrementa
+ WAITZERO aspetta lo 0 */
 void mutex(int semid, int op, void (*errorHandler)(int, char*) , char* errCtx);
 
 int createMultipleSem(int key, int nSem, int initValue, void (*errorHandler)(int, char*) , char* errCtx);

@@ -52,8 +52,6 @@ double mod(double z);
 
 double mediaTempoViaggioFraPorti();
 
-double numeroDiCarichiOttimale();
-
 /* ritorna il valore intero letto dal file configs, corrispondente
    alla stringa SO_name dove name può essere FILL, DAYS, NAVI ecc...
 */

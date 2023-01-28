@@ -36,7 +36,8 @@ void intFreeList(intList* lista);
 void intRemove(intList* lista, int idx);
 
 
-/*ritorna una nuova lista la cui costruzione dipende dalla prima
+/*
+ritorna una nuova lista la cui costruzione dipende dalla prima
 
     es:
         - Per ritornare una lista i cui numeri sono il doppio della prima:
@@ -44,9 +45,6 @@ void intRemove(intList* lista, int idx);
             map({1,2,3} , function(int el,int idx){
                 return el * 2;
             }) == {2,4,6}
-
-
-
 
 */
 intList* map(intList* l, int(*f)(int el, int idx));
