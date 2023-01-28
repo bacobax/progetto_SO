@@ -144,7 +144,7 @@ void distruggiShmPorti(){
 
 void mySettedMain(void (*masterCode)(int startSimulationSemID, int portsShmid, int shipsShmid, int reservePrintSem, int waitconfigSemID, int msgRefillerID, int waitEndDaySemID, int* day, int waitEndDayShipsSemID)) {
     int startSimulationSemID, reservePrintSem, reservePortsResourceSem, portsShmid, shipsShmid, endShmID, dayShmID, pierSemID, semShipsID, verifyAllPortsSemID;
-    int msgRefillerID, waitconfigSemID, rwExpTimesPortSemID, waitEndDaySemID, controlPortsDisponibilitySemID, waitResponsesID;   
+    int msgRefillerID, waitconfigSemID, rwExpTimesPortSemID, waitEndDaySemID, waitResponsesID;   
     int verifyRequestPortSemID, waitToRemoveDump, i, waitPortsSemID, waitShipsSemID, waitEndDayShipSemID, so_porti, so_navi, so_banchine, so_merci;
     unsigned int* terminateValue;
 
@@ -240,7 +240,6 @@ void mySettedMain(void (*masterCode)(int startSimulationSemID, int portsShmid, i
     removeSem(rwExpTimesPortSemID, errorHandler , "rwExpTimesPortSemID");
     removeSem(semShipsID, errorHandler, "semShipsID");
     removeSem(waitEndDaySemID, errorHandler, "waitEndDaySemID");
-    removeSem(controlPortsDisponibilitySemID, errorHandler, "controlPortsDisponibilitySemID");
     removeSem(verifyRequestPortSemID, errorHandler, "verifyRequestPortSemID");
     removeSem(waitToRemoveDump, errorHandler, "waitToRemoveDump");
     removeSem(waitResponsesID, errorHandler, "waitResponsesID");
